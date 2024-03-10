@@ -82,7 +82,6 @@ sub checkBlob( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-              # don't know how to handle this ...
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -1148,7 +1147,6 @@ sub listModels( $self, %options ) {
     my $method = 'GET';
     my $url = Mojo::URL->new( $self->server . '/tags');
 
-              # don't know how to handle this ...
     my $tx = $self->ua->build_tx(
         $method => $url,
         {

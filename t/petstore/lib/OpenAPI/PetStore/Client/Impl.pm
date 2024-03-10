@@ -39,8 +39,6 @@ has 'server' => (
 
   my $res = $client->findPets()->get;
 
-
-
 =head3 Parameters
 
 =item B<< tags >>
@@ -69,7 +67,6 @@ sub findPets( $self, %options ) {
         maybe 'limit' => delete $options{'limit'},
     );
 
-              # don't know how to handle this ...
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -126,8 +123,6 @@ sub findPets( $self, %options ) {
 =head2 C<< addPet >>
 
   my $res = $client->addPet()->get;
-
-
 
 
 =head3 Options
@@ -214,8 +209,6 @@ sub addPet( $self, %options ) {
 
   my $res = $client->deletePet()->get;
 
-
-
 =head3 Parameters
 
 =item B<< id >>
@@ -240,7 +233,6 @@ sub deletePet( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-              # don't know how to handle this ...
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -291,8 +283,6 @@ sub deletePet( $self, %options ) {
 
   my $res = $client->find_pet_by_id()->get;
 
-
-
 =head3 Parameters
 
 =item B<< id >>
@@ -318,7 +308,6 @@ sub find_pet_by_id( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-              # don't know how to handle this ...
     my $tx = $self->ua->build_tx(
         $method => $url,
         {

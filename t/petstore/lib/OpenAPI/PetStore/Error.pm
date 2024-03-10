@@ -12,8 +12,6 @@ sub as_hash( $self ) {
 
 =head2 C<< code >>
 
-
-
 =cut
 
 has 'code' => (
@@ -23,8 +21,6 @@ has 'code' => (
 );
 
 =head2 C<< message >>
-
-
 
 =cut
 

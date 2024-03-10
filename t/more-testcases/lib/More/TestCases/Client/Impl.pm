@@ -37,8 +37,6 @@ has 'server' => (
 
   my $res = $client->withCookie()->get;
 
-
-
 =head3 Parameters
 
 =item B<< session-id >>
@@ -59,7 +57,6 @@ sub withCookie( $self, %options ) {
     my $url = Mojo::URL->new( $self->server . '/with-cookie');
 
     # unhandled cookie parameter session-id;
-              # don't know how to handle this ...
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -102,8 +99,6 @@ sub withCookie( $self, %options ) {
 
   my $res = $client->withHeader()->get;
 
-
-
 =head3 Parameters
 
 =item B<< X-token >>
@@ -123,7 +118,6 @@ sub withHeader( $self, %options ) {
     my $method = 'GET';
     my $url = Mojo::URL->new( $self->server . '/with-header');
 
-              # don't know how to handle this ...
     my $tx = $self->ua->build_tx(
         $method => $url,
         {

@@ -12,8 +12,6 @@ sub as_hash( $self ) {
 
 =head2 C<< name >>
 
-
-
 =cut
 
 has 'name' => (
@@ -23,8 +21,6 @@ has 'name' => (
 );
 
 =head2 C<< tag >>
-
-
 
 =cut
 
