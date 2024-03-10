@@ -89,7 +89,7 @@ sub update_file( %options ) {
         $content = <$fh>;
     };
 
-    if( $content ne $new_content ) {
+    if( $content and $content ne $new_content ) {
         make_path( dirname $filename ); # just to be sure
         if( open my $fh, ">$encoding", $filename ) {
             print $fh $new_content;
@@ -167,6 +167,8 @@ sub as_hash( $self ) {
     return { $self->%* }
 }
 
+=head1 PROPERTIES
+
 % for my $prop (sort keys $elt->{properties}->%*) {
 %     my $p = $elt->{properties}->{$prop};
 =head2 C<< <%= $prop %> >>
@@ -215,6 +217,18 @@ use Future::Mojo;
 use <%= $prefix %>::<%= $submodule %>;
 %     }
 % }
+
+=head1 SYNOPSIS
+
+=head1 PROPERTIES
+
+=head2 B<< openapi >>
+
+=head2 B<< ua >>
+
+=head2 B<< server >>
+
+=cut
 
 # XXX this should be more configurable, and potentially you don't want validation?!
 my $schema = YAML::PP->new( boolean => 'JSON::PP' )->load_file( 'ollama/ollama-curated.yaml' );
@@ -648,15 +662,16 @@ for my $name ( sort keys $schema->{components}->{schemas}->%*) {
 
     if( ! exists $template{ $type}) {
         warn "No template for type '$type' ($name)";
+    } else {
+        my $template = $template{ $type };
+
+
+        my $filename = filename( $name );
+        update_file(
+            filename => $filename,
+            content  => $mt->render( $template, \%info )
+        );
     }
-    my $template = $template{ $type };
-
-
-    my $filename = filename( $name );
-    update_file(
-        filename => $filename,
-        content  => $mt->render( $template, \%info )
-    );
 }
 
 # Add the methods to the main class (or, also to the current class, depending
