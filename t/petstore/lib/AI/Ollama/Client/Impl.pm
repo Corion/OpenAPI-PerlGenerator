@@ -153,7 +153,6 @@ Returns a L<< AI::Ollama::Error >>.
 =cut
 
 sub addPet( $self, %options ) {
-
     my $method = 'POST';
     my $url = Mojo::URL->new( $self->server . '/pets');
 
@@ -234,6 +233,8 @@ Returns a L<< AI::Ollama::Error >>.
 =cut
 
 sub deletePet( $self, %options ) {
+    croak "Missing required parameter 'id'
+        unless exists $options{ 'id' };
 
     my $method = 'DELETE';
     my $template = URI::Template->new( '/pets/{id}' );
@@ -311,6 +312,8 @@ Returns a L<< AI::Ollama::Error >>.
 =cut
 
 sub find_pet_by_id( $self, %options ) {
+    croak "Missing required parameter 'id'
+        unless exists $options{ 'id' };
 
     my $method = 'GET';
     my $template = URI::Template->new( '/pets/{id}' );

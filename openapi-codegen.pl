@@ -231,11 +231,6 @@ has 'server' => (
 %     for my $p ($elt->{parameters}->@*) {
 %         $parameters{ $p->{in} } //= [];
 %         push $parameters{ $p->{in} }->@*, $p;
-%         # also output parameter checks here
-%         if( $p->{required} eq 'true' ) { # parameter-required
-    croak "Missing required parameter '<%= $p->{name} %>'
-        unless exists $options{ '<%= $p->{name} %>' };
-%         }                                # parameter-required
 %     }
 % }
 %
@@ -308,7 +303,17 @@ Returns a L<< <%= $prefix %>::<%= $content->{$ct}->{schema}->{name} %> >>.
 =cut
 
 sub <%= $method->{name} %>( $self, %options ) {
+%# Check that we received all required parameters:
+% if( my $p = $elt->{parameters}) {
+%     for my $p ($elt->{parameters}->@*) {
+%         if( $p->{required} ) { # parameter-required
+    croak "Missing required parameter '<%= $p->{name} %>'
+        unless exists $options{ '<%= $p->{name} %>' };
+%         }                      # parameter-required
+%     }
 
+% } # parameter-required
+%#
     my $method = '<%= uc $method->{http_method} %>';
 %# Output the path parameters
 % if( my $params = delete $parameters{ path }) {
