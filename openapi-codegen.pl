@@ -20,6 +20,7 @@ GetOptions(
     'force|f' => \my $force,
     'output|o=s' => \my $output_directory,
     'api|a=s' => \my $api_file,
+    'tidy'    => \my $run_perltidy,
 );
 $package //= 'AI::Ollama';
 $api_file //= 'ollama/ollama-curated.yaml';
@@ -56,6 +57,18 @@ sub fixup_json_ref( $root, $curr=$root ) {
 
 # Fix up the schema to resolve JSON-style refs into real refs:
 $schema = fixup_json_ref( $schema );
+
+sub tidy( $source ) {
+    my $formatted = $source;
+    if( $run_perltidy ) {
+        Perl::Tidy::perltidy(
+            source      => \$source,
+            destination => \$formatted,
+            argv        => [ '--no-memoize' ],
+        ) or $source = $formatted;
+    }
+    return $formatted;
+}
 
 sub update_file( %options ) {
     my $filename = delete $options{ filename }
@@ -656,4 +669,3 @@ __END__
 [ ] handle https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore-expanded.yaml
 [ ] move method call example invocation into a subroutine/subtemplate
 [ ] handle "default" result code
-[ ] optionally run the generated code through perltidy
