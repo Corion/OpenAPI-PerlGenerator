@@ -655,9 +655,8 @@ __END__
     template
 [ ] (optionally) check that the created module file(s) compile
 [ ] Split out the templates into separate files
-[ ] Properly handle URI templates
-[ ] support parameters
-[ ] support paramerters on the Path object
+[ ] support parameters in cookies
+[ ] support parameters in headers
 [ ] Handle variables (at all)
 [ ] Handle variables in servers:
     servers:
