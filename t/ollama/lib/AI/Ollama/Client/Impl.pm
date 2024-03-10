@@ -106,8 +106,7 @@ sub checkBlob( $self, %options ) {
         if( $resp->code == 200 ) {
             # Blob exists on the server
             return Future::Mojo->done($resp);
-        }
-        if( $resp->code == 404 ) {
+        } elsif( $resp->code == 404 ) {
             # Blob was not found
             return Future::Mojo->done($resp);
         }

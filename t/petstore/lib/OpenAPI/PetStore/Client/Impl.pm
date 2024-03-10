@@ -101,8 +101,7 @@ sub findPets( $self, %options ) {
                     OpenAPI::PetStore::->new($payload),
                 );
             }
-        }
-        if( $resp->code == default ) {
+        } else {
             # unexpected error
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
@@ -189,8 +188,7 @@ sub addPet( $self, %options ) {
                     OpenAPI::PetStore::Pet->new($payload),
                 );
             }
-        }
-        if( $resp->code == default ) {
+        } else {
             # unexpected error
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
@@ -267,8 +265,7 @@ sub deletePet( $self, %options ) {
         if( $resp->code == 204 ) {
             # pet deleted
             return Future::Mojo->done($resp);
-        }
-        if( $resp->code == default ) {
+        } else {
             # unexpected error
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
@@ -353,8 +350,7 @@ sub find_pet_by_id( $self, %options ) {
                     OpenAPI::PetStore::Pet->new($payload),
                 );
             }
-        }
-        if( $resp->code == default ) {
+        } else {
             # unexpected error
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;

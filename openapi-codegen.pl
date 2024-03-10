@@ -432,11 +432,25 @@ sub <%= $method->{name} %>( $self, %options ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
 %# Should this be its own subroutine instead?!
+% my $first_code = 1;
 % for my $code (sort keys $elt->{responses}->%*) {                             # response code s
 %     my $info = $elt->{responses}->{ $code };
 %# XXX support 2xx / 5xx codes through =~
 %# XXX if streaming, we need to handle a non-streaming error response!
+%     if( $first_code ) {
+%         $first_code = 0;
+%         if( $code eq 'default' ) {
+        if( 'default' ) {
+%         } else {
         if( $resp->code == <%= $code %> ) {
+%         }
+%     } else {
+%         if( $code eq 'default' ) {
+        } else {
+%         } else {
+        } elsif( $resp->code == <%= $code %> ) {
+%         }
+%     }
             # <%= $info->{description} %>
 %       # Check the content type
 %       # Will we always have a content type?!
@@ -496,8 +510,8 @@ sub <%= $method->{name} %>( $self, %options ) {
 %           } else { # we don't know how to handle this, so pass $res          # known content types?
             return Future::Mojo->done($resp);
 %           }
-        }
 % }
+        }
     });
 
 % if( $is_streaming ) {
@@ -670,4 +684,4 @@ __END__
 [ ] handle https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/uspto.yaml
 [ ] handle https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore-expanded.yaml
 [ ] move method call example invocation into a subroutine/subtemplate
-[ ] handle "default" result code
+[ ] Support "schema" part of parameter joining
