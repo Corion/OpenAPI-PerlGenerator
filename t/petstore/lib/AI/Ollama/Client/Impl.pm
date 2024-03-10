@@ -131,7 +131,6 @@ sub findPets( $self, %options ) {
 
 
 
-
 =head3 Options
 
 =over 4

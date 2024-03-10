@@ -278,8 +278,9 @@ has 'server' => (
 
 %     }
 =cut
-% } # parameters
 
+% } # parameters
+%#
 %# Add the body/schema parameters:
 % (my $ct) = keys $elt->{requestBody}->{content}->%*;
 % my $type = $elt->{requestBody}->{content}->{$ct}->{schema};

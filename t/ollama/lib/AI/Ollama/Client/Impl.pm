@@ -208,7 +208,6 @@ sub createBlob( $self, %options ) {
 Generate the next message in a chat with a provided model.
 
 
-
 =head3 Options
 
 =over 4
@@ -351,7 +350,6 @@ sub generateChatCompletion( $self, %options ) {
 Creates a model with another name from an existing model.
 
 
-
 =head3 Options
 
 =over 4
@@ -429,7 +427,6 @@ sub copyModel( $self, %options ) {
   } until => sub($done) { $done->get };
 
 Create a model from a Modelfile.
-
 
 
 =head3 Options
@@ -541,7 +538,6 @@ sub createModel( $self, %options ) {
 Delete a model and its data.
 
 
-
 =head3 Options
 
 =over 4
@@ -605,7 +601,6 @@ sub deleteModel( $self, %options ) {
   my $res = $client->generateEmbedding()->get;
 
 Generate embeddings from a model.
-
 
 
 =head3 Options
@@ -704,7 +699,6 @@ sub generateEmbedding( $self, %options ) {
   } until => sub($done) { $done->get };
 
 Generate a response for a given prompt with a provided model.
-
 
 
 =head3 Options
@@ -891,7 +885,6 @@ sub generateCompletion( $self, %options ) {
 Download a model from the ollama library.
 
 
-
 =head3 Options
 
 =over 4
@@ -984,7 +977,6 @@ sub pullModel( $self, %options ) {
 Upload a model to a model library.
 
 
-
 =head3 Options
 
 =over 4
@@ -1075,7 +1067,6 @@ sub pushModel( $self, %options ) {
 Show details about a model including modelfile, template, parameters, license, and system prompt.
 
 
-
 =head3 Options
 
 =over 4
@@ -1148,7 +1139,6 @@ sub showModelInfo( $self, %options ) {
   my $res = $client->listModels()->get;
 
 List models that are available locally.
-
 
 
 Returns a L<< AI::Ollama::ModelsResponse >>.
