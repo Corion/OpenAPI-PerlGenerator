@@ -171,8 +171,10 @@ sub as_hash( $self ) {
 %     my $p = $elt->{properties}->{$prop};
 =head2 C<< <%= $prop %> >>
 
+% if( $p->{description} and $p->{description} =~ /\S/ ) {
 <%= $p->{description} =~ s/\s*$//r %>
 
+% }
 =cut
 
 has '<%= $prop %>' => (
@@ -265,8 +267,10 @@ has 'server' => (
   my $res = $client-><%= $method->{name} %>()->get;
 % }
 
-<%= $elt->{summary} =~ s/\s*$//r %>
+% if( $elt->{summary}  and $elt->{summary} =~ /\S/ ) {
+<%= $elt->{summary} =~ s/\s*$//r; %>
 
+%}
 %# List/add the invocation parameters
 % my $parameters = $elt->{parameters};
 % if( $parameters ) { # parameters
@@ -275,8 +279,10 @@ has 'server' => (
 %     for my $p ($parameters->@* ) {
 =item B<< <%= $p->{name} %> >>
 
-<%= $p->{description} %>
+% if( $p->{description} =~ /\S/ ) {
+<%= $p->{description} =~ s/\s*$//r %>
 
+% }
 %     }
 =cut
 
@@ -284,7 +290,10 @@ has 'server' => (
 %#
 %# Add the body/schema parameters:
 % (my $ct) = keys $elt->{requestBody}->{content}->%*;
-% my $type = $elt->{requestBody}->{content}->{$ct}->{schema};
+% my $type;
+% if( $ct ) {
+%     $type = $ct && $elt->{requestBody}->{content}->{$ct}->{schema};
+% };
 % if( $type ) {
 
 =head3 Options
@@ -480,7 +489,9 @@ sub <%= $method->{name} %>( $self, %options ) {
         } elsif( $resp->code == <%= $code %> ) {
 %         }
 %     }
+%     if( $info->{description} =~ /\S/ ) {
             # <%= $info->{description} %>
+%     }
 %       # Check the content type
 %       # Will we always have a content type?!
 %       if( keys $info->{content}->%* ) {
@@ -596,8 +607,10 @@ extends '<%= $prefix %>::<%= $name %>::Impl';
 
   my $res = $client-><%= $method->{name} %>()->get;
 
+% if( $elt->{summary} and $elt->{summary} =~ /\S/ ) {
 <%= $elt->{summary} =~ s/\s*$//r; %>
 
+%}
 % for my $code (sort keys $elt->{responses}->%*) {
 %     my $info = $elt->{responses}->{ $code };
 %        if( my $content = $info->{content} ) {
