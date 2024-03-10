@@ -7,6 +7,7 @@ use experimental 'signatures';
 # These should go into a ::Role
 use YAML::PP;
 use Mojo::UserAgent;
+use Mojo::URL;
 use Mojo::JSON 'encode_json', 'decode_json';
 use OpenAPI::Modern;
 
@@ -60,7 +61,7 @@ Returns a L<< AI::Ollama::Error >>.
 sub findPets( $self, %options ) {
 
     my $method = 'GET';
-    my $url = $self->server . '/pets';
+    my $url = Mojo::URL->new( $self->server . '/pets');
 
               # don't know how to handle this ...
     my $tx = $self->ua->build_tx(
@@ -148,7 +149,7 @@ Returns a L<< AI::Ollama::Error >>.
 sub addPet( $self, %options ) {
 
     my $method = 'POST';
-    my $url = $self->server . '/pets';
+    my $url = Mojo::URL->new( $self->server . '/pets');
 
     my $request = AI::Ollama::NewPet->new( \%options );
     # resp. validate %options against NewPet
@@ -229,7 +230,7 @@ Returns a L<< AI::Ollama::Error >>.
 sub deletePet( $self, %options ) {
 
     my $method = 'DELETE';
-    my $url = $self->server . '/pets/{id}';
+    my $url = Mojo::URL->new( $self->server . '/pets/{id}');
 
               # don't know how to handle this ...
     my $tx = $self->ua->build_tx(
@@ -302,7 +303,7 @@ Returns a L<< AI::Ollama::Error >>.
 sub find_pet_by_id( $self, %options ) {
 
     my $method = 'GET';
-    my $url = $self->server . '/pets/{id}';
+    my $url = Mojo::URL->new( $self->server . '/pets/{id}');
 
               # don't know how to handle this ...
     my $tx = $self->ua->build_tx(

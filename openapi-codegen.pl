@@ -187,6 +187,7 @@ use experimental 'signatures';
 # These should go into a ::Role
 use YAML::PP;
 use Mojo::UserAgent;
+use Mojo::URL;
 use Mojo::JSON 'encode_json', 'decode_json';
 use OpenAPI::Modern;
 
@@ -293,7 +294,7 @@ Returns a L<< <%= $prefix %>::<%= $content->{$ct}->{schema}->{name} %> >>.
 sub <%= $method->{name} %>( $self, %options ) {
 
     my $method = '<%= uc $method->{http_method} %>';
-    my $url = $self->server . '<%= $method->{path} %>';
+    my $url = Mojo::URL->new( $self->server . '<%= $method->{path} %>');
 
 % my $is_json;
 % my $content_type;
