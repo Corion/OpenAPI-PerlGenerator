@@ -747,3 +747,5 @@ __END__
 [ ] handle https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore-expanded.yaml
 [ ] move method call example invocation into a subroutine/subtemplate
 [ ] Support "schema" part of parameter joining
+[ ] Maybe handle allOf types? This is basically composition, a list of things
+    that need to match ...
