@@ -363,7 +363,8 @@ sub <%= $method->{name} %>( $self, %options ) {
     );
 
 % };
-%# Output anything we didn't handle as comment
+%#------
+%# Output any parameter locations we didn't handle as comment
 % for (sort keys %parameters ) {
 %     for my $p ($parameters{$_}->@*) {
     # unhandled <%= $p->{in} %> parameter <%= $p->{name} %>;
