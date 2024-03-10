@@ -183,6 +183,7 @@ package <%= $prefix %>::<%= $name %> 0.01;
 use 5.020;
 use Moo 2;
 use experimental 'signatures';
+use PerlX::Maybe;
 
 # These should go into a ::Role
 use YAML::PP;
@@ -223,6 +224,21 @@ has 'server' => (
 %                    && $elt->{responses}->{200}->{content}
 %                    && [keys $elt->{responses}->{200}->{content}->%*]->[0] eq 'application/x-ndjson'
 %                    ;
+%
+%# Sort the parameters according to where they go
+% my %parameters;
+% if( my $p = $elt->{parameters}) {
+%     for my $p ($elt->{parameters}->@*) {
+%         $parameters{ $p->{in} } //= [];
+%         push $parameters{ $p->{in} }->@*, $p;
+%         # also output parameter checks here
+%         if( $p->{required} eq 'true' ) { # parameter-required
+    croak "Missing required parameter '<%= $p->{name} %>'
+        unless exists $options{ '<%= $p->{name} %>' };
+%         }                                # parameter-required
+%     }
+% }
+%
 =head2 C<< <%= $method->{name} %> >>
 
 %# Generate the example invocation
@@ -294,8 +310,46 @@ Returns a L<< <%= $prefix %>::<%= $content->{$ct}->{schema}->{name} %> >>.
 sub <%= $method->{name} %>( $self, %options ) {
 
     my $method = '<%= uc $method->{http_method} %>';
+%# Output the path parameters
+% if( my $params = delete $parameters{ path }) {
+    my $template = URI::Template->new( '<%= $method->{path} %>' );
+    my $path = $template->process(
+%     for my $p ($params->@*) {
+%         if( $p->{required} ) {
+              '<%= $p->{name} %>' => delete $options{'<%= $p->{name} %>'},
+%         } else {
+        maybe '<%= $p->{name} %>' => delete $options{'<%= $p->{name} %>'},
+%         }
+%     }
+    );
+    my $url = Mojo::URL->new( $self->server . $path );
+% } else {
     my $url = Mojo::URL->new( $self->server . '<%= $method->{path} %>');
+% } # path parameters
 
+%#------
+%# Generate the (URL) parameters
+%# This must happen before the remaining options are passed into an object
+%# Output the query parameters
+% if( my $params = delete $parameters{ query }) {
+    $url->query->merge(
+%     for my $p ($params->@*) {
+%         if( $p->{required} ) {
+              '<%= $p->{name} %>' => delete $options{'<%= $p->{name} %>'},
+%         } else {
+        maybe '<%= $p->{name} %>' => delete $options{'<%= $p->{name} %>'},
+%         }
+%     }
+    );
+
+% };
+%# Output anything we didn't handle as comment
+% for (sort keys %parameters ) {
+%     for my $p ($parameters{$_}->@*) {
+    # unhandled <%= $p->{in} %> parameter <%= $p->{name} %>;
+%     }
+% }                         # parameter-in
+%
 % my $is_json;
 % my $content_type;
 % if( $elt->{requestBody} ) {
@@ -312,6 +366,7 @@ sub <%= $method->{name} %>( $self, %options ) {
 %         }
 %     }
 % }
+%
     my $tx = $self->ua->build_tx(
         $method => $url,
         {

@@ -3,6 +3,7 @@ package AI::Ollama::Client::Impl 0.01;
 use 5.020;
 use Moo 2;
 use experimental 'signatures';
+use PerlX::Maybe;
 
 # These should go into a ::Role
 use YAML::PP;
@@ -62,6 +63,11 @@ sub findPets( $self, %options ) {
 
     my $method = 'GET';
     my $url = Mojo::URL->new( $self->server . '/pets');
+
+    $url->query->merge(
+        maybe 'tags' => delete $options{'tags'},
+        maybe 'limit' => delete $options{'limit'},
+    );
 
               # don't know how to handle this ...
     my $tx = $self->ua->build_tx(
@@ -230,7 +236,11 @@ Returns a L<< AI::Ollama::Error >>.
 sub deletePet( $self, %options ) {
 
     my $method = 'DELETE';
-    my $url = Mojo::URL->new( $self->server . '/pets/{id}');
+    my $template = URI::Template->new( '/pets/{id}' );
+    my $path = $template->process(
+              'id' => delete $options{'id'},
+    );
+    my $url = Mojo::URL->new( $self->server . $path );
 
               # don't know how to handle this ...
     my $tx = $self->ua->build_tx(
@@ -303,7 +313,11 @@ Returns a L<< AI::Ollama::Error >>.
 sub find_pet_by_id( $self, %options ) {
 
     my $method = 'GET';
-    my $url = Mojo::URL->new( $self->server . '/pets/{id}');
+    my $template = URI::Template->new( '/pets/{id}' );
+    my $path = $template->process(
+              'id' => delete $options{'id'},
+    );
+    my $url = Mojo::URL->new( $self->server . $path );
 
               # don't know how to handle this ...
     my $tx = $self->ua->build_tx(
