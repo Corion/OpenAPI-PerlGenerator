@@ -651,3 +651,4 @@ __END__
 [ ] handle https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore-expanded.yaml
 [ ] move method call example invocation into a subroutine/subtemplate
 [ ] handle "default" result code
+[ ] optionally run the generated code through perltidy
