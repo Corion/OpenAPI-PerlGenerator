@@ -734,7 +734,7 @@ __END__
 [ ] Split out the templates into separate files
 [ ] support parameters in cookies
 [ ] Handle variables (at all)
-[ ] Handle variables in servers:
+[ ] Handle variables in servers (OpenAPI::Modern dislikes that field):
     servers:
       - url: https://{host}/api/v2
         variables:
