@@ -18,12 +18,14 @@ openapi-codegen.pl - create and maintain (client) libraries from OpenAPI / Swagg
 GetOptions(
     'package|p=s' => \my $package,
     'force|f' => \my $force,
-    'base|b=s' => \my $base_directory,
+    'output|o=s' => \my $output_directory,
+    'api|a=s' => \my $api_file,
 );
 $package //= 'AI::Ollama';
-$base //= '.';
+$api_file //= 'ollama/ollama-curated.yaml';
+$output_directory //= '.';
 
-my $schema = YAML::PP->new( boolean => 'JSON::PP' )->load_file( 'ollama/ollama-curated.yaml' );
+my $schema = YAML::PP->new( boolean => 'JSON::PP' )->load_file( $api_file );
 
 sub fixup_json_ref( $root, $curr=$root ) {
     if( ref $curr eq 'ARRAY' ) {
@@ -58,7 +60,7 @@ $schema = fixup_json_ref( $schema );
 sub update_file( %options ) {
     my $filename = delete $options{ filename }
         or die "Need a filename to create/update";
-    $filename = "$base/$filename";
+    $filename = "$output_directory/$filename";
     my $new_content = delete $options{ content };
     my $keep_existing = $options{ keep_existing };
     my $encoding = $options{ encoding } // ':raw:encoding(UTF-8)';
