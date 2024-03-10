@@ -364,6 +364,19 @@ sub <%= $method->{name} %>( $self, %options ) {
 
 % };
 %#------
+%# Generate the header parameters
+% my $custom_headers;
+% if( my $params = delete $parameters{ header }) {                             # header parameters
+%     $custom_headers = [];
+%     for my $p ($params->@*) {
+%         if( $p->{required} ) {
+%             push @$custom_headers, qq{      '$p->{name}' => delete \$options{'$p->{name}'}};
+%         } else {
+%             push @$custom_headers, qq{maybe '$p->{name}' => delete \$options{'$p->{name}'}};
+%         }
+%     }
+% };                                                                           # header parameters
+%#------
 %# Output any parameter locations we didn't handle as comment
 % for (sort keys %parameters ) {
 %     for my $p ($parameters{$_}->@*) {
@@ -398,6 +411,22 @@ sub <%= $method->{name} %>( $self, %options ) {
 % if( $content_type ) {
             "Content-Type" => '<%= $content_type %>',
 % }
+% if( $custom_headers ) {
+%     for my $h (@$custom_headers) {
+             <%= $h %>
+%     }
+% }
+%#------
+%# Generate the header parameters
+% if( my $params = delete $parameters{ header }) {                             # header parameters
+%     for my $p ($params->@*) {
+%         if( $p->{required} ) {
+              '<%= $p->{name} %>' => delete $options{'<%= $p->{name} %>'},
+%         } else {
+        maybe '<%= $p->{name} %>' => delete $options{'<%= $p->{name} %>'},
+%         }
+%     }
+% };                                                                           # header parameters
         }
 % if( $is_json ) {
         => json => $request->as_hash,
@@ -673,7 +702,6 @@ __END__
 [ ] (optionally) check that the created module file(s) compile
 [ ] Split out the templates into separate files
 [ ] support parameters in cookies
-[ ] support parameters in headers
 [ ] Handle variables (at all)
 [ ] Handle variables in servers:
     servers:
