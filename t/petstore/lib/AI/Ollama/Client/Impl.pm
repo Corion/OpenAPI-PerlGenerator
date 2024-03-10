@@ -39,6 +39,18 @@ has 'server' => (
 
 
 
+=head3 Parameters
+
+=item B<< tags >>
+
+tags to filter by
+
+=item B<< limit >>
+
+maximum number of results to return
+
+=cut
+
 
 Returns a L<< AI::Ollama:: >>.
 Returns a L<< AI::Ollama::Error >>.
@@ -108,6 +120,7 @@ sub findPets( $self, %options ) {
 =head2 C<< addPet >>
 
   my $res = $client->addPet()->get;
+
 
 
 
@@ -200,6 +213,14 @@ sub addPet( $self, %options ) {
 
 
 
+=head3 Parameters
+
+=item B<< id >>
+
+ID of pet to delete
+
+=cut
+
 
 Returns a L<< AI::Ollama::Error >>.
 
@@ -263,6 +284,14 @@ sub deletePet( $self, %options ) {
   my $res = $client->find_pet_by_id()->get;
 
 
+
+=head3 Parameters
+
+=item B<< id >>
+
+ID of pet to fetch
+
+=cut
 
 
 Returns a L<< AI::Ollama::Pet >>.

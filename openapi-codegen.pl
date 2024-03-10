@@ -224,6 +224,7 @@ has 'server' => (
 %                    ;
 =head2 C<< <%= $method->{name} %> >>
 
+%# Generate the example invocation
 % if( $is_streaming ) {
   use Future::Utils 'repeat';
   my $tx = $client-><%= $method->{name} %>();
@@ -240,7 +241,21 @@ has 'server' => (
 
 <%= $elt->{summary} =~ s/\s*$//r %>
 
-%# Add the parameters:
+%# List/add the invocation parameters
+% my $parameters = $elt->{parameters};
+% if( $parameters ) { # parameters
+=head3 Parameters
+
+%     for my $p ($parameters->@* ) {
+=item B<< <%= $p->{name} %> >>
+
+<%= $p->{description} %>
+
+%     }
+=cut
+% } # parameters
+
+%# Add the body/schema parameters:
 % (my $ct) = keys $elt->{requestBody}->{content}->%*;
 % my $type = $elt->{requestBody}->{content}->{$ct}->{schema};
 % if( $type ) {
@@ -578,3 +593,5 @@ __END__
             default: someserver.example
 [ ] handle https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/uspto.yaml
 [ ] handle https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore-expanded.yaml
+[ ] move method call example invocation into a subroutine/subtemplate
+[ ] handle "default" result code
