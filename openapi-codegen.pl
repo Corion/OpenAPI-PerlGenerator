@@ -660,17 +660,20 @@ for my $name ( sort keys $schema->{components}->{schemas}->%*) {
         elt  => $elt,
     );
 
-    if( ! exists $template{ $type}) {
-        warn "No template for type '$type' ($name)";
-    } else {
+    if( exists $template{ $type}) {
         my $template = $template{ $type };
-
-
         my $filename = filename( $name );
         update_file(
             filename => $filename,
             content  => $mt->render( $template, \%info )
         );
+
+    } elsif( $type eq 'string' ) {
+        # Don't output anything, this should likely become an Enum in the
+        # type checks instead
+
+    } else {
+        warn "No template for type '$type' ($name)";
     }
 }
 
