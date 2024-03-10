@@ -35,6 +35,18 @@ use AI::Ollama::PushModelRequest;
 use AI::Ollama::PushModelResponse;
 use AI::Ollama::RequestOptions;
 
+=head1 SYNOPSIS
+
+=head1 PROPERTIES
+
+=head2 B<< openapi >>
+
+=head2 B<< ua >>
+
+=head2 B<< server >>
+
+=cut
+
 # XXX this should be more configurable, and potentially you don't want validation?!
 my $schema = YAML::PP->new( boolean => 'JSON::PP' )->load_file( 'ollama/ollama-curated.yaml' );
 has 'openapi' => (
@@ -52,6 +64,8 @@ has 'server' => (
     is => 'lazy',
     default => sub { 'http://localhost:11434/api' }, # XXX pull from OpenAPI file instead
 );
+
+=head1 METHODS
 
 =head2 C<< checkBlob >>
 
