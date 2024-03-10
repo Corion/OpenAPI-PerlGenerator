@@ -111,6 +111,7 @@ my %typemap = (
     number => 'Num',
     integer => 'Int',
     #boolean => 'Bool', # a conflict between JSON::PP::Boolean and Type::Tiny
+    boolean => '', # a conflict between JSON::PP::Boolean and Type::Tiny
     object  => 'Object',
 );
 
@@ -125,7 +126,7 @@ sub map_type( $elt ) {
             unless $elt->{items};
         my $subtype = map_type( $elt->{items} );
         return "ArrayRef[$subtype]"
-    } elsif( $typemap{ $type }) {
+    } elsif( exists $typemap{ $type }) {
         return $typemap{ $type }
     } else {
         warn "Unknown type '$type'";
