@@ -248,6 +248,8 @@ has 'server' => (
     default => sub { 'http://localhost:11434/api' }, # XXX pull from OpenAPI file instead
 );
 
+=head1 METHODS
+
 % for my $method ($methods->@*) {
 % my $elt = $method->{elt};
 % my $is_streaming =    exists $elt->{responses}->{200}
