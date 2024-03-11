@@ -9,6 +9,8 @@ use Mojo::Template;
 use JSON::Pointer;
 use YAML::PP;
 
+use OpenAPI::PerlGenerator::Utils 'tidy', 'update_file';
+
 =head1 NAME
 
 openapi-codegen.pl - create and maintain (client) libraries from OpenAPI / Swagger spec
@@ -58,46 +60,6 @@ sub fixup_json_ref( $root, $curr=$root ) {
 
 # Fix up the schema to resolve JSON-style refs into real refs:
 $schema = fixup_json_ref( $schema );
-
-sub tidy( $source ) {
-    my $formatted = $source;
-    if( $run_perltidy ) {
-        Perl::Tidy::perltidy(
-            source      => \$source,
-            destination => \$formatted,
-            argv        => [ '--no-memoize' ],
-        ) or $source = $formatted;
-    }
-    return $formatted;
-}
-
-sub update_file( %options ) {
-    my $filename = delete $options{ filename }
-        or die "Need a filename to create/update";
-    $filename = "$output_directory/$filename";
-    my $new_content = delete $options{ content };
-    my $keep_existing = $options{ keep_existing };
-    my $encoding = $options{ encoding } // ':raw:encoding(UTF-8)';
-
-    my $content;
-    if( -f $filename ) {
-        return if $keep_existing and not $force;
-
-        open my $fh, "<$encoding", $filename
-            or die "Couldn't read '$filename': $!";
-        local $/;
-        $content = <$fh>;
-    };
-
-    if( $content and $content ne $new_content ) {
-        make_path( dirname $filename ); # just to be sure
-        if( open my $fh, ">$encoding", $filename ) {
-            print $fh $new_content;
-        } else {
-            warn "Couldn't (re)write '$filename': $!";
-        };
-    };
-}
 
 sub filename( $name ) {
     return ("lib\::$package\::$name.pm" =~ s!::!/!gr);
@@ -666,9 +628,14 @@ for my $name ( sort keys $schema->{components}->{schemas}->%*) {
     if( exists $template{ $type}) {
         my $template = $template{ $type };
         my $filename = filename( $name );
+        my $content = $mt->render( $template, \%info );
+        if( $run_perltidy ) {
+            $content = tidy( $content );
+        }
         update_file(
             filename => $filename,
-            content  => $mt->render( $template, \%info )
+            output_directory => $output_directory,
+            content  => $content,
         );
 
     } elsif( $type eq 'string' ) {
@@ -703,28 +670,44 @@ for my $path (sort keys $schema->{paths}->%*) {
     }
 }
 
+{
 # Generate ::Client::Impl
-update_file( filename => filename('Client::Impl'),
-             content => $mt->render($template{client_implementation},
+my $content = $mt->render($template{client_implementation},
              {
                 methods => \@methods,
                 name => 'Client::Impl',
                 schema => $schema,
                 %options
-              }));
+              });
+if( $run_perltidy ) {
+    $content = tidy( $content );
+};
+update_file( filename => filename('Client::Impl'),
+             output_directory => $output_directory,
+             content => $content,
+             );
+}
 
+{
 # If it does not exist, generate the stub for the main file ::Client as well
 # The client consists of "use parent '::Client::Impl';
 # and the pod for all the methods, for manual editing.
-update_file( filename => filename('Client'),
-             keep_existing => 1,
-             content => $mt->render($template{client},
+my $content = $mt->render($template{client},
              {
                 methods => \@methods,
                 name => 'Client',
                 schema => $schema,
                 %options
-              }));
+              });
+if( $run_perltidy ) {
+    $content = tidy( $content );
+}
+update_file( filename => filename('Client'),
+            output_directory => $output_directory,
+             keep_existing => 1,
+             content => $content,
+            );
+}
 
 =head1 SEE ALSO
 
