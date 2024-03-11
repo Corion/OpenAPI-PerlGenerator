@@ -732,3 +732,4 @@ __END__
 [ ] Support "schema" part of parameter joining
 [ ] Maybe handle allOf types? This is basically composition, a list of things
     that need to match ...
+[ ] Can we qualify documentation for returns "on success" and "on error" from the4 HTTP codes?!
