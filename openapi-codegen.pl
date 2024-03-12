@@ -2,8 +2,6 @@ package main;
 use 5.036;
 use experimental 'signatures';
 use experimental 'for_list';
-use File::Path 'make_path';
-use File::Basename;
 use Getopt::Long;
 use Mojo::Template;
 use JSON::Pointer;
