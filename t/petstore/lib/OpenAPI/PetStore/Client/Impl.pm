@@ -72,7 +72,6 @@ Returns a L<< OpenAPI::PetStore::Error >>.
 =cut
 
 sub findPets( $self, %options ) {
-
     my $method = 'GET';
     my $url = Mojo::URL->new( $self->server . '/pets');
 
