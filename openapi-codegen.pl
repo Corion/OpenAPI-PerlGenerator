@@ -110,6 +110,19 @@ sub openapi_response_content_types( $elt ) {
     return sort keys %known;
 }
 
+sub openapi_http_code_match( $code ) {
+    if( $code eq 'default' ) {
+        return q{};
+
+    } elsif( $code =~ /x/i ) {
+        (my $re = $code) =~ s/x/./gi;
+        return qq{=~ /$re/};
+
+    } else {
+        return qq{== $code};
+    }
+}
+
 my %template;
 
 sub render( $name, $args ) {
@@ -469,16 +482,12 @@ sub <%= $method->{name} %>( $self, %options ) {
 %# XXX if streaming, we need to handle a non-streaming error response!
 %     if( $first_code ) {
 %         $first_code = 0;
-%         if( $code eq 'default' ) {
-        if( 'default' ) {
-%         } else {
-        if( $resp->code == <%= $code %> ) {
-%         }
+        if( $resp->code <%= openapi_http_code_match( $code ) %> ) {
 %     } else {
 %         if( $code eq 'default' ) {
         } else {
 %         } else {
-        } elsif( $resp->code == <%= $code %> ) {
+        } elsif( $resp->code <%= openapi_http_code_match( $code ) %> ) {
 %         }
 %     }
 %     if( $info->{description} =~ /\S/ ) {
