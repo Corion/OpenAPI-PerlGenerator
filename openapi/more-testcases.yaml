@@ -34,6 +34,8 @@ paths:
       responses:
         '200':
           description: pet response
+        '4xx':
+          description: authentication error
         default:
           description: unexpected error
   /with-cookie:

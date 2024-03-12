@@ -68,7 +68,8 @@ sub withCookie( $self, %options ) {
         unless exists $options{ 'session-id' };
 
     my $method = 'GET';
-    my $url = Mojo::URL->new( $self->server . '/with-cookie');
+    my $path = '/with-cookie';
+    my $url = Mojo::URL->new( $self->server . $path );
 
     # unhandled cookie parameter session-id;
     my $tx = $self->ua->build_tx(
@@ -130,7 +131,8 @@ sub withHeader( $self, %options ) {
         unless exists $options{ 'X-token' };
 
     my $method = 'GET';
-    my $url = Mojo::URL->new( $self->server . '/with-header');
+    my $path = '/with-header';
+    my $url = Mojo::URL->new( $self->server . $path );
 
     my $tx = $self->ua->build_tx(
         $method => $url,
@@ -155,6 +157,9 @@ sub withHeader( $self, %options ) {
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # pet response
+            return Future::Mojo->done($resp);
+        } elsif( $resp->code =~ /4../ ) {
+            # authentication error
             return Future::Mojo->done($resp);
         } else {
             # unexpected error
