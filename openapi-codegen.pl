@@ -478,7 +478,6 @@ sub <%= $method->{name} %>( $self, %options ) {
 % my $first_code = 1;
 % for my $code (sort keys $elt->{responses}->%*) {                             # response code s
 %     my $info = $elt->{responses}->{ $code };
-%# XXX support 2xx / 5xx codes through =~
 %# XXX if streaming, we need to handle a non-streaming error response!
 %     if( $first_code ) {
 %         $first_code = 0;
