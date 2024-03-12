@@ -288,7 +288,8 @@ Returns a L<< AI::Ollama::GenerateChatCompletionResponse >>.
 
 sub generateChatCompletion( $self, %options ) {
     my $method = 'POST';
-    my $url = Mojo::URL->new( $self->server . '/chat');
+    my $path = '/chat';
+    my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::GenerateChatCompletionRequest->new( \%options );
     # resp. validate %options against GenerateChatCompletionRequest
@@ -386,7 +387,8 @@ Name of the model to copy.
 
 sub copyModel( $self, %options ) {
     my $method = 'POST';
-    my $url = Mojo::URL->new( $self->server . '/copy');
+    my $path = '/copy';
+    my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::CopyModelRequest->new( \%options );
     # resp. validate %options against CopyModelRequest
@@ -476,7 +478,8 @@ Returns a L<< AI::Ollama::CreateModelResponse >>.
 
 sub createModel( $self, %options ) {
     my $method = 'POST';
-    my $url = Mojo::URL->new( $self->server . '/create');
+    my $path = '/create';
+    my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::CreateModelRequest->new( \%options );
     # resp. validate %options against CreateModelRequest
@@ -568,7 +571,8 @@ Model names follow a `model:tag` format. Some examples are `orca-mini:3b-q4_1` a
 
 sub deleteModel( $self, %options ) {
     my $method = 'DELETE';
-    my $url = Mojo::URL->new( $self->server . '/delete');
+    my $path = '/delete';
+    my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::DeleteModelRequest->new( \%options );
     # resp. validate %options against DeleteModelRequest
@@ -650,7 +654,8 @@ Returns a L<< AI::Ollama::GenerateEmbeddingResponse >>.
 
 sub generateEmbedding( $self, %options ) {
     my $method = 'POST';
-    my $url = Mojo::URL->new( $self->server . '/embeddings');
+    my $path = '/embeddings';
+    my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::GenerateEmbeddingRequest->new( \%options );
     # resp. validate %options against GenerateEmbeddingRequest
@@ -823,7 +828,8 @@ Returns a L<< AI::Ollama::GenerateCompletionResponse >>.
 
 sub generateCompletion( $self, %options ) {
     my $method = 'POST';
-    my $url = Mojo::URL->new( $self->server . '/generate');
+    my $path = '/generate';
+    my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::GenerateCompletionRequest->new( \%options );
     # resp. validate %options against GenerateCompletionRequest
@@ -934,7 +940,8 @@ Returns a L<< AI::Ollama::PullModelResponse >>.
 
 sub pullModel( $self, %options ) {
     my $method = 'POST';
-    my $url = Mojo::URL->new( $self->server . '/pull');
+    my $path = '/pull';
+    my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::PullModelRequest->new( \%options );
     # resp. validate %options against PullModelRequest
@@ -1024,7 +1031,8 @@ Returns a L<< AI::Ollama::PushModelResponse >>.
 
 sub pushModel( $self, %options ) {
     my $method = 'POST';
-    my $url = Mojo::URL->new( $self->server . '/push');
+    my $path = '/push';
+    my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::PushModelRequest->new( \%options );
     # resp. validate %options against PushModelRequest
@@ -1098,7 +1106,8 @@ Returns a L<< AI::Ollama::ModelInfo >>.
 
 sub showModelInfo( $self, %options ) {
     my $method = 'POST';
-    my $url = Mojo::URL->new( $self->server . '/show');
+    my $path = '/show';
+    my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::ModelInfoRequest->new( \%options );
     # resp. validate %options against ModelInfoRequest
@@ -1159,7 +1168,8 @@ Returns a L<< AI::Ollama::ModelsResponse >>.
 
 sub listModels( $self, %options ) {
     my $method = 'GET';
-    my $url = Mojo::URL->new( $self->server . '/tags');
+    my $path = '/tags';
+    my $url = Mojo::URL->new( $self->server . $path );
 
     my $tx = $self->ua->build_tx(
         $method => $url,
