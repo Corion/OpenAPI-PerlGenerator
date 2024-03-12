@@ -73,7 +73,8 @@ Returns a L<< OpenAPI::PetStore::Error >>.
 
 sub findPets( $self, %options ) {
     my $method = 'GET';
-    my $url = Mojo::URL->new( $self->server . '/pets');
+    my $path = '/pets';
+    my $url = Mojo::URL->new( $self->server . $path );
 
     $url->query->merge(
         maybe 'tags' => delete $options{'tags'},
@@ -160,7 +161,8 @@ Returns a L<< OpenAPI::PetStore::Error >>.
 
 sub addPet( $self, %options ) {
     my $method = 'POST';
-    my $url = Mojo::URL->new( $self->server . '/pets');
+    my $path = '/pets';
+    my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = OpenAPI::PetStore::NewPet->new( \%options );
     # resp. validate %options against NewPet

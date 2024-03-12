@@ -341,8 +341,9 @@ sub <%= $method->{name} %>( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 % } else {
-    my $url = Mojo::URL->new( $self->server . '<%= $method->{path} %>');
+    my $path = '<%= $method->{path} %>';
 % } # path parameters
+    my $url = Mojo::URL->new( $self->server . $path );
 
 %#------
 %# Generate the (URL) parameters
