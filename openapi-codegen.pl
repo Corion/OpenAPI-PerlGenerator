@@ -114,8 +114,14 @@ sub openapi_response_content_types( $elt ) {
 
 my %template;
 
-sub openapi_template_generate_responses( %content ) {
+sub render( $name, $args ) {
+    state $mt = Mojo::Template->new->vars(1)->namespace('main');
+    if( ! exists $template{ $name }) {
+        die "Unknown template '$name'";
+    }
+    return $mt->render( $template{ $name }, $args )
 }
+*include = \&render;
 
 $template{object} = <<'__OBJECT__';
 package <%= $prefix %>::<%= $name %> 0.01;
@@ -607,8 +613,6 @@ Returns a L<< <%= $prefix %>::<%= $content->{$ct}->{schema}->{name} %> >>.
 1;
 __CLIENT__
 
-my $mt = Mojo::Template->new->vars(1)->namespace('main');
-
 my %options = (
     prefix => $package,
 );
@@ -626,9 +630,8 @@ for my $name ( sort keys $schema->{components}->{schemas}->%*) {
     );
 
     if( exists $template{ $type}) {
-        my $template = $template{ $type };
         my $filename = filename( $name );
-        my $content = $mt->render( $template, \%info );
+        my $content = render( $type, \%info );
         if( $run_perltidy ) {
             $content = tidy( $content );
         }
@@ -672,7 +675,7 @@ for my $path (sort keys $schema->{paths}->%*) {
 
 {
 # Generate ::Client::Impl
-my $content = $mt->render($template{client_implementation},
+my $content = render('client_implementation',
              {
                 methods => \@methods,
                 name => 'Client::Impl',
@@ -692,7 +695,7 @@ update_file( filename => filename('Client::Impl'),
 # If it does not exist, generate the stub for the main file ::Client as well
 # The client consists of "use parent '::Client::Impl';
 # and the pod for all the methods, for manual editing.
-my $content = $mt->render($template{client},
+my $content = render('client',
              {
                 methods => \@methods,
                 name => 'Client',
@@ -730,6 +733,7 @@ __END__
 [ ] handle https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore-expanded.yaml
 [ ] move method call example invocation into a subroutine/subtemplate
 [ ] Support "schema" part of parameter joining
+[ ] Support multipart/form-data ( https://swagger.io/docs/specification/describing-request-body/ )
 [ ] Maybe handle allOf types? This is basically composition, a list of things
     that need to match ...
 [ ] Can we qualify documentation for returns "on success" and "on error" from the4 HTTP codes?!
