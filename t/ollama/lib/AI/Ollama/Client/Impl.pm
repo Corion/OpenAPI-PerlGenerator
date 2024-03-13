@@ -167,8 +167,6 @@ sub createBlob( $self, %options ) {
     my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::->new( \%options );
-    # resp. validate %options against 
-    # send as application/octet-stream
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -292,8 +290,6 @@ sub generateChatCompletion( $self, %options ) {
     my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::GenerateChatCompletionRequest->new( \%options );
-    # resp. validate %options against GenerateChatCompletionRequest
-    # send as application/json
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -391,8 +387,6 @@ sub copyModel( $self, %options ) {
     my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::CopyModelRequest->new( \%options );
-    # resp. validate %options against CopyModelRequest
-    # send as application/json
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -482,8 +476,6 @@ sub createModel( $self, %options ) {
     my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::CreateModelRequest->new( \%options );
-    # resp. validate %options against CreateModelRequest
-    # send as application/json
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -575,8 +567,6 @@ sub deleteModel( $self, %options ) {
     my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::DeleteModelRequest->new( \%options );
-    # resp. validate %options against DeleteModelRequest
-    # send as application/json
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -658,8 +648,6 @@ sub generateEmbedding( $self, %options ) {
     my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::GenerateEmbeddingRequest->new( \%options );
-    # resp. validate %options against GenerateEmbeddingRequest
-    # send as application/json
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -832,8 +820,6 @@ sub generateCompletion( $self, %options ) {
     my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::GenerateCompletionRequest->new( \%options );
-    # resp. validate %options against GenerateCompletionRequest
-    # send as application/json
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -944,8 +930,6 @@ sub pullModel( $self, %options ) {
     my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::PullModelRequest->new( \%options );
-    # resp. validate %options against PullModelRequest
-    # send as application/json
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -1035,8 +1019,6 @@ sub pushModel( $self, %options ) {
     my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::PushModelRequest->new( \%options );
-    # resp. validate %options against PushModelRequest
-    # send as application/json
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -1110,8 +1092,6 @@ sub showModelInfo( $self, %options ) {
     my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = AI::Ollama::ModelInfoRequest->new( \%options );
-    # resp. validate %options against ModelInfoRequest
-    # send as application/json
     my $tx = $self->ua->build_tx(
         $method => $url,
         {

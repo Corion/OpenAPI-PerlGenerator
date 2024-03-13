@@ -406,8 +406,6 @@ sub <%= $method->{name} %>( $self, %options ) {
 %         $content_type = $ct; # will we have more than one?!
 %         if( $content->{$ct}->{schema}) {
     my $request = <%= $prefix %>::<%= $content->{$ct}->{schema}->{name} %>->new( \%options );
-    # resp. validate %options against <%= $content->{$ct}->{schema}->{name} %>
-    # send as <%= $ct %>
 %             $is_json = $ct eq 'application/json';
 %         } else {
               # don't know how to handle this ...
