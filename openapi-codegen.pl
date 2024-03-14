@@ -172,15 +172,11 @@ $template{generate_request_body} = <<'__REQUEST_BODY__';
 __REQUEST_BODY__
 
 $template{streaming_response} = <<'__STREAMING_RESPONSE__';
-% if( $is_streaming ) {
     use Future::Queue;
     my $queue = Future::Queue->new;
     my $res = $queue->head;
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {
-% } else {
-    my $res = $r1->then( sub( $tx ) {
-% }
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
 %# Should this be its own subroutine instead?!
@@ -206,11 +202,8 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
 %       if( keys $info->{content}->%* ) {
 %           for my $ct (sort keys $info->{content}->%*) {
             my $ct = $resp->headers->content_type;
-% if( $is_streaming ) {
             return unless $ct;
-% }
             $ct =~ s/;\s+.*//;
-%               if( $is_streaming ) {                                          # streaming
             if( $ct eq '<%= $ct %>' ) {
                 # we only handle ndjson currently
                 my $handled_offset = 0;
@@ -234,26 +227,6 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
                         $queue->enqueue( undef );
                     }
                 });
-%               } else {                                                       # non-streaming
-            if( $ct eq '<%= $ct %>' ) {
-%# These handlers for content types should come from templates? Or maybe
-%# from a subroutine?!
-%               if( $ct eq 'application/json' ) {
-                my $payload = $resp->json();
-%               } elsif( $ct eq 'application/x-ndjson' ) {
-                # code missing to hack up ndjson into hashes for a non-streaming response
-                my $payload = $resp->body();
-%               } else {
-                my $payload = $resp->body();
-%               }
-%               if( my $restype = $info->{content}->{$ct}->{schema}) {
-                return Future::Mojo->done(
-                    <%= $prefix %>::<%= $restype->{name} %>->new($payload),
-                );
-%               } else {
-                return Future::Mojo->done( $payload );
-%               }
-%               }                                                              # non-streaming end
             }
 %           }
 %           } else { # we don't know how to handle this, so pass $res          # known content types?
@@ -263,19 +236,11 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
         }
     });
 
-% if( $is_streaming ) {
     $tx->res->once( progress => sub($msg, @) {
         $r1->resolve( $tx );
         undef $r1;
     });
     state $_tx = $self->ua->start_p($tx);
-% } else {
-    # Start our transaction
-    $tx = $self->ua->start_p($tx)->then(sub($tx) {
-        $r1->resolve( $tx );
-        undef $r1;
-    });
-% }
 __STREAMING_RESPONSE__
 
 $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
@@ -305,9 +270,6 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
 %       if( keys $info->{content}->%* ) {
 %           for my $ct (sort keys $info->{content}->%*) {
             my $ct = $resp->headers->content_type;
-% if( $is_streaming ) {
-            return unless $ct;
-% }
             $ct =~ s/;\s+.*//;
             if( $ct eq '<%= $ct %>' ) {
 %# These handlers for content types should come from templates? Or maybe
