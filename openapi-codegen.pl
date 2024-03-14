@@ -279,15 +279,7 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
 __STREAMING_RESPONSE__
 
 $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
-% if( $is_streaming ) {
-    use Future::Queue;
-    my $queue = Future::Queue->new;
-    my $res = $queue->head;
-    our @store; # we should use ->retain() instead
-    push @store, $r1->then( sub( $tx ) {
-% } else {
     my $res = $r1->then( sub( $tx ) {
-% }
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
 %# Should this be its own subroutine instead?!
@@ -317,31 +309,6 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
             return unless $ct;
 % }
             $ct =~ s/;\s+.*//;
-%               if( $is_streaming ) {                                          # streaming
-            if( $ct eq '<%= $ct %>' ) {
-                # we only handle ndjson currently
-                my $handled_offset = 0;
-                $resp->on(progress => sub($msg,@) {
-                    my $fresh = substr( $msg->body, $handled_offset );
-                    my $body = $msg->body;
-                    $body =~ s/[^\r\n]+\z//; # Strip any unfinished line
-                    $handled_offset = length $body;
-                    my @lines = split /\n/, $fresh;
-                    for (@lines) {
-                        my $payload = decode_json( $_ );
-                        $queue->enqueue(
-%               if( my $restype = $info->{content}->{$ct}->{schema}) {
-                            <%= $prefix %>::<%= $restype->{name} %>->new($payload),
-%               } else {
-                            $payload
-%               }
-                        );
-                    };
-                    if( $msg->{state} eq 'finished' ) {
-                        $queue->enqueue( undef );
-                    }
-                });
-%               } else {                                                       # non-streaming
             if( $ct eq '<%= $ct %>' ) {
 %# These handlers for content types should come from templates? Or maybe
 %# from a subroutine?!
@@ -360,7 +327,6 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
 %               } else {
                 return Future::Mojo->done( $payload );
 %               }
-%               }                                                              # non-streaming end
             }
 %           }
 %           } else { # we don't know how to handle this, so pass $res          # known content types?
@@ -370,19 +336,11 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
         }
     });
 
-% if( $is_streaming ) {
-    $tx->res->once( progress => sub($msg, @) {
-        $r1->resolve( $tx );
-        undef $r1;
-    });
-    state $_tx = $self->ua->start_p($tx);
-% } else {
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
         $r1->resolve( $tx );
         undef $r1;
     });
-% }
 __SYNCHRONOUS_RESPONSE__
 
 $template{object} = <<'__OBJECT__';
