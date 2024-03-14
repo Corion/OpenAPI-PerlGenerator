@@ -605,13 +605,11 @@ sub <%= $method->{name} %>( $self, %options ) {
     my $r1 = Future::Mojo->new();
 % if( $is_streaming ) {
 <%= include('streaming_response', {
-         is_streaming => 1,
          elt => $elt,
          prefix => $prefix,
           }); =%>
 % } else {
 <%= include('synchronous_response', {
-         is_streaming => 0,
          elt => $elt,
          prefix => $prefix,
          });
