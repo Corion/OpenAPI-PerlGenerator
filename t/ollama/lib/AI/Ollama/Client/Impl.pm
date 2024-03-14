@@ -333,6 +333,7 @@ sub generateChatCompletion( $self, %options ) {
                         my $payload = decode_json( $_ );
                         $queue->enqueue(
                             AI::Ollama::GenerateChatCompletionResponse->new($payload),
+
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
@@ -519,6 +520,7 @@ sub createModel( $self, %options ) {
                         my $payload = decode_json( $_ );
                         $queue->enqueue(
                             AI::Ollama::CreateModelResponse->new($payload),
+
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
@@ -677,6 +679,7 @@ sub generateEmbedding( $self, %options ) {
                 my $payload = $resp->json();
                 return Future::Mojo->done(
                     AI::Ollama::GenerateEmbeddingResponse->new($payload),
+
                 );
             }
         }
@@ -863,6 +866,7 @@ sub generateCompletion( $self, %options ) {
                         my $payload = decode_json( $_ );
                         $queue->enqueue(
                             AI::Ollama::GenerateCompletionResponse->new($payload),
+
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
@@ -959,6 +963,7 @@ sub pullModel( $self, %options ) {
                 my $payload = $resp->json();
                 return Future::Mojo->done(
                     AI::Ollama::PullModelResponse->new($payload),
+
                 );
             }
         }
@@ -1048,6 +1053,7 @@ sub pushModel( $self, %options ) {
                 my $payload = $resp->json();
                 return Future::Mojo->done(
                     AI::Ollama::PushModelResponse->new($payload),
+
                 );
             }
         }
@@ -1121,6 +1127,7 @@ sub showModelInfo( $self, %options ) {
                 my $payload = $resp->json();
                 return Future::Mojo->done(
                     AI::Ollama::ModelInfo->new($payload),
+
                 );
             }
         }
@@ -1180,6 +1187,7 @@ sub listModels( $self, %options ) {
                 my $payload = $resp->json();
                 return Future::Mojo->done(
                     AI::Ollama::ModelsResponse->new($payload),
+
                 );
             }
         }

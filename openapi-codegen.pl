@@ -171,6 +171,14 @@ $template{generate_request_body} = <<'__REQUEST_BODY__';
 %     }
 __REQUEST_BODY__
 
+$template{inflated_response} = <<'__INFLATED_RESPONSE__';
+%               if( my $restype = $info->{content}->{$ct}->{schema}) {
+<%= $prefix %>::<%= $restype->{name} %>->new($payload),
+%               } else {
+$payload
+%               }
+__INFLATED_RESPONSE__
+
 $template{streaming_response} = <<'__STREAMING_RESPONSE__';
     use Future::Queue;
     my $queue = Future::Queue->new;
@@ -216,11 +224,7 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
                     for (@lines) {
                         my $payload = decode_json( $_ );
                         $queue->enqueue(
-%               if( my $restype = $info->{content}->{$ct}->{schema}) {
-                            <%= $prefix %>::<%= $restype->{name} %>->new($payload),
-%               } else {
-                            $payload
-%               }
+                            <%= include('inflated_response', { info => $info, prefix => $prefix, ct => $ct, } ) %>
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
@@ -282,13 +286,9 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
 %               } else {
                 my $payload = $resp->body();
 %               }
-%               if( my $restype = $info->{content}->{$ct}->{schema}) {
                 return Future::Mojo->done(
-                    <%= $prefix %>::<%= $restype->{name} %>->new($payload),
+                    <%= include('inflated_response', { info => $info, prefix => $prefix, ct => $ct, } ) %>
                 );
-%               } else {
-                return Future::Mojo->done( $payload );
-%               }
             }
 %           }
 %           } else { # we don't know how to handle this, so pass $res          # known content types?
