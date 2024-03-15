@@ -132,7 +132,7 @@ sub render( $name, $args ) {
     }
     return $mt->render( $template{ $name }, $args )
 }
-*include = \&render;
+*include = *include = \&render;
 
 my %locations;
 sub elsif_chain($id) {
