@@ -134,6 +134,19 @@ sub render( $name, $args ) {
 }
 *include = \&render;
 
+my %locations;
+sub elsif_chain($id) {
+    # Ignore all Mojo:: stuff!
+    my $level = 0;
+    if( !$locations{ $id }++) {
+        return "if"
+    #} elsif( $final ) {
+    #    return " else "
+    } else {
+        return "} elsif"
+    }
+}
+
 $template{required_parameters} = <<'__REQUIRED_PARAMETERS__';
 %# Check that we received all required parameters:
 % if( my $p = $elt->{parameters}) {
@@ -188,20 +201,10 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
 %# Should this be its own subroutine instead?!
-% my $first_code = 1;
 % for my $code (sort keys $elt->{responses}->%*) {                             # response code s
 %     my $info = $elt->{responses}->{ $code };
 %# XXX if streaming, we need to handle a non-streaming error response!
-%     if( $first_code ) {
-%         $first_code = 0;
-        if( $resp->code <%= openapi_http_code_match( $code ) %> ) {
-%     } else {
-%         if( $code eq 'default' ) {
-        } else {
-%         } else {
-        } elsif( $resp->code <%= openapi_http_code_match( $code ) %> ) {
-%         }
-%     }
+        <%= elsif_chain($name) %>( $resp->code <%= openapi_http_code_match( $code ) %> ) {
 %     if( $info->{description} =~ /\S/ ) {
             # <%= $info->{description} %>
 %     }
@@ -256,16 +259,7 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
 % for my $code (sort keys $elt->{responses}->%*) {                             # response code s
 %     my $info = $elt->{responses}->{ $code };
 %# XXX if streaming, we need to handle a non-streaming error response!
-%     if( $first_code ) {
-%         $first_code = 0;
-        if( $resp->code <%= openapi_http_code_match( $code ) %> ) {
-%     } else {
-%         if( $code eq 'default' ) {
-        } else {
-%         } else {
-        } elsif( $resp->code <%= openapi_http_code_match( $code ) %> ) {
-%         }
-%     }
+        <%= elsif_chain($name) %>( $resp->code <%= openapi_http_code_match( $code ) %> ) {
 %     if( $info->{description} =~ /\S/ ) {
             # <%= $info->{description} %>
 %     }
@@ -605,11 +599,13 @@ sub <%= $method->{name} %>( $self, %options ) {
     my $r1 = Future::Mojo->new();
 % if( $is_streaming ) {
 <%= include('streaming_response', {
+         name => $method->{name},
          elt => $elt,
          prefix => $prefix,
           }); =%>
 % } else {
 <%= include('synchronous_response', {
+         name => $method->{name},
          elt => $elt,
          prefix => $prefix,
          });
