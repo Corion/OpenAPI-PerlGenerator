@@ -445,6 +445,8 @@ has 'server' => (
 % if( $parameters ) { # parameters
 =head3 Parameters
 
+=over 4
+
 %     for my $p ($parameters->@* ) {
 =item B<< <%= $p->{name} %> >>
 
@@ -453,6 +455,8 @@ has 'server' => (
 
 % }
 %     }
+=back
+
 =cut
 
 % } # parameters
@@ -464,21 +468,24 @@ has 'server' => (
 %     $type = $ct && $elt->{requestBody}->{content}->{$ct}->{schema};
 % };
 % if( $type ) {
+%     my @properties = (sort keys $type->{properties}->%*);
+%     if( @properties ) {
 
 =head3 Options
 
-%     for my $prop (sort keys $type->{properties}->%*) {
-%         my $p = $type->{properties}->{$prop};
 =over 4
 
-= C<< <%= $prop %> >>
+%         for my $prop (@properties) {
+%             my $p = $type->{properties}->{$prop};
+=item C<< <%= $prop %> >>
 
 % if( $p->{description} ) {
 <%= $p->{description} =~ s/\s*$//r %>
-
 % }
+%         }
 =back
 
+=cut
 %     }
 % }
 
