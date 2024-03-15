@@ -261,7 +261,6 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
 % my $first_code = 1;
 % for my $code (sort keys $elt->{responses}->%*) {                             # response code s
 %     my $info = $elt->{responses}->{ $code };
-%# XXX if streaming, we need to handle a non-streaming error response!
         <%= elsif_chain($name) %>( $resp->code <%= openapi_http_code_match( $code ) %> ) {
 %     if( $info->{description} =~ /\S/ ) {
             # <%= $info->{description} %>
@@ -815,10 +814,9 @@ __END__
           host:
             default: someserver.example
 [ ] handle https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/uspto.yaml
-[ ] handle https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore-expanded.yaml
 [ ] move method call example invocation into a subroutine/subtemplate
 [ ] Support "schema" part of parameter joining
 [ ] Support multipart/form-data ( https://swagger.io/docs/specification/describing-request-body/ )
 [ ] Maybe handle allOf types? This is basically composition, a list of things
     that need to match ...
-[ ] Can we qualify documentation for returns "on success" and "on error" from the4 HTTP codes?!
+[ ] Can we qualify documentation for returns "on success" and "on error" from the HTTP codes?!
