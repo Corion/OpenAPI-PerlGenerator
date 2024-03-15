@@ -237,9 +237,13 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
             }
 %           }
 %           } else { # we don't know how to handle this, so pass $res          # known content types?
+%# XXX should we always use ->done or should we use ->fail for 4xx and 5xx ?!
             return Future::Mojo->done($resp);
 %           }
 % }
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -289,6 +293,9 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
             return Future::Mojo->done($resp);
 %           }
 % }
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 

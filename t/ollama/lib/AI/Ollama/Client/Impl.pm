@@ -122,6 +122,9 @@ sub checkBlob( $self, %options ) {
         } elsif( $resp->code == 404 ) {
             # Blob was not found
             return Future::Mojo->done($resp);
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -191,6 +194,9 @@ sub createBlob( $self, %options ) {
         if( $resp->code == 201 ) {
             # Blob was successfully created
             return Future::Mojo->done($resp);
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -341,6 +347,9 @@ sub generateChatCompletion( $self, %options ) {
                     }
                 });
             }
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -411,6 +420,9 @@ sub copyModel( $self, %options ) {
         if( $resp->code == 200 ) {
             # Successful operation.
             return Future::Mojo->done($resp);
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -528,6 +540,9 @@ sub createModel( $self, %options ) {
                     }
                 });
             }
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -592,6 +607,9 @@ sub deleteModel( $self, %options ) {
         if( $resp->code == 200 ) {
             # Successful operation.
             return Future::Mojo->done($resp);
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -682,6 +700,9 @@ sub generateEmbedding( $self, %options ) {
 
                 );
             }
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -874,6 +895,9 @@ sub generateCompletion( $self, %options ) {
                     }
                 });
             }
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -966,6 +990,9 @@ sub pullModel( $self, %options ) {
 
                 );
             }
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -1056,6 +1083,9 @@ sub pushModel( $self, %options ) {
 
                 );
             }
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -1130,6 +1160,9 @@ sub showModelInfo( $self, %options ) {
 
                 );
             }
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -1190,6 +1223,9 @@ sub listModels( $self, %options ) {
 
                 );
             }
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
