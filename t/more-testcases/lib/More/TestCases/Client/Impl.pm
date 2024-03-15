@@ -4,6 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use PerlX::Maybe;
+use Carp 'croak';
 
 # These should go into a ::Role
 use YAML::PP;
@@ -28,10 +29,16 @@ use Future::Mojo;
 =cut
 
 # XXX this should be more configurable, and potentially you don't want validation?!
-my $schema = YAML::PP->new( boolean => 'JSON::PP' )->load_file( 'ollama/ollama-curated.yaml' );
+has 'schema' => (
+    is => 'lazy',
+    default => sub {
+        YAML::PP->new( boolean => 'JSON::PP' )->load_file( 'ollama/ollama-curated.yaml' );
+    },
+);
+
 has 'openapi' => (
     is => 'lazy',
-    default => sub { OpenAPI::Modern->new( openapi_schema => $schema, openapi_uri => '/api' )},
+    default => sub { OpenAPI::Modern->new( openapi_schema => $_[0]->schema, openapi_uri => '/api' )},
 );
 
 # The HTTP stuff should go into a ::Role I guess
@@ -53,18 +60,20 @@ has 'server' => (
 
 =head3 Parameters
 
+=over 4
+
 =item B<< session-id >>
 
 token to be passed as a header
 
-=cut
+=back
 
 
 
 =cut
 
 sub withCookie( $self, %options ) {
-    croak "Missing required parameter 'session-id'
+    croak "Missing required parameter 'session-id'"
         unless exists $options{ 'session-id' };
 
     my $method = 'GET';
@@ -95,9 +104,12 @@ sub withCookie( $self, %options ) {
         if( $resp->code == 200 ) {
             # pet response
             return Future::Mojo->done($resp);
-        } else {
+        } elsif( $resp->code  ) {
             # unexpected error
             return Future::Mojo->done($resp);
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -116,18 +128,20 @@ sub withCookie( $self, %options ) {
 
 =head3 Parameters
 
+=over 4
+
 =item B<< X-token >>
 
 token to be passed as a header
 
-=cut
+=back
 
 
 
 =cut
 
 sub withHeader( $self, %options ) {
-    croak "Missing required parameter 'X-token'
+    croak "Missing required parameter 'X-token'"
         unless exists $options{ 'X-token' };
 
     my $method = 'GET';
@@ -161,9 +175,12 @@ sub withHeader( $self, %options ) {
         } elsif( $resp->code =~ /4../ ) {
             # authentication error
             return Future::Mojo->done($resp);
-        } else {
+        } elsif( $resp->code  ) {
             # unexpected error
             return Future::Mojo->done($resp);
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
