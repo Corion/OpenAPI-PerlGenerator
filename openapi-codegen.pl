@@ -194,8 +194,7 @@ __INFLATED_RESPONSE__
 
 $template{streaming_response} = <<'__STREAMING_RESPONSE__';
     use Future::Queue;
-    my $queue = Future::Queue->new;
-    my $res = $queue->head;
+    my $res = Future::Queue->new;
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {
         my $resp = $tx->res;
@@ -226,12 +225,12 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
                     my @lines = split /\n/, $fresh;
                     for (@lines) {
                         my $payload = decode_json( $_ );
-                        $queue->enqueue(
+                        $res->push(
                             <%= include('inflated_response', { info => $info, prefix => $prefix, ct => $ct, } ) %>
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
-                        $queue->shutdown();
+                        $res->finish();
                     }
                 });
             }
@@ -449,13 +448,15 @@ has 'server' => (
 %# Generate the example invocation
 % if( $is_streaming ) {
   use Future::Utils 'repeat';
-  my $tx = $client-><%= $method->{name} %>();
+  my $responses = $client-><%= $method->{name} %>();
   repeat {
-      my( $next, $resp ) = $tx->get;
-      # ...
-      $tx = $next;
+      my ($res) = $responses->shift;
+      if( $res ) {
+          my $str = $res->get;
+          say $str;
+      }
 
-      Future::Mojo->done( defined $resp );
+      Future::Mojo->done( defined $res );
   } until => sub($done) { $done->get };
 % } else {
   my $res = $client-><%= $method->{name} %>()->get;

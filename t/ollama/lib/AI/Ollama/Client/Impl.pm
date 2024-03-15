@@ -220,13 +220,15 @@ sub createBlob( $self, %options ) {
 =head2 C<< generateChatCompletion >>
 
   use Future::Utils 'repeat';
-  my $tx = $client->generateChatCompletion();
+  my $responses = $client->generateChatCompletion();
   repeat {
-      my( $next, $resp ) = $tx->get;
-      # ...
-      $tx = $next;
+      my ($res) = $responses->shift;
+      if( $res ) {
+          my $str = $res->get;
+          say $str;
+      }
 
-      Future::Mojo->done( defined $resp );
+      Future::Mojo->done( defined $res );
   } until => sub($done) { $done->get };
 
 Generate the next message in a chat with a provided model.
@@ -296,8 +298,7 @@ sub generateChatCompletion( $self, %options ) {
 
     my $r1 = Future::Mojo->new();
     use Future::Queue;
-    my $queue = Future::Queue->new;
-    my $res = $queue->head;
+    my $res = Future::Queue->new;
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {
         my $resp = $tx->res;
@@ -318,13 +319,13 @@ sub generateChatCompletion( $self, %options ) {
                     my @lines = split /\n/, $fresh;
                     for (@lines) {
                         my $payload = decode_json( $_ );
-                        $queue->enqueue(
+                        $res->push(
                             AI::Ollama::GenerateChatCompletionResponse->new($payload),
 
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
-                        $queue->shutdown();
+                        $res->finish();
                     }
                 });
             }
@@ -412,13 +413,15 @@ sub copyModel( $self, %options ) {
 =head2 C<< createModel >>
 
   use Future::Utils 'repeat';
-  my $tx = $client->createModel();
+  my $responses = $client->createModel();
   repeat {
-      my( $next, $resp ) = $tx->get;
-      # ...
-      $tx = $next;
+      my ($res) = $responses->shift;
+      if( $res ) {
+          my $str = $res->get;
+          say $str;
+      }
 
-      Future::Mojo->done( defined $resp );
+      Future::Mojo->done( defined $res );
   } until => sub($done) { $done->get };
 
 Create a model from a Modelfile.
@@ -470,8 +473,7 @@ sub createModel( $self, %options ) {
 
     my $r1 = Future::Mojo->new();
     use Future::Queue;
-    my $queue = Future::Queue->new;
-    my $res = $queue->head;
+    my $res = Future::Queue->new;
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {
         my $resp = $tx->res;
@@ -492,13 +494,13 @@ sub createModel( $self, %options ) {
                     my @lines = split /\n/, $fresh;
                     for (@lines) {
                         my $payload = decode_json( $_ );
-                        $queue->enqueue(
+                        $res->push(
                             AI::Ollama::CreateModelResponse->new($payload),
 
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
-                        $queue->shutdown();
+                        $res->finish();
                     }
                 });
             }
@@ -666,13 +668,15 @@ sub generateEmbedding( $self, %options ) {
 =head2 C<< generateCompletion >>
 
   use Future::Utils 'repeat';
-  my $tx = $client->generateCompletion();
+  my $responses = $client->generateCompletion();
   repeat {
-      my( $next, $resp ) = $tx->get;
-      # ...
-      $tx = $next;
+      my ($res) = $responses->shift;
+      if( $res ) {
+          my $str = $res->get;
+          say $str;
+      }
 
-      Future::Mojo->done( defined $resp );
+      Future::Mojo->done( defined $res );
   } until => sub($done) { $done->get };
 
 Generate a response for a given prompt with a provided model.
@@ -759,8 +763,7 @@ sub generateCompletion( $self, %options ) {
 
     my $r1 = Future::Mojo->new();
     use Future::Queue;
-    my $queue = Future::Queue->new;
-    my $res = $queue->head;
+    my $res = Future::Queue->new;
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {
         my $resp = $tx->res;
@@ -781,13 +784,13 @@ sub generateCompletion( $self, %options ) {
                     my @lines = split /\n/, $fresh;
                     for (@lines) {
                         my $payload = decode_json( $_ );
-                        $queue->enqueue(
+                        $res->push(
                             AI::Ollama::GenerateCompletionResponse->new($payload),
 
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
-                        $queue->shutdown();
+                        $res->finish();
                     }
                 });
             }
