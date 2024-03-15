@@ -49,10 +49,16 @@ use AI::Ollama::RequestOptions;
 =cut
 
 # XXX this should be more configurable, and potentially you don't want validation?!
-my $schema = YAML::PP->new( boolean => 'JSON::PP' )->load_file( 'ollama/ollama-curated.yaml' );
+has 'schema' => (
+    is => 'lazy',
+    default => sub {
+        YAML::PP->new( boolean => 'JSON::PP' )->load_file( 'ollama/ollama-curated.yaml' );
+    },
+);
+
 has 'openapi' => (
     is => 'lazy',
-    default => sub { OpenAPI::Modern->new( openapi_schema => $schema, openapi_uri => '/api' )},
+    default => sub { OpenAPI::Modern->new( openapi_schema => $_[0]->schema, openapi_uri => '/api' )},
 );
 
 # The HTTP stuff should go into a ::Role I guess
