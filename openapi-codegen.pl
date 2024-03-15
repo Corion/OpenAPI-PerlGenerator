@@ -776,6 +776,14 @@ update_file( filename => filename('Client'),
              keep_existing => 1,
              content => $content,
             );
+};
+
+# This is not to be run online, as people could put Perl code into the Prefix
+# or any OpenAPI method name for example
+if( $check_compile ) {
+    push @INC, "./$output_directory/lib";
+    my $fn = filename('Client') =~ s!\blib\b/!!r;
+    require($fn);
 }
 
 =head1 SEE ALSO
