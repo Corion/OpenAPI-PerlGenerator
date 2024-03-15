@@ -231,7 +231,7 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
-                        $queue->enqueue( undef );
+                        $queue->shutdown();
                     }
                 });
             }

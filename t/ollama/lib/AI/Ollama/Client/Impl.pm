@@ -337,7 +337,7 @@ sub generateChatCompletion( $self, %options ) {
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
-                        $queue->enqueue( undef );
+                        $queue->shutdown();
                     }
                 });
             }
@@ -524,7 +524,7 @@ sub createModel( $self, %options ) {
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
-                        $queue->enqueue( undef );
+                        $queue->shutdown();
                     }
                 });
             }
@@ -870,7 +870,7 @@ sub generateCompletion( $self, %options ) {
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
-                        $queue->enqueue( undef );
+                        $queue->shutdown();
                     }
                 });
             }
