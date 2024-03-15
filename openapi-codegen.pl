@@ -354,6 +354,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use PerlX::Maybe;
+use Carp 'croak';
 
 # These should go into a ::Role
 use YAML::PP;
