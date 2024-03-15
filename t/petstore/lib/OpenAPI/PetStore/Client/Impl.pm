@@ -75,7 +75,7 @@ maximum number of results to return
 =back
 
 
-Returns a L<< OpenAPI::PetStore:: >>.
+Returns an array of L<< OpenAPI::PetStore::Pet >>.
 Returns a L<< OpenAPI::PetStore::Error >>.
 
 =cut

@@ -353,7 +353,13 @@ $template{return_types} = <<'__RETURN_TYPES__';
 %        if( my $content = $info->{content} ) {
 %            for my $ct (sort keys $content->%*) {
 %                if( $content->{$ct}->{schema}) {
-Returns a L<< <%= $prefix %>::<%= $content->{$ct}->{schema}->{name} %> >>.
+%                    my $descriptor = 'a';
+%                    my $class = join "::", $prefix, $content->{$ct}->{schema}->{name};
+%                    if( $content->{$ct}->{schema}->{type} eq 'array' ) {
+%                        $descriptor = 'an array of';
+%                        $class = join "::", $prefix, $content->{$ct}->{schema}->{items}->{name};
+%                    };
+Returns <%= $descriptor %> L<< <%= $class %> >>.
 %                }
 %             }
 %         }
