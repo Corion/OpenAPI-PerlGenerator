@@ -194,7 +194,7 @@ __INFLATED_RESPONSE__
 
 $template{streaming_response} = <<'__STREAMING_RESPONSE__';
     use Future::Queue;
-    my $res = Future::Queue->new;
+    my $res = Future::Queue->new( prototype => 'Future::Mojo' );
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {
         my $resp = $tx->res;
@@ -505,6 +505,7 @@ has 'server' => (
 
 % if( $p->{description} ) {
 <%= $p->{description} =~ s/\s*$//r %>
+
 % }
 %         }
 =back
