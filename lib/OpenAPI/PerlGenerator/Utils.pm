@@ -29,9 +29,11 @@ sub update_file( %options ) {
     my $keep_existing = $options{ keep_existing };
     my $encoding = $options{ encoding } // ':raw:encoding(UTF-8)';
 
-    my $content;
+    my $content = '';
     if( -f $filename ) {
-        return if $keep_existing and not $force;
+        if( $keep_existing ) {
+            return if $keep_existing and not $force;
+        }
 
         open my $fh, "<$encoding", $filename
             or die "Couldn't read '$filename': $!";
@@ -39,7 +41,7 @@ sub update_file( %options ) {
         $content = <$fh>;
     };
 
-    if( $content and $content ne $new_content ) {
+    if( $content ne $new_content ) {
         make_path( dirname $filename ); # just to be sure
         if( open my $fh, ">$encoding", $filename ) {
             print $fh $new_content;
