@@ -153,7 +153,7 @@ $template{required_parameters} = <<'__REQUIRED_PARAMETERS__';
 %     my @required = grep { $_->{required} } $elt->{parameters}->@*;
 %     if( @required ) {
 %         for my $p (@required) {
-    croak "Missing required parameter '<%= $p->{name} %>'
+    croak "Missing required parameter '<%= $p->{name} %>'"
         unless exists $options{ '<%= $p->{name} %>' };
 %         }
 

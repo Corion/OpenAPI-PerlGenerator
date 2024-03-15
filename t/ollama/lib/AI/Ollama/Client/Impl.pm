@@ -86,7 +86,7 @@ the SHA256 digest of the blob
 =cut
 
 sub checkBlob( $self, %options ) {
-    croak "Missing required parameter 'digest'
+    croak "Missing required parameter 'digest'"
         unless exists $options{ 'digest' };
 
     my $method = 'HEAD';
@@ -156,7 +156,7 @@ the SHA256 digest of the blob
 =cut
 
 sub createBlob( $self, %options ) {
-    croak "Missing required parameter 'digest'
+    croak "Missing required parameter 'digest'"
         unless exists $options{ 'digest' };
 
     my $method = 'POST';
