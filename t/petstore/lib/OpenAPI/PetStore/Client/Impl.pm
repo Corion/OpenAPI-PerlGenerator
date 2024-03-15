@@ -4,6 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use PerlX::Maybe;
+use Carp 'croak';
 
 # These should go into a ::Role
 use YAML::PP;
@@ -30,10 +31,16 @@ use OpenAPI::PetStore::NewPet;
 =cut
 
 # XXX this should be more configurable, and potentially you don't want validation?!
-my $schema = YAML::PP->new( boolean => 'JSON::PP' )->load_file( 'ollama/ollama-curated.yaml' );
+has 'schema' => (
+    is => 'lazy',
+    default => sub {
+        YAML::PP->new( boolean => 'JSON::PP' )->load_file( 'ollama/ollama-curated.yaml' );
+    },
+);
+
 has 'openapi' => (
     is => 'lazy',
-    default => sub { OpenAPI::Modern->new( openapi_schema => $schema, openapi_uri => '/api' )},
+    default => sub { OpenAPI::Modern->new( openapi_schema => $_[0]->schema, openapi_uri => '/api' )},
 );
 
 # The HTTP stuff should go into a ::Role I guess
@@ -55,6 +62,8 @@ has 'server' => (
 
 =head3 Parameters
 
+=over 4
+
 =item B<< tags >>
 
 tags to filter by
@@ -63,7 +72,7 @@ tags to filter by
 
 maximum number of results to return
 
-=cut
+=back
 
 
 Returns a L<< OpenAPI::PetStore:: >>.
@@ -110,9 +119,10 @@ sub findPets( $self, %options ) {
                 my $payload = $resp->json();
                 return Future::Mojo->done(
                     OpenAPI::PetStore::->new($payload),
+
                 );
             }
-        } else {
+        } elsif( $resp->code  ) {
             # unexpected error
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
@@ -120,8 +130,12 @@ sub findPets( $self, %options ) {
                 my $payload = $resp->json();
                 return Future::Mojo->done(
                     OpenAPI::PetStore::Error->new($payload),
+
                 );
             }
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -143,16 +157,11 @@ sub findPets( $self, %options ) {
 
 =over 4
 
-= C<< name >>
+=item C<< name >>
+
+=item C<< tag >>
 
 =back
-
-=over 4
-
-= C<< tag >>
-
-=back
-
 
 Returns a L<< OpenAPI::PetStore::Pet >>.
 Returns a L<< OpenAPI::PetStore::Error >>.
@@ -165,8 +174,6 @@ sub addPet( $self, %options ) {
     my $url = Mojo::URL->new( $self->server . $path );
 
     my $request = OpenAPI::PetStore::NewPet->new( \%options );
-    # resp. validate %options against NewPet
-    # send as application/json
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -196,9 +203,10 @@ sub addPet( $self, %options ) {
                 my $payload = $resp->json();
                 return Future::Mojo->done(
                     OpenAPI::PetStore::Pet->new($payload),
+
                 );
             }
-        } else {
+        } elsif( $resp->code  ) {
             # unexpected error
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
@@ -206,8 +214,12 @@ sub addPet( $self, %options ) {
                 my $payload = $resp->json();
                 return Future::Mojo->done(
                     OpenAPI::PetStore::Error->new($payload),
+
                 );
             }
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -226,11 +238,13 @@ sub addPet( $self, %options ) {
 
 =head3 Parameters
 
+=over 4
+
 =item B<< id >>
 
 ID of pet to delete
 
-=cut
+=back
 
 
 Returns a L<< OpenAPI::PetStore::Error >>.
@@ -238,7 +252,7 @@ Returns a L<< OpenAPI::PetStore::Error >>.
 =cut
 
 sub deletePet( $self, %options ) {
-    croak "Missing required parameter 'id'
+    croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
     my $method = 'DELETE';
@@ -272,7 +286,7 @@ sub deletePet( $self, %options ) {
         if( $resp->code == 204 ) {
             # pet deleted
             return Future::Mojo->done($resp);
-        } else {
+        } elsif( $resp->code  ) {
             # unexpected error
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
@@ -280,8 +294,12 @@ sub deletePet( $self, %options ) {
                 my $payload = $resp->json();
                 return Future::Mojo->done(
                     OpenAPI::PetStore::Error->new($payload),
+
                 );
             }
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 
@@ -300,11 +318,13 @@ sub deletePet( $self, %options ) {
 
 =head3 Parameters
 
+=over 4
+
 =item B<< id >>
 
 ID of pet to fetch
 
-=cut
+=back
 
 
 Returns a L<< OpenAPI::PetStore::Pet >>.
@@ -313,7 +333,7 @@ Returns a L<< OpenAPI::PetStore::Error >>.
 =cut
 
 sub find_pet_by_id( $self, %options ) {
-    croak "Missing required parameter 'id'
+    croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
     my $method = 'GET';
@@ -352,9 +372,10 @@ sub find_pet_by_id( $self, %options ) {
                 my $payload = $resp->json();
                 return Future::Mojo->done(
                     OpenAPI::PetStore::Pet->new($payload),
+
                 );
             }
-        } else {
+        } elsif( $resp->code  ) {
             # unexpected error
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
@@ -362,8 +383,12 @@ sub find_pet_by_id( $self, %options ) {
                 my $payload = $resp->json();
                 return Future::Mojo->done(
                     OpenAPI::PetStore::Error->new($payload),
+
                 );
             }
+        } else {
+            # An unknown/unhandled response, likely an error
+            return Future::Mojo->fail($resp);
         }
     });
 

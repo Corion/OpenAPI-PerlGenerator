@@ -1,20 +1,20 @@
-package AI::Ollama::Client 0.01;
+package OpenAPI::PetStore::Client 0.01;
 use 5.020;
 use Moo 2;
 use experimental 'signatures';
 
-extends 'AI::Ollama::Client::Impl';
+extends 'OpenAPI::PetStore::Client::Impl';
 
 =head1 NAME
 
-AI::Ollama::Client - Client for AI::Ollama
+OpenAPI::PetStore::Client - Client for OpenAPI::PetStore
 
 =head1 SYNOPSIS
 
   use 5.020;
-  use AI::Ollama::Client;
+  use OpenAPI::PetStore::Client;
 
-  my $client = AI::Ollama::Client->new(
+  my $client = OpenAPI::PetStore::Client->new(
       server => 'https://petstore.swagger.io/v2',
   );
   my $res = $client->someMethod()->get;
@@ -26,10 +26,8 @@ AI::Ollama::Client - Client for AI::Ollama
 
   my $res = $client->findPets()->get;
 
-
-
-Returns a L<< AI::Ollama:: >>.
-Returns a L<< AI::Ollama::Error >>.
+Returns a L<< OpenAPI::PetStore:: >>.
+Returns a L<< OpenAPI::PetStore::Error >>.
 
 =cut
 
@@ -37,10 +35,8 @@ Returns a L<< AI::Ollama::Error >>.
 
   my $res = $client->addPet()->get;
 
-
-
-Returns a L<< AI::Ollama::Pet >>.
-Returns a L<< AI::Ollama::Error >>.
+Returns a L<< OpenAPI::PetStore::Pet >>.
+Returns a L<< OpenAPI::PetStore::Error >>.
 
 =cut
 
@@ -48,9 +44,7 @@ Returns a L<< AI::Ollama::Error >>.
 
   my $res = $client->deletePet()->get;
 
-
-
-Returns a L<< AI::Ollama::Error >>.
+Returns a L<< OpenAPI::PetStore::Error >>.
 
 =cut
 
@@ -58,10 +52,8 @@ Returns a L<< AI::Ollama::Error >>.
 
   my $res = $client->find_pet_by_id()->get;
 
-
-
-Returns a L<< AI::Ollama::Pet >>.
-Returns a L<< AI::Ollama::Error >>.
+Returns a L<< OpenAPI::PetStore::Pet >>.
+Returns a L<< OpenAPI::PetStore::Error >>.
 
 =cut
 
