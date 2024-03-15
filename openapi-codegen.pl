@@ -457,8 +457,6 @@ has 'server' => (
 %     }
 =back
 
-=cut
-
 % } # parameters
 %#
 %# Add the body/schema parameters:
@@ -484,8 +482,6 @@ has 'server' => (
 % }
 %         }
 =back
-
-=cut
 %     }
 % }
 

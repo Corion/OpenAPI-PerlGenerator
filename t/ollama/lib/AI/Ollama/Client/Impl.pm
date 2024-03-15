@@ -84,8 +84,6 @@ the SHA256 digest of the blob
 
 =back
 
-=cut
-
 
 
 =cut
@@ -157,8 +155,6 @@ Create a blob from a file. Returns the server file path.
 the SHA256 digest of the blob
 
 =back
-
-=cut
 
 
 
@@ -265,8 +261,6 @@ Additional model parameters listed in the documentation for the Modelfile such a
 If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
 =back
 
-=cut
-
 Returns a L<< AI::Ollama::GenerateChatCompletionResponse >>.
 
 =cut
@@ -362,8 +356,6 @@ Name of the new model.
 Name of the model to copy.
 =back
 
-=cut
-
 
 =cut
 
@@ -442,8 +434,6 @@ Model names follow a `model:tag` format. Some examples are `orca-mini:3b-q4_1` a
 
 If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
 =back
-
-=cut
 
 Returns a L<< AI::Ollama::CreateModelResponse >>.
 
@@ -539,8 +529,6 @@ The model name.
 Model names follow a `model:tag` format. Some examples are `orca-mini:3b-q4_1` and `llama2:70b`. The tag is optional and, if not provided, will default to `latest`. The tag is used to identify a specific version.
 =back
 
-=cut
-
 
 =cut
 
@@ -611,8 +599,6 @@ Additional model parameters listed in the documentation for the Modelfile such a
 
 Text to generate embeddings for.
 =back
-
-=cut
 
 Returns a L<< AI::Ollama::GenerateEmbeddingResponse >>.
 
@@ -738,8 +724,6 @@ The system prompt to (overrides what is defined in the Modelfile).
 The full prompt or prompt template (overrides what is defined in the Modelfile).
 =back
 
-=cut
-
 Returns a L<< AI::Ollama::GenerateCompletionResponse >>.
 
 =cut
@@ -842,8 +826,6 @@ Model names follow a `model:tag` format. Some examples are `orca-mini:3b-q4_1` a
 If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
 =back
 
-=cut
-
 Returns a L<< AI::Ollama::PullModelResponse >>.
 
 =cut
@@ -925,8 +907,6 @@ The name of the model to push in the form of <namespace>/<model>:<tag>.
 If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
 =back
 
-=cut
-
 Returns a L<< AI::Ollama::PushModelResponse >>.
 
 =cut
@@ -1001,8 +981,6 @@ The model name.
 
 Model names follow a `model:tag` format. Some examples are `orca-mini:3b-q4_1` and `llama2:70b`. The tag is optional and, if not provided, will default to `latest`. The tag is used to identify a specific version.
 =back
-
-=cut
 
 Returns a L<< AI::Ollama::ModelInfo >>.
 
