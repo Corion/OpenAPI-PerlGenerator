@@ -19,6 +19,16 @@ sub tidy( $source ) {
     return $formatted;
 }
 
+=head2 C<< update_file >>
+
+  update_file( filename => $package->{filename},
+               output_directory => $output_directory,
+               keep_existing => (!!($package->{package} =~ /\bClient\z/)),
+               content => $package->{source},
+  );
+
+=cut
+
 sub update_file( %options ) {
     my $filename = delete $options{ filename }
         or die "Need a filename to create/update";
