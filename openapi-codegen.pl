@@ -245,11 +245,13 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
         }
     });
 
+    my $_tx;
     $tx->res->once( progress => sub($msg, @) {
         $r1->resolve( $tx );
+        undef $_tx;
         undef $r1;
     });
-    state $_tx = $self->ua->start_p($tx);
+    $_tx = $self->ua->start_p($tx);
 __STREAMING_RESPONSE__
 
 $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
