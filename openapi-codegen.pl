@@ -70,7 +70,6 @@ my %typemap = (
     string => 'Str',
     number => 'Num',
     integer => 'Int',
-    #boolean => 'Bool', # a conflict between JSON::PP::Boolean and Type::Tiny
     boolean => '', # a conflict between JSON::PP::Boolean and Type::Tiny
     object  => 'Object',
 );
