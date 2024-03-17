@@ -1,7 +1,7 @@
 package main;
-use 5.036;
+use 5.032;
 use experimental 'signatures';
-use experimental 'for_list';
+#use experimental 'for_list';
 use Getopt::Long;
 use Mojo::Template;
 use JSON::Pointer;
@@ -269,7 +269,8 @@ use OpenAPI::Modern;
 
 use Future::Mojo;
 
-% for my ($submodule,$info) (openapi_submodules($schema)) {
+% my @submodules = openapi_submodules($schema);
+% while (my($submodule,$info) = splice( @submodules, 0, 2 )) {
 %     if( $info->{type} eq 'object' ) {
 use <%= $prefix %>::<%= $submodule %>;
 %     }
@@ -612,7 +613,10 @@ for my $package (@packages) {
                 );
 }
 
-exit $res->{errors}->@* > 0;
+# If we compiled the stuff, exit with error code 1 if there are errors
+if( $res ) {
+    exit $res->{errors}->@* > 0;
+}
 
 =head1 SEE ALSO
 

@@ -1,13 +1,13 @@
 package OpenAPI::PerlGenerator 0.01;
-use 5.036;
+use 5.032;
 use experimental 'signatures';
-use experimental 'for_list';
 use OpenAPI::PerlGenerator::Utils; # for tidy(), but we don't import that
 use OpenAPI::PerlGenerator::Template;
 use Carp 'croak';
 
 use Moo 2;
 use Mojo::Template;
+no warnings 'experimental::signatures';
 
 has 'schema' => (
     is => 'ro',
