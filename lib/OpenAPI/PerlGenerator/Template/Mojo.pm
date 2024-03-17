@@ -453,7 +453,7 @@ sub <%= $method->{name} %>( $self, %options ) {
 % if( $elt->{requestBody} ) {
 %#    We assume we will only ever have one content type for the request we send:
 %     ($content_type) = sort keys $elt->{requestBody}->{content}->%*;
-%     $is_json = $ct eq 'application/json';
+%     $is_json = $ct && $ct eq 'application/json';
 <%= include('generate_request_body', {
         content => $elt->{requestBody}->{content},
         prefix => $prefix,
