@@ -804,10 +804,7 @@ The OpenAPI spec - L<https://spec.openapis.org/oas/v3.1.0#openapi-document>
 __END__
 [ ] Move common parts of POD generation into a subroutine / include()-able
     template
-[ ] (optionally) check that the created module file(s) compile
 [ ] Split out the templates into separate files
-[ ] support parameters in cookies
-[ ] Handle variables (at all)
 [ ] Handle variables in servers (OpenAPI::Modern dislikes that field):
     servers:
       - url: https://{host}/api/v2
@@ -818,6 +815,9 @@ __END__
 [ ] move method call example invocation into a subroutine/subtemplate
 [ ] Support "schema" part of parameter joining
 [ ] Support multipart/form-data ( https://swagger.io/docs/specification/describing-request-body/ )
+[ ] support parameters in cookies
 [ ] Maybe handle allOf types? This is basically composition, a list of things
     that need to match ...
 [ ] Can we qualify documentation for returns "on success" and "on error" from the HTTP codes?!
+[ ] Convert the documentation markdown to Pod
+[ ] handle response headers
