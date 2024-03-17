@@ -16,14 +16,14 @@ openapi-codegen.pl - create and maintain (client) libraries from OpenAPI / Swagg
 =cut
 
 GetOptions(
-    'package|p=s' => \my $package,
+    'prefix|p=s' => \my $prefix,
     'force|f'     => \my $force,
     'output|o=s'  => \my $output_directory,
     'api|a=s'     => \my $api_file,
     'tidy'        => \my $run_perltidy,
     'compile'     => \my $check_compile,
 );
-$package //= 'AI::Ollama';
+$prefix //= 'AI::Ollama';
 $api_file //= 'ollama/ollama-curated.yaml';
 $output_directory //= '.';
 
