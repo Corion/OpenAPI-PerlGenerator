@@ -605,7 +605,6 @@ if( $check_compile ) {
 # Should we still rewrite things even if we had errors above?!
 # overwriting the files is not nice, but makes for much easier debugging...
 for my $package (@packages) {
-    say $package->{filename};
     update_file( filename => $package->{filename},
                  output_directory => $output_directory,
                  keep_existing => (!!($package->{package} =~ /\bClient\z/)),
