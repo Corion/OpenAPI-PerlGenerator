@@ -588,17 +588,17 @@ my @packages = $generator->generate(
 
 # This is not to be run online, as people could put Perl code into the Prefix
 # or any OpenAPI method name for example
-my $errors = 0;
+my $res;
 if( $check_compile ) {
-    for my $package (@packages) {
-        eval $package->{source};
-        if( $@ ) {
-            warn $package->{name};
-            warn $package->{filename};
-            warn $@;
-            $errors = 1;
-        };
+    # Compile things a second time ...
+    $res = $generator->load_schema(
+        packages => \@packages,
+    );
 
+    for my $err ($res->{errors}->@*) {
+        warn $err->{name};
+        warn $err->{filename};
+        warn $err->{message};
     }
 }
 
@@ -612,7 +612,7 @@ for my $package (@packages) {
                 );
 }
 
-exit $errors;
+exit $res->{errors}->@* > 0;
 
 =head1 SEE ALSO
 

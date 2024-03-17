@@ -281,6 +281,46 @@ sub generate_client( $self, %options ) {
     };
 }
 
+=head2 C<< ->load_schema >>
+
+  my $res = $gen->load_schema(
+      schema => $schema,
+      prefix => 'My::Schema',
+  );
+
+Compiles the packages and installs them in the namespace given.
+
+=cut
+
+sub load_schema( $self, %options ) {
+    $options{ packages } //= [$self->generate(
+        %options,
+    )];
+    my @packages = $options{ packages }->@*;
+
+    my @errors;
+
+    for my $package (@packages) {
+        eval $package->{source};
+        if( $@ ) {
+            push @errors, +{
+                name     => $package->{name},
+                filename => $package->{filename},
+                message  => "$@",
+            };
+        };
+
+    }
+
+    return {
+        errors => \@errors,
+        packages => \@packages,
+    };
+}
+
+
+# This stuff should go into an OpenAPI schema helper module
+
 sub openapi_submodules( $self, $schema ) {
     $schema //= $self->schema;
     my $schemata = $schema->{components}->{schemas};
