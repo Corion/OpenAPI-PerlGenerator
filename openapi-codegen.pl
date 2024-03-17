@@ -801,6 +801,8 @@ if( $check_compile ) {
 
 The OpenAPI spec - L<https://spec.openapis.org/oas/v3.1.0#openapi-document>
 
+=cut
+
 __END__
 [ ] Move common parts of POD generation into a subroutine / include()-able
     template
