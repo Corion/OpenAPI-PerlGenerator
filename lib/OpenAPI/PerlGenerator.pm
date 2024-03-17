@@ -84,16 +84,20 @@ sub map_type( $self, $elt ) {
         unless $elt->{type};
     my $type = $elt->{type};
 
-    if( $type eq 'array' ) {
-        die "Array type has no subtype?!"
-            unless $elt->{items};
-        my $subtype = $self->map_type( $elt->{items} );
-        return "ArrayRef[$subtype]"
-    } elsif( exists $self->typemap->{ $type }) {
-        return $self->typemap->{ $type }
+    if( $type ) {
+        if( $type eq 'array' ) {
+            die "Array type has no subtype?!"
+                unless $elt->{items};
+            my $subtype = $self->map_type( $elt->{items} );
+            return "ArrayRef[$subtype]"
+        } elsif( exists $self->typemap->{ $type }) {
+            return $self->typemap->{ $type }
+        } else {
+            warn "Unknown type '$type'";
+            return '';
+        }
     } else {
-        warn "Unknown type '$type'";
-        return '';
+        return
     }
 }
 
