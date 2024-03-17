@@ -8,6 +8,7 @@ use Carp 'croak';
 use Moo 2;
 use Mojo::Template;
 no warnings 'experimental::signatures';
+use JSON::Pointer;
 
 has 'schema' => (
     is => 'ro',
