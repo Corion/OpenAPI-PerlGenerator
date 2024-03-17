@@ -152,6 +152,7 @@ sub generate( $self, %options ) {
         prefix => $prefix,
         name => 'Client::Impl',
         schema => $schema,
+        templates => $templates,
         %options
     );
 
@@ -160,6 +161,7 @@ sub generate( $self, %options ) {
         prefix => $prefix,
         name => 'Client',
         schema => $schema,
+        templates => $templates,
         %options
     );
 
