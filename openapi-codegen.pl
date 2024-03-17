@@ -7,7 +7,8 @@ use Mojo::Template;
 use JSON::Pointer;
 use YAML::PP;
 
-use OpenAPI::PerlGenerator::Utils 'tidy', 'update_file';
+use OpenAPI::PerlGenerator;
+use OpenAPI::PerlGenerator::Utils 'update_file';
 
 =head1 NAME
 
@@ -29,122 +30,7 @@ $output_directory //= '.';
 
 my $schema = YAML::PP->new( boolean => 'JSON::PP' )->load_file( $api_file );
 
-sub fixup_json_ref( $root, $curr=$root ) {
-    if( ref $curr eq 'ARRAY' ) {
-        for my $c ($curr->@*) {
-            $c = fixup_json_ref( $root, $c );
-        }
-
-    } elsif( ref $curr eq 'HASH' ) {
-        for my $k (sort keys $curr->%*) {
-            if( $k eq '$ref' ) {
-                my $ref = $curr->{$k};
-                $ref =~ s!^#!!;
-
-                # But we want to know its class, maybe?!
-
-                $curr = JSON::Pointer->get($root, $ref, 1);
-
-            } else {
-                $curr->{$k} = fixup_json_ref( $root, $curr->{ $k });
-            }
-        };
-    } else {
-        # nothing to do
-    }
-
-    return $curr
-}
-
-# Fix up the schema to resolve JSON-style refs into real refs:
-$schema = fixup_json_ref( $schema );
-
-sub filename( $name ) {
-    return ("lib\::$package\::$name.pm" =~ s!::!/!gr);
-}
-
-my @methods;
-my @packages;
-
-my %typemap = (
-    string => 'Str',
-    number => 'Num',
-    integer => 'Int',
-    boolean => '', # a conflict between JSON::PP::Boolean and Type::Tiny
-    object  => 'Object',
-);
-
-sub map_type( $elt ) {
-    # Do we want to be this harsh?!
-    die "No type information found in $elt?!"
-        unless $elt->{type};
-    my $type = $elt->{type};
-
-    if( $type eq 'array' ) {
-        die "Array type has no subtype?!"
-            unless $elt->{items};
-        my $subtype = map_type( $elt->{items} );
-        return "ArrayRef[$subtype]"
-    } elsif( exists $typemap{ $type }) {
-        return $typemap{ $type }
-    } else {
-        warn "Unknown type '$type'";
-        return '';
-    }
-}
-
-sub openapi_submodules( $schema ) {
-    my $schemata = $schema->{components}->{schemas};
-    map { $_ => $schemata->{ $_ } } sort keys $schemata->%*
-}
-
-sub openapi_response_content_types( $elt ) {
-    my %known;
-    for my $code (sort keys $elt->{responses}->%*) {
-        my $info = $elt->{responses}->{ $code };
-        for my $ct (sort keys $info->{content}->%*) {
-            $known{ $ct } = 1;
-        };
-    };
-    return sort keys %known;
-}
-
-sub openapi_http_code_match( $code ) {
-    if( $code eq 'default' ) {
-        return q{};
-
-    } elsif( $code =~ /x/i ) {
-        (my $re = $code) =~ s/x/./gi;
-        return qq{=~ /$re/};
-
-    } else {
-        return qq{== $code};
-    }
-}
-
 my %template;
-
-sub render( $name, $args ) {
-    state $mt = Mojo::Template->new->vars(1)->namespace('main');
-    if( ! exists $template{ $name }) {
-        die "Unknown template '$name'";
-    }
-    return $mt->render( $template{ $name }, $args )
-}
-*include = *include = \&render;
-
-my %locations;
-sub elsif_chain($id) {
-    # Ignore all Mojo:: stuff!
-    my $level = 0;
-    if( !$locations{ $id }++) {
-        return "if"
-    #} elsif( $final ) {
-    #    return " else "
-    } else {
-        return "} elsif"
-    }
-}
 
 $template{required_parameters} = <<'__REQUIRED_PARAMETERS__';
 %# Check that we received all required parameters:
@@ -690,112 +576,43 @@ extends '<%= $prefix %>::<%= $name %>::Impl';
 1;
 __CLIENT__
 
-my %options = (
-    prefix => $package,
+my $generator = OpenAPI::PerlGenerator->new(
+    templates => \%template,
+    tidy      => $run_perltidy,
 );
 
-for my $name ( sort keys $schema->{components}->{schemas}->%*) {
-    my $elt = $schema->{components}->{schemas}->{$name};
-    $elt->{name} //= $name;
-    my $type = $elt->{type};
-
-    my %info = (
-        %options,
-        name => $name,
-        type => $type,
-        elt  => $elt,
-    );
-
-    if( exists $template{ $type}) {
-        my $filename = filename( $name );
-        my $content = render( $type, \%info );
-        if( $run_perltidy ) {
-            $content = tidy( $content );
-        }
-        update_file(
-            filename => $filename,
-            output_directory => $output_directory,
-            content  => $content,
-        );
-
-    } elsif( $type eq 'string' ) {
-        # Don't output anything, this should likely become an Enum in the
-        # type checks instead
-
-    } else {
-        warn "No template for type '$type' ($name)";
-    }
-}
-
-# Add the methods to the main class (or, also to the current class, depending
-# on tree depth?!
-for my $path (sort keys $schema->{paths}->%*) {
-    my $loc = $schema->{paths}->{$path};
-
-    for my $method (sort keys $loc->%*) {
-        my $elt = $loc->{$method};
-
-        my $name = $elt->{operationId} // join "_", $path, $method;
-        $name =~ s!\W!_!g;
-
-        my %info = (
-            path => $path,
-            name => $name,
-            method => $elt->{method},
-            http_method => $method,
-            elt  => $elt,
-        );
-
-        push @methods, \%info;
-    }
-}
-
-{
-# Generate ::Client::Impl
-my $content = render('client_implementation',
-             {
-                methods => \@methods,
-                name => 'Client::Impl',
-                schema => $schema,
-                %options
-              });
-if( $run_perltidy ) {
-    $content = tidy( $content );
-};
-update_file( filename => filename('Client::Impl'),
-             output_directory => $output_directory,
-             content => $content,
-             );
-}
-
-{
-# If it does not exist, generate the stub for the main file ::Client as well
-# The client consists of "use parent '::Client::Impl';
-# and the pod for all the methods, for manual editing.
-my $content = render('client',
-             {
-                methods => \@methods,
-                name => 'Client',
-                schema => $schema,
-                %options
-              });
-if( $run_perltidy ) {
-    $content = tidy( $content );
-}
-update_file( filename => filename('Client'),
-            output_directory => $output_directory,
-             keep_existing => 1,
-             content => $content,
-            );
-};
+my @packages = $generator->generate(
+    schema => $schema,
+    prefix => $prefix,
+);
 
 # This is not to be run online, as people could put Perl code into the Prefix
 # or any OpenAPI method name for example
+my $errors = 0;
 if( $check_compile ) {
-    unshift @INC, "./$output_directory/lib";
-    my $fn = filename('Client') =~ s!\blib\b/!!r;
-    require($fn);
+    for my $package (@packages) {
+        eval $package->{source};
+        if( $@ ) {
+            warn $package->{name};
+            warn $package->{filename};
+            warn $@;
+            $errors = 1;
+        };
+
+    }
 }
+
+# Should we still rewrite things even if we had errors above?!
+for my $package (@packages) {
+    say $package->{filename};
+    update_file( filename => $package->{filename},
+                 output_directory => $output_directory,
+                 keep_existing => (!!($package->{package} =~ /\bClient\z/)),
+                 content => $package->{source},
+                );
+}
+
+exit $errors;
 
 =head1 SEE ALSO
 
