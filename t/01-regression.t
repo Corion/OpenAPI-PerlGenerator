@@ -55,8 +55,6 @@ for my $known (@testcases) {
             $file->spew( $f->{ source });
         }
     }
-    
-    note "$prefix";
 }
 
 done_testing;
