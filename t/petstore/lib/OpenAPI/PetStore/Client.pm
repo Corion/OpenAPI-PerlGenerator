@@ -26,7 +26,7 @@ OpenAPI::PetStore::Client - Client for OpenAPI::PetStore
 
   my $res = $client->findPets()->get;
 
-Returns a L<< OpenAPI::PetStore:: >>.
+Returns an array of L<< OpenAPI::PetStore::Pet >>.
 Returns a L<< OpenAPI::PetStore::Error >>.
 
 =cut

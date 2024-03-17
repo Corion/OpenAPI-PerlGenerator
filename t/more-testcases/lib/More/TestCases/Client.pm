@@ -22,11 +22,16 @@ More::TestCases::Client - Client for More::TestCases
 
 =head1 METHODS
 
+=head2 C<< withCookie >>
+
+  my $res = $client->withCookie()->get;
+
+
+=cut
+
 =head2 C<< withHeader >>
 
   my $res = $client->withHeader()->get;
-
-
 
 
 =cut
