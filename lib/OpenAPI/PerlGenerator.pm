@@ -182,6 +182,11 @@ sub generate_schema_classes( $self, %options ) {
         $elt->{name} //= $name;
         my $type = $elt->{type};
 
+        if( exists $elt->{allOf}) {
+            # We should synthesize the real type here instead of punting
+            $type = 'object';
+        };
+
         my %info = (
             %options,
             name => $name,
