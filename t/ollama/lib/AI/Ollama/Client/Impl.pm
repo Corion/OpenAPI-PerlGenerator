@@ -341,11 +341,13 @@ sub generateChatCompletion( $self, %options ) {
         }
     });
 
+    my $_tx;
     $tx->res->once( progress => sub($msg, @) {
         $r1->resolve( $tx );
+        undef $_tx;
         undef $r1;
     });
-    state $_tx = $self->ua->start_p($tx);
+    $_tx = $self->ua->start_p($tx);
 
     return $res
 }
@@ -521,11 +523,13 @@ sub createModel( $self, %options ) {
         }
     });
 
+    my $_tx;
     $tx->res->once( progress => sub($msg, @) {
         $r1->resolve( $tx );
+        undef $_tx;
         undef $r1;
     });
-    state $_tx = $self->ua->start_p($tx);
+    $_tx = $self->ua->start_p($tx);
 
     return $res
 }
@@ -826,11 +830,13 @@ sub generateCompletion( $self, %options ) {
         }
     });
 
+    my $_tx;
     $tx->res->once( progress => sub($msg, @) {
         $r1->resolve( $tx );
+        undef $_tx;
         undef $r1;
     });
-    state $_tx = $self->ua->start_p($tx);
+    $_tx = $self->ua->start_p($tx);
 
     return $res
 }
