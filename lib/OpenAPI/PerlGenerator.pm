@@ -192,7 +192,6 @@ sub generate_schema_classes( $self, %options ) {
             my $content = $self->render( $type, \%info );
             if( defined $content ) {
                 if( $run_perltidy ) {
-                    warn "Tidying $filename";
                     $content = OpenAPI::PerlGenerator::Utils::tidy( $content );
                 }
                 push @res, {
