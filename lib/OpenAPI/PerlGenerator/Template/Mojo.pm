@@ -41,11 +41,14 @@ $template{generate_request_body} = <<'__REQUEST_BODY__';
 __REQUEST_BODY__
 
 $template{inflated_response} = <<'__INFLATED_RESPONSE__';
-%               if( my $restype = $info->{content}->{$ct}->{schema}) {
-<%= $prefix %>::<%= $restype->{name} %>->new($payload),
-%               } else {
-$payload
-%               }
+% if( $type->{name} ) {
+<%= $prefix %>::<%= $type->{name} %>->new(<%= $argname %>),
+% } elsif( $type->{type} and $type->{type} eq 'array') {
+% use Data::Dumper; warn Dumper $type;
+[ map { <%= include('inflated_response', { type => $type->{items}, prefix => $prefix, argname => '$_' }) %> } $payload->@* ],
+% } else {
+<%= $argname %>
+% }
 __INFLATED_RESPONSE__
 
 $template{streaming_response} = <<'__STREAMING_RESPONSE__';
@@ -82,7 +85,8 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
                     for (@lines) {
                         my $payload = decode_json( $_ );
                         $res->push(
-                            <%= include('inflated_response', { info => $info, prefix => $prefix, ct => $ct, } ) %>
+% my $type = $info->{content}->{$ct}->{schema};
+                            <%= include('inflated_response', { type => $type, prefix => $prefix, argname => '$payload' } ) %>
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
@@ -141,7 +145,8 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
                 my $payload = $resp->body();
 %               }
                 return Future::Mojo->done(
-                    <%= include('inflated_response', { info => $info, prefix => $prefix, ct => $ct, } ) %>
+% my $type = $info->{content}->{$ct}->{schema};
+                    <%= include('inflated_response', { type => $type, prefix => $prefix, argname => '$payload' } ) %>
                 );
             }
 %           }
@@ -233,7 +238,7 @@ $template{return_types} = <<'__RETURN_TYPES__';
 %                if( $content->{$ct}->{schema}) {
 %                    my $descriptor = 'a';
 %                    my $class;
-%                    if( $content->{$ct}->{schema}->{type} eq 'array' ) {
+%                    if( $content->{$ct}->{schema}->{type} and $content->{$ct}->{schema}->{type} eq 'array' ) {
 %                        $descriptor = 'an array of';
 %                        $class = join "::", $prefix, $content->{$ct}->{schema}->{items}->{name};
 %                    } elsif( $content->{$ct}->{schema}->{name}) {
@@ -268,7 +273,7 @@ use Future::Mojo;
 
 % my @submodules = openapi_submodules($schema);
 % while (my($submodule,$info) = splice( @submodules, 0, 2 )) {
-%     if( $info->{type} eq 'object' ) {
+%     if( $info->{type} and $info->{type} eq 'object' ) {
 use <%= $prefix %>::<%= $submodule %>;
 %     }
 % }

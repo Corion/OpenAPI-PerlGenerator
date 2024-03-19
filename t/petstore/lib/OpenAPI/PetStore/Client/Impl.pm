@@ -118,7 +118,8 @@ sub findPets( $self, %options ) {
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 return Future::Mojo->done(
-                    OpenAPI::PetStore::->new($payload),
+                    [ map { OpenAPI::PetStore::Pet->new($_),
+ } $payload->@* ],
 
                 );
             }
