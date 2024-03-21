@@ -6,6 +6,7 @@ use OpenAPI::PerlGenerator::Template::Mojo;
 use File::Basename;
 use Mojo::File 'curfile', 'path';
 use YAML::PP;
+use JSON::PP;
 
 use Getopt::Long;
 GetOptions(
@@ -27,19 +28,23 @@ my %prefix = (
     'ollama' => 'AI::Ollama',
     'petstore' => 'OpenAPI::PetStore',
     'more-testcases' => 'More::TestCases',
+    'whisper.cpp' => 'AI::Whisper',
 );
 
 my @testcases = grep { -d } curfile()->dirname->list({ dir => 1 })->@*;
 for my $known (@testcases) {
-    (my $api_file) = grep { /\.yaml$/ } $known->list->@*;
+    (my $api_file_yaml) = grep { /\.yaml$/ } $known->list->@*;
+    (my $api_file_json) = grep { /\.json$/ } $known->list->@*;
     my $prefix = $prefix{ $known->basename };
     note "$prefix";
-    my $schema = YAML::PP->new( boolean => 'JSON::PP' )->load_file( $api_file );
+    my $schema = $api_file_yaml ? YAML::PP->new( boolean => 'JSON::PP' )->load_file( $api_file_yaml )
+               : $api_file_json ? JSON::PP->new()->decode( $api_file_json->slurp())
+               : die "No YAML or JSON OpenAPI file found for $known";
     my @files = $gen->generate(
         schema => $schema,
         prefix => "$prefix",
     );
-        
+
     for my $f (@files) {
         # Check that all files exist and have the same content
         my $file = Mojo::File->new($known, $f->{filename});
