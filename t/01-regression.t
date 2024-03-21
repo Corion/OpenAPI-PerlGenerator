@@ -53,7 +53,7 @@ for my $known (@testcases) {
             is $f->{source}, $known_content, "The content has not changed";
         } else {
             SKIP: {
-                skip 1, "File does not exist";
+                skip "File does not exist", 1;
             };
         }
         if( $update ) {
