@@ -79,12 +79,12 @@ sub filename( $self, $name, $prefix=$self->prefix ) {
 }
 
 sub map_type( $self, $elt ) {
-    # Do we want to be this harsh?!
-    die "No type information found in $elt?!"
-        unless $elt->{type};
-    my $type = $elt->{type};
 
-    if( $type ) {
+    if( exists $elt->{anyOf}) {
+        # ... so we have a multi-type. Hope that it is just a type or null
+        return $self->map_type( $elt->{anyOf}->[0] );
+
+    } elsif( my $type = $elt->{type}) {
         if( $type eq 'array' ) {
             die "Array type has no subtype?!"
                 unless $elt->{items};
@@ -108,10 +108,11 @@ sub render( $self, $name, $args ) {
     if( ! exists $template->{ $name }) {
         die "Unknown template '$name'";
     }
+    #warn "<<$name>>";
     my $res = $mt->render( $template->{ $name }, $args );
 
     if( ref $res and $res->isa('Mojo::Exception') ) {
-        warn "Template '$name'";
+        warn "Template '$name' (" . join( ",", keys$args->%* ). ")";
         die $res;
     }
     return $res
