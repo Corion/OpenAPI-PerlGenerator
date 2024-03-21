@@ -7,6 +7,7 @@ use File::Basename;
 use Mojo::File 'curfile', 'path';
 use YAML::PP;
 use JSON::PP;
+use File::Path 'make_path';
 
 use Getopt::Long;
 GetOptions(
@@ -57,6 +58,7 @@ for my $known (@testcases) {
             };
         }
         if( $update ) {
+            make_path( $file->dirname );
             $file->spew( $f->{ source });
         }
     }
