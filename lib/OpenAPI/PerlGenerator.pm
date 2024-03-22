@@ -364,3 +364,18 @@ sub openapi_http_code_match( $self, $code ) {
 }
 
 1;
+__END__
+0000: POST /load HTTP/1.1
+0015: Host: 192.168.1.97:8080
+002e: User-Agent: curl/7.88.1
+0047: Accept: */*
+0054: Content-Length: 164
+0069: Content-Type: multipart/form-data; boundary=--------------------
+00a9: ----6aefc0639f22d13e
+00bf:
+=> Send data, 164 bytes (0xa4)
+0000: --------------------------6aefc0639f22d13e
+002c: Content-Disposition: form-data; name="model"
+005a:
+005c: models/ggml-large-v3.bin
+0076: --------------------------6aefc0639f22d13e--
