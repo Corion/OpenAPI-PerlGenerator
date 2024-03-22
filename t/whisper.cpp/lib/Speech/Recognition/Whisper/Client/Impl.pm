@@ -16,6 +16,7 @@ use OpenAPI::Modern;
 use Future::Mojo;
 
 use Speech::Recognition::Whisper::Error;
+use Speech::Recognition::Whisper::SuccessfulLoad;
 use Speech::Recognition::Whisper::Transcription;
 
 =head1 SYNOPSIS
@@ -164,9 +165,9 @@ Load a model
 
 =over 4
 
-=item B<< content >>
+=item B<< model >>
 
-WAV audio
+Model file
 
 =item B<< temperature >>
 
@@ -183,27 +184,27 @@ Defaults to C<<json>>
 =back
 
 
-Returns a L<< Speech::Recognition::Whisper::Transcription >>.
+Returns a L<< Speech::Recognition::Whisper::SuccessfulLoad >>.
 Returns a L<< Speech::Recognition::Whisper::Error >>.
 
 =cut
 
 sub load( $self, %options ) {
-    croak "Missing required parameter 'content'"
-        unless exists $options{ 'content' };
+    croak "Missing required parameter 'model'"
+        unless exists $options{ 'model' };
 
     my $method = 'POST';
     my $path = '/load';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    # unhandled form parameter content;
+    # unhandled form parameter model;
     # unhandled form parameter temperature;
     # unhandled form parameter temperature_inc;
     # unhandled form parameter response_format;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
-            'Accept' => 'application/json',
+            'Accept' => 'application/json,application/text',
         }
         # XXX Need to fill the body
         # => $body,
@@ -225,10 +226,10 @@ sub load( $self, %options ) {
             # Successful response
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
-            if( $ct eq 'application/json' ) {
-                my $payload = $resp->json();
+            if( $ct eq 'application/text' ) {
+                my $payload = $resp->body();
                 return Future::Mojo->done(
-                    Speech::Recognition::Whisper::Transcription->new($payload),
+                    Speech::Recognition::Whisper::SuccessfulLoad->new($payload),
 
                 );
             }

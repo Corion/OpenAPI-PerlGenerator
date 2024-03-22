@@ -45,7 +45,7 @@
                 "summary": "Load a model",
                 "operationId": "load",
                 "parameters": [
-                    {"name":"content", "description":"WAV audio", "in":"form","required":true,"schema":{"type":"string"}},
+                    {"name":"model", "description":"Model file", "in":"form","required":true,"schema":{"type":"string"}},
                     {"name":"temperature","description":"Temperature", "in":"form","required":false,"schema":{"type":"string"}},
                     {"name":"temperature_inc", "in":"form","required":false,"schema":{"type":"string"}},
                     {"name":"response_format", "description":"Format of the response", "in":"form","required":false,"default":"json","schema":{"type":"string"}}
@@ -54,8 +54,8 @@
                     "200": {
                         "description":"Successful response",
                         "content":{
-                            "application/json": {
-                                "schema": {"$ref":"#/components/schemas/Transcription"}
+                            "application/text": {
+                                "schema": {"$ref":"#/components/schemas/SuccessfulLoad"}
                             }
                         }
                     },
@@ -76,8 +76,11 @@
             "Transcription":{
                 "properties":{"text":{"type":"string","title":"Text"},"filename":{"type":"string","title":"Filename"}},"type":"object","required":["text","filename"],"title":"Transcription"
             },
+            "SuccessfulLoad":{
+                "properties":{"msg":{"type":"string"}},"type":"object"
+            },
             "Error":{
-                "properties":{"error":{"type":"string"}},"type":"object","title":"Error"
+                "properties":{"error":{"type":"string"}},"type":"object"
             }
         }
     }

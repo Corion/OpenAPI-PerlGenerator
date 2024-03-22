@@ -39,7 +39,7 @@ Returns a L<< Speech::Recognition::Whisper::Error >>.
 
 Load a model
 
-Returns a L<< Speech::Recognition::Whisper::Transcription >>.
+Returns a L<< Speech::Recognition::Whisper::SuccessfulLoad >>.
 Returns a L<< Speech::Recognition::Whisper::Error >>.
 
 =cut
