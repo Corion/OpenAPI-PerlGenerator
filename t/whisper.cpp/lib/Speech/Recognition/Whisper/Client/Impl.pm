@@ -65,9 +65,9 @@ has 'server' => (
 
 =head1 METHODS
 
-=head2 C<< post_audio_api_v1_transcribe__post >>
+=head2 C<< transcribe >>
 
-  my $res = $client->post_audio_api_v1_transcribe__post()->get;
+  my $res = $client->transcribe()->get;
 
 Post Audio
 
@@ -95,7 +95,7 @@ Returns a L<< Speech::Recognition::Whisper::HTTPValidationError >>.
 
 =cut
 
-sub post_audio_api_v1_transcribe__post( $self, %options ) {
+sub transcribe( $self, %options ) {
     my $method = 'POST';
     my $path = '/api/v1/transcribe/';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -165,9 +165,9 @@ sub post_audio_api_v1_transcribe__post( $self, %options ) {
     return $res
 }
 
-=head2 C<< create_user_api_v1_users__post >>
+=head2 C<< create_user >>
 
-  my $res = $client->create_user_api_v1_users__post()->get;
+  my $res = $client->create_user()->get;
 
 Create User
 
@@ -189,7 +189,7 @@ Returns a L<< Speech::Recognition::Whisper::HTTPValidationError >>.
 
 =cut
 
-sub create_user_api_v1_users__post( $self, %options ) {
+sub create_user( $self, %options ) {
     my $method = 'POST';
     my $path = '/api/v1/users/';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -253,9 +253,9 @@ sub create_user_api_v1_users__post( $self, %options ) {
     return $res
 }
 
-=head2 C<< get_user_token_api_v1_users_get_token_post >>
+=head2 C<< get_user_token >>
 
-  my $res = $client->get_user_token_api_v1_users_get_token_post()->get;
+  my $res = $client->get_user_token()->get;
 
 Get User Token
 
@@ -275,7 +275,7 @@ Returns a L<< Speech::Recognition::Whisper::HTTPValidationError >>.
 
 =cut
 
-sub get_user_token_api_v1_users_get_token_post( $self, %options ) {
+sub get_user_token( $self, %options ) {
     my $method = 'POST';
     my $path = '/api/v1/users/get_token';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -339,9 +339,9 @@ sub get_user_token_api_v1_users_get_token_post( $self, %options ) {
     return $res
 }
 
-=head2 C<< read_user_api_v1_users__user_id___get >>
+=head2 C<< read_user >>
 
-  my $res = $client->read_user_api_v1_users__user_id___get()->get;
+  my $res = $client->read_user()->get;
 
 Read User
 
@@ -359,7 +359,7 @@ Returns a L<< Speech::Recognition::Whisper::HTTPValidationError >>.
 
 =cut
 
-sub read_user_api_v1_users__user_id___get( $self, %options ) {
+sub read_user( $self, %options ) {
     croak "Missing required parameter 'user_id'"
         unless exists $options{ 'user_id' };
 
@@ -428,9 +428,9 @@ sub read_user_api_v1_users__user_id___get( $self, %options ) {
     return $res
 }
 
-=head2 C<< delete_user_api_v1_users__user_id__delete_delete >>
+=head2 C<< delete_user >>
 
-  my $res = $client->delete_user_api_v1_users__user_id__delete_delete()->get;
+  my $res = $client->delete_user()->get;
 
 Delete User
 
@@ -448,7 +448,7 @@ Returns a L<< Speech::Recognition::Whisper::HTTPValidationError >>.
 
 =cut
 
-sub delete_user_api_v1_users__user_id__delete_delete( $self, %options ) {
+sub delete_user( $self, %options ) {
     croak "Missing required parameter 'user_id'"
         unless exists $options{ 'user_id' };
 
@@ -517,9 +517,9 @@ sub delete_user_api_v1_users__user_id__delete_delete( $self, %options ) {
     return $res
 }
 
-=head2 C<< update_password_api_v1_users__user_id__update_password__put >>
+=head2 C<< update_password >>
 
-  my $res = $client->update_password_api_v1_users__user_id__update_password__put()->get;
+  my $res = $client->update_password()->get;
 
 Update Password
 
@@ -547,7 +547,7 @@ Returns a L<< Speech::Recognition::Whisper::HTTPValidationError >>.
 
 =cut
 
-sub update_password_api_v1_users__user_id__update_password__put( $self, %options ) {
+sub update_password( $self, %options ) {
     croak "Missing required parameter 'user_id'"
         unless exists $options{ 'user_id' };
 
@@ -617,9 +617,9 @@ sub update_password_api_v1_users__user_id__update_password__put( $self, %options
     return $res
 }
 
-=head2 C<< ping_ping_get >>
+=head2 C<< ping >>
 
-  my $res = $client->ping_ping_get()->get;
+  my $res = $client->ping()->get;
 
 Ping
 
@@ -628,7 +628,7 @@ Returns a L<< Speech::Recognition::Whisper::PingResponse >>.
 
 =cut
 
-sub ping_ping_get( $self, %options ) {
+sub ping( $self, %options ) {
     my $method = 'GET';
     my $path = '/ping';
     my $url = Mojo::URL->new( $self->server . $path );

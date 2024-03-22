@@ -22,9 +22,9 @@ Speech::Recognition::Whisper::Client - Client for Speech::Recognition::Whisper
 
 =head1 METHODS
 
-=head2 C<< post_audio_api_v1_transcribe__post >>
+=head2 C<< transcribe >>
 
-  my $res = $client->post_audio_api_v1_transcribe__post()->get;
+  my $res = $client->transcribe()->get;
 
 Post Audio
 
@@ -33,9 +33,9 @@ Returns a L<< Speech::Recognition::Whisper::HTTPValidationError >>.
 
 =cut
 
-=head2 C<< create_user_api_v1_users__post >>
+=head2 C<< create_user >>
 
-  my $res = $client->create_user_api_v1_users__post()->get;
+  my $res = $client->create_user()->get;
 
 Create User
 
@@ -44,9 +44,9 @@ Returns a L<< Speech::Recognition::Whisper::HTTPValidationError >>.
 
 =cut
 
-=head2 C<< get_user_token_api_v1_users_get_token_post >>
+=head2 C<< get_user_token >>
 
-  my $res = $client->get_user_token_api_v1_users_get_token_post()->get;
+  my $res = $client->get_user_token()->get;
 
 Get User Token
 
@@ -55,9 +55,9 @@ Returns a L<< Speech::Recognition::Whisper::HTTPValidationError >>.
 
 =cut
 
-=head2 C<< read_user_api_v1_users__user_id___get >>
+=head2 C<< read_user >>
 
-  my $res = $client->read_user_api_v1_users__user_id___get()->get;
+  my $res = $client->read_user()->get;
 
 Read User
 
@@ -66,9 +66,9 @@ Returns a L<< Speech::Recognition::Whisper::HTTPValidationError >>.
 
 =cut
 
-=head2 C<< delete_user_api_v1_users__user_id__delete_delete >>
+=head2 C<< delete_user >>
 
-  my $res = $client->delete_user_api_v1_users__user_id__delete_delete()->get;
+  my $res = $client->delete_user()->get;
 
 Delete User
 
@@ -77,9 +77,9 @@ Returns a L<< Speech::Recognition::Whisper::HTTPValidationError >>.
 
 =cut
 
-=head2 C<< update_password_api_v1_users__user_id__update_password__put >>
+=head2 C<< update_password >>
 
-  my $res = $client->update_password_api_v1_users__user_id__update_password__put()->get;
+  my $res = $client->update_password()->get;
 
 Update Password
 
@@ -88,9 +88,9 @@ Returns a L<< Speech::Recognition::Whisper::HTTPValidationError >>.
 
 =cut
 
-=head2 C<< ping_ping_get >>
+=head2 C<< ping >>
 
-  my $res = $client->ping_ping_get()->get;
+  my $res = $client->ping()->get;
 
 Ping
 
