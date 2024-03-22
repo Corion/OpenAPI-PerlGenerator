@@ -499,6 +499,8 @@ sub <%= $method->{name} %>( $self, %options ) {
         }
 % if( $is_json ) {
         => json => $request->as_hash,
+% } elsif( $content_type and $content_type eq 'multipart/form-data' ) {
+        => form => $request->as_hash,
 % } else {
         # XXX Need to fill the body
         # => $body,

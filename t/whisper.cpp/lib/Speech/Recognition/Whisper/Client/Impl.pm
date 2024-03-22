@@ -200,8 +200,7 @@ sub load( $self, %options ) {
             'Accept' => 'application/json,application/text',
             "Content-Type" => 'multipart/form-data',
         }
-        # XXX Need to fill the body
-        # => $body,
+        => form => $request->as_hash,
     );
 
     # validate our request while developing
