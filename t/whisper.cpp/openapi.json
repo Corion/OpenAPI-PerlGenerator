@@ -1,63 +1,83 @@
 {
     "openapi":"3.1.0",
-    "info" :
-        {"title":"Whisper API"
+    "info" : {
+            "title":"Whisper.cpp API"
             ,"version":"0.1.0"
-        },
+    },
+    "servers": [
+        { "url": "http://localhost:8080/" }
+    ],
     "paths":{
-        "/ping":{
-            "get":{
-                "tags":["ping"],
-                "summary":"Ping",
-                "operationId":"ping",
+        "/inference":{
+            "post":{
+                "tags":["inference"],
+                "summary": "Perform inference on a WAV file",
+                "operationId": "inference",
+                "parameters": [
+                    {"name":"content", "type": "string", "in":"form","required":true,"schema":{"type":"string","title":"WAV audio"}},
+                    {"temperature":"content", "type": "string", "in":"form","required":false,"schema":{"type":"string","title":"Temperature"}},
+                    {"temperature_inc":"content", "type": "string", "in":"form","required":false,"schema":{"type":"string","title":"Temperature increase"}},
+                    {"response_format":"content", "type": "string", "in":"form","required":false,"default":"json","schema":{"type":"string","title":"Format of the response"}}
+                ],
                 "responses":{
-                    "200":{
-                        "description":"Successful Response",
+                    "200": {
+                        "description":"Successful response",
                         "content":{
-                            "application/json":{
-                                "schema":{
-                                    "$ref":"#/components/schemas/PingResponse"
-                                }
+                            "application/json": {
+                                "schema": {"$ref":"#/components/schemas/Transcription"}
+                            }
+                        }
+                    },
+                    "default": {
+                        "description":"Error response",
+                        "content":{
+                            "application/json": {
+                                "schema": {"$ref":"#/components/schemas/Error"}
                             }
                         }
                     }
                 }
             }
         },
-        "/api/v1/users/":{"post":{"tags":["users"],"summary":"Create User","operationId":"create_user","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/User"}}},"required":true},"responses":{"201":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/UserResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},
-        "/api/v1/users/get_token":{"post":{"tags":["users"],"summary":"Get User Token","operationId":"get_user_token","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/User_GET_TOKEN"}}},"required":true},"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Response_Token"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},
-        "/api/v1/users/{user_id}/":{"get":{"tags":["users"],"summary":"Read User","operationId":"read_user","parameters":[{"name":"user_id","in":"path","required":true,"schema":{"type":"string","format":"uuid","title":"User Id"}}],"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/UserResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},
-        "/api/v1/users/{user_id}/update_password/":{"put":{"tags":["users"],"summary":"Update Password","operationId":"update_password","parameters":[{"name":"user_id","in":"path","required":true,"schema":{"type":"string","format":"uuid","title":"User Id"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/PasswordUpdate"}}}},"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/UserResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},
-        "/api/v1/users/{user_id}/delete":{"delete":{"tags":["users"],"summary":"Delete User","operationId":"delete_user","parameters":[{"name":"user_id","in":"path","required":true,"schema":{"type":"string","format":"uuid","title":"User Id"}}],"responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/UserDeletedResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}},
-        "/api/v1/transcribe/":{"post":{"tags":["transcribe"],"summary":"Post Audio","operationId":"transcribe","parameters":[{"name":"model","in":"query","required":false,"schema":{"type":"string","default":"tiny.en.q5","title":"Model"}},{"name":"Authentication","in":"header","required":false,"schema":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Authentication"}}],"requestBody":{"required":true,"content":{"multipart/form-data":{"schema":{"$ref":"#/components/schemas/Body_post_audio_api_v1_transcribe__post"}}}},
-            "responses":{
-                "200":{"description":"Successful Response","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Transcription"}}}},
-                "422":{"description":"Validation Error","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HTTPValidationError"}}}}}}}},
+        "/load":{
+            "post":{
+                "tags":["load"],
+                "summary": "Load a model",
+                "operationId": "load",
+                "parameters": [
+                    {"name":"content", "type": "string", "in":"form","required":true,"schema":{"type":"string","title":"WAV audio"}},
+                    {"temperature":"content", "type": "string", "in":"form","required":false,"schema":{"type":"string","title":"Temperature"}},
+                    {"temperature_inc":"content", "type": "string", "in":"form","required":false,"schema":{"type":"string","title":"Temperature increase"}},
+                    {"response_format":"content", "type": "string", "in":"form","required":false,"default":"json","schema":{"type":"string","title":"Format of the response"}}
+                ],
+                "responses":{
+                    "200": {
+                        "description":"Successful response",
+                        "content":{
+                            "application/json": {
+                                "schema": {"$ref":"#/components/schemas/Transcription"}
+                            }
+                        }
+                    },
+                    "default": {
+                        "description":"Error response",
+                        "content":{
+                            "application/json": {
+                                "schema": {"$ref":"#/components/schemas/Error"}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
     "components":{
         "schemas":{
-            "Body_post_audio_api_v1_transcribe__post":{
-                "properties":{"file":{"type":"string","format":"binary","title":"File"}},"type":"object","required":["file"],"title":"Body_post_audio_api_v1_transcribe__post"
-            },
-            "HTTPValidationError":{
-                "properties":{"detail":{"items":{"$ref":"#/components/schemas/ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"
-            },
-            "PasswordUpdate":{
-                "properties":{"current_password":{"type":"string","title":"Current Password"},"new_password":{"type":"string","title":"New Password"}},"type":"object","required":["current_password","new_password"],"title":"PasswordUpdate"
-            },
-            "PingResponse":{
-                "properties":{"ping":{"type":"string","title":"Ping"}},"type":"object","required":["ping"],"title":"PingResponse"
-            },
-            "Response_Token":{
-                "properties":{"token":{"type":"string","title":"Token"}},"type":"object","required":["token"],"title":"Response_Token"
-            },
             "Transcription":{
                 "properties":{"text":{"type":"string","title":"Text"},"filename":{"type":"string","title":"Filename"}},"type":"object","required":["text","filename"],"title":"Transcription"
             },
-            "User":{
-                "properties":{"email":{"type":"string","title":"Email"},"username":{"type":"string","title":"Username"},"password":{"type":"string","title":"Password"}},"type":"object","required":["email","username","password"],"title":"User"},"UserDeletedResponse":{"properties":{"detail":{"type":"string","title":"Detail"}},"type":"object","required":["detail"],"title":"UserDeletedResponse"},"UserResponse":{"properties":{"email":{"type":"string","title":"Email"},"username":{"type":"string","title":"Username"},"id":{"type":"string","format":"uuid","title":"Id"},"is_active":{"anyOf":[{"type":"boolean"},{"type":"null"}],"title":"Is Active"},"created_at":{"type":"string","format":"date-time","title":"Created At"}},"type":"object","required":["email","username","id","created_at"],"title":"UserResponse"},"User_GET_TOKEN":{"properties":{"email":{"type":"string","title":"Email"},"password":{"type":"string","title":"Password"}},"type":"object","required":["email","password"],"title":"User_GET_TOKEN"
-            },
-            "ValidationError":{
-                "properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"
+            "Error":{
+                "properties":{"error":{"type":"string"}},"type":"object","title":"Error"
             }
         }
     }
