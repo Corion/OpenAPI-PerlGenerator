@@ -74,6 +74,8 @@ Perform inference on a WAV file
 
 =item B<<  >>
 
+Defaults to C<<json>>
+
 =back
 
 
@@ -169,6 +171,8 @@ Load a model
 =item B<<  >>
 
 =item B<<  >>
+
+Defaults to C<<json>>
 
 =back
 

@@ -44,7 +44,7 @@ $template{inflated_response} = <<'__INFLATED_RESPONSE__';
 % if( $type->{name} ) {
 <%= $prefix %>::<%= $type->{name} %>->new(<%= $argname %>),
 % } elsif( $type->{type} and $type->{type} eq 'array') {
-% use Data::Dumper; warn Dumper $type;
+%# use Data::Dumper; warn Dumper $type;
 [ map { <%= include('inflated_response', { type => $type->{items}, prefix => $prefix, argname => '$_' }) %> } $payload->@* ],
 % } else {
 <%= $argname %>
@@ -365,10 +365,14 @@ has 'server' => (
 %     for my $p ($parameters->@* ) {
 =item B<< <%= $p->{name} %> >>
 
-% if( $p->{description} =~ /\S/ ) {
+%     if( $p->{description} =~ /\S/ ) {
 <%= $p->{description} =~ s/\s*$//r %>
 
-% }
+%     }
+%     if( $p->{default}) {
+Defaults to C<< <%= $p->{default} =%> >>
+
+%         }
 %     }
 =back
 
