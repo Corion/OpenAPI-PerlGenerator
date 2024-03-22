@@ -16,6 +16,7 @@ use OpenAPI::Modern;
 use Future::Mojo;
 
 use Speech::Recognition::Whisper::Error;
+use Speech::Recognition::Whisper::LoadModel;
 use Speech::Recognition::Whisper::SuccessfulLoad;
 use Speech::Recognition::Whisper::Transcription;
 
@@ -161,28 +162,26 @@ sub inference( $self, %options ) {
 
 Load a model
 
-=head3 Parameters
+
+=head3 Options
 
 =over 4
 
-=item B<< model >>
+=item C<< model >>
 
 Model file
 
-=item B<< temperature >>
-
-Temperature
-
-=item B<< temperature_inc >>
-
-=item B<< response_format >>
+=item C<< response_format >>
 
 Format of the response
 
-Defaults to C<<json>>
+=item C<< temperature >>
+
+Temperature
+
+=item C<< temperature_inc >>
 
 =back
-
 
 Returns a L<< Speech::Recognition::Whisper::SuccessfulLoad >>.
 Returns a L<< Speech::Recognition::Whisper::Error >>.
@@ -190,21 +189,16 @@ Returns a L<< Speech::Recognition::Whisper::Error >>.
 =cut
 
 sub load( $self, %options ) {
-    croak "Missing required parameter 'model'"
-        unless exists $options{ 'model' };
-
     my $method = 'POST';
     my $path = '/load';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    # unhandled form parameter model;
-    # unhandled form parameter temperature;
-    # unhandled form parameter temperature_inc;
-    # unhandled form parameter response_format;
+    my $request = Speech::Recognition::Whisper::LoadModel->new( \%options );
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json,application/text',
+            "Content-Type" => 'multipart/form-data',
         }
         # XXX Need to fill the body
         # => $body,
