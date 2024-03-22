@@ -34,8 +34,10 @@ $template{generate_request_body} = <<'__REQUEST_BODY__';
 %     for my $ct (sort keys $content->%*) {
 %         if( $content->{$ct}->{schema}) {
     my $request = <%= $prefix %>::<%= $content->{$ct}->{schema}->{name} %>->new( \%options );
+%         } elsif( $ct eq 'multipart/form-data' ) {
+%             # nothing to do
 %         } else {
-              # don't know how to handle this content type...
+              # don't know how to handle content type <%= $ct %>...
 %         }
 %     }
 __REQUEST_BODY__

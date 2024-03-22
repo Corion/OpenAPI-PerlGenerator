@@ -18,6 +18,7 @@ use Future::Mojo;
 use Speech::Recognition::Whisper::Error;
 use Speech::Recognition::Whisper::LoadModel;
 use Speech::Recognition::Whisper::SuccessfulLoad;
+use Speech::Recognition::Whisper::TranscribeFile;
 use Speech::Recognition::Whisper::Transcription;
 
 =head1 SYNOPSIS
@@ -64,22 +65,6 @@ has 'server' => (
 
 Perform inference on a WAV file
 
-=head3 Parameters
-
-=over 4
-
-=item B<< content >>
-
-=item B<<  >>
-
-=item B<<  >>
-
-=item B<<  >>
-
-Defaults to C<<json>>
-
-=back
-
 
 Returns a L<< Speech::Recognition::Whisper::Transcription >>.
 Returns a L<< Speech::Recognition::Whisper::Error >>.
@@ -87,24 +72,17 @@ Returns a L<< Speech::Recognition::Whisper::Error >>.
 =cut
 
 sub inference( $self, %options ) {
-    croak "Missing required parameter 'content'"
-        unless exists $options{ 'content' };
-
     my $method = 'POST';
     my $path = '/inference';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    # unhandled form parameter content;
-    # unhandled form parameter ;
-    # unhandled form parameter ;
-    # unhandled form parameter ;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
+            "Content-Type" => 'multipart/form-data',
         }
-        # XXX Need to fill the body
-        # => $body,
+        => form => $request->as_hash,
     );
 
     # validate our request while developing

@@ -13,12 +13,13 @@
                 "tags":["inference"],
                 "summary": "Perform inference on a WAV file",
                 "operationId": "inference",
-                "parameters": [
-                    {"name":"content", "type": "string", "in":"form","required":true,"schema":{"type":"string","title":"WAV audio"}},
-                    {"temperature":"content", "type": "string", "in":"form","required":false,"schema":{"type":"string","title":"Temperature"}},
-                    {"temperature_inc":"content", "type": "string", "in":"form","required":false,"schema":{"type":"string","title":"Temperature increase"}},
-                    {"response_format":"content", "type": "string", "in":"form","required":false,"default":"json","schema":{"type":"string","title":"Format of the response"}}
-                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                        }
+                    }
+                },
                 "responses":{
                     "200": {
                         "description":"Successful response",
@@ -75,6 +76,16 @@
     },
     "components":{
         "schemas":{
+            "TranscribeFile": {
+                "type": "object",
+                "properties": {
+                    "name": { "type": "string", "in":"form","required":true},
+                    "temperature": {"type": "number", "description": "Temperature"},
+                    "temperature_inc": {"type": "number"},
+                    "response_format": {"type": "string", "default":"json"}
+                },
+                "required": ["name"]
+            },
             "Transcription":{
                 "properties":{"text":{"type":"string","title":"Text"},"filename":{"type":"string","title":"Filename"}},"type":"object","required":["text","filename"],"title":"Transcription"
             },
