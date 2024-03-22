@@ -17,6 +17,7 @@
                     "required": true,
                     "content": {
                         "multipart/form-data": {
+                            "schema": {"$ref":"#/components/schemas/TranscribeFile"}
                         }
                     }
                 },

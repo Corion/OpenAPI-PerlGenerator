@@ -66,6 +66,22 @@ has 'server' => (
 Perform inference on a WAV file
 
 
+=head3 Options
+
+=over 4
+
+=item C<< name >>
+
+=item C<< response_format >>
+
+=item C<< temperature >>
+
+Temperature
+
+=item C<< temperature_inc >>
+
+=back
+
 Returns a L<< Speech::Recognition::Whisper::Transcription >>.
 Returns a L<< Speech::Recognition::Whisper::Error >>.
 
@@ -76,6 +92,7 @@ sub inference( $self, %options ) {
     my $path = '/inference';
     my $url = Mojo::URL->new( $self->server . $path );
 
+    my $request = Speech::Recognition::Whisper::TranscribeFile->new( \%options );
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
