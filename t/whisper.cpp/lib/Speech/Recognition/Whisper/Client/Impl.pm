@@ -166,11 +166,17 @@ Load a model
 
 =item B<< content >>
 
-=item B<<  >>
+WAV audio
 
-=item B<<  >>
+=item B<< temperature >>
 
-=item B<<  >>
+Temperature
+
+=item B<< temperature_inc >>
+
+=item B<< response_format >>
+
+Format of the response
 
 Defaults to C<<json>>
 
@@ -191,9 +197,9 @@ sub load( $self, %options ) {
     my $url = Mojo::URL->new( $self->server . $path );
 
     # unhandled form parameter content;
-    # unhandled form parameter ;
-    # unhandled form parameter ;
-    # unhandled form parameter ;
+    # unhandled form parameter temperature;
+    # unhandled form parameter temperature_inc;
+    # unhandled form parameter response_format;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {

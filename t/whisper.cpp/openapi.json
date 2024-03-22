@@ -45,10 +45,10 @@
                 "summary": "Load a model",
                 "operationId": "load",
                 "parameters": [
-                    {"name":"content", "type": "string", "in":"form","required":true,"schema":{"type":"string","title":"WAV audio"}},
-                    {"temperature":"content", "type": "string", "in":"form","required":false,"schema":{"type":"string","title":"Temperature"}},
-                    {"temperature_inc":"content", "type": "string", "in":"form","required":false,"schema":{"type":"string","title":"Temperature increase"}},
-                    {"response_format":"content", "type": "string", "in":"form","required":false,"default":"json","schema":{"type":"string","title":"Format of the response"}}
+                    {"name":"content", "description":"WAV audio", "in":"form","required":true,"schema":{"type":"string"}},
+                    {"name":"temperature","description":"Temperature", "in":"form","required":false,"schema":{"type":"string"}},
+                    {"name":"temperature_inc", "in":"form","required":false,"schema":{"type":"string"}},
+                    {"name":"response_format", "description":"Format of the response", "in":"form","required":false,"default":"json","schema":{"type":"string"}}
                 ],
                 "responses":{
                     "200": {
