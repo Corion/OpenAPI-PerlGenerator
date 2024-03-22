@@ -46,6 +46,22 @@ for my $known (@testcases) {
         prefix => "$prefix",
     );
 
+    # Compile things a second time ...
+    my $res = $gen->load_schema(
+        packages => \@files,
+    );
+
+    is 0+$res->{errors}->@*, 0, "No errors when compiling the package";
+    if( $res->{errors}->@* ) {
+
+        for my $err ($res->{errors}->@*) {
+            diag $err->{name};
+            diag $err->{filename};
+            diag $err->{message};
+        }
+    }
+
+
     for my $f (@files) {
         # Check that all files exist and have the same content
         my $file = Mojo::File->new($known, $f->{filename});
