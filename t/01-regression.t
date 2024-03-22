@@ -29,7 +29,7 @@ my %prefix = (
     'ollama' => 'AI::Ollama',
     'petstore' => 'OpenAPI::PetStore',
     'more-testcases' => 'More::TestCases',
-    'whisper.cpp' => 'AI::Whisper',
+    'whisper.cpp' => 'Speech::Recognition::Whisper',
 );
 
 my @testcases = grep { -d } curfile()->dirname->list({ dir => 1 })->@*;
