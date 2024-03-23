@@ -80,7 +80,7 @@
             "TranscribeFile": {
                 "type": "object",
                 "properties": {
-                    "name": { "type": "string", "in":"form","required":true},
+                    "name": { "type": "string", "in":"form"},
                     "temperature": {"type": "number", "description": "Temperature"},
                     "temperature_inc": {"type": "number"},
                     "response_format": {"type": "string", "default":"json"}
