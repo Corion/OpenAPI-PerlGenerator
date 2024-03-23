@@ -113,6 +113,10 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
         $r1->resolve( $tx );
         undef $_tx;
         undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
+        undef $_tx;
+        undef $r1;
     });
     $_tx = $self->ua->start_p($tx);
 __STREAMING_RESPONSE__
@@ -165,6 +169,9 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
         $r1->resolve( $tx );
+        undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
         undef $r1;
     });
 __SYNCHRONOUS_RESPONSE__
