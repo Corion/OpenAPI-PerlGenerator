@@ -146,6 +146,9 @@ sub inference( $self, %options ) {
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
         $r1->resolve( $tx );
         undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
+        undef $r1;
     });
 
     return $res
@@ -241,6 +244,9 @@ sub load( $self, %options ) {
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
         $r1->resolve( $tx );
+        undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
         undef $r1;
     });
 

@@ -141,6 +141,9 @@ sub checkBlob( $self, %options ) {
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
         $r1->resolve( $tx );
         undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
+        undef $r1;
     });
 
     return $res
@@ -211,6 +214,9 @@ sub createBlob( $self, %options ) {
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
         $r1->resolve( $tx );
+        undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
         undef $r1;
     });
 
@@ -346,6 +352,10 @@ sub generateChatCompletion( $self, %options ) {
         $r1->resolve( $tx );
         undef $_tx;
         undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
+        undef $_tx;
+        undef $r1;
     });
     $_tx = $self->ua->start_p($tx);
 
@@ -414,6 +424,9 @@ sub copyModel( $self, %options ) {
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
         $r1->resolve( $tx );
+        undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
         undef $r1;
     });
 
@@ -528,6 +541,10 @@ sub createModel( $self, %options ) {
         $r1->resolve( $tx );
         undef $_tx;
         undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
+        undef $_tx;
+        undef $r1;
     });
     $_tx = $self->ua->start_p($tx);
 
@@ -594,6 +611,9 @@ sub deleteModel( $self, %options ) {
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
         $r1->resolve( $tx );
+        undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
         undef $r1;
     });
 
@@ -678,6 +698,9 @@ sub generateEmbedding( $self, %options ) {
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
         $r1->resolve( $tx );
+        undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
         undef $r1;
     });
 
@@ -835,6 +858,10 @@ sub generateCompletion( $self, %options ) {
         $r1->resolve( $tx );
         undef $_tx;
         undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
+        undef $_tx;
+        undef $r1;
     });
     $_tx = $self->ua->start_p($tx);
 
@@ -922,6 +949,9 @@ sub pullModel( $self, %options ) {
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
         $r1->resolve( $tx );
         undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
+        undef $r1;
     });
 
     return $res
@@ -1006,6 +1036,9 @@ sub pushModel( $self, %options ) {
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
         $r1->resolve( $tx );
         undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
+        undef $r1;
     });
 
     return $res
@@ -1082,6 +1115,9 @@ sub showModelInfo( $self, %options ) {
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
         $r1->resolve( $tx );
         undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
+        undef $r1;
     });
 
     return $res
@@ -1144,6 +1180,9 @@ sub listModels( $self, %options ) {
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
         $r1->resolve( $tx );
+        undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
         undef $r1;
     });
 
