@@ -80,7 +80,7 @@ Returns a L<< OpenAPI::PetStore::Error >>.
 
 =cut
 
-sub findPets( $self, %options ) {
+sub _build_findPets_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/pets';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -98,6 +98,13 @@ sub findPets( $self, %options ) {
         # XXX Need to fill the body
         # => $body,
     );
+
+    return $tx
+}
+
+
+sub findPets( $self, %options ) {
+    my $tx = $self->_build_findPets_request(%options);
 
     # validate our request while developing
     my $results = $self->openapi->validate_request($tx->req);
@@ -172,7 +179,7 @@ Returns a L<< OpenAPI::PetStore::Error >>.
 
 =cut
 
-sub addPet( $self, %options ) {
+sub _build_addPet_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/pets';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -186,6 +193,13 @@ sub addPet( $self, %options ) {
         }
         => json => $request->as_hash,
     );
+
+    return $tx
+}
+
+
+sub addPet( $self, %options ) {
+    my $tx = $self->_build_addPet_request(%options);
 
     # validate our request while developing
     my $results = $self->openapi->validate_request($tx->req);
@@ -258,7 +272,7 @@ Returns a L<< OpenAPI::PetStore::Error >>.
 
 =cut
 
-sub deletePet( $self, %options ) {
+sub _build_deletePet_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -277,6 +291,13 @@ sub deletePet( $self, %options ) {
         # XXX Need to fill the body
         # => $body,
     );
+
+    return $tx
+}
+
+
+sub deletePet( $self, %options ) {
+    my $tx = $self->_build_deletePet_request(%options);
 
     # validate our request while developing
     my $results = $self->openapi->validate_request($tx->req);
@@ -342,7 +363,7 @@ Returns a L<< OpenAPI::PetStore::Error >>.
 
 =cut
 
-sub find_pet_by_id( $self, %options ) {
+sub _build_find_pet_by_id_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -361,6 +382,13 @@ sub find_pet_by_id( $self, %options ) {
         # XXX Need to fill the body
         # => $body,
     );
+
+    return $tx
+}
+
+
+sub find_pet_by_id( $self, %options ) {
+    my $tx = $self->_build_find_pet_by_id_request(%options);
 
     # validate our request while developing
     my $results = $self->openapi->validate_request($tx->req);

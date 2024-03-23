@@ -87,7 +87,7 @@ Returns a L<< Speech::Recognition::Whisper::Error >>.
 
 =cut
 
-sub inference( $self, %options ) {
+sub _build_inference_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/inference';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -101,6 +101,13 @@ sub inference( $self, %options ) {
         }
         => form => $request->as_hash,
     );
+
+    return $tx
+}
+
+
+sub inference( $self, %options ) {
+    my $tx = $self->_build_inference_request(%options);
 
     # validate our request while developing
     my $results = $self->openapi->validate_request($tx->req);
@@ -186,7 +193,7 @@ Returns a L<< Speech::Recognition::Whisper::Error >>.
 
 =cut
 
-sub load( $self, %options ) {
+sub _build_load_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/load';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -200,6 +207,13 @@ sub load( $self, %options ) {
         }
         => form => $request->as_hash,
     );
+
+    return $tx
+}
+
+
+sub load( $self, %options ) {
+    my $tx = $self->_build_load_request(%options);
 
     # validate our request while developing
     my $results = $self->openapi->validate_request($tx->req);

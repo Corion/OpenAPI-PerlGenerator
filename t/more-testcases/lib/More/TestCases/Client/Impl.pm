@@ -72,7 +72,7 @@ token to be passed as a header
 
 =cut
 
-sub withCookie( $self, %options ) {
+sub _build_withCookie_request( $self, %options ) {
     croak "Missing required parameter 'session-id'"
         unless exists $options{ 'session-id' };
 
@@ -88,6 +88,13 @@ sub withCookie( $self, %options ) {
         # XXX Need to fill the body
         # => $body,
     );
+
+    return $tx
+}
+
+
+sub withCookie( $self, %options ) {
+    my $tx = $self->_build_withCookie_request(%options);
 
     # validate our request while developing
     my $results = $self->openapi->validate_request($tx->req);
@@ -143,7 +150,7 @@ token to be passed as a header
 
 =cut
 
-sub withHeader( $self, %options ) {
+sub _build_withHeader_request( $self, %options ) {
     croak "Missing required parameter 'X-token'"
         unless exists $options{ 'X-token' };
 
@@ -159,6 +166,13 @@ sub withHeader( $self, %options ) {
         # XXX Need to fill the body
         # => $body,
     );
+
+    return $tx
+}
+
+
+sub withHeader( $self, %options ) {
+    my $tx = $self->_build_withHeader_request(%options);
 
     # validate our request while developing
     my $results = $self->openapi->validate_request($tx->req);
