@@ -1,5 +1,5 @@
 {
-   "abstract" : "unknown",
+   "abstract" : "create Perl client SDKs from OpenAPI specs",
    "author" : [
       "Max Maischein <corion@cpan.org>"
    ],
@@ -53,7 +53,10 @@
       },
       "test" : {
          "requires" : {
+            "Future::Mojo" : "1.03",
+            "Future::Queue" : "0",
             "HTTP::Request::Diff" : "0",
+            "Mojolicious" : "1.03",
             "Test2::V0" : "0"
          }
       }

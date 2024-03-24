@@ -70,6 +70,9 @@ my %module = (
     TEST_REQUIRES => {
         'Test2::V0'    => 0,
         'HTTP::Request::Diff' => 0,
+        'Future::Queue' => 0,
+        'Future::Mojo' => '1.03',
+        'Mojolicious' => '1.03',
     },
 
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
