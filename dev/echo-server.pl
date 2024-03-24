@@ -1,4 +1,5 @@
 #!perl
+our $VERSION = '0.01';
 use Mojolicious::Lite '-signatures';
 
 # Simple Mojolicious echo server
