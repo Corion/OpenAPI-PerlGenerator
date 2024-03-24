@@ -71,7 +71,7 @@ my %module = (
         'Test2::V0'    => 0,
         'HTTP::Request::Diff' => 0,
         'Future::Queue' => 0,
-        'Future::Mojo' => '1.03',
+        'Future::Mojo' => '1.003',
         'Mojolicious' => '1.03',
     },
 
