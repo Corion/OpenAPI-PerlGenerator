@@ -126,10 +126,6 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
         $r1->resolve( $tx );
         undef $_tx;
         undef $r1;
-    })->catch(sub($err) {
-        $r1->fail( $err => $tx );
-        undef $_tx;
-        undef $r1;
     });
     $_tx = $self->ua->start_p($tx);
 __STREAMING_RESPONSE__

@@ -373,10 +373,6 @@ sub generateChatCompletion( $self, %options ) {
         $r1->resolve( $tx );
         undef $_tx;
         undef $r1;
-    })->catch(sub($err) {
-        $r1->fail( $err => $tx );
-        undef $_tx;
-        undef $r1;
     });
     $_tx = $self->ua->start_p($tx);
 
@@ -574,10 +570,6 @@ sub createModel( $self, %options ) {
     my $_tx;
     $tx->res->once( progress => sub($msg, @) {
         $r1->resolve( $tx );
-        undef $_tx;
-        undef $r1;
-    })->catch(sub($err) {
-        $r1->fail( $err => $tx );
         undef $_tx;
         undef $r1;
     });
@@ -912,10 +904,6 @@ sub generateCompletion( $self, %options ) {
     my $_tx;
     $tx->res->once( progress => sub($msg, @) {
         $r1->resolve( $tx );
-        undef $_tx;
-        undef $r1;
-    })->catch(sub($err) {
-        $r1->fail( $err => $tx );
         undef $_tx;
         undef $r1;
     });
