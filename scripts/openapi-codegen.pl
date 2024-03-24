@@ -1,4 +1,4 @@
-package main;
+package main 0.01;
 use 5.020;
 use experimental 'signatures';
 use Getopt::Long;
@@ -13,6 +13,28 @@ use OpenAPI::PerlGenerator::Utils 'update_file';
 
 openapi-codegen.pl - create and maintain (client) libraries from OpenAPI / Swagger spec
 
+=head1 SYNOPSIS
+
+  openapi-codegen.pl -a openapi/petstore-expanded.yaml -o t/petstore -p OpenAPI::PetStore --compile
+
+=head1 OPTIONS
+
+=over 4
+
+=item * B< prefix > - the class prefix
+
+=item * B< force > - overwrite all files, even the stub client
+
+=item * B< output > - name of the output directory
+
+=item * B< api > - name of the OpenAPI file (YAML or JSON)
+
+=item * B< tidy > - clean up the code using perltidy
+
+=item * B< compile > - check that the generated code compiles
+
+=back
+
 =cut
 
 GetOptions(
@@ -23,8 +45,8 @@ GetOptions(
     'tidy'        => \my $run_perltidy,
     'compile'     => \my $check_compile,
 );
-$prefix //= 'AI::Ollama';
-$api_file //= 'ollama/ollama-curated.yaml';
+$prefix //= 'My::API';
+$api_file //= 'openapi/openapi.yaml';
 $output_directory //= '.';
 
 my $schema = YAML::PP->new( boolean => 'JSON::PP' )->load_file( $api_file );
