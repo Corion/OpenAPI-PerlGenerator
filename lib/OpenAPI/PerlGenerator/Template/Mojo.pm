@@ -1,5 +1,18 @@
-package OpenAPI::PerlGenerator::Template::Mojo;
+package OpenAPI::PerlGenerator::Template::Mojo 0.01;
 use 5.020;
+
+=head1 NAME
+
+OpenAPI::PerlGenerator::Template::Mojo - Mojolicious templates for OpenAPI clients
+
+=head1 SYNOPSIS
+
+  # override the 'foo' template
+  $OpenAPI::PerlGenerator::Template::Mojo::template{'foo'} = <<__MY_TEMPLATE__;
+  bar
+  __MY_TEMPLATE__
+
+=cut
 
 our %template;
 
@@ -605,3 +618,33 @@ extends '<%= $prefix %>::<%= $name %>::Impl';
 __CLIENT__
 
 1;
+
+__END__
+
+=head1 REPOSITORY
+
+The public repository of this module is
+L<https://github.com/Corion/OpenAPI-PerlGenerator>.
+
+=head1 SUPPORT
+
+The public support forum of this module is L<https://perlmonks.org/>.
+
+=head1 BUG TRACKER
+
+Please report bugs in this module via the Github bug queue at
+L<https://github.com/Corion/OpenAPI-PerlGenerator/issues>
+
+=head1 AUTHOR
+
+Max Maischein C<corion@cpan.org>
+
+=head1 COPYRIGHT (c)
+
+Copyright 2024- by Max Maischein C<corion@cpan.org>.
+
+=head1 LICENSE
+
+This module is released under the Artistic License 2.0.
+
+=cut
