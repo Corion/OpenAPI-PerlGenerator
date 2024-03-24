@@ -1,5 +1,5 @@
 package OpenAPI::PerlGenerator 0.01;
-use 5.032;
+use 5.020;
 use experimental 'signatures';
 use OpenAPI::PerlGenerator::Utils; # for tidy(), but we don't import that
 use OpenAPI::PerlGenerator::Template;

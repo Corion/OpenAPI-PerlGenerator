@@ -1,7 +1,6 @@
 package main;
-use 5.032;
+use 5.020;
 use experimental 'signatures';
-#use experimental 'for_list';
 use Getopt::Long;
 use Mojo::Template;
 use JSON::Pointer;
