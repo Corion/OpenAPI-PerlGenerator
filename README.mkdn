@@ -1,0 +1,47 @@
+
+[![Windows](https://github.com/Corion/OpenAPI-PerlGenerator/workflows/windows/badge.svg)](https://github.com/Corion/OpenAPI-PerlGenerator/actions?query=workflow%3Awindows)
+[![MacOS](https://github.com/Corion/OpenAPI-PerlGenerator/workflows/macos/badge.svg)](https://github.com/Corion/OpenAPI-PerlGenerator/actions?query=workflow%3Amacos)
+[![Linux](https://github.com/Corion/OpenAPI-PerlGenerator/workflows/linux/badge.svg)](https://github.com/Corion/OpenAPI-PerlGenerator/actions?query=workflow%3Alinux)
+
+## << ->generate >>
+
+    my @output = $gen->generate();
+    for my $package (@output) {
+        say "Generating " . $package->{package};
+        say $package->{source};
+    }
+
+## `->load_schema`
+
+    my $res = $gen->load_schema(
+        schema => $schema,
+        prefix => 'My::Schema',
+    );
+
+Compiles the packages and installs them in the namespace given.
+
+# REPOSITORY
+
+The public repository of this module is
+[https://github.com/Corion/OpenAPI-PerlGenerator](https://github.com/Corion/OpenAPI-PerlGenerator).
+
+# SUPPORT
+
+The public support forum of this module is [https://perlmonks.org/](https://perlmonks.org/).
+
+# BUG TRACKER
+
+Please report bugs in this module via the Github bug queue at
+[https://github.com/Corion/OpenAPI-PerlGenerator/issues](https://github.com/Corion/OpenAPI-PerlGenerator/issues)
+
+# AUTHOR
+
+Max Maischein `corion@cpan.org`
+
+# COPYRIGHT (c)
+
+Copyright 2024- by Max Maischein `corion@cpan.org`.
+
+# LICENSE
+
+This module is released under the Artistic License 2.0.
