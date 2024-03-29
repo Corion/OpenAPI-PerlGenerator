@@ -63,6 +63,7 @@ my %module = (
         'Moo'                 => 2,
         'OpenAPI::Modern'     => 0,
         'Perl::Tidy'          => 0,
+        'Markdown::Pod'       => 0,
         'YAML::PP'            => 0,
         'experimental'        => '0.031',
         'warnings'            => 0,

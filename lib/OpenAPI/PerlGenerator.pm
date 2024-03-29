@@ -9,6 +9,7 @@ use Mojo::Template;
 use OpenAPI::PerlGenerator::Utils; # for tidy(), but we don't import that
 use OpenAPI::PerlGenerator::Template;
 use JSON::Pointer;
+use Markdown::Pod;
 
 =head1 NAME
 
@@ -137,6 +138,11 @@ sub full_package( $self, $name, $prefix=$self->prefix ) {
 
 sub filename( $self, $name, $prefix=$self->prefix ) {
     return ((("lib::" . $self->full_package($name, $prefix)) =~ s!::!/!gr). '.pm');
+}
+
+sub markdown_to_pod( $self, $str ) {
+    state $converter = Markdown::Pod->new();
+    return $converter->markdown_to_pod( markdown => $str ) =~ s/\s+\z//r;
 }
 
 sub map_type( $self, $elt ) {

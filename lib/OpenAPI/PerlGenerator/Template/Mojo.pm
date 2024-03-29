@@ -474,7 +474,7 @@ has 'server' => (
 % }
 
 % if( $elt->{summary}  and $elt->{summary} =~ /\S/ ) {
-<%= $elt->{summary} =~ s/\s*$//r; %>
+<%= markdown_to_pod( $elt->{summary} =~ s/\s*$//r ) %>
 
 %}
 %# List/add the invocation parameters
@@ -488,7 +488,7 @@ has 'server' => (
 =item B<< <%= $p->{name} %> >>
 
 %     if( $p->{description} =~ /\S/ ) {
-<%= $p->{description} =~ s/\s*$//r %>
+<%= markdown_to_pod( $p->{description} =~ s/\s*$//r ) %>
 
 %     }
 %     if( $p->{default}) {
@@ -519,7 +519,7 @@ Defaults to C<< <%= $p->{default} =%> >>
 =item C<< <%= $prop %> >>
 
 % if( $p->{description} ) {
-<%= $p->{description} =~ s/\s*$//r %>
+<%= markdown_to_pod( $p->{description} =~ s/\s*$//r ) %>
 
 % }
 %         }

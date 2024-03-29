@@ -4,11 +4,36 @@ use experimental 'signatures';
 
 our $info;
 
-# Reflection package for template methods
+=head1 NAME
+
+OpenAPI::PerlGenerator::Template - Reflection package for template methods
+
+=head1 DESCRIPTION
+
+This package reflects functions called as subroutines onto a global
+variable C<$info> for convenient calling from within (Mojolicious) templates.
+
+=head1 REFLECTED METHODS
+
+=item2 C<< markdown_to_pod >>
+
+=cut
+
+sub markdown_to_pod {
+    $info->markdown_to_pod( @_ );
+}
+
+=item2 C<< map_type >>
+
+=cut
 
 sub map_type {
     $info->map_type( @_ );
 }
+
+=item2 C<< openapi_submodules >>
+
+=cut
 
 sub openapi_submodules {
     $info->openapi_submodules( @_ );
