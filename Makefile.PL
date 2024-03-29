@@ -64,7 +64,7 @@ my %module = (
         'OpenAPI::Modern'     => 0,
         'Perl::Tidy'          => 0,
         'YAML::PP'            => 0,
-        'experimental'        => 0,
+        'experimental'        => '0.031',
         'warnings'            => 0,
     },
     TEST_REQUIRES => {

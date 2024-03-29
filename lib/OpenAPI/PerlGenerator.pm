@@ -1,13 +1,13 @@
 package OpenAPI::PerlGenerator 0.01;
 use 5.020;
-use experimental 'signatures';
+use Moo 2;
+use Carp 'croak';
+use experimental 'signatures'; # actually, they are stable but stable.pm doesn't know
+use stable 'postderef';
+
+use Mojo::Template;
 use OpenAPI::PerlGenerator::Utils; # for tidy(), but we don't import that
 use OpenAPI::PerlGenerator::Template;
-use Carp 'croak';
-
-use Moo 2;
-use Mojo::Template;
-no warnings 'experimental::signatures';
 use JSON::Pointer;
 
 =head1 NAME
