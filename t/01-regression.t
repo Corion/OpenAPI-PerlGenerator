@@ -26,6 +26,7 @@ my $gen = OpenAPI::PerlGenerator->new(
 );
 
 my %prefix = (
+    'jira' => 'JIRA::API',
     'ollama' => 'AI::Ollama',
     'petstore' => 'OpenAPI::PetStore',
     'more-testcases' => 'More::TestCases',
