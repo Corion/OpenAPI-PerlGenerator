@@ -39,6 +39,15 @@ sub property_name {
     $info->property_name( @_ );
 }
 
+=item2 C<< single_line >>
+
+=cut
+
+sub single_line {
+    $info->single_line( @_ );
+}
+
+
 =item2 C<< openapi_submodules >>
 
 =cut

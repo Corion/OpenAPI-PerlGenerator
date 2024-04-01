@@ -176,6 +176,10 @@ sub property_name( $self, $name ) {
     return $name
 }
 
+sub single_line( $self, $str ) {
+    $str =~ s/\s+/ /gr
+}
+
 =head1 METHODS
 
 =head2 C<< ->render( $name, $args ) >>
