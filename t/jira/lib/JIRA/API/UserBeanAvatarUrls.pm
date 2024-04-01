@@ -12,46 +12,46 @@ sub as_hash( $self ) {
 
 =head1 PROPERTIES
 
-=head2 C<< 16x16 >>
+=head2 C<< _16x16 >>
 
 The URL of the user's 16x16 pixel avatar.
 
 =cut
 
-has '16x16' => (
+has '_16x16' => (
     is       => 'ro',
     isa      => Str,
 );
 
-=head2 C<< 24x24 >>
+=head2 C<< _24x24 >>
 
 The URL of the user's 24x24 pixel avatar.
 
 =cut
 
-has '24x24' => (
+has '_24x24' => (
     is       => 'ro',
     isa      => Str,
 );
 
-=head2 C<< 32x32 >>
+=head2 C<< _32x32 >>
 
 The URL of the user's 32x32 pixel avatar.
 
 =cut
 
-has '32x32' => (
+has '_32x32' => (
     is       => 'ro',
     isa      => Str,
 );
 
-=head2 C<< 48x48 >>
+=head2 C<< _48x48 >>
 
 The URL of the user's 48x48 pixel avatar.
 
 =cut
 
-has '48x48' => (
+has '_48x48' => (
     is       => 'ro',
     isa      => Str,
 );

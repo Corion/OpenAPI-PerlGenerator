@@ -12,21 +12,21 @@ sub as_hash( $self ) {
 
 =head1 PROPERTIES
 
-=head2 C<< The column position of the gadget. >>
+=head2 C<< The_column_position_of_the_gadget_ >>
 
 =cut
 
-has 'The column position of the gadget.' => (
+has 'The_column_position_of_the_gadget_' => (
     is       => 'ro',
     isa      => Int,
     required => 1,
 );
 
-=head2 C<< The row position of the gadget. >>
+=head2 C<< The_row_position_of_the_gadget_ >>
 
 =cut
 
-has 'The row position of the gadget.' => (
+has 'The_row_position_of_the_gadget_' => (
     is       => 'ro',
     isa      => Int,
     required => 1,

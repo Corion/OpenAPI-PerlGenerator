@@ -168,6 +168,14 @@ sub map_type( $self, $elt ) {
     }
 }
 
+sub property_name( $self, $name ) {
+    if( $name !~ /\A[A-Za-z_]/ ) {
+        $name = "_" . $name;
+    }
+    $name =~ s!\W+!_!g;
+    return $name
+}
+
 =head1 METHODS
 
 =head2 C<< ->render( $name, $args ) >>

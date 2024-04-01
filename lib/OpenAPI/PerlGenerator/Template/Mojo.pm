@@ -223,7 +223,7 @@ extends '<%= $prefix %>::<%= $item->{name} %>';
 % for my $t (@included_types) {
 %     for my $prop (sort keys $t->{properties}->%*) {
 %         my $p = $t->{properties}->{$prop};
-=head2 C<< <%= $prop %> >>
+=head2 C<< <%= property_name( $prop ) %> >>
 
 % if( $p->{description} and $p->{description} =~ /\S/ ) {
 <%= $p->{description} =~ s/\s*$//r %>
@@ -231,7 +231,7 @@ extends '<%= $prefix %>::<%= $item->{name} %>';
 % }
 =cut
 
-has '<%= $prop %>' => (
+has '<%= property_name( $prop ) %>' => (
     is       => 'ro',
 % my $type = map_type( $p );
 % if( $type ) {
@@ -516,7 +516,7 @@ Defaults to C<< <%= $p->{default} =%> >>
 
 %         for my $prop (@properties) {
 %             my $p = $type->{properties}->{$prop};
-=item C<< <%= $prop %> >>
+=item C<< <%= property_name( $prop ) %> >>
 
 % if( $p->{description} ) {
 <%= markdown_to_pod( $p->{description} =~ s/\s*$//r ) %>

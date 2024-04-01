@@ -31,6 +31,14 @@ sub map_type {
     $info->map_type( @_ );
 }
 
+=item2 C<< property_name >>
+
+=cut
+
+sub property_name {
+    $info->property_name( @_ );
+}
+
 =item2 C<< openapi_submodules >>
 
 =cut

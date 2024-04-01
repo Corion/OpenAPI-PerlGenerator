@@ -12,13 +12,13 @@ sub as_hash( $self ) {
 
 =head1 PROPERTIES
 
-=head2 C<< end-index >>
+=head2 C<< end_index >>
 
 The index of the last item returned on the page.
 
 =cut
 
-has 'end-index' => (
+has 'end_index' => (
     is       => 'ro',
     isa      => Int,
 );
@@ -34,13 +34,13 @@ has 'items' => (
     isa      => ArrayRef[Object],
 );
 
-=head2 C<< max-results >>
+=head2 C<< max_results >>
 
 The maximum number of results that could be on the page.
 
 =cut
 
-has 'max-results' => (
+has 'max_results' => (
     is       => 'ro',
     isa      => Int,
 );
@@ -56,13 +56,13 @@ has 'size' => (
     isa      => Int,
 );
 
-=head2 C<< start-index >>
+=head2 C<< start_index >>
 
 The index of the first item returned on the page.
 
 =cut
 
-has 'start-index' => (
+has 'start_index' => (
     is       => 'ro',
     isa      => Int,
 );

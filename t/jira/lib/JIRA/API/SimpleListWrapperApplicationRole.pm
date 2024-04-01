@@ -30,11 +30,11 @@ has 'items' => (
     isa      => ArrayRef[Object],
 );
 
-=head2 C<< max-results >>
+=head2 C<< max_results >>
 
 =cut
 
-has 'max-results' => (
+has 'max_results' => (
     is       => 'ro',
     isa      => Int,
 );
