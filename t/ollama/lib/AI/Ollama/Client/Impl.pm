@@ -109,8 +109,6 @@ sub _build_checkBlob_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -1247,8 +1245,6 @@ sub _build_listModels_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx

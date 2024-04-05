@@ -627,8 +627,6 @@ sub _build_getBanner_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -1019,8 +1017,6 @@ sub _build_getCustomFieldConfiguration_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -1357,8 +1353,6 @@ sub _build_getApplicationProperty_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -1443,8 +1437,6 @@ sub _build_getAdvancedSettings_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -1645,8 +1637,6 @@ sub _build_getAllApplicationRoles_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -1741,8 +1731,6 @@ sub _build_getApplicationRole_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -1847,8 +1835,6 @@ sub _build_getAttachmentContent_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -1950,8 +1936,6 @@ sub _build_getAttachmentMeta_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -2065,8 +2049,6 @@ sub _build_getAttachmentThumbnail_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -2171,8 +2153,6 @@ sub _build_removeAttachment_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -2261,8 +2241,6 @@ sub _build_getAttachment_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -2362,8 +2340,6 @@ sub _build_expandAttachmentForHumans_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -2466,8 +2442,6 @@ sub _build_expandAttachmentForMachines_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -2588,8 +2562,6 @@ sub _build_getAuditRecords_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -2686,8 +2658,6 @@ sub _build_getAllSystemAvatars_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -2896,8 +2866,6 @@ sub _build_getCommentPropertyKeys_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -3002,8 +2970,6 @@ sub _build_deleteCommentProperty_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -3102,8 +3068,6 @@ sub _build_getCommentProperty_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -3542,8 +3506,6 @@ sub _build_deleteComponent_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -3636,8 +3598,6 @@ sub _build_getComponent_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -3951,8 +3911,6 @@ sub _build_getComponentRelatedIssues_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -4036,8 +3994,6 @@ sub _build_getConfiguration_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -4119,8 +4075,6 @@ sub _build_getSelectedTimeTrackingImplementation_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -4322,8 +4276,6 @@ sub _build_getAvailableTimeTrackingImplementations_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -4408,8 +4360,6 @@ sub _build_getSharedTimeTrackingConfiguration_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -4614,8 +4564,6 @@ sub _build_getCustomFieldOption_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -4736,8 +4684,6 @@ sub _build_getAllDashboards_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -4965,8 +4911,6 @@ sub _build_getAllAvailableDashboardGadgets_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -5204,8 +5148,6 @@ sub _build_getDashboardsPaginated_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -5339,8 +5281,6 @@ sub _build_getAllGadgets_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -5597,8 +5537,6 @@ sub _build_removeGadget_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -5849,8 +5787,6 @@ sub _build_getDashboardItemPropertyKeys_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -5956,8 +5892,6 @@ sub _build_deleteDashboardItemProperty_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -6063,8 +5997,6 @@ sub _build_getDashboardItemProperty_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -6302,8 +6234,6 @@ sub _build_deleteDashboard_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -6407,8 +6337,6 @@ sub _build_getDashboard_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -6805,8 +6733,6 @@ sub _build_getEvents_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -7174,8 +7100,6 @@ sub _build_getFields_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -7687,8 +7611,6 @@ sub _build_getFieldsPaginated_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -7841,8 +7763,6 @@ sub _build_getTrashedFieldsPaginated_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -8236,8 +8156,6 @@ sub _build_getContextsForField_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -8504,8 +8422,6 @@ sub _build_getDefaultValues_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -8770,8 +8686,6 @@ sub _build_getIssueTypeMappingsForContexts_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -9040,8 +8954,6 @@ sub _build_getProjectContextMapping_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -9161,8 +9073,6 @@ sub _build_deleteCustomFieldContext_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -9760,8 +9670,6 @@ sub _build_getOptionsForContext_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -10335,8 +10243,6 @@ sub _build_deleteCustomFieldOption_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -10751,8 +10657,6 @@ sub _build_getContextsForFieldDeprecated_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -10864,8 +10768,6 @@ sub _build_getScreensForField_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -10986,8 +10888,6 @@ sub _build_getAllIssueFieldOptions_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -11244,8 +11144,6 @@ sub _build_getSelectableIssueFieldOptions_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -11371,8 +11269,6 @@ sub _build_getVisibleIssueFieldOptions_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -11487,8 +11383,6 @@ sub _build_deleteIssueFieldOption_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -11606,8 +11500,6 @@ sub _build_getIssueFieldOption_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -11890,8 +11782,6 @@ sub _build_replaceIssueFieldOption_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -12001,8 +11891,6 @@ sub _build_deleteCustomField_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -12153,8 +12041,6 @@ sub _build_restoreCustomField_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -12290,8 +12176,6 @@ sub _build_trashCustomField_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -12441,8 +12325,6 @@ sub _build_getAllFieldConfigurations_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -12639,8 +12521,6 @@ sub _build_deleteFieldConfiguration_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -12869,8 +12749,6 @@ sub _build_getFieldConfigurationItems_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -13087,8 +12965,6 @@ sub _build_getAllFieldConfigurationSchemes_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -13312,8 +13188,6 @@ sub _build_getFieldConfigurationSchemeMappings_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -13424,8 +13298,6 @@ sub _build_getFieldConfigurationSchemeProjectMapping_request( $self, %options ) 
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -13652,8 +13524,6 @@ sub _build_deleteFieldConfigurationScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -14165,8 +14035,6 @@ sub _build_getFilters_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -14420,8 +14288,6 @@ sub _build_getDefaultShareScope_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -14639,8 +14505,6 @@ sub _build_getFavouriteFilters_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -14749,8 +14613,6 @@ sub _build_getMyFilters_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -14994,8 +14856,6 @@ sub _build_getFiltersPaginated_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -15100,8 +14960,6 @@ sub _build_deleteFilter_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -15214,8 +15072,6 @@ sub _build_getFilter_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -15492,8 +15348,6 @@ sub _build_resetColumns_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -15582,8 +15436,6 @@ sub _build_getColumns_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -15804,8 +15656,6 @@ sub _build_deleteFavouriteForFilter_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -15921,8 +15771,6 @@ sub _build_setFavouriteForFilter_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -16128,8 +15976,6 @@ sub _build_getSharePermissions_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -16407,8 +16253,6 @@ sub _build_deleteSharePermission_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -16504,8 +16348,6 @@ sub _build_getSharePermission_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -16614,8 +16456,6 @@ sub _build_removeGroup_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -16717,8 +16557,6 @@ sub _build_getGroup_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -16940,8 +16778,6 @@ sub _build_bulkGetGroups_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -17077,8 +16913,6 @@ sub _build_getUsersFromGroup_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -17194,8 +17028,6 @@ sub _build_removeUserFromGroup_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -17444,8 +17276,6 @@ sub _build_findGroups_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -17574,8 +17404,6 @@ sub _build_findUsersAndGroups_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -17665,8 +17493,6 @@ sub _build_getLicense_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -18052,8 +17878,6 @@ sub _build_getCreateIssueMeta_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -18167,8 +17991,6 @@ sub _build_getIssuePickerResource_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -18826,8 +18648,6 @@ sub _build_deleteIssue_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -19067,8 +18887,6 @@ sub _build_getIssue_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -19613,8 +19431,6 @@ sub _build_getChangeLogs_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -19834,8 +19650,6 @@ sub _build_getComments_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -20098,8 +19912,6 @@ sub _build_deleteComment_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -20206,8 +20018,6 @@ sub _build_getComment_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -20492,8 +20302,6 @@ sub _build_getEditIssueMeta_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -20722,8 +20530,6 @@ sub _build_getIssuePropertyKeys_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -20819,8 +20625,6 @@ sub _build_deleteIssueProperty_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -20913,8 +20717,6 @@ sub _build_getIssueProperty_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -21137,8 +20939,6 @@ sub _build_deleteRemoteIssueLinkByGlobalId_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -21238,8 +21038,6 @@ sub _build_getRemoteIssueLinks_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -21492,8 +21290,6 @@ sub _build_deleteRemoteIssueLinkById_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -21592,8 +21388,6 @@ sub _build_getRemoteIssueLinkById_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -21868,8 +21662,6 @@ sub _build_getTransitions_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -22092,8 +21884,6 @@ sub _build_removeVote_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -22183,8 +21973,6 @@ sub _build_getVotes_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -22282,8 +22070,6 @@ sub _build_addVote_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -22394,8 +22180,6 @@ sub _build_removeWatcher_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -22487,8 +22271,6 @@ sub _build_getIssueWatchers_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -22712,8 +22494,6 @@ sub _build_getIssueWorklog_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -23087,8 +22867,6 @@ sub _build_deleteWorklog_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -23202,8 +22980,6 @@ sub _build_getWorklog_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -23529,8 +23305,6 @@ sub _build_getWorklogPropertyKeys_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -23642,8 +23416,6 @@ sub _build_deleteWorklogProperty_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -23752,8 +23524,6 @@ sub _build_getWorklogProperty_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -24113,8 +23883,6 @@ sub _build_deleteIssueLink_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -24210,8 +23978,6 @@ sub _build_getIssueLink_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -24302,8 +24068,6 @@ sub _build_getIssueLinkTypes_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -24570,8 +24334,6 @@ sub _build_deleteIssueLinkType_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -24664,8 +24426,6 @@ sub _build_getIssueLinkType_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -24941,8 +24701,6 @@ sub _build_getIssueSecuritySchemes_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -25036,8 +24794,6 @@ sub _build_getIssueSecurityScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -25183,8 +24939,6 @@ sub _build_getIssueSecurityLevelMembers_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -25274,8 +25028,6 @@ sub _build_getIssueAllTypes_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -25528,8 +25280,6 @@ sub _build_getIssueTypesForProject_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -25636,8 +25386,6 @@ sub _build_deleteIssueType_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -25738,8 +25486,6 @@ sub _build_getIssueType_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -25966,8 +25712,6 @@ sub _build_getAlternativeIssueTypes_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -26194,8 +25938,6 @@ sub _build_getIssueTypePropertyKeys_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -26297,8 +26039,6 @@ sub _build_deleteIssueTypeProperty_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -26397,8 +26137,6 @@ sub _build_getIssueTypeProperty_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -26674,8 +26412,6 @@ sub _build_getAllIssueTypeSchemes_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -26918,8 +26654,6 @@ sub _build_getIssueTypeSchemesMapping_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -27027,8 +26761,6 @@ sub _build_getIssueTypeSchemeForProjects_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -27255,8 +26987,6 @@ sub _build_deleteIssueTypeScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -27811,8 +27541,6 @@ sub _build_removeIssueTypeFromIssueTypeScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -27973,8 +27701,6 @@ sub _build_getIssueTypeScreenSchemes_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -28224,8 +27950,6 @@ sub _build_getIssueTypeScreenSchemeMappings_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -28333,8 +28057,6 @@ sub _build_getIssueTypeScreenSchemeProjectAssociations_request( $self, %options 
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -28565,8 +28287,6 @@ sub _build_deleteIssueTypeScreenScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -29249,8 +28969,6 @@ sub _build_getProjectsForIssueTypeScreenScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -29337,8 +29055,6 @@ sub _build_getAutoComplete_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -29542,8 +29258,6 @@ sub _build_getFieldAutoCompleteForQueryString_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -29645,8 +29359,6 @@ sub _build_getPrecomputations_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -30276,8 +29988,6 @@ sub _build_getAllLabels_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -30355,8 +30065,6 @@ sub _build_getApproximateLicenseCount_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -30448,8 +30156,6 @@ sub _build_getApproximateApplicationLicenseCount_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -30575,8 +30281,6 @@ sub _build_getMyPermissions_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -30696,8 +30400,6 @@ sub _build_removePreference_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -30784,8 +30486,6 @@ sub _build_getPreference_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -30883,7 +30583,8 @@ sub _build_setPreference_request( $self, %options ) {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        # XXX Need to fill the body
+        # => $body,
     );
 
     return $tx
@@ -30967,8 +30668,6 @@ sub _build_deleteLocale_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -31049,8 +30748,6 @@ sub _build_getLocale_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -31249,8 +30946,6 @@ sub _build_getCurrentUser_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -31398,8 +31093,6 @@ sub _build_getNotificationSchemes_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -31650,8 +31343,6 @@ sub _build_getNotificationSchemeToProjectMappings_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -31803,8 +31494,6 @@ sub _build_getNotificationScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -32205,8 +31894,6 @@ sub _build_deleteNotificationScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -32349,8 +32036,6 @@ sub _build_removeNotificationFromNotificationScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -32472,8 +32157,6 @@ sub _build_getAllPermissions_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -32831,8 +32514,6 @@ sub _build_getAllPermissionSchemes_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -33086,8 +32767,6 @@ sub _build_deletePermissionScheme_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -33218,8 +32897,6 @@ sub _build_getPermissionScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -33533,8 +33210,6 @@ sub _build_getPermissionSchemeGrants_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -33796,8 +33471,6 @@ sub _build_deletePermissionSchemeEntity_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -33935,8 +33608,6 @@ sub _build_getPermissionSchemeGrant_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -34020,8 +33691,6 @@ sub _build_getPriorities_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -34549,8 +34218,6 @@ sub _build_searchPriorities_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -34664,8 +34331,6 @@ sub _build_deletePriority_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -34808,8 +34473,6 @@ sub _build_getPriority_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -35095,8 +34758,6 @@ sub _build_getAllProjects_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -35402,8 +35063,6 @@ sub _build_getRecent_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -35709,8 +35368,6 @@ sub _build_searchProjects_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -35797,8 +35454,6 @@ sub _build_getAllProjectTypes_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -35880,8 +35535,6 @@ sub _build_getAllAccessibleProjectTypes_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -35970,8 +35623,6 @@ sub _build_getProjectTypeByKey_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -36065,8 +35716,6 @@ sub _build_getAccessibleProjectTypeByKey_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -36166,8 +35815,6 @@ sub _build_deleteProject_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -36295,8 +35942,6 @@ sub _build_getProject_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -36581,8 +36226,6 @@ sub _build_archiveProject_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -36820,8 +36463,6 @@ sub _build_deleteProjectAvatar_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -37035,8 +36676,6 @@ sub _build_getAllProjectAvatars_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -37177,8 +36816,6 @@ sub _build_getProjectComponentsPaginated_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -37272,8 +36909,6 @@ sub _build_getProjectComponents_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -37368,8 +37003,6 @@ sub _build_deleteProjectAsynchronously_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -37466,8 +37099,6 @@ sub _build_getFeaturesForProject_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -37686,8 +37317,6 @@ sub _build_getProjectPropertyKeys_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -37792,8 +37421,6 @@ sub _build_deleteProjectProperty_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -37892,8 +37519,6 @@ sub _build_getProjectProperty_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -38114,8 +37739,6 @@ sub _build_restore_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -38212,8 +37835,6 @@ sub _build_getProjectRoles_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -38330,8 +37951,6 @@ sub _build_deleteActor_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -38435,8 +38054,6 @@ sub _build_getProjectRole_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -38821,8 +38438,6 @@ sub _build_getProjectRoleDetails_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -38917,8 +38532,6 @@ sub _build_getAllStatuses_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -39020,8 +38633,6 @@ sub _build_updateProjectType_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -39194,8 +38805,6 @@ sub _build_getProjectVersionsPaginated_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -39294,8 +38903,6 @@ sub _build_getProjectVersions_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -39387,8 +38994,6 @@ sub _build_getProjectEmail_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -39601,8 +39206,6 @@ sub _build_getHierarchy_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -39699,8 +39302,6 @@ sub _build_getProjectIssueSecurityScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -39842,8 +39443,6 @@ sub _build_getNotificationSchemeForProject_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -39982,8 +39581,6 @@ sub _build_getAssignedPermissionScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -40234,8 +39831,6 @@ sub _build_getSecurityLevelsForProject_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -40316,8 +39911,6 @@ sub _build_getAllProjectCategories_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -40524,8 +40117,6 @@ sub _build_removeProjectCategory_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -40614,8 +40205,6 @@ sub _build_getProjectCategoryById_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -40832,8 +40421,6 @@ sub _build_validateProjectKey_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -40922,8 +40509,6 @@ sub _build_getValidProjectKey_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -41015,8 +40600,6 @@ sub _build_getValidProjectName_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -41103,8 +40686,6 @@ sub _build_getResolutions_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -41624,8 +41205,6 @@ sub _build_searchResolutions_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -41739,8 +41318,6 @@ sub _build_deleteResolution_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -41883,8 +41460,6 @@ sub _build_getResolution_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -42120,8 +41695,6 @@ sub _build_getAllProjectRoles_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -42328,8 +41901,6 @@ sub _build_deleteProjectRole_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -42424,8 +41995,6 @@ sub _build_getProjectRoleById_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -42772,8 +42341,6 @@ sub _build_deleteProjectRoleActorsFromRole_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -42873,8 +42440,6 @@ sub _build_getProjectRoleActorsForRole_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -43131,8 +42696,6 @@ sub _build_getScreens_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -43345,8 +42908,6 @@ sub _build_addFieldToDefaultScreen_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -43442,8 +43003,6 @@ sub _build_deleteScreen_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -43699,8 +43258,6 @@ sub _build_getAvailableScreenFields_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -43806,8 +43363,6 @@ sub _build_getAllScreenTabs_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -44029,8 +43584,6 @@ sub _build_deleteScreenTab_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -44257,8 +43810,6 @@ sub _build_getAllScreenTabFields_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -44487,8 +44038,6 @@ sub _build_removeScreenTabField_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -44724,8 +44273,6 @@ sub _build_moveScreenTab_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -44862,8 +44409,6 @@ sub _build_getScreenSchemes_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -45090,8 +44635,6 @@ sub _build_deleteScreenScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -45522,8 +45065,6 @@ sub _build_searchForIssuesUsingJql_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -45864,8 +45405,6 @@ sub _build_getIssueSecurityLevel_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -45949,8 +45488,6 @@ sub _build_getServerInfo_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -46031,8 +45568,6 @@ sub _build_getIssueNavigatorDefaultColumns_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -46211,8 +45746,6 @@ sub _build_getStatuses_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -46304,8 +45837,6 @@ sub _build_getStatus_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -46393,8 +45924,6 @@ sub _build_getStatusCategories_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -46486,8 +46015,6 @@ sub _build_getStatusCategory_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -46581,8 +46108,6 @@ sub _build_deleteStatusesById_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -46698,8 +46223,6 @@ sub _build_getStatusesById_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -47039,8 +46562,6 @@ sub _build_search_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -47134,8 +46655,6 @@ sub _build_getTask_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -47236,8 +46755,6 @@ sub _build_cancelTask_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -47395,8 +46912,6 @@ sub _build_getUiModifications_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -47607,8 +47122,6 @@ sub _build_deleteUiModification_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -47836,8 +47349,6 @@ sub _build_getAvatars_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -48077,8 +47588,6 @@ sub _build_deleteAvatar_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -48183,8 +47692,6 @@ sub _build_getAvatarImageByType_request( $self, %options ) {
         {
             'Accept' => '*/*,application/json,image/png,image/svg+xml',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -48437,8 +47944,6 @@ sub _build_getAvatarImageByID_request( $self, %options ) {
         {
             'Accept' => '*/*,application/json,image/png,image/svg+xml',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -48729,8 +48234,6 @@ sub _build_getAvatarImageByOwner_request( $self, %options ) {
         {
             'Accept' => '*/*,application/json,image/png,image/svg+xml',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -49006,8 +48509,6 @@ sub _build_removeUser_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -49126,8 +48627,6 @@ sub _build_getUser_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -49373,8 +48872,6 @@ sub _build_findBulkAssignableUsers_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -49520,8 +49017,6 @@ sub _build_findAssignableUsers_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -49647,8 +49142,6 @@ sub _build_bulkGetUsers_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -49755,8 +49248,6 @@ sub _build_bulkGetUsersMigration_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -49852,8 +49343,6 @@ sub _build_resetUserColumns_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -49942,8 +49431,6 @@ sub _build_getUserDefaultColumns_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -50147,8 +49634,6 @@ sub _build_getUserEmail_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -50249,8 +49734,6 @@ sub _build_getUserEmailBulk_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -50358,8 +49841,6 @@ sub _build_getUserGroups_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -50678,8 +50159,6 @@ sub _build_findUsersWithAllPermissions_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -50815,8 +50294,6 @@ sub _build_findUsersForPicker_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -50921,8 +50398,6 @@ sub _build_getUserPropertyKeys_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -51038,8 +50513,6 @@ sub _build_deleteUserProperty_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -51149,8 +50622,6 @@ sub _build_getUserProperty_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -51406,8 +50877,6 @@ sub _build_findUsers_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -51520,8 +50989,6 @@ sub _build_findUsersByQuery_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -51632,8 +51099,6 @@ sub _build_findUserKeysByQuery_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -51761,8 +51226,6 @@ sub _build_findUsersWithBrowsePermission_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -51870,8 +51333,6 @@ sub _build_getAllUsersDefault_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -51972,8 +51433,6 @@ sub _build_getAllUsers_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -52264,8 +51723,6 @@ sub _build_deleteVersion_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -52379,8 +51836,6 @@ sub _build_getVersion_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -52673,8 +52128,6 @@ sub _build_mergeVersions_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -52894,8 +52347,6 @@ sub _build_getVersionRelatedIssues_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -53112,8 +52563,6 @@ sub _build_getVersionUnresolvedIssues_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -53320,8 +52769,6 @@ sub _build_getDynamicWebhooksForApp_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -53554,8 +53001,6 @@ sub _build_getFailedWebhooks_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -53777,8 +53222,6 @@ sub _build_getAllWorkflows_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -54087,8 +53530,6 @@ sub _build_getWorkflowTransitionRuleConfigurations_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -54531,8 +53972,6 @@ sub _build_getWorkflowsPaginated_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -54654,8 +54093,6 @@ sub _build_deleteWorkflowTransitionProperty_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -54775,8 +54212,6 @@ sub _build_getWorkflowTransitionProperties_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -55162,8 +54597,6 @@ sub _build_deleteInactiveWorkflow_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -55282,8 +54715,6 @@ sub _build_getAllWorkflowSchemes_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -55544,8 +54975,6 @@ sub _build_getWorkflowSchemeProjectAssociations_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -55788,8 +55217,6 @@ sub _build_deleteWorkflowScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -55897,8 +55324,6 @@ sub _build_getWorkflowScheme_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -56174,8 +55599,6 @@ sub _build_createWorkflowSchemeDraftFromParent_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -56280,8 +55703,6 @@ sub _build_deleteDefaultWorkflow_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -56389,8 +55810,6 @@ sub _build_getDefaultWorkflow_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -56601,8 +56020,6 @@ sub _build_deleteWorkflowSchemeDraft_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -56694,8 +56111,6 @@ sub _build_getWorkflowSchemeDraft_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -56977,8 +56392,6 @@ sub _build_deleteDraftDefaultWorkflow_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -57078,8 +56491,6 @@ sub _build_getDraftDefaultWorkflow_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -57305,8 +56716,6 @@ sub _build_deleteWorkflowSchemeDraftIssueType_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -57410,8 +56819,6 @@ sub _build_getWorkflowSchemeDraftIssueType_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -57786,8 +57193,6 @@ sub _build_deleteDraftWorkflowMapping_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -57889,8 +57294,6 @@ sub _build_getDraftWorkflow_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -58141,8 +57544,6 @@ sub _build_deleteWorkflowSchemeIssueType_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -58257,8 +57658,6 @@ sub _build_getWorkflowSchemeIssueType_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -58495,8 +57894,6 @@ sub _build_deleteWorkflowMapping_request( $self, %options ) {
         $method => $url,
         {
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -58605,8 +58002,6 @@ sub _build_getWorkflow_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -58839,8 +58234,6 @@ sub _build_getIdsOfWorklogsDeletedSince_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -59039,8 +58432,6 @@ sub _build_getIdsOfWorklogsModifiedSince_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -59132,8 +58523,6 @@ sub _build_AddonPropertiesResource_getAddonProperties_get_request( $self, %optio
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -59241,8 +58630,6 @@ sub _build_AddonPropertiesResource_deleteAddonProperty_delete_request( $self, %o
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -59365,8 +58752,6 @@ sub _build_AddonPropertiesResource_getAddonProperty_get_request( $self, %options
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -59623,8 +59008,6 @@ sub _build_DynamicModulesResource_removeModules_delete_request( $self, %options 
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx
@@ -59706,8 +59089,6 @@ sub _build_DynamicModulesResource_getModules_get_request( $self, %options ) {
         {
             'Accept' => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
     );
 
     return $tx

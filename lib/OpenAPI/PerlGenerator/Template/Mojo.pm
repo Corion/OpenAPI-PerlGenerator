@@ -323,7 +323,8 @@ sub _build_<%= $method->{name} %>_request( $self, %options ) {
 %
 % my $is_json;
 % my $content_type;
-% if( $elt->{requestBody} ) {
+% my $has_body = exists $elt->{requestBody};
+% if( $has_body ) {
 %#    We assume we will only ever have one content type for the request we send:
 %     ($content_type) = sort keys $elt->{requestBody}->{content}->%*;
 %     $is_json = $ct && $ct eq 'application/json';
@@ -361,7 +362,9 @@ sub _build_<%= $method->{name} %>_request( $self, %options ) {
 %     }
 % };                                                                           # header parameters
         }
-% if( $is_json ) {
+% if( ! $has_body ) {
+%# nothing to do
+% } elsif( $is_json ) {
         => json => $request->as_hash,
 % } elsif( $content_type and $content_type eq 'multipart/form-data' ) {
         => form => $request->as_hash,
@@ -501,7 +504,7 @@ Defaults to C<< <%= $p->{default} =%> >>
 % } # parameters
 %#
 %# Add the body/schema parameters:
-% (my $ct) = keys $elt->{requestBody}->{content}->%*;
+% (my $ct) = exists $elt->{requestBody} ? keys $elt->{requestBody}->{content}->%* : ();
 % my $type;
 % if( $ct ) {
 %     $type = $ct && $elt->{requestBody}->{content}->{$ct}->{schema};
