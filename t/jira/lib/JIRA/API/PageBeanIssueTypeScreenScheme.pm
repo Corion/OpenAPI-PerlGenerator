@@ -6,6 +6,17 @@ use experimental 'signatures';
 use Types::Standard qw(Str Bool Num Int Object ArrayRef);
 use MooX::TypeTiny;
 
+=head1 NAME
+
+JIRA::API::PageBeanIssueTypeScreenScheme -
+
+=head1 SYNOPSIS
+
+  my $obj = JIRA::API::PageBeanIssueTypeScreenScheme->new();
+  ...
+
+=cut
+
 sub as_hash( $self ) {
     return { $self->%* }
 }
