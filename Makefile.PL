@@ -51,6 +51,7 @@ my %module = (
 
     PREREQ_PM => {
         'Carp'                => 0,
+        'Encode'              => 0,
         'Exporter'            => 5, # for 'import'
         'File::Basename'      => 0,
         'File::Path'          => 0,

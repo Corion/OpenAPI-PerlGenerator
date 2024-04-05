@@ -62,12 +62,14 @@ for my $known (@testcases) {
         }
     }
 
-
     for my $f (@files) {
         # Check that all files exist and have the same content
         my $file = Mojo::File->new($known, $f->{filename});
         if( ok -f $file, "$file exists" ) {
-        my $known_content = $file->slurp(':raw:UTF-8');
+            my $known_content = $file->slurp(':raw:UTF-8');
+            # Known and $f->{source} have different encodings?!
+            #use Encode;
+            #Encode::_utf8_on( $f->{source});
             is $f->{source}, $known_content, "The content has not changed";
         } else {
             SKIP: {
@@ -76,6 +78,7 @@ for my $known (@testcases) {
         }
         if( $update ) {
             make_path( $file->dirname );
+            #$file->spew( Encode::encode('UTF-8', $f->{ source }));
             $file->spew( $f->{ source });
         }
     }
