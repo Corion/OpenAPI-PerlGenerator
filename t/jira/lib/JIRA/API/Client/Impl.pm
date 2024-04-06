@@ -30583,8 +30583,7 @@ sub _build_setPreference_request( $self, %options ) {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
+        => json => $request->as_hash,
     );
 
     return $tx
