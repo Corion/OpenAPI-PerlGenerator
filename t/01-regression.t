@@ -26,7 +26,7 @@ my $gen = OpenAPI::PerlGenerator->new(
 );
 
 my %test_configs = (
-    'jira'           => { prefix => 'JIRA::API', todo => 'Mojibake in output' },
+    'jira'           => { prefix => 'JIRA::API', compare_todo => 'Mojibake in output', compile_todo => 'Definition wrong/incomplete', },
     'ollama'         => { prefix => 'AI::Ollama', },
     'petstore'       => { prefix => 'OpenAPI::PetStore', },
     'more-testcases' => { prefix => 'More::TestCases', },
@@ -48,18 +48,25 @@ for my $known (@testcases) {
         prefix => "$prefix",
     );
 
-    # Compile things a second time ...
-    my $res = $gen->load_schema(
-        packages => \@files,
-    );
+    {
+        my $todo;
+        if( $options->{compile_todo} ) {
+            $todo = todo( $options->{compile_todo} );
+        };
 
-    is 0+$res->{errors}->@*, 0, "No errors when compiling the package";
-    if( $res->{errors}->@* ) {
+        # Compile things a second time ...
+        my $res = $gen->load_schema(
+            packages => \@files,
+        );
 
-        for my $err ($res->{errors}->@*) {
-            diag $err->{name};
-            diag $err->{filename};
-            diag $err->{message};
+        is 0+$res->{errors}->@*, 0, "No errors when compiling the package";
+        if( $res->{errors}->@* ) {
+
+            for my $err ($res->{errors}->@*) {
+                diag $err->{name};
+                diag $err->{filename};
+                diag $err->{message};
+            }
         }
     }
 
@@ -72,8 +79,8 @@ for my $known (@testcases) {
             #use Encode;
             #Encode::_utf8_on( $f->{source});
             my $todo;
-            if( $options->{todo} ) {
-                $todo = todo( $options->{todo} );
+            if( $options->{compare_todo} ) {
+                $todo = todo( $options->{compare_todo} );
             };
             is $f->{source}, $known_content, "The content has not changed";
         } else {
