@@ -387,8 +387,8 @@ t/jira/lib/JIRA/API/ParsedJqlQueries.pm
 t/jira/lib/JIRA/API/ParsedJqlQuery.pm
 t/jira/lib/JIRA/API/PermissionGrant.pm
 t/jira/lib/JIRA/API/PermissionGrants.pm
-t/jira/lib/JIRA/API/Permissions.pm
 t/jira/lib/JIRA/API/PermissionHolder.pm
+t/jira/lib/JIRA/API/Permissions.pm
 t/jira/lib/JIRA/API/PermissionScheme.pm
 t/jira/lib/JIRA/API/PermissionSchemes.pm
 t/jira/lib/JIRA/API/PermissionsKeysBean.pm
