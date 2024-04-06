@@ -1883,10 +1883,7 @@ sub getAttachmentContent( $self, %options ) {
             # The user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the attachment is not found.
- *  attachments are disabled in the Jira settings.
+            # Returned if: * the attachment is not found. * attachments are disabled in the Jira settings.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 416 ) {
             # Returned if the server is unable to satisfy the range of bytes provided.
@@ -2094,11 +2091,7 @@ sub getAttachmentThumbnail( $self, %options ) {
             # The user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the attachment is not found.
- *  attachments are disabled in the Jira settings.
- *  `fallbackToDefault` is `false` and the request thumbnail cannot be downloaded.
+            # Returned if: * the attachment is not found. * attachments are disabled in the Jira settings. * `fallbackToDefault` is `false` and the request thumbnail cannot be downloaded.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -2181,10 +2174,7 @@ sub removeAttachment( $self, %options ) {
             # Returned if the user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the attachment is not found.
- *  attachments are disabled in the Jira settings.
+            # Returned if: * the attachment is not found. * attachments are disabled in the Jira settings.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -2280,10 +2270,7 @@ sub getAttachment( $self, %options ) {
             # Returned if the user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the attachment is not found.
- *  attachments are disabled in the Jira settings.
+            # Returned if: * the attachment is not found. * attachments are disabled in the Jira settings.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -2379,10 +2366,7 @@ sub expandAttachmentForHumans( $self, %options ) {
             # The user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the attachment is not found.
- *  attachments are disabled in the Jira settings.
+            # Returned if: * the attachment is not found. * attachments are disabled in the Jira settings.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 409 ) {
             # Returned if the attachment is an archive, but not a supported archive format.
@@ -2481,10 +2465,7 @@ sub expandAttachmentForMachines( $self, %options ) {
             # The user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the attachment is not found.
- *  attachments are disabled in the Jira settings.
+            # Returned if: * the attachment is not found. * attachments are disabled in the Jira settings.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 409 ) {
             # Returned if the attachment is an archive, but not a supported archive format.
@@ -2598,10 +2579,7 @@ sub getAuditRecords( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 403 ) {
-            # Returned if:
-
- *  the user does not have the required permissions.
- *  all Jira products are on free plans. Audit logs are available when at least one Jira product is on a paid plan.
+            # Returned if: * the user does not have the required permissions. * all Jira products are on free plans. Audit logs are available when at least one Jira product is on a paid plan.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -3428,13 +3406,7 @@ sub createComponent( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  the user is not found.
- *  `name` is not provided.
- *  `name` is over 255 characters in length.
- *  `projectId` is not provided.
- *  `assigneeType` is an invalid value.
+            # Returned if: * the user is not found. * `name` is not provided. * `name` is over 255 characters in length. * `projectId` is not provided. * `assigneeType` is an invalid value.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -3537,11 +3509,7 @@ sub deleteComponent( $self, %options ) {
             # Returned if the user does not have permission to manage the project containing the component or does not have permission to administer Jira.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the component is not found.
- *  the replacement component is not found.
- *  the user does not have permission to browse the project containing the component.
+            # Returned if: * the component is not found. * the replacement component is not found. * the user does not have permission to browse the project containing the component.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -3841,11 +3809,7 @@ sub updateComponent( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  the user is not found.
- *  `assigneeType` is an invalid value.
- *  `name` is over 255 characters in length.
+            # Returned if: * the user is not found. * `assigneeType` is an invalid value. * `name` is over 255 characters in length.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -4600,10 +4564,7 @@ sub getCustomFieldOption( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the custom field option is not found.
- *  the user does not have permission to view the custom field.
+            # Returned if: * the custom field option is not found. * the user does not have permission to view the custom field.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -5181,12 +5142,7 @@ sub getDashboardsPaginated( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `orderBy` is invalid.
- *  `expand` includes an invalid value.
- *  `accountId` and `owner` are provided.
- *  `groupname` and `groupId` are provided.
+            # Returned if: * `orderBy` is invalid. * `expand` includes an invalid value. * `accountId` and `owner` are provided. * `groupname` and `groupId` are provided.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -6152,14 +6108,7 @@ sub setDashboardItemProperty( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  Request is invalid
- *  Or if all of these conditions are met in the request:
-    
-     *  The dashboard item has a spec URI and no complete module key
-     *  The value of propertyKey is equal to "config"
-     *  The request body contains a JSON object whose keys and values are not strings.
+            # Returned if: * Request is invalid * Or if all of these conditions are met in the request: * The dashboard item has a spec URI and no complete module key * The value of propertyKey is equal to "config" * The request body contains a JSON object whose keys and values are not strings.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -7025,13 +6974,7 @@ sub evaluateJiraExpression( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  the request is invalid, that is:
-    
-     *  invalid data is provided, such as a request including issue ID and key.
-     *  the expression is invalid and can not be parsed.
- *  evaluation fails at runtime. This may happen for various reasons. For example, accessing a property on a null object (such as the expression `issue.id` where `issue` is `null`). In this case an error message is provided.
+            # Returned if: * the request is invalid, that is: * invalid data is provided, such as a request including issue ID and key. * the expression is invalid and can not be parsed. * evaluation fails at runtime. This may happen for various reasons. For example, accessing a property on a null object (such as the expression `issue.id` where `issue` is `null`). In this case an error message is provided.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -7463,10 +7406,7 @@ sub createCustomField( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  the user does not have permission to create custom fields.
- *  any of the request object properties have invalid or missing values.
+            # Returned if: * the user does not have permission to create custom fields. * any of the request object properties have invalid or missing values.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -11924,11 +11864,7 @@ sub deleteCustomField( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if any of these are true:
-
- *  The custom field is locked.
- *  The custom field is used in a issue security scheme or a permission scheme.
- *  The custom field ID format is incorrect.
+            # Returned if any of these are true: * The custom field is locked. * The custom field is used in a issue security scheme or a permission scheme. * The custom field ID format is incorrect.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -14889,12 +14825,7 @@ sub getFiltersPaginated( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `owner` and `accountId` are provided.
- *  `expand` includes an invalid value.
- *  `orderBy` is invalid.
- *  `id` identifies more than 200 filter IDs.
+            # Returned if: * `owner` and `accountId` are provided. * `expand` includes an invalid value. * `orderBy` is invalid. * `id` identifies more than 200 filter IDs.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -15373,10 +15304,7 @@ sub resetColumns( $self, %options ) {
             # Returned if the request is successful.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  the filter is not found.
- *  the user does not have permission to view the filter.
+            # Returned if: * the filter is not found. * the user does not have permission to view the filter.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -15571,10 +15499,7 @@ sub setColumns( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  a non-navigable field is set as a column.
- *  the user does not have permission to view the filter.
+            # Returned if: * a non-navigable field is set as a column. * the user does not have permission to view the filter.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the requesting user is not an owner of the filter.
@@ -15689,10 +15614,7 @@ sub deleteFavouriteForFilter( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  the filter is not found.
- *  the user does not have permission to view the filter.
+            # Returned if: * the filter is not found. * the user does not have permission to view the filter.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -15804,10 +15726,7 @@ sub setFavouriteForFilter( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  the filter is not found.
- *  the user does not have permission to favorite the filter.
+            # Returned if: * the filter is not found. * the user does not have permission to favorite the filter.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -15910,10 +15829,7 @@ sub changeFilterOwner( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned when:
-
- *  The new owner of the filter owns a filter with the same name.
- *  An attempt is made to change owner of the default filter.
+            # Returned when: * The new owner of the filter owns a filter with the same name. * An attempt is made to change owner of the default filter.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the requesting user is not an owner of the filter or does not have *Administer Jira* global permission.
@@ -16013,10 +15929,7 @@ sub getSharePermissions( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the filter is not found.
- *  the user does not have permission to view the filter.
+            # Returned if: * the filter is not found. * the user does not have permission to view the filter.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -16178,20 +16091,13 @@ sub addSharePermission( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  the request object is invalid. For example, it contains an invalid type, the ID does not match the type, or the project or group is not found.
- *  the user does not own the filter.
- *  the user does not have the required permissions.
+            # Returned if: * the request object is invalid. For example, it contains an invalid type, the ID does not match the type, or the project or group is not found. * the user does not own the filter. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the filter is not found.
- *  the user does not have permission to view the filter.
+            # Returned if: * the filter is not found. * the user does not have permission to view the filter.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -16281,10 +16187,7 @@ sub deleteSharePermission( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the filter is not found.
- *  the user does not own the filter.
+            # Returned if: * the filter is not found. * the user does not own the filter.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -16384,11 +16287,7 @@ sub getSharePermission( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the filter is not found.
- *  the permission is not found.
- *  the user does not have permission to view the filter.
+            # Returned if: * the filter is not found. * the permission is not found. * the user does not have permission to view the filter.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -17053,10 +16952,7 @@ sub removeUserFromGroup( $self, %options ) {
             # Returned if the request is successful.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `groupName` is missing.
- *  `accountId` is missing.
+            # Returned if: * `groupName` is missing. * `accountId` is missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing from the request.
@@ -17177,10 +17073,7 @@ sub addUserToGroup( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `groupname` is not provided.
- *  `accountId` is missing.
+            # Returned if: * `groupname` is not provided. * `accountId` is missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing from the request.
@@ -17646,15 +17539,7 @@ sub createIssue( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if the request:
-
- *  is missing required fields.
- *  contains invalid field values.
- *  contains fields that cannot be set for the issue type.
- *  is by a user who does not have the necessary permission.
- *  is to create a subtype in a project different that of the parent issue.
- *  is for a subtask when the option to create subtasks is disabled.
- *  is invalid for any other reason.
+            # Returned if the request: * is missing required fields. * contains invalid field values. * contains fields that cannot be set for the issue type. * is by a user who does not have the necessary permission. * is to create a subtype in a project different that of the parent issue. * is for a subtask when the option to create subtasks is disabled. * is invalid for any other reason.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -17765,15 +17650,7 @@ sub createIssues( $self, %options ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
-            # Returned if any of the issue or subtask creation requests were successful. A request may be unsuccessful when it:
-
- *  is missing required fields.
- *  contains invalid field values.
- *  contains fields that cannot be set for the issue type.
- *  is by a user who does not have the necessary permission.
- *  is to create a subtype in a project different that of the parent issue.
- *  is for a subtask when the option to create subtasks is disabled.
- *  is invalid for any other reason.
+            # Returned if any of the issue or subtask creation requests were successful. A request may be unsuccessful when it: * is missing required fields. * contains invalid field values. * contains fields that cannot be set for the issue type. * is by a user who does not have the necessary permission. * is to create a subtype in a project different that of the parent issue. * is for a subtask when the option to create subtasks is disabled. * is invalid for any other reason.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -17784,15 +17661,7 @@ sub createIssues( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if all requests are invalid. Requests may be unsuccessful when they:
-
- *  are missing required fields.
- *  contain invalid field values.
- *  contain fields that cannot be set for the issue type.
- *  are by a user who does not have the necessary permission.
- *  are to create a subtype in a project different that of the parent issue.
- *  is for a subtask when the option to create subtasks is disabled.
- *  are invalid for any other reason.
+            # Returned if all requests are invalid. Requests may be unsuccessful when they: * are missing required fields. * contain invalid field values. * contain fields that cannot be set for the issue type. * are by a user who does not have the necessary permission. * are to create a subtype in a project different that of the parent issue. * is for a subtask when the option to create subtasks is disabled. * are invalid for any other reason.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -19060,12 +18929,7 @@ sub editIssue( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  the request body is missing.
- *  the user does not have the necessary permission to edit one or more fields.
- *  the request includes one or more fields that are not found or are not associated with the issue's edit screen.
- *  the request includes an invalid transition.
+            # Returned if: * the request body is missing. * the user does not have the necessary permission to edit one or more fields. * the request includes one or more fields that are not found or are not associated with the issue's edit screen. * the request includes an invalid transition.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -19248,11 +19112,7 @@ sub assignIssue( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  the user is not found.
- *  `name`, `key`, or `accountId` is missing.
- *  more than one of `name`, `key`, and `accountId` are provided.
+            # Returned if: * the user is not found. * `name`, `key`, or `accountId` is missing. * more than one of `name`, `key`, and `accountId` are provided.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -19355,10 +19215,7 @@ sub addAttachment( $self, %options ) {
             # Returned if the user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if any of the following is true:
-
- *  the issue is not found.
- *  the user does not have permission to view the issue.
+            # Returned if any of the following is true: * the issue is not found. * the user does not have permission to view the issue.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 413 ) {
             # The attachments exceed the maximum attachment size for issues. See [Configuring file attachments](https://confluence.atlassian.com/x/wIXKM) for details.
@@ -20460,17 +20317,10 @@ sub notify( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  the recipient is the same as the calling user.
- *  the recipient is invalid. For example, the recipient is set to the assignee, but the issue is unassigned.
- *  the request is invalid. For example, required fields are missing or have invalid values.
+            # Returned if: * the recipient is the same as the calling user. * the recipient is invalid. For example, the recipient is set to the assignee, but the issue is unassigned. * the request is invalid. For example, required fields are missing or have invalid values.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 403 ) {
-            # Returned if:
-
- *  outgoing emails are disabled.
- *  no SMTP server is configured.
+            # Returned if: * outgoing emails are disabled. * no SMTP server is configured.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found.
@@ -21556,11 +21406,7 @@ sub updateRemoteIssueLink( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  the link ID is invalid.
- *  the remote issue link does not belong to the issue.
- *  the request body is invalid.
+            # Returned if: * the link ID is invalid. * the remote issue link does not belong to the issue. * the request body is invalid.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -21817,13 +21663,7 @@ sub doTransition( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  no transition is specified.
- *  the user does not have permission to transition the issue.
- *  a field that isn't included on the transition screen is defined in `fields` or `update`.
- *  a field is specified in both `fields` and `update`.
- *  the request is invalid for any other reason.
+            # Returned if: * no transition is specified. * the user does not have permission to transition the issue. * a field that isn't included on the transition screen is defined in `fields` or `update`. * a field is specified in both `fields` and `update`. * the request is invalid for any other reason.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -21912,11 +21752,7 @@ sub removeVote( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  voting is disabled.
- *  the user has not voted on the issue.
- *  the issue is not found.
+            # Returned if: * voting is disabled. * the user has not voted on the issue. * the issue is not found.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -22009,11 +21845,7 @@ sub getVotes( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  voting is disabled.
- *  the user does not have permission to view the issue.
- *  the issue is not found.
+            # Returned if: * voting is disabled. * the user does not have permission to view the issue. * the issue is not found.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -22109,10 +21941,7 @@ sub addVote( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  voting is disabled.
- *  the issue is not found.
+            # Returned if: * voting is disabled. * the issue is not found.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -22530,11 +22359,7 @@ sub getIssueWorklog( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the issue is not found or the user does not have permission to view the issue.
- *  `startAt` or `maxResults` has non-numeric values.
- *  time tracking is disabled.
+            # Returned if: * the issue is not found or the user does not have permission to view the issue. * `startAt` or `maxResults` has non-numeric values. * time tracking is disabled.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -22742,12 +22567,7 @@ sub addWorklog( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `adjustEstimate` is set to `new` but `newEstimate` is not provided or is invalid.
- *  `adjustEstimate` is set to `manual` but `reduceBy` is not provided or is invalid.
- *  the user does not have permission to add the worklog.
- *  the request JSON is malformed.
+            # Returned if: * `adjustEstimate` is set to `new` but `newEstimate` is not provided or is invalid. * `adjustEstimate` is set to `manual` but `reduceBy` is not provided or is invalid. * the user does not have permission to add the worklog. * the request JSON is malformed.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -22892,21 +22712,13 @@ sub deleteWorklog( $self, %options ) {
             # Returned if the request is successful.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `adjustEstimate` is set to `new` but `newEstimate` is not provided or is invalid.
- *  `adjustEstimate` is set to `manual` but `reduceBy` is not provided or is invalid.
- *  the user does not have permission to delete the worklog.
+            # Returned if: * `adjustEstimate` is set to `new` but `newEstimate` is not provided or is invalid. * `adjustEstimate` is set to `manual` but `reduceBy` is not provided or is invalid. * the user does not have permission to delete the worklog.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the issue is not found or user does not have permission to view the issue.
- *  the worklog is not found or the user does not have permission to view it.
- *  time tracking is disabled.
+            # Returned if: * the issue is not found or user does not have permission to view the issue. * the worklog is not found or the user does not have permission to view it. * time tracking is disabled.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -23016,13 +22828,7 @@ sub getWorklog( $self, %options ) {
             # Returned if the authentication credentials are incorrect.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the issue is not found or the user does not have permission to view it.
- *  the worklog is not found or the user does not have permission to view it.
- *  time tracking is disabled.
-
-.
+            # Returned if: * the issue is not found or the user does not have permission to view it. * the worklog is not found or the user does not have permission to view it. * time tracking is disabled. .
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -23227,21 +23033,13 @@ sub updateWorklog( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `adjustEstimate` is set to `new` but `newEstimate` is not provided or is invalid.
- *  the user does not have permission to update the worklog.
- *  the request JSON is malformed.
+            # Returned if: * `adjustEstimate` is set to `new` but `newEstimate` is not provided or is invalid. * the user does not have permission to update the worklog. * the request JSON is malformed.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the issue is not found or user does not have permission to view the issue.
- *  the worklog is not found or the user does not have permission to view it.
- *  time tracking is disabled.
+            # Returned if: * the issue is not found or user does not have permission to view the issue. * the worklog is not found or the user does not have permission to view it. * time tracking is disabled.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -23344,10 +23142,7 @@ sub getWorklogPropertyKeys( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the issue or worklog is not found.
- *  the user does not have permission to view the issue or worklog.
+            # Returned if: * the issue or worklog is not found. * the user does not have permission to view the issue or worklog.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -23450,10 +23245,7 @@ sub deleteWorklogProperty( $self, %options ) {
             # Returned if the user does not have permission to edit the worklog.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the issue, worklog, or property is not found.
- *  the user does not have permission to view the issue or worklog.
+            # Returned if: * the issue, worklog, or property is not found. * the user does not have permission to view the issue or worklog.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -23563,10 +23355,7 @@ sub getWorklogProperty( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the issue, worklog, or property is not found.
- *  the user does not have permission to view the issue or worklog.
+            # Returned if: * the issue, worklog, or property is not found. * the user does not have permission to view the issue or worklog.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -23694,10 +23483,7 @@ sub setWorklogProperty( $self, %options ) {
             # Returned if the user does not have permission to edit the worklog.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the issue or worklog is not found.
- *  the user does not have permission to view the issue or worklog.
+            # Returned if: * the issue or worklog is not found. * the user does not have permission to view the issue or worklog.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -23822,13 +23608,7 @@ sub linkIssues( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  issue linking is disabled.
- *  the user cannot view one or both of the issues. For example, the user doesn't have *Browse project* project permission for a project containing one of the issues.
- *  the user does not have *link issues* project permission.
- *  either of the link issues are not found.
- *  the issue link type is not found.
+            # Returned if: * issue linking is disabled. * the user cannot view one or both of the issues. For example, the user doesn't have *Browse project* project permission for a project containing one of the issues. * the user does not have *link issues* project permission. * either of the link issues are not found. * the issue link type is not found.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -23917,11 +23697,7 @@ sub deleteIssueLink( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  issue linking is disabled.
- *  the issue link is not found.
- *  the user doesn't have the required permissions.
+            # Returned if: * issue linking is disabled. * the issue link is not found. * the user doesn't have the required permissions.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -24017,11 +23793,7 @@ sub getIssueLink( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  issue linking is disabled.
- *  the issue link is not found.
- *  the user doesn't have the required permissions.
+            # Returned if: * issue linking is disabled. * the issue link is not found. * the user doesn't have the required permissions.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -24275,11 +24047,7 @@ sub createIssueLinkType( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  issue linking is disabled.
- *  the issue link type name is in use.
- *  the user does not have the required permissions.
+            # Returned if: * issue linking is disabled. * the issue link type name is in use. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -24365,11 +24133,7 @@ sub deleteIssueLinkType( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  issue linking is disabled.
- *  the issue link type is not found.
- *  the user does not have the required permissions.
+            # Returned if: * issue linking is disabled. * the issue link type is not found. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -24465,11 +24229,7 @@ sub getIssueLinkType( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  issue linking is disabled.
- *  the issue link type is not found.
- *  the user does not have the required permissions.
+            # Returned if: * issue linking is disabled. * the issue link type is not found. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -24650,11 +24410,7 @@ sub updateIssueLinkType( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  issue linking is disabled.
- *  the issue link type is not found.
- *  the user does not have the required permissions.
+            # Returned if: * issue linking is disabled. * the issue link type is not found. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -25185,11 +24941,7 @@ sub createIssueType( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if the request is invalid because:
-
- *  no content is sent.
- *  the issue type name exceeds 60 characters.
- *  a subtask issue type is requested on an instance where subtasks are disabled.
+            # Returned if the request is invalid because: * no content is sent. * the issue type name exceeds 60 characters. * a subtask issue type is requested on an instance where subtasks are disabled.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -25320,10 +25072,7 @@ sub getIssueTypesForProject( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the project is not found.
- *  the user does not have the necessary permission.
+            # Returned if: * the project is not found. * the user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -25420,16 +25169,10 @@ sub deleteIssueType( $self, %options ) {
             # Returned if the user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the issue type is in use and an alternative issue type is not specified.
- *  the issue type or alternative issue type is not found.
+            # Returned if: * the issue type is in use and an alternative issue type is not specified. * the issue type or alternative issue type is not found.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 409 ) {
-            # Returned if the issue type is in use and:
-
- *  also specified as the alternative issue type.
- *  is a *standard* issue type and the alternative issue type is a *subtask*.
+            # Returned if the issue type is in use and: * also specified as the alternative issue type. * is a *standard* issue type and the alternative issue type is a *subtask*.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -25525,10 +25268,7 @@ sub getIssueType( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the issue type is not found.
- *  the user does not have the required permissions.
+            # Returned if: * the issue type is not found. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -25639,11 +25379,7 @@ sub updateIssueType( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if the request is invalid because:
-
- *  no content is sent.
- *  the issue type name exceeds 60 characters.
- *  the avatar is not associated with this issue type.
+            # Returned if the request is invalid because: * no content is sent. * the issue type name exceeds 60 characters. * the avatar is not associated with this issue type.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -25749,10 +25485,7 @@ sub getAlternativeIssueTypes( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the issue type is not found.
- *  the user does not have the required permissions.
+            # Returned if: * the issue type is not found. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -25866,13 +25599,7 @@ sub createIssueTypeAvatar( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  an image isn't included in the request.
- *  the image type is unsupported.
- *  the crop parameters extend the crop area beyond the edge of the image.
- *  `cropSize` is missing.
- *  the issue type ID is invalid.
+            # Returned if: * an image isn't included in the request. * the image type is unsupported. * the crop parameters extend the crop area beyond the edge of the image. * `cropSize` is missing. * the issue type ID is invalid.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -25974,10 +25701,7 @@ sub getIssueTypePropertyKeys( $self, %options ) {
             # Returned if the issue type ID is invalid.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the issue type is not found.
- *  the user does not have the required permissions.
+            # Returned if: * the issue type is not found. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -26288,11 +26012,7 @@ sub setIssueTypeProperty( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  the issue type ID is invalid.
- *  a property value is not provided.
- *  the property value JSON content is invalid.
+            # Returned if: * the issue type ID is invalid. * a property value is not provided. * the property value JSON content is invalid.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -26301,10 +26021,7 @@ sub setIssueTypeProperty( $self, %options ) {
             # Returned if the user does not have permission to modify the issue type.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the issue type is not found.
- *  the user does not have the permission view the issue type.
+            # Returned if: * the issue type is not found. * the user does not have the permission view the issue type.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -28193,11 +27910,7 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  project is not found.
- *  issue type screen scheme is not found.
- *  the project is not a classic project.
+            # Returned if: * project is not found. * issue type screen scheme is not found. * the project is not a classic project.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -30583,7 +30296,8 @@ sub _build_setPreference_request( $self, %options ) {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        # XXX Need to fill the body
+        # => $body,
     );
 
     return $tx
@@ -32295,13 +32009,7 @@ sub getBulkPermissions( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `projectPermissions` is provided without at least one project permission being provided.
- *  an invalid global permission is provided in the global permissions list.
- *  an invalid project permission is provided in the project permissions list.
- *  more than 1000 valid project IDs or more than 1000 valid issue IDs are provided.
- *  an invalid account ID is provided.
+            # Returned if: * `projectPermissions` is provided without at least one project permission being provided. * an invalid global permission is provided in the global permissions list. * an invalid project permission is provided in the project permissions list. * more than 1000 valid project IDs or more than 1000 valid issue IDs are provided. * an invalid account ID is provided.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -33104,10 +32812,7 @@ sub updatePermissionScheme( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 403 ) {
-            # Returned if:
-
- *  the user does not have the necessary permission to update permission schemes.
- *  the Jira instance is Jira Core Free or Jira Software Free. Permission schemes cannot be updated on free plans.
+            # Returned if: * the user does not have the necessary permission to update permission schemes. * the Jira instance is Jira Core Free or Jira Software Free. Permission schemes cannot be updated on free plans.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the permission scheme is not found.
@@ -36162,10 +35867,7 @@ sub updateProject( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 403 ) {
-            # Returned if:
-
- *  the user does not have the necessary permission to update project details.
- *  the permission scheme is being changed and the Jira instance is Jira Core Free or Jira Software Free. Permission schemes cannot be changed on free plans.
+            # Returned if: * the user does not have the necessary permission to update project details. * the permission scheme is being changed and the Jira instance is Jira Core Free or Jira Software Free. Permission schemes cannot be changed on free plans.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found.
@@ -36605,11 +36307,7 @@ sub createProjectAvatar( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  an image isn't included in the request.
- *  the image type is unsupported.
- *  the crop parameters extend the crop area beyond the edge of the image.
+            # Returned if: * an image isn't included in the request. * the image type is unsupported. * the crop parameters extend the crop area beyond the edge of the image.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -37978,10 +37676,7 @@ sub deleteActor( $self, %options ) {
             # Returned if the request is not valid.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the project or project role is not found.
- *  the calling user does not have administrative permission.
+            # Returned if: * the project or project role is not found. * the calling user does not have administrative permission.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -38092,10 +37787,7 @@ sub getProjectRole( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the project or project role is not found.
- *  the user does not have administrative permission.
+            # Returned if: * the project or project role is not found. * the user does not have administrative permission.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -38202,9 +37894,7 @@ sub addActorUsers( $self, %options ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
-            # Returned if the request is successful. The complete list of actors for the project is returned.
-
-For example, the cURL request above adds a group, *jira-developers*. For the response below to be returned as a result of that request, the user *Mia Krystof* would have previously been added as a `user` actor for this project.
+            # Returned if the request is successful. The complete list of actors for the project is returned. For example, the cURL request above adds a group, *jira-developers*. For the response below to be returned as a result of that request, the user *Mia Krystof* would have previously been added as a `user` actor for this project.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -38221,11 +37911,7 @@ For example, the cURL request above adds a group, *jira-developers*. For the res
             # Returned if the authentication credentials are incorrect or missing or if the calling user lacks administrative permissions for the project.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the project is not found.
- *  the user or group is not found.
- *  the group or user is not active.
+            # Returned if: * the project is not found. * the user or group is not found. * the group or user is not active.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -38365,11 +38051,7 @@ sub setActors( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing or if the calling user lacks administrative permissions for the project.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the project is not found.
- *  a user or group is not found.
- *  a group or user is not active.
+            # Returned if: * the project is not found. * a user or group is not found. * a group or user is not active.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -39767,10 +39449,7 @@ sub assignPermissionScheme( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 403 ) {
-            # Returned if:
-
- *  the user does not have the necessary permission to edit the project's configuration.
- *  the Jira instance is Jira Core Free or Jira Software Free. Permission schemes cannot be assigned to projects on free plans.
+            # Returned if: * the user does not have the necessary permission to edit the project's configuration. * the Jira instance is Jira Core Free or Jira Software Free. Permission schemes cannot be assigned to projects on free plans.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project or permission scheme is not found.
@@ -40049,10 +39728,7 @@ sub createProjectCategory( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `name` is not provided or exceeds 255 characters.
- *  `description` exceeds 1000 characters.
+            # Returned if: * `name` is not provided or exceeds 255 characters. * `description` exceeds 1000 characters.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -40353,10 +40029,7 @@ sub updateProjectCategory( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `name` has been modified and exceeds 255 characters.
- *  `description` has been modified and exceeds 1000 characters.
+            # Returned if: * `name` has been modified and exceeds 255 characters. * `description` has been modified and exceeds 1000 characters.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -45872,11 +45545,7 @@ sub getStatus( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the status is not found.
- *  the status is not associated with a workflow.
- *  the user does not have the required permissions.
+            # Returned if: * the status is not found. * the status is not associated with a workflow. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -47505,11 +47174,7 @@ sub storeAvatar( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  an image isn't included in the request.
- *  the image type is unsupported.
- *  the crop parameters extend the crop area beyond the edge of the image.
+            # Returned if: * an image isn't included in the request. * the image type is unsupported. * the crop parameters extend the crop area beyond the edge of the image.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -48905,11 +48570,7 @@ sub findBulkAssignableUsers( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `projectKeys` is missing.
- *  `query` or `accountId` is missing.
- *  `query` and `accountId` are provided.
+            # Returned if: * `projectKeys` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -49050,11 +48711,7 @@ sub findAssignableUsers( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `issueKey` or `project` is missing.
- *  `query` or `accountId` is missing.
- *  `query` and `accountId` are provided.
+            # Returned if: * `issueKey` or `project` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -50192,12 +49849,7 @@ sub findUsersWithAllPermissions( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `issueKey` or `projectKey` is missing.
- *  `query` or `accountId` is missing.
- *  `query` and `accountId` are provided.
- *  `permissions` is empty or contains an invalid entry.
+            # Returned if: * `issueKey` or `projectKey` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided. * `permissions` is empty or contains an invalid entry.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -50910,11 +50562,7 @@ sub findUsers( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `accountId`, `query` or `property` is missing.
- *  `query` and `accountId` are provided.
- *  `property` parameter is not valid.
+            # Returned if: * `accountId`, `query` or `property` is missing. * `query` and `accountId` are provided. * `property` parameter is not valid.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -51259,11 +50907,7 @@ sub findUsersWithBrowsePermission( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  `issueKey` or `projectKey` is missing.
- *  `query` or `accountId` is missing.
- *  `query` and `accountId` are provided.
+            # Returned if: * `issueKey` or `projectKey` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -51651,10 +51295,7 @@ sub createVersion( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the project is not found.
- *  the user does not have the required permissions.
+            # Returned if: * the project is not found. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -51750,10 +51391,7 @@ sub deleteVersion( $self, %options ) {
             # Returned if the request is invalid.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
-            # Returned if:
-
- *  the authentication credentials are incorrect.
- *  the user does not have the required permissions.
+            # Returned if: * the authentication credentials are incorrect. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the version is not found.
@@ -52054,10 +51692,7 @@ sub updateVersion( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  the request is invalid.
- *  the user does not have the required permissions.
+            # Returned if: * the request is invalid. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -52163,10 +51798,7 @@ sub mergeVersions( $self, %options ) {
             # Returned if the request is invalid.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
-            # Returned if:
-
- *  the authentication credentials are incorrect or missing.
- *  the user does not have the required permissions.
+            # Returned if: * the authentication credentials are incorrect or missing. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the version to be deleted or the version to merge to are not found.
@@ -52276,17 +51908,10 @@ sub moveVersion( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-
- *  no body parameters are provided.
- *  `after` and `position` are provided.
- *  `position` is invalid.
+            # Returned if: * no body parameters are provided. * `after` and `position` are provided. * `position` is invalid.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 401 ) {
-            # Returned if:
-
- *  the authentication credentials are incorrect or missing
- *  the user does not have the required commissions.
+            # Returned if: * the authentication credentials are incorrect or missing * the user does not have the required commissions.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the version or move after version are not found.
@@ -52382,10 +52007,7 @@ sub getVersionRelatedIssues( $self, %options ) {
             # Returned if the authentication credentials are incorrect.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the version is not found.
- *  the user does not have the required permissions.
+            # Returned if: * the version is not found. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -52502,10 +52124,7 @@ sub deleteAndReplaceVersion( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the version to delete is not found.
- *  the user does not have the required permissions.
+            # Returned if: * the version to delete is not found. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -52598,10 +52217,7 @@ sub getVersionUnresolvedIssues( $self, %options ) {
             # Returned if the authentication credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the version is not found.
- *  the user does not have the required permissions.
+            # Returned if: * the version is not found. * the user does not have the required permissions.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -56050,10 +55666,7 @@ sub deleteWorkflowSchemeDraft( $self, %options ) {
             # Returned if the user does not have the necessary permission..
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the original active workflow scheme is not found.
- *  the original active workflow scheme does not have a draft.
+            # Returned if: * the original active workflow scheme is not found. * the original active workflow scheme does not have a draft.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -56149,10 +55762,7 @@ sub getWorkflowSchemeDraft( $self, %options ) {
             # Returned if the user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the original active workflow scheme is not found.
- *  the original active workflow scheme does not have a draft.
+            # Returned if: * the original active workflow scheme is not found. * the original active workflow scheme does not have a draft.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -56331,10 +55941,7 @@ sub updateWorkflowSchemeDraft( $self, %options ) {
             # Returned if the user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if:
-
- *  the original active workflow scheme is not found.
- *  the original active workflow scheme does not have a draft.
+            # Returned if: * the original active workflow scheme is not found. * the original active workflow scheme does not have a draft.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -56430,10 +56037,7 @@ sub deleteDraftDefaultWorkflow( $self, %options ) {
             # Returned if the user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if any of the following is true:
-
- *  The workflow scheme is not found.
- *  The workflow scheme does not have a draft.
+            # Returned if any of the following is true: * The workflow scheme is not found. * The workflow scheme does not have a draft.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -56529,10 +56133,7 @@ sub getDraftDefaultWorkflow( $self, %options ) {
             # Returned if the user does not have the necessary permission..
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if any of the following is true:
-
- *  The workflow scheme is not found.
- *  The workflow scheme does not have a draft.
+            # Returned if any of the following is true: * The workflow scheme is not found. * The workflow scheme does not have a draft.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -56648,10 +56249,7 @@ sub updateDraftDefaultWorkflow( $self, %options ) {
             # Returned if the user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if any of the following is true:
-
- *  The workflow scheme is not found.
- *  The workflow scheme does not have a draft.
+            # Returned if any of the following is true: * The workflow scheme is not found. * The workflow scheme does not have a draft.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -57115,11 +56713,7 @@ sub publishDraftWorkflowScheme( $self, %options ) {
             # Returned if the user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if any of these are true:
-
- *  The workflow scheme is not found.
- *  The workflow scheme does not have a draft.
- *  A new status in the draft workflow scheme is not found.
+            # Returned if any of these are true: * The workflow scheme is not found. * The workflow scheme does not have a draft. * A new status in the draft workflow scheme is not found.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -57223,12 +56817,7 @@ sub deleteDraftWorkflowMapping( $self, %options ) {
             # Returned if the user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if any of the following is true:
-
- *  The workflow scheme is not found.
- *  The workflow scheme does not have a draft.
- *  The workflow is not found.
- *  The workflow is not specified.
+            # Returned if any of the following is true: * The workflow scheme is not found. * The workflow scheme does not have a draft. * The workflow is not found. * The workflow is not specified.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -57466,12 +57055,7 @@ sub updateDraftWorkflowMapping( $self, %options ) {
             # Returned if the user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if any of the following is true:
-
- *  The workflow scheme is not found.
- *  The workflow scheme does not have a draft.
- *  The workflow is not found.
- *  The workflow is not specified.
+            # Returned if any of the following is true: * The workflow scheme is not found. * The workflow scheme does not have a draft. * The workflow is not found. * The workflow is not specified.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -57927,11 +57511,7 @@ sub deleteWorkflowMapping( $self, %options ) {
             # Returned if the user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if any of the following is true:
-
- *  The workflow scheme is not found.
- *  The workflow is not found.
- *  The workflow is not specified.
+            # Returned if any of the following is true: * The workflow scheme is not found. * The workflow is not found. * The workflow is not specified.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -58174,11 +57754,7 @@ sub updateWorkflowMapping( $self, %options ) {
             # Returned if the user does not have the necessary permission.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 404 ) {
-            # Returned if any of the following is true:
-
- *  The workflow scheme is not found.
- *  The workflow is not found.
- *  The workflow is not specified.
+            # Returned if any of the following is true: * The workflow scheme is not found. * The workflow is not found. * The workflow is not specified.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
@@ -58928,10 +58504,7 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
                 );
             }
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-  * the property key is longer than 127 characters.
-  * the value is not valid JSON.
-  * the value is longer than 32768 characters.
+            # Returned if: * the property key is longer than 127 characters. * the value is not valid JSON. * the value is longer than 32768 characters.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -59216,11 +58789,7 @@ sub DynamicModulesResource_registerModules_post( $self, %options ) {
             # Returned if the request is successful.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 400 ) {
-            # Returned if:
-* any of the provided modules is invalid. For example, required properties are missing.
-* any of the modules conflict with registered dynamic modules or modules defined in the app descriptor. For example, there are duplicate keys.
-
-Details of the issues encountered are included in the error message.
+            # Returned if: * any of the provided modules is invalid. For example, required properties are missing. * any of the modules conflict with registered dynamic modules or modules defined in the app descriptor. For example, there are duplicate keys. Details of the issues encountered are included in the error message.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
@@ -59343,9 +58912,7 @@ sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
             # Returned if the request is invalid.
             return Future::Mojo->done($resp);
         } elsif( $resp->code == 403 ) {
-            # Returned if:
-* the transfer ID is not found.
-* the authorisation credentials are incorrect or missing.
+            # Returned if: * the transfer ID is not found. * the authorisation credentials are incorrect or missing.
             return Future::Mojo->done($resp);
         } else {
             # An unknown/unhandled response, likely an error

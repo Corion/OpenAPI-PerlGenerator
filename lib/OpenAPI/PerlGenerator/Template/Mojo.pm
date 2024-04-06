@@ -144,7 +144,7 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
 %     my $info = $elt->{responses}->{ $code };
         <%= elsif_chain($name) %>( $resp->code <%= openapi_http_code_match( $code ) %> ) {
 %     if( $info->{description} =~ /\S/ ) {
-            # <%= $info->{description} %>
+            # <%= single_line( $info->{description} ) %>
 %     }
 %       # Check the content type
 %       # Will we always have a content type?!
