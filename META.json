@@ -33,20 +33,23 @@
       "runtime" : {
          "requires" : {
             "Carp" : "0",
+            "Encode" : "0",
             "Exporter" : "5",
             "File::Basename" : "0",
             "File::Path" : "0",
             "Getopt::Long" : "0",
             "HTTP::Request::Diff" : "0",
             "JSON::Pointer" : "0",
+            "Markdown::Pod" : "0",
             "Mojo::File" : "0",
             "Mojo::Template" : "0",
             "Mojolicious" : "0",
             "Moo" : "2",
             "OpenAPI::Modern" : "0",
             "Perl::Tidy" : "0",
+            "PerlX::Maybe" : "0",
             "YAML::PP" : "0",
-            "experimental" : "0",
+            "experimental" : "0.031",
             "perl" : "5.020",
             "warnings" : "0"
          }
