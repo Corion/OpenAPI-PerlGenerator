@@ -185,14 +185,13 @@ sub _build_createBlob_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::Ollama::->new( \%options );
+    my $body = delete $options{ body } // '';
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             "Content-Type" => 'application/octet-stream',
         }
-        # XXX Need to fill the body
-        # => $body,
+        => $body,
     );
 
     return $tx

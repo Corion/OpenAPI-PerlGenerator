@@ -19310,7 +19310,7 @@ sub _build_addAttachment_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // '';
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -22359,7 +22359,7 @@ sub _build_addWatcher_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // '';
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -30575,8 +30575,8 @@ sub _build_setPreference_request( $self, %options ) {
               'key' => delete $options{'key'},
     );
 
-    my $request = JIRA::API::->new( \%options );
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // '';
+    my $body = delete $options{ body } // '';
     my $tx = $self->ua->build_tx(
         $method => $url,
         {

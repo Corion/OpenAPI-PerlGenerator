@@ -45,8 +45,12 @@ __PATH_PARAMETERS__
 
 $template{generate_request_body} = <<'__REQUEST_BODY__';
 %     for my $ct (sort keys $content->%*) {
-%         if( $content->{$ct}->{schema}) {
+%         if( exists $content->{$ct}->{schema}) {
+%             if( $content->{$ct}->{schema}->{type} eq 'string' ) {
+    my $body = delete $options{ body } // '';
+%             } else {
     my $request = <%= $prefix %>::<%= $content->{$ct}->{schema}->{name} %>->new( \%options );
+%             }
 %         } elsif( $ct eq 'multipart/form-data' ) {
 %             # nothing to do
 %         } else {
@@ -379,6 +383,8 @@ sub _build_<%= $method->{name} %>_request( $self, %options ) {
         => json => $request->as_hash,
 % } elsif( $content_type and $content_type eq 'multipart/form-data' ) {
         => form => $request->as_hash,
+% } elsif( $content_type and $content_type eq 'application/octet-stream' ) {
+        => $body,
 % } else {
         # XXX Need to fill the body
         # => $body,
