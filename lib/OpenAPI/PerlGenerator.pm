@@ -1,4 +1,4 @@
-package OpenAPI::PerlGenerator 0.01;
+package OpenAPI::PerlGenerator 0.02;
 use 5.020;
 use Moo 2;
 use Carp 'croak';

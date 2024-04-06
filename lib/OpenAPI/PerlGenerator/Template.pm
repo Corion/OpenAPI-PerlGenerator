@@ -1,4 +1,4 @@
-package OpenAPI::PerlGenerator::Template 0.01;
+package OpenAPI::PerlGenerator::Template 0.02;
 use 5.020;
 use experimental 'signatures';
 
