@@ -15,7 +15,7 @@ variable C<$info> for convenient calling from within (Mojolicious) templates.
 
 =head1 REFLECTED METHODS
 
-=item2 C<< markdown_to_pod >>
+=head2 C<< markdown_to_pod >>
 
 =cut
 
@@ -23,7 +23,7 @@ sub markdown_to_pod {
     $info->markdown_to_pod( @_ );
 }
 
-=item2 C<< map_type >>
+=head2 C<< map_type >>
 
 =cut
 
@@ -31,7 +31,7 @@ sub map_type {
     $info->map_type( @_ );
 }
 
-=item2 C<< property_name >>
+=head2 C<< property_name >>
 
 =cut
 
@@ -39,7 +39,7 @@ sub property_name {
     $info->property_name( @_ );
 }
 
-=item2 C<< single_line >>
+=head2 C<< single_line >>
 
 =cut
 
@@ -48,7 +48,7 @@ sub single_line {
 }
 
 
-=item2 C<< openapi_submodules >>
+=head2 C<< openapi_submodules >>
 
 =cut
 
