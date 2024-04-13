@@ -71,7 +71,6 @@ $template{inflated_response} = <<'__INFLATED_RESPONSE__';
 __INFLATED_RESPONSE__
 
 $template{streaming_response} = <<'__STREAMING_RESPONSE__';
-    use Future::Queue;
     my $res = Future::Queue->new( prototype => 'Future::Mojo' );
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {
@@ -421,6 +420,7 @@ use Mojo::JSON 'encode_json', 'decode_json';
 use OpenAPI::Modern;
 
 use Future::Mojo;
+use Future::Queue;
 
 our $SCHEMA_VERSION = "<%= $schema->{info}->{version} %>";
 

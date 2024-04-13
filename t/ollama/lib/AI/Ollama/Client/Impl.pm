@@ -14,6 +14,7 @@ use Mojo::JSON 'encode_json', 'decode_json';
 use OpenAPI::Modern;
 
 use Future::Mojo;
+use Future::Queue;
 
 our $SCHEMA_VERSION = "0.1.9";
 
@@ -354,7 +355,6 @@ sub generateChatCompletion( $self, %options ) {
 
 
     my $r1 = Future::Mojo->new();
-    use Future::Queue;
     my $res = Future::Queue->new( prototype => 'Future::Mojo' );
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {
@@ -557,7 +557,6 @@ sub createModel( $self, %options ) {
 
 
     my $r1 = Future::Mojo->new();
-    use Future::Queue;
     my $res = Future::Queue->new( prototype => 'Future::Mojo' );
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {
@@ -916,7 +915,6 @@ sub generateCompletion( $self, %options ) {
 
 
     my $r1 = Future::Mojo->new();
-    use Future::Queue;
     my $res = Future::Queue->new( prototype => 'Future::Mojo' );
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {

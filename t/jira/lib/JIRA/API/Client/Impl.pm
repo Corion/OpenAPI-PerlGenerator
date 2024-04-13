@@ -14,6 +14,7 @@ use Mojo::JSON 'encode_json', 'decode_json';
 use OpenAPI::Modern;
 
 use Future::Mojo;
+use Future::Queue;
 
 our $SCHEMA_VERSION = "1001.0.0-SNAPSHOT";
 
