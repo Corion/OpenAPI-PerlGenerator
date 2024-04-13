@@ -131,19 +131,21 @@ sub checkBlob( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # Blob exists on the server
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Blob was not found
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -216,16 +218,18 @@ sub createBlob( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
             # Blob was successfully created
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -244,9 +248,10 @@ sub createBlob( $self, %options ) {
 =head2 C<< generateChatCompletion >>
 
   use Future::Utils 'repeat';
-  my $responses = $client->generateChatCompletion();
+  my $response = $client->generateChatCompletion();
+  my $streamed = $response->get();
   repeat {
-      my ($res) = $responses->shift;
+      my ($res) = $streamed->shift;
       if( $res ) {
           my $str = $res->get;
           say $str;
@@ -354,14 +359,17 @@ sub generateChatCompletion( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = Future::Queue->new( prototype => 'Future::Mojo' );
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # Successful operation.
+            my $queue = Future::Queue->new( prototype => 'Future::Mojo' );
+            $res->done( $queue );
             my $ct = $resp->headers->content_type;
             return unless $ct;
             $ct =~ s/;\s+.*//;
@@ -376,19 +384,19 @@ sub generateChatCompletion( $self, %options ) {
                     my @lines = split /\n/, $fresh;
                     for (@lines) {
                         my $payload = decode_json( $_ );
-                        $res->push(
+                        $queue->push(
                             AI::Ollama::GenerateChatCompletionResponse->new($payload),
 
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
-                        $res->finish();
+                        $queue->finish();
                     }
                 });
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -458,16 +466,18 @@ sub copyModel( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # Successful operation.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -486,9 +496,10 @@ sub copyModel( $self, %options ) {
 =head2 C<< createModel >>
 
   use Future::Utils 'repeat';
-  my $responses = $client->createModel();
+  my $response = $client->createModel();
+  my $streamed = $response->get();
   repeat {
-      my ($res) = $responses->shift;
+      my ($res) = $streamed->shift;
       if( $res ) {
           my $str = $res->get;
           say $str;
@@ -556,14 +567,17 @@ sub createModel( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = Future::Queue->new( prototype => 'Future::Mojo' );
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # Successful operation.
+            my $queue = Future::Queue->new( prototype => 'Future::Mojo' );
+            $res->done( $queue );
             my $ct = $resp->headers->content_type;
             return unless $ct;
             $ct =~ s/;\s+.*//;
@@ -578,19 +592,19 @@ sub createModel( $self, %options ) {
                     my @lines = split /\n/, $fresh;
                     for (@lines) {
                         my $payload = decode_json( $_ );
-                        $res->push(
+                        $queue->push(
                             AI::Ollama::CreateModelResponse->new($payload),
 
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
-                        $res->finish();
+                        $queue->finish();
                     }
                 });
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -658,16 +672,18 @@ sub deleteModel( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # Successful operation.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -746,8 +762,10 @@ sub generateEmbedding( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -756,14 +774,14 @@ sub generateEmbedding( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     AI::Ollama::GenerateEmbeddingResponse->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -782,9 +800,10 @@ sub generateEmbedding( $self, %options ) {
 =head2 C<< generateCompletion >>
 
   use Future::Utils 'repeat';
-  my $responses = $client->generateCompletion();
+  my $response = $client->generateCompletion();
+  my $streamed = $response->get();
   repeat {
-      my ($res) = $responses->shift;
+      my ($res) = $streamed->shift;
       if( $res ) {
           my $str = $res->get;
           say $str;
@@ -914,14 +933,17 @@ sub generateCompletion( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = Future::Queue->new( prototype => 'Future::Mojo' );
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # Successful operation.
+            my $queue = Future::Queue->new( prototype => 'Future::Mojo' );
+            $res->done( $queue );
             my $ct = $resp->headers->content_type;
             return unless $ct;
             $ct =~ s/;\s+.*//;
@@ -936,19 +958,19 @@ sub generateCompletion( $self, %options ) {
                     my @lines = split /\n/, $fresh;
                     for (@lines) {
                         my $payload = decode_json( $_ );
-                        $res->push(
+                        $queue->push(
                             AI::Ollama::GenerateCompletionResponse->new($payload),
 
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
-                        $res->finish();
+                        $queue->finish();
                     }
                 });
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -1028,8 +1050,10 @@ sub pullModel( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -1038,14 +1062,14 @@ sub pullModel( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     AI::Ollama::PullModelResponse->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -1124,8 +1148,10 @@ sub pushModel( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -1134,14 +1160,14 @@ sub pushModel( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     AI::Ollama::PushModelResponse->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -1212,8 +1238,10 @@ sub showModelInfo( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -1222,14 +1250,14 @@ sub showModelInfo( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     AI::Ollama::ModelInfo->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -1285,8 +1313,10 @@ sub listModels( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -1295,14 +1325,14 @@ sub listModels( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     AI::Ollama::ModelsResponse->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 

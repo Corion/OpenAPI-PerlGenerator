@@ -107,19 +107,21 @@ sub withCookie( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # pet response
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code  ) {
             # unexpected error
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -185,22 +187,24 @@ sub withHeader( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # pet response
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code =~ /4../ ) {
             # authentication error
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code  ) {
             # unexpected error
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 

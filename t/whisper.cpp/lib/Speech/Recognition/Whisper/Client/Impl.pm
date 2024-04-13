@@ -122,8 +122,10 @@ sub inference( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -132,7 +134,7 @@ sub inference( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     Speech::Recognition::Whisper::Transcription->new($payload),
 
                 );
@@ -143,14 +145,14 @@ sub inference( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     Speech::Recognition::Whisper::Error->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -230,8 +232,10 @@ sub load( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -240,7 +244,7 @@ sub load( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/text' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     Speech::Recognition::Whisper::SuccessfulLoad->new($payload),
 
                 );
@@ -251,14 +255,14 @@ sub load( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     Speech::Recognition::Whisper::Error->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 

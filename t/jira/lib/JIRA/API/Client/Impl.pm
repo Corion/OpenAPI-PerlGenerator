@@ -649,8 +649,10 @@ sub getBanner( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -659,7 +661,7 @@ sub getBanner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::AnnouncementBannerConfiguration->new($payload),
 
                 );
@@ -670,7 +672,7 @@ sub getBanner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -681,14 +683,14 @@ sub getBanner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -778,8 +780,10 @@ sub setBanner( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -788,7 +792,7 @@ sub setBanner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -799,7 +803,7 @@ sub setBanner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -810,7 +814,7 @@ sub setBanner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -821,14 +825,14 @@ sub setBanner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -909,8 +913,10 @@ sub updateMultipleCustomFieldValues( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -919,23 +925,23 @@ sub updateMultipleCustomFieldValues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the request is not authenticated as the app that provided all the fields.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if any field is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -1045,8 +1051,10 @@ sub getCustomFieldConfiguration( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -1055,26 +1063,26 @@ sub getCustomFieldConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanContextualConfiguration->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user is not a Jira admin or the request is not authenticated as from the app that provided the field.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -1159,8 +1167,10 @@ sub updateCustomFieldConfiguration( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -1169,26 +1179,26 @@ sub updateCustomFieldConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user is not a Jira admin or the request is not authenticated as from the app that provided the field.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -1281,8 +1291,10 @@ sub updateCustomFieldValue( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -1291,23 +1303,23 @@ sub updateCustomFieldValue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the request is not authenticated as the app that provided the field.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the field is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -1387,8 +1399,10 @@ sub getApplicationProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -1397,7 +1411,7 @@ sub getApplicationProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ApplicationProperty->new($_),
  } $payload->@* ],
 
@@ -1405,13 +1419,13 @@ sub getApplicationProperty( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the application property is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -1473,8 +1487,10 @@ sub getAdvancedSettings( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -1483,7 +1499,7 @@ sub getAdvancedSettings( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ApplicationProperty->new($_),
  } $payload->@* ],
 
@@ -1491,13 +1507,13 @@ sub getAdvancedSettings( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user is not an administrator.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -1586,8 +1602,10 @@ sub setApplicationProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -1596,26 +1614,26 @@ sub setApplicationProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ApplicationProperty->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the data type of the `value` does not match the application property's data type. For example, a string is provided instead of an integer.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to edit the property.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the property is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -1677,8 +1695,10 @@ sub getAllApplicationRoles( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -1687,7 +1707,7 @@ sub getAllApplicationRoles( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ApplicationRole->new($_),
  } $payload->@* ],
 
@@ -1695,13 +1715,13 @@ sub getAllApplicationRoles( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user is not an administrator.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -1773,8 +1793,10 @@ sub getApplicationRole( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -1783,23 +1805,23 @@ sub getApplicationRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ApplicationRole->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user is not an administrator.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the role is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -1879,8 +1901,10 @@ sub getAttachmentContent( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -1889,35 +1913,35 @@ sub getAttachmentContent( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 206 ) {
             # Returned if the request is successful when a `Range` header is provided and `redirect` is set to `false`.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 303 ) {
             # Returned if the request is successful. See the `Location` header for the download URL.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the range supplied in the `Range` header is malformed.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # The user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the attachment is not found. * attachments are disabled in the Jira settings.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 416 ) {
             # Returned if the server is unable to satisfy the range of bytes provided.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -1979,8 +2003,10 @@ sub getAttachmentMeta( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -1989,17 +2015,17 @@ sub getAttachmentMeta( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::AttachmentSettings->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -2094,8 +2120,10 @@ sub getAttachmentThumbnail( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -2104,29 +2132,29 @@ sub getAttachmentThumbnail( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 303 ) {
             # Returned if the request is successful. See the `Location` header for the download URL.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # The user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the attachment is not found. * attachments are disabled in the Jira settings. * `fallbackToDefault` is `false` and the request thumbnail cannot be downloaded.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -2196,22 +2224,24 @@ sub removeAttachment( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the attachment is not found. * attachments are disabled in the Jira settings.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -2283,8 +2313,10 @@ sub getAttachment( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -2293,23 +2325,23 @@ sub getAttachment( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::AttachmentMetadata->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the attachment is not found. * attachments are disabled in the Jira settings.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -2381,8 +2413,10 @@ sub expandAttachmentForHumans( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -2391,26 +2425,26 @@ sub expandAttachmentForHumans( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::AttachmentArchiveMetadataReadable->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # The user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the attachment is not found. * attachments are disabled in the Jira settings.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 409 ) {
             # Returned if the attachment is an archive, but not a supported archive format.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -2482,8 +2516,10 @@ sub expandAttachmentForMachines( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -2492,26 +2528,26 @@ sub expandAttachmentForMachines( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::AttachmentArchiveImpl->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # The user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the attachment is not found. * attachments are disabled in the Jira settings.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 409 ) {
             # Returned if the attachment is an archive, but not a supported archive format.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -2601,8 +2637,10 @@ sub getAuditRecords( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -2611,20 +2649,20 @@ sub getAuditRecords( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::AuditRecords->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if: * the user does not have the required permissions. * all Jira products are on free plans. Audit logs are available when at least one Jira product is on a paid plan.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -2696,8 +2734,10 @@ sub getAllSystemAvatars( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -2706,20 +2746,20 @@ sub getAllSystemAvatars( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::SystemAvatars->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 500 ) {
             # Returned if an error occurs while retrieving the list of avatars.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -2816,8 +2856,10 @@ sub getCommentsByIds( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -2826,17 +2868,17 @@ sub getCommentsByIds( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanComment->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request contains more than 1000 IDs or is empty.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -2908,8 +2950,10 @@ sub getCommentPropertyKeys( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -2918,26 +2962,26 @@ sub getCommentPropertyKeys( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the comment ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the comment is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -3014,28 +3058,30 @@ sub deleteCommentProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the comment or the property is not found or the user has the necessary project permissions but isn't a member of the role or group visibility of the comment is restricted to.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -3114,8 +3160,10 @@ sub getCommentProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -3124,26 +3172,26 @@ sub getCommentProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the comment or the property is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -3226,8 +3274,10 @@ sub setCommentProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -3236,7 +3286,7 @@ sub setCommentProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -3247,26 +3297,26 @@ sub setCommentProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the comment is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -3445,8 +3495,10 @@ sub createComponent( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -3455,26 +3507,26 @@ sub createComponent( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectComponent->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the user is not found. * `name` is not provided. * `name` is over 255 characters in length. * `projectId` is not provided. * `assigneeType` is an invalid value.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to manage the project containing the component or does not have permission to administer Jira.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to browse the project containing the component.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -3552,25 +3604,27 @@ sub deleteComponent( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to manage the project containing the component or does not have permission to administer Jira.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the component is not found. * the replacement component is not found. * the user does not have permission to browse the project containing the component.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -3642,8 +3696,10 @@ sub getComponent( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -3652,20 +3708,20 @@ sub getComponent( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectComponent->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the component is not found or the user does not have permission to browse the project containing the component.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -3854,8 +3910,10 @@ sub updateComponent( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -3864,26 +3922,26 @@ sub updateComponent( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectComponent->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the user is not found. * `assigneeType` is an invalid value. * `name` is over 255 characters in length.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to manage the project containing the component or does not have permission to administer Jira.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the component is not found or the user does not have permission to browse the project containing the component.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -3955,8 +4013,10 @@ sub getComponentRelatedIssues( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -3965,20 +4025,20 @@ sub getComponentRelatedIssues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ComponentIssuesCount->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the component is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -4040,8 +4100,10 @@ sub getConfiguration( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -4050,17 +4112,17 @@ sub getConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Configuration->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -4123,8 +4185,10 @@ sub getSelectedTimeTrackingImplementation( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -4133,7 +4197,7 @@ sub getSelectedTimeTrackingImplementation( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::TimeTrackingProvider->new($payload),
 
                 );
@@ -4144,20 +4208,20 @@ sub getSelectedTimeTrackingImplementation( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -4240,8 +4304,10 @@ sub selectTimeTrackingImplementation( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -4250,23 +4316,23 @@ sub selectTimeTrackingImplementation( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the time tracking provider is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -4328,8 +4394,10 @@ sub getAvailableTimeTrackingImplementations( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -4338,7 +4406,7 @@ sub getAvailableTimeTrackingImplementations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::TimeTrackingProvider->new($_),
  } $payload->@* ],
 
@@ -4346,13 +4414,13 @@ sub getAvailableTimeTrackingImplementations( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -4414,8 +4482,10 @@ sub getSharedTimeTrackingConfiguration( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -4424,20 +4494,20 @@ sub getSharedTimeTrackingConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::TimeTrackingConfiguration->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -4524,8 +4594,10 @@ sub setSharedTimeTrackingConfiguration( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -4534,23 +4606,23 @@ sub setSharedTimeTrackingConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::TimeTrackingConfiguration->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request object is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -4622,8 +4694,10 @@ sub getCustomFieldOption( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -4632,20 +4706,20 @@ sub getCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::CustomFieldOption->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the custom field option is not found. * the user does not have permission to view the custom field.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -4741,8 +4815,10 @@ sub getAllDashboards( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -4751,7 +4827,7 @@ sub getAllDashboards( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageOfDashboards->new($payload),
 
                 );
@@ -4762,7 +4838,7 @@ sub getAllDashboards( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -4773,14 +4849,14 @@ sub getAllDashboards( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -4869,8 +4945,10 @@ sub createDashboard( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -4879,7 +4957,7 @@ sub createDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Dashboard->new($payload),
 
                 );
@@ -4890,7 +4968,7 @@ sub createDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -4901,14 +4979,14 @@ sub createDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -4972,8 +5050,10 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -4982,7 +5062,7 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::AvailableDashboardGadgetsResponse->new($payload),
 
                 );
@@ -4993,7 +5073,7 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -5004,14 +5084,14 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -5211,8 +5291,10 @@ sub getDashboardsPaginated( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -5221,7 +5303,7 @@ sub getDashboardsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanDashboard->new($payload),
 
                 );
@@ -5232,7 +5314,7 @@ sub getDashboardsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -5243,14 +5325,14 @@ sub getDashboardsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -5341,8 +5423,10 @@ sub getAllGadgets( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -5351,28 +5435,28 @@ sub getAllGadgets( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::DashboardGadgetResponse->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the dashboard is not found.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -5479,8 +5563,10 @@ sub addGadget( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -5489,7 +5575,7 @@ sub addGadget( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::DashboardGadget->new($payload),
 
                 );
@@ -5500,28 +5586,28 @@ sub addGadget( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the dashboard is not found.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -5601,8 +5687,10 @@ sub removeGadget( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -5611,28 +5699,28 @@ sub removeGadget( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the gadget or the dashboard is not found.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -5734,8 +5822,10 @@ sub updateGadget( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -5744,7 +5834,7 @@ sub updateGadget( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -5755,28 +5845,28 @@ sub updateGadget( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the gadget or the dashboard is not found.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -5855,8 +5945,10 @@ sub getDashboardItemPropertyKeys( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -5865,20 +5957,20 @@ sub getDashboardItemPropertyKeys( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the dashboard or dashboard item is not found, or the dashboard is not owned by or shared with the user.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -5962,28 +6054,30 @@ sub deleteDashboardItemProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the dashboard item property is deleted.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the dashboard or dashboard item ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user is not the owner of the dashboard.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the dashboard item is not found or the dashboard is not shared with the user.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -6069,8 +6163,10 @@ sub getDashboardItemProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -6079,20 +6175,20 @@ sub getDashboardItemProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the dashboard, the dashboard item, or dashboard item property is not found, or the dashboard is not owned by or shared with the user.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -6182,8 +6278,10 @@ sub setDashboardItemProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -6192,7 +6290,7 @@ sub setDashboardItemProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -6203,7 +6301,7 @@ sub setDashboardItemProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -6214,23 +6312,23 @@ sub setDashboardItemProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user is not the owner of the dashboard.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the dashboard item is not found or the dashboard is not shared with the user.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -6303,20 +6401,22 @@ sub deleteDashboard( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the dashboard is deleted.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # 400 response
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -6327,14 +6427,14 @@ sub deleteDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -6408,8 +6508,10 @@ sub getDashboard( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -6418,7 +6520,7 @@ sub getDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Dashboard->new($payload),
 
                 );
@@ -6429,7 +6531,7 @@ sub getDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -6440,17 +6542,17 @@ sub getDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the dashboard is not found or the dashboard is not owned by or shared with the user.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -6550,8 +6652,10 @@ sub updateDashboard( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -6560,7 +6664,7 @@ sub updateDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Dashboard->new($payload),
 
                 );
@@ -6571,7 +6675,7 @@ sub updateDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -6582,7 +6686,7 @@ sub updateDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -6593,14 +6697,14 @@ sub updateDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -6698,8 +6802,10 @@ sub copyDashboard( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -6708,7 +6814,7 @@ sub copyDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Dashboard->new($payload),
 
                 );
@@ -6719,7 +6825,7 @@ sub copyDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -6730,7 +6836,7 @@ sub copyDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -6741,14 +6847,14 @@ sub copyDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -6810,8 +6916,10 @@ sub getEvents( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -6820,7 +6928,7 @@ sub getEvents( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::IssueEvent->new($_),
  } $payload->@* ],
 
@@ -6828,13 +6936,13 @@ sub getEvents( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to complete this request.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -6942,8 +7050,10 @@ sub analyseExpression( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -6952,7 +7062,7 @@ sub analyseExpression( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::JiraExpressionsAnalysis->new($payload),
 
                 );
@@ -6963,28 +7073,28 @@ sub analyseExpression( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # 404 response
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -7073,8 +7183,10 @@ sub evaluateJiraExpression( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -7083,7 +7195,7 @@ sub evaluateJiraExpression( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::JiraExpressionResult->new($payload),
 
                 );
@@ -7094,28 +7206,28 @@ sub evaluateJiraExpression( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if any object provided in the request context is not found or the user does not have permission to view it.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -7177,8 +7289,10 @@ sub getFields( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -7187,7 +7301,7 @@ sub getFields( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::FieldDetails->new($_),
  } $payload->@* ],
 
@@ -7195,10 +7309,10 @@ sub getFields( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -7509,8 +7623,10 @@ sub createCustomField( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -7519,17 +7635,17 @@ sub createCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::FieldDetails->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the user does not have permission to create custom fields. * any of the request object properties have invalid or missing values.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -7689,8 +7805,10 @@ sub getFieldsPaginated( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -7699,7 +7817,7 @@ sub getFieldsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanField->new($payload),
 
                 );
@@ -7710,28 +7828,28 @@ sub getFieldsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -7843,8 +7961,10 @@ sub getTrashedFieldsPaginated( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -7853,7 +7973,7 @@ sub getTrashedFieldsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanField->new($payload),
 
                 );
@@ -7864,28 +7984,28 @@ sub getTrashedFieldsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -8087,8 +8207,10 @@ sub updateCustomField( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -8097,7 +8219,7 @@ sub updateCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -8108,21 +8230,21 @@ sub updateCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -8133,14 +8255,14 @@ sub updateCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -8240,8 +8362,10 @@ sub getContextsForField( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -8250,21 +8374,21 @@ sub getContextsForField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanCustomFieldContext->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -8275,14 +8399,14 @@ sub getContextsForField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -8383,8 +8507,10 @@ sub createCustomFieldContext( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -8393,34 +8519,34 @@ sub createCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::CreateCustomFieldContext->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the field, project, or issue type is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 409 ) {
             # Returned if the issue type is a sub-task, but sub-tasks are disabled in Jira settings.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -8510,8 +8636,10 @@ sub getDefaultValues( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -8520,21 +8648,21 @@ sub getDefaultValues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanCustomFieldContextDefaultValue->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -8545,14 +8673,14 @@ sub getDefaultValues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -8635,8 +8763,10 @@ sub setDefaultValues( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -8645,7 +8775,7 @@ sub setDefaultValues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -8656,21 +8786,21 @@ sub setDefaultValues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -8681,14 +8811,14 @@ sub setDefaultValues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -8778,8 +8908,10 @@ sub getIssueTypeMappingsForContexts( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -8788,28 +8920,28 @@ sub getIssueTypeMappingsForContexts( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanIssueTypeToContextMapping->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -8907,8 +9039,10 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -8917,7 +9051,7 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanContextForProjectAndIssueType->new($payload),
 
                 );
@@ -8928,21 +9062,21 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -8953,14 +9087,14 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -9050,8 +9184,10 @@ sub getProjectContextMapping( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -9060,21 +9196,21 @@ sub getProjectContextMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanCustomFieldContextProjectMapping->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -9085,14 +9221,14 @@ sub getProjectContextMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -9171,8 +9307,10 @@ sub deleteCustomFieldContext( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -9181,7 +9319,7 @@ sub deleteCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -9192,21 +9330,21 @@ sub deleteCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -9217,14 +9355,14 @@ sub deleteCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -9320,8 +9458,10 @@ sub updateCustomFieldContext( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -9330,7 +9470,7 @@ sub updateCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -9341,21 +9481,21 @@ sub updateCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -9366,14 +9506,14 @@ sub updateCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -9465,8 +9605,10 @@ sub addIssueTypesToContext( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -9475,7 +9617,7 @@ sub addIssueTypesToContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -9486,21 +9628,21 @@ sub addIssueTypesToContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -9511,7 +9653,7 @@ sub addIssueTypesToContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -9522,14 +9664,14 @@ sub addIssueTypesToContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -9621,8 +9763,10 @@ sub removeIssueTypesFromContext( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -9631,7 +9775,7 @@ sub removeIssueTypesFromContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -9642,21 +9786,21 @@ sub removeIssueTypesFromContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -9667,14 +9811,14 @@ sub removeIssueTypesFromContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -9776,8 +9920,10 @@ sub getOptionsForContext( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -9786,7 +9932,7 @@ sub getOptionsForContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanCustomFieldContextOption->new($payload),
 
                 );
@@ -9797,21 +9943,21 @@ sub getOptionsForContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -9822,14 +9968,14 @@ sub getOptionsForContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -9921,8 +10067,10 @@ sub createCustomFieldOption( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -9931,7 +10079,7 @@ sub createCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::CustomFieldCreatedContextOptionsList->new($payload),
 
                 );
@@ -9942,21 +10090,21 @@ sub createCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -9967,14 +10115,14 @@ sub createCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -10066,8 +10214,10 @@ sub updateCustomFieldOption( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -10076,7 +10226,7 @@ sub updateCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::CustomFieldUpdatedContextOptionsList->new($payload),
 
                 );
@@ -10087,21 +10237,21 @@ sub updateCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -10112,14 +10262,14 @@ sub updateCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -10219,8 +10369,10 @@ sub reorderCustomFieldOptions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -10229,7 +10381,7 @@ sub reorderCustomFieldOptions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -10240,21 +10392,21 @@ sub reorderCustomFieldOptions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -10265,14 +10417,14 @@ sub reorderCustomFieldOptions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -10357,34 +10509,36 @@ sub deleteCustomFieldOption( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the option is deleted.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -10395,14 +10549,14 @@ sub deleteCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -10494,8 +10648,10 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -10504,7 +10660,7 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -10515,21 +10671,21 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -10540,14 +10696,14 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -10639,8 +10795,10 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -10649,7 +10807,7 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -10660,21 +10818,21 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -10685,14 +10843,14 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -10777,8 +10935,10 @@ sub getContextsForFieldDeprecated( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -10787,20 +10947,20 @@ sub getContextsForFieldDeprecated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanContext->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -10890,8 +11050,10 @@ sub getScreensForField( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -10900,20 +11062,20 @@ sub getScreensForField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanScreenWithTab->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -11012,8 +11174,10 @@ sub getAllIssueFieldOptions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -11022,20 +11186,20 @@ sub getAllIssueFieldOptions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanIssueFieldOption->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the field is not found or does not support options.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the request is not authenticated as a Jira administrator or the app that provided the field.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -11142,8 +11306,10 @@ sub createIssueFieldOption( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -11152,23 +11318,23 @@ sub createIssueFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueFieldOption->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the option is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the request is not authenticated as a Jira administrator or the app that provided the field.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the field is not found or does not support options.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -11272,8 +11438,10 @@ sub getSelectableIssueFieldOptions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -11282,20 +11450,20 @@ sub getSelectableIssueFieldOptions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanIssueFieldOption->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the field is not found or does not support options.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -11399,8 +11567,10 @@ sub getVisibleIssueFieldOptions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -11409,20 +11579,20 @@ sub getVisibleIssueFieldOptions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanIssueFieldOption->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the field is not found or does not support options.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -11515,8 +11685,10 @@ sub deleteIssueFieldOption( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -11525,23 +11697,23 @@ sub deleteIssueFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the request is not authenticated as a Jira administrator or the app that provided the field.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the field or option is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 409 ) {
             # Returned if the option is selected for the field in any issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -11634,8 +11806,10 @@ sub getIssueFieldOption( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -11644,23 +11818,23 @@ sub getIssueFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueFieldOption->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the field is not found or does not support options.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the request is not authenticated as a Jira administrator or the app that provided the field.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the option is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -11778,8 +11952,10 @@ sub updateIssueFieldOption( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -11788,23 +11964,23 @@ sub updateIssueFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueFieldOption->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the option is invalid, or the *ID* in the request object does not match the *optionId* parameter.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the request is not authenticated as a Jira administrator or the app that provided the field.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if field is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -11920,8 +12096,10 @@ sub replaceIssueFieldOption( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 303 ) {
@@ -11930,31 +12108,31 @@ sub replaceIssueFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::TaskProgressBeanRemoveOptionFromIssuesResult->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the field is not found or does not support options, or the options to be replaced are not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -12031,8 +12209,10 @@ sub deleteCustomField( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 303 ) {
@@ -12041,7 +12221,7 @@ sub deleteCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
                 );
@@ -12052,7 +12232,7 @@ sub deleteCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -12063,7 +12243,7 @@ sub deleteCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -12074,7 +12254,7 @@ sub deleteCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -12085,7 +12265,7 @@ sub deleteCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -12096,14 +12276,14 @@ sub deleteCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -12179,8 +12359,10 @@ sub restoreCustomField( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -12189,7 +12371,7 @@ sub restoreCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -12200,7 +12382,7 @@ sub restoreCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -12211,7 +12393,7 @@ sub restoreCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -12222,7 +12404,7 @@ sub restoreCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -12233,14 +12415,14 @@ sub restoreCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -12316,8 +12498,10 @@ sub trashCustomField( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -12326,7 +12510,7 @@ sub trashCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -12337,7 +12521,7 @@ sub trashCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -12348,7 +12532,7 @@ sub trashCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -12359,7 +12543,7 @@ sub trashCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -12370,14 +12554,14 @@ sub trashCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -12467,8 +12651,10 @@ sub getAllFieldConfigurations( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -12477,20 +12663,20 @@ sub getAllFieldConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanFieldConfigurationDetails->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -12569,8 +12755,10 @@ sub createFieldConfiguration( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -12579,23 +12767,23 @@ sub createFieldConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::FieldConfiguration->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -12667,8 +12855,10 @@ sub deleteFieldConfiguration( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -12677,26 +12867,26 @@ sub deleteFieldConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the field configuration is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -12785,8 +12975,10 @@ sub updateFieldConfiguration( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -12795,26 +12987,26 @@ sub updateFieldConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the field configuration is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -12899,8 +13091,10 @@ sub getFieldConfigurationItems( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -12909,23 +13103,23 @@ sub getFieldConfigurationItems( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanFieldConfigurationItem->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the field configuration is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -13010,8 +13204,10 @@ sub updateFieldConfigurationItems( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -13020,26 +13216,26 @@ sub updateFieldConfigurationItems( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the field configuration is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -13119,8 +13315,10 @@ sub getAllFieldConfigurationSchemes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -13129,23 +13327,23 @@ sub getAllFieldConfigurationSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanFieldConfigurationScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -13224,8 +13422,10 @@ sub createFieldConfigurationScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -13234,7 +13434,7 @@ sub createFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::FieldConfigurationScheme->new($payload),
 
                 );
@@ -13245,28 +13445,28 @@ sub createFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -13346,8 +13546,10 @@ sub getFieldConfigurationSchemeMappings( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -13356,26 +13558,26 @@ sub getFieldConfigurationSchemeMappings( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanFieldConfigurationIssueTypeItem->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if no field configuration schemes are found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -13458,8 +13660,10 @@ sub getFieldConfigurationSchemeProjectMapping( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -13468,23 +13672,23 @@ sub getFieldConfigurationSchemeProjectMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanFieldConfigurationSchemeProjects->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -13563,8 +13767,10 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -13573,7 +13779,7 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -13584,21 +13790,21 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -13609,14 +13815,14 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -13688,8 +13894,10 @@ sub deleteFieldConfigurationScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -13698,26 +13906,26 @@ sub deleteFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the field configuration scheme is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -13806,8 +14014,10 @@ sub updateFieldConfigurationScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -13816,7 +14026,7 @@ sub updateFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -13827,21 +14037,21 @@ sub updateFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -13852,14 +14062,14 @@ sub updateFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -13944,8 +14154,10 @@ sub setFieldConfigurationSchemeMapping( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -13954,26 +14166,26 @@ sub setFieldConfigurationSchemeMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the field configuration scheme, the field configuration, or the issue type is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -14062,8 +14274,10 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -14072,7 +14286,7 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -14083,7 +14297,7 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -14094,7 +14308,7 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -14105,7 +14319,7 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -14116,14 +14330,14 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -14207,8 +14421,10 @@ sub getFilters( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -14217,7 +14433,7 @@ sub getFilters( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::Filter->new($_),
  } $payload->@* ],
 
@@ -14225,7 +14441,7 @@ sub getFilters( $self, %options ) {
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -14379,8 +14595,10 @@ sub createFilter( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -14389,20 +14607,20 @@ sub createFilter( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Filter->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request object is invalid. For example, the `name` is not unique or the project ID is not specified for a project role share permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -14464,8 +14682,10 @@ sub getDefaultShareScope( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -14474,17 +14694,17 @@ sub getDefaultShareScope( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::DefaultShareScope->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -14578,8 +14798,10 @@ sub setDefaultShareScope( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -14588,20 +14810,20 @@ sub setDefaultShareScope( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::DefaultShareScope->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if an invalid scope is set.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -14685,8 +14907,10 @@ sub getFavouriteFilters( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -14695,7 +14919,7 @@ sub getFavouriteFilters( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::Filter->new($_),
  } $payload->@* ],
 
@@ -14703,10 +14927,10 @@ sub getFavouriteFilters( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -14795,8 +15019,10 @@ sub getMyFilters( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -14805,7 +15031,7 @@ sub getMyFilters( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::Filter->new($_),
  } $payload->@* ],
 
@@ -14813,10 +15039,10 @@ sub getMyFilters( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -15040,8 +15266,10 @@ sub getFiltersPaginated( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -15050,7 +15278,7 @@ sub getFiltersPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanFilterDetails->new($payload),
 
                 );
@@ -15061,17 +15289,17 @@ sub getFiltersPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -15141,22 +15369,24 @@ sub deleteFilter( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the filter is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the user does not have permission to delete the filter.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -15255,8 +15485,10 @@ sub getFilter( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -15265,20 +15497,20 @@ sub getFilter( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Filter->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the filter is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -15442,8 +15674,10 @@ sub updateFilter( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -15452,20 +15686,20 @@ sub updateFilter( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Filter->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request object is invalid. For example, the `name` is not unique or the project ID is not specified for a project role share permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -15535,22 +15769,24 @@ sub resetColumns( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if: * the filter is not found. * the user does not have permission to view the filter.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -15622,8 +15858,10 @@ sub getColumns( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -15632,7 +15870,7 @@ sub getColumns( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ColumnItem->new($_),
  } $payload->@* ],
 
@@ -15640,16 +15878,16 @@ sub getColumns( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the user does not have permission to view the filter.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if a column configuration is not set for the filter.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -15726,8 +15964,10 @@ sub setColumns( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -15736,20 +15976,20 @@ sub setColumns( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * a non-navigable field is set as a column. * the user does not have permission to view the filter.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the requesting user is not an owner of the filter.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -15843,8 +16083,10 @@ sub deleteFavouriteForFilter( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -15853,17 +16095,17 @@ sub deleteFavouriteForFilter( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Filter->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the filter is not found. * the user does not have permission to view the filter.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -15957,8 +16199,10 @@ sub setFavouriteForFilter( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -15967,17 +16211,17 @@ sub setFavouriteForFilter( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Filter->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the filter is not found. * the user does not have permission to favorite the filter.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -16062,8 +16306,10 @@ sub changeFilterOwner( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -16072,23 +16318,23 @@ sub changeFilterOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned when: * The new owner of the filter owns a filter with the same name. * An attempt is made to change owner of the default filter.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the requesting user is not an owner of the filter or does not have *Administer Jira* global permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the filter or the new owner of the filter is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -16160,8 +16406,10 @@ sub getSharePermissions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -16170,7 +16418,7 @@ sub getSharePermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::SharePermission->new($_),
  } $payload->@* ],
 
@@ -16178,13 +16426,13 @@ sub getSharePermissions( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the filter is not found. * the user does not have permission to view the filter.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -16327,8 +16575,10 @@ sub addSharePermission( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -16337,7 +16587,7 @@ sub addSharePermission( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::SharePermission->new($_),
  } $payload->@* ],
 
@@ -16345,16 +16595,16 @@ sub addSharePermission( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the request object is invalid. For example, it contains an invalid type, the ID does not match the type, or the project or group is not found. * the user does not own the filter. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the filter is not found. * the user does not have permission to view the filter.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -16431,22 +16681,24 @@ sub deleteSharePermission( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the filter is not found. * the user does not own the filter.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -16525,8 +16777,10 @@ sub getSharePermission( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -16535,20 +16789,20 @@ sub getSharePermission( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::SharePermission->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the filter is not found. * the permission is not found. * the user does not have permission to view the filter.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -16631,28 +16885,30 @@ sub removeGroup( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the group name is not specified.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing from the request.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the group is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -16734,8 +16990,10 @@ sub getGroup( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -16744,26 +17002,26 @@ sub getGroup( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Group->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the group name is not specified.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the calling user does not have the Administer Jira global permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the group is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -16838,8 +17096,10 @@ sub createGroup( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -16848,23 +17108,23 @@ sub createGroup( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Group->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if group name is not specified or the group name is in use.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -16959,8 +17219,10 @@ sub bulkGetGroups( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -16969,24 +17231,24 @@ sub bulkGetGroups( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanGroupDetails->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -16997,14 +17259,14 @@ sub bulkGetGroups( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -17096,8 +17358,10 @@ sub getUsersFromGroup( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -17106,26 +17370,26 @@ sub getUsersFromGroup( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanUserDetails->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the group name is not specified.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the calling user does not have the Administer Jira global permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the group is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -17213,28 +17477,30 @@ sub removeUserFromGroup( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if: * `groupName` is missing. * `accountId` is missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing from the request.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the group or user are not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -17328,8 +17594,10 @@ sub addUserToGroup( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -17338,26 +17606,26 @@ sub addUserToGroup( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Group->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `groupname` is not provided. * `accountId` is missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing from the request.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the calling user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the group or user are not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -17459,8 +17727,10 @@ sub findGroups( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -17469,14 +17739,14 @@ sub findGroups( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::FoundGroups->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -17589,8 +17859,10 @@ sub findUsersAndGroups( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -17599,26 +17871,26 @@ sub findUsersAndGroups( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::FoundUsersAndGroups->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the query parameter is not provided.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 429 ) {
             # Returned if the rate limit is exceeded. User search endpoints share a collective rate limit for the tenant, in addition to Jira's normal rate limiting you may receive a rate limit for user search. Please respect the Retry-After header.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -17680,8 +17952,10 @@ sub getLicense( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -17690,17 +17964,17 @@ sub getLicense( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::License->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -17802,8 +18076,10 @@ sub createIssue( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -17812,7 +18088,7 @@ sub createIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::CreatedIssue->new($payload),
 
                 );
@@ -17823,7 +18099,7 @@ sub createIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -17834,7 +18110,7 @@ sub createIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -17845,14 +18121,14 @@ sub createIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -17926,8 +18202,10 @@ sub createIssues( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -17936,7 +18214,7 @@ sub createIssues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::CreatedIssues->new($payload),
 
                 );
@@ -17947,17 +18225,17 @@ sub createIssues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::CreatedIssues->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -18047,8 +18325,10 @@ sub getCreateIssueMeta( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -18057,17 +18337,17 @@ sub getCreateIssueMeta( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueCreateMetadata->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -18162,8 +18442,10 @@ sub getIssuePickerResource( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -18172,17 +18454,17 @@ sub getIssuePickerResource( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssuePickerSuggestions->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -18262,20 +18544,22 @@ sub bulkSetIssuesPropertiesList( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 303 ) {
             # Returned if the operation is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Return if the request is invalid or the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -18286,14 +18570,14 @@ sub bulkSetIssuesPropertiesList( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -18370,20 +18654,22 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 303 ) {
             # Returned if the operation is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Return if the request is invalid.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -18394,7 +18680,7 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -18405,14 +18691,14 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -18502,20 +18788,22 @@ sub bulkDeleteIssueProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 303 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -18526,14 +18814,14 @@ sub bulkDeleteIssueProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -18627,20 +18915,22 @@ sub bulkSetIssueProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 303 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -18651,14 +18941,14 @@ sub bulkSetIssueProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -18733,8 +19023,10 @@ sub getIsWatchingIssueBulk( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -18743,17 +19035,17 @@ sub getIsWatchingIssueBulk( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::BulkIssueIsWatching->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -18831,28 +19123,30 @@ sub deleteIssue( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the issue has subtasks and `deleteSubtasks` is not set to *true*.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to delete the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -19072,8 +19366,10 @@ sub getIssue( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -19082,20 +19378,20 @@ sub getIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueBean->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -19214,8 +19510,10 @@ sub editIssue( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -19224,26 +19522,26 @@ sub editIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the request body is missing. * the user does not have the necessary permission to edit one or more fields. * the request includes one or more fields that are not found or are not associated with the issue's edit screen. * the request includes an invalid transition.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user uses `overrideScreenSecurity` or `overrideEditableFlag` but doesn't have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -19399,8 +19697,10 @@ sub assignIssue( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -19409,23 +19709,23 @@ sub assignIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the user is not found. * `name`, `key`, or `accountId` is missing. * more than one of `name`, `key`, and `accountId` are provided.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -19500,8 +19800,10 @@ sub addAttachment( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -19510,7 +19812,7 @@ sub addAttachment( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::Attachment->new($_),
  } $payload->@* ],
 
@@ -19518,16 +19820,16 @@ sub addAttachment( $self, %options ) {
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if any of the following is true: * the issue is not found. * the user does not have permission to view the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 413 ) {
             # The attachments exceed the maximum attachment size for issues. See [Configuring file attachments](https://confluence.atlassian.com/x/wIXKM) for details.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -19612,8 +19914,10 @@ sub getChangeLogs( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -19622,17 +19926,17 @@ sub getChangeLogs( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanChangelog->new($payload),
 
                 );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -19717,8 +20021,10 @@ sub getChangeLogsByIds( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -19727,20 +20033,20 @@ sub getChangeLogsByIds( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageOfChangelogs->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -19835,8 +20141,10 @@ sub getComments( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -19845,23 +20153,23 @@ sub getComments( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageOfComments->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `orderBy` is set to a value other than *created*.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -19998,8 +20306,10 @@ sub addComment( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -20008,23 +20318,23 @@ sub addComment( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Comment->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -20101,28 +20411,30 @@ sub deleteComment( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the user does not have permission to delete the comment.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue or comment is not found or the user does not have permission to view the issue or comment.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 405 ) {
             # Returned if an anonymous call is made to the operation.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -20209,8 +20521,10 @@ sub getComment( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -20219,20 +20533,20 @@ sub getComment( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Comment->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue or comment is not found or the user does not have permission to view the issue or comment.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -20386,8 +20700,10 @@ sub updateComment( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -20396,23 +20712,23 @@ sub updateComment( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Comment->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the user does not have permission to edit the comment or the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue or comment is not found or the user does not have permission to view the issue or comment.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -20497,8 +20813,10 @@ sub getEditIssueMeta( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -20507,23 +20825,23 @@ sub getEditIssueMeta( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueUpdateMetadata->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user uses an override parameter but doesn't have permission to do so.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -20624,8 +20942,10 @@ sub notify( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -20634,23 +20954,23 @@ sub notify( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the recipient is the same as the calling user. * the recipient is invalid. For example, the recipient is set to the assignee, but the issue is unassigned. * the request is invalid. For example, required fields are missing or have invalid values.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if: * outgoing emails are disabled. * no SMTP server is configured.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -20722,8 +21042,10 @@ sub getIssuePropertyKeys( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -20732,17 +21054,17 @@ sub getIssuePropertyKeys( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permissions to view the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -20819,22 +21141,24 @@ sub deleteIssueProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue or property is not found, or the user does not have permission to edit the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -20913,8 +21237,10 @@ sub getIssueProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -20923,20 +21249,20 @@ sub getIssueProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue or property is not found or the user does not have permission to see the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -21019,8 +21345,10 @@ sub setIssueProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -21029,7 +21357,7 @@ sub setIssueProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -21040,26 +21368,26 @@ sub setIssueProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to edit the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -21139,28 +21467,30 @@ sub deleteRemoteIssueLinkByGlobalId( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if a global ID isn't provided.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to link issues.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue or remote issue link is not found or the user does not have permission to view the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -21240,8 +21570,10 @@ sub getRemoteIssueLinks( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -21250,26 +21582,26 @@ sub getRemoteIssueLinks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::RemoteIssueLink->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if issue linking is disabled.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue or remote issue link is not found or the user does not have permission to view the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -21371,8 +21703,10 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -21381,7 +21715,7 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::RemoteIssueLinkIdentifies->new($payload),
 
                 );
@@ -21392,7 +21726,7 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::RemoteIssueLinkIdentifies->new($payload),
 
                 );
@@ -21403,23 +21737,23 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to link issues.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -21496,28 +21830,30 @@ sub deleteRemoteIssueLinkById( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the link ID is invalid or the remote issue link does not belong to the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to link issues.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue or remote issue link is not found or the user does not have permission to view the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -21596,8 +21932,10 @@ sub getRemoteIssueLinkById( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -21606,26 +21944,26 @@ sub getRemoteIssueLinkById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::RemoteIssueLink->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the link ID is invalid or the remote issue link does not belong to the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if issue linking is disabled.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue or remote issue link is not found or the user does not have permission to view the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -21733,8 +22071,10 @@ sub updateRemoteIssueLink( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -21743,7 +22083,7 @@ sub updateRemoteIssueLink( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -21754,23 +22094,23 @@ sub updateRemoteIssueLink( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to link issues.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue or remote issue link is not found or the user does not have permission to view the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -21870,8 +22210,10 @@ sub getTransitions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -21880,20 +22222,20 @@ sub getTransitions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Transitions->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -21994,8 +22336,10 @@ sub doTransition( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -22004,23 +22348,23 @@ sub doTransition( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * no transition is specified. * the user does not have permission to transition the issue. * a field that isn't included on the transition screen is defined in `fields` or `update`. * a field is specified in both `fields` and `update`. * the request is invalid for any other reason.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -22090,22 +22434,24 @@ sub removeVote( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * voting is disabled. * the user has not voted on the issue. * the issue is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -22177,8 +22523,10 @@ sub getVotes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -22187,20 +22535,20 @@ sub getVotes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Votes->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * voting is disabled. * the user does not have permission to view the issue. * the issue is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -22272,8 +22620,10 @@ sub addVote( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -22282,23 +22632,23 @@ sub addVote( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * voting is disabled. * the issue is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -22381,28 +22731,30 @@ sub removeWatcher( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if `accountId` is not supplied.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the permission to manage the watcher list.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue or the user is not found or the user does not have permission to view the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -22474,8 +22826,10 @@ sub getIssueWatchers( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -22484,20 +22838,20 @@ sub getIssueWatchers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Watchers->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -22572,8 +22926,10 @@ sub addWatcher( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -22582,26 +22938,26 @@ sub addWatcher( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the permission to manage the watcher list.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue or the user is not found or the user does not have permission to view the issue.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -22701,8 +23057,10 @@ sub getIssueWorklog( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -22711,20 +23069,20 @@ sub getIssueWorklog( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageOfWorklogs->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the issue is not found or the user does not have permission to view the issue. * `startAt` or `maxResults` has non-numeric values. * time tracking is disabled.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -22914,8 +23272,10 @@ sub addWorklog( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -22924,23 +23284,23 @@ sub addWorklog( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Worklog->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `adjustEstimate` is set to `new` but `newEstimate` is not provided or is invalid. * `adjustEstimate` is set to `manual` but `reduceBy` is not provided or is invalid. * the user does not have permission to add the worklog. * the request JSON is malformed.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -23069,25 +23429,27 @@ sub deleteWorklog( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if: * `adjustEstimate` is set to `new` but `newEstimate` is not provided or is invalid. * `adjustEstimate` is set to `manual` but `reduceBy` is not provided or is invalid. * the user does not have permission to delete the worklog.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the issue is not found or user does not have permission to view the issue. * the worklog is not found or the user does not have permission to view it. * time tracking is disabled.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -23176,8 +23538,10 @@ sub getWorklog( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -23186,20 +23550,20 @@ sub getWorklog( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Worklog->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the issue is not found or the user does not have permission to view it. * the worklog is not found or the user does not have permission to view it. * time tracking is disabled. .
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -23386,8 +23750,10 @@ sub updateWorklog( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -23396,23 +23762,23 @@ sub updateWorklog( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Worklog->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `adjustEstimate` is set to `new` but `newEstimate` is not provided or is invalid. * the user does not have permission to update the worklog. * the request JSON is malformed.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the issue is not found or user does not have permission to view the issue. * the worklog is not found or the user does not have permission to view it. * time tracking is disabled.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -23491,8 +23857,10 @@ sub getWorklogPropertyKeys( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -23501,23 +23869,23 @@ sub getWorklogPropertyKeys( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the worklog ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the issue or worklog is not found. * the user does not have permission to view the issue or worklog.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -23601,28 +23969,30 @@ sub deleteWorklogProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the worklog property is removed.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the worklog key or id is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to edit the worklog.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the issue, worklog, or property is not found. * the user does not have permission to view the issue or worklog.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -23708,8 +24078,10 @@ sub getWorklogProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -23718,23 +24090,23 @@ sub getWorklogProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the worklog ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the issue, worklog, or property is not found. * the user does not have permission to view the issue or worklog.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -23824,8 +24196,10 @@ sub setWorklogProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -23834,7 +24208,7 @@ sub setWorklogProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -23845,26 +24219,26 @@ sub setWorklogProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the worklog ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to edit the worklog.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the issue or worklog is not found. * the user does not have permission to view the issue or worklog.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -23965,8 +24339,10 @@ sub linkIssues( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -23975,23 +24351,23 @@ sub linkIssues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the comment is not created. The response contains an error message indicating why the comment wasn't created. The issue link is also not created.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * issue linking is disabled. * the user cannot view one or both of the issues. For example, the user doesn't have *Browse project* project permission for a project containing one of the issues. * the user does not have *link issues* project permission. * either of the link issues are not found. * the issue link type is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -24061,28 +24437,30 @@ sub deleteIssueLink( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # 200 response
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the issue link ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * issue linking is disabled. * the issue link is not found. * the user doesn't have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -24154,8 +24532,10 @@ sub getIssueLink( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -24164,23 +24544,23 @@ sub getIssueLink( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueLink->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue link ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * issue linking is disabled. * the issue link is not found. * the user doesn't have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -24242,8 +24622,10 @@ sub getIssueLinkTypes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -24252,20 +24634,20 @@ sub getIssueLinkTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueLinkTypes->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if issue linking is disabled.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -24412,8 +24794,10 @@ sub createIssueLinkType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -24422,23 +24806,23 @@ sub createIssueLinkType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueLinkType->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * issue linking is disabled. * the issue link type name is in use. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -24508,25 +24892,27 @@ sub deleteIssueLinkType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the issue link type ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * issue linking is disabled. * the issue link type is not found. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -24598,8 +24984,10 @@ sub getIssueLinkType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -24608,23 +24996,23 @@ sub getIssueLinkType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueLinkType->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue link type ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * issue linking is disabled. * the issue link type is not found. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -24781,8 +25169,10 @@ sub updateIssueLinkType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -24791,23 +25181,23 @@ sub updateIssueLinkType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueLinkType->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue link type ID or the request body are invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * issue linking is disabled. * the issue link type is not found. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -24869,8 +25259,10 @@ sub getIssueSecuritySchemes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -24879,20 +25271,20 @@ sub getIssueSecuritySchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::SecuritySchemes->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to administer issue security schemes.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -24964,8 +25356,10 @@ sub getIssueSecurityScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -24974,20 +25368,20 @@ sub getIssueSecurityScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::SecurityScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the administrator permission and the scheme is not used in any project where the user has administrative permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -25111,8 +25505,10 @@ sub getIssueSecurityLevelMembers( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -25121,26 +25517,26 @@ sub getIssueSecurityLevelMembers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanIssueSecurityLevelMember->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if no issue security level members are found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -25202,8 +25598,10 @@ sub getIssueAllTypes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -25212,7 +25610,7 @@ sub getIssueAllTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::IssueTypeDetails->new($_),
  } $payload->@* ],
 
@@ -25220,10 +25618,10 @@ sub getIssueAllTypes( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -25328,8 +25726,10 @@ sub createIssueType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -25338,26 +25738,26 @@ sub createIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueTypeDetails->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid because: * no content is sent. * the issue type name exceeds 60 characters. * a subtask issue type is requested on an instance where subtasks are disabled.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 409 ) {
             # Returned if the issue type name is in use.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -25454,8 +25854,10 @@ sub getIssueTypesForProject( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -25464,7 +25866,7 @@ sub getIssueTypesForProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::IssueTypeDetails->new($_),
  } $payload->@* ],
 
@@ -25472,16 +25874,16 @@ sub getIssueTypesForProject( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the project is not found. * the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -25559,31 +25961,33 @@ sub deleteIssueType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if any issues cannot be updated with the alternative issue type.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the issue type is in use and an alternative issue type is not specified. * the issue type or alternative issue type is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 409 ) {
             # Returned if the issue type is in use and: * also specified as the alternative issue type. * is a *standard* issue type and the alternative issue type is a *subtask*.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -25655,8 +26059,10 @@ sub getIssueType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -25665,23 +26071,23 @@ sub getIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueTypeDetails->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue type ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the issue type is not found. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -25774,8 +26180,10 @@ sub updateIssueType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -25784,29 +26192,29 @@ sub updateIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueTypeDetails->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid because: * no content is sent. * the issue type name exceeds 60 characters. * the avatar is not associated with this issue type.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 409 ) {
             # Returned if the issue type name is in use.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -25878,8 +26286,10 @@ sub getAlternativeIssueTypes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -25888,7 +26298,7 @@ sub getAlternativeIssueTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::IssueTypeDetails->new($_),
  } $payload->@* ],
 
@@ -25896,13 +26306,13 @@ sub getAlternativeIssueTypes( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the issue type is not found. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -25998,8 +26408,10 @@ sub createIssueTypeAvatar( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -26008,26 +26420,26 @@ sub createIssueTypeAvatar( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Avatar->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * an image isn't included in the request. * the image type is unsupported. * the crop parameters extend the crop area beyond the edge of the image. * `cropSize` is missing. * the issue type ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -26099,8 +26511,10 @@ sub getIssueTypePropertyKeys( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -26109,20 +26523,20 @@ sub getIssueTypePropertyKeys( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue type ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the issue type is not found. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -26199,28 +26613,30 @@ sub deleteIssueTypeProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the issue type property is deleted.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the issue type ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type or property is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -26299,8 +26715,10 @@ sub getIssueTypeProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -26309,23 +26727,23 @@ sub getIssueTypeProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue type ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type or property is not found or the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -26408,8 +26826,10 @@ sub setIssueTypeProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -26418,7 +26838,7 @@ sub setIssueTypeProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -26429,26 +26849,26 @@ sub setIssueTypeProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the issue type ID is invalid. * a property value is not provided. * the property value JSON content is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to modify the issue type.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the issue type is not found. * the user does not have the permission view the issue type.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -26571,8 +26991,10 @@ sub getAllIssueTypeSchemes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -26581,23 +27003,23 @@ sub getAllIssueTypeSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanIssueTypeScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -26684,8 +27106,10 @@ sub createIssueTypeScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -26694,7 +27118,7 @@ sub createIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueTypeSchemeID->new($payload),
 
                 );
@@ -26705,21 +27129,21 @@ sub createIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -26730,14 +27154,14 @@ sub createIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -26817,8 +27241,10 @@ sub getIssueTypeSchemesMapping( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -26827,23 +27253,23 @@ sub getIssueTypeSchemesMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanIssueTypeSchemeMapping->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -26926,8 +27352,10 @@ sub getIssueTypeSchemeForProjects( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -26936,23 +27364,23 @@ sub getIssueTypeSchemeForProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanIssueTypeSchemeProjects->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -27031,8 +27459,10 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -27041,7 +27471,7 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -27052,21 +27482,21 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -27077,14 +27507,14 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -27156,8 +27586,10 @@ sub deleteIssueTypeScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -27166,7 +27598,7 @@ sub deleteIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -27177,21 +27609,21 @@ sub deleteIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -27202,14 +27634,14 @@ sub deleteIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -27302,8 +27734,10 @@ sub updateIssueTypeScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -27312,7 +27746,7 @@ sub updateIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -27323,21 +27757,21 @@ sub updateIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -27348,14 +27782,14 @@ sub updateIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -27440,8 +27874,10 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -27450,7 +27886,7 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -27461,21 +27897,21 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -27486,14 +27922,14 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -27586,8 +28022,10 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -27596,7 +28034,7 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -27607,21 +28045,21 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -27632,14 +28070,14 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -27718,8 +28156,10 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -27728,7 +28168,7 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -27739,21 +28179,21 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -27764,14 +28204,14 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -27880,8 +28320,10 @@ sub getIssueTypeScreenSchemes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -27890,23 +28332,23 @@ sub getIssueTypeScreenSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanIssueTypeScreenScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -27989,8 +28431,10 @@ sub createIssueTypeScreenScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -27999,7 +28443,7 @@ sub createIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueTypeScreenSchemeId->new($payload),
 
                 );
@@ -28010,21 +28454,21 @@ sub createIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -28035,7 +28479,7 @@ sub createIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -28046,14 +28490,14 @@ sub createIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -28133,8 +28577,10 @@ sub getIssueTypeScreenSchemeMappings( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -28143,23 +28589,23 @@ sub getIssueTypeScreenSchemeMappings( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanIssueTypeScreenSchemeItem->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -28242,8 +28688,10 @@ sub getIssueTypeScreenSchemeProjectAssociations( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -28252,23 +28700,23 @@ sub getIssueTypeScreenSchemeProjectAssociations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanIssueTypeScreenSchemesProjects->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -28347,8 +28795,10 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -28357,7 +28807,7 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -28368,21 +28818,21 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -28393,14 +28843,14 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -28472,8 +28922,10 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -28482,7 +28934,7 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -28493,31 +28945,31 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type screen scheme is not found.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -28606,8 +29058,10 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -28616,7 +29070,7 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -28627,21 +29081,21 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -28652,14 +29106,14 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -28744,8 +29198,10 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -28754,7 +29210,7 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -28765,24 +29221,24 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type screen scheme, issue type, or screen scheme is not found.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -28793,14 +29249,14 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -28885,8 +29341,10 @@ sub updateDefaultScreenScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -28895,7 +29353,7 @@ sub updateDefaultScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -28906,21 +29364,21 @@ sub updateDefaultScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -28931,14 +29389,14 @@ sub updateDefaultScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -29023,8 +29481,10 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -29033,7 +29493,7 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -29044,21 +29504,21 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -29069,14 +29529,14 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -29164,8 +29624,10 @@ sub getProjectsForIssueTypeScreenScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -29174,23 +29636,23 @@ sub getProjectsForIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanProjectDetails->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -29252,8 +29714,10 @@ sub getAutoComplete( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -29262,17 +29726,17 @@ sub getAutoComplete( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::JQLReferenceData->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -29351,8 +29815,10 @@ sub getAutoCompletePost( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -29361,20 +29827,20 @@ sub getAutoCompletePost( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::JQLReferenceData->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -29459,8 +29925,10 @@ sub getFieldAutoCompleteForQueryString( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -29469,20 +29937,20 @@ sub getFieldAutoCompleteForQueryString( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::AutoCompleteSuggestions->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if an invalid combination of parameters is passed.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -29562,8 +30030,10 @@ sub getPrecomputations( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -29572,14 +30042,14 @@ sub getPrecomputations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanJqlFunctionPrecomputationBean->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -29652,8 +30122,10 @@ sub updatePrecomputations( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -29662,14 +30134,14 @@ sub updatePrecomputations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -29748,8 +30220,10 @@ sub matchIssues( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -29758,17 +30232,17 @@ sub matchIssues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueMatches->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `jqls` exceeds the maximum number of JQL queries or `issueIds` exceeds the maximum number of issue IDs.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -29871,8 +30345,10 @@ sub parseJqlQueries( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -29881,7 +30357,7 @@ sub parseJqlQueries( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ParsedJqlQueries->new($payload),
 
                 );
@@ -29892,17 +30368,17 @@ sub parseJqlQueries( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -29977,8 +30453,10 @@ sub migrateQueries( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -29987,20 +30465,20 @@ sub migrateQueries( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ConvertedJQLQueries->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if at least one of the queries cannot be converted. For example, the JQL has invalid operators or invalid keywords, or the users in the query cannot be found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -30078,8 +30556,10 @@ sub sanitiseJqlQueries( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -30088,7 +30568,7 @@ sub sanitiseJqlQueries( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::SanitizedJqlQueries->new($payload),
 
                 );
@@ -30099,7 +30579,7 @@ sub sanitiseJqlQueries( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -30110,7 +30590,7 @@ sub sanitiseJqlQueries( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -30121,14 +30601,14 @@ sub sanitiseJqlQueries( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -30203,8 +30683,10 @@ sub getAllLabels( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -30213,14 +30695,14 @@ sub getAllLabels( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanString->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -30282,8 +30764,10 @@ sub getApproximateLicenseCount( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -30292,20 +30776,20 @@ sub getApproximateLicenseCount( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::LicenseMetric->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to complete this request.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -30375,8 +30859,10 @@ sub getApproximateApplicationLicenseCount( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -30385,20 +30871,20 @@ sub getApproximateApplicationLicenseCount( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::LicenseMetric->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to complete this request.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -30502,8 +30988,10 @@ sub getMyPermissions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -30512,7 +31000,7 @@ sub getMyPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Permissions->new($payload),
 
                 );
@@ -30523,7 +31011,7 @@ sub getMyPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -30534,7 +31022,7 @@ sub getMyPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -30545,14 +31033,14 @@ sub getMyPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -30623,22 +31111,24 @@ sub removePreference( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the key is not provided or not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -30711,8 +31201,10 @@ sub getPreference( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -30721,20 +31213,20 @@ sub getPreference( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the key is not provided or not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -30811,8 +31303,10 @@ sub setPreference( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -30821,20 +31315,20 @@ sub setPreference( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the key or value is not provided or invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -30896,8 +31390,10 @@ sub deleteLocale( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -30906,17 +31402,17 @@ sub deleteLocale( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -30978,8 +31474,10 @@ sub getLocale( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -30988,17 +31486,17 @@ sub getLocale( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Locale->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -31073,8 +31571,10 @@ sub setLocale( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -31083,20 +31583,20 @@ sub setLocale( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -31180,8 +31680,10 @@ sub getCurrentUser( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -31190,17 +31692,17 @@ sub getCurrentUser( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::User->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -31329,8 +31831,10 @@ sub getNotificationSchemes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -31339,7 +31843,7 @@ sub getNotificationSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanNotificationScheme->new($payload),
 
                 );
@@ -31350,17 +31854,17 @@ sub getNotificationSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -31446,8 +31950,10 @@ sub createNotificationScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -31456,7 +31962,7 @@ sub createNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::NotificationSchemeId->new($payload),
 
                 );
@@ -31467,7 +31973,7 @@ sub createNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -31478,7 +31984,7 @@ sub createNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -31489,14 +31995,14 @@ sub createNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -31583,8 +32089,10 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -31593,7 +32101,7 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanNotificationSchemeAndProjectMappingJsonBean->new($payload),
 
                 );
@@ -31604,7 +32112,7 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -31615,14 +32123,14 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -31736,8 +32244,10 @@ sub getNotificationScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -31746,23 +32256,23 @@ sub getNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::NotificationScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the notification scheme is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -31855,8 +32365,10 @@ sub updateNotificationScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -31865,7 +32377,7 @@ sub updateNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -31876,7 +32388,7 @@ sub updateNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -31887,7 +32399,7 @@ sub updateNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -31898,7 +32410,7 @@ sub updateNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -31909,14 +32421,14 @@ sub updateNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -32005,8 +32517,10 @@ sub addNotifications( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -32015,7 +32529,7 @@ sub addNotifications( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -32026,7 +32540,7 @@ sub addNotifications( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -32037,7 +32551,7 @@ sub addNotifications( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -32048,7 +32562,7 @@ sub addNotifications( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -32059,14 +32573,14 @@ sub addNotifications( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -32142,8 +32656,10 @@ sub deleteNotificationScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -32152,7 +32668,7 @@ sub deleteNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -32163,7 +32679,7 @@ sub deleteNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -32174,7 +32690,7 @@ sub deleteNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -32185,7 +32701,7 @@ sub deleteNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -32196,14 +32712,14 @@ sub deleteNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -32286,8 +32802,10 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -32296,7 +32814,7 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -32307,7 +32825,7 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -32318,7 +32836,7 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -32329,7 +32847,7 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -32340,14 +32858,14 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -32409,8 +32927,10 @@ sub getAllPermissions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -32419,20 +32939,20 @@ sub getAllPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Permissions->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -32517,8 +33037,10 @@ sub getBulkPermissions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -32527,7 +33049,7 @@ sub getBulkPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::BulkPermissionGrants->new($payload),
 
                 );
@@ -32538,7 +33060,7 @@ sub getBulkPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -32549,14 +33071,14 @@ sub getBulkPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -32631,8 +33153,10 @@ sub getPermittedProjects( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -32641,7 +33165,7 @@ sub getPermittedProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PermittedProjects->new($payload),
 
                 );
@@ -32652,17 +33176,17 @@ sub getPermittedProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -32766,8 +33290,10 @@ sub getAllPermissionSchemes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -32776,17 +33302,17 @@ sub getAllPermissionSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PermissionSchemes->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -32927,8 +33453,10 @@ sub createPermissionScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -32937,23 +33465,23 @@ sub createPermissionScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PermissionScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission or the feature is not available in the Jira plan.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -33023,25 +33551,27 @@ sub deletePermissionScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the permission scheme is deleted.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the permission scheme is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -33155,8 +33685,10 @@ sub getPermissionScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -33165,20 +33697,20 @@ sub getPermissionScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PermissionScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the permission scheme is not found or the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -33329,8 +33861,10 @@ sub updatePermissionScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -33339,23 +33873,23 @@ sub updatePermissionScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PermissionScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if: * the user does not have the necessary permission to update permission schemes. * the Jira instance is Jira Core Free or Jira Software Free. Permission schemes cannot be updated on free plans.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the permission scheme is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -33469,8 +34003,10 @@ sub getPermissionSchemeGrants( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -33479,20 +34015,20 @@ sub getPermissionSchemeGrants( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PermissionGrants->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the permission schemes is not found or the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -33631,8 +34167,10 @@ sub createPermissionGrant( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -33641,23 +34179,23 @@ sub createPermissionGrant( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PermissionGrant->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the value for expand is invalid or the same permission grant is present.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -33734,25 +34272,27 @@ sub deletePermissionSchemeEntity( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the permission grant is deleted.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if permission grant with the provided ID is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -33873,8 +34413,10 @@ sub getPermissionSchemeGrant( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -33883,20 +34425,20 @@ sub getPermissionSchemeGrant( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PermissionGrant->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the permission scheme or permission grant is not found or the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -33958,8 +34500,10 @@ sub getPriorities( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -33968,7 +34512,7 @@ sub getPriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::Priority->new($_),
  } $payload->@* ],
 
@@ -33976,10 +34520,10 @@ sub getPriorities( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -34069,8 +34613,10 @@ sub createPriority( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -34079,7 +34625,7 @@ sub createPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PriorityId->new($payload),
 
                 );
@@ -34090,7 +34636,7 @@ sub createPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34101,7 +34647,7 @@ sub createPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34112,14 +34658,14 @@ sub createPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -34198,8 +34744,10 @@ sub setDefaultPriority( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -34208,7 +34756,7 @@ sub setDefaultPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -34219,7 +34767,7 @@ sub setDefaultPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34230,7 +34778,7 @@ sub setDefaultPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34241,7 +34789,7 @@ sub setDefaultPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34252,14 +34800,14 @@ sub setDefaultPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -34346,8 +34894,10 @@ sub movePriorities( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -34356,7 +34906,7 @@ sub movePriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -34367,7 +34917,7 @@ sub movePriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34378,7 +34928,7 @@ sub movePriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34389,7 +34939,7 @@ sub movePriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34400,14 +34950,14 @@ sub movePriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -34493,8 +35043,10 @@ sub searchPriorities( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -34503,7 +35055,7 @@ sub searchPriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanPriority->new($payload),
 
                 );
@@ -34514,14 +35066,14 @@ sub searchPriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -34608,8 +35160,10 @@ sub deletePriority( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 303 ) {
@@ -34618,7 +35172,7 @@ sub deletePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
                 );
@@ -34629,7 +35183,7 @@ sub deletePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34640,7 +35194,7 @@ sub deletePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34651,7 +35205,7 @@ sub deletePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34662,7 +35216,7 @@ sub deletePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34673,14 +35227,14 @@ sub deletePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -34752,8 +35306,10 @@ sub getPriority( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -34762,20 +35318,20 @@ sub getPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Priority->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue priority isn't found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -34876,8 +35432,10 @@ sub updatePriority( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -34886,7 +35444,7 @@ sub updatePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -34897,7 +35455,7 @@ sub updatePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34908,7 +35466,7 @@ sub updatePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34919,7 +35477,7 @@ sub updatePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -34930,14 +35488,14 @@ sub updatePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -35041,8 +35599,10 @@ sub getAllProjects( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -35051,7 +35611,7 @@ sub getAllProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::Project->new($_),
  } $payload->@* ],
 
@@ -35059,10 +35619,10 @@ sub getAllProjects( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -35205,8 +35765,10 @@ sub createProject( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -35215,23 +35777,23 @@ sub createProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectIdentifiers->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid and the project could not be created.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to create projects.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -35350,8 +35912,10 @@ sub getRecent( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -35360,7 +35924,7 @@ sub getRecent( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::Project->new($_),
  } $payload->@* ],
 
@@ -35368,13 +35932,13 @@ sub getRecent( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -35657,8 +36221,10 @@ sub searchProjects( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -35667,23 +36233,23 @@ sub searchProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanProject->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if no projects matching the search criteria are found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -35745,8 +36311,10 @@ sub getAllProjectTypes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -35755,7 +36323,7 @@ sub getAllProjectTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ProjectType->new($_),
  } $payload->@* ],
 
@@ -35763,10 +36331,10 @@ sub getAllProjectTypes( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -35828,8 +36396,10 @@ sub getAllAccessibleProjectTypes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -35838,7 +36408,7 @@ sub getAllAccessibleProjectTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ProjectType->new($_),
  } $payload->@* ],
 
@@ -35846,7 +36416,7 @@ sub getAllAccessibleProjectTypes( $self, %options ) {
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -35918,8 +36488,10 @@ sub getProjectTypeByKey( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -35928,20 +36500,20 @@ sub getProjectTypeByKey( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectType->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project type is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -36013,8 +36585,10 @@ sub getAccessibleProjectTypeByKey( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -36023,20 +36597,20 @@ sub getAccessibleProjectTypeByKey( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectType->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project type is not accessible to the user.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -36114,22 +36688,24 @@ sub deleteProject( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the project is deleted.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to delete it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -36243,8 +36819,10 @@ sub getProject( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -36253,20 +36831,20 @@ sub getProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Project->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -36427,8 +37005,10 @@ sub updateProject( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -36437,26 +37017,26 @@ sub updateProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Project->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if: * the user does not have the necessary permission to update project details. * the permission scheme is being changed and the Jira instance is Jira Core Free or Jira Software Free. Permission schemes cannot be changed on free plans.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -36528,8 +37108,10 @@ sub archiveProject( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -36538,26 +37120,26 @@ sub archiveProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -36666,8 +37248,10 @@ sub updateProjectAvatar( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -36676,23 +37260,23 @@ sub updateProjectAvatar( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to administer the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project or avatar is not found or the user does not have permission to view the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -36769,25 +37353,27 @@ sub deleteProjectAvatar( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the avatar is a system avatar or the user does not have permission to administer the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project or avatar is not found or the user does not have permission to view the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -36881,8 +37467,10 @@ sub createProjectAvatar( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -36891,26 +37479,26 @@ sub createProjectAvatar( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Avatar->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * an image isn't included in the request. * the image type is unsupported. * the crop parameters extend the crop area beyond the edge of the image.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to administer the project or an anonymous call is made to the operation.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -36982,8 +37570,10 @@ sub getAllProjectAvatars( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -36992,20 +37582,20 @@ sub getAllProjectAvatars( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectAvatars->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -37124,8 +37714,10 @@ sub getProjectComponentsPaginated( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -37134,20 +37726,20 @@ sub getProjectComponentsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanComponentWithIssueCount->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -37219,8 +37811,10 @@ sub getProjectComponents( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -37229,7 +37823,7 @@ sub getProjectComponents( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ProjectComponent->new($_),
  } $payload->@* ],
 
@@ -37237,13 +37831,13 @@ sub getProjectComponents( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -37315,8 +37909,10 @@ sub deleteProjectAsynchronously( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 303 ) {
@@ -37325,23 +37921,23 @@ sub deleteProjectAsynchronously( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -37413,8 +38009,10 @@ sub getFeaturesForProject( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -37423,26 +38021,26 @@ sub getFeaturesForProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ContainerForProjectFeatures->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -37534,8 +38132,10 @@ sub toggleFeatureForProject( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -37544,26 +38144,26 @@ sub toggleFeatureForProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ContainerForProjectFeatures->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project or project feature is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -37635,8 +38235,10 @@ sub getProjectPropertyKeys( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -37645,26 +38247,26 @@ sub getProjectPropertyKeys( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to view the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -37741,28 +38343,30 @@ sub deleteProjectProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the project property is deleted.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to administer the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project or property is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -37841,8 +38445,10 @@ sub getProjectProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -37851,26 +38457,26 @@ sub getProjectProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to view the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project or property is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -37953,8 +38559,10 @@ sub setProjectProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -37963,7 +38571,7 @@ sub setProjectProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -37974,26 +38582,26 @@ sub setProjectProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the project key or id is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to administer the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -38065,8 +38673,10 @@ sub restore( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -38075,23 +38685,23 @@ sub restore( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Project->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -38163,8 +38773,10 @@ sub getProjectRoles( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -38173,20 +38785,20 @@ sub getProjectRoles( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing or if the user lacks administrative permissions for the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or or if the user does not have administrative permissions for the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -38281,22 +38893,24 @@ sub deleteActor( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the project or project role is not found. * the calling user does not have administrative permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -38383,8 +38997,10 @@ sub getProjectRole( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -38393,23 +39009,23 @@ sub getProjectRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the project or project role is not found. * the user does not have administrative permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -38509,8 +39125,10 @@ sub addActorUsers( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -38519,23 +39137,23 @@ sub addActorUsers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing or if the calling user lacks administrative permissions for the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the project is not found. * the user or group is not found. * the group or user is not active.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -38651,8 +39269,10 @@ sub setActors( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -38661,23 +39281,23 @@ sub setActors( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing or if the calling user lacks administrative permissions for the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the project is not found. * a user or group is not found. * a group or user is not active.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -38760,8 +39380,10 @@ sub getProjectRoleDetails( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -38770,7 +39392,7 @@ sub getProjectRoleDetails( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ProjectRoleDetails->new($_),
  } $payload->@* ],
 
@@ -38778,13 +39400,13 @@ sub getProjectRoleDetails( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or if the user does not have the necessary permissions for the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -38856,8 +39478,10 @@ sub getAllStatuses( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -38866,7 +39490,7 @@ sub getAllStatuses( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::IssueTypeWithStatus->new($_),
  } $payload->@* ],
 
@@ -38874,13 +39498,13 @@ sub getAllStatuses( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -38959,8 +39583,10 @@ sub updateProjectType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -38969,23 +39595,23 @@ sub updateProjectType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Project->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -39133,8 +39759,10 @@ sub getProjectVersionsPaginated( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -39143,17 +39771,17 @@ sub getProjectVersionsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanVersion->new($payload),
 
                 );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -39233,8 +39861,10 @@ sub getProjectVersions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -39243,7 +39873,7 @@ sub getProjectVersions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::Version->new($_),
  } $payload->@* ],
 
@@ -39251,10 +39881,10 @@ sub getProjectVersions( $self, %options ) {
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -39326,8 +39956,10 @@ sub getProjectEmail( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -39336,23 +39968,23 @@ sub getProjectEmail( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectEmailAddress->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to read project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project or project's sender email address is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -39441,8 +40073,10 @@ sub updateProjectEmail( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -39451,26 +40085,26 @@ sub updateProjectEmail( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid, if the email address is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to read project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -39542,8 +40176,10 @@ sub getHierarchy( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -39552,23 +40188,23 @@ sub getHierarchy( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectIssueTypeHierarchy->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -39640,8 +40276,10 @@ sub getProjectIssueSecurityScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -39650,26 +40288,26 @@ sub getProjectIssueSecurityScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::SecurityScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the project is visible to the user but the user doesn't have administrative permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -39783,8 +40421,10 @@ sub getNotificationSchemeForProject( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -39793,23 +40433,23 @@ sub getNotificationSchemeForProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::NotificationScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user is not an administrator.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -39923,8 +40563,10 @@ sub getAssignedPermissionScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -39933,23 +40575,23 @@ sub getAssignedPermissionScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PermissionScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to view the project's configuration.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view the project.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -40076,8 +40718,10 @@ sub assignPermissionScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -40086,23 +40730,23 @@ sub assignPermissionScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PermissionScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if: * the user does not have the necessary permission to edit the project's configuration. * the Jira instance is Jira Core Free or Jira Software Free. Permission schemes cannot be assigned to projects on free plans.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project or permission scheme is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -40174,8 +40818,10 @@ sub getSecurityLevelsForProject( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -40184,17 +40830,17 @@ sub getSecurityLevelsForProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectIssueSecurityLevels->new($payload),
 
                 );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -40256,8 +40902,10 @@ sub getAllProjectCategories( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -40266,7 +40914,7 @@ sub getAllProjectCategories( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ProjectCategory->new($_),
  } $payload->@* ],
 
@@ -40274,10 +40922,10 @@ sub getAllProjectCategories( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -40364,8 +41012,10 @@ sub createProjectCategory( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -40374,26 +41024,26 @@ sub createProjectCategory( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectCategory->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `name` is not provided or exceeds 255 characters. * `description` exceeds 1000 characters.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 409 ) {
             # Returned if the project category name is in use.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -40463,25 +41113,27 @@ sub removeProjectCategory( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project category is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -40553,8 +41205,10 @@ sub getProjectCategoryById( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -40563,20 +41217,20 @@ sub getProjectCategoryById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectCategory->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project category is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -40671,8 +41325,10 @@ sub updateProjectCategory( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -40681,26 +41337,26 @@ sub updateProjectCategory( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::UpdatedProjectCategory->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `name` has been modified and exceeds 255 characters. * `description` has been modified and exceeds 1000 characters.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project category is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -40770,8 +41426,10 @@ sub validateProjectKey( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -40780,17 +41438,17 @@ sub validateProjectKey( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -40860,8 +41518,10 @@ sub getValidProjectKey( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -40870,17 +41530,17 @@ sub getValidProjectKey( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -40953,8 +41613,10 @@ sub getValidProjectName( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -40963,23 +41625,23 @@ sub getValidProjectName( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if a valid project name cannot be generated.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -41041,8 +41703,10 @@ sub getResolutions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -41051,7 +41715,7 @@ sub getResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::Resolution->new($_),
  } $payload->@* ],
 
@@ -41059,10 +41723,10 @@ sub getResolutions( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -41144,8 +41808,10 @@ sub createResolution( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -41154,7 +41820,7 @@ sub createResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ResolutionId->new($payload),
 
                 );
@@ -41165,7 +41831,7 @@ sub createResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41176,7 +41842,7 @@ sub createResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41187,14 +41853,14 @@ sub createResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -41273,8 +41939,10 @@ sub setDefaultResolution( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -41283,7 +41951,7 @@ sub setDefaultResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -41294,7 +41962,7 @@ sub setDefaultResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41305,7 +41973,7 @@ sub setDefaultResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41316,7 +41984,7 @@ sub setDefaultResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41327,14 +41995,14 @@ sub setDefaultResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -41421,8 +42089,10 @@ sub moveResolutions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -41431,7 +42101,7 @@ sub moveResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -41442,7 +42112,7 @@ sub moveResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41453,7 +42123,7 @@ sub moveResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41464,7 +42134,7 @@ sub moveResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41475,14 +42145,14 @@ sub moveResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -41568,8 +42238,10 @@ sub searchResolutions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -41578,7 +42250,7 @@ sub searchResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanResolutionJsonBean->new($payload),
 
                 );
@@ -41589,14 +42261,14 @@ sub searchResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -41683,8 +42355,10 @@ sub deleteResolution( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 303 ) {
@@ -41693,7 +42367,7 @@ sub deleteResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
                 );
@@ -41704,7 +42378,7 @@ sub deleteResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41715,7 +42389,7 @@ sub deleteResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41726,7 +42400,7 @@ sub deleteResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41737,7 +42411,7 @@ sub deleteResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41748,14 +42422,14 @@ sub deleteResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -41827,8 +42501,10 @@ sub getResolution( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -41837,20 +42513,20 @@ sub getResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Resolution->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue resolution value is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -41943,8 +42619,10 @@ sub updateResolution( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -41953,7 +42631,7 @@ sub updateResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -41964,7 +42642,7 @@ sub updateResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41975,7 +42653,7 @@ sub updateResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41986,7 +42664,7 @@ sub updateResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -41997,14 +42675,14 @@ sub updateResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -42066,8 +42744,10 @@ sub getAllProjectRoles( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -42076,7 +42756,7 @@ sub getAllProjectRoles( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ProjectRole->new($_),
  } $payload->@* ],
 
@@ -42084,13 +42764,13 @@ sub getAllProjectRoles( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have administrative permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -42169,8 +42849,10 @@ sub createProjectRole( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -42179,26 +42861,26 @@ sub createProjectRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid. The `name` cannot be empty or start or end with whitespace.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have administrative permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 409 ) {
             # Returned if a project role with the provided name already exists.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -42276,31 +42958,33 @@ sub deleteProjectRole( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid or if the replacement project role is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have administrative permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project role being deleted is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 409 ) {
             # Returned if the project role being deleted is in use and a replacement project role is not specified in the request.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -42372,8 +43056,10 @@ sub getProjectRoleById( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -42382,23 +43068,23 @@ sub getProjectRoleById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have administrative permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project role is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -42487,8 +43173,10 @@ sub partialUpdateProjectRole( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -42497,26 +43185,26 @@ sub partialUpdateProjectRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have administrative permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project role is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -42605,8 +43293,10 @@ sub fullyUpdateProjectRole( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -42615,26 +43305,26 @@ sub fullyUpdateProjectRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid. The `name` cannot be empty or start or end with whitespace.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have administrative permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project role is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -42724,8 +43414,10 @@ sub deleteProjectRoleActorsFromRole( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -42734,26 +43426,26 @@ sub deleteProjectRoleActorsFromRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have administrative permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project role is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -42825,8 +43517,10 @@ sub getProjectRoleActorsForRole( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -42835,26 +43529,26 @@ sub getProjectRoleActorsForRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have administrative permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project role is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -42947,8 +43641,10 @@ sub addProjectRoleActorsToRole( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -42957,26 +43653,26 @@ sub addProjectRoleActorsToRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have administrative permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project role is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -43085,8 +43781,10 @@ sub getScreens( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -43095,20 +43793,20 @@ sub getScreens( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanScreen->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -43187,8 +43885,10 @@ sub createScreen( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -43197,7 +43897,7 @@ sub createScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Screen->new($payload),
 
                 );
@@ -43208,28 +43908,28 @@ sub createScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -43301,8 +44001,10 @@ sub addFieldToDefaultScreen( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -43311,23 +44013,23 @@ sub addFieldToDefaultScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the field it not found or the field is already present.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -43398,34 +44100,36 @@ sub deleteScreen( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -43436,14 +44140,14 @@ sub deleteScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -43532,8 +44236,10 @@ sub updateScreen( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -43542,7 +44248,7 @@ sub updateScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Screen->new($payload),
 
                 );
@@ -43553,21 +44259,21 @@ sub updateScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -43578,14 +44284,14 @@ sub updateScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -43657,8 +44363,10 @@ sub getAvailableScreenFields( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -43667,7 +44375,7 @@ sub getAvailableScreenFields( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ScreenableField->new($_),
  } $payload->@* ],
 
@@ -43675,16 +44383,16 @@ sub getAvailableScreenFields( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the screen is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -43764,8 +44472,10 @@ sub getAllScreenTabs( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -43774,7 +44484,7 @@ sub getAllScreenTabs( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ScreenableTab->new($_),
  } $payload->@* ],
 
@@ -43782,19 +44492,19 @@ sub getAllScreenTabs( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the screen ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the screen is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -43883,8 +44593,10 @@ sub addScreenTab( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -43893,26 +44605,26 @@ sub addScreenTab( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ScreenableTab->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the screen is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -43989,25 +44701,27 @@ sub deleteScreenTab( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the screen or screen tab is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -44103,8 +44817,10 @@ sub renameScreenTab( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -44113,26 +44829,26 @@ sub renameScreenTab( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ScreenableTab->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the screen or screen tab is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -44219,8 +44935,10 @@ sub getAllScreenTabFields( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -44229,7 +44947,7 @@ sub getAllScreenTabFields( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ScreenableField->new($_),
  } $payload->@* ],
 
@@ -44237,16 +44955,16 @@ sub getAllScreenTabFields( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the screen or screen tab is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -44338,8 +45056,10 @@ sub addScreenTabField( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -44348,26 +45068,26 @@ sub addScreenTabField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ScreenableField->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the screen, screen tab, or field is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -44451,28 +45171,30 @@ sub removeScreenTabField( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the screen, screen tab, or field is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -44575,8 +45297,10 @@ sub moveScreenTabField( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -44585,26 +45309,26 @@ sub moveScreenTabField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the screen, screen tab, or field is not found or the field can't be moved to the requested position.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -44690,8 +45414,10 @@ sub moveScreenTab( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -44700,26 +45426,26 @@ sub moveScreenTab( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the screen or screen tab is not found or the position is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -44828,8 +45554,10 @@ sub getScreenSchemes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -44838,20 +45566,20 @@ sub getScreenSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanScreenScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -44934,8 +45662,10 @@ sub createScreenScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -44944,7 +45674,7 @@ sub createScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ScreenSchemeId->new($payload),
 
                 );
@@ -44955,21 +45685,21 @@ sub createScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -44980,14 +45710,14 @@ sub createScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -45058,34 +45788,36 @@ sub deleteScreenScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the screen scheme is deleted.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the screen scheme is used in an issue type screen scheme.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -45096,14 +45828,14 @@ sub deleteScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -45196,8 +45928,10 @@ sub updateScreenScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -45206,7 +45940,7 @@ sub updateScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -45217,21 +45951,21 @@ sub updateScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -45242,14 +45976,14 @@ sub updateScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -45492,8 +46226,10 @@ sub searchForIssuesUsingJql( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -45502,20 +46238,20 @@ sub searchForIssuesUsingJql( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::SearchResults->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the JQL query is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -45741,8 +46477,10 @@ sub searchForIssuesUsingJqlPost( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -45751,20 +46489,20 @@ sub searchForIssuesUsingJqlPost( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::SearchResults->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the JQL query is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -45836,8 +46574,10 @@ sub getIssueSecurityLevel( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -45846,20 +46586,20 @@ sub getIssueSecurityLevel( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::SecurityLevel->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue security level is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -45921,8 +46661,10 @@ sub getServerInfo( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -45931,17 +46673,17 @@ sub getServerInfo( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ServerInformation->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -46003,8 +46745,10 @@ sub getIssueNavigatorDefaultColumns( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -46013,7 +46757,7 @@ sub getIssueNavigatorDefaultColumns( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ColumnItem->new($_),
  } $payload->@* ],
 
@@ -46021,13 +46765,13 @@ sub getIssueNavigatorDefaultColumns( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -46094,8 +46838,10 @@ sub setIssueNavigatorDefaultColumns( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -46104,26 +46850,26 @@ sub setIssueNavigatorDefaultColumns( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if invalid parameters are passed.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if a navigable field value is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -46185,8 +46931,10 @@ sub getStatuses( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -46195,7 +46943,7 @@ sub getStatuses( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::StatusDetails->new($_),
  } $payload->@* ],
 
@@ -46203,10 +46951,10 @@ sub getStatuses( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -46278,8 +47026,10 @@ sub getStatus( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -46288,20 +47038,20 @@ sub getStatus( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::StatusDetails->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the status is not found. * the status is not associated with a workflow. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -46363,8 +47113,10 @@ sub getStatusCategories( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -46373,7 +47125,7 @@ sub getStatusCategories( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::StatusCategory->new($_),
  } $payload->@* ],
 
@@ -46381,10 +47133,10 @@ sub getStatusCategories( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -46456,8 +47208,10 @@ sub getStatusCategory( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -46466,20 +47220,20 @@ sub getStatusCategory( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::StatusCategory->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the status category is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -46551,8 +47305,10 @@ sub deleteStatusesById( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -46561,7 +47317,7 @@ sub deleteStatusesById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -46572,17 +47328,17 @@ sub deleteStatusesById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -46668,8 +47424,10 @@ sub getStatusesById( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -46678,7 +47436,7 @@ sub getStatusesById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::JiraStatus->new($_),
  } $payload->@* ],
 
@@ -46686,13 +47444,13 @@ sub getStatusesById( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -46771,8 +47529,10 @@ sub createStatuses( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -46781,7 +47541,7 @@ sub createStatuses( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::JiraStatus->new($_),
  } $payload->@* ],
 
@@ -46793,17 +47553,17 @@ sub createStatuses( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -46878,8 +47638,10 @@ sub updateStatuses( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -46888,7 +47650,7 @@ sub updateStatuses( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -46899,17 +47661,17 @@ sub updateStatuses( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -47013,8 +47775,10 @@ sub search( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -47023,20 +47787,20 @@ sub search( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageOfStatuses->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -47108,8 +47872,10 @@ sub getTask( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -47118,23 +47884,23 @@ sub getTask( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the task is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -47210,8 +47976,10 @@ sub cancelTask( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 202 ) {
@@ -47220,7 +47988,7 @@ sub cancelTask( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -47231,7 +47999,7 @@ sub cancelTask( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { $_
  } $payload->@* ],
 
@@ -47243,7 +48011,7 @@ sub cancelTask( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { $_
  } $payload->@* ],
 
@@ -47255,7 +48023,7 @@ sub cancelTask( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { $_
  } $payload->@* ],
 
@@ -47267,7 +48035,7 @@ sub cancelTask( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { $_
  } $payload->@* ],
 
@@ -47275,7 +48043,7 @@ sub cancelTask( $self, %options ) {
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -47369,8 +48137,10 @@ sub getUiModifications( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -47379,23 +48149,23 @@ sub getUiModifications( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanUiModificationDetails->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the request is not from a Forge app.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -47482,8 +48252,10 @@ sub createUiModification( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -47492,26 +48264,26 @@ sub createUiModification( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::UiModificationIdentifiers->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the request is not from a Forge app.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if a project or an issue type in the context are not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -47583,8 +48355,10 @@ sub deleteUiModification( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -47593,23 +48367,23 @@ sub deleteUiModification( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the request is not from a Forge app.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the UI modification is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -47706,8 +48480,10 @@ sub updateUiModification( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -47716,26 +48492,26 @@ sub updateUiModification( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the request is not from a Forge app.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the UI modification, a project or an issue type in the context are not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -47814,8 +48590,10 @@ sub getAvatars( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -47824,20 +48602,20 @@ sub getAvatars( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Avatars->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the avatar type is invalid, the associated item ID is missing, or the item is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -47940,8 +48718,10 @@ sub storeAvatar( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -47950,26 +48730,26 @@ sub storeAvatar( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Avatar->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * an image isn't included in the request. * the image type is unsupported. * the crop parameters extend the crop area beyond the edge of the image.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the avatar type is invalid, the associated item ID is missing, or the item is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -48053,25 +48833,27 @@ sub deleteAvatar( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have permission to delete the avatar, the avatar is not deletable.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the avatar type, associated item ID, or avatar ID is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -48159,8 +48941,10 @@ sub getAvatarImageByType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -48169,7 +48953,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48178,7 +48962,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48187,7 +48971,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48196,7 +48980,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48207,7 +48991,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48216,7 +49000,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -48225,7 +49009,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48234,7 +49018,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48245,7 +49029,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48254,7 +49038,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -48263,7 +49047,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48272,7 +49056,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48283,7 +49067,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48292,7 +49076,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -48301,7 +49085,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48310,14 +49094,14 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -48413,8 +49197,10 @@ sub getAvatarImageByID( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -48423,7 +49209,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48432,7 +49218,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48441,7 +49227,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48450,7 +49236,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48461,7 +49247,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48470,7 +49256,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -48479,7 +49265,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48488,7 +49274,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48499,7 +49285,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48508,7 +49294,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -48517,7 +49303,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48526,7 +49312,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48537,7 +49323,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48546,7 +49332,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -48555,7 +49341,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48564,7 +49350,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48575,7 +49361,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48584,7 +49370,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -48593,7 +49379,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48602,14 +49388,14 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -48705,8 +49491,10 @@ sub getAvatarImageByOwner( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -48715,7 +49503,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48724,7 +49512,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48733,7 +49521,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48742,7 +49530,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48753,7 +49541,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48762,7 +49550,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -48771,7 +49559,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48780,7 +49568,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48791,7 +49579,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48800,7 +49588,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -48809,7 +49597,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48818,7 +49606,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48829,7 +49617,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48838,7 +49626,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -48847,7 +49635,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48856,7 +49644,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48867,7 +49655,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48876,7 +49664,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -48885,7 +49673,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -48894,14 +49682,14 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -48982,28 +49770,30 @@ sub removeUser( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the user cannot be removed.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the user is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -49102,8 +49892,10 @@ sub getUser( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -49112,23 +49904,23 @@ sub getUser( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::User->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the calling user does not have the *Browse users and groups* global permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the user is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -49227,8 +50019,10 @@ sub createUser( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -49237,23 +50031,23 @@ sub createUser( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::User->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid or the number of licensed users is exceeded.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -49351,8 +50145,10 @@ sub findBulkAssignableUsers( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -49361,7 +50157,7 @@ sub findBulkAssignableUsers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::User->new($_),
  } $payload->@* ],
 
@@ -49369,19 +50165,19 @@ sub findBulkAssignableUsers( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `projectKeys` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if one or more of the projects is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 429 ) {
             # Returned if the rate limit is exceeded. User search endpoints share a collective rate limit for the tenant, in addition to Jira's normal rate limiting you may receive a rate limit for user search. Please respect the Retry-After header.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -49494,8 +50290,10 @@ sub findAssignableUsers( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -49504,7 +50302,7 @@ sub findAssignableUsers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::User->new($_),
  } $payload->@* ],
 
@@ -49512,19 +50310,19 @@ sub findAssignableUsers( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `issueKey` or `project` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the project, issue, or transition is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 429 ) {
             # Returned if the rate limit is exceeded. User search endpoints share a collective rate limit for the tenant, in addition to Jira's normal rate limiting you may receive a rate limit for user search. Please respect the Retry-After header.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -49617,8 +50415,10 @@ sub bulkGetUsers( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -49627,20 +50427,20 @@ sub bulkGetUsers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanUser->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `accountID` is missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -49725,8 +50525,10 @@ sub bulkGetUsersMigration( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -49735,7 +50537,7 @@ sub bulkGetUsersMigration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::UserMigrationBean->new($_),
  } $payload->@* ],
 
@@ -49743,13 +50545,13 @@ sub bulkGetUsersMigration( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `key` or `username`
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -49822,22 +50624,24 @@ sub resetUserColumns( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission or is not accessing their user record.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -49912,8 +50716,10 @@ sub getUserDefaultColumns( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -49922,7 +50728,7 @@ sub getUserDefaultColumns( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::ColumnItem->new($_),
  } $payload->@* ],
 
@@ -49930,16 +50736,16 @@ sub getUserDefaultColumns( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission or is not accessing their user record.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the requested user is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -50014,8 +50820,10 @@ sub setUserColumns( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -50024,29 +50832,29 @@ sub setUserColumns( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission or is not accessing their user record.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the requested user is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 429 ) {
             # Returned if the rate limit is exceeded. User search endpoints share a collective rate limit for the tenant, in addition to Jira's normal rate limiting you may receive a rate limit for user search. Please respect the Retry-After header.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 500 ) {
             # Returned if an invalid issue table column ID is sent.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -50119,8 +50927,10 @@ sub getUserEmail( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -50129,26 +50939,26 @@ sub getUserEmail( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::UnrestrictedUserEmail->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the calling app is not approved to use this API.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing from the request (for example if a user is trying to access this API).
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if a user with the given `accountId` doesn't exist
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 503 ) {
             # Indicates the API is not currently enabled
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -50221,8 +51031,10 @@ sub getUserEmailBulk( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -50231,23 +51043,23 @@ sub getUserEmailBulk( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::UnrestrictedUserEmail->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the calling app is not approved to use this API.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect, or missing from the request (for example if a user is trying to access this API).
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 503 ) {
             # Indicates the API is not currently enabled.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -50330,8 +51142,10 @@ sub getUserGroups( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -50340,7 +51154,7 @@ sub getUserGroups( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::GroupName->new($_),
  } $payload->@* ],
 
@@ -50348,16 +51162,16 @@ sub getUserGroups( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the calling user does not have the *Browse users and groups* global permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the user is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -50650,8 +51464,10 @@ sub findUsersWithAllPermissions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -50660,7 +51476,7 @@ sub findUsersWithAllPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::User->new($_),
  } $payload->@* ],
 
@@ -50668,22 +51484,22 @@ sub findUsersWithAllPermissions( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `issueKey` or `projectKey` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided. * `permissions` is empty or contains an invalid entry.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue or project is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 429 ) {
             # Returned if the rate limit is exceeded. User search endpoints share a collective rate limit for the tenant, in addition to Jira's normal rate limiting you may receive a rate limit for user search. Please respect the Retry-After header.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -50782,8 +51598,10 @@ sub findUsersForPicker( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -50792,23 +51610,23 @@ sub findUsersForPicker( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::FoundUsers->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `exclude` and `excludeAccountIds` are provided.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 429 ) {
             # Returned if the rate limit is exceeded. User search endpoints share a collective rate limit for the tenant, in addition to Jira's normal rate limiting you may receive a rate limit for user search. Please respect the Retry-After header.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -50888,8 +51706,10 @@ sub getUserPropertyKeys( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -50898,26 +51718,26 @@ sub getUserPropertyKeys( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `accountId` is missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission or is not accessing their user record.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the user is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -51005,28 +51825,30 @@ sub deleteUserProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the user property is deleted.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if `accountId` is missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission or is not accessing their user record.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the user or the property is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -51116,8 +51938,10 @@ sub getUserProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -51126,26 +51950,26 @@ sub getUserProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `accountId` is missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission or is not accessing their user record.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the user is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -51239,8 +52063,10 @@ sub setUserProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -51249,7 +52075,7 @@ sub setUserProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -51260,29 +52086,29 @@ sub setUserProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `accountId` is missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission or is not accessing their user record.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the user is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 405 ) {
             # Returned if the property key is not specified.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -51375,8 +52201,10 @@ sub findUsers( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -51385,7 +52213,7 @@ sub findUsers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::User->new($_),
  } $payload->@* ],
 
@@ -51393,16 +52221,16 @@ sub findUsers( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `accountId`, `query` or `property` is missing. * `query` and `accountId` are provided. * `property` parameter is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 429 ) {
             # Returned if the rate limit is exceeded. User search endpoints share a collective rate limit for the tenant, in addition to Jira's normal rate limiting you may receive a rate limit for user search. Please respect the Retry-After header.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -51485,8 +52313,10 @@ sub findUsersByQuery( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -51495,26 +52325,26 @@ sub findUsersByQuery( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanUser->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the query is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 408 ) {
             # Returned if the search is timed out.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -51597,8 +52427,10 @@ sub findUserKeysByQuery( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -51607,26 +52439,26 @@ sub findUserKeysByQuery( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanUserKey->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the query is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 408 ) {
             # Returned if the search is timed out.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -51726,8 +52558,10 @@ sub findUsersWithBrowsePermission( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -51736,7 +52570,7 @@ sub findUsersWithBrowsePermission( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::User->new($_),
  } $payload->@* ],
 
@@ -51744,19 +52578,19 @@ sub findUsersWithBrowsePermission( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `issueKey` or `projectKey` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the issue or project is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 429 ) {
             # Returned if the rate limit is exceeded. User search endpoints share a collective rate limit for the tenant, in addition to Jira's normal rate limiting you may receive a rate limit for user search. Please respect the Retry-After header.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -51831,8 +52665,10 @@ sub getAllUsersDefault( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -51841,7 +52677,7 @@ sub getAllUsersDefault( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::User->new($_),
  } $payload->@* ],
 
@@ -51849,16 +52685,16 @@ sub getAllUsersDefault( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 409 ) {
             # Returned if the request takes longer than 10 seconds or is interrupted.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -51933,8 +52769,10 @@ sub getAllUsers( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -51943,7 +52781,7 @@ sub getAllUsers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::User->new($_),
  } $payload->@* ],
 
@@ -51951,16 +52789,16 @@ sub getAllUsers( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 409 ) {
             # Returned if the request takes longer than 10 seconds or is interrupted.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -52115,8 +52953,10 @@ sub createVersion( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -52125,23 +52965,23 @@ sub createVersion( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Version->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the project is not found. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -52224,25 +53064,27 @@ sub deleteVersion( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the version is deleted.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if: * the authentication credentials are incorrect. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the version is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -52336,8 +53178,10 @@ sub getVersion( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -52346,20 +53190,20 @@ sub getVersion( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Version->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the version is not found or the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -52524,8 +53368,10 @@ sub updateVersion( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -52534,23 +53380,23 @@ sub updateVersion( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Version->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the request is invalid. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the version is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -52629,8 +53475,10 @@ sub mergeVersions( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -52639,23 +53487,23 @@ sub mergeVersions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if: * the authentication credentials are incorrect or missing. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the version to be deleted or the version to merge to are not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -52744,8 +53592,10 @@ sub moveVersion( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -52754,23 +53604,23 @@ sub moveVersion( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::Version->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * no body parameters are provided. * `after` and `position` are provided. * `position` is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if: * the authentication credentials are incorrect or missing * the user does not have the required commissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the version or move after version are not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -52842,8 +53692,10 @@ sub getVersionRelatedIssues( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -52852,20 +53704,20 @@ sub getVersionRelatedIssues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::VersionIssueCounts->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the version is not found. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -52958,8 +53810,10 @@ sub deleteAndReplaceVersion( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -52968,23 +53822,23 @@ sub deleteAndReplaceVersion( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the version to delete is not found. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -53056,8 +53910,10 @@ sub getVersionUnresolvedIssues( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -53066,20 +53922,20 @@ sub getVersionUnresolvedIssues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::VersionUnresolvedIssuesCount->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the version is not found. * the user does not have the required permissions.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -53155,20 +54011,22 @@ sub deleteWebhookById( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 202 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the list of webhook IDs is missing.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -53179,14 +54037,14 @@ sub deleteWebhookById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -53263,8 +54121,10 @@ sub getDynamicWebhooksForApp( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -53273,7 +54133,7 @@ sub getDynamicWebhooksForApp( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanWebhook->new($payload),
 
                 );
@@ -53284,7 +54144,7 @@ sub getDynamicWebhooksForApp( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -53295,14 +54155,14 @@ sub getDynamicWebhooksForApp( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -53383,8 +54243,10 @@ sub registerDynamicWebhooks( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -53393,7 +54255,7 @@ sub registerDynamicWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ContainerForRegisteredWebhooks->new($payload),
 
                 );
@@ -53404,7 +54266,7 @@ sub registerDynamicWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -53415,14 +54277,14 @@ sub registerDynamicWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -53499,8 +54361,10 @@ sub getFailedWebhooks( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -53509,7 +54373,7 @@ sub getFailedWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::FailedWebhooks->new($payload),
 
                 );
@@ -53520,7 +54384,7 @@ sub getFailedWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -53531,14 +54395,14 @@ sub getFailedWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -53615,8 +54479,10 @@ sub refreshWebhooks( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -53625,7 +54491,7 @@ sub refreshWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WebhooksExpirationDate->new($payload),
 
                 );
@@ -53636,7 +54502,7 @@ sub refreshWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -53647,14 +54513,14 @@ sub refreshWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -53724,8 +54590,10 @@ sub getAllWorkflows( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -53734,7 +54602,7 @@ sub getAllWorkflows( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::DeprecatedWorkflow->new($_),
  } $payload->@* ],
 
@@ -53742,10 +54610,10 @@ sub getAllWorkflows( $self, %options ) {
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -53873,8 +54741,10 @@ sub createWorkflow( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -53883,7 +54753,7 @@ sub createWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowIDs->new($payload),
 
                 );
@@ -53894,21 +54764,21 @@ sub createWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -53919,14 +54789,14 @@ sub createWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -54036,8 +54906,10 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -54046,7 +54918,7 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanWorkflowTransitionRules->new($payload),
 
                 );
@@ -54057,7 +54929,7 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -54068,17 +54940,17 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if any transition rule type is not supported.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -54155,8 +55027,10 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -54165,7 +55039,7 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowTransitionRulesUpdateErrors->new($payload),
 
                 );
@@ -54176,7 +55050,7 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -54187,14 +55061,14 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -54271,8 +55145,10 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -54281,7 +55157,7 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowTransitionRulesUpdateErrors->new($payload),
 
                 );
@@ -54292,7 +55168,7 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
@@ -54303,14 +55179,14 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -54484,8 +55360,10 @@ sub getWorkflowsPaginated( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -54494,28 +55372,28 @@ sub getWorkflowsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanWorkflow->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -54607,31 +55485,33 @@ sub deleteWorkflowTransitionProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # 200 response
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 304 ) {
             # Returned if no changes were made by the request. For example, trying to delete a property that cannot be found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow transition is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -54728,8 +55608,10 @@ sub getWorkflowTransitionProperties( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -54738,26 +55620,26 @@ sub getWorkflowTransitionProperties( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowTransitionProperty->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have admin permission
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow transition or property is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -54872,8 +55754,10 @@ sub createWorkflowTransitionProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -54882,26 +55766,26 @@ sub createWorkflowTransitionProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowTransitionProperty->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if a workflow property with the same key is present on the transition.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow transition is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -55016,8 +55900,10 @@ sub updateWorkflowTransitionProperty( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -55026,29 +55912,29 @@ sub updateWorkflowTransitionProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowTransitionProperty->new($payload),
 
                 );
             }
         } elsif( $resp->code == 304 ) {
             # Returned if no changes were made by the request. For example, attempting to update a property with its current value.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow transition is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -55119,34 +56005,36 @@ sub deleteInactiveWorkflow( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the workflow is deleted.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -55157,14 +56045,14 @@ sub deleteInactiveWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -55239,8 +56127,10 @@ sub getAllWorkflowSchemes( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -55249,20 +56139,20 @@ sub getAllWorkflowSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PageBeanWorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -55404,8 +56294,10 @@ sub createWorkflowScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -55414,23 +56306,23 @@ sub createWorkflowScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -55503,8 +56395,10 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -55513,7 +56407,7 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ContainerOfWorkflowSchemeAssociations->new($payload),
 
                 );
@@ -55524,28 +56418,28 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -55624,8 +56518,10 @@ sub assignSchemeToProject( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -55634,7 +56530,7 @@ sub assignSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -55645,21 +56541,21 @@ sub assignSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the required permissions.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
@@ -55670,14 +56566,14 @@ sub assignSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -55749,8 +56645,10 @@ sub deleteWorkflowScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
@@ -55759,26 +56657,26 @@ sub deleteWorkflowScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the scheme is active.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow scheme is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -55858,8 +56756,10 @@ sub getWorkflowScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -55868,23 +56768,23 @@ sub getWorkflowScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow scheme is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -56036,8 +56936,10 @@ sub updateWorkflowScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -56046,26 +56948,26 @@ sub updateWorkflowScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow scheme is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -56137,8 +57039,10 @@ sub createWorkflowSchemeDraftFromParent( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 201 ) {
@@ -56147,23 +57051,23 @@ sub createWorkflowSchemeDraftFromParent( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -56243,8 +57147,10 @@ sub deleteDefaultWorkflow( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -56253,26 +57159,26 @@ sub deleteDefaultWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the workflow scheme cannot be edited and `updateDraftIfNeeded` is not `true`.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow scheme is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -56352,8 +57258,10 @@ sub getDefaultWorkflow( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -56362,23 +57270,23 @@ sub getDefaultWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::DefaultWorkflow->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow scheme is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -56467,8 +57375,10 @@ sub updateDefaultWorkflow( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -56477,26 +57387,26 @@ sub updateDefaultWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the workflow scheme cannot be edited and `updateDraftIfNeeded` is not `true`.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow scheme is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -56566,25 +57476,27 @@ sub deleteWorkflowSchemeDraft( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission..
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the original active workflow scheme is not found. * the original active workflow scheme does not have a draft.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -56656,8 +57568,10 @@ sub getWorkflowSchemeDraft( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -56666,23 +57580,23 @@ sub getWorkflowSchemeDraft( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the original active workflow scheme is not found. * the original active workflow scheme does not have a draft.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -56834,8 +57748,10 @@ sub updateWorkflowSchemeDraft( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -56844,26 +57760,26 @@ sub updateWorkflowSchemeDraft( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if: * the original active workflow scheme is not found. * the original active workflow scheme does not have a draft.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -56935,8 +57851,10 @@ sub deleteDraftDefaultWorkflow( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -56945,23 +57863,23 @@ sub deleteDraftDefaultWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if any of the following is true: * The workflow scheme is not found. * The workflow scheme does not have a draft.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -57033,8 +57951,10 @@ sub getDraftDefaultWorkflow( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -57043,23 +57963,23 @@ sub getDraftDefaultWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::DefaultWorkflow->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission..
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if any of the following is true: * The workflow scheme is not found. * The workflow scheme does not have a draft.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -57148,8 +58068,10 @@ sub updateDraftDefaultWorkflow( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -57158,26 +58080,26 @@ sub updateDraftDefaultWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if any of the following is true: * The workflow scheme is not found. * The workflow scheme does not have a draft.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -57256,8 +58178,10 @@ sub deleteWorkflowSchemeDraftIssueType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -57266,23 +58190,23 @@ sub deleteWorkflowSchemeDraftIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow scheme or issue type is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -57361,8 +58285,10 @@ sub getWorkflowSchemeDraftIssueType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -57371,23 +58297,23 @@ sub getWorkflowSchemeDraftIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueTypeWorkflowMapping->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow scheme or issue type is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -57487,8 +58413,10 @@ sub setWorkflowSchemeDraftIssueType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -57497,26 +58425,26 @@ sub setWorkflowSchemeDraftIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow scheme or issue type is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -57609,20 +58537,22 @@ sub publishDraftWorkflowScheme( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is only for validation and is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 303 ) {
             # Returned if the request is successful.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
                 );
@@ -57633,31 +58563,31 @@ sub publishDraftWorkflowScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if any of these are true: * The workflow scheme is not found. * The workflow scheme does not have a draft. * A new status in the draft workflow scheme is not found.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -57737,25 +58667,27 @@ sub deleteDraftWorkflowMapping( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if any of the following is true: * The workflow scheme is not found. * The workflow scheme does not have a draft. * The workflow is not found. * The workflow is not specified.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -57835,8 +58767,10 @@ sub getDraftWorkflow( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -57845,23 +58779,23 @@ sub getDraftWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueTypesWorkflowMapping->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if either the workflow scheme or workflow (if specified) is not found. session.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -57968,8 +58902,10 @@ sub updateDraftWorkflowMapping( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -57978,26 +58914,26 @@ sub updateDraftWorkflowMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if any of the following is true: * The workflow scheme is not found. * The workflow scheme does not have a draft. * The workflow is not found. * The workflow is not specified.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -58084,8 +59020,10 @@ sub deleteWorkflowSchemeIssueType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -58094,26 +59032,26 @@ sub deleteWorkflowSchemeIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the workflow cannot be edited and `updateDraftIfNeeded` is false.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow scheme or issue type is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -58200,8 +59138,10 @@ sub getWorkflowSchemeIssueType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -58210,23 +59150,23 @@ sub getWorkflowSchemeIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueTypeWorkflowMapping->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow scheme or issue type is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -58326,8 +59266,10 @@ sub setWorkflowSchemeIssueType( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -58336,26 +59278,26 @@ sub setWorkflowSchemeIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the workflow cannot be edited and `updateDraftIfNeeded` is false.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow scheme or issue type is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -58440,28 +59382,30 @@ sub deleteWorkflowMapping( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the workflow cannot be edited and `updateDraftIfNeeded` is not true.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if any of the following is true: * The workflow scheme is not found. * The workflow is not found. * The workflow is not specified.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -58546,8 +59490,10 @@ sub getWorkflow( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -58556,23 +59502,23 @@ sub getWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::IssueTypesWorkflowMapping->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if either the workflow scheme or workflow is not found.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -58679,8 +59625,10 @@ sub updateWorkflowMapping( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -58689,26 +59637,26 @@ sub updateWorkflowMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 404 ) {
             # Returned if any of the following is true: * The workflow scheme is not found. * The workflow is not found. * The workflow is not specified.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -58778,8 +59726,10 @@ sub getIdsOfWorklogsDeletedSince( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -58788,17 +59738,17 @@ sub getIdsOfWorklogsDeletedSince( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ChangedWorklogs->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -58881,8 +59831,10 @@ sub getWorklogsForIds( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -58891,7 +59843,7 @@ sub getWorklogsForIds( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { JIRA::API::Worklog->new($_),
  } $payload->@* ],
 
@@ -58899,13 +59851,13 @@ sub getWorklogsForIds( $self, %options ) {
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request contains more than 1000 worklog IDs or is empty.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -58980,8 +59932,10 @@ sub getIdsOfWorklogsModifiedSince( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -58990,17 +59944,17 @@ sub getIdsOfWorklogsModifiedSince( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ChangedWorklogs->new($payload),
 
                 );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -59073,8 +60027,10 @@ sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -59083,7 +60039,7 @@ sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
@@ -59094,14 +60050,14 @@ sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -59182,20 +60138,22 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the property key is longer than 127 characters.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
                 );
@@ -59206,7 +60164,7 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
                 );
@@ -59217,14 +60175,14 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -59306,8 +60264,10 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -59316,7 +60276,7 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
                 );
@@ -59327,7 +60287,7 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
                 );
@@ -59338,7 +60298,7 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
                 );
@@ -59349,14 +60309,14 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -59441,8 +60401,10 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -59451,7 +60413,7 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
                 );
@@ -59462,7 +60424,7 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
                 );
@@ -59473,7 +60435,7 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
                 );
@@ -59484,14 +60446,14 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -59563,27 +60525,29 @@ sub DynamicModulesResource_removeModules_delete( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 401 ) {
             # Returned if the call is not from a Connect app.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorMessage->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -59646,8 +60610,10 @@ sub DynamicModulesResource_getModules_get( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -59656,7 +60622,7 @@ sub DynamicModulesResource_getModules_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ConnectModules->new($payload),
 
                 );
@@ -59667,14 +60633,14 @@ sub DynamicModulesResource_getModules_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorMessage->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -59751,20 +60717,22 @@ sub DynamicModulesResource_registerModules_post( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if: * any of the provided modules is invalid. For example, required properties are missing. * any of the modules conflict with registered dynamic modules or modules defined in the app descriptor. For example, there are duplicate keys. Details of the issues encountered are included in the error message.
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorMessage->new($payload),
 
                 );
@@ -59775,14 +60743,14 @@ sub DynamicModulesResource_registerModules_post( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::ErrorMessage->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -59865,8 +60833,10 @@ sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -59875,20 +60845,20 @@ sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     $payload
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if: * the transfer ID is not found. * the authorisation credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -59968,22 +60938,24 @@ sub MigrationResource_updateEntityPropertiesValue_put( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
             # Returned if the request is successful.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the authorisation credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -60074,8 +61046,10 @@ sub MigrationResource_workflowRuleSearch_post( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -60084,20 +61058,20 @@ sub MigrationResource_workflowRuleSearch_post( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     JIRA::API::WorkflowRulesSearchDetails->new($payload),
 
                 );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code == 403 ) {
             # Returned if the authorisation credentials are incorrect or missing.
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 

@@ -71,7 +71,6 @@ $template{inflated_response} = <<'__INFLATED_RESPONSE__';
 __INFLATED_RESPONSE__
 
 $template{streaming_response} = <<'__STREAMING_RESPONSE__';
-    my $res = Future::Queue->new( prototype => 'Future::Mojo' );
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {
         my $resp = $tx->res;
@@ -83,6 +82,8 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
         <%= elsif_chain($name) %>( $resp->code <%= openapi_http_code_match( $code ) %> ) {
 %     if( $info->{description} =~ /\S/ ) {
             # <%= single_line( $info->{description} ) %>
+            my $queue = Future::Queue->new( prototype => 'Future::Mojo' );
+            $res->done( $queue );
 %     }
 %       # Check the content type
 %       # Will we always have a content type?!
@@ -102,25 +103,25 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
                     my @lines = split /\n/, $fresh;
                     for (@lines) {
                         my $payload = decode_json( $_ );
-                        $res->push(
+                        $queue->push(
 % my $type = $info->{content}->{$ct}->{schema};
                             <%= include('inflated_response', { type => $type, prefix => $prefix, argname => '$payload' } ) %>
                         );
                     };
                     if( $msg->{state} eq 'finished' ) {
-                        $res->finish();
+                        $queue->finish();
                     }
                 });
             }
 %           }
 %           } else { # we don't know how to handle this, so pass $res          # known content types?
 %# XXX should we always use ->done or should we use ->fail for 4xx and 5xx ?!
-            return Future::Mojo->done($resp);
+            $res->done($resp);
 %           }
 % }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -134,7 +135,7 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
 __STREAMING_RESPONSE__
 
 $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
 %# Should this be its own subroutine instead?!
@@ -162,19 +163,19 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
 %               } else {
                 my $payload = $resp->body();
 %               }
-                return Future::Mojo->done(
+                $res->done(
 % my $type = $info->{content}->{$ct}->{schema};
                     <%= include('inflated_response', { type => $type, prefix => $prefix, argname => '$payload' } ) %>
                 );
             }
 %           }
 %           } else { # we don't know how to handle this, so pass $res          # known content types?
-            return Future::Mojo->done($resp);
+            $res->done($resp);
 %           }
 % }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -490,9 +491,10 @@ has 'server' => (
 %# Generate the example invocation
 % if( $is_streaming ) {
   use Future::Utils 'repeat';
-  my $responses = $client-><%= $method->{name} %>();
+  my $response = $client-><%= $method->{name} %>();
+  my $streamed = $response->get();
   repeat {
-      my ($res) = $responses->shift;
+      my ($res) = $streamed->shift;
       if( $res ) {
           my $str = $res->get;
           say $str;
@@ -579,6 +581,8 @@ sub <%= $method->{name} %>( $self, %options ) {
 %# Plain responses are easy, but for streamed, we want to register an ->on('progress')
 %# handler instead of the plain part completely. In the ->on('progress') part,
 %# we still run the handler, so maybe that is the same ?!
+
+    my $res = Future::Mojo->new();
 
     my $r1 = Future::Mojo->new();
 % if( $is_streaming ) {

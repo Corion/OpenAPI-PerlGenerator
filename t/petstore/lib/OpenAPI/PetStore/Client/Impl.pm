@@ -117,8 +117,10 @@ sub findPets( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -127,7 +129,7 @@ sub findPets( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     [ map { OpenAPI::PetStore::Pet->new($_),
  } $payload->@* ],
 
@@ -139,14 +141,14 @@ sub findPets( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     OpenAPI::PetStore::Error->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -214,8 +216,10 @@ sub addPet( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -224,7 +228,7 @@ sub addPet( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     OpenAPI::PetStore::Pet->new($payload),
 
                 );
@@ -235,14 +239,14 @@ sub addPet( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     OpenAPI::PetStore::Error->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -312,27 +316,29 @@ sub deletePet( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 204 ) {
             # pet deleted
-            return Future::Mojo->done($resp);
+            $res->done($resp);
         } elsif( $resp->code  ) {
             # unexpected error
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     OpenAPI::PetStore::Error->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
@@ -403,8 +409,10 @@ sub find_pet_by_id( $self, %options ) {
     };
 
 
+    my $res = Future::Mojo->new();
+
     my $r1 = Future::Mojo->new();
-    my $res = $r1->then( sub( $tx ) {
+    $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
         if( $resp->code == 200 ) {
@@ -413,7 +421,7 @@ sub find_pet_by_id( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     OpenAPI::PetStore::Pet->new($payload),
 
                 );
@@ -424,14 +432,14 @@ sub find_pet_by_id( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                return Future::Mojo->done(
+                $res->done(
                     OpenAPI::PetStore::Error->new($payload),
 
                 );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            return Future::Mojo->fail($resp);
+            $res->fail($resp);
         }
     });
 
