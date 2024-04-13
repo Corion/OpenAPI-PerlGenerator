@@ -134,6 +134,9 @@ sub findPets( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code  ) {
             # unexpected error
@@ -145,6 +148,9 @@ sub findPets( $self, %options ) {
                     OpenAPI::PetStore::Error->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -232,6 +238,9 @@ sub addPet( $self, %options ) {
                     OpenAPI::PetStore::Pet->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code  ) {
             # unexpected error
@@ -243,6 +252,9 @@ sub addPet( $self, %options ) {
                     OpenAPI::PetStore::Error->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -335,6 +347,9 @@ sub deletePet( $self, %options ) {
                     OpenAPI::PetStore::Error->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -425,6 +440,9 @@ sub find_pet_by_id( $self, %options ) {
                     OpenAPI::PetStore::Pet->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code  ) {
             # unexpected error
@@ -436,6 +454,9 @@ sub find_pet_by_id( $self, %options ) {
                     OpenAPI::PetStore::Error->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error

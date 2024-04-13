@@ -393,6 +393,9 @@ sub generateChatCompletion( $self, %options ) {
                         $queue->finish();
                     }
                 });
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -601,6 +604,9 @@ sub createModel( $self, %options ) {
                         $queue->finish();
                     }
                 });
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -778,6 +784,9 @@ sub generateEmbedding( $self, %options ) {
                     AI::Ollama::GenerateEmbeddingResponse->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -967,6 +976,9 @@ sub generateCompletion( $self, %options ) {
                         $queue->finish();
                     }
                 });
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -1066,6 +1078,9 @@ sub pullModel( $self, %options ) {
                     AI::Ollama::PullModelResponse->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -1164,6 +1179,9 @@ sub pushModel( $self, %options ) {
                     AI::Ollama::PushModelResponse->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -1254,6 +1272,9 @@ sub showModelInfo( $self, %options ) {
                     AI::Ollama::ModelInfo->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -1329,6 +1350,9 @@ sub listModels( $self, %options ) {
                     AI::Ollama::ModelsResponse->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error

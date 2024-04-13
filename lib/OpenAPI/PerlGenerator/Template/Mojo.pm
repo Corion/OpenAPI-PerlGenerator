@@ -92,7 +92,7 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
             return unless $ct;
 %           for my $ct (sort keys $info->{content}->%*) {
             $ct =~ s/;\s+.*//;
-            if( $ct eq '<%= $ct %>' ) {
+            <%= elsif_chain("$name/$code/content-type") %>( $ct eq '<%= $ct %>' ) {
                 # we only handle ndjson currently
                 my $handled_offset = 0;
                 $resp->on(progress => sub($msg,@) {
@@ -112,6 +112,9 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
                         $queue->finish();
                     }
                 });
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
 %           }
 %           } else { # we don't know how to handle this, so pass $res          # known content types?
@@ -152,7 +155,7 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
 %           for my $ct (sort keys $info->{content}->%*) {
-            if( $ct eq '<%= $ct %>' ) {
+            <%= elsif_chain("$name/$code/content-type") %>( $ct eq '<%= $ct %>' ) {
 %# These handlers for content types should come from templates? Or maybe
 %# from a subroutine?!
 %               if( $ct eq 'application/json' ) {
@@ -167,6 +170,9 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
 % my $type = $info->{content}->{$ct}->{schema};
                     <%= include('inflated_response', { type => $type, prefix => $prefix, argname => '$payload' } ) %>
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
 %           }
 %           } else { # we don't know how to handle this, so pass $res          # known content types?

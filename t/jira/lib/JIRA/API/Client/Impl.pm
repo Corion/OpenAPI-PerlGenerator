@@ -665,6 +665,9 @@ sub getBanner( $self, %options ) {
                     JIRA::API::AnnouncementBannerConfiguration->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -676,6 +679,9 @@ sub getBanner( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -687,6 +693,9 @@ sub getBanner( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -796,6 +805,9 @@ sub setBanner( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if an invalid parameter is passed.
@@ -807,6 +819,9 @@ sub setBanner( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -818,6 +833,9 @@ sub setBanner( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -829,6 +847,9 @@ sub setBanner( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -929,6 +950,9 @@ sub updateMultipleCustomFieldValues( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -1067,6 +1091,9 @@ sub getCustomFieldConfiguration( $self, %options ) {
                     JIRA::API::PageBeanContextualConfiguration->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -1183,6 +1210,9 @@ sub updateCustomFieldConfiguration( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -1307,6 +1337,9 @@ sub updateCustomFieldValue( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -1416,6 +1449,9 @@ sub getApplicationProperty( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -1504,6 +1540,9 @@ sub getAdvancedSettings( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -1618,6 +1657,9 @@ sub setApplicationProperty( $self, %options ) {
                     JIRA::API::ApplicationProperty->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the data type of the `value` does not match the application property's data type. For example, a string is provided instead of an integer.
@@ -1712,6 +1754,9 @@ sub getAllApplicationRoles( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -1809,6 +1854,9 @@ sub getApplicationRole( $self, %options ) {
                     JIRA::API::ApplicationRole->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -1917,6 +1965,9 @@ sub getAttachmentContent( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 206 ) {
             # Returned if the request is successful when a `Range` header is provided and `redirect` is set to `false`.
@@ -2019,6 +2070,9 @@ sub getAttachmentMeta( $self, %options ) {
                     JIRA::API::AttachmentSettings->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -2136,6 +2190,9 @@ sub getAttachmentThumbnail( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 303 ) {
             # Returned if the request is successful. See the `Location` header for the download URL.
@@ -2329,6 +2386,9 @@ sub getAttachment( $self, %options ) {
                     JIRA::API::AttachmentMetadata->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -2429,6 +2489,9 @@ sub expandAttachmentForHumans( $self, %options ) {
                     JIRA::API::AttachmentArchiveMetadataReadable->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -2532,6 +2595,9 @@ sub expandAttachmentForMachines( $self, %options ) {
                     JIRA::API::AttachmentArchiveImpl->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -2653,6 +2719,9 @@ sub getAuditRecords( $self, %options ) {
                     JIRA::API::AuditRecords->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -2750,6 +2819,9 @@ sub getAllSystemAvatars( $self, %options ) {
                     JIRA::API::SystemAvatars->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -2872,6 +2944,9 @@ sub getCommentsByIds( $self, %options ) {
                     JIRA::API::PageBeanComment->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request contains more than 1000 IDs or is empty.
@@ -2966,6 +3041,9 @@ sub getCommentPropertyKeys( $self, %options ) {
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the comment ID is invalid.
@@ -3176,6 +3254,9 @@ sub getCommentProperty( $self, %options ) {
                     JIRA::API::EntityProperty->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -3290,6 +3371,9 @@ sub setCommentProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the comment property is created.
@@ -3301,6 +3385,9 @@ sub setCommentProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -3511,6 +3598,9 @@ sub createComponent( $self, %options ) {
                     JIRA::API::ProjectComponent->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the user is not found. * `name` is not provided. * `name` is over 255 characters in length. * `projectId` is not provided. * `assigneeType` is an invalid value.
@@ -3712,6 +3802,9 @@ sub getComponent( $self, %options ) {
                     JIRA::API::ProjectComponent->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -3926,6 +4019,9 @@ sub updateComponent( $self, %options ) {
                     JIRA::API::ProjectComponent->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the user is not found. * `assigneeType` is an invalid value. * `name` is over 255 characters in length.
@@ -4029,6 +4125,9 @@ sub getComponentRelatedIssues( $self, %options ) {
                     JIRA::API::ComponentIssuesCount->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -4116,6 +4215,9 @@ sub getConfiguration( $self, %options ) {
                     JIRA::API::Configuration->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -4201,6 +4303,9 @@ sub getSelectedTimeTrackingImplementation( $self, %options ) {
                     JIRA::API::TimeTrackingProvider->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 204 ) {
             # Returned if the request is successful but time tracking is disabled.
@@ -4212,6 +4317,9 @@ sub getSelectedTimeTrackingImplementation( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -4320,6 +4428,9 @@ sub selectTimeTrackingImplementation( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the time tracking provider is not found.
@@ -4411,6 +4522,9 @@ sub getAvailableTimeTrackingImplementations( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -4498,6 +4612,9 @@ sub getSharedTimeTrackingConfiguration( $self, %options ) {
                     JIRA::API::TimeTrackingConfiguration->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -4610,6 +4727,9 @@ sub setSharedTimeTrackingConfiguration( $self, %options ) {
                     JIRA::API::TimeTrackingConfiguration->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request object is invalid.
@@ -4710,6 +4830,9 @@ sub getCustomFieldOption( $self, %options ) {
                     JIRA::API::CustomFieldOption->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -4831,6 +4954,9 @@ sub getAllDashboards( $self, %options ) {
                     JIRA::API::PageOfDashboards->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -4842,6 +4968,9 @@ sub getAllDashboards( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -4853,6 +4982,9 @@ sub getAllDashboards( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -4961,6 +5093,9 @@ sub createDashboard( $self, %options ) {
                     JIRA::API::Dashboard->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -4972,6 +5107,9 @@ sub createDashboard( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -4983,6 +5121,9 @@ sub createDashboard( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -5066,6 +5207,9 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
                     JIRA::API::AvailableDashboardGadgetsResponse->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # 400 response
@@ -5077,6 +5221,9 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -5088,6 +5235,9 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -5307,6 +5457,9 @@ sub getDashboardsPaginated( $self, %options ) {
                     JIRA::API::PageBeanDashboard->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `orderBy` is invalid. * `expand` includes an invalid value. * `accountId` and `owner` are provided. * `groupname` and `groupId` are provided.
@@ -5318,6 +5471,9 @@ sub getDashboardsPaginated( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # 401 response
@@ -5329,6 +5485,9 @@ sub getDashboardsPaginated( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -5439,6 +5598,9 @@ sub getAllGadgets( $self, %options ) {
                     JIRA::API::DashboardGadgetResponse->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -5453,6 +5615,9 @@ sub getAllGadgets( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -5579,6 +5744,9 @@ sub addGadget( $self, %options ) {
                     JIRA::API::DashboardGadget->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -5590,6 +5758,9 @@ sub addGadget( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -5604,6 +5775,9 @@ sub addGadget( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -5703,6 +5877,9 @@ sub removeGadget( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -5717,6 +5894,9 @@ sub removeGadget( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -5838,6 +6018,9 @@ sub updateGadget( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -5849,6 +6032,9 @@ sub updateGadget( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -5863,6 +6049,9 @@ sub updateGadget( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -5961,6 +6150,9 @@ sub getDashboardItemPropertyKeys( $self, %options ) {
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -6179,6 +6371,9 @@ sub getDashboardItemProperty( $self, %options ) {
                     JIRA::API::EntityProperty->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -6294,6 +6489,9 @@ sub setDashboardItemProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the dashboard item property is created.
@@ -6305,6 +6503,9 @@ sub setDashboardItemProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * Request is invalid * Or if all of these conditions are met in the request: * The dashboard item has a spec URI and no complete module key * The value of propertyKey is equal to "config" * The request body contains a JSON object whose keys and values are not strings.
@@ -6316,6 +6517,9 @@ sub setDashboardItemProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -6420,6 +6624,9 @@ sub deleteDashboard( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -6431,6 +6638,9 @@ sub deleteDashboard( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -6524,6 +6734,9 @@ sub getDashboard( $self, %options ) {
                     JIRA::API::Dashboard->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # 400 response
@@ -6535,6 +6748,9 @@ sub getDashboard( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -6546,6 +6762,9 @@ sub getDashboard( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the dashboard is not found or the dashboard is not owned by or shared with the user.
@@ -6668,6 +6887,9 @@ sub updateDashboard( $self, %options ) {
                     JIRA::API::Dashboard->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -6679,6 +6901,9 @@ sub updateDashboard( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -6690,6 +6915,9 @@ sub updateDashboard( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the dashboard is not found or the dashboard is not owned by the user.
@@ -6701,6 +6929,9 @@ sub updateDashboard( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -6818,6 +7049,9 @@ sub copyDashboard( $self, %options ) {
                     JIRA::API::Dashboard->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -6829,6 +7063,9 @@ sub copyDashboard( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -6840,6 +7077,9 @@ sub copyDashboard( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the dashboard is not found or the dashboard is not owned by or shared with the user.
@@ -6851,6 +7091,9 @@ sub copyDashboard( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -6933,6 +7176,9 @@ sub getEvents( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -7066,6 +7312,9 @@ sub analyseExpression( $self, %options ) {
                     JIRA::API::JiraExpressionsAnalysis->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # 400 response
@@ -7077,6 +7326,9 @@ sub analyseExpression( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -7091,6 +7343,9 @@ sub analyseExpression( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -7199,6 +7454,9 @@ sub evaluateJiraExpression( $self, %options ) {
                     JIRA::API::JiraExpressionResult->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the request is invalid, that is: * invalid data is provided, such as a request including issue ID and key. * the expression is invalid and can not be parsed. * evaluation fails at runtime. This may happen for various reasons. For example, accessing a property on a null object (such as the expression `issue.id` where `issue` is `null`). In this case an error message is provided.
@@ -7210,6 +7468,9 @@ sub evaluateJiraExpression( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -7224,6 +7485,9 @@ sub evaluateJiraExpression( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -7306,6 +7570,9 @@ sub getFields( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -7639,6 +7906,9 @@ sub createCustomField( $self, %options ) {
                     JIRA::API::FieldDetails->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the user does not have permission to create custom fields. * any of the request object properties have invalid or missing values.
@@ -7821,6 +8091,9 @@ sub getFieldsPaginated( $self, %options ) {
                     JIRA::API::PageBeanField->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -7832,6 +8105,9 @@ sub getFieldsPaginated( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -7846,6 +8122,9 @@ sub getFieldsPaginated( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -7977,6 +8256,9 @@ sub getTrashedFieldsPaginated( $self, %options ) {
                     JIRA::API::PageBeanField->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -7988,6 +8270,9 @@ sub getTrashedFieldsPaginated( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -8002,6 +8287,9 @@ sub getTrashedFieldsPaginated( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -8223,6 +8511,9 @@ sub updateCustomField( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -8234,6 +8525,9 @@ sub updateCustomField( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -8248,6 +8542,9 @@ sub updateCustomField( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found.
@@ -8259,6 +8556,9 @@ sub updateCustomField( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -8378,6 +8678,9 @@ sub getContextsForField( $self, %options ) {
                     JIRA::API::PageBeanCustomFieldContext->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -8392,6 +8695,9 @@ sub getContextsForField( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field was not found.
@@ -8403,6 +8709,9 @@ sub getContextsForField( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -8523,6 +8832,9 @@ sub createCustomFieldContext( $self, %options ) {
                     JIRA::API::CreateCustomFieldContext->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -8543,6 +8855,9 @@ sub createCustomFieldContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -8652,6 +8967,9 @@ sub getDefaultValues( $self, %options ) {
                     JIRA::API::PageBeanCustomFieldContextDefaultValue->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -8666,6 +8984,9 @@ sub getDefaultValues( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found.
@@ -8677,6 +8998,9 @@ sub getDefaultValues( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -8779,6 +9103,9 @@ sub setDefaultValues( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -8790,6 +9117,9 @@ sub setDefaultValues( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -8804,6 +9134,9 @@ sub setDefaultValues( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field, a context, an option, or a cascading option is not found.
@@ -8815,6 +9148,9 @@ sub setDefaultValues( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -8924,6 +9260,9 @@ sub getIssueTypeMappingsForContexts( $self, %options ) {
                     JIRA::API::PageBeanIssueTypeToContextMapping->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -8938,6 +9277,9 @@ sub getIssueTypeMappingsForContexts( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -9055,6 +9397,9 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
                     JIRA::API::PageBeanContextForProjectAndIssueType->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -9066,6 +9411,9 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -9080,6 +9428,9 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field, project, or issue type is not found.
@@ -9091,6 +9442,9 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -9200,6 +9554,9 @@ sub getProjectContextMapping( $self, %options ) {
                     JIRA::API::PageBeanCustomFieldContextProjectMapping->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -9214,6 +9571,9 @@ sub getProjectContextMapping( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found.
@@ -9225,6 +9585,9 @@ sub getProjectContextMapping( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -9323,6 +9686,9 @@ sub deleteCustomFieldContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -9334,6 +9700,9 @@ sub deleteCustomFieldContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -9348,6 +9717,9 @@ sub deleteCustomFieldContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field or the context is not found.
@@ -9359,6 +9731,9 @@ sub deleteCustomFieldContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -9474,6 +9849,9 @@ sub updateCustomFieldContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -9485,6 +9863,9 @@ sub updateCustomFieldContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -9499,6 +9880,9 @@ sub updateCustomFieldContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field or the context is not found.
@@ -9510,6 +9894,9 @@ sub updateCustomFieldContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -9621,6 +10008,9 @@ sub addIssueTypesToContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -9632,6 +10022,9 @@ sub addIssueTypesToContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -9646,6 +10039,9 @@ sub addIssueTypesToContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field, context, or one or more issue types are not found.
@@ -9657,6 +10053,9 @@ sub addIssueTypesToContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 409 ) {
             # Returned if the issue type is a sub-task, but sub-tasks are disabled in Jira settings.
@@ -9668,6 +10067,9 @@ sub addIssueTypesToContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -9779,6 +10181,9 @@ sub removeIssueTypesFromContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -9790,6 +10195,9 @@ sub removeIssueTypesFromContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -9804,6 +10212,9 @@ sub removeIssueTypesFromContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field, context, or one or more issue types are not found.
@@ -9815,6 +10226,9 @@ sub removeIssueTypesFromContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -9936,6 +10350,9 @@ sub getOptionsForContext( $self, %options ) {
                     JIRA::API::PageBeanCustomFieldContextOption->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -9947,6 +10364,9 @@ sub getOptionsForContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -9961,6 +10381,9 @@ sub getOptionsForContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found or the context doesn't match the custom field.
@@ -9972,6 +10395,9 @@ sub getOptionsForContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -10083,6 +10509,9 @@ sub createCustomFieldOption( $self, %options ) {
                     JIRA::API::CustomFieldCreatedContextOptionsList->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -10094,6 +10523,9 @@ sub createCustomFieldOption( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -10108,6 +10540,9 @@ sub createCustomFieldOption( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found or the context doesn't match the custom field.
@@ -10119,6 +10554,9 @@ sub createCustomFieldOption( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -10230,6 +10668,9 @@ sub updateCustomFieldOption( $self, %options ) {
                     JIRA::API::CustomFieldUpdatedContextOptionsList->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -10241,6 +10682,9 @@ sub updateCustomFieldOption( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -10255,6 +10699,9 @@ sub updateCustomFieldOption( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the field, context, or one or more options is not found.
@@ -10266,6 +10713,9 @@ sub updateCustomFieldOption( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -10385,6 +10835,9 @@ sub reorderCustomFieldOptions( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -10396,6 +10849,9 @@ sub reorderCustomFieldOptions( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -10410,6 +10866,9 @@ sub reorderCustomFieldOptions( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the field, the context, or one or more of the options is not found..
@@ -10421,6 +10880,9 @@ sub reorderCustomFieldOptions( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -10528,6 +10990,9 @@ sub deleteCustomFieldOption( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -10542,6 +11007,9 @@ sub deleteCustomFieldOption( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the field, the context, or the option is not found.
@@ -10553,6 +11021,9 @@ sub deleteCustomFieldOption( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -10664,6 +11135,9 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -10675,6 +11149,9 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -10689,6 +11166,9 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field, context, or project is not found.
@@ -10700,6 +11180,9 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -10811,6 +11294,9 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -10822,6 +11308,9 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -10836,6 +11325,9 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field, context, or one or more projects are not found.
@@ -10847,6 +11339,9 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -10951,6 +11446,9 @@ sub getContextsForFieldDeprecated( $self, %options ) {
                     JIRA::API::PageBeanContext->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -11066,6 +11564,9 @@ sub getScreensForField( $self, %options ) {
                     JIRA::API::PageBeanScreenWithTab->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -11190,6 +11691,9 @@ sub getAllIssueFieldOptions( $self, %options ) {
                     JIRA::API::PageBeanIssueFieldOption->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the field is not found or does not support options.
@@ -11322,6 +11826,9 @@ sub createIssueFieldOption( $self, %options ) {
                     JIRA::API::IssueFieldOption->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the option is invalid.
@@ -11454,6 +11961,9 @@ sub getSelectableIssueFieldOptions( $self, %options ) {
                     JIRA::API::PageBeanIssueFieldOption->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -11583,6 +12093,9 @@ sub getVisibleIssueFieldOptions( $self, %options ) {
                     JIRA::API::PageBeanIssueFieldOption->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -11701,6 +12214,9 @@ sub deleteIssueFieldOption( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the request is not authenticated as a Jira administrator or the app that provided the field.
@@ -11822,6 +12338,9 @@ sub getIssueFieldOption( $self, %options ) {
                     JIRA::API::IssueFieldOption->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the field is not found or does not support options.
@@ -11968,6 +12487,9 @@ sub updateIssueFieldOption( $self, %options ) {
                     JIRA::API::IssueFieldOption->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the option is invalid, or the *ID* in the request object does not match the *optionId* parameter.
@@ -12112,6 +12634,9 @@ sub replaceIssueFieldOption( $self, %options ) {
                     JIRA::API::TaskProgressBeanRemoveOptionFromIssuesResult->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -12126,6 +12651,9 @@ sub replaceIssueFieldOption( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the field is not found or does not support options, or the options to be replaced are not found.
@@ -12225,6 +12753,9 @@ sub deleteCustomField( $self, %options ) {
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if any of these are true: * The custom field is locked. * The custom field is used in a issue security scheme or a permission scheme. * The custom field ID format is incorrect.
@@ -12236,6 +12767,9 @@ sub deleteCustomField( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -12247,6 +12781,9 @@ sub deleteCustomField( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -12258,6 +12795,9 @@ sub deleteCustomField( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found.
@@ -12269,6 +12809,9 @@ sub deleteCustomField( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 409 ) {
             # Returned if a task to delete the custom field is running.
@@ -12280,6 +12823,9 @@ sub deleteCustomField( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -12375,6 +12921,9 @@ sub restoreCustomField( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -12386,6 +12935,9 @@ sub restoreCustomField( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -12397,6 +12949,9 @@ sub restoreCustomField( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -12408,6 +12963,9 @@ sub restoreCustomField( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found.
@@ -12419,6 +12977,9 @@ sub restoreCustomField( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -12514,6 +13075,9 @@ sub trashCustomField( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -12525,6 +13089,9 @@ sub trashCustomField( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -12536,6 +13103,9 @@ sub trashCustomField( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -12547,6 +13117,9 @@ sub trashCustomField( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found.
@@ -12558,6 +13131,9 @@ sub trashCustomField( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -12667,6 +13243,9 @@ sub getAllFieldConfigurations( $self, %options ) {
                     JIRA::API::PageBeanFieldConfigurationDetails->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -12771,6 +13350,9 @@ sub createFieldConfiguration( $self, %options ) {
                     JIRA::API::FieldConfiguration->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -12871,6 +13453,9 @@ sub deleteFieldConfiguration( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -12991,6 +13576,9 @@ sub updateFieldConfiguration( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -13107,6 +13695,9 @@ sub getFieldConfigurationItems( $self, %options ) {
                     JIRA::API::PageBeanFieldConfigurationItem->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -13220,6 +13811,9 @@ sub updateFieldConfigurationItems( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -13331,6 +13925,9 @@ sub getAllFieldConfigurationSchemes( $self, %options ) {
                     JIRA::API::PageBeanFieldConfigurationScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -13438,6 +14035,9 @@ sub createFieldConfigurationScheme( $self, %options ) {
                     JIRA::API::FieldConfigurationScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -13449,6 +14049,9 @@ sub createFieldConfigurationScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -13463,6 +14066,9 @@ sub createFieldConfigurationScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -13562,6 +14168,9 @@ sub getFieldConfigurationSchemeMappings( $self, %options ) {
                     JIRA::API::PageBeanFieldConfigurationIssueTypeItem->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -13676,6 +14285,9 @@ sub getFieldConfigurationSchemeProjectMapping( $self, %options ) {
                     JIRA::API::PageBeanFieldConfigurationSchemeProjects->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -13783,6 +14395,9 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the project is not a classic project.
@@ -13794,6 +14409,9 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -13808,6 +14426,9 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the project is missing.
@@ -13819,6 +14440,9 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -13910,6 +14534,9 @@ sub deleteFieldConfigurationScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -14030,6 +14657,9 @@ sub updateFieldConfigurationScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -14041,6 +14671,9 @@ sub updateFieldConfigurationScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -14055,6 +14688,9 @@ sub updateFieldConfigurationScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the field configuration scheme is not found.
@@ -14066,6 +14702,9 @@ sub updateFieldConfigurationScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -14170,6 +14809,9 @@ sub setFieldConfigurationSchemeMapping( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -14290,6 +14932,9 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -14301,6 +14946,9 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -14312,6 +14960,9 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -14323,6 +14974,9 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the field configuration scheme or the issue types are not found.
@@ -14334,6 +14988,9 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -14438,6 +15095,9 @@ sub getFilters( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -14611,6 +15271,9 @@ sub createFilter( $self, %options ) {
                     JIRA::API::Filter->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request object is invalid. For example, the `name` is not unique or the project ID is not specified for a project role share permission.
@@ -14698,6 +15361,9 @@ sub getDefaultShareScope( $self, %options ) {
                     JIRA::API::DefaultShareScope->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -14814,6 +15480,9 @@ sub setDefaultShareScope( $self, %options ) {
                     JIRA::API::DefaultShareScope->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if an invalid scope is set.
@@ -14924,6 +15593,9 @@ sub getFavouriteFilters( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -15036,6 +15708,9 @@ sub getMyFilters( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -15282,6 +15957,9 @@ sub getFiltersPaginated( $self, %options ) {
                     JIRA::API::PageBeanFilterDetails->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `owner` and `accountId` are provided. * `expand` includes an invalid value. * `orderBy` is invalid. * `id` identifies more than 200 filter IDs.
@@ -15293,6 +15971,9 @@ sub getFiltersPaginated( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -15501,6 +16182,9 @@ sub getFilter( $self, %options ) {
                     JIRA::API::Filter->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the filter is not found or the user does not have permission to view it.
@@ -15690,6 +16374,9 @@ sub updateFilter( $self, %options ) {
                     JIRA::API::Filter->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request object is invalid. For example, the `name` is not unique or the project ID is not specified for a project role share permission.
@@ -15875,6 +16562,9 @@ sub getColumns( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the user does not have permission to view the filter.
@@ -15980,6 +16670,9 @@ sub setColumns( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * a non-navigable field is set as a column. * the user does not have permission to view the filter.
@@ -16099,6 +16792,9 @@ sub deleteFavouriteForFilter( $self, %options ) {
                     JIRA::API::Filter->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the filter is not found. * the user does not have permission to view the filter.
@@ -16215,6 +16911,9 @@ sub setFavouriteForFilter( $self, %options ) {
                     JIRA::API::Filter->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the filter is not found. * the user does not have permission to favorite the filter.
@@ -16322,6 +17021,9 @@ sub changeFilterOwner( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned when: * The new owner of the filter owns a filter with the same name. * An attempt is made to change owner of the default filter.
@@ -16423,6 +17125,9 @@ sub getSharePermissions( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -16592,6 +17297,9 @@ sub addSharePermission( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the request object is invalid. For example, it contains an invalid type, the ID does not match the type, or the project or group is not found. * the user does not own the filter. * the user does not have the required permissions.
@@ -16793,6 +17501,9 @@ sub getSharePermission( $self, %options ) {
                     JIRA::API::SharePermission->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -17006,6 +17717,9 @@ sub getGroup( $self, %options ) {
                     JIRA::API::Group->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the group name is not specified.
@@ -17112,6 +17826,9 @@ sub createGroup( $self, %options ) {
                     JIRA::API::Group->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if group name is not specified or the group name is in use.
@@ -17235,6 +17952,9 @@ sub bulkGetGroups( $self, %options ) {
                     JIRA::API::PageBeanGroupDetails->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -17252,6 +17972,9 @@ sub bulkGetGroups( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 500 ) {
             # Returned if the group with the given access level can't be retrieved.
@@ -17263,6 +17986,9 @@ sub bulkGetGroups( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -17374,6 +18100,9 @@ sub getUsersFromGroup( $self, %options ) {
                     JIRA::API::PageBeanUserDetails->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the group name is not specified.
@@ -17610,6 +18339,9 @@ sub addUserToGroup( $self, %options ) {
                     JIRA::API::Group->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `groupname` is not provided. * `accountId` is missing.
@@ -17743,6 +18475,9 @@ sub findGroups( $self, %options ) {
                     JIRA::API::FoundGroups->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -17875,6 +18610,9 @@ sub findUsersAndGroups( $self, %options ) {
                     JIRA::API::FoundUsersAndGroups->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the query parameter is not provided.
@@ -17968,6 +18706,9 @@ sub getLicense( $self, %options ) {
                     JIRA::API::License->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -18092,6 +18833,9 @@ sub createIssue( $self, %options ) {
                     JIRA::API::CreatedIssue->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request: * is missing required fields. * contains invalid field values. * contains fields that cannot be set for the issue type. * is by a user who does not have the necessary permission. * is to create a subtype in a project different that of the parent issue. * is for a subtask when the option to create subtasks is disabled. * is invalid for any other reason.
@@ -18103,6 +18847,9 @@ sub createIssue( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -18114,6 +18861,9 @@ sub createIssue( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -18125,6 +18875,9 @@ sub createIssue( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -18218,6 +18971,9 @@ sub createIssues( $self, %options ) {
                     JIRA::API::CreatedIssues->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if all requests are invalid. Requests may be unsuccessful when they: * are missing required fields. * contain invalid field values. * contain fields that cannot be set for the issue type. * are by a user who does not have the necessary permission. * are to create a subtype in a project different that of the parent issue. * is for a subtask when the option to create subtasks is disabled. * are invalid for any other reason.
@@ -18229,6 +18985,9 @@ sub createIssues( $self, %options ) {
                     JIRA::API::CreatedIssues->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -18341,6 +19100,9 @@ sub getCreateIssueMeta( $self, %options ) {
                     JIRA::API::IssueCreateMetadata->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -18458,6 +19220,9 @@ sub getIssuePickerResource( $self, %options ) {
                     JIRA::API::IssuePickerSuggestions->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -18563,6 +19328,9 @@ sub bulkSetIssuesPropertiesList( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -18574,6 +19342,9 @@ sub bulkSetIssuesPropertiesList( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -18673,6 +19444,9 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -18684,6 +19458,9 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Return if the user does not have the necessary permission.
@@ -18695,6 +19472,9 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -18807,6 +19587,9 @@ sub bulkDeleteIssueProperty( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -18818,6 +19601,9 @@ sub bulkDeleteIssueProperty( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -18934,6 +19720,9 @@ sub bulkSetIssueProperty( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -18945,6 +19734,9 @@ sub bulkSetIssueProperty( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -19039,6 +19831,9 @@ sub getIsWatchingIssueBulk( $self, %options ) {
                     JIRA::API::BulkIssueIsWatching->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -19382,6 +20177,9 @@ sub getIssue( $self, %options ) {
                     JIRA::API::IssueBean->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -19526,6 +20324,9 @@ sub editIssue( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the request body is missing. * the user does not have the necessary permission to edit one or more fields. * the request includes one or more fields that are not found or are not associated with the issue's edit screen. * the request includes an invalid transition.
@@ -19713,6 +20514,9 @@ sub assignIssue( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the user is not found. * `name`, `key`, or `accountId` is missing. * more than one of `name`, `key`, and `accountId` are provided.
@@ -19817,6 +20621,9 @@ sub addAttachment( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -19930,6 +20737,9 @@ sub getChangeLogs( $self, %options ) {
                     JIRA::API::PageBeanChangelog->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view it.
@@ -20037,6 +20847,9 @@ sub getChangeLogsByIds( $self, %options ) {
                     JIRA::API::PageOfChangelogs->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -20157,6 +20970,9 @@ sub getComments( $self, %options ) {
                     JIRA::API::PageOfComments->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `orderBy` is set to a value other than *created*.
@@ -20322,6 +21138,9 @@ sub addComment( $self, %options ) {
                     JIRA::API::Comment->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -20537,6 +21356,9 @@ sub getComment( $self, %options ) {
                     JIRA::API::Comment->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -20716,6 +21538,9 @@ sub updateComment( $self, %options ) {
                     JIRA::API::Comment->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the user does not have permission to edit the comment or the request is invalid.
@@ -20829,6 +21654,9 @@ sub getEditIssueMeta( $self, %options ) {
                     JIRA::API::IssueUpdateMetadata->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -20958,6 +21786,9 @@ sub notify( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the recipient is the same as the calling user. * the recipient is invalid. For example, the recipient is set to the assignee, but the issue is unassigned. * the request is invalid. For example, required fields are missing or have invalid values.
@@ -21058,6 +21889,9 @@ sub getIssuePropertyKeys( $self, %options ) {
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permissions to view the issue.
@@ -21253,6 +22087,9 @@ sub getIssueProperty( $self, %options ) {
                     JIRA::API::EntityProperty->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -21361,6 +22198,9 @@ sub setIssueProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the issue property is created.
@@ -21372,6 +22212,9 @@ sub setIssueProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -21586,6 +22429,9 @@ sub getRemoteIssueLinks( $self, %options ) {
                     JIRA::API::RemoteIssueLink->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -21719,6 +22565,9 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
                     JIRA::API::RemoteIssueLinkIdentifies->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the remote issue link is created.
@@ -21730,6 +22579,9 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
                     JIRA::API::RemoteIssueLinkIdentifies->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -21741,6 +22593,9 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -21948,6 +22803,9 @@ sub getRemoteIssueLinkById( $self, %options ) {
                     JIRA::API::RemoteIssueLink->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the link ID is invalid or the remote issue link does not belong to the issue.
@@ -22087,6 +22945,9 @@ sub updateRemoteIssueLink( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the link ID is invalid. * the remote issue link does not belong to the issue. * the request body is invalid.
@@ -22098,6 +22959,9 @@ sub updateRemoteIssueLink( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -22226,6 +23090,9 @@ sub getTransitions( $self, %options ) {
                     JIRA::API::Transitions->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -22352,6 +23219,9 @@ sub doTransition( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * no transition is specified. * the user does not have permission to transition the issue. * a field that isn't included on the transition screen is defined in `fields` or `update`. * a field is specified in both `fields` and `update`. * the request is invalid for any other reason.
@@ -22539,6 +23409,9 @@ sub getVotes( $self, %options ) {
                     JIRA::API::Votes->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -22636,6 +23509,9 @@ sub addVote( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -22842,6 +23718,9 @@ sub getIssueWatchers( $self, %options ) {
                     JIRA::API::Watchers->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -22942,6 +23821,9 @@ sub addWatcher( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -23073,6 +23955,9 @@ sub getIssueWorklog( $self, %options ) {
                     JIRA::API::PageOfWorklogs->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -23288,6 +24173,9 @@ sub addWorklog( $self, %options ) {
                     JIRA::API::Worklog->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `adjustEstimate` is set to `new` but `newEstimate` is not provided or is invalid. * `adjustEstimate` is set to `manual` but `reduceBy` is not provided or is invalid. * the user does not have permission to add the worklog. * the request JSON is malformed.
@@ -23554,6 +24442,9 @@ sub getWorklog( $self, %options ) {
                     JIRA::API::Worklog->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -23766,6 +24657,9 @@ sub updateWorklog( $self, %options ) {
                     JIRA::API::Worklog->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `adjustEstimate` is set to `new` but `newEstimate` is not provided or is invalid. * the user does not have permission to update the worklog. * the request JSON is malformed.
@@ -23873,6 +24767,9 @@ sub getWorklogPropertyKeys( $self, %options ) {
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the worklog ID is invalid.
@@ -24094,6 +24991,9 @@ sub getWorklogProperty( $self, %options ) {
                     JIRA::API::EntityProperty->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the worklog ID is invalid.
@@ -24212,6 +25112,9 @@ sub setWorklogProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the worklog property is created.
@@ -24223,6 +25126,9 @@ sub setWorklogProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the worklog ID is invalid.
@@ -24355,6 +25261,9 @@ sub linkIssues( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the comment is not created. The response contains an error message indicating why the comment wasn't created. The issue link is also not created.
@@ -24548,6 +25457,9 @@ sub getIssueLink( $self, %options ) {
                     JIRA::API::IssueLink->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue link ID is invalid.
@@ -24638,6 +25550,9 @@ sub getIssueLinkTypes( $self, %options ) {
                     JIRA::API::IssueLinkTypes->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -24810,6 +25725,9 @@ sub createIssueLinkType( $self, %options ) {
                     JIRA::API::IssueLinkType->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -25000,6 +25918,9 @@ sub getIssueLinkType( $self, %options ) {
                     JIRA::API::IssueLinkType->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue link type ID is invalid.
@@ -25185,6 +26106,9 @@ sub updateIssueLinkType( $self, %options ) {
                     JIRA::API::IssueLinkType->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue link type ID or the request body are invalid.
@@ -25275,6 +26199,9 @@ sub getIssueSecuritySchemes( $self, %options ) {
                     JIRA::API::SecuritySchemes->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -25372,6 +26299,9 @@ sub getIssueSecurityScheme( $self, %options ) {
                     JIRA::API::SecurityScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -25521,6 +26451,9 @@ sub getIssueSecurityLevelMembers( $self, %options ) {
                     JIRA::API::PageBeanIssueSecurityLevelMember->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -25615,6 +26548,9 @@ sub getIssueAllTypes( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -25742,6 +26678,9 @@ sub createIssueType( $self, %options ) {
                     JIRA::API::IssueTypeDetails->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid because: * no content is sent. * the issue type name exceeds 60 characters. * a subtask issue type is requested on an instance where subtasks are disabled.
@@ -25871,6 +26810,9 @@ sub getIssueTypesForProject( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -26075,6 +27017,9 @@ sub getIssueType( $self, %options ) {
                     JIRA::API::IssueTypeDetails->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue type ID is invalid.
@@ -26196,6 +27141,9 @@ sub updateIssueType( $self, %options ) {
                     JIRA::API::IssueTypeDetails->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid because: * no content is sent. * the issue type name exceeds 60 characters. * the avatar is not associated with this issue type.
@@ -26303,6 +27251,9 @@ sub getAlternativeIssueTypes( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -26424,6 +27375,9 @@ sub createIssueTypeAvatar( $self, %options ) {
                     JIRA::API::Avatar->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * an image isn't included in the request. * the image type is unsupported. * the crop parameters extend the crop area beyond the edge of the image. * `cropSize` is missing. * the issue type ID is invalid.
@@ -26527,6 +27481,9 @@ sub getIssueTypePropertyKeys( $self, %options ) {
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue type ID is invalid.
@@ -26731,6 +27688,9 @@ sub getIssueTypeProperty( $self, %options ) {
                     JIRA::API::EntityProperty->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue type ID is invalid.
@@ -26842,6 +27802,9 @@ sub setIssueTypeProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the issue type property is created.
@@ -26853,6 +27816,9 @@ sub setIssueTypeProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the issue type ID is invalid. * a property value is not provided. * the property value JSON content is invalid.
@@ -27007,6 +27973,9 @@ sub getAllIssueTypeSchemes( $self, %options ) {
                     JIRA::API::PageBeanIssueTypeScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -27122,6 +28091,9 @@ sub createIssueTypeScheme( $self, %options ) {
                     JIRA::API::IssueTypeSchemeID->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -27133,6 +28105,9 @@ sub createIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -27147,6 +28122,9 @@ sub createIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 409 ) {
             # Returned if the scheme name is used by another scheme.
@@ -27158,6 +28136,9 @@ sub createIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -27257,6 +28238,9 @@ sub getIssueTypeSchemesMapping( $self, %options ) {
                     JIRA::API::PageBeanIssueTypeSchemeMapping->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -27368,6 +28352,9 @@ sub getIssueTypeSchemeForProjects( $self, %options ) {
                     JIRA::API::PageBeanIssueTypeSchemeProjects->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -27475,6 +28462,9 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -27486,6 +28476,9 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -27500,6 +28493,9 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type scheme or the project is not found.
@@ -27511,6 +28507,9 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -27602,6 +28601,9 @@ sub deleteIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is to delete the default issue type scheme.
@@ -27613,6 +28615,9 @@ sub deleteIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -27627,6 +28632,9 @@ sub deleteIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type scheme is not found.
@@ -27638,6 +28646,9 @@ sub deleteIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -27750,6 +28761,9 @@ sub updateIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -27761,6 +28775,9 @@ sub updateIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -27775,6 +28792,9 @@ sub updateIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type scheme is not found.
@@ -27786,6 +28806,9 @@ sub updateIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -27890,6 +28913,9 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -27901,6 +28927,9 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -27915,6 +28944,9 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type or the issue type scheme is not found.
@@ -27926,6 +28958,9 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -28038,6 +29073,9 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -28049,6 +29087,9 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -28063,6 +29104,9 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type scheme is not found.
@@ -28074,6 +29118,9 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -28172,6 +29219,9 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -28183,6 +29233,9 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -28197,6 +29250,9 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type scheme is missing or the issue type is not found in the issue type scheme.
@@ -28208,6 +29264,9 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -28336,6 +29395,9 @@ sub getIssueTypeScreenSchemes( $self, %options ) {
                     JIRA::API::PageBeanIssueTypeScreenScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -28447,6 +29509,9 @@ sub createIssueTypeScreenScheme( $self, %options ) {
                     JIRA::API::IssueTypeScreenSchemeId->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -28458,6 +29523,9 @@ sub createIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -28472,6 +29540,9 @@ sub createIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type or screen scheme is not found.
@@ -28483,6 +29554,9 @@ sub createIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 409 ) {
             # Returned if the issue type is a sub-task, but sub-tasks are disabled in Jira settings.
@@ -28494,6 +29568,9 @@ sub createIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -28593,6 +29670,9 @@ sub getIssueTypeScreenSchemeMappings( $self, %options ) {
                     JIRA::API::PageBeanIssueTypeScreenSchemeItem->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -28704,6 +29784,9 @@ sub getIssueTypeScreenSchemeProjectAssociations( $self, %options ) {
                     JIRA::API::PageBeanIssueTypeScreenSchemesProjects->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -28811,6 +29894,9 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * project is not found. * issue type screen scheme is not found. * the project is not a classic project.
@@ -28822,6 +29908,9 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -28836,6 +29925,9 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type screen scheme or the project are missing.
@@ -28847,6 +29939,9 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -28938,6 +30033,9 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -28949,6 +30047,9 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -28966,6 +30067,9 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -29074,6 +30178,9 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -29085,6 +30192,9 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -29099,6 +30209,9 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type screen scheme is not found.
@@ -29110,6 +30223,9 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -29214,6 +30330,9 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -29225,6 +30344,9 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -29242,6 +30364,9 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 409 ) {
             # Returned if the issue type is a sub-task, but sub-tasks are disabled in Jira settings.
@@ -29253,6 +30378,9 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -29357,6 +30485,9 @@ sub updateDefaultScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -29368,6 +30499,9 @@ sub updateDefaultScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -29382,6 +30516,9 @@ sub updateDefaultScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type screen scheme or the screen screen is not found, or the screen scheme isn't used in classic projects.
@@ -29393,6 +30530,9 @@ sub updateDefaultScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -29497,6 +30637,9 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -29508,6 +30651,9 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -29522,6 +30668,9 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type screen scheme or one or more issue type mappings are not found.
@@ -29533,6 +30682,9 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -29640,6 +30792,9 @@ sub getProjectsForIssueTypeScreenScheme( $self, %options ) {
                     JIRA::API::PageBeanProjectDetails->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -29730,6 +30885,9 @@ sub getAutoComplete( $self, %options ) {
                     JIRA::API::JQLReferenceData->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -29831,6 +30989,9 @@ sub getAutoCompletePost( $self, %options ) {
                     JIRA::API::JQLReferenceData->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -29941,6 +31102,9 @@ sub getFieldAutoCompleteForQueryString( $self, %options ) {
                     JIRA::API::AutoCompleteSuggestions->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if an invalid combination of parameters is passed.
@@ -30046,6 +31210,9 @@ sub getPrecomputations( $self, %options ) {
                     JIRA::API::PageBeanJqlFunctionPrecomputationBean->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -30138,6 +31305,9 @@ sub updatePrecomputations( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -30236,6 +31406,9 @@ sub matchIssues( $self, %options ) {
                     JIRA::API::IssueMatches->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `jqls` exceeds the maximum number of JQL queries or `issueIds` exceeds the maximum number of issue IDs.
@@ -30361,6 +31534,9 @@ sub parseJqlQueries( $self, %options ) {
                     JIRA::API::ParsedJqlQueries->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -30372,6 +31548,9 @@ sub parseJqlQueries( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -30469,6 +31648,9 @@ sub migrateQueries( $self, %options ) {
                     JIRA::API::ConvertedJQLQueries->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if at least one of the queries cannot be converted. For example, the JQL has invalid operators or invalid keywords, or the users in the query cannot be found.
@@ -30572,6 +31754,9 @@ sub sanitiseJqlQueries( $self, %options ) {
                     JIRA::API::SanitizedJqlQueries->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -30583,6 +31768,9 @@ sub sanitiseJqlQueries( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -30594,6 +31782,9 @@ sub sanitiseJqlQueries( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -30605,6 +31796,9 @@ sub sanitiseJqlQueries( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -30699,6 +31893,9 @@ sub getAllLabels( $self, %options ) {
                     JIRA::API::PageBeanString->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -30780,6 +31977,9 @@ sub getApproximateLicenseCount( $self, %options ) {
                     JIRA::API::LicenseMetric->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -30875,6 +32075,9 @@ sub getApproximateApplicationLicenseCount( $self, %options ) {
                     JIRA::API::LicenseMetric->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -31004,6 +32207,9 @@ sub getMyPermissions( $self, %options ) {
                     JIRA::API::Permissions->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `permissions` is empty, contains an invalid key, or does not equal BROWSE\_PROJECTS when commentId is provided.
@@ -31015,6 +32221,9 @@ sub getMyPermissions( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -31026,6 +32235,9 @@ sub getMyPermissions( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the project or issue is not found or the user does not have permission to view the project or issue.
@@ -31037,6 +32249,9 @@ sub getMyPermissions( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -31217,6 +32432,9 @@ sub getPreference( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -31319,6 +32537,9 @@ sub setPreference( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -31406,6 +32627,9 @@ sub deleteLocale( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -31490,6 +32714,9 @@ sub getLocale( $self, %options ) {
                     JIRA::API::Locale->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -31587,6 +32814,9 @@ sub setLocale( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if request is invalid.
@@ -31696,6 +32926,9 @@ sub getCurrentUser( $self, %options ) {
                     JIRA::API::User->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -31847,6 +33080,9 @@ sub getNotificationSchemes( $self, %options ) {
                     JIRA::API::PageBeanNotificationScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -31858,6 +33094,9 @@ sub getNotificationSchemes( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -31966,6 +33205,9 @@ sub createNotificationScheme( $self, %options ) {
                     JIRA::API::NotificationSchemeId->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -31977,6 +33219,9 @@ sub createNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -31988,6 +33233,9 @@ sub createNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -31999,6 +33247,9 @@ sub createNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -32105,6 +33356,9 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
                     JIRA::API::PageBeanNotificationSchemeAndProjectMappingJsonBean->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if search criteria are invalid, strings vs numbers for projectId, notificationSchemeId, startAt and maxResult
@@ -32116,6 +33370,9 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -32127,6 +33384,9 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -32260,6 +33520,9 @@ sub getNotificationScheme( $self, %options ) {
                     JIRA::API::NotificationScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -32381,6 +33644,9 @@ sub updateNotificationScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -32392,6 +33658,9 @@ sub updateNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -32403,6 +33672,9 @@ sub updateNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -32414,6 +33686,9 @@ sub updateNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the notification scheme isn't found.
@@ -32425,6 +33700,9 @@ sub updateNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -32533,6 +33811,9 @@ sub addNotifications( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -32544,6 +33825,9 @@ sub addNotifications( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -32555,6 +33839,9 @@ sub addNotifications( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -32566,6 +33853,9 @@ sub addNotifications( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the notification scheme isn't found.
@@ -32577,6 +33867,9 @@ sub addNotifications( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -32672,6 +33965,9 @@ sub deleteNotificationScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -32683,6 +33979,9 @@ sub deleteNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -32694,6 +33993,9 @@ sub deleteNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -32705,6 +34007,9 @@ sub deleteNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the notification scheme isn't found.
@@ -32716,6 +34021,9 @@ sub deleteNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -32818,6 +34126,9 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -32829,6 +34140,9 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -32840,6 +34154,9 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -32851,6 +34168,9 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if either the notification scheme or notification isn't found.
@@ -32862,6 +34182,9 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -32943,6 +34266,9 @@ sub getAllPermissions( $self, %options ) {
                     JIRA::API::Permissions->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -33053,6 +34379,9 @@ sub getBulkPermissions( $self, %options ) {
                     JIRA::API::BulkPermissionGrants->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `projectPermissions` is provided without at least one project permission being provided. * an invalid global permission is provided in the global permissions list. * an invalid project permission is provided in the project permissions list. * more than 1000 valid project IDs or more than 1000 valid issue IDs are provided. * an invalid account ID is provided.
@@ -33064,6 +34393,9 @@ sub getBulkPermissions( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -33075,6 +34407,9 @@ sub getBulkPermissions( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -33169,6 +34504,9 @@ sub getPermittedProjects( $self, %options ) {
                     JIRA::API::PermittedProjects->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if a project permission is not found.
@@ -33180,6 +34518,9 @@ sub getPermittedProjects( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -33306,6 +34647,9 @@ sub getAllPermissionSchemes( $self, %options ) {
                     JIRA::API::PermissionSchemes->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -33469,6 +34813,9 @@ sub createPermissionScheme( $self, %options ) {
                     JIRA::API::PermissionScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -33701,6 +35048,9 @@ sub getPermissionScheme( $self, %options ) {
                     JIRA::API::PermissionScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -33877,6 +35227,9 @@ sub updatePermissionScheme( $self, %options ) {
                     JIRA::API::PermissionScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -34019,6 +35372,9 @@ sub getPermissionSchemeGrants( $self, %options ) {
                     JIRA::API::PermissionGrants->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -34183,6 +35539,9 @@ sub createPermissionGrant( $self, %options ) {
                     JIRA::API::PermissionGrant->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the value for expand is invalid or the same permission grant is present.
@@ -34429,6 +35788,9 @@ sub getPermissionSchemeGrant( $self, %options ) {
                     JIRA::API::PermissionGrant->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -34517,6 +35879,9 @@ sub getPriorities( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -34629,6 +35994,9 @@ sub createPriority( $self, %options ) {
                     JIRA::API::PriorityId->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -34640,6 +36008,9 @@ sub createPriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -34651,6 +36022,9 @@ sub createPriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -34662,6 +36036,9 @@ sub createPriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -34760,6 +36137,9 @@ sub setDefaultPriority( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -34771,6 +36151,9 @@ sub setDefaultPriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -34782,6 +36165,9 @@ sub setDefaultPriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -34793,6 +36179,9 @@ sub setDefaultPriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue priority isn't found.
@@ -34804,6 +36193,9 @@ sub setDefaultPriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -34910,6 +36302,9 @@ sub movePriorities( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -34921,6 +36316,9 @@ sub movePriorities( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -34932,6 +36330,9 @@ sub movePriorities( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -34943,6 +36344,9 @@ sub movePriorities( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue priority isn't found.
@@ -34954,6 +36358,9 @@ sub movePriorities( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -35059,6 +36466,9 @@ sub searchPriorities( $self, %options ) {
                     JIRA::API::PageBeanPriority->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -35070,6 +36480,9 @@ sub searchPriorities( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -35176,6 +36589,9 @@ sub deletePriority( $self, %options ) {
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -35187,6 +36603,9 @@ sub deletePriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -35198,6 +36617,9 @@ sub deletePriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -35209,6 +36631,9 @@ sub deletePriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue priority isn't found.
@@ -35220,6 +36645,9 @@ sub deletePriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 409 ) {
             # Returned if a task to delete the issue priority is already running.
@@ -35231,6 +36659,9 @@ sub deletePriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -35322,6 +36753,9 @@ sub getPriority( $self, %options ) {
                     JIRA::API::Priority->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -35448,6 +36882,9 @@ sub updatePriority( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -35459,6 +36896,9 @@ sub updatePriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -35470,6 +36910,9 @@ sub updatePriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -35481,6 +36924,9 @@ sub updatePriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue priority isn't found.
@@ -35492,6 +36938,9 @@ sub updatePriority( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -35616,6 +37065,9 @@ sub getAllProjects( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -35781,6 +37233,9 @@ sub createProject( $self, %options ) {
                     JIRA::API::ProjectIdentifiers->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid and the project could not be created.
@@ -35929,6 +37384,9 @@ sub getRecent( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -36237,6 +37695,9 @@ sub searchProjects( $self, %options ) {
                     JIRA::API::PageBeanProject->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -36328,6 +37789,9 @@ sub getAllProjectTypes( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -36413,6 +37877,9 @@ sub getAllAccessibleProjectTypes( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -36504,6 +37971,9 @@ sub getProjectTypeByKey( $self, %options ) {
                     JIRA::API::ProjectType->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -36601,6 +38071,9 @@ sub getAccessibleProjectTypeByKey( $self, %options ) {
                     JIRA::API::ProjectType->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -36835,6 +38308,9 @@ sub getProject( $self, %options ) {
                     JIRA::API::Project->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -37021,6 +38497,9 @@ sub updateProject( $self, %options ) {
                     JIRA::API::Project->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -37124,6 +38603,9 @@ sub archiveProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -37264,6 +38746,9 @@ sub updateProjectAvatar( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -37483,6 +38968,9 @@ sub createProjectAvatar( $self, %options ) {
                     JIRA::API::Avatar->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * an image isn't included in the request. * the image type is unsupported. * the crop parameters extend the crop area beyond the edge of the image.
@@ -37586,6 +39074,9 @@ sub getAllProjectAvatars( $self, %options ) {
                     JIRA::API::ProjectAvatars->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -37730,6 +39221,9 @@ sub getProjectComponentsPaginated( $self, %options ) {
                     JIRA::API::PageBeanComponentWithIssueCount->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -37828,6 +39322,9 @@ sub getProjectComponents( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -37925,6 +39422,9 @@ sub deleteProjectAsynchronously( $self, %options ) {
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -38025,6 +39525,9 @@ sub getFeaturesForProject( $self, %options ) {
                     JIRA::API::ContainerForProjectFeatures->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -38148,6 +39651,9 @@ sub toggleFeatureForProject( $self, %options ) {
                     JIRA::API::ContainerForProjectFeatures->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -38251,6 +39757,9 @@ sub getProjectPropertyKeys( $self, %options ) {
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -38461,6 +39970,9 @@ sub getProjectProperty( $self, %options ) {
                     JIRA::API::EntityProperty->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -38575,6 +40087,9 @@ sub setProjectProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the project property is created.
@@ -38586,6 +40101,9 @@ sub setProjectProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the project key or id is invalid.
@@ -38689,6 +40207,9 @@ sub restore( $self, %options ) {
                     JIRA::API::Project->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -38789,6 +40310,9 @@ sub getProjectRoles( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing or if the user lacks administrative permissions for the project.
@@ -39013,6 +40537,9 @@ sub getProjectRole( $self, %options ) {
                     JIRA::API::ProjectRole->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -39141,6 +40668,9 @@ sub addActorUsers( $self, %options ) {
                     JIRA::API::ProjectRole->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -39285,6 +40815,9 @@ sub setActors( $self, %options ) {
                     JIRA::API::ProjectRole->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -39397,6 +40930,9 @@ sub getProjectRoleDetails( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -39495,6 +41031,9 @@ sub getAllStatuses( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -39599,6 +41138,9 @@ sub updateProjectType( $self, %options ) {
                     JIRA::API::Project->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -39775,6 +41317,9 @@ sub getProjectVersionsPaginated( $self, %options ) {
                     JIRA::API::PageBeanVersion->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
@@ -39878,6 +41423,9 @@ sub getProjectVersions( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
@@ -39972,6 +41520,9 @@ sub getProjectEmail( $self, %options ) {
                     JIRA::API::ProjectEmailAddress->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -40089,6 +41640,9 @@ sub updateProjectEmail( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid, if the email address is not valid.
@@ -40192,6 +41746,9 @@ sub getHierarchy( $self, %options ) {
                     JIRA::API::ProjectIssueTypeHierarchy->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -40292,6 +41849,9 @@ sub getProjectIssueSecurityScheme( $self, %options ) {
                     JIRA::API::SecurityScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -40437,6 +41997,9 @@ sub getNotificationSchemeForProject( $self, %options ) {
                     JIRA::API::NotificationScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -40579,6 +42142,9 @@ sub getAssignedPermissionScheme( $self, %options ) {
                     JIRA::API::PermissionScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -40734,6 +42300,9 @@ sub assignPermissionScheme( $self, %options ) {
                     JIRA::API::PermissionScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -40834,6 +42403,9 @@ sub getSecurityLevelsForProject( $self, %options ) {
                     JIRA::API::ProjectIssueSecurityLevels->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
@@ -40919,6 +42491,9 @@ sub getAllProjectCategories( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -41028,6 +42603,9 @@ sub createProjectCategory( $self, %options ) {
                     JIRA::API::ProjectCategory->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `name` is not provided or exceeds 255 characters. * `description` exceeds 1000 characters.
@@ -41221,6 +42799,9 @@ sub getProjectCategoryById( $self, %options ) {
                     JIRA::API::ProjectCategory->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -41341,6 +42922,9 @@ sub updateProjectCategory( $self, %options ) {
                     JIRA::API::UpdatedProjectCategory->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `name` has been modified and exceeds 255 characters. * `description` has been modified and exceeds 1000 characters.
@@ -41442,6 +43026,9 @@ sub validateProjectKey( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -41534,6 +43121,9 @@ sub getValidProjectKey( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -41629,6 +43219,9 @@ sub getValidProjectName( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -41720,6 +43313,9 @@ sub getResolutions( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -41824,6 +43420,9 @@ sub createResolution( $self, %options ) {
                     JIRA::API::ResolutionId->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -41835,6 +43434,9 @@ sub createResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -41846,6 +43448,9 @@ sub createResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -41857,6 +43462,9 @@ sub createResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -41955,6 +43563,9 @@ sub setDefaultResolution( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -41966,6 +43577,9 @@ sub setDefaultResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -41977,6 +43591,9 @@ sub setDefaultResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -41988,6 +43605,9 @@ sub setDefaultResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue resolution isn't found.
@@ -41999,6 +43619,9 @@ sub setDefaultResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -42105,6 +43728,9 @@ sub moveResolutions( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -42116,6 +43742,9 @@ sub moveResolutions( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -42127,6 +43756,9 @@ sub moveResolutions( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -42138,6 +43770,9 @@ sub moveResolutions( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue resolution isn't found.
@@ -42149,6 +43784,9 @@ sub moveResolutions( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -42254,6 +43892,9 @@ sub searchResolutions( $self, %options ) {
                     JIRA::API::PageBeanResolutionJsonBean->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -42265,6 +43906,9 @@ sub searchResolutions( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -42371,6 +44015,9 @@ sub deleteResolution( $self, %options ) {
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -42382,6 +44029,9 @@ sub deleteResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -42393,6 +44043,9 @@ sub deleteResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -42404,6 +44057,9 @@ sub deleteResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue resolution isn't found.
@@ -42415,6 +44071,9 @@ sub deleteResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 409 ) {
             # Returned if a task to delete the issue resolution is already running.
@@ -42426,6 +44085,9 @@ sub deleteResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -42517,6 +44179,9 @@ sub getResolution( $self, %options ) {
                     JIRA::API::Resolution->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -42635,6 +44300,9 @@ sub updateResolution( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -42646,6 +44314,9 @@ sub updateResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -42657,6 +44328,9 @@ sub updateResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -42668,6 +44342,9 @@ sub updateResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue resolution isn't found.
@@ -42679,6 +44356,9 @@ sub updateResolution( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -42761,6 +44441,9 @@ sub getAllProjectRoles( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -42865,6 +44548,9 @@ sub createProjectRole( $self, %options ) {
                     JIRA::API::ProjectRole->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid. The `name` cannot be empty or start or end with whitespace.
@@ -43072,6 +44758,9 @@ sub getProjectRoleById( $self, %options ) {
                     JIRA::API::ProjectRole->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -43189,6 +44878,9 @@ sub partialUpdateProjectRole( $self, %options ) {
                     JIRA::API::ProjectRole->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -43309,6 +45001,9 @@ sub fullyUpdateProjectRole( $self, %options ) {
                     JIRA::API::ProjectRole->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid. The `name` cannot be empty or start or end with whitespace.
@@ -43430,6 +45125,9 @@ sub deleteProjectRoleActorsFromRole( $self, %options ) {
                     JIRA::API::ProjectRole->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -43533,6 +45231,9 @@ sub getProjectRoleActorsForRole( $self, %options ) {
                     JIRA::API::ProjectRole->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -43657,6 +45358,9 @@ sub addProjectRoleActorsToRole( $self, %options ) {
                     JIRA::API::ProjectRole->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -43797,6 +45501,9 @@ sub getScreens( $self, %options ) {
                     JIRA::API::PageBeanScreen->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -43901,6 +45608,9 @@ sub createScreen( $self, %options ) {
                     JIRA::API::Screen->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -43912,6 +45622,9 @@ sub createScreen( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -43926,6 +45639,9 @@ sub createScreen( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -44017,6 +45733,9 @@ sub addFieldToDefaultScreen( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -44119,6 +45838,9 @@ sub deleteScreen( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -44133,6 +45855,9 @@ sub deleteScreen( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the screen is not found.
@@ -44144,6 +45869,9 @@ sub deleteScreen( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -44252,6 +45980,9 @@ sub updateScreen( $self, %options ) {
                     JIRA::API::Screen->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -44263,6 +45994,9 @@ sub updateScreen( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -44277,6 +46011,9 @@ sub updateScreen( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the screen is not found.
@@ -44288,6 +46025,9 @@ sub updateScreen( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -44380,6 +46120,9 @@ sub getAvailableScreenFields( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -44489,6 +46232,9 @@ sub getAllScreenTabs( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the screen ID is invalid.
@@ -44609,6 +46355,9 @@ sub addScreenTab( $self, %options ) {
                     JIRA::API::ScreenableTab->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -44833,6 +46582,9 @@ sub renameScreenTab( $self, %options ) {
                     JIRA::API::ScreenableTab->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -44952,6 +46704,9 @@ sub getAllScreenTabFields( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -45072,6 +46827,9 @@ sub addScreenTabField( $self, %options ) {
                     JIRA::API::ScreenableField->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -45313,6 +47071,9 @@ sub moveScreenTabField( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -45430,6 +47191,9 @@ sub moveScreenTab( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -45570,6 +47334,9 @@ sub getScreenSchemes( $self, %options ) {
                     JIRA::API::PageBeanScreenScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -45678,6 +47445,9 @@ sub createScreenScheme( $self, %options ) {
                     JIRA::API::ScreenSchemeId->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -45689,6 +47459,9 @@ sub createScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -45703,6 +47476,9 @@ sub createScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if a screen used as one of the screen types in the screen scheme is not found.
@@ -45714,6 +47490,9 @@ sub createScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -45807,6 +47586,9 @@ sub deleteScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -45821,6 +47603,9 @@ sub deleteScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the screen scheme is not found.
@@ -45832,6 +47617,9 @@ sub deleteScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -45944,6 +47732,9 @@ sub updateScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -45955,6 +47746,9 @@ sub updateScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -45969,6 +47763,9 @@ sub updateScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the screen scheme or a screen used as one of the screen types is not found.
@@ -45980,6 +47777,9 @@ sub updateScreenScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -46242,6 +48042,9 @@ sub searchForIssuesUsingJql( $self, %options ) {
                     JIRA::API::SearchResults->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the JQL query is invalid.
@@ -46493,6 +48296,9 @@ sub searchForIssuesUsingJqlPost( $self, %options ) {
                     JIRA::API::SearchResults->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the JQL query is invalid.
@@ -46590,6 +48396,9 @@ sub getIssueSecurityLevel( $self, %options ) {
                     JIRA::API::SecurityLevel->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -46677,6 +48486,9 @@ sub getServerInfo( $self, %options ) {
                     JIRA::API::ServerInformation->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -46762,6 +48574,9 @@ sub getIssueNavigatorDefaultColumns( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -46854,6 +48669,9 @@ sub setIssueNavigatorDefaultColumns( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if invalid parameters are passed.
@@ -46948,6 +48766,9 @@ sub getStatuses( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -47042,6 +48863,9 @@ sub getStatus( $self, %options ) {
                     JIRA::API::StatusDetails->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -47130,6 +48954,9 @@ sub getStatusCategories( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -47224,6 +49051,9 @@ sub getStatusCategory( $self, %options ) {
                     JIRA::API::StatusCategory->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -47321,6 +49151,9 @@ sub deleteStatusesById( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -47332,6 +49165,9 @@ sub deleteStatusesById( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation.
@@ -47441,6 +49277,9 @@ sub getStatusesById( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -47546,6 +49385,9 @@ sub createStatuses( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -47557,6 +49399,9 @@ sub createStatuses( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation.
@@ -47654,6 +49499,9 @@ sub updateStatuses( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -47665,6 +49513,9 @@ sub updateStatuses( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation.
@@ -47791,6 +49642,9 @@ sub search( $self, %options ) {
                     JIRA::API::PageOfStatuses->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -47888,6 +49742,9 @@ sub getTask( $self, %options ) {
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -47992,6 +49849,9 @@ sub cancelTask( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if cancellation of the task is not possible.
@@ -48004,6 +49864,9 @@ sub cancelTask( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -48016,6 +49879,9 @@ sub cancelTask( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -48028,6 +49894,9 @@ sub cancelTask( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the task is not found.
@@ -48040,6 +49909,9 @@ sub cancelTask( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -48153,6 +50025,9 @@ sub getUiModifications( $self, %options ) {
                     JIRA::API::PageBeanUiModificationDetails->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -48268,6 +50143,9 @@ sub createUiModification( $self, %options ) {
                     JIRA::API::UiModificationIdentifiers->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -48371,6 +50249,9 @@ sub deleteUiModification( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -48496,6 +50377,9 @@ sub updateUiModification( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -48606,6 +50490,9 @@ sub getAvatars( $self, %options ) {
                     JIRA::API::Avatars->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -48734,6 +50621,9 @@ sub storeAvatar( $self, %options ) {
                     JIRA::API::Avatar->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * an image isn't included in the request. * the image type is unsupported. * the crop parameters extend the crop area beyond the edge of the image.
@@ -48957,27 +50847,39 @@ sub getAvatarImageByType( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'application/json' ) {
+            } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/png' ) {
+            } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/svg+xml' ) {
+            } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -48989,27 +50891,39 @@ sub getAvatarImageByType( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'application/json' ) {
+            } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/png' ) {
+            } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/svg+xml' ) {
+            } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -49021,27 +50935,39 @@ sub getAvatarImageByType( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'application/json' ) {
+            } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/png' ) {
+            } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/svg+xml' ) {
+            } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if an avatar is not found or an avatar matching the requested size is not found.
@@ -49053,27 +50979,39 @@ sub getAvatarImageByType( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'application/json' ) {
+            } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/png' ) {
+            } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/svg+xml' ) {
+            } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -49189,27 +51127,39 @@ sub getAvatarImageByID( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'application/json' ) {
+            } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/png' ) {
+            } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/svg+xml' ) {
+            } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -49221,27 +51171,39 @@ sub getAvatarImageByID( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'application/json' ) {
+            } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/png' ) {
+            } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/svg+xml' ) {
+            } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -49253,27 +51215,39 @@ sub getAvatarImageByID( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'application/json' ) {
+            } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/png' ) {
+            } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/svg+xml' ) {
+            } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -49285,27 +51259,39 @@ sub getAvatarImageByID( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'application/json' ) {
+            } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/png' ) {
+            } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/svg+xml' ) {
+            } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if an avatar is not found or an avatar matching the requested size is not found.
@@ -49317,27 +51303,39 @@ sub getAvatarImageByID( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'application/json' ) {
+            } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/png' ) {
+            } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/svg+xml' ) {
+            } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -49453,27 +51451,39 @@ sub getAvatarImageByOwner( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'application/json' ) {
+            } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/png' ) {
+            } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/svg+xml' ) {
+            } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -49485,27 +51495,39 @@ sub getAvatarImageByOwner( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'application/json' ) {
+            } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/png' ) {
+            } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/svg+xml' ) {
+            } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -49517,27 +51539,39 @@ sub getAvatarImageByOwner( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'application/json' ) {
+            } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/png' ) {
+            } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/svg+xml' ) {
+            } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -49549,27 +51583,39 @@ sub getAvatarImageByOwner( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'application/json' ) {
+            } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/png' ) {
+            } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/svg+xml' ) {
+            } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if an avatar is not found or an avatar matching the requested size is not found.
@@ -49581,27 +51627,39 @@ sub getAvatarImageByOwner( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'application/json' ) {
+            } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/png' ) {
+            } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
-            if( $ct eq 'image/svg+xml' ) {
+            } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -49824,6 +51882,9 @@ sub getUser( $self, %options ) {
                     JIRA::API::User->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -49951,6 +52012,9 @@ sub createUser( $self, %options ) {
                     JIRA::API::User->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid or the number of licensed users is exceeded.
@@ -50078,6 +52142,9 @@ sub findBulkAssignableUsers( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `projectKeys` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided.
@@ -50223,6 +52290,9 @@ sub findAssignableUsers( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `issueKey` or `project` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided.
@@ -50347,6 +52417,9 @@ sub bulkGetUsers( $self, %options ) {
                     JIRA::API::PageBeanUser->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `accountID` is missing.
@@ -50458,6 +52531,9 @@ sub bulkGetUsersMigration( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `key` or `username`
@@ -50649,6 +52725,9 @@ sub getUserDefaultColumns( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -50752,6 +52831,9 @@ sub setUserColumns( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -50859,6 +52941,9 @@ sub getUserEmail( $self, %options ) {
                     JIRA::API::UnrestrictedUserEmail->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the calling app is not approved to use this API.
@@ -50963,6 +53048,9 @@ sub getUserEmailBulk( $self, %options ) {
                     JIRA::API::UnrestrictedUserEmail->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the calling app is not approved to use this API.
@@ -51075,6 +53163,9 @@ sub getUserGroups( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -51397,6 +53488,9 @@ sub findUsersWithAllPermissions( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `issueKey` or `projectKey` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided. * `permissions` is empty or contains an invalid entry.
@@ -51530,6 +53624,9 @@ sub findUsersForPicker( $self, %options ) {
                     JIRA::API::FoundUsers->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `exclude` and `excludeAccountIds` are provided.
@@ -51638,6 +53735,9 @@ sub getUserPropertyKeys( $self, %options ) {
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `accountId` is missing.
@@ -51870,6 +53970,9 @@ sub getUserProperty( $self, %options ) {
                     JIRA::API::EntityProperty->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `accountId` is missing.
@@ -51995,6 +54098,9 @@ sub setUserProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the user property is created.
@@ -52006,6 +54112,9 @@ sub setUserProperty( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `accountId` is missing.
@@ -52134,6 +54243,9 @@ sub findUsers( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `accountId`, `query` or `property` is missing. * `query` and `accountId` are provided. * `property` parameter is not valid.
@@ -52245,6 +54357,9 @@ sub findUsersByQuery( $self, %options ) {
                     JIRA::API::PageBeanUser->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the query is invalid.
@@ -52359,6 +54474,9 @@ sub findUserKeysByQuery( $self, %options ) {
                     JIRA::API::PageBeanUserKey->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the query is invalid.
@@ -52491,6 +54609,9 @@ sub findUsersWithBrowsePermission( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `issueKey` or `projectKey` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided.
@@ -52598,6 +54719,9 @@ sub getAllUsersDefault( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -52702,6 +54826,9 @@ sub getAllUsers( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -52885,6 +55012,9 @@ sub createVersion( $self, %options ) {
                     JIRA::API::Version->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -53110,6 +55240,9 @@ sub getVersion( $self, %options ) {
                     JIRA::API::Version->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -53300,6 +55433,9 @@ sub updateVersion( $self, %options ) {
                     JIRA::API::Version->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the request is invalid. * the user does not have the required permissions.
@@ -53407,6 +55543,9 @@ sub mergeVersions( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -53524,6 +55663,9 @@ sub moveVersion( $self, %options ) {
                     JIRA::API::Version->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * no body parameters are provided. * `after` and `position` are provided. * `position` is invalid.
@@ -53624,6 +55766,9 @@ sub getVersionRelatedIssues( $self, %options ) {
                     JIRA::API::VersionIssueCounts->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -53742,6 +55887,9 @@ sub deleteAndReplaceVersion( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -53842,6 +55990,9 @@ sub getVersionUnresolvedIssues( $self, %options ) {
                     JIRA::API::VersionUnresolvedIssuesCount->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -53946,6 +56097,9 @@ sub deleteWebhookById( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller isn't an app.
@@ -53957,6 +56111,9 @@ sub deleteWebhookById( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -54053,6 +56210,9 @@ sub getDynamicWebhooksForApp( $self, %options ) {
                     JIRA::API::PageBeanWebhook->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -54064,6 +56224,9 @@ sub getDynamicWebhooksForApp( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller isn't an app.
@@ -54075,6 +56238,9 @@ sub getDynamicWebhooksForApp( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -54175,6 +56341,9 @@ sub registerDynamicWebhooks( $self, %options ) {
                     JIRA::API::ContainerForRegisteredWebhooks->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -54186,6 +56355,9 @@ sub registerDynamicWebhooks( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller isn't an app.
@@ -54197,6 +56369,9 @@ sub registerDynamicWebhooks( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -54293,6 +56468,9 @@ sub getFailedWebhooks( $self, %options ) {
                     JIRA::API::FailedWebhooks->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # 400 response
@@ -54304,6 +56482,9 @@ sub getFailedWebhooks( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller is not a Connect app.
@@ -54315,6 +56496,9 @@ sub getFailedWebhooks( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -54411,6 +56595,9 @@ sub refreshWebhooks( $self, %options ) {
                     JIRA::API::WebhooksExpirationDate->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -54422,6 +56609,9 @@ sub refreshWebhooks( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller isn't an app.
@@ -54433,6 +56623,9 @@ sub refreshWebhooks( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -54523,6 +56716,9 @@ sub getAllWorkflows( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the user does not have the necessary permission.
@@ -54673,6 +56869,9 @@ sub createWorkflow( $self, %options ) {
                     JIRA::API::WorkflowIDs->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -54684,6 +56883,9 @@ sub createWorkflow( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -54698,6 +56900,9 @@ sub createWorkflow( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if one or more statuses is not found.
@@ -54709,6 +56914,9 @@ sub createWorkflow( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -54838,6 +57046,9 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
                     JIRA::API::PageBeanWorkflowTransitionRules->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -54849,6 +57060,9 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller is not a Connect app.
@@ -54860,6 +57074,9 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if any transition rule type is not supported.
@@ -54959,6 +57176,9 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
                     JIRA::API::WorkflowTransitionRulesUpdateErrors->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -54970,6 +57190,9 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller is not a Connect app.
@@ -54981,6 +57204,9 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -55077,6 +57303,9 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
                     JIRA::API::WorkflowTransitionRulesUpdateErrors->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -55088,6 +57317,9 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller is not a Connect app.
@@ -55099,6 +57331,9 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -55292,6 +57527,9 @@ sub getWorkflowsPaginated( $self, %options ) {
                     JIRA::API::PageBeanWorkflow->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -55306,6 +57544,9 @@ sub getWorkflowsPaginated( $self, %options ) {
                     JIRA::API::ErrorCollection->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -55540,6 +57781,9 @@ sub getWorkflowTransitionProperties( $self, %options ) {
                     JIRA::API::WorkflowTransitionProperty->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -55686,6 +57930,9 @@ sub createWorkflowTransitionProperty( $self, %options ) {
                     JIRA::API::WorkflowTransitionProperty->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if a workflow property with the same key is present on the transition.
@@ -55832,6 +58079,9 @@ sub updateWorkflowTransitionProperty( $self, %options ) {
                     JIRA::API::WorkflowTransitionProperty->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 304 ) {
             # Returned if no changes were made by the request. For example, attempting to update a property with its current value.
@@ -55940,6 +58190,9 @@ sub deleteInactiveWorkflow( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -55954,6 +58207,9 @@ sub deleteInactiveWorkflow( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow is not found.
@@ -55965,6 +58221,9 @@ sub deleteInactiveWorkflow( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -56059,6 +58318,9 @@ sub getAllWorkflowSchemes( $self, %options ) {
                     JIRA::API::PageBeanWorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -56226,6 +58488,9 @@ sub createWorkflowScheme( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -56327,6 +58592,9 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
                     JIRA::API::ContainerOfWorkflowSchemeAssociations->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -56338,6 +58606,9 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -56352,6 +58623,9 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -56450,6 +58724,9 @@ sub assignSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -56461,6 +58738,9 @@ sub assignSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -56475,6 +58755,9 @@ sub assignSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow scheme or the project are not found.
@@ -56486,6 +58769,9 @@ sub assignSchemeToProject( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -56577,6 +58863,9 @@ sub deleteWorkflowScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the scheme is active.
@@ -56688,6 +58977,9 @@ sub getWorkflowScheme( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -56868,6 +59160,9 @@ sub updateWorkflowScheme( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -56971,6 +59266,9 @@ sub createWorkflowSchemeDraftFromParent( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -57079,6 +59377,9 @@ sub deleteDefaultWorkflow( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the workflow scheme cannot be edited and `updateDraftIfNeeded` is not `true`.
@@ -57190,6 +59491,9 @@ sub getDefaultWorkflow( $self, %options ) {
                     JIRA::API::DefaultWorkflow->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -57307,6 +59611,9 @@ sub updateDefaultWorkflow( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the workflow scheme cannot be edited and `updateDraftIfNeeded` is not `true`.
@@ -57500,6 +59807,9 @@ sub getWorkflowSchemeDraft( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -57680,6 +59990,9 @@ sub updateWorkflowSchemeDraft( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -57783,6 +60096,9 @@ sub deleteDraftDefaultWorkflow( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -57883,6 +60199,9 @@ sub getDraftDefaultWorkflow( $self, %options ) {
                     JIRA::API::DefaultWorkflow->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -58000,6 +60319,9 @@ sub updateDraftDefaultWorkflow( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -58110,6 +60432,9 @@ sub deleteWorkflowSchemeDraftIssueType( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -58217,6 +60542,9 @@ sub getWorkflowSchemeDraftIssueType( $self, %options ) {
                     JIRA::API::IssueTypeWorkflowMapping->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -58345,6 +60673,9 @@ sub setWorkflowSchemeDraftIssueType( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -58472,6 +60803,9 @@ sub publishDraftWorkflowScheme( $self, %options ) {
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -58483,6 +60817,9 @@ sub publishDraftWorkflowScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -58500,6 +60837,9 @@ sub publishDraftWorkflowScheme( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -58699,6 +61039,9 @@ sub getDraftWorkflow( $self, %options ) {
                     JIRA::API::IssueTypesWorkflowMapping->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -58834,6 +61177,9 @@ sub updateDraftWorkflowMapping( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -58952,6 +61298,9 @@ sub deleteWorkflowSchemeIssueType( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the workflow cannot be edited and `updateDraftIfNeeded` is false.
@@ -59070,6 +61419,9 @@ sub getWorkflowSchemeIssueType( $self, %options ) {
                     JIRA::API::IssueTypeWorkflowMapping->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -59198,6 +61550,9 @@ sub setWorkflowSchemeIssueType( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the workflow cannot be edited and `updateDraftIfNeeded` is false.
@@ -59422,6 +61777,9 @@ sub getWorkflow( $self, %options ) {
                     JIRA::API::IssueTypesWorkflowMapping->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -59557,6 +61915,9 @@ sub updateWorkflowMapping( $self, %options ) {
                     JIRA::API::WorkflowScheme->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -59658,6 +62019,9 @@ sub getIdsOfWorklogsDeletedSince( $self, %options ) {
                     JIRA::API::ChangedWorklogs->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -59764,6 +62128,9 @@ sub getWorklogsForIds( $self, %options ) {
  } $payload->@* ],
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request contains more than 1000 worklog IDs or is empty.
@@ -59864,6 +62231,9 @@ sub getIdsOfWorklogsModifiedSince( $self, %options ) {
                     JIRA::API::ChangedWorklogs->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -59959,6 +62329,9 @@ sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
                     JIRA::API::PropertyKeys->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -59970,6 +62343,9 @@ sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
                     JIRA::API::OperationMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -60073,6 +62449,9 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
                     JIRA::API::OperationMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -60084,6 +62463,9 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
                     JIRA::API::OperationMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the property is not found or doesn't belong to the app.
@@ -60095,6 +62477,9 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
                     JIRA::API::OperationMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -60196,6 +62581,9 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
                     JIRA::API::EntityProperty->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the property key is longer than 127 characters.
@@ -60207,6 +62595,9 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
                     JIRA::API::OperationMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -60218,6 +62609,9 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
                     JIRA::API::OperationMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the property is not found or doesn't belong to the app.
@@ -60229,6 +62623,9 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
                     JIRA::API::OperationMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -60333,6 +62730,9 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
                     JIRA::API::OperationMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned is the property is created.
@@ -60344,6 +62744,9 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
                     JIRA::API::OperationMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the property key is longer than 127 characters. * the value is not valid JSON. * the value is longer than 32768 characters.
@@ -60355,6 +62758,9 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
                     JIRA::API::OperationMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -60366,6 +62772,9 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
                     JIRA::API::OperationMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -60460,6 +62869,9 @@ sub DynamicModulesResource_removeModules_delete( $self, %options ) {
                     JIRA::API::ErrorMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -60542,6 +62954,9 @@ sub DynamicModulesResource_getModules_get( $self, %options ) {
                     JIRA::API::ConnectModules->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the call is not from a Connect app.
@@ -60553,6 +62968,9 @@ sub DynamicModulesResource_getModules_get( $self, %options ) {
                     JIRA::API::ErrorMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -60652,6 +63070,9 @@ sub DynamicModulesResource_registerModules_post( $self, %options ) {
                     JIRA::API::ErrorMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the call is not from a Connect app.
@@ -60663,6 +63084,9 @@ sub DynamicModulesResource_registerModules_post( $self, %options ) {
                     JIRA::API::ErrorMessage->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -60765,6 +63189,9 @@ sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
                     $payload
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -60978,6 +63405,9 @@ sub MigrationResource_workflowRuleSearch_post( $self, %options ) {
                     JIRA::API::WorkflowRulesSearchDetails->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.

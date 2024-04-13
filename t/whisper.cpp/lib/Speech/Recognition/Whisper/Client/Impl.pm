@@ -138,6 +138,9 @@ sub inference( $self, %options ) {
                     Speech::Recognition::Whisper::Transcription->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code  ) {
             # Error response
@@ -149,6 +152,9 @@ sub inference( $self, %options ) {
                     Speech::Recognition::Whisper::Error->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
@@ -248,6 +254,9 @@ sub load( $self, %options ) {
                     Speech::Recognition::Whisper::SuccessfulLoad->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } elsif( $resp->code  ) {
             # Error response
@@ -259,6 +268,9 @@ sub load( $self, %options ) {
                     Speech::Recognition::Whisper::Error->new($payload),
 
                 );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
