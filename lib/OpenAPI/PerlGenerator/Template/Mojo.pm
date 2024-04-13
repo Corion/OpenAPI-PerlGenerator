@@ -88,9 +88,9 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
 %       # Check the content type
 %       # Will we always have a content type?!
 %       if( keys $info->{content}->%* ) {
-%           for my $ct (sort keys $info->{content}->%*) {
             my $ct = $resp->headers->content_type;
             return unless $ct;
+%           for my $ct (sort keys $info->{content}->%*) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '<%= $ct %>' ) {
                 # we only handle ndjson currently
@@ -149,9 +149,9 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
 %       # Check the content type
 %       # Will we always have a content type?!
 %       if( keys $info->{content}->%* ) {
-%           for my $ct (sort keys $info->{content}->%*) {
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
+%           for my $ct (sort keys $info->{content}->%*) {
             if( $ct eq '<%= $ct %>' ) {
 %# These handlers for content types should come from templates? Or maybe
 %# from a subroutine?!

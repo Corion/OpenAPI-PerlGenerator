@@ -48958,8 +48958,6 @@ sub getAvatarImageByType( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
@@ -48967,8 +48965,6 @@ sub getAvatarImageByType( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -48976,8 +48972,6 @@ sub getAvatarImageByType( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -48996,8 +48990,6 @@ sub getAvatarImageByType( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
@@ -49005,8 +48997,6 @@ sub getAvatarImageByType( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49014,8 +49004,6 @@ sub getAvatarImageByType( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49034,8 +49022,6 @@ sub getAvatarImageByType( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
@@ -49043,8 +49029,6 @@ sub getAvatarImageByType( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49052,8 +49036,6 @@ sub getAvatarImageByType( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49072,8 +49054,6 @@ sub getAvatarImageByType( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
@@ -49081,8 +49061,6 @@ sub getAvatarImageByType( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49090,8 +49068,6 @@ sub getAvatarImageByType( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49214,8 +49190,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
@@ -49223,8 +49197,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49232,8 +49204,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49252,8 +49222,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
@@ -49261,8 +49229,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49270,8 +49236,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49290,8 +49254,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
@@ -49299,8 +49261,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49308,8 +49268,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49328,8 +49286,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
@@ -49337,8 +49293,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49346,8 +49300,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49366,8 +49318,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
@@ -49375,8 +49325,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49384,8 +49332,6 @@ sub getAvatarImageByID( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49508,8 +49454,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
@@ -49517,8 +49461,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49526,8 +49468,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49546,8 +49486,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
@@ -49555,8 +49493,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49564,8 +49500,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49584,8 +49518,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
@@ -49593,8 +49525,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49602,8 +49532,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49622,8 +49550,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
@@ -49631,8 +49557,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49640,8 +49564,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49660,8 +49582,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
@@ -49669,8 +49589,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
                 $res->done(
@@ -49678,8 +49596,6 @@ sub getAvatarImageByOwner( $self, %options ) {
 
                 );
             }
-            my $ct = $resp->headers->content_type;
-            $ct =~ s/;\s+.*//;
             if( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
                 $res->done(
