@@ -17,6 +17,7 @@ t/00-load.t
 t/01-regression.t
 t/02-http-form.t
 t/03-version-number.t
+t/04-enum.t
 t/generate.request
 t/jira/jira.json
 t/jira/lib/JIRA/API/ActorInputBean.pm
