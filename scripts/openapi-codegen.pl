@@ -62,6 +62,20 @@ my $generator = OpenAPI::PerlGenerator->new(
     prefix    => $prefix,
 );
 
+if( $keep_version ) {
+    my $filename = "$output_directory/" . $generator->filename('Client');
+
+    if( -f $filename ) {
+        open my $fh, "<:encoding(UTF-8)", $filename
+            or die "Couldn't read '$filename': $!";
+        local $/;
+        my $content = <$fh>;
+
+        ($version) = ($content =~ /^package\s+[\w:]+\s+([\d.]+)\b/ms);
+        #say "Found version as $version";
+    }
+}
+
 my @packages = $generator->generate(
     schema => $schema,
     version => $version,
