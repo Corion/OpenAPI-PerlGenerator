@@ -105,10 +105,12 @@ sub findPets( $self, %options ) {
     my $tx = $self->_build_findPets_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -200,10 +202,12 @@ sub addPet( $self, %options ) {
     my $tx = $self->_build_addPet_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -296,10 +300,12 @@ sub deletePet( $self, %options ) {
     my $tx = $self->_build_deletePet_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -385,10 +391,12 @@ sub find_pet_by_id( $self, %options ) {
     my $tx = $self->_build_find_pet_by_id_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 

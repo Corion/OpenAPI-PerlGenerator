@@ -556,10 +556,12 @@ sub <%= $method->{name} %>( $self, %options ) {
     my $tx = $self->_build_<%= $method->{name} %>_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 %# We want to handle both here, streaming (ndjson) and plain responses

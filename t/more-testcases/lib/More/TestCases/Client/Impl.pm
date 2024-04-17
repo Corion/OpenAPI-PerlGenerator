@@ -95,10 +95,12 @@ sub withCookie( $self, %options ) {
     my $tx = $self->_build_withCookie_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -171,10 +173,12 @@ sub withHeader( $self, %options ) {
     my $tx = $self->_build_withHeader_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 

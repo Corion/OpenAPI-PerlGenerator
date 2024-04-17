@@ -637,10 +637,12 @@ sub getBanner( $self, %options ) {
     my $tx = $self->_build_getBanner_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -764,10 +766,12 @@ sub setBanner( $self, %options ) {
     my $tx = $self->_build_setBanner_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -893,10 +897,12 @@ sub updateMultipleCustomFieldValues( $self, %options ) {
     my $tx = $self->_build_updateMultipleCustomFieldValues_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -1027,10 +1033,12 @@ sub getCustomFieldConfiguration( $self, %options ) {
     my $tx = $self->_build_getCustomFieldConfiguration_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -1139,10 +1147,12 @@ sub updateCustomFieldConfiguration( $self, %options ) {
     my $tx = $self->_build_updateCustomFieldConfiguration_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -1259,10 +1269,12 @@ sub updateCustomFieldValue( $self, %options ) {
     my $tx = $self->_build_updateCustomFieldValue_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -1363,10 +1375,12 @@ sub getApplicationProperty( $self, %options ) {
     my $tx = $self->_build_getApplicationProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -1447,10 +1461,12 @@ sub getAdvancedSettings( $self, %options ) {
     my $tx = $self->_build_getAdvancedSettings_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -1558,10 +1574,12 @@ sub setApplicationProperty( $self, %options ) {
     my $tx = $self->_build_setApplicationProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -1647,10 +1665,12 @@ sub getAllApplicationRoles( $self, %options ) {
     my $tx = $self->_build_getAllApplicationRoles_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -1741,10 +1761,12 @@ sub getApplicationRole( $self, %options ) {
     my $tx = $self->_build_getApplicationRole_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -1845,10 +1867,12 @@ sub getAttachmentContent( $self, %options ) {
     my $tx = $self->_build_getAttachmentContent_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -1943,10 +1967,12 @@ sub getAttachmentMeta( $self, %options ) {
     my $tx = $self->_build_getAttachmentMeta_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -2056,10 +2082,12 @@ sub getAttachmentThumbnail( $self, %options ) {
     my $tx = $self->_build_getAttachmentThumbnail_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -2156,10 +2184,12 @@ sub removeAttachment( $self, %options ) {
     my $tx = $self->_build_removeAttachment_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -2241,10 +2271,12 @@ sub getAttachment( $self, %options ) {
     my $tx = $self->_build_getAttachment_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -2337,10 +2369,12 @@ sub expandAttachmentForHumans( $self, %options ) {
     my $tx = $self->_build_expandAttachmentForHumans_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -2436,10 +2470,12 @@ sub expandAttachmentForMachines( $self, %options ) {
     my $tx = $self->_build_expandAttachmentForMachines_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -2553,10 +2589,12 @@ sub getAuditRecords( $self, %options ) {
     my $tx = $self->_build_getAuditRecords_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -2646,10 +2684,12 @@ sub getAllSystemAvatars( $self, %options ) {
     my $tx = $self->_build_getAllSystemAvatars_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -2764,10 +2804,12 @@ sub getCommentsByIds( $self, %options ) {
     my $tx = $self->_build_getCommentsByIds_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -2854,10 +2896,12 @@ sub getCommentPropertyKeys( $self, %options ) {
     my $tx = $self->_build_getCommentPropertyKeys_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -2958,10 +3002,12 @@ sub deleteCommentProperty( $self, %options ) {
     my $tx = $self->_build_deleteCommentProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -3056,10 +3102,12 @@ sub getCommentProperty( $self, %options ) {
     my $tx = $self->_build_getCommentProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -3166,10 +3214,12 @@ sub setCommentProperty( $self, %options ) {
     my $tx = $self->_build_setCommentProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -3383,10 +3433,12 @@ sub createComponent( $self, %options ) {
     my $tx = $self->_build_createComponent_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -3488,10 +3540,12 @@ sub deleteComponent( $self, %options ) {
     my $tx = $self->_build_deleteComponent_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -3576,10 +3630,12 @@ sub getComponent( $self, %options ) {
     my $tx = $self->_build_getComponent_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -3786,10 +3842,12 @@ sub updateComponent( $self, %options ) {
     my $tx = $self->_build_updateComponent_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -3885,10 +3943,12 @@ sub getComponentRelatedIssues( $self, %options ) {
     my $tx = $self->_build_getComponentRelatedIssues_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -3968,10 +4028,12 @@ sub getConfiguration( $self, %options ) {
     my $tx = $self->_build_getConfiguration_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -4049,10 +4111,12 @@ sub getSelectedTimeTrackingImplementation( $self, %options ) {
     my $tx = $self->_build_getSelectedTimeTrackingImplementation_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -4164,10 +4228,12 @@ sub selectTimeTrackingImplementation( $self, %options ) {
     my $tx = $self->_build_selectTimeTrackingImplementation_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -4250,10 +4316,12 @@ sub getAvailableTimeTrackingImplementations( $self, %options ) {
     my $tx = $self->_build_getAvailableTimeTrackingImplementations_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -4334,10 +4402,12 @@ sub getSharedTimeTrackingConfiguration( $self, %options ) {
     my $tx = $self->_build_getSharedTimeTrackingConfiguration_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -4442,10 +4512,12 @@ sub setSharedTimeTrackingConfiguration( $self, %options ) {
     my $tx = $self->_build_setSharedTimeTrackingConfiguration_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -4538,10 +4610,12 @@ sub getCustomFieldOption( $self, %options ) {
     my $tx = $self->_build_getCustomFieldOption_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -4655,10 +4729,12 @@ sub getAllDashboards( $self, %options ) {
     my $tx = $self->_build_getAllDashboards_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -4781,10 +4857,12 @@ sub createDashboard( $self, %options ) {
     my $tx = $self->_build_createDashboard_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -4882,10 +4960,12 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
     my $tx = $self->_build_getAllAvailableDashboardGadgets_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -5119,10 +5199,12 @@ sub getDashboardsPaginated( $self, %options ) {
     my $tx = $self->_build_getDashboardsPaginated_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -5247,10 +5329,12 @@ sub getAllGadgets( $self, %options ) {
     my $tx = $self->_build_getAllGadgets_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -5383,10 +5467,12 @@ sub addGadget( $self, %options ) {
     my $tx = $self->_build_addGadget_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -5503,10 +5589,12 @@ sub removeGadget( $self, %options ) {
     my $tx = $self->_build_removeGadget_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -5634,10 +5722,12 @@ sub updateGadget( $self, %options ) {
     my $tx = $self->_build_updateGadget_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -5753,10 +5843,12 @@ sub getDashboardItemPropertyKeys( $self, %options ) {
     my $tx = $self->_build_getDashboardItemPropertyKeys_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -5858,10 +5950,12 @@ sub deleteDashboardItemProperty( $self, %options ) {
     my $tx = $self->_build_deleteDashboardItemProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -5963,10 +6057,12 @@ sub getDashboardItemProperty( $self, %options ) {
     my $tx = $self->_build_getDashboardItemProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -6074,10 +6170,12 @@ sub setDashboardItemProperty( $self, %options ) {
     my $tx = $self->_build_setDashboardItemProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -6193,10 +6291,12 @@ sub deleteDashboard( $self, %options ) {
     my $tx = $self->_build_deleteDashboard_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -6296,10 +6396,12 @@ sub getDashboard( $self, %options ) {
     my $tx = $self->_build_getDashboard_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -6436,10 +6538,12 @@ sub updateDashboard( $self, %options ) {
     my $tx = $self->_build_updateDashboard_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -6582,10 +6686,12 @@ sub copyDashboard( $self, %options ) {
     my $tx = $self->_build_copyDashboard_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -6692,10 +6798,12 @@ sub getEvents( $self, %options ) {
     my $tx = $self->_build_getEvents_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -6822,10 +6930,12 @@ sub analyseExpression( $self, %options ) {
     my $tx = $self->_build_analyseExpression_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -6951,10 +7061,12 @@ sub evaluateJiraExpression( $self, %options ) {
     my $tx = $self->_build_evaluateJiraExpression_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -7053,10 +7165,12 @@ sub getFields( $self, %options ) {
     my $tx = $self->_build_getFields_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -7383,10 +7497,12 @@ sub createCustomField( $self, %options ) {
     my $tx = $self->_build_createCustomField_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -7561,10 +7677,12 @@ sub getFieldsPaginated( $self, %options ) {
     my $tx = $self->_build_getFieldsPaginated_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -7713,10 +7831,12 @@ sub getTrashedFieldsPaginated( $self, %options ) {
     my $tx = $self->_build_getTrashedFieldsPaginated_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -7955,10 +8075,12 @@ sub updateCustomField( $self, %options ) {
     my $tx = $self->_build_updateCustomField_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -8106,10 +8228,12 @@ sub getContextsForField( $self, %options ) {
     my $tx = $self->_build_getContextsForField_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -8247,10 +8371,12 @@ sub createCustomFieldContext( $self, %options ) {
     my $tx = $self->_build_createCustomFieldContext_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -8372,10 +8498,12 @@ sub getDefaultValues( $self, %options ) {
     my $tx = $self->_build_getDefaultValues_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -8495,10 +8623,12 @@ sub setDefaultValues( $self, %options ) {
     my $tx = $self->_build_setDefaultValues_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -8636,10 +8766,12 @@ sub getIssueTypeMappingsForContexts( $self, %options ) {
     my $tx = $self->_build_getIssueTypeMappingsForContexts_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -8763,10 +8895,12 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
     my $tx = $self->_build_getCustomFieldContextsForProjectsAndIssueTypes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -8904,10 +9038,12 @@ sub getProjectContextMapping( $self, %options ) {
     my $tx = $self->_build_getProjectContextMapping_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -9023,10 +9159,12 @@ sub deleteCustomFieldContext( $self, %options ) {
     my $tx = $self->_build_deleteCustomFieldContext_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -9170,10 +9308,12 @@ sub updateCustomFieldContext( $self, %options ) {
     my $tx = $self->_build_updateCustomFieldContext_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -9313,10 +9453,12 @@ sub addIssueTypesToContext( $self, %options ) {
     my $tx = $self->_build_addIssueTypesToContext_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -9467,10 +9609,12 @@ sub removeIssueTypesFromContext( $self, %options ) {
     my $tx = $self->_build_removeIssueTypesFromContext_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -9620,10 +9764,12 @@ sub getOptionsForContext( $self, %options ) {
     my $tx = $self->_build_getOptionsForContext_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -9763,10 +9909,12 @@ sub createCustomFieldOption( $self, %options ) {
     my $tx = $self->_build_createCustomFieldOption_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -9906,10 +10054,12 @@ sub updateCustomFieldOption( $self, %options ) {
     my $tx = $self->_build_updateCustomFieldOption_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -10057,10 +10207,12 @@ sub reorderCustomFieldOptions( $self, %options ) {
     my $tx = $self->_build_reorderCustomFieldOptions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -10193,10 +10345,12 @@ sub deleteCustomFieldOption( $self, %options ) {
     my $tx = $self->_build_deleteCustomFieldOption_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -10328,10 +10482,12 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
     my $tx = $self->_build_assignProjectsToCustomFieldContext_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -10471,10 +10627,12 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
     my $tx = $self->_build_removeCustomFieldContextFromProjects_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -10607,10 +10765,12 @@ sub getContextsForFieldDeprecated( $self, %options ) {
     my $tx = $self->_build_getContextsForFieldDeprecated_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -10718,10 +10878,12 @@ sub getScreensForField( $self, %options ) {
     my $tx = $self->_build_getScreensForField_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -10838,10 +11000,12 @@ sub getAllIssueFieldOptions( $self, %options ) {
     my $tx = $self->_build_getAllIssueFieldOptions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -10966,10 +11130,12 @@ sub createIssueFieldOption( $self, %options ) {
     my $tx = $self->_build_createIssueFieldOption_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -11094,10 +11260,12 @@ sub getSelectableIssueFieldOptions( $self, %options ) {
     my $tx = $self->_build_getSelectableIssueFieldOptions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -11219,10 +11387,12 @@ sub getVisibleIssueFieldOptions( $self, %options ) {
     my $tx = $self->_build_getVisibleIssueFieldOptions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -11333,10 +11503,12 @@ sub deleteIssueFieldOption( $self, %options ) {
     my $tx = $self->_build_deleteIssueFieldOption_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -11450,10 +11622,12 @@ sub getIssueFieldOption( $self, %options ) {
     my $tx = $self->_build_getIssueFieldOption_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -11592,10 +11766,12 @@ sub updateIssueFieldOption( $self, %options ) {
     my $tx = $self->_build_updateIssueFieldOption_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -11732,10 +11908,12 @@ sub replaceIssueFieldOption( $self, %options ) {
     my $tx = $self->_build_replaceIssueFieldOption_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -11841,10 +12019,12 @@ sub deleteCustomField( $self, %options ) {
     my $tx = $self->_build_deleteCustomField_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -11987,10 +12167,12 @@ sub restoreCustomField( $self, %options ) {
     my $tx = $self->_build_restoreCustomField_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -12122,10 +12304,12 @@ sub trashCustomField( $self, %options ) {
     my $tx = $self->_build_trashCustomField_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -12271,10 +12455,12 @@ sub getAllFieldConfigurations( $self, %options ) {
     my $tx = $self->_build_getAllFieldConfigurations_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -12371,10 +12557,12 @@ sub createFieldConfiguration( $self, %options ) {
     my $tx = $self->_build_createFieldConfiguration_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -12467,10 +12655,12 @@ sub deleteFieldConfiguration( $self, %options ) {
     my $tx = $self->_build_deleteFieldConfiguration_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -12583,10 +12773,12 @@ sub updateFieldConfiguration( $self, %options ) {
     my $tx = $self->_build_updateFieldConfiguration_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -12695,10 +12887,12 @@ sub getFieldConfigurationItems( $self, %options ) {
     my $tx = $self->_build_getFieldConfigurationItems_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -12804,10 +12998,12 @@ sub updateFieldConfigurationItems( $self, %options ) {
     my $tx = $self->_build_updateFieldConfigurationItems_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -12911,10 +13107,12 @@ sub getAllFieldConfigurationSchemes( $self, %options ) {
     my $tx = $self->_build_getAllFieldConfigurationSchemes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -13014,10 +13212,12 @@ sub createFieldConfigurationScheme( $self, %options ) {
     my $tx = $self->_build_createFieldConfigurationScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -13134,10 +13334,12 @@ sub getFieldConfigurationSchemeMappings( $self, %options ) {
     my $tx = $self->_build_getFieldConfigurationSchemeMappings_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -13244,10 +13446,12 @@ sub getFieldConfigurationSchemeProjectMapping( $self, %options ) {
     my $tx = $self->_build_getFieldConfigurationSchemeProjectMapping_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -13347,10 +13551,12 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
     my $tx = $self->_build_assignFieldConfigurationSchemeToProject_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -13470,10 +13676,12 @@ sub deleteFieldConfigurationScheme( $self, %options ) {
     my $tx = $self->_build_deleteFieldConfigurationScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -13586,10 +13794,12 @@ sub updateFieldConfigurationScheme( $self, %options ) {
     my $tx = $self->_build_updateFieldConfigurationScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -13722,10 +13932,12 @@ sub setFieldConfigurationSchemeMapping( $self, %options ) {
     my $tx = $self->_build_setFieldConfigurationSchemeMapping_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -13838,10 +14050,12 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
     my $tx = $self->_build_removeIssueTypesFromGlobalFieldConfigurationScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -13981,10 +14195,12 @@ sub getFilters( $self, %options ) {
     my $tx = $self->_build_getFilters_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -14151,10 +14367,12 @@ sub createFilter( $self, %options ) {
     my $tx = $self->_build_createFilter_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -14234,10 +14452,12 @@ sub getDefaultShareScope( $self, %options ) {
     my $tx = $self->_build_getDefaultShareScope_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -14346,10 +14566,12 @@ sub setDefaultShareScope( $self, %options ) {
     my $tx = $self->_build_setDefaultShareScope_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -14451,10 +14673,12 @@ sub getFavouriteFilters( $self, %options ) {
     my $tx = $self->_build_getFavouriteFilters_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -14559,10 +14783,12 @@ sub getMyFilters( $self, %options ) {
     my $tx = $self->_build_getMyFilters_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -14802,10 +15028,12 @@ sub getFiltersPaginated( $self, %options ) {
     my $tx = $self->_build_getFiltersPaginated_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -14901,10 +15129,12 @@ sub deleteFilter( $self, %options ) {
     my $tx = $self->_build_deleteFilter_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -15013,10 +15243,12 @@ sub getFilter( $self, %options ) {
     my $tx = $self->_build_getFilter_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -15198,10 +15430,12 @@ sub updateFilter( $self, %options ) {
     my $tx = $self->_build_updateFilter_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -15289,10 +15523,12 @@ sub resetColumns( $self, %options ) {
     my $tx = $self->_build_resetColumns_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -15374,10 +15610,12 @@ sub getColumns( $self, %options ) {
     my $tx = $self->_build_getColumns_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -15476,10 +15714,12 @@ sub setColumns( $self, %options ) {
     my $tx = $self->_build_setColumns_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -15591,10 +15831,12 @@ sub deleteFavouriteForFilter( $self, %options ) {
     my $tx = $self->_build_deleteFavouriteForFilter_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -15703,10 +15945,12 @@ sub setFavouriteForFilter( $self, %options ) {
     my $tx = $self->_build_setFavouriteForFilter_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -15806,10 +16050,12 @@ sub changeFilterOwner( $self, %options ) {
     my $tx = $self->_build_changeFilterOwner_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -15902,10 +16148,12 @@ sub getSharePermissions( $self, %options ) {
     my $tx = $self->_build_getSharePermissions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -16067,10 +16315,12 @@ sub addSharePermission( $self, %options ) {
     my $tx = $self->_build_addSharePermission_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -16169,10 +16419,12 @@ sub deleteSharePermission( $self, %options ) {
     my $tx = $self->_build_deleteSharePermission_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -16261,10 +16513,12 @@ sub getSharePermission( $self, %options ) {
     my $tx = $self->_build_getSharePermission_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -16365,10 +16619,12 @@ sub removeGroup( $self, %options ) {
     my $tx = $self->_build_removeGroup_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -16466,10 +16722,12 @@ sub getGroup( $self, %options ) {
     my $tx = $self->_build_getGroup_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -16568,10 +16826,12 @@ sub createGroup( $self, %options ) {
     my $tx = $self->_build_createGroup_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -16687,10 +16947,12 @@ sub bulkGetGroups( $self, %options ) {
     my $tx = $self->_build_bulkGetGroups_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -16822,10 +17084,12 @@ sub getUsersFromGroup( $self, %options ) {
     my $tx = $self->_build_getUsersFromGroup_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -16937,10 +17201,12 @@ sub removeUserFromGroup( $self, %options ) {
     my $tx = $self->_build_removeUserFromGroup_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -17050,10 +17316,12 @@ sub addUserToGroup( $self, %options ) {
     my $tx = $self->_build_addUserToGroup_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -17179,10 +17447,12 @@ sub findGroups( $self, %options ) {
     my $tx = $self->_build_findGroups_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -17307,10 +17577,12 @@ sub findUsersAndGroups( $self, %options ) {
     my $tx = $self->_build_findUsersAndGroups_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -17396,10 +17668,12 @@ sub getLicense( $self, %options ) {
     my $tx = $self->_build_getLicense_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -17516,10 +17790,12 @@ sub createIssue( $self, %options ) {
     my $tx = $self->_build_createIssue_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -17638,10 +17914,12 @@ sub createIssues( $self, %options ) {
     my $tx = $self->_build_createIssues_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -17757,10 +18035,12 @@ sub getCreateIssueMeta( $self, %options ) {
     my $tx = $self->_build_getCreateIssueMeta_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -17870,10 +18150,12 @@ sub getIssuePickerResource( $self, %options ) {
     my $tx = $self->_build_getIssuePickerResource_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -17968,10 +18250,12 @@ sub bulkSetIssuesPropertiesList( $self, %options ) {
     my $tx = $self->_build_bulkSetIssuesPropertiesList_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -18074,10 +18358,12 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
     my $tx = $self->_build_bulkSetIssuePropertiesByIssue_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -18204,10 +18490,12 @@ sub bulkDeleteIssueProperty( $self, %options ) {
     my $tx = $self->_build_bulkDeleteIssueProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -18327,10 +18615,12 @@ sub bulkSetIssueProperty( $self, %options ) {
     my $tx = $self->_build_bulkSetIssueProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -18431,10 +18721,12 @@ sub getIsWatchingIssueBulk( $self, %options ) {
     my $tx = $self->_build_getIsWatchingIssueBulk_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -18527,10 +18819,12 @@ sub deleteIssue( $self, %options ) {
     my $tx = $self->_build_deleteIssue_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -18766,10 +19060,12 @@ sub getIssue( $self, %options ) {
     my $tx = $self->_build_getIssue_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -18906,10 +19202,12 @@ sub editIssue( $self, %options ) {
     my $tx = $self->_build_editIssue_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -19089,10 +19387,12 @@ sub assignIssue( $self, %options ) {
     my $tx = $self->_build_assignIssue_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -19188,10 +19488,12 @@ sub addAttachment( $self, %options ) {
     my $tx = $self->_build_addAttachment_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -19298,10 +19600,12 @@ sub getChangeLogs( $self, %options ) {
     my $tx = $self->_build_getChangeLogs_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -19401,10 +19705,12 @@ sub getChangeLogsByIds( $self, %options ) {
     my $tx = $self->_build_getChangeLogsByIds_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -19517,10 +19823,12 @@ sub getComments( $self, %options ) {
     my $tx = $self->_build_getComments_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -19678,10 +19986,12 @@ sub addComment( $self, %options ) {
     my $tx = $self->_build_addComment_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -19779,10 +20089,12 @@ sub deleteComment( $self, %options ) {
     my $tx = $self->_build_deleteComment_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -19885,10 +20197,12 @@ sub getComment( $self, %options ) {
     my $tx = $self->_build_getComment_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -20060,10 +20374,12 @@ sub updateComment( $self, %options ) {
     my $tx = $self->_build_updateComment_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -20169,10 +20485,12 @@ sub getEditIssueMeta( $self, %options ) {
     my $tx = $self->_build_getEditIssueMeta_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -20294,10 +20612,12 @@ sub notify( $self, %options ) {
     my $tx = $self->_build_notify_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -20390,10 +20710,12 @@ sub getIssuePropertyKeys( $self, %options ) {
     my $tx = $self->_build_getIssuePropertyKeys_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -20485,10 +20807,12 @@ sub deleteIssueProperty( $self, %options ) {
     my $tx = $self->_build_deleteIssueProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -20577,10 +20901,12 @@ sub getIssueProperty( $self, %options ) {
     my $tx = $self->_build_getIssueProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -20681,10 +21007,12 @@ sub setIssueProperty( $self, %options ) {
     my $tx = $self->_build_setIssueProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -20799,10 +21127,12 @@ sub deleteRemoteIssueLinkByGlobalId( $self, %options ) {
     my $tx = $self->_build_deleteRemoteIssueLinkByGlobalId_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -20898,10 +21228,12 @@ sub getRemoteIssueLinks( $self, %options ) {
     my $tx = $self->_build_getRemoteIssueLinks_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -21027,10 +21359,12 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
     my $tx = $self->_build_createOrUpdateRemoteIssueLink_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -21150,10 +21484,12 @@ sub deleteRemoteIssueLinkById( $self, %options ) {
     my $tx = $self->_build_deleteRemoteIssueLinkById_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -21248,10 +21584,12 @@ sub getRemoteIssueLinkById( $self, %options ) {
     my $tx = $self->_build_getRemoteIssueLinkById_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -21383,10 +21721,12 @@ sub updateRemoteIssueLink( $self, %options ) {
     my $tx = $self->_build_updateRemoteIssueLink_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -21518,10 +21858,12 @@ sub getTransitions( $self, %options ) {
     my $tx = $self->_build_getTransitions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -21640,10 +21982,12 @@ sub doTransition( $self, %options ) {
     my $tx = $self->_build_doTransition_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -21734,10 +22078,12 @@ sub removeVote( $self, %options ) {
     my $tx = $self->_build_removeVote_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -21819,10 +22165,12 @@ sub getVotes( $self, %options ) {
     my $tx = $self->_build_getVotes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -21912,10 +22260,12 @@ sub addVote( $self, %options ) {
     my $tx = $self->_build_addVote_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -22019,10 +22369,12 @@ sub removeWatcher( $self, %options ) {
     my $tx = $self->_build_removeWatcher_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -22110,10 +22462,12 @@ sub getIssueWatchers( $self, %options ) {
     my $tx = $self->_build_getIssueWatchers_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -22206,10 +22560,12 @@ sub addWatcher( $self, %options ) {
     my $tx = $self->_build_addWatcher_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -22333,10 +22689,12 @@ sub getIssueWorklog( $self, %options ) {
     my $tx = $self->_build_getIssueWorklog_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -22544,10 +22902,12 @@ sub addWorklog( $self, %options ) {
     my $tx = $self->_build_addWorklog_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -22697,10 +23057,12 @@ sub deleteWorklog( $self, %options ) {
     my $tx = $self->_build_deleteWorklog_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -22802,10 +23164,12 @@ sub getWorklog( $self, %options ) {
     my $tx = $self->_build_getWorklog_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -23010,10 +23374,12 @@ sub updateWorklog( $self, %options ) {
     my $tx = $self->_build_updateWorklog_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -23113,10 +23479,12 @@ sub getWorklogPropertyKeys( $self, %options ) {
     my $tx = $self->_build_getWorklogPropertyKeys_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -23221,10 +23589,12 @@ sub deleteWorklogProperty( $self, %options ) {
     my $tx = $self->_build_deleteWorklogProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -23326,10 +23696,12 @@ sub getWorklogProperty( $self, %options ) {
     my $tx = $self->_build_getWorklogProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -23440,10 +23812,12 @@ sub setWorklogProperty( $self, %options ) {
     my $tx = $self->_build_setWorklogProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -23579,10 +23953,12 @@ sub linkIssues( $self, %options ) {
     my $tx = $self->_build_linkIssues_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -23673,10 +24049,12 @@ sub deleteIssueLink( $self, %options ) {
     my $tx = $self->_build_deleteIssueLink_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -23764,10 +24142,12 @@ sub getIssueLink( $self, %options ) {
     my $tx = $self->_build_getIssueLink_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -23850,10 +24230,12 @@ sub getIssueLinkTypes( $self, %options ) {
     my $tx = $self->_build_getIssueLinkTypes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -24018,10 +24400,12 @@ sub createIssueLinkType( $self, %options ) {
     my $tx = $self->_build_createIssueLinkType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -24112,10 +24496,12 @@ sub deleteIssueLinkType( $self, %options ) {
     my $tx = $self->_build_deleteIssueLinkType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -24200,10 +24586,12 @@ sub getIssueLinkType( $self, %options ) {
     my $tx = $self->_build_getIssueLinkType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -24381,10 +24769,12 @@ sub updateIssueLinkType( $self, %options ) {
     my $tx = $self->_build_updateIssueLinkType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -24467,10 +24857,12 @@ sub getIssueSecuritySchemes( $self, %options ) {
     my $tx = $self->_build_getIssueSecuritySchemes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -24560,10 +24952,12 @@ sub getIssueSecurityScheme( $self, %options ) {
     my $tx = $self->_build_getIssueSecurityScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -24705,10 +25099,12 @@ sub getIssueSecurityLevelMembers( $self, %options ) {
     my $tx = $self->_build_getIssueSecurityLevelMembers_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -24794,10 +25190,12 @@ sub getIssueAllTypes( $self, %options ) {
     my $tx = $self->_build_getIssueAllTypes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -24918,10 +25316,12 @@ sub createIssueType( $self, %options ) {
     my $tx = $self->_build_createIssueType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -25042,10 +25442,12 @@ sub getIssueTypesForProject( $self, %options ) {
     my $tx = $self->_build_getIssueTypesForProject_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -25145,10 +25547,12 @@ sub deleteIssueType( $self, %options ) {
     my $tx = $self->_build_deleteIssueType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -25239,10 +25643,12 @@ sub getIssueType( $self, %options ) {
     my $tx = $self->_build_getIssueType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -25356,10 +25762,12 @@ sub updateIssueType( $self, %options ) {
     my $tx = $self->_build_updateIssueType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -25458,10 +25866,12 @@ sub getAlternativeIssueTypes( $self, %options ) {
     my $tx = $self->_build_getAlternativeIssueTypes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -25576,10 +25986,12 @@ sub createIssueTypeAvatar( $self, %options ) {
     my $tx = $self->_build_createIssueTypeAvatar_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -25675,10 +26087,12 @@ sub getIssueTypePropertyKeys( $self, %options ) {
     my $tx = $self->_build_getIssueTypePropertyKeys_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -25773,10 +26187,12 @@ sub deleteIssueTypeProperty( $self, %options ) {
     my $tx = $self->_build_deleteIssueTypeProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -25871,10 +26287,12 @@ sub getIssueTypeProperty( $self, %options ) {
     my $tx = $self->_build_getIssueTypeProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -25978,10 +26396,12 @@ sub setIssueTypeProperty( $self, %options ) {
     my $tx = $self->_build_setIssueTypeProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -26139,10 +26559,12 @@ sub getAllIssueTypeSchemes( $self, %options ) {
     my $tx = $self->_build_getAllIssueTypeSchemes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -26250,10 +26672,12 @@ sub createIssueTypeScheme( $self, %options ) {
     my $tx = $self->_build_createIssueTypeScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -26381,10 +26805,12 @@ sub getIssueTypeSchemesMapping( $self, %options ) {
     my $tx = $self->_build_getIssueTypeSchemesMapping_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -26488,10 +26914,12 @@ sub getIssueTypeSchemeForProjects( $self, %options ) {
     my $tx = $self->_build_getIssueTypeSchemeForProjects_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -26591,10 +27019,12 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
     my $tx = $self->_build_assignIssueTypeSchemeToProject_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -26714,10 +27144,12 @@ sub deleteIssueTypeScheme( $self, %options ) {
     my $tx = $self->_build_deleteIssueTypeScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -26858,10 +27290,12 @@ sub updateIssueTypeScheme( $self, %options ) {
     my $tx = $self->_build_updateIssueTypeScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -26994,10 +27428,12 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
     my $tx = $self->_build_addIssueTypesToIssueTypeScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -27138,10 +27574,12 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
     my $tx = $self->_build_reorderIssueTypesInIssueTypeScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -27268,10 +27706,12 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
     my $tx = $self->_build_removeIssueTypeFromIssueTypeScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -27428,10 +27868,12 @@ sub getIssueTypeScreenSchemes( $self, %options ) {
     my $tx = $self->_build_getIssueTypeScreenSchemes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -27535,10 +27977,12 @@ sub createIssueTypeScreenScheme( $self, %options ) {
     my $tx = $self->_build_createIssueTypeScreenScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -27677,10 +28121,12 @@ sub getIssueTypeScreenSchemeMappings( $self, %options ) {
     my $tx = $self->_build_getIssueTypeScreenSchemeMappings_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -27784,10 +28230,12 @@ sub getIssueTypeScreenSchemeProjectAssociations( $self, %options ) {
     my $tx = $self->_build_getIssueTypeScreenSchemeProjectAssociations_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -27887,10 +28335,12 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
     my $tx = $self->_build_assignIssueTypeScreenSchemeToProject_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -28010,10 +28460,12 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
     my $tx = $self->_build_deleteIssueTypeScreenScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -28142,10 +28594,12 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
     my $tx = $self->_build_updateIssueTypeScreenScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -28278,10 +28732,12 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
     my $tx = $self->_build_appendMappingsForIssueTypeScreenScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -28417,10 +28873,12 @@ sub updateDefaultScreenScheme( $self, %options ) {
     my $tx = $self->_build_updateDefaultScreenScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -28553,10 +29011,12 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
     my $tx = $self->_build_removeMappingsFromIssueTypeScreenScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -28692,10 +29152,12 @@ sub getProjectsForIssueTypeScreenScheme( $self, %options ) {
     my $tx = $self->_build_getProjectsForIssueTypeScreenScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -28778,10 +29240,12 @@ sub getAutoComplete( $self, %options ) {
     my $tx = $self->_build_getAutoComplete_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -28875,10 +29339,12 @@ sub getAutoCompletePost( $self, %options ) {
     my $tx = $self->_build_getAutoCompletePost_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -28981,10 +29447,12 @@ sub getFieldAutoCompleteForQueryString( $self, %options ) {
     my $tx = $self->_build_getFieldAutoCompleteForQueryString_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -29082,10 +29550,12 @@ sub getPrecomputations( $self, %options ) {
     my $tx = $self->_build_getPrecomputations_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -29170,10 +29640,12 @@ sub updatePrecomputations( $self, %options ) {
     my $tx = $self->_build_updatePrecomputations_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -29264,10 +29736,12 @@ sub matchIssues( $self, %options ) {
     my $tx = $self->_build_matchIssues_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -29385,10 +29859,12 @@ sub parseJqlQueries( $self, %options ) {
     my $tx = $self->_build_parseJqlQueries_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -29489,10 +29965,12 @@ sub migrateQueries( $self, %options ) {
     my $tx = $self->_build_migrateQueries_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -29588,10 +30066,12 @@ sub sanitiseJqlQueries( $self, %options ) {
     my $tx = $self->_build_sanitiseJqlQueries_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -29711,10 +30191,12 @@ sub getAllLabels( $self, %options ) {
     my $tx = $self->_build_getAllLabels_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -29788,10 +30270,12 @@ sub getApproximateLicenseCount( $self, %options ) {
     my $tx = $self->_build_getApproximateLicenseCount_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -29879,10 +30363,12 @@ sub getApproximateApplicationLicenseCount( $self, %options ) {
     my $tx = $self->_build_getApproximateApplicationLicenseCount_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -30004,10 +30490,12 @@ sub getMyPermissions( $self, %options ) {
     my $tx = $self->_build_getMyPermissions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -30123,10 +30611,12 @@ sub removePreference( $self, %options ) {
     my $tx = $self->_build_removePreference_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -30209,10 +30699,12 @@ sub getPreference( $self, %options ) {
     my $tx = $self->_build_getPreference_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -30296,7 +30788,8 @@ sub _build_setPreference_request( $self, %options ) {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        # XXX Need to fill the body
+        # => $body,
     );
 
     return $tx
@@ -30307,10 +30800,12 @@ sub setPreference( $self, %options ) {
     my $tx = $self->_build_setPreference_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -30390,10 +30885,12 @@ sub deleteLocale( $self, %options ) {
     my $tx = $self->_build_deleteLocale_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -30470,10 +30967,12 @@ sub getLocale( $self, %options ) {
     my $tx = $self->_build_getLocale_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -30563,10 +31062,12 @@ sub setLocale( $self, %options ) {
     my $tx = $self->_build_setLocale_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -30668,10 +31169,12 @@ sub getCurrentUser( $self, %options ) {
     my $tx = $self->_build_getCurrentUser_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -30815,10 +31318,12 @@ sub getNotificationSchemes( $self, %options ) {
     my $tx = $self->_build_getNotificationSchemes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -30930,10 +31435,12 @@ sub createNotificationScheme( $self, %options ) {
     my $tx = $self->_build_createNotificationScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -31065,10 +31572,12 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
     my $tx = $self->_build_getNotificationSchemeToProjectMappings_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -31216,10 +31725,12 @@ sub getNotificationScheme( $self, %options ) {
     my $tx = $self->_build_getNotificationScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -31333,10 +31844,12 @@ sub updateNotificationScheme( $self, %options ) {
     my $tx = $self->_build_updateNotificationScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -31481,10 +31994,12 @@ sub addNotifications( $self, %options ) {
     my $tx = $self->_build_addNotifications_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -31616,10 +32131,12 @@ sub deleteNotificationScheme( $self, %options ) {
     my $tx = $self->_build_deleteNotificationScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -31758,10 +32275,12 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
     my $tx = $self->_build_removeNotificationFromNotificationScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -31879,10 +32398,12 @@ sub getAllPermissions( $self, %options ) {
     my $tx = $self->_build_getAllPermissions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -31985,10 +32506,12 @@ sub getBulkPermissions( $self, %options ) {
     my $tx = $self->_build_getBulkPermissions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -32097,10 +32620,12 @@ sub getPermittedProjects( $self, %options ) {
     my $tx = $self->_build_getPermittedProjects_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -32230,10 +32755,12 @@ sub getAllPermissionSchemes( $self, %options ) {
     my $tx = $self->_build_getAllPermissionSchemes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -32389,10 +32916,12 @@ sub createPermissionScheme( $self, %options ) {
     my $tx = $self->_build_createPermissionScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -32483,10 +33012,12 @@ sub deletePermissionScheme( $self, %options ) {
     my $tx = $self->_build_deletePermissionScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -32613,10 +33144,12 @@ sub getPermissionScheme( $self, %options ) {
     my $tx = $self->_build_getPermissionScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -32785,10 +33318,12 @@ sub updatePermissionScheme( $self, %options ) {
     my $tx = $self->_build_updatePermissionScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -32923,10 +33458,12 @@ sub getPermissionSchemeGrants( $self, %options ) {
     my $tx = $self->_build_getPermissionSchemeGrants_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -33083,10 +33620,12 @@ sub createPermissionGrant( $self, %options ) {
     my $tx = $self->_build_createPermissionGrant_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -33184,10 +33723,12 @@ sub deletePermissionSchemeEntity( $self, %options ) {
     my $tx = $self->_build_deletePermissionSchemeEntity_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -33321,10 +33862,12 @@ sub getPermissionSchemeGrant( $self, %options ) {
     my $tx = $self->_build_getPermissionSchemeGrant_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -33404,10 +33947,12 @@ sub getPriorities( $self, %options ) {
     my $tx = $self->_build_getPriorities_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -33513,10 +34058,12 @@ sub createPriority( $self, %options ) {
     my $tx = $self->_build_createPriority_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -33640,10 +34187,12 @@ sub setDefaultPriority( $self, %options ) {
     my $tx = $self->_build_setDefaultPriority_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -33786,10 +34335,12 @@ sub movePriorities( $self, %options ) {
     my $tx = $self->_build_movePriorities_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -33931,10 +34482,12 @@ sub searchPriorities( $self, %options ) {
     my $tx = $self->_build_searchPriorities_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -34044,10 +34597,12 @@ sub deletePriority( $self, %options ) {
     my $tx = $self->_build_deletePriority_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -34186,10 +34741,12 @@ sub getPriority( $self, %options ) {
     my $tx = $self->_build_getPriority_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -34308,10 +34865,12 @@ sub updatePriority( $self, %options ) {
     my $tx = $self->_build_updatePriority_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -34471,10 +35030,12 @@ sub getAllProjects( $self, %options ) {
     my $tx = $self->_build_getAllProjects_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -34633,10 +35194,12 @@ sub createProject( $self, %options ) {
     my $tx = $self->_build_createProject_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -34776,10 +35339,12 @@ sub getRecent( $self, %options ) {
     my $tx = $self->_build_getRecent_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -35081,10 +35646,12 @@ sub searchProjects( $self, %options ) {
     my $tx = $self->_build_searchProjects_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -35167,10 +35734,12 @@ sub getAllProjectTypes( $self, %options ) {
     my $tx = $self->_build_getAllProjectTypes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -35248,10 +35817,12 @@ sub getAllAccessibleProjectTypes( $self, %options ) {
     my $tx = $self->_build_getAllAccessibleProjectTypes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -35336,10 +35907,12 @@ sub getProjectTypeByKey( $self, %options ) {
     my $tx = $self->_build_getProjectTypeByKey_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -35429,10 +36002,12 @@ sub getAccessibleProjectTypeByKey( $self, %options ) {
     my $tx = $self->_build_getAccessibleProjectTypeByKey_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -35528,10 +36103,12 @@ sub deleteProject( $self, %options ) {
     my $tx = $self->_build_deleteProject_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -35655,10 +36232,12 @@ sub getProject( $self, %options ) {
     my $tx = $self->_build_getProject_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -35837,10 +36416,12 @@ sub updateProject( $self, %options ) {
     my $tx = $self->_build_updateProject_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -35936,10 +36517,12 @@ sub archiveProject( $self, %options ) {
     my $tx = $self->_build_archiveProject_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -36072,10 +36655,12 @@ sub updateProjectAvatar( $self, %options ) {
     my $tx = $self->_build_updateProjectAvatar_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -36173,10 +36758,12 @@ sub deleteProjectAvatar( $self, %options ) {
     my $tx = $self->_build_deleteProjectAvatar_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -36283,10 +36870,12 @@ sub createProjectAvatar( $self, %options ) {
     my $tx = $self->_build_createProjectAvatar_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -36382,10 +36971,12 @@ sub getAllProjectAvatars( $self, %options ) {
     my $tx = $self->_build_getAllProjectAvatars_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -36522,10 +37113,12 @@ sub getProjectComponentsPaginated( $self, %options ) {
     my $tx = $self->_build_getProjectComponentsPaginated_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -36615,10 +37208,12 @@ sub getProjectComponents( $self, %options ) {
     my $tx = $self->_build_getProjectComponents_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -36709,10 +37304,12 @@ sub deleteProjectAsynchronously( $self, %options ) {
     my $tx = $self->_build_deleteProjectAsynchronously_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -36805,10 +37402,12 @@ sub getFeaturesForProject( $self, %options ) {
     my $tx = $self->_build_getFeaturesForProject_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -36924,10 +37523,12 @@ sub toggleFeatureForProject( $self, %options ) {
     my $tx = $self->_build_toggleFeatureForProject_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -37023,10 +37624,12 @@ sub getProjectPropertyKeys( $self, %options ) {
     my $tx = $self->_build_getProjectPropertyKeys_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -37127,10 +37730,12 @@ sub deleteProjectProperty( $self, %options ) {
     my $tx = $self->_build_deleteProjectProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -37225,10 +37830,12 @@ sub getProjectProperty( $self, %options ) {
     my $tx = $self->_build_getProjectProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -37335,10 +37942,12 @@ sub setProjectProperty( $self, %options ) {
     my $tx = $self->_build_setProjectProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -37445,10 +38054,12 @@ sub restore( $self, %options ) {
     my $tx = $self->_build_restore_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -37541,10 +38152,12 @@ sub getProjectRoles( $self, %options ) {
     my $tx = $self->_build_getProjectRoles_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -37657,10 +38270,12 @@ sub deleteActor( $self, %options ) {
     my $tx = $self->_build_deleteActor_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -37757,10 +38372,12 @@ sub getProjectRole( $self, %options ) {
     my $tx = $self->_build_getProjectRole_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -37881,10 +38498,12 @@ sub addActorUsers( $self, %options ) {
     my $tx = $self->_build_addActorUsers_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -38021,10 +38640,12 @@ sub setActors( $self, %options ) {
     my $tx = $self->_build_setActors_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -38128,10 +38749,12 @@ sub getProjectRoleDetails( $self, %options ) {
     my $tx = $self->_build_getProjectRoleDetails_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -38222,10 +38845,12 @@ sub getAllStatuses( $self, %options ) {
     my $tx = $self->_build_getAllStatuses_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -38323,10 +38948,12 @@ sub updateProjectType( $self, %options ) {
     my $tx = $self->_build_updateProjectType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -38495,10 +39122,12 @@ sub getProjectVersionsPaginated( $self, %options ) {
     my $tx = $self->_build_getProjectVersionsPaginated_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -38593,10 +39222,12 @@ sub getProjectVersions( $self, %options ) {
     my $tx = $self->_build_getProjectVersions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -38684,10 +39315,12 @@ sub getProjectEmail( $self, %options ) {
     my $tx = $self->_build_getProjectEmail_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -38797,10 +39430,12 @@ sub updateProjectEmail( $self, %options ) {
     my $tx = $self->_build_updateProjectEmail_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -38896,10 +39531,12 @@ sub getHierarchy( $self, %options ) {
     my $tx = $self->_build_getHierarchy_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -38992,10 +39629,12 @@ sub getProjectIssueSecurityScheme( $self, %options ) {
     my $tx = $self->_build_getProjectIssueSecurityScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -39133,10 +39772,12 @@ sub getNotificationSchemeForProject( $self, %options ) {
     my $tx = $self->_build_getNotificationSchemeForProject_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -39271,10 +39912,12 @@ sub getAssignedPermissionScheme( $self, %options ) {
     my $tx = $self->_build_getAssignedPermissionScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -39422,10 +40065,12 @@ sub assignPermissionScheme( $self, %options ) {
     my $tx = $self->_build_assignPermissionScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -39518,10 +40163,12 @@ sub getSecurityLevelsForProject( $self, %options ) {
     my $tx = $self->_build_getSecurityLevelsForProject_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -39598,10 +40245,12 @@ sub getAllProjectCategories( $self, %options ) {
     my $tx = $self->_build_getAllProjectCategories_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -39704,10 +40353,12 @@ sub createProjectCategory( $self, %options ) {
     my $tx = $self->_build_createProjectCategory_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -39801,10 +40452,12 @@ sub removeProjectCategory( $self, %options ) {
     my $tx = $self->_build_removeProjectCategory_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -39889,10 +40542,12 @@ sub getProjectCategoryById( $self, %options ) {
     my $tx = $self->_build_getProjectCategoryById_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -40005,10 +40660,12 @@ sub updateProjectCategory( $self, %options ) {
     my $tx = $self->_build_updateProjectCategory_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -40102,10 +40759,12 @@ sub validateProjectKey( $self, %options ) {
     my $tx = $self->_build_validateProjectKey_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -40190,10 +40849,12 @@ sub getValidProjectKey( $self, %options ) {
     my $tx = $self->_build_getValidProjectKey_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -40281,10 +40942,12 @@ sub getValidProjectName( $self, %options ) {
     my $tx = $self->_build_getValidProjectName_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -40367,10 +41030,12 @@ sub getResolutions( $self, %options ) {
     my $tx = $self->_build_getResolutions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -40468,10 +41133,12 @@ sub createResolution( $self, %options ) {
     my $tx = $self->_build_createResolution_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -40595,10 +41262,12 @@ sub setDefaultResolution( $self, %options ) {
     my $tx = $self->_build_setDefaultResolution_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -40741,10 +41410,12 @@ sub moveResolutions( $self, %options ) {
     my $tx = $self->_build_moveResolutions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -40886,10 +41557,12 @@ sub searchResolutions( $self, %options ) {
     my $tx = $self->_build_searchResolutions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -40999,10 +41672,12 @@ sub deleteResolution( $self, %options ) {
     my $tx = $self->_build_deleteResolution_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -41141,10 +41816,12 @@ sub getResolution( $self, %options ) {
     my $tx = $self->_build_getResolution_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -41255,10 +41932,12 @@ sub updateResolution( $self, %options ) {
     my $tx = $self->_build_updateResolution_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -41376,10 +42055,12 @@ sub getAllProjectRoles( $self, %options ) {
     my $tx = $self->_build_getAllProjectRoles_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -41477,10 +42158,12 @@ sub createProjectRole( $self, %options ) {
     my $tx = $self->_build_createProjectRole_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -41582,10 +42265,12 @@ sub deleteProjectRole( $self, %options ) {
     my $tx = $self->_build_deleteProjectRole_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -41676,10 +42361,12 @@ sub getProjectRoleById( $self, %options ) {
     my $tx = $self->_build_getProjectRoleById_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -41789,10 +42476,12 @@ sub partialUpdateProjectRole( $self, %options ) {
     my $tx = $self->_build_partialUpdateProjectRole_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -41905,10 +42594,12 @@ sub fullyUpdateProjectRole( $self, %options ) {
     my $tx = $self->_build_fullyUpdateProjectRole_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -42022,10 +42713,12 @@ sub deleteProjectRoleActorsFromRole( $self, %options ) {
     my $tx = $self->_build_deleteProjectRoleActorsFromRole_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -42121,10 +42814,12 @@ sub getProjectRoleActorsForRole( $self, %options ) {
     my $tx = $self->_build_getProjectRoleActorsForRole_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -42241,10 +42936,12 @@ sub addProjectRoleActorsToRole( $self, %options ) {
     my $tx = $self->_build_addProjectRoleActorsToRole_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -42377,10 +43074,12 @@ sub getScreens( $self, %options ) {
     my $tx = $self->_build_getScreens_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -42477,10 +43176,12 @@ sub createScreen( $self, %options ) {
     my $tx = $self->_build_createScreen_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -42589,10 +43290,12 @@ sub addFieldToDefaultScreen( $self, %options ) {
     my $tx = $self->_build_addFieldToDefaultScreen_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -42684,10 +43387,12 @@ sub deleteScreen( $self, %options ) {
     my $tx = $self->_build_deleteScreen_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -42816,10 +43521,12 @@ sub updateScreen( $self, %options ) {
     my $tx = $self->_build_updateScreen_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -42939,10 +43646,12 @@ sub getAvailableScreenFields( $self, %options ) {
     my $tx = $self->_build_getAvailableScreenFields_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -43044,10 +43753,12 @@ sub getAllScreenTabs( $self, %options ) {
     my $tx = $self->_build_getAllScreenTabs_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -43161,10 +43872,12 @@ sub addScreenTab( $self, %options ) {
     my $tx = $self->_build_addScreenTab_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -43265,10 +43978,12 @@ sub deleteScreenTab( $self, %options ) {
     my $tx = $self->_build_deleteScreenTab_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -43377,10 +44092,12 @@ sub renameScreenTab( $self, %options ) {
     my $tx = $self->_build_renameScreenTab_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -43491,10 +44208,12 @@ sub getAllScreenTabFields( $self, %options ) {
     my $tx = $self->_build_getAllScreenTabFields_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -43608,10 +44327,12 @@ sub addScreenTabField( $self, %options ) {
     my $tx = $self->_build_addScreenTabField_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -43719,10 +44440,12 @@ sub removeScreenTabField( $self, %options ) {
     my $tx = $self->_build_removeScreenTabField_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -43841,10 +44564,12 @@ sub moveScreenTabField( $self, %options ) {
     my $tx = $self->_build_moveScreenTabField_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -43954,10 +44679,12 @@ sub moveScreenTab( $self, %options ) {
     my $tx = $self->_build_moveScreenTab_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -44090,10 +44817,12 @@ sub getScreenSchemes( $self, %options ) {
     my $tx = $self->_build_getScreenSchemes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -44194,10 +44923,12 @@ sub createScreenScheme( $self, %options ) {
     my $tx = $self->_build_createScreenScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -44316,10 +45047,12 @@ sub deleteScreenScheme( $self, %options ) {
     my $tx = $self->_build_deleteScreenScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -44452,10 +45185,12 @@ sub updateScreenScheme( $self, %options ) {
     my $tx = $self->_build_updateScreenScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -44746,10 +45481,12 @@ sub searchForIssuesUsingJql( $self, %options ) {
     my $tx = $self->_build_searchForIssuesUsingJql_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -44993,10 +45730,12 @@ sub searchForIssuesUsingJqlPost( $self, %options ) {
     my $tx = $self->_build_searchForIssuesUsingJqlPost_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -45086,10 +45825,12 @@ sub getIssueSecurityLevel( $self, %options ) {
     my $tx = $self->_build_getIssueSecurityLevel_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -45169,10 +45910,12 @@ sub getServerInfo( $self, %options ) {
     my $tx = $self->_build_getServerInfo_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -45249,10 +45992,12 @@ sub getIssueNavigatorDefaultColumns( $self, %options ) {
     my $tx = $self->_build_getIssueNavigatorDefaultColumns_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -45338,10 +46083,12 @@ sub setIssueNavigatorDefaultColumns( $self, %options ) {
     my $tx = $self->_build_setIssueNavigatorDefaultColumns_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -45427,10 +46174,12 @@ sub getStatuses( $self, %options ) {
     my $tx = $self->_build_getStatuses_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -45518,10 +46267,12 @@ sub getStatus( $self, %options ) {
     my $tx = $self->_build_getStatus_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -45601,10 +46352,12 @@ sub getStatusCategories( $self, %options ) {
     my $tx = $self->_build_getStatusCategories_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -45692,10 +46445,12 @@ sub getStatusCategory( $self, %options ) {
     my $tx = $self->_build_getStatusCategory_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -45785,10 +46540,12 @@ sub deleteStatusesById( $self, %options ) {
     my $tx = $self->_build_deleteStatusesById_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -45900,10 +46657,12 @@ sub getStatusesById( $self, %options ) {
     my $tx = $self->_build_getStatusesById_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -46001,10 +46760,12 @@ sub createStatuses( $self, %options ) {
     my $tx = $self->_build_createStatuses_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -46106,10 +46867,12 @@ sub updateStatuses( $self, %options ) {
     my $tx = $self->_build_updateStatuses_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -46239,10 +47002,12 @@ sub search( $self, %options ) {
     my $tx = $self->_build_search_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -46332,10 +47097,12 @@ sub getTask( $self, %options ) {
     my $tx = $self->_build_getTask_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -46432,10 +47199,12 @@ sub cancelTask( $self, %options ) {
     my $tx = $self->_build_cancelTask_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -46589,10 +47358,12 @@ sub getUiModifications( $self, %options ) {
     my $tx = $self->_build_getUiModifications_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -46700,10 +47471,12 @@ sub createUiModification( $self, %options ) {
     my $tx = $self->_build_createUiModification_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -46799,10 +47572,12 @@ sub deleteUiModification( $self, %options ) {
     my $tx = $self->_build_deleteUiModification_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -46920,10 +47695,12 @@ sub updateUiModification( $self, %options ) {
     my $tx = $self->_build_updateUiModification_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -47026,10 +47803,12 @@ sub getAvatars( $self, %options ) {
     my $tx = $self->_build_getAvatars_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -47150,10 +47929,12 @@ sub storeAvatar( $self, %options ) {
     my $tx = $self->_build_storeAvatar_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -47261,10 +48042,12 @@ sub deleteAvatar( $self, %options ) {
     my $tx = $self->_build_deleteAvatar_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -47365,10 +48148,12 @@ sub getAvatarImageByType( $self, %options ) {
     my $tx = $self->_build_getAvatarImageByType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -47617,10 +48402,12 @@ sub getAvatarImageByID( $self, %options ) {
     my $tx = $self->_build_getAvatarImageByID_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -47907,10 +48694,12 @@ sub getAvatarImageByOwner( $self, %options ) {
     my $tx = $self->_build_getAvatarImageByOwner_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -48182,10 +48971,12 @@ sub removeUser( $self, %options ) {
     my $tx = $self->_build_removeUser_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -48300,10 +49091,12 @@ sub getUser( $self, %options ) {
     my $tx = $self->_build_getUser_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -48423,10 +49216,12 @@ sub createUser( $self, %options ) {
     my $tx = $self->_build_createUser_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -48545,10 +49340,12 @@ sub findBulkAssignableUsers( $self, %options ) {
     my $tx = $self->_build_findBulkAssignableUsers_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -48686,10 +49483,12 @@ sub findAssignableUsers( $self, %options ) {
     my $tx = $self->_build_findAssignableUsers_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -48807,10 +49606,12 @@ sub bulkGetUsers( $self, %options ) {
     my $tx = $self->_build_bulkGetUsers_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -48913,10 +49714,12 @@ sub bulkGetUsersMigration( $self, %options ) {
     my $tx = $self->_build_bulkGetUsersMigration_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -49008,10 +49811,12 @@ sub resetUserColumns( $self, %options ) {
     my $tx = $self->_build_resetUserColumns_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -49096,10 +49901,12 @@ sub getUserDefaultColumns( $self, %options ) {
     my $tx = $self->_build_getUserDefaultColumns_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -49196,10 +50003,12 @@ sub setUserColumns( $self, %options ) {
     my $tx = $self->_build_setUserColumns_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -49299,10 +50108,12 @@ sub getUserEmail( $self, %options ) {
     my $tx = $self->_build_getUserEmail_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -49399,10 +50210,12 @@ sub getUserEmailBulk( $self, %options ) {
     my $tx = $self->_build_getUserEmailBulk_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -49506,10 +50319,12 @@ sub getUserGroups( $self, %options ) {
     my $tx = $self->_build_getUserGroups_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -49824,10 +50639,12 @@ sub findUsersWithAllPermissions( $self, %options ) {
     my $tx = $self->_build_findUsersWithAllPermissions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -49954,10 +50771,12 @@ sub findUsersForPicker( $self, %options ) {
     my $tx = $self->_build_findUsersForPicker_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -50058,10 +50877,12 @@ sub getUserPropertyKeys( $self, %options ) {
     my $tx = $self->_build_getUserPropertyKeys_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -50173,10 +50994,12 @@ sub deleteUserProperty( $self, %options ) {
     my $tx = $self->_build_deleteUserProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -50282,10 +51105,12 @@ sub getUserProperty( $self, %options ) {
     my $tx = $self->_build_getUserProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -50403,10 +51228,12 @@ sub setUserProperty( $self, %options ) {
     my $tx = $self->_build_setUserProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -50537,10 +51364,12 @@ sub findUsers( $self, %options ) {
     my $tx = $self->_build_findUsers_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -50645,10 +51474,12 @@ sub findUsersByQuery( $self, %options ) {
     my $tx = $self->_build_findUsersByQuery_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -50755,10 +51586,12 @@ sub findUserKeysByQuery( $self, %options ) {
     my $tx = $self->_build_findUserKeysByQuery_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -50882,10 +51715,12 @@ sub findUsersWithBrowsePermission( $self, %options ) {
     my $tx = $self->_build_findUsersWithBrowsePermission_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -50985,10 +51820,12 @@ sub getAllUsersDefault( $self, %options ) {
     my $tx = $self->_build_getAllUsersDefault_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -51085,10 +51922,12 @@ sub getAllUsers( $self, %options ) {
     my $tx = $self->_build_getAllUsers_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -51265,10 +52104,12 @@ sub createVersion( $self, %options ) {
     my $tx = $self->_build_createVersion_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -51372,10 +52213,12 @@ sub deleteVersion( $self, %options ) {
     my $tx = $self->_build_deleteVersion_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -51482,10 +52325,12 @@ sub getVersion( $self, %options ) {
     my $tx = $self->_build_getVersion_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -51668,10 +52513,12 @@ sub updateVersion( $self, %options ) {
     my $tx = $self->_build_updateVersion_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -51771,10 +52618,12 @@ sub mergeVersions( $self, %options ) {
     my $tx = $self->_build_mergeVersions_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -51884,10 +52733,12 @@ sub moveVersion( $self, %options ) {
     my $tx = $self->_build_moveVersion_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -51980,10 +52831,12 @@ sub getVersionRelatedIssues( $self, %options ) {
     my $tx = $self->_build_getVersionRelatedIssues_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -52094,10 +52947,12 @@ sub deleteAndReplaceVersion( $self, %options ) {
     my $tx = $self->_build_deleteAndReplaceVersion_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -52190,10 +53045,12 @@ sub getVersionUnresolvedIssues( $self, %options ) {
     my $tx = $self->_build_getVersionUnresolvedIssues_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -52287,10 +53144,12 @@ sub deleteWebhookById( $self, %options ) {
     my $tx = $self->_build_deleteWebhookById_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -52393,10 +53252,12 @@ sub getDynamicWebhooksForApp( $self, %options ) {
     my $tx = $self->_build_getDynamicWebhooksForApp_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -52511,10 +53372,12 @@ sub registerDynamicWebhooks( $self, %options ) {
     my $tx = $self->_build_registerDynamicWebhooks_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -52625,10 +53488,12 @@ sub getFailedWebhooks( $self, %options ) {
     my $tx = $self->_build_getFailedWebhooks_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -52739,10 +53604,12 @@ sub refreshWebhooks( $self, %options ) {
     my $tx = $self->_build_refreshWebhooks_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -52846,10 +53713,12 @@ sub getAllWorkflows( $self, %options ) {
     my $tx = $self->_build_getAllWorkflows_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -52993,10 +53862,12 @@ sub createWorkflow( $self, %options ) {
     my $tx = $self->_build_createWorkflow_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -53154,10 +54025,12 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
     my $tx = $self->_build_getWorkflowTransitionRuleConfigurations_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -53271,10 +54144,12 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
     my $tx = $self->_build_updateWorkflowTransitionRuleConfigurations_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -53385,10 +54260,12 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
     my $tx = $self->_build_deleteWorkflowTransitionRuleConfigurations_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -53596,10 +54473,12 @@ sub getWorkflowsPaginated( $self, %options ) {
     my $tx = $self->_build_getWorkflowsPaginated_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -53717,10 +54596,12 @@ sub deleteWorkflowTransitionProperty( $self, %options ) {
     my $tx = $self->_build_deleteWorkflowTransitionProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -53836,10 +54717,12 @@ sub getWorkflowTransitionProperties( $self, %options ) {
     my $tx = $self->_build_getWorkflowTransitionProperties_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -53978,10 +54861,12 @@ sub createWorkflowTransitionProperty( $self, %options ) {
     my $tx = $self->_build_createWorkflowTransitionProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -54120,10 +55005,12 @@ sub updateWorkflowTransitionProperty( $self, %options ) {
     my $tx = $self->_build_updateWorkflowTransitionProperty_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -54221,10 +55108,12 @@ sub deleteInactiveWorkflow( $self, %options ) {
     my $tx = $self->_build_deleteInactiveWorkflow_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -54339,10 +55228,12 @@ sub getAllWorkflowSchemes( $self, %options ) {
     my $tx = $self->_build_getAllWorkflowSchemes_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -54502,10 +55393,12 @@ sub createWorkflowScheme( $self, %options ) {
     my $tx = $self->_build_createWorkflowScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -54599,10 +55492,12 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
     my $tx = $self->_build_getWorkflowSchemeProjectAssociations_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -54718,10 +55613,12 @@ sub assignSchemeToProject( $self, %options ) {
     my $tx = $self->_build_assignSchemeToProject_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -54841,10 +55738,12 @@ sub deleteWorkflowScheme( $self, %options ) {
     my $tx = $self->_build_deleteWorkflowScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -54948,10 +55847,12 @@ sub getWorkflowScheme( $self, %options ) {
     my $tx = $self->_build_getWorkflowScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -55124,10 +56025,12 @@ sub updateWorkflowScheme( $self, %options ) {
     my $tx = $self->_build_updateWorkflowScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -55223,10 +56126,12 @@ sub createWorkflowSchemeDraftFromParent( $self, %options ) {
     my $tx = $self->_build_createWorkflowSchemeDraftFromParent_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -55327,10 +56232,12 @@ sub deleteDefaultWorkflow( $self, %options ) {
     my $tx = $self->_build_deleteDefaultWorkflow_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -55434,10 +56341,12 @@ sub getDefaultWorkflow( $self, %options ) {
     my $tx = $self->_build_getDefaultWorkflow_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -55547,10 +56456,12 @@ sub updateDefaultWorkflow( $self, %options ) {
     my $tx = $self->_build_updateDefaultWorkflow_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -55644,10 +56555,12 @@ sub deleteWorkflowSchemeDraft( $self, %options ) {
     my $tx = $self->_build_deleteWorkflowSchemeDraft_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -55732,10 +56645,12 @@ sub getWorkflowSchemeDraft( $self, %options ) {
     my $tx = $self->_build_getWorkflowSchemeDraft_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -55908,10 +56823,12 @@ sub updateWorkflowSchemeDraft( $self, %options ) {
     my $tx = $self->_build_updateWorkflowSchemeDraft_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -56007,10 +56924,12 @@ sub deleteDraftDefaultWorkflow( $self, %options ) {
     my $tx = $self->_build_deleteDraftDefaultWorkflow_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -56103,10 +57022,12 @@ sub getDraftDefaultWorkflow( $self, %options ) {
     my $tx = $self->_build_getDraftDefaultWorkflow_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -56216,10 +57137,12 @@ sub updateDraftDefaultWorkflow( $self, %options ) {
     my $tx = $self->_build_updateDraftDefaultWorkflow_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -56322,10 +57245,12 @@ sub deleteWorkflowSchemeDraftIssueType( $self, %options ) {
     my $tx = $self->_build_deleteWorkflowSchemeDraftIssueType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -56425,10 +57350,12 @@ sub getWorkflowSchemeDraftIssueType( $self, %options ) {
     my $tx = $self->_build_getWorkflowSchemeDraftIssueType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -56549,10 +57476,12 @@ sub setWorkflowSchemeDraftIssueType( $self, %options ) {
     my $tx = $self->_build_setWorkflowSchemeDraftIssueType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -56669,10 +57598,12 @@ sub publishDraftWorkflowScheme( $self, %options ) {
     my $tx = $self->_build_publishDraftWorkflowScheme_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -56795,10 +57726,12 @@ sub deleteDraftWorkflowMapping( $self, %options ) {
     my $tx = $self->_build_deleteDraftWorkflowMapping_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -56891,10 +57824,12 @@ sub getDraftWorkflow( $self, %options ) {
     my $tx = $self->_build_getDraftWorkflow_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -57022,10 +57957,12 @@ sub updateDraftWorkflowMapping( $self, %options ) {
     my $tx = $self->_build_updateDraftWorkflowMapping_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -57136,10 +58073,12 @@ sub deleteWorkflowSchemeIssueType( $self, %options ) {
     my $tx = $self->_build_deleteWorkflowSchemeIssueType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -57250,10 +58189,12 @@ sub getWorkflowSchemeIssueType( $self, %options ) {
     my $tx = $self->_build_getWorkflowSchemeIssueType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -57374,10 +58315,12 @@ sub setWorkflowSchemeIssueType( $self, %options ) {
     my $tx = $self->_build_setWorkflowSchemeIssueType_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -57486,10 +58429,12 @@ sub deleteWorkflowMapping( $self, %options ) {
     my $tx = $self->_build_deleteWorkflowMapping_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -57590,10 +58535,12 @@ sub getWorkflow( $self, %options ) {
     my $tx = $self->_build_getWorkflow_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -57721,10 +58668,12 @@ sub updateWorkflowMapping( $self, %options ) {
     my $tx = $self->_build_updateWorkflowMapping_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -57818,10 +58767,12 @@ sub getIdsOfWorklogsDeletedSince( $self, %options ) {
     my $tx = $self->_build_getIdsOfWorklogsDeletedSince_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -57919,10 +58870,12 @@ sub getWorklogsForIds( $self, %options ) {
     my $tx = $self->_build_getWorklogsForIds_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -58016,10 +58969,12 @@ sub getIdsOfWorklogsModifiedSince( $self, %options ) {
     my $tx = $self->_build_getIdsOfWorklogsModifiedSince_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -58107,10 +59062,12 @@ sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
     my $tx = $self->_build_AddonPropertiesResource_getAddonProperties_get_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -58214,10 +59171,12 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
     my $tx = $self->_build_AddonPropertiesResource_deleteAddonProperty_delete_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -58336,10 +59295,12 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
     my $tx = $self->_build_AddonPropertiesResource_getAddonProperty_get_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -58469,10 +59430,12 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
     my $tx = $self->_build_AddonPropertiesResource_putAddonProperty_put_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -58589,10 +59552,12 @@ sub DynamicModulesResource_removeModules_delete( $self, %options ) {
     my $tx = $self->_build_DynamicModulesResource_removeModules_delete_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -58670,10 +59635,12 @@ sub DynamicModulesResource_getModules_get( $self, %options ) {
     my $tx = $self->_build_DynamicModulesResource_getModules_get_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -58773,10 +59740,12 @@ sub DynamicModulesResource_registerModules_post( $self, %options ) {
     my $tx = $self->_build_DynamicModulesResource_registerModules_post_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -58885,10 +59854,12 @@ sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
     my $tx = $self->_build_AppIssueFieldValueUpdateResource_updateIssueFields_put_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -58986,10 +59957,12 @@ sub MigrationResource_updateEntityPropertiesValue_put( $self, %options ) {
     my $tx = $self->_build_MigrationResource_updateEntityPropertiesValue_put_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -59090,10 +60063,12 @@ sub MigrationResource_workflowRuleSearch_post( $self, %options ) {
     my $tx = $self->_build_MigrationResource_workflowRuleSearch_post_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 

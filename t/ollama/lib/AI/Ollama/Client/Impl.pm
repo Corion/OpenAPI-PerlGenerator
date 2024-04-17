@@ -119,10 +119,12 @@ sub checkBlob( $self, %options ) {
     my $tx = $self->_build_checkBlob_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -202,10 +204,12 @@ sub createBlob( $self, %options ) {
     my $tx = $self->_build_createBlob_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -338,10 +342,12 @@ sub generateChatCompletion( $self, %options ) {
     my $tx = $self->_build_generateChatCompletion_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -441,10 +447,12 @@ sub copyModel( $self, %options ) {
     my $tx = $self->_build_copyModel_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -537,10 +545,12 @@ sub createModel( $self, %options ) {
     my $tx = $self->_build_createModel_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -638,10 +648,12 @@ sub deleteModel( $self, %options ) {
     my $tx = $self->_build_deleteModel_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -724,10 +736,12 @@ sub generateEmbedding( $self, %options ) {
     my $tx = $self->_build_generateEmbedding_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -890,10 +904,12 @@ sub generateCompletion( $self, %options ) {
     my $tx = $self->_build_generateCompletion_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -1003,10 +1019,12 @@ sub pullModel( $self, %options ) {
     my $tx = $self->_build_pullModel_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -1097,10 +1115,12 @@ sub pushModel( $self, %options ) {
     my $tx = $self->_build_pushModel_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -1183,10 +1203,12 @@ sub showModelInfo( $self, %options ) {
     my $tx = $self->_build_showModelInfo_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
@@ -1254,10 +1276,12 @@ sub listModels( $self, %options ) {
     my $tx = $self->_build_listModels_request(%options);
 
     # validate our request while developing
-    my $results = $self->openapi->validate_request($tx->req);
-    if( $results->{error}) {
-        say $results;
-        say $tx->req->to_string;
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
     };
 
 
