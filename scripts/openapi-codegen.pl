@@ -39,12 +39,14 @@ openapi-codegen.pl - create and maintain (client) libraries from OpenAPI / Swagg
 =cut
 
 GetOptions(
-    'prefix|p=s' => \my $prefix,
-    'force|f'     => \my $force,
-    'output|o=s'  => \my $output_directory,
-    'api|a=s'     => \my $api_file,
-    'tidy'        => \my $run_perltidy,
-    'compile'     => \my $check_compile,
+    'prefix|p=s'   => \my $prefix,
+    'force|f'      => \my $force,
+    'version=s'    => \my $version,
+    'keep-version' => \my $keep_version,
+    'output|o=s'   => \my $output_directory,
+    'api|a=s'      => \my $api_file,
+    'tidy'         => \my $run_perltidy,
+    'compile'      => \my $check_compile,
 );
 $prefix //= 'My::API';
 $api_file //= 'openapi/openapi.yaml';
@@ -62,6 +64,7 @@ my $generator = OpenAPI::PerlGenerator->new(
 my @packages = $generator->generate(
     schema => $schema,
     prefix => $prefix,
+    version => $version,
 );
 
 # This is not to be run online, as people could put Perl code into the Prefix

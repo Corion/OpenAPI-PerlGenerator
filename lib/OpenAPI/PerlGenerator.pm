@@ -105,6 +105,16 @@ has 'typemap' => (
     default => sub { +{ %default_typemap } },
 );
 
+=item * B<version>
+
+The version number to give to all modules
+
+=cut
+
+has 'version' => (
+    is => 'ro',
+);
+
 sub fixup_json_ref( $root, $curr=$root ) {
     if( ref $curr eq 'ARRAY' ) {
         for my $c ($curr->@*) {
@@ -225,6 +235,7 @@ sub generate( $self, %options ) {
         or croak "Need a schema";
     my $templates = delete $options{ templates } // $self->templates;
     my $prefix = delete $options{ prefix } // $self->prefix;
+    my $version = delete $options{ version } // $self->version;
 
     my @res;
 
@@ -237,6 +248,7 @@ sub generate( $self, %options ) {
         schema => $schema,
         templates => $templates,
         prefix => $prefix,
+        version => $version,
     );
 
     my $methods = $self->openapi_method_list(
@@ -249,6 +261,7 @@ sub generate( $self, %options ) {
         name => 'Client::Impl',
         schema => $schema,
         templates => $templates,
+        version => $version,
         %options
     );
 
@@ -258,6 +271,7 @@ sub generate( $self, %options ) {
         name => 'Client',
         schema => $schema,
         templates => $templates,
+        version => $version,
         %options
     );
 
