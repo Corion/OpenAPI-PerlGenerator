@@ -42,7 +42,12 @@ The named position to which the screen tab field should be moved. Required if `a
 
 has 'position' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "Earlier",
+        "Later",
+        "First",
+        "Last",
+    ],
 );
 
 

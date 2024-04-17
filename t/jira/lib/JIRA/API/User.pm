@@ -46,7 +46,12 @@ The user account type. Can take the following values:
 
 has 'accountType' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "atlassian",
+        "app",
+        "customer",
+        "unknown",
+    ],
 );
 
 =head2 C<< active >>

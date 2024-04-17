@@ -43,7 +43,11 @@ The licensing plan.
 
 has 'plan' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "UNLICENSED",
+        "FREE",
+        "PAID",
+    ],
     required => 1,
 );
 

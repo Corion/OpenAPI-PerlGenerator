@@ -108,7 +108,11 @@ The type of the transition.
 
 has 'type' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "global",
+        "initial",
+        "directed",
+    ],
     required => 1,
 );
 

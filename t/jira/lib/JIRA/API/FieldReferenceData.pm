@@ -31,7 +31,10 @@ Whether the field provide auto-complete suggestions.
 
 has 'auto' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "true",
+        "false",
+    ],
 );
 
 =head2 C<< cfid >>
@@ -53,7 +56,10 @@ Whether this field has been deprecated.
 
 has 'deprecated' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "true",
+        "false",
+    ],
 );
 
 =head2 C<< deprecatedSearcherKey >>
@@ -101,7 +107,10 @@ Whether the field can be used in a query's `ORDER BY` clause.
 
 has 'orderable' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "true",
+        "false",
+    ],
 );
 
 =head2 C<< searchable >>
@@ -112,7 +121,10 @@ Whether the content of this field can be searched.
 
 has 'searchable' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "true",
+        "false",
+    ],
 );
 
 =head2 C<< types >>

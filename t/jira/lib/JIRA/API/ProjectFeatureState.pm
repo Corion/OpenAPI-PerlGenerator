@@ -31,7 +31,11 @@ The feature state.
 
 has 'state' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "ENABLED",
+        "DISABLED",
+        "COMING_SOON",
+    ],
 );
 
 

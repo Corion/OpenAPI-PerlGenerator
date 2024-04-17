@@ -97,7 +97,11 @@ The state of the feature. When updating the state of a feature, only ENABLED and
 
 has 'state' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "ENABLED",
+        "DISABLED",
+        "COMING_SOON",
+    ],
 );
 
 =head2 C<< toggleLocked >>

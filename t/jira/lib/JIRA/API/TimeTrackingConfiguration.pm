@@ -31,7 +31,12 @@ The default unit of time applied to logged time.
 
 has 'defaultUnit' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "minute",
+        "hour",
+        "day",
+        "week",
+    ],
     required => 1,
 );
 
@@ -43,7 +48,11 @@ The format that will appear on an issue's *Time Spent* field.
 
 has 'timeFormat' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "pretty",
+        "days",
+        "hours",
+    ],
     required => 1,
 );
 

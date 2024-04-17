@@ -67,7 +67,13 @@ The type of the property value extraction. Not available if the extraction for t
 
 has 'type' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "number",
+        "string",
+        "text",
+        "date",
+        "user",
+    ],
 );
 
 

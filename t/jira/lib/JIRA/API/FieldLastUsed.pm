@@ -35,7 +35,11 @@ Last used value type:
 
 has 'type' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "TRACKED",
+        "NOT_TRACKED",
+        "NO_INFORMATION",
+    ],
 );
 
 =head2 C<< value >>

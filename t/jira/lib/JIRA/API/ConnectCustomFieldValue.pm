@@ -31,7 +31,14 @@ The type of custom field.
 
 has '_type' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "StringIssueField",
+        "NumberIssueField",
+        "RichTextIssueField",
+        "SingleSelectIssueField",
+        "MultiSelectIssueField",
+        "TextIssueField",
+    ],
     required => 1,
 );
 

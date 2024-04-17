@@ -54,7 +54,10 @@ The position the custom field options should be moved to. Required if `after` is
 
 has 'position' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "First",
+        "Last",
+    ],
 );
 
 

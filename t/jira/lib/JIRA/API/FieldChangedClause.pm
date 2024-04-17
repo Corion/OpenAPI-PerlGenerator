@@ -43,7 +43,9 @@ The operator applied to the field.
 
 has 'operator' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "changed",
+    ],
     required => 1,
 );
 

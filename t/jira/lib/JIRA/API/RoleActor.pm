@@ -91,7 +91,10 @@ The type of role actor.
 
 has 'type' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "atlassian-group-role-actor",
+        "atlassian-user-role-actor",
+    ],
 );
 
 

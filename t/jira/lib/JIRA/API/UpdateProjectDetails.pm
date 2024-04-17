@@ -31,7 +31,10 @@ The default assignee when creating issues for this project.
 
 has 'assigneeType' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "PROJECT_LEAD",
+        "UNASSIGNED",
+    ],
 );
 
 =head2 C<< avatarId >>

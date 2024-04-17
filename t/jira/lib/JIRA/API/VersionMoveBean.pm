@@ -42,7 +42,12 @@ An absolute position in which to place the moved version. Cannot be used with `a
 
 has 'position' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "Earlier",
+        "Later",
+        "First",
+        "Last",
+    ],
 );
 
 

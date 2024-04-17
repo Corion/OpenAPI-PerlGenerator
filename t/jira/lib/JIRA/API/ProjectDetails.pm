@@ -84,7 +84,11 @@ The [project type](https://confluence.atlassian.com/x/GwiiLQ#Jiraapplicationsove
 
 has 'projectTypeKey' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "software",
+        "service_desk",
+        "business",
+    ],
 );
 
 =head2 C<< self >>

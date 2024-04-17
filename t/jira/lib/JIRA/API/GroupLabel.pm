@@ -53,7 +53,11 @@ The type of the group label.
 
 has 'type' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "ADMIN",
+        "SINGLE",
+        "MULTIPLE",
+    ],
 );
 
 

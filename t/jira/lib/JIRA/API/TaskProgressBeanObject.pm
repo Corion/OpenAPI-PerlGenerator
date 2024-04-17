@@ -145,7 +145,15 @@ The status of the task.
 
 has 'status' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "ENQUEUED",
+        "RUNNING",
+        "COMPLETE",
+        "FAILED",
+        "CANCEL_REQUESTED",
+        "CANCELLED",
+        "DEAD",
+    ],
     required => 1,
 );
 

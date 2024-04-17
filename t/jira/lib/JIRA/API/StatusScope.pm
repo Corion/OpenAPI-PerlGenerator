@@ -42,7 +42,10 @@ The scope of the status. `GLOBAL` for company-managed projects and `PROJECT` for
 
 has 'type' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "PROJECT",
+        "GLOBAL",
+    ],
     required => 1,
 );
 

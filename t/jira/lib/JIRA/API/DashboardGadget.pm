@@ -31,7 +31,16 @@ The color of the gadget. Should be one of `blue`, `red`, `yellow`, `green`, `cya
 
 has 'color' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "blue",
+        "red",
+        "yellow",
+        "green",
+        "cyan",
+        "purple",
+        "gray",
+        "white",
+    ],
     required => 1,
 );
 

@@ -31,7 +31,10 @@ The direction in which to order the results.
 
 has 'direction' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "asc",
+        "desc",
+    ],
 );
 
 =head2 C<< field >>

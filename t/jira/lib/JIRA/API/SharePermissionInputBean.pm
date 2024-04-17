@@ -104,7 +104,14 @@ The type of the share permission.Specify the type as follows:
 
 has 'type' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "user",
+        "project",
+        "group",
+        "projectRole",
+        "global",
+        "authenticated",
+    ],
     required => 1,
 );
 

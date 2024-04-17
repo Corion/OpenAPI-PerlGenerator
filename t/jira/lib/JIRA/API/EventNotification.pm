@@ -84,7 +84,20 @@ Identifies the recipients of the notification.
 
 has 'notificationType' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "CurrentAssignee",
+        "Reporter",
+        "CurrentUser",
+        "ProjectLead",
+        "ComponentLead",
+        "User",
+        "Group",
+        "ProjectRole",
+        "EmailAddress",
+        "AllWatchers",
+        "UserCustomField",
+        "GroupCustomField",
+    ],
 );
 
 =head2 C<< parameter >>

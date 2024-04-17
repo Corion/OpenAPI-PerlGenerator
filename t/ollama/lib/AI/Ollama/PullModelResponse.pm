@@ -53,7 +53,14 @@ Status pulling the model.
 
 has 'status' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "pulling manifest",
+        "downloading digestname",
+        "verifying sha256 digest",
+        "writing manifest",
+        "removing any unused layers",
+        "success",
+    ],
 );
 
 =head2 C<< total >>

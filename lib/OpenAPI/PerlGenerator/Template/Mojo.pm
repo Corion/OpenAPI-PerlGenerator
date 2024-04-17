@@ -248,9 +248,17 @@ extends '<%= $prefix %>::<%= $item->{name} %>';
 
 has '<%= property_name( $prop ) %>' => (
     is       => 'ro',
-% my $type = map_type( $p );
-% if( $type ) {
+% if( exists $p->{enum} ) {
+    isa      => Enum[
+%     for my $val ($p->{enum}->@*) {
+        "<%= $val %>",
+%     }
+    ],
+% } else {
+%     my $type = map_type( $p );
+%     if( $type ) {
     isa      => <%= $type %>,
+%     }
 % };
 % if( grep {$_ eq $prop} $elt->{required}->@*) {
     required => 1,

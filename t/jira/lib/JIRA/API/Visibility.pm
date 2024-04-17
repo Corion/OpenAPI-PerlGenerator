@@ -42,7 +42,10 @@ Whether visibility of this item is restricted to a group or role.
 
 has 'type' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "group",
+        "role",
+    ],
 );
 
 =head2 C<< value >>

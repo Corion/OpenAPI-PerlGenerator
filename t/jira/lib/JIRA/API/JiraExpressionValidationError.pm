@@ -76,7 +76,11 @@ The error type.
 
 has 'type' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "syntax",
+        "type",
+        "other",
+    ],
     required => 1,
 );
 

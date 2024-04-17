@@ -54,7 +54,11 @@ The role of the message
 
 has 'role' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "system",
+        "user",
+        "assistant",
+    ],
     required => 1,
 );
 

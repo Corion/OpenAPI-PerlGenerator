@@ -31,7 +31,9 @@ The keyword that is the operand value.
 
 has 'keyword' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "empty",
+    ],
     required => 1,
 );
 

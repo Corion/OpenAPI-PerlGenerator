@@ -46,7 +46,12 @@ The nominal user type used to determine the assignee for issues created with thi
 
 has 'assigneeType' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "PROJECT_DEFAULT",
+        "COMPONENT_LEAD",
+        "PROJECT_LEAD",
+        "UNASSIGNED",
+    ],
 );
 
 =head2 C<< description >>
@@ -158,7 +163,12 @@ The type of the assignee that is assigned to issues created with this component,
 
 has 'realAssigneeType' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "PROJECT_DEFAULT",
+        "COMPONENT_LEAD",
+        "PROJECT_LEAD",
+        "UNASSIGNED",
+    ],
 );
 
 =head2 C<< self >>

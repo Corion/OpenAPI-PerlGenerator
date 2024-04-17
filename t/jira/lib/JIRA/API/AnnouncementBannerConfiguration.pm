@@ -73,7 +73,10 @@ Visibility of the announcement banner.
 
 has 'visibility' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "PUBLIC",
+        "PRIVATE",
+    ],
 );
 
 

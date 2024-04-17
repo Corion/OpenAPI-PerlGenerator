@@ -72,7 +72,10 @@ Whether the issue type is `subtype` or `standard`. Defaults to `standard`.
 
 has 'type' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "subtask",
+        "standard",
+    ],
 );
 
 

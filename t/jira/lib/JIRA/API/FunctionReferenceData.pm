@@ -42,7 +42,10 @@ Whether the function can take a list of arguments.
 
 has 'isList' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "true",
+        "false",
+    ],
 );
 
 =head2 C<< types >>

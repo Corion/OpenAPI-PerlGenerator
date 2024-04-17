@@ -142,7 +142,13 @@ Note: If the JQL is not correctly formed a 400 response code is returned, regard
 
 has 'validateQuery' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "strict",
+        "warn",
+        "none",
+        "true",
+        "false",
+    ],
 );
 
 

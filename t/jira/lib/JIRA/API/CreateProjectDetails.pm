@@ -31,7 +31,10 @@ The default assignee when creating issues for this project.
 
 has 'assigneeType' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "PROJECT_LEAD",
+        "UNASSIGNED",
+    ],
 );
 
 =head2 C<< avatarId >>
@@ -187,7 +190,35 @@ A predefined configuration for a project. The type of the `projectTemplateKey` m
 
 has 'projectTemplateKey' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "com.pyxis.greenhopper.jira:gh-simplified-agility-kanban",
+        "com.pyxis.greenhopper.jira:gh-simplified-agility-scrum",
+        "com.pyxis.greenhopper.jira:gh-simplified-basic",
+        "com.pyxis.greenhopper.jira:gh-simplified-kanban-classic",
+        "com.pyxis.greenhopper.jira:gh-simplified-scrum-classic",
+        "com.atlassian.servicedesk:simplified-it-service-management",
+        "com.atlassian.servicedesk:simplified-general-service-desk",
+        "com.atlassian.servicedesk:simplified-general-service-desk-it",
+        "com.atlassian.servicedesk:simplified-general-service-desk-business",
+        "com.atlassian.servicedesk:simplified-internal-service-desk",
+        "com.atlassian.servicedesk:simplified-external-service-desk",
+        "com.atlassian.servicedesk:simplified-hr-service-desk",
+        "com.atlassian.servicedesk:simplified-facilities-service-desk",
+        "com.atlassian.servicedesk:simplified-legal-service-desk",
+        "com.atlassian.servicedesk:simplified-marketing-service-desk",
+        "com.atlassian.servicedesk:simplified-finance-service-desk",
+        "com.atlassian.servicedesk:simplified-analytics-service-desk",
+        "com.atlassian.servicedesk:simplified-halp-service-desk",
+        "com.atlassian.servicedesk:simplified-custom-project-service-desk",
+        "com.atlassian.jira-core-project-templates:jira-core-simplified-content-management",
+        "com.atlassian.jira-core-project-templates:jira-core-simplified-document-approval",
+        "com.atlassian.jira-core-project-templates:jira-core-simplified-lead-tracking",
+        "com.atlassian.jira-core-project-templates:jira-core-simplified-process-control",
+        "com.atlassian.jira-core-project-templates:jira-core-simplified-procurement",
+        "com.atlassian.jira-core-project-templates:jira-core-simplified-project-management",
+        "com.atlassian.jira-core-project-templates:jira-core-simplified-recruitment",
+        "com.atlassian.jira-core-project-templates:jira-core-simplified-task-",
+    ],
 );
 
 =head2 C<< projectTypeKey >>
@@ -198,7 +229,11 @@ The [project type](https://confluence.atlassian.com/x/GwiiLQ#Jiraapplicationsove
 
 has 'projectTypeKey' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "software",
+        "service_desk",
+        "business",
+    ],
 );
 
 =head2 C<< url >>

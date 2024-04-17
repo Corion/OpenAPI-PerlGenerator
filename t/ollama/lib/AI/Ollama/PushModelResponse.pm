@@ -42,7 +42,12 @@ Status pushing the model.
 
 has 'status' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "retrieving manifest",
+        "starting upload",
+        "pushing manifest",
+        "success",
+    ],
 );
 
 =head2 C<< total >>

@@ -53,7 +53,10 @@ The compound condition operator.
 
 has 'operator' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "AND",
+        "OR",
+    ],
     required => 1,
 );
 

@@ -41,7 +41,10 @@ The type of scope.
 
 has 'type' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "PROJECT",
+        "TEMPLATE",
+    ],
 );
 
 

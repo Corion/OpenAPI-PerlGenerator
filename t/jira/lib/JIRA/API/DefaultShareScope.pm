@@ -35,7 +35,11 @@ The scope of the default sharing for new filters and dashboards:
 
 has 'scope' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "GLOBAL",
+        "AUTHENTICATED",
+        "PRIVATE",
+    ],
     required => 1,
 );
 

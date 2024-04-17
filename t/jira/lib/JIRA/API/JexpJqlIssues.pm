@@ -64,7 +64,11 @@ Determines how to validate the JQL query and treat the validation results.
 
 has 'validation' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "strict",
+        "warn",
+        "none",
+    ],
 );
 
 

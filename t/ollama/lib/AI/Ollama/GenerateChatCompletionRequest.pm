@@ -35,7 +35,9 @@ Note: it's important to instruct the model to use JSON in the prompt. Otherwise,
 
 has 'format' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "json",
+    ],
 );
 
 =head2 C<< keep_alive >>

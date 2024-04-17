@@ -230,7 +230,14 @@ has 'number' => (
 
 has 'numberType' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "INT",
+        "LONG",
+        "BIG_INTEGER",
+        "FLOAT",
+        "DOUBLE",
+        "BIG_DECIMAL",
+    ],
 );
 
 =head2 C<< numberValue >>

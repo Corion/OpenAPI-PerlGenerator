@@ -54,7 +54,10 @@ The position the issue types should be moved to. Required if `after` isn't provi
 
 has 'position' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "First",
+        "Last",
+    ],
 );
 
 

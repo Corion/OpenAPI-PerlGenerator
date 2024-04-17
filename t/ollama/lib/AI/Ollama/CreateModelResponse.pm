@@ -31,7 +31,11 @@ Status creating the model
 
 has 'status' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "creating system layer",
+        "parsing modelfile",
+        "success",
+    ],
 );
 
 

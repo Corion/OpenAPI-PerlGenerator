@@ -82,7 +82,16 @@ The type of share permission:
 
 has 'type' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "user",
+        "group",
+        "project",
+        "projectRole",
+        "global",
+        "loggedin",
+        "authenticated",
+        "project-unknown",
+    ],
     required => 1,
 );
 

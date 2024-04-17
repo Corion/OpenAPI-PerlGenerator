@@ -62,7 +62,10 @@ The default assignee when creating issues for this project.
 
 has 'assigneeType' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "PROJECT_LEAD",
+        "UNASSIGNED",
+    ],
 );
 
 =head2 C<< avatarUrls >>
@@ -282,7 +285,11 @@ The [project type](https://confluence.atlassian.com/x/GwiiLQ#Jiraapplicationsove
 
 has 'projectTypeKey' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "software",
+        "service_desk",
+        "business",
+    ],
 );
 
 =head2 C<< properties >>
@@ -347,7 +354,10 @@ The type of the project.
 
 has 'style' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "classic",
+        "next-gen",
+    ],
 );
 
 =head2 C<< url >>

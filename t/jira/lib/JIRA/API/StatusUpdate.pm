@@ -66,7 +66,11 @@ The category of the status.
 
 has 'statusCategory' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "TODO",
+        "IN_PROGRESS",
+        "DONE",
+    ],
     required => 1,
 );
 

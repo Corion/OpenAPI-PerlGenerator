@@ -79,7 +79,21 @@ If no searcher is provided, the field isn't searchable. However, [Forge custom f
 
 has 'searcherKey' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "com.atlassian.jira.plugin.system.customfieldtypes:cascadingselectsearcher",
+        "com.atlassian.jira.plugin.system.customfieldtypes:daterange",
+        "com.atlassian.jira.plugin.system.customfieldtypes:datetimerange",
+        "com.atlassian.jira.plugin.system.customfieldtypes:exactnumber",
+        "com.atlassian.jira.plugin.system.customfieldtypes:exacttextsearcher",
+        "com.atlassian.jira.plugin.system.customfieldtypes:grouppickersearcher",
+        "com.atlassian.jira.plugin.system.customfieldtypes:labelsearcher",
+        "com.atlassian.jira.plugin.system.customfieldtypes:multiselectsearcher",
+        "com.atlassian.jira.plugin.system.customfieldtypes:numberrange",
+        "com.atlassian.jira.plugin.system.customfieldtypes:projectsearcher",
+        "com.atlassian.jira.plugin.system.customfieldtypes:textsearcher",
+        "com.atlassian.jira.plugin.system.customfieldtypes:userpickergroupsearcher",
+        "com.atlassian.jira.plugin.system.customfieldtypes:versionsearcher",
+    ],
 );
 
 =head2 C<< type >>

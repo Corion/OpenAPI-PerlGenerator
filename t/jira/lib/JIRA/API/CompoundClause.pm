@@ -43,7 +43,11 @@ The operator between the clauses.
 
 has 'operator' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "and",
+        "or",
+        "not",
+    ],
     required => 1,
 );
 

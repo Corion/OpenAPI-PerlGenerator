@@ -95,7 +95,10 @@ The type of the permission.
 
 has 'type' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "GLOBAL",
+        "PROJECT",
+    ],
 );
 
 

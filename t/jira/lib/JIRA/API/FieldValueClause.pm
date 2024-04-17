@@ -55,7 +55,20 @@ The operator between the field and operand.
 
 has 'operator' => (
     is       => 'ro',
-    isa      => Str,
+    isa      => Enum[
+        "=",
+        "!=",
+        ">",
+        "<",
+        ">=",
+        "<=",
+        "in",
+        "not in",
+        "~",
+        "~=",
+        "is",
+        "is not",
+    ],
     required => 1,
 );
 
