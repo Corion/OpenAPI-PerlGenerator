@@ -15,6 +15,8 @@ use OpenAPI::Modern;
 
 use Future::Mojo;
 
+our $SCHEMA_VERSION = "0.1.0";
+
 use Speech::Recognition::Whisper::Error;
 use Speech::Recognition::Whisper::LoadModel;
 use Speech::Recognition::Whisper::SuccessfulLoad;

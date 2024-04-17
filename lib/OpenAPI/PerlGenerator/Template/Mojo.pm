@@ -421,6 +421,8 @@ use OpenAPI::Modern;
 
 use Future::Mojo;
 
+our $SCHEMA_VERSION = "<%= $schema->{info}->{version} %>";
+
 % my @submodules = openapi_submodules($schema);
 % while (my($submodule,$info) = splice( @submodules, 0, 2 )) {
 %     if( $info->{type} and $info->{type} eq 'object' ) {

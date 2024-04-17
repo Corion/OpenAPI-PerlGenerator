@@ -15,6 +15,8 @@ use OpenAPI::Modern;
 
 use Future::Mojo;
 
+our $SCHEMA_VERSION = "1.0.0";
+
 use OpenAPI::PetStore::Error;
 use OpenAPI::PetStore::NewPet;
 

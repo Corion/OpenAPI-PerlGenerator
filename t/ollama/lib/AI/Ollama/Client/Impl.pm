@@ -15,6 +15,8 @@ use OpenAPI::Modern;
 
 use Future::Mojo;
 
+our $SCHEMA_VERSION = "0.1.9";
+
 use AI::Ollama::CopyModelRequest;
 use AI::Ollama::CreateModelRequest;
 use AI::Ollama::CreateModelResponse;

@@ -15,6 +15,8 @@ use OpenAPI::Modern;
 
 use Future::Mojo;
 
+our $SCHEMA_VERSION = "1001.0.0-SNAPSHOT";
+
 use JIRA::API::ActorInputBean;
 use JIRA::API::ActorsMap;
 use JIRA::API::AddFieldBean;
