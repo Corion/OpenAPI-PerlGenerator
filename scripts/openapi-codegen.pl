@@ -59,11 +59,11 @@ my %template = %OpenAPI::PerlGenerator::Template::Mojo::template;
 my $generator = OpenAPI::PerlGenerator->new(
     templates => \%template,
     tidy      => $run_perltidy,
+    prefix    => $prefix,
 );
 
 my @packages = $generator->generate(
     schema => $schema,
-    prefix => $prefix,
     version => $version,
 );
 
