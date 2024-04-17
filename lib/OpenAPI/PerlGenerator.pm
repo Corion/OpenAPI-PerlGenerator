@@ -113,6 +113,7 @@ The version number to give to all modules
 
 has 'version' => (
     is => 'ro',
+    default => '0.01',
 );
 
 sub fixup_json_ref( $root, $curr=$root ) {
