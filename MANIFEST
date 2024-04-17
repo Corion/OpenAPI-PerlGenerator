@@ -16,6 +16,7 @@ scripts/openapi-codegen.pl
 t/00-load.t
 t/01-regression.t
 t/02-http-form.t
+t/03-version-number.t
 t/generate.request
 t/jira/jira.json
 t/jira/lib/JIRA/API/ActorInputBean.pm
