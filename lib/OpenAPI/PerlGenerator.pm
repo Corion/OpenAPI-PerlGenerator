@@ -89,7 +89,7 @@ our %default_typemap = (
     number => 'Num',
     integer => 'Int',
     boolean => '', # a conflict between JSON::PP::Boolean and Type::Tiny
-    object  => 'Object',
+    object  => 'HashRef',
 );
 
 =item * B<typemap>
