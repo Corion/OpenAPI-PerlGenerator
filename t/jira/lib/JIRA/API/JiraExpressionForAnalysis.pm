@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -32,7 +32,7 @@ Context variables and their types. The type checker assumes that [common context
 
 has 'contextVariables' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< expressions >>

@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -32,7 +32,7 @@ The list of groups found in a search, including header text (Showing X of Y matc
 
 has 'groups' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< users >>
@@ -43,7 +43,7 @@ The list of users found in a search, including header text (Showing X of Y match
 
 has 'users' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 

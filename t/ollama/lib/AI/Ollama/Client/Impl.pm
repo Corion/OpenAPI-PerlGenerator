@@ -147,7 +147,7 @@ sub checkBlob( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -231,7 +231,7 @@ sub createBlob( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -482,7 +482,7 @@ sub copyModel( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -691,7 +691,7 @@ sub deleteModel( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -792,7 +792,7 @@ sub generateEmbedding( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -1086,7 +1086,7 @@ sub pullModel( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -1187,7 +1187,7 @@ sub pushModel( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -1280,7 +1280,7 @@ sub showModelInfo( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -1358,7 +1358,7 @@ sub listModels( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {

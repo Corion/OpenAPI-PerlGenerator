@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -65,7 +65,7 @@ Properties that identify a published workflow.
 
 has 'id' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
     required => 1,
 );
 
@@ -87,7 +87,7 @@ Operations allowed on a workflow
 
 has 'operations' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< projects >>
@@ -98,7 +98,7 @@ The projects the workflow is assigned to, through workflow schemes.
 
 has 'projects' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< schemes >>
@@ -109,7 +109,7 @@ The workflow schemes the workflow is assigned to.
 
 has 'schemes' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< statuses >>
@@ -120,7 +120,7 @@ The statuses of the workflow.
 
 has 'statuses' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< transitions >>
@@ -131,7 +131,7 @@ The transitions of the workflow.
 
 has 'transitions' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< updated >>

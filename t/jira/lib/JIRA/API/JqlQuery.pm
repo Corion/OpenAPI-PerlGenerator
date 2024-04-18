@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -32,7 +32,7 @@ Details of the order-by JQL clause.
 
 has 'orderBy' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< where >>
@@ -43,7 +43,7 @@ A JQL query clause.
 
 has 'where' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 

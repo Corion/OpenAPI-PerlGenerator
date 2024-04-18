@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -75,7 +75,7 @@ The issue type to workflow mappings, where each mapping is an issue type ID and 
 
 has 'issueTypeMappings' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< issueTypes >>
@@ -86,7 +86,7 @@ The issue types available in Jira.
 
 has 'issueTypes' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< lastModified >>
@@ -140,7 +140,7 @@ For draft workflow schemes, this property is the issue type to workflow mappings
 
 has 'originalIssueTypeMappings' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< self >>

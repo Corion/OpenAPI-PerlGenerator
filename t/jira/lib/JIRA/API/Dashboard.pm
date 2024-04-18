@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -52,7 +52,7 @@ The details of any edit share permissions for the dashboard.
 
 has 'editPermissions' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< id >>
@@ -148,7 +148,7 @@ The details of any view share permissions for the dashboard.
 
 has 'sharePermissions' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< systemDashboard >>

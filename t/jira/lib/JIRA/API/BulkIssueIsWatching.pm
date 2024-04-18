@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -32,7 +32,7 @@ The map of issue ID to boolean watch status.
 
 has 'issuesIsWatching' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 

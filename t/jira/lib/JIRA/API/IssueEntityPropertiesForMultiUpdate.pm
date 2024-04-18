@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -43,7 +43,7 @@ Entity properties to set on the issue. The maximum length of an issue property v
 
 has 'properties' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 

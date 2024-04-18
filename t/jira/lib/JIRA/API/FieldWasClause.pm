@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -32,7 +32,7 @@ A field used in a JQL query. See [Advanced searching - fields reference](https:/
 
 has 'field' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
     required => 1,
 );
 
@@ -44,7 +44,7 @@ Details of an operand in a JQL clause.
 
 has 'operand' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
     required => 1,
 );
 
@@ -73,7 +73,7 @@ The list of time predicates.
 
 has 'predicates' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
     required => 1,
 );
 

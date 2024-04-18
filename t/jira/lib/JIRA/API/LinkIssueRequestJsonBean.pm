@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -32,7 +32,7 @@ A comment.
 
 has 'comment' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< inwardIssue >>
@@ -43,7 +43,7 @@ The ID or key of a linked issue.
 
 has 'inwardIssue' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
     required => 1,
 );
 
@@ -55,7 +55,7 @@ The ID or key of a linked issue.
 
 has 'outwardIssue' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
     required => 1,
 );
 
@@ -70,7 +70,7 @@ This object is used as follows:
 
 has 'type' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
     required => 1,
 );
 

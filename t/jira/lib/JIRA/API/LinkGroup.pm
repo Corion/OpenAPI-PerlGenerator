@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -30,7 +30,7 @@ sub as_hash( $self ) {
 
 has 'groups' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< header >>
@@ -41,7 +41,7 @@ Details about the operations available in this version.
 
 has 'header' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< id >>
@@ -59,7 +59,7 @@ has 'id' => (
 
 has 'links' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< styleClass >>

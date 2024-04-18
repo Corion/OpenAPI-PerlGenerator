@@ -701,7 +701,7 @@ sub getBanner( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -855,7 +855,7 @@ sub setBanner( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -967,7 +967,7 @@ sub updateMultipleCustomFieldValues( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -1111,7 +1111,7 @@ sub getCustomFieldConfiguration( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -1230,7 +1230,7 @@ sub updateCustomFieldConfiguration( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -1354,7 +1354,7 @@ sub updateCustomFieldValue( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -1463,7 +1463,7 @@ sub getApplicationProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -1554,7 +1554,7 @@ sub getAdvancedSettings( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -1677,7 +1677,7 @@ sub setApplicationProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -1768,7 +1768,7 @@ sub getAllApplicationRoles( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -1871,7 +1871,7 @@ sub getApplicationRole( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -1994,7 +1994,7 @@ sub getAttachmentContent( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -2081,7 +2081,7 @@ sub getAttachmentMeta( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -2213,7 +2213,7 @@ sub getAttachmentThumbnail( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -2300,7 +2300,7 @@ sub removeAttachment( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -2403,7 +2403,7 @@ sub getAttachment( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -2509,7 +2509,7 @@ sub expandAttachmentForHumans( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -2615,7 +2615,7 @@ sub expandAttachmentForMachines( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -2733,7 +2733,7 @@ sub getAuditRecords( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -2833,7 +2833,7 @@ sub getAllSystemAvatars( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -2955,7 +2955,7 @@ sub getCommentsByIds( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -3061,7 +3061,7 @@ sub getCommentPropertyKeys( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -3161,7 +3161,7 @@ sub deleteCommentProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -3274,7 +3274,7 @@ sub getCommentProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -3405,7 +3405,7 @@ sub setCommentProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -3618,7 +3618,7 @@ sub createComponent( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -3716,7 +3716,7 @@ sub deleteComponent( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -3816,7 +3816,7 @@ sub getComponent( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -4039,7 +4039,7 @@ sub updateComponent( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -4139,7 +4139,7 @@ sub getComponentRelatedIssues( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -4226,7 +4226,7 @@ sub getConfiguration( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -4331,7 +4331,7 @@ sub getSelectedTimeTrackingImplementation( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -4445,7 +4445,7 @@ sub selectTimeTrackingImplementation( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -4536,7 +4536,7 @@ sub getAvailableTimeTrackingImplementations( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -4626,7 +4626,7 @@ sub getSharedTimeTrackingConfiguration( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -4744,7 +4744,7 @@ sub setSharedTimeTrackingConfiguration( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -4844,7 +4844,7 @@ sub getCustomFieldOption( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -4990,7 +4990,7 @@ sub getAllDashboards( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -5129,7 +5129,7 @@ sub createDashboard( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -5243,7 +5243,7 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -5493,7 +5493,7 @@ sub getDashboardsPaginated( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -5623,7 +5623,7 @@ sub getAllGadgets( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -5783,7 +5783,7 @@ sub addGadget( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -5902,7 +5902,7 @@ sub removeGadget( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -6057,7 +6057,7 @@ sub updateGadget( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -6164,7 +6164,7 @@ sub getDashboardItemPropertyKeys( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -6271,7 +6271,7 @@ sub deleteDashboardItemProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -6385,7 +6385,7 @@ sub getDashboardItemProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -6534,7 +6534,7 @@ sub setDashboardItemProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -6646,7 +6646,7 @@ sub deleteDashboard( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -6773,7 +6773,7 @@ sub getDashboard( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -6937,7 +6937,7 @@ sub updateDashboard( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -7099,7 +7099,7 @@ sub copyDashboard( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -7190,7 +7190,7 @@ sub getEvents( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -7351,7 +7351,7 @@ sub analyseExpression( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -7493,7 +7493,7 @@ sub evaluateJiraExpression( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -7581,7 +7581,7 @@ sub getFields( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -7917,7 +7917,7 @@ sub createCustomField( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -8130,7 +8130,7 @@ sub getFieldsPaginated( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -8295,7 +8295,7 @@ sub getTrashedFieldsPaginated( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -8564,7 +8564,7 @@ sub updateCustomField( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -8717,7 +8717,7 @@ sub getContextsForField( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -8863,7 +8863,7 @@ sub createCustomFieldContext( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -9006,7 +9006,7 @@ sub getDefaultValues( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -9156,7 +9156,7 @@ sub setDefaultValues( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -9285,7 +9285,7 @@ sub getIssueTypeMappingsForContexts( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -9450,7 +9450,7 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -9593,7 +9593,7 @@ sub getProjectContextMapping( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -9739,7 +9739,7 @@ sub deleteCustomFieldContext( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -9902,7 +9902,7 @@ sub updateCustomFieldContext( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -10075,7 +10075,7 @@ sub addIssueTypesToContext( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -10234,7 +10234,7 @@ sub removeIssueTypesFromContext( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -10403,7 +10403,7 @@ sub getOptionsForContext( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -10562,7 +10562,7 @@ sub createCustomFieldOption( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -10721,7 +10721,7 @@ sub updateCustomFieldOption( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -10888,7 +10888,7 @@ sub reorderCustomFieldOptions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -11029,7 +11029,7 @@ sub deleteCustomFieldOption( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -11188,7 +11188,7 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -11347,7 +11347,7 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -11460,7 +11460,7 @@ sub getContextsForFieldDeprecated( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -11578,7 +11578,7 @@ sub getScreensForField( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -11705,7 +11705,7 @@ sub getAllIssueFieldOptions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -11843,7 +11843,7 @@ sub createIssueFieldOption( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -11975,7 +11975,7 @@ sub getSelectableIssueFieldOptions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -12107,7 +12107,7 @@ sub getVisibleIssueFieldOptions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -12231,7 +12231,7 @@ sub deleteIssueFieldOption( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -12355,7 +12355,7 @@ sub getIssueFieldOption( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -12504,7 +12504,7 @@ sub updateIssueFieldOption( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -12662,7 +12662,7 @@ sub replaceIssueFieldOption( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -12831,7 +12831,7 @@ sub deleteCustomField( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -12985,7 +12985,7 @@ sub restoreCustomField( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -13139,7 +13139,7 @@ sub trashCustomField( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -13257,7 +13257,7 @@ sub getAllFieldConfigurations( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -13367,7 +13367,7 @@ sub createFieldConfiguration( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -13473,7 +13473,7 @@ sub deleteFieldConfiguration( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -13596,7 +13596,7 @@ sub updateFieldConfiguration( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -13712,7 +13712,7 @@ sub getFieldConfigurationItems( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -13831,7 +13831,7 @@ sub updateFieldConfigurationItems( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -13942,7 +13942,7 @@ sub getAllFieldConfigurationSchemes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -14074,7 +14074,7 @@ sub createFieldConfigurationScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -14188,7 +14188,7 @@ sub getFieldConfigurationSchemeMappings( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -14302,7 +14302,7 @@ sub getFieldConfigurationSchemeProjectMapping( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -14448,7 +14448,7 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -14554,7 +14554,7 @@ sub deleteFieldConfigurationScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -14710,7 +14710,7 @@ sub updateFieldConfigurationScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -14829,7 +14829,7 @@ sub setFieldConfigurationSchemeMapping( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -14996,7 +14996,7 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -15103,7 +15103,7 @@ sub getFilters( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -15285,7 +15285,7 @@ sub createFilter( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -15372,7 +15372,7 @@ sub getDefaultShareScope( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -15494,7 +15494,7 @@ sub setDefaultShareScope( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -15604,7 +15604,7 @@ sub getFavouriteFilters( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -15719,7 +15719,7 @@ sub getMyFilters( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -15982,7 +15982,7 @@ sub getFiltersPaginated( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -16069,7 +16069,7 @@ sub deleteFilter( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -16196,7 +16196,7 @@ sub getFilter( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -16388,7 +16388,7 @@ sub updateFilter( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -16475,7 +16475,7 @@ sub resetColumns( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -16579,7 +16579,7 @@ sub getColumns( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -16684,7 +16684,7 @@ sub setColumns( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -16803,7 +16803,7 @@ sub deleteFavouriteForFilter( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -16922,7 +16922,7 @@ sub setFavouriteForFilter( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -17038,7 +17038,7 @@ sub changeFilterOwner( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -17139,7 +17139,7 @@ sub getSharePermissions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -17314,7 +17314,7 @@ sub addSharePermission( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -17408,7 +17408,7 @@ sub deleteSharePermission( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -17515,7 +17515,7 @@ sub getSharePermission( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -17621,7 +17621,7 @@ sub removeGroup( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -17737,7 +17737,7 @@ sub getGroup( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -17843,7 +17843,7 @@ sub createGroup( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -17994,7 +17994,7 @@ sub bulkGetGroups( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -18120,7 +18120,7 @@ sub getUsersFromGroup( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -18231,7 +18231,7 @@ sub removeUserFromGroup( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -18359,7 +18359,7 @@ sub addUserToGroup( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -18483,7 +18483,7 @@ sub findGroups( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -18630,7 +18630,7 @@ sub findUsersAndGroups( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -18717,7 +18717,7 @@ sub getLicense( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -18883,7 +18883,7 @@ sub createIssue( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -18996,7 +18996,7 @@ sub createIssues( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -19111,7 +19111,7 @@ sub getCreateIssueMeta( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -19231,7 +19231,7 @@ sub getIssuePickerResource( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -19350,7 +19350,7 @@ sub bulkSetIssuesPropertiesList( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -19480,7 +19480,7 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -19609,7 +19609,7 @@ sub bulkDeleteIssueProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -19742,7 +19742,7 @@ sub bulkSetIssueProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -19842,7 +19842,7 @@ sub getIsWatchingIssueBulk( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -19943,7 +19943,7 @@ sub deleteIssue( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -20191,7 +20191,7 @@ sub getIssue( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -20344,7 +20344,7 @@ sub editIssue( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -20531,7 +20531,7 @@ sub assignIssue( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -20638,7 +20638,7 @@ sub addAttachment( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -20748,7 +20748,7 @@ sub getChangeLogs( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -20861,7 +20861,7 @@ sub getChangeLogsByIds( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -20987,7 +20987,7 @@ sub getComments( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -21155,7 +21155,7 @@ sub addComment( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -21255,7 +21255,7 @@ sub deleteComment( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -21370,7 +21370,7 @@ sub getComment( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -21555,7 +21555,7 @@ sub updateComment( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -21671,7 +21671,7 @@ sub getEditIssueMeta( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -21803,7 +21803,7 @@ sub notify( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -21900,7 +21900,7 @@ sub getIssuePropertyKeys( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -21994,7 +21994,7 @@ sub deleteIssueProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -22101,7 +22101,7 @@ sub getIssueProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -22232,7 +22232,7 @@ sub setIssueProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -22335,7 +22335,7 @@ sub deleteRemoteIssueLinkByGlobalId( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -22449,7 +22449,7 @@ sub getRemoteIssueLinks( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -22610,7 +22610,7 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -22710,7 +22710,7 @@ sub deleteRemoteIssueLinkById( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -22823,7 +22823,7 @@ sub getRemoteIssueLinkById( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -22976,7 +22976,7 @@ sub updateRemoteIssueLink( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -23104,7 +23104,7 @@ sub getTransitions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -23236,7 +23236,7 @@ sub doTransition( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -23323,7 +23323,7 @@ sub removeVote( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -23423,7 +23423,7 @@ sub getVotes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -23526,7 +23526,7 @@ sub addVote( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -23632,7 +23632,7 @@ sub removeWatcher( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -23732,7 +23732,7 @@ sub getIssueWatchers( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -23841,7 +23841,7 @@ sub addWatcher( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -23969,7 +23969,7 @@ sub getIssueWorklog( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -24190,7 +24190,7 @@ sub addWorklog( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -24339,7 +24339,7 @@ sub deleteWorklog( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -24456,7 +24456,7 @@ sub getWorklog( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -24674,7 +24674,7 @@ sub updateWorklog( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -24784,7 +24784,7 @@ sub getWorklogPropertyKeys( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -24891,7 +24891,7 @@ sub deleteWorklogProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -25008,7 +25008,7 @@ sub getWorklogProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -25146,7 +25146,7 @@ sub setWorklogProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -25278,7 +25278,7 @@ sub linkIssues( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -25371,7 +25371,7 @@ sub deleteIssueLink( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -25474,7 +25474,7 @@ sub getIssueLink( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -25564,7 +25564,7 @@ sub getIssueLinkTypes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -25742,7 +25742,7 @@ sub createIssueLinkType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -25832,7 +25832,7 @@ sub deleteIssueLinkType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -25935,7 +25935,7 @@ sub getIssueLinkType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -26123,7 +26123,7 @@ sub updateIssueLinkType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -26213,7 +26213,7 @@ sub getIssueSecuritySchemes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -26313,7 +26313,7 @@ sub getIssueSecurityScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -26471,7 +26471,7 @@ sub getIssueSecurityLevelMembers( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -26559,7 +26559,7 @@ sub getIssueAllTypes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -26698,7 +26698,7 @@ sub createIssueType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -26827,7 +26827,7 @@ sub getIssueTypesForProject( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -26931,7 +26931,7 @@ sub deleteIssueType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -27034,7 +27034,7 @@ sub getIssueType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -27164,7 +27164,7 @@ sub updateIssueType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -27265,7 +27265,7 @@ sub getAlternativeIssueTypes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -27395,7 +27395,7 @@ sub createIssueTypeAvatar( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -27495,7 +27495,7 @@ sub getIssueTypePropertyKeys( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -27595,7 +27595,7 @@ sub deleteIssueTypeProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -27705,7 +27705,7 @@ sub getIssueTypeProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -27836,7 +27836,7 @@ sub setIssueTypeProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -27990,7 +27990,7 @@ sub getAllIssueTypeSchemes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -28144,7 +28144,7 @@ sub createIssueTypeScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -28255,7 +28255,7 @@ sub getIssueTypeSchemesMapping( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -28369,7 +28369,7 @@ sub getIssueTypeSchemeForProjects( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -28515,7 +28515,7 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -28654,7 +28654,7 @@ sub deleteIssueTypeScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -28814,7 +28814,7 @@ sub updateIssueTypeScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -28966,7 +28966,7 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -29126,7 +29126,7 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -29272,7 +29272,7 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -29412,7 +29412,7 @@ sub getIssueTypeScreenSchemes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -29576,7 +29576,7 @@ sub createIssueTypeScreenScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -29687,7 +29687,7 @@ sub getIssueTypeScreenSchemeMappings( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -29801,7 +29801,7 @@ sub getIssueTypeScreenSchemeProjectAssociations( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -29947,7 +29947,7 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -30075,7 +30075,7 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -30231,7 +30231,7 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -30386,7 +30386,7 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -30538,7 +30538,7 @@ sub updateDefaultScreenScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -30690,7 +30690,7 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -30809,7 +30809,7 @@ sub getProjectsForIssueTypeScreenScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -30896,7 +30896,7 @@ sub getAutoComplete( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -31003,7 +31003,7 @@ sub getAutoCompletePost( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -31116,7 +31116,7 @@ sub getFieldAutoCompleteForQueryString( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -31218,7 +31218,7 @@ sub getPrecomputations( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -31313,7 +31313,7 @@ sub updatePrecomputations( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -31417,7 +31417,7 @@ sub matchIssues( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -31559,7 +31559,7 @@ sub parseJqlQueries( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -31662,7 +31662,7 @@ sub migrateQueries( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -31804,7 +31804,7 @@ sub sanitiseJqlQueries( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -31901,7 +31901,7 @@ sub getAllLabels( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -31991,7 +31991,7 @@ sub getApproximateLicenseCount( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -32089,7 +32089,7 @@ sub getApproximateApplicationLicenseCount( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -32257,7 +32257,7 @@ sub getMyPermissions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -32345,7 +32345,7 @@ sub removePreference( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -32446,7 +32446,7 @@ sub getPreference( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -32501,7 +32501,8 @@ sub _build_setPreference_request( $self, %options ) {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        # XXX Need to fill the body
+        # => $body,
     );
 
     return $tx
@@ -32551,7 +32552,7 @@ sub setPreference( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -32638,7 +32639,7 @@ sub deleteLocale( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -32725,7 +32726,7 @@ sub getLocale( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -32828,7 +32829,7 @@ sub setLocale( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -32937,7 +32938,7 @@ sub getCurrentUser( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -33105,7 +33106,7 @@ sub getNotificationSchemes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -33255,7 +33256,7 @@ sub createNotificationScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -33392,7 +33393,7 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -33537,7 +33538,7 @@ sub getNotificationScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -33708,7 +33709,7 @@ sub updateNotificationScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -33875,7 +33876,7 @@ sub addNotifications( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -34029,7 +34030,7 @@ sub deleteNotificationScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -34190,7 +34191,7 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -34280,7 +34281,7 @@ sub getAllPermissions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -34415,7 +34416,7 @@ sub getBulkPermissions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -34529,7 +34530,7 @@ sub getPermittedProjects( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -34658,7 +34659,7 @@ sub getAllPermissionSchemes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -34830,7 +34831,7 @@ sub createPermissionScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -34920,7 +34921,7 @@ sub deletePermissionScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -35062,7 +35063,7 @@ sub getPermissionScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -35244,7 +35245,7 @@ sub updatePermissionScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -35386,7 +35387,7 @@ sub getPermissionSchemeGrants( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -35556,7 +35557,7 @@ sub createPermissionGrant( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -35653,7 +35654,7 @@ sub deletePermissionSchemeEntity( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -35802,7 +35803,7 @@ sub getPermissionSchemeGrant( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -35890,7 +35891,7 @@ sub getPriorities( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -36044,7 +36045,7 @@ sub createPriority( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -36201,7 +36202,7 @@ sub setDefaultPriority( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -36366,7 +36367,7 @@ sub movePriorities( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -36488,7 +36489,7 @@ sub searchPriorities( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -36667,7 +36668,7 @@ sub deletePriority( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -36767,7 +36768,7 @@ sub getPriority( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -36946,7 +36947,7 @@ sub updatePriority( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -37076,7 +37077,7 @@ sub getAllProjects( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -37250,7 +37251,7 @@ sub createProject( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -37398,7 +37399,7 @@ sub getRecent( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -37712,7 +37713,7 @@ sub searchProjects( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -37800,7 +37801,7 @@ sub getAllProjectTypes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -37885,7 +37886,7 @@ sub getAllAccessibleProjectTypes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -37985,7 +37986,7 @@ sub getProjectTypeByKey( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -38085,7 +38086,7 @@ sub getAccessibleProjectTypeByKey( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -38180,7 +38181,7 @@ sub deleteProject( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -38322,7 +38323,7 @@ sub getProject( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -38517,7 +38518,7 @@ sub updateProject( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -38623,7 +38624,7 @@ sub archiveProject( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -38763,7 +38764,7 @@ sub updateProjectAvatar( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -38860,7 +38861,7 @@ sub deleteProjectAvatar( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -38988,7 +38989,7 @@ sub createProjectAvatar( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -39088,7 +39089,7 @@ sub getAllProjectAvatars( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -39235,7 +39236,7 @@ sub getProjectComponentsPaginated( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -39336,7 +39337,7 @@ sub getProjectComponents( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -39439,7 +39440,7 @@ sub deleteProjectAsynchronously( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -39545,7 +39546,7 @@ sub getFeaturesForProject( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -39671,7 +39672,7 @@ sub toggleFeatureForProject( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -39777,7 +39778,7 @@ sub getProjectPropertyKeys( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -39877,7 +39878,7 @@ sub deleteProjectProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -39990,7 +39991,7 @@ sub getProjectProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -40121,7 +40122,7 @@ sub setProjectProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -40224,7 +40225,7 @@ sub restore( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -40324,7 +40325,7 @@ sub getProjectRoles( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -40436,7 +40437,7 @@ sub deleteActor( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -40554,7 +40555,7 @@ sub getProjectRole( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -40685,7 +40686,7 @@ sub addActorUsers( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -40832,7 +40833,7 @@ sub setActors( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -40944,7 +40945,7 @@ sub getProjectRoleDetails( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -41045,7 +41046,7 @@ sub getAllStatuses( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -41155,7 +41156,7 @@ sub updateProjectType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -41328,7 +41329,7 @@ sub getProjectVersionsPaginated( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -41434,7 +41435,7 @@ sub getProjectVersions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -41537,7 +41538,7 @@ sub getProjectEmail( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -41660,7 +41661,7 @@ sub updateProjectEmail( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -41763,7 +41764,7 @@ sub getHierarchy( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -41869,7 +41870,7 @@ sub getProjectIssueSecurityScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -42014,7 +42015,7 @@ sub getNotificationSchemeForProject( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -42159,7 +42160,7 @@ sub getAssignedPermissionScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -42317,7 +42318,7 @@ sub assignPermissionScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -42414,7 +42415,7 @@ sub getSecurityLevelsForProject( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -42502,7 +42503,7 @@ sub getAllProjectCategories( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -42623,7 +42624,7 @@ sub createProjectCategory( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -42713,7 +42714,7 @@ sub removeProjectCategory( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -42813,7 +42814,7 @@ sub getProjectCategoryById( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -42942,7 +42943,7 @@ sub updateProjectCategory( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -43037,7 +43038,7 @@ sub validateProjectKey( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -43132,7 +43133,7 @@ sub getValidProjectKey( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -43236,7 +43237,7 @@ sub getValidProjectName( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -43324,7 +43325,7 @@ sub getResolutions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -43470,7 +43471,7 @@ sub createResolution( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -43627,7 +43628,7 @@ sub setDefaultResolution( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -43792,7 +43793,7 @@ sub moveResolutions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -43914,7 +43915,7 @@ sub searchResolutions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -44093,7 +44094,7 @@ sub deleteResolution( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -44193,7 +44194,7 @@ sub getResolution( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -44364,7 +44365,7 @@ sub updateResolution( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -44455,7 +44456,7 @@ sub getAllProjectRoles( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -44568,7 +44569,7 @@ sub createProjectRole( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -44672,7 +44673,7 @@ sub deleteProjectRole( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -44775,7 +44776,7 @@ sub getProjectRoleById( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -44898,7 +44899,7 @@ sub partialUpdateProjectRole( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -45021,7 +45022,7 @@ sub fullyUpdateProjectRole( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -45145,7 +45146,7 @@ sub deleteProjectRoleActorsFromRole( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -45251,7 +45252,7 @@ sub getProjectRoleActorsForRole( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -45378,7 +45379,7 @@ sub addProjectRoleActorsToRole( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -45515,7 +45516,7 @@ sub getScreens( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -45647,7 +45648,7 @@ sub createScreen( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -45750,7 +45751,7 @@ sub addFieldToDefaultScreen( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -45877,7 +45878,7 @@ sub deleteScreen( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -46033,7 +46034,7 @@ sub updateScreen( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -46137,7 +46138,7 @@ sub getAvailableScreenFields( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -46252,7 +46253,7 @@ sub getAllScreenTabs( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -46375,7 +46376,7 @@ sub addScreenTab( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -46472,7 +46473,7 @@ sub deleteScreenTab( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -46602,7 +46603,7 @@ sub renameScreenTab( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -46721,7 +46722,7 @@ sub getAllScreenTabFields( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -46847,7 +46848,7 @@ sub addScreenTabField( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -46954,7 +46955,7 @@ sub removeScreenTabField( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -47091,7 +47092,7 @@ sub moveScreenTabField( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -47211,7 +47212,7 @@ sub moveScreenTab( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -47348,7 +47349,7 @@ sub getScreenSchemes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -47498,7 +47499,7 @@ sub createScreenScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -47625,7 +47626,7 @@ sub deleteScreenScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -47785,7 +47786,7 @@ sub updateScreenScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -48056,7 +48057,7 @@ sub searchForIssuesUsingJql( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -48310,7 +48311,7 @@ sub searchForIssuesUsingJqlPost( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -48410,7 +48411,7 @@ sub getIssueSecurityLevel( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -48497,7 +48498,7 @@ sub getServerInfo( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -48588,7 +48589,7 @@ sub getIssueNavigatorDefaultColumns( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -48689,7 +48690,7 @@ sub setIssueNavigatorDefaultColumns( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -48777,7 +48778,7 @@ sub getStatuses( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -48877,7 +48878,7 @@ sub getStatus( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -48965,7 +48966,7 @@ sub getStatusCategories( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -49065,7 +49066,7 @@ sub getStatusCategory( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -49176,7 +49177,7 @@ sub deleteStatusesById( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -49291,7 +49292,7 @@ sub getStatusesById( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -49410,7 +49411,7 @@ sub createStatuses( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -49524,7 +49525,7 @@ sub updateStatuses( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -49656,7 +49657,7 @@ sub search( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -49759,7 +49760,7 @@ sub getTask( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -49917,7 +49918,7 @@ sub cancelTask( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -50042,7 +50043,7 @@ sub getUiModifications( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -50163,7 +50164,7 @@ sub createUiModification( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -50266,7 +50267,7 @@ sub deleteUiModification( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -50397,7 +50398,7 @@ sub updateUiModification( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -50504,7 +50505,7 @@ sub getAvatars( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -50641,7 +50642,7 @@ sub storeAvatar( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -50745,7 +50746,7 @@ sub deleteAvatar( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -51017,7 +51018,7 @@ sub getAvatarImageByType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -51341,7 +51342,7 @@ sub getAvatarImageByID( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -51665,7 +51666,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -51769,7 +51770,7 @@ sub removeUser( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -51899,7 +51900,7 @@ sub getUser( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -52029,7 +52030,7 @@ sub createUser( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -52162,7 +52163,7 @@ sub findBulkAssignableUsers( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -52310,7 +52311,7 @@ sub findAssignableUsers( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -52431,7 +52432,7 @@ sub bulkGetUsers( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -52545,7 +52546,7 @@ sub bulkGetUsersMigration( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -52635,7 +52636,7 @@ sub resetUserColumns( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -52742,7 +52743,7 @@ sub getUserDefaultColumns( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -52854,7 +52855,7 @@ sub setUserColumns( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -52961,7 +52962,7 @@ sub getUserEmail( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -53065,7 +53066,7 @@ sub getUserEmailBulk( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -53180,7 +53181,7 @@ sub getUserGroups( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -53511,7 +53512,7 @@ sub findUsersWithAllPermissions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -53641,7 +53642,7 @@ sub findUsersForPicker( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -53755,7 +53756,7 @@ sub getUserPropertyKeys( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -53866,7 +53867,7 @@ sub deleteUserProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -53990,7 +53991,7 @@ sub getUserProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -54135,7 +54136,7 @@ sub setUserProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -54260,7 +54261,7 @@ sub findUsers( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -54377,7 +54378,7 @@ sub findUsersByQuery( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -54494,7 +54495,7 @@ sub findUserKeysByQuery( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -54629,7 +54630,7 @@ sub findUsersWithBrowsePermission( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -54736,7 +54737,7 @@ sub getAllUsersDefault( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -54843,7 +54844,7 @@ sub getAllUsers( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -55029,7 +55030,7 @@ sub createVersion( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -55132,7 +55133,7 @@ sub deleteVersion( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -55254,7 +55255,7 @@ sub getVersion( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -55450,7 +55451,7 @@ sub updateVersion( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -55560,7 +55561,7 @@ sub mergeVersions( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -55680,7 +55681,7 @@ sub moveVersion( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -55780,7 +55781,7 @@ sub getVersionRelatedIssues( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -55904,7 +55905,7 @@ sub deleteAndReplaceVersion( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -56004,7 +56005,7 @@ sub getVersionUnresolvedIssues( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -56119,7 +56120,7 @@ sub deleteWebhookById( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -56246,7 +56247,7 @@ sub getDynamicWebhooksForApp( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -56377,7 +56378,7 @@ sub registerDynamicWebhooks( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -56504,7 +56505,7 @@ sub getFailedWebhooks( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -56631,7 +56632,7 @@ sub refreshWebhooks( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -56727,7 +56728,7 @@ sub getAllWorkflows( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -56922,7 +56923,7 @@ sub createWorkflow( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -57085,7 +57086,7 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -57212,7 +57213,7 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -57339,7 +57340,7 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -57552,7 +57553,7 @@ sub getWorkflowsPaginated( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -57670,7 +57671,7 @@ sub deleteWorkflowTransitionProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -57801,7 +57802,7 @@ sub getWorkflowTransitionProperties( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -57950,7 +57951,7 @@ sub createWorkflowTransitionProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -58102,7 +58103,7 @@ sub updateWorkflowTransitionProperty( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -58229,7 +58230,7 @@ sub deleteInactiveWorkflow( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -58332,7 +58333,7 @@ sub getAllWorkflowSchemes( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -58505,7 +58506,7 @@ sub createWorkflowScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -58631,7 +58632,7 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -58777,7 +58778,7 @@ sub assignSchemeToProject( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -58883,7 +58884,7 @@ sub deleteWorkflowScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -58994,7 +58995,7 @@ sub getWorkflowScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -59180,7 +59181,7 @@ sub updateWorkflowScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -59283,7 +59284,7 @@ sub createWorkflowSchemeDraftFromParent( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -59397,7 +59398,7 @@ sub deleteDefaultWorkflow( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -59508,7 +59509,7 @@ sub getDefaultWorkflow( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -59631,7 +59632,7 @@ sub updateDefaultWorkflow( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -59721,7 +59722,7 @@ sub deleteWorkflowSchemeDraft( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -59824,7 +59825,7 @@ sub getWorkflowSchemeDraft( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -60010,7 +60011,7 @@ sub updateWorkflowSchemeDraft( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -60113,7 +60114,7 @@ sub deleteDraftDefaultWorkflow( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -60216,7 +60217,7 @@ sub getDraftDefaultWorkflow( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -60339,7 +60340,7 @@ sub updateDraftDefaultWorkflow( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -60449,7 +60450,7 @@ sub deleteWorkflowSchemeDraftIssueType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -60559,7 +60560,7 @@ sub getWorkflowSchemeDraftIssueType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -60693,7 +60694,7 @@ sub setWorkflowSchemeDraftIssueType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -60845,7 +60846,7 @@ sub publishDraftWorkflowScheme( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -60945,7 +60946,7 @@ sub deleteDraftWorkflowMapping( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -61056,7 +61057,7 @@ sub getDraftWorkflow( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -61197,7 +61198,7 @@ sub updateDraftWorkflowMapping( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -61318,7 +61319,7 @@ sub deleteWorkflowSchemeIssueType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -61436,7 +61437,7 @@ sub getWorkflowSchemeIssueType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -61570,7 +61571,7 @@ sub setWorkflowSchemeIssueType( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -61678,7 +61679,7 @@ sub deleteWorkflowMapping( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -61794,7 +61795,7 @@ sub getWorkflow( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -61935,7 +61936,7 @@ sub updateWorkflowMapping( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -62030,7 +62031,7 @@ sub getIdsOfWorklogsDeletedSince( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -62142,7 +62143,7 @@ sub getWorklogsForIds( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -62242,7 +62243,7 @@ sub getIdsOfWorklogsModifiedSince( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -62351,7 +62352,7 @@ sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -62485,7 +62486,7 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -62631,7 +62632,7 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -62780,7 +62781,7 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -62877,7 +62878,7 @@ sub DynamicModulesResource_removeModules_delete( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -62976,7 +62977,7 @@ sub DynamicModulesResource_getModules_get( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -63092,7 +63093,7 @@ sub DynamicModulesResource_registerModules_post( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -63203,7 +63204,7 @@ sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -63300,7 +63301,7 @@ sub MigrationResource_updateEntityPropertiesValue_put( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -63419,7 +63420,7 @@ sub MigrationResource_workflowRuleSearch_post( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {

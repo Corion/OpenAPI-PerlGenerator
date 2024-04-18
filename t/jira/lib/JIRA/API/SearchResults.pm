@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -43,7 +43,7 @@ The list of issues found by the search.
 
 has 'issues' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< maxResults >>
@@ -65,7 +65,7 @@ The ID and name of each field in the search results.
 
 has 'names' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< schema >>
@@ -76,7 +76,7 @@ The schema describing the field types in the search results.
 
 has 'schema' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< startAt >>

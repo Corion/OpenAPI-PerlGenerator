@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -55,7 +55,7 @@ The statuses of the workflow. Any status that does not include a transition is a
 
 has 'statuses' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
     required => 1,
 );
 
@@ -77,7 +77,7 @@ All the transition statuses must be included in `statuses`.
 
 has 'transitions' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
     required => 1,
 );
 

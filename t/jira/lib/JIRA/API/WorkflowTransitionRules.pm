@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -32,7 +32,7 @@ The list of conditions within the workflow.
 
 has 'conditions' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< postFunctions >>
@@ -43,7 +43,7 @@ The list of post functions within the workflow.
 
 has 'postFunctions' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< validators >>
@@ -54,7 +54,7 @@ The list of validators within the workflow.
 
 has 'validators' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< workflowId >>
@@ -65,7 +65,7 @@ Properties that identify a workflow.
 
 has 'workflowId' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
     required => 1,
 );
 

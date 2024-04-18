@@ -156,7 +156,7 @@ sub findPets( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -260,7 +260,7 @@ sub addPet( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -355,7 +355,7 @@ sub deletePet( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -462,7 +462,7 @@ sub find_pet_by_id( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {

@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -30,7 +30,7 @@ sub as_hash( $self ) {
 
 has 'fields' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 

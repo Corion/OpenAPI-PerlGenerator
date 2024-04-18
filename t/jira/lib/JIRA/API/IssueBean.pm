@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -61,7 +61,7 @@ has 'expand' => (
 
 has 'fields' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< fieldsToInclude >>
@@ -70,7 +70,7 @@ has 'fields' => (
 
 has 'fieldsToInclude' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< id >>
@@ -103,7 +103,7 @@ The ID and name of each field present on the issue.
 
 has 'names' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< operations >>
@@ -124,7 +124,7 @@ Details of the issue properties identified in the request.
 
 has 'properties' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< renderedFields >>
@@ -135,7 +135,7 @@ The rendered value of each field present on the issue.
 
 has 'renderedFields' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< schema >>
@@ -146,7 +146,7 @@ The schema describing each field present on the issue.
 
 has 'schema' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 =head2 C<< self >>
@@ -168,7 +168,7 @@ The transitions that can be performed on the issue.
 
 has 'transitions' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< versionedRepresentations >>
@@ -179,7 +179,7 @@ The versions of each field on the issue.
 
 has 'versionedRepresentations' => (
     is       => 'ro',
-    isa      => Object,
+    isa      => HashRef,
 );
 
 

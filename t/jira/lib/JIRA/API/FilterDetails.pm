@@ -4,7 +4,7 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 use stable 'postderef';
-use Types::Standard qw(Enum Str Bool Num Int Object ArrayRef);
+use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
 =head1 NAME
@@ -43,7 +43,7 @@ The groups and projects that can edit the filter. This can be specified when upd
 
 has 'editPermissions' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< expand >>
@@ -152,7 +152,7 @@ The groups and projects that the filter is shared with. This can be specified wh
 
 has 'sharePermissions' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< subscriptions >>
@@ -163,7 +163,7 @@ The users that are subscribed to the filter.
 
 has 'subscriptions' => (
     is       => 'ro',
-    isa      => ArrayRef[Object],
+    isa      => ArrayRef[HashRef],
 );
 
 =head2 C<< viewUrl >>

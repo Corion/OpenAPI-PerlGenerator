@@ -123,7 +123,7 @@ sub withCookie( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
@@ -206,7 +206,7 @@ sub withHeader( $self, %options ) {
             # An unknown/unhandled response, likely an error
             $res->fail($resp);
         }
-    });
+    })->retain;
 
     # Start our transaction
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
