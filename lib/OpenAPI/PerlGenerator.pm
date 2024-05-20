@@ -296,6 +296,10 @@ sub generate_schema_classes( $self, %options ) {
         if( exists $elt->{allOf}) {
             # We should synthesize the real type here instead of punting
             $type = 'object';
+        } elsif( exists $elt->{oneOf}) {
+            # We should synthesize the real type here instead of punting
+            # Also, we should generate a dispatcher, instead of gobbling this...
+            $type = 'oneOfObject';
         };
 
         my %info = (
