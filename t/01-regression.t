@@ -28,6 +28,7 @@ my $gen = OpenAPI::PerlGenerator->new(
 my %test_configs = (
     'jira'           => { prefix => 'JIRA::API', compare_todo => 'Mojibake in output', compile_todo => 'Definition wrong/incomplete', },
     'ollama'         => { prefix => 'AI::Ollama', },
+    'openai'         => { prefix => 'AI::OpenAPI', },
     'petstore'       => { prefix => 'OpenAPI::PetStore', },
     'more-testcases' => { prefix => 'More::TestCases', },
     'whisper.cpp'    => { prefix => 'Speech::Recognition::Whisper', },
