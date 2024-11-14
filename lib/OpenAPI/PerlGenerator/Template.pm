@@ -82,6 +82,14 @@ sub elsif_chain($id) {
     }
 }
 
+=head2 C<< resolve_schema >>
+
+=cut
+
+sub resolve_schema {
+    $info->resolve_schema( @_ );
+}
+
 1;
 __END__
 

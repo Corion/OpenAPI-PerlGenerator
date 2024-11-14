@@ -46,10 +46,12 @@ __PATH_PARAMETERS__
 $template{generate_request_body} = <<'__REQUEST_BODY__';
 %     for my $ct (sort keys $content->%*) {
 %         if( exists $content->{$ct}->{schema}) {
-%             if( $content->{$ct}->{schema}->{type} eq 'string' ) {
+%             my( $type, $class) = resolve_schema( $content->{$ct}->{schema} );
+%# XXX findTypeFromSchema() instead of manually doing this here (and elsewhere)
+%             if( $type eq 'string' ) {
     my $body = delete $options{ body } // '';
 %             } else {
-    my $request = <%= $prefix %>::<%= $content->{$ct}->{schema}->{name} %>->new( \%options );
+    my $request = <%= $class %>->new( \%options );
 %             }
 %         } elsif( $ct eq 'multipart/form-data' ) {
 %             # nothing to do
@@ -282,15 +284,16 @@ $template{oneOfObject} = <<'__FACTORYCLASS__';
 % my @subclasses;
 % my @included_types;
 % if( exists $elt->{oneOf}) {
-%     for my $item ($elt->{oneOf}->@*) {
-%         if( $item->{name} ) {
-%             push @subclasses, $item;
-%         } else {
-%             push @included_types, $item;
-%         }
-%     }
+%     # Output the code to find out what criterion we use to discriminate
+%     # ... don't know what exactly to do here...
+%     # Maybe create a function here?!
+%     use OpenAPI::PerlGenerator::OneOfResolver;
+%     use Data::Dumper;
+%     use Carp 'croak';
+%     warn Dumper $elt->{oneOf};
+%     croak "Not implemented";
 % } else {
-%     push @included_types, $elt;
+%     return "Don't know how to resolve this";
 % }
 %
 package <%= $prefix %>::<%= $name %> <%= $version %>;
@@ -345,6 +348,13 @@ $template{return_types} = <<'__RETURN_TYPES__';
 %                        $class = join "::", $prefix, $content->{$ct}->{schema}->{items}->{name};
 %                    } elsif( $content->{$ct}->{schema}->{name}) {
 %                        $class = join "::", $prefix, $content->{$ct}->{schema}->{name};
+%                    } elsif( $content->{$ct}->{schema}->{oneOf}) {
+%#                       Ugh, we don't resolve these yet
+%#                       But we can cheat. If there is only a single oneOf, use that
+%                        if( $content->{$ct}->{schema}->{oneOf}->@* == 1) {
+%                            $class = join "::", $prefix, $content->{$ct}->{schema}->{oneOf}->[0]->{name};
+%                        } else {
+%                        }
 %                    } else {
 %                        $class = $content->{$ct}->{schema}->{type};
 %                    }
@@ -477,6 +487,7 @@ use Carp 'croak';
 use YAML::PP;
 use Mojo::UserAgent;
 use Mojo::URL;
+use URI::Template;
 use Mojo::JSON 'encode_json', 'decode_json';
 use OpenAPI::Modern;
 

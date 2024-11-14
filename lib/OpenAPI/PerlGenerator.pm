@@ -187,8 +187,26 @@ sub property_name( $self, $name ) {
     return $name
 }
 
+# Maybe line-wrap into a comment?!
 sub single_line( $self, $str ) {
-    $str =~ s/\s+/ /gr
+    $str =~ s/\s+/ /gr;
+}
+
+sub resolve_schema( $self, $schema ) {
+    my $t = $schema->{type} // '';
+    if( exists $schema->{name} ) {
+        warn "Name: $schema->{name}";
+        return ('class', $self->prefix . "::" . $schema->{name})
+    } elsif( $t and $t ne 'object' ) {
+        warn "Type: $schema->{type}";
+        return( $t, undef );
+    } elsif( exists $schema->{oneOf} and $schema->{oneOf}->@* == 1) {
+        warn "Oneof: ...";
+        return $self->resolve_schema( $schema->{oneOf}->[0] );
+    } else {
+        use Data::Dumper;
+        warn "Don't know how to derive a type for schema " . Dumper $schema;
+    }
 }
 
 =head1 METHODS
@@ -299,6 +317,11 @@ sub generate_schema_classes( $self, %options ) {
         } elsif( exists $elt->{oneOf}) {
             # We should synthesize the real type here instead of punting
             # Also, we should generate a dispatcher, instead of gobbling this...
+
+            # Resolve the decider here
+            use OpenAPI::PerlGenerator::OneOfResolver;
+            my $discriminator = OpenAPI::PerlGenerator::OneOfResolver->find_criteria( $elt );
+
             $type = 'oneOfObject';
         };
 
