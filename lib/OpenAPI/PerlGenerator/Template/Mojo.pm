@@ -342,22 +342,22 @@ $template{return_types} = <<'__RETURN_TYPES__';
 %                if( $content->{$ct}->{schema}) {
 %                    my $descriptor = 'a';
 %                    my $class;
-%                    if( $content->{$ct}->{schema}->{type} and $content->{$ct}->{schema}->{type} eq 'array' ) {
+%                    my ($type,$class_info) = resolve_schema( $content->{$ct}->{schema}, $prefix );
+%                    if( $type eq 'array' ) {
 %                        $descriptor = 'an array of';
-%                        $class = join "::", $prefix, $content->{$ct}->{schema}->{items}->{name};
-%                    } elsif( $content->{$ct}->{schema}->{name}) {
-%                        $class = join "::", $prefix, $content->{$ct}->{schema}->{name};
-%                    } elsif( $content->{$ct}->{schema}->{oneOf}) {
-%#                       Ugh, we don't resolve these yet
-%#                       But we can cheat. If there is only a single oneOf, use that
-%                        if( $content->{$ct}->{schema}->{oneOf}->@* == 1) {
-%                            $class = join "::", $prefix, $content->{$ct}->{schema}->{oneOf}->[0]->{name};
-%                        } else {
-%                        }
+%                        $class = [join "::", $prefix, $content->{$ct}->{schema}->{items}->{name}];
+%
+%                    } elsif( $type eq 'class' ) {
+%                        $class = [$class_info];
+%
+%                    } elsif( $type eq 'oneOf') {
+%                        $descriptor = sprintf 'depending on C<< %s >> one of', $class_info->{discrimintator};
+%                        $class = [sort values $class_info->{mapping}->%*];
+%
 %                    } else {
-%                        $class = $content->{$ct}->{schema}->{type};
+%                        $class = [$content->{$ct}->{schema}->{type}];
 %                    }
-Returns <%= $descriptor %> L<< <%= $class %> >>.
+Returns <%= $descriptor %> <%= join ", ", map { qq{L<< $_ >>} } $class->@* %>.
 %                }
 %             }
 %         }
