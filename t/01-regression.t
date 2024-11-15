@@ -83,7 +83,11 @@ for my $known (@testcases) {
             if( $options->{compare_todo} ) {
                 $todo = todo( $options->{compare_todo} );
             };
-            is $f->{source}, $known_content, "The content has not changed";
+            if( ! $update ) {
+                is $f->{source}, $known_content, "The content has not changed";
+            } else {
+                ok "Content has maybe changed, skipping diff as we are updating anyway";
+            };
         } else {
             SKIP: {
                 skip "File does not exist", 1;
