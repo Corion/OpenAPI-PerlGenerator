@@ -26,8 +26,8 @@ OpenAPI::PetStore::Client - Client for OpenAPI::PetStore
 
   my $res = $client->findPets()->get;
 
-Returns an array of L<< OpenAPI::PetStore::Pet >>.
-Returns a L<< OpenAPI::PetStore::Error >>.
+Returns an array of L<< OpenAPI::PetStore::Pet >> on success.
+Returns a L<< OpenAPI::PetStore::Error >> on HTTP code default.
 
 =cut
 
@@ -35,8 +35,8 @@ Returns a L<< OpenAPI::PetStore::Error >>.
 
   my $res = $client->addPet()->get;
 
-Returns a L<< OpenAPI::PetStore::Pet >>.
-Returns a L<< OpenAPI::PetStore::Error >>.
+Returns a L<< OpenAPI::PetStore::Pet >> on success.
+Returns a L<< OpenAPI::PetStore::Error >> on HTTP code default.
 
 =cut
 
@@ -44,7 +44,7 @@ Returns a L<< OpenAPI::PetStore::Error >>.
 
   my $res = $client->deletePet()->get;
 
-Returns a L<< OpenAPI::PetStore::Error >>.
+Returns a L<< OpenAPI::PetStore::Error >> on HTTP code default.
 
 =cut
 
@@ -52,8 +52,8 @@ Returns a L<< OpenAPI::PetStore::Error >>.
 
   my $res = $client->find_pet_by_id()->get;
 
-Returns a L<< OpenAPI::PetStore::Pet >>.
-Returns a L<< OpenAPI::PetStore::Error >>.
+Returns a L<< OpenAPI::PetStore::Pet >> on success.
+Returns a L<< OpenAPI::PetStore::Error >> on HTTP code default.
 
 =cut
 

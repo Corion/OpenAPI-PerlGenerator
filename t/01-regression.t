@@ -84,7 +84,8 @@ for my $known (@testcases) {
                 $todo = todo( $options->{compare_todo} );
             };
             if( ! $update ) {
-                is $f->{source}, $known_content, "The content has not changed";
+                is $f->{source}, $known_content,
+                    "The content has not changed";
             } else {
                 ok "Content has maybe changed, skipping diff as we are updating anyway";
             };
@@ -95,8 +96,10 @@ for my $known (@testcases) {
         }
         if( $update ) {
             make_path( $file->dirname );
-            #$file->spew( Encode::encode('UTF-8', $f->{ source }));
-            $file->spew( $f->{ source });
+            eval {
+                $file->spew( $f->{ source });
+            };
+            diag $@ if $@;
         }
     }
 }

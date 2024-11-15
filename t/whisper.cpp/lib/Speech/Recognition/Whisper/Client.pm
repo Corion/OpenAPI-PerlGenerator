@@ -28,8 +28,8 @@ Speech::Recognition::Whisper::Client - Client for Speech::Recognition::Whisper
 
 Perform inference on a WAV file
 
-Returns a L<< Speech::Recognition::Whisper::Transcription >>.
-Returns a L<< Speech::Recognition::Whisper::Error >>.
+Returns a L<< Speech::Recognition::Whisper::Transcription >> on success.
+Returns a L<< Speech::Recognition::Whisper::Error >> on HTTP code default.
 
 =cut
 
@@ -39,8 +39,8 @@ Returns a L<< Speech::Recognition::Whisper::Error >>.
 
 Load a model
 
-Returns a L<< Speech::Recognition::Whisper::SuccessfulLoad >>.
-Returns a L<< Speech::Recognition::Whisper::Error >>.
+Returns a L<< Speech::Recognition::Whisper::SuccessfulLoad >> on success.
+Returns a L<< Speech::Recognition::Whisper::Error >> on HTTP code default.
 
 =cut
 

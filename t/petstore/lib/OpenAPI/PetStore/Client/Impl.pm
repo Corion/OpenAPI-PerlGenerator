@@ -10,6 +10,7 @@ use Carp 'croak';
 use YAML::PP;
 use Mojo::UserAgent;
 use Mojo::URL;
+use URI::Template;
 use Mojo::JSON 'encode_json', 'decode_json';
 use OpenAPI::Modern;
 
@@ -78,8 +79,8 @@ maximum number of results to return
 =back
 
 
-Returns an array of L<< OpenAPI::PetStore::Pet >>.
-Returns a L<< OpenAPI::PetStore::Error >>.
+Returns an array of L<< OpenAPI::PetStore::Pet >> on success.
+Returns a L<< OpenAPI::PetStore::Error >> on HTTP code default.
 
 =cut
 
@@ -185,8 +186,8 @@ sub findPets( $self, %options ) {
 
 =back
 
-Returns a L<< OpenAPI::PetStore::Pet >>.
-Returns a L<< OpenAPI::PetStore::Error >>.
+Returns a L<< OpenAPI::PetStore::Pet >> on success.
+Returns a L<< OpenAPI::PetStore::Error >> on HTTP code default.
 
 =cut
 
@@ -289,7 +290,7 @@ ID of pet to delete
 =back
 
 
-Returns a L<< OpenAPI::PetStore::Error >>.
+Returns a L<< OpenAPI::PetStore::Error >> on HTTP code default.
 
 =cut
 
@@ -384,8 +385,8 @@ ID of pet to fetch
 =back
 
 
-Returns a L<< OpenAPI::PetStore::Pet >>.
-Returns a L<< OpenAPI::PetStore::Error >>.
+Returns a L<< OpenAPI::PetStore::Pet >> on success.
+Returns a L<< OpenAPI::PetStore::Error >> on HTTP code default.
 
 =cut
 

@@ -10,6 +10,7 @@ use Carp 'croak';
 use YAML::PP;
 use Mojo::UserAgent;
 use Mojo::URL;
+use URI::Template;
 use Mojo::JSON 'encode_json', 'decode_json';
 use OpenAPI::Modern;
 
@@ -85,8 +86,8 @@ Temperature
 
 =back
 
-Returns a L<< Speech::Recognition::Whisper::Transcription >>.
-Returns a L<< Speech::Recognition::Whisper::Error >>.
+Returns a L<< Speech::Recognition::Whisper::Transcription >> on success.
+Returns a L<< Speech::Recognition::Whisper::Error >> on HTTP code default.
 
 =cut
 
@@ -201,8 +202,8 @@ Temperature
 
 =back
 
-Returns a L<< Speech::Recognition::Whisper::SuccessfulLoad >>.
-Returns a L<< Speech::Recognition::Whisper::Error >>.
+Returns a L<< Speech::Recognition::Whisper::SuccessfulLoad >> on success.
+Returns a L<< Speech::Recognition::Whisper::Error >> on HTTP code default.
 
 =cut
 
