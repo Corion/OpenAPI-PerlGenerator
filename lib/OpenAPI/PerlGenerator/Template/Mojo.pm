@@ -46,10 +46,23 @@ __PATH_PARAMETERS__
 $template{generate_request_body} = <<'__REQUEST_BODY__';
 %     for my $ct (sort keys $content->%*) {
 %         if( exists $content->{$ct}->{schema}) {
+% warn "No prefix?!" unless $prefix;
 %             my( $type, $class) = resolve_schema( $content->{$ct}->{schema}, $prefix );
 %             if( $type eq 'string' ) {
     my $body = delete $options{ body } // '';
+%             } elsif( $type eq 'array' ) {
+    my $body = delete $options{ body } // ''; # ??? really? This is an "array"
+%             } elsif( $type eq 'object' ) {
+    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
+%             } elsif( $type eq 'class') {
+%                 if( $class ) {
+    my $request = <%= $class %>->new( \%options );
+%                 } else {
+    # Let's hope that the content type was application/json ...
+    my $request = \%options;
+%                 }
 %             } else {
+% warn "Don't know how to handle request type '$type'";
     my $request = <%= $class %>->new( \%options );
 %             }
 %         } elsif( $ct eq 'multipart/form-data' ) {
@@ -61,10 +74,10 @@ $template{generate_request_body} = <<'__REQUEST_BODY__';
 __REQUEST_BODY__
 
 $template{inflated_response} = <<'__INFLATED_RESPONSE__';
+% my( $vtype, $class) = resolve_schema( $type, $prefix );
 % if( $type->{name} ) {
 <%= $prefix %>::<%= $type->{name} %>->new(<%= $argname %>),
 % } elsif( $type->{type} and $type->{type} eq 'array') {
-%# use Data::Dumper; warn Dumper $type;
 [ map { <%= include('inflated_response', { type => $type->{items}, prefix => $prefix, argname => '$_' }) %> } $payload->@* ],
 % } else {
 <%= $argname %>

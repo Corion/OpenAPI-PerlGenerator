@@ -179,7 +179,6 @@ sub map_type( $self, $elt ) {
             warn "Unknown type '$type'";
             return '';
         }
-    } else {
         return
     }
 }
@@ -223,7 +222,6 @@ sub resolve_schema( $self, $schema, $prefix = $self->prefix ) {
         return $self->resolve_schema( $schema->{oneOf}->[0], $prefix );
 
     } elsif( exists $schema->{oneOf} and $schema->{oneOf}->@* > 1) {
-        
         if( my $d = $schema->{discriminator} ) {
             my $s = $self->schema;
             my $res = {
@@ -247,10 +245,15 @@ sub resolve_schema( $self, $schema, $prefix = $self->prefix ) {
 
     } elsif( $t ) {
         return( $t, undef );
+    
+    } elsif( ! keys $schema->%* ) {
+        # We'll just assume JSON here
+        return ('object', undef);
 
     } else {
         use Data::Dumper;
         warn "Don't know how to derive a type for schema " . Dumper $schema;
+        return ('object', undef);
     }
 }
 
@@ -360,14 +363,8 @@ sub generate_schema_classes( $self, %options ) {
             # We should synthesize the real type here instead of punting
             $type = 'object';
         } elsif( exists $elt->{oneOf}) {
-            # We should synthesize the real type here instead of punting
-            # Also, we should generate a dispatcher, instead of gobbling this...
-
-            # Resolve the decider here
-            use OpenAPI::PerlGenerator::OneOfResolver;
-            my $discriminator = OpenAPI::PerlGenerator::OneOfResolver->find_criteria( $elt );
-
-            $type = 'oneOfObject';
+            
+            # this simply references other entities, so we ignore this
         };
 
         my %info = (
