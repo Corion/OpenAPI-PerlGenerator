@@ -217,10 +217,10 @@ mapping field values to classnames:
 
 =cut
 
-sub resolve_schema( $self, $schema ) {
+sub resolve_schema( $self, $schema, $prefix = $self->prefix ) {
     my $t = $schema->{type} // '';
     if ( exists $schema->{oneOf} and $schema->{oneOf}->@* == 1) {
-        return $self->resolve_schema( $schema->{oneOf}->[0] );
+        return $self->resolve_schema( $schema->{oneOf}->[0], $prefix );
 
     } elsif( exists $schema->{oneOf} and $schema->{oneOf}->@* > 1) {
         
@@ -243,9 +243,9 @@ sub resolve_schema( $self, $schema ) {
         }
 
     } elsif( exists $schema->{name} ) {
-        return ('class', $self->prefix . "::" . $schema->{name})
+        return ('class', $prefix . "::" . $schema->{name})
 
-    } elsif( $t and $t ne 'object' ) {
+    } elsif( $t ) {
         return( $t, undef );
 
     } else {

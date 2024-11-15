@@ -46,8 +46,7 @@ __PATH_PARAMETERS__
 $template{generate_request_body} = <<'__REQUEST_BODY__';
 %     for my $ct (sort keys $content->%*) {
 %         if( exists $content->{$ct}->{schema}) {
-%             my( $type, $class) = resolve_schema( $content->{$ct}->{schema} );
-%# XXX findTypeFromSchema() instead of manually doing this here (and elsewhere)
+%             my( $type, $class) = resolve_schema( $content->{$ct}->{schema}, $prefix );
 %             if( $type eq 'string' ) {
     my $body = delete $options{ body } // '';
 %             } else {
