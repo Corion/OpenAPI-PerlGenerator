@@ -68,6 +68,7 @@ my %module = (
         'PerlX::Maybe'        => 0,
         'Markdown::Pod'       => 0,
         'warnings'            => 0,
+        'URI::Template'       => 0,
         'YAML::PP'            => 0,
     },
     TEST_REQUIRES => {
