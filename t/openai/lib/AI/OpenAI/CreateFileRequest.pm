@@ -53,6 +53,7 @@ has 'purpose' => (
         "assistants",
         "batch",
         "fine-tune",
+        "vision",
     ],
     required => 1,
 );
