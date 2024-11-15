@@ -335,7 +335,13 @@ sub new( $class, $data ) {
 __FACTORYCLASS__
 
 $template{return_types} = <<'__RETURN_TYPES__';
+% my %result_types;
 % for my $code (sort keys $elt->{responses}->%*) {
+%     my $status_type =   $code =~ /2../ ? 'on success'
+%                       : $code =~ /3../ ? 'on redirect'
+%                       : $code =~ /4../ ? 'on error'
+%                       :                  "on HTTP code $code"
+%                       ;
 %     my $info = $elt->{responses}->{ $code };
 %        if( my $content = $info->{content} ) {
 %            for my $ct (sort keys $content->%*) {
@@ -357,11 +363,18 @@ $template{return_types} = <<'__RETURN_TYPES__';
 %                    } else {
 %                        $class = [$content->{$ct}->{schema}->{type}];
 %                    }
-Returns <%= $descriptor %> <%= join ", ", map { qq{L<< $_ >>} } $class->@* %>.
+%                    $result_types{$status_type}->{$_} = 1
+%                        for map { $_ ? qq{$descriptor L<< $_ >>} : q{Hashref} } $class->@*;
 %                }
 %             }
 %         }
 %     }
+% my %seen;
+% for my $t ('on success', 'on error', 'on redirect', sort keys %result_types) {
+%     next if $seen{ $t }++;
+%     next unless exists $result_types{$t};
+Returns <%= join ", ", sort keys $result_types{$t}->%* %> <%= $t %>.
+% }
 __RETURN_TYPES__
 
 $template{ build_request } = <<'__BUILD_REQUEST__';

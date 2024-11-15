@@ -615,9 +615,8 @@ Get announcement banner configuration
 =back
 
 
-Returns a L<< JIRA::API::AnnouncementBannerConfiguration >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::AnnouncementBannerConfiguration >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -751,10 +750,8 @@ Visibility of the announcement banner. Can be public or private.
 
 =back
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -895,7 +892,7 @@ Whether to generate a changelog for this update.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1027,7 +1024,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanContextualConfiguration >>.
+Returns a L<< JIRA::API::PageBeanContextualConfiguration >> on success.
 
 =cut
 
@@ -1153,7 +1150,7 @@ The list of custom field configuration details.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1276,7 +1273,7 @@ The list of custom field update details.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1394,7 +1391,7 @@ When a C<key> isn't provided, this filters the list of results by the applicatio
 =back
 
 
-Returns an array of L<< JIRA::API::ApplicationProperty >>.
+Returns an array of L<< JIRA::API::ApplicationProperty >> on success.
 
 =cut
 
@@ -1491,7 +1488,7 @@ Get advanced settings
 =back
 
 
-Returns an array of L<< JIRA::API::ApplicationProperty >>.
+Returns an array of L<< JIRA::API::ApplicationProperty >> on success.
 
 =cut
 
@@ -1600,7 +1597,7 @@ The new value.
 
 =back
 
-Returns a L<< JIRA::API::ApplicationProperty >>.
+Returns a L<< JIRA::API::ApplicationProperty >> on success.
 
 =cut
 
@@ -1705,7 +1702,7 @@ Get all application roles
 =back
 
 
-Returns an array of L<< JIRA::API::ApplicationRole >>.
+Returns an array of L<< JIRA::API::ApplicationRole >> on success.
 
 =cut
 
@@ -1800,7 +1797,7 @@ The key of the application role. Use the L<Get all application roles|#api-rest-a
 =back
 
 
-Returns a L<< JIRA::API::ApplicationRole >>.
+Returns a L<< JIRA::API::ApplicationRole >> on success.
 
 =cut
 
@@ -1907,7 +1904,7 @@ Whether a redirect is provided for the attachment download. Clients that do not 
 =back
 
 
-Returns a L<< object >>.
+Returns a L<< object >> on success.
 
 =cut
 
@@ -2022,7 +2019,7 @@ Get Jira attachment settings
 =back
 
 
-Returns a L<< JIRA::API::AttachmentSettings >>.
+Returns a L<< JIRA::API::AttachmentSettings >> on success.
 
 =cut
 
@@ -2129,7 +2126,7 @@ The maximum height to scale the thumbnail to.
 =back
 
 
-Returns a L<< object >>.
+Returns a L<< object >> on success.
 
 =cut
 
@@ -2332,7 +2329,7 @@ The ID of the attachment.
 =back
 
 
-Returns a L<< JIRA::API::AttachmentMetadata >>.
+Returns a L<< JIRA::API::AttachmentMetadata >> on success.
 
 =cut
 
@@ -2435,7 +2432,7 @@ The ID of the attachment.
 =back
 
 
-Returns a L<< JIRA::API::AttachmentArchiveMetadataReadable >>.
+Returns a L<< JIRA::API::AttachmentArchiveMetadataReadable >> on success.
 
 =cut
 
@@ -2541,7 +2538,7 @@ The ID of the attachment.
 =back
 
 
-Returns a L<< JIRA::API::AttachmentArchiveImpl >>.
+Returns a L<< JIRA::API::AttachmentArchiveImpl >> on success.
 
 =cut
 
@@ -2663,7 +2660,7 @@ The date and time on or before which returned audit results must have been creat
 =back
 
 
-Returns a L<< JIRA::API::AuditRecords >>.
+Returns a L<< JIRA::API::AuditRecords >> on success.
 
 =cut
 
@@ -2765,7 +2762,7 @@ The avatar type.
 =back
 
 
-Returns a L<< JIRA::API::SystemAvatars >>.
+Returns a L<< JIRA::API::SystemAvatars >> on success.
 
 =cut
 
@@ -2889,7 +2886,7 @@ The list of comment IDs. A maximum of 1000 IDs can be specified.
 
 =back
 
-Returns a L<< JIRA::API::PageBeanComment >>.
+Returns a L<< JIRA::API::PageBeanComment >> on success.
 
 =cut
 
@@ -2987,7 +2984,7 @@ The ID of the comment.
 =back
 
 
-Returns a L<< JIRA::API::PropertyKeys >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
@@ -3197,7 +3194,7 @@ The key of the property.
 =back
 
 
-Returns a L<< JIRA::API::EntityProperty >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
@@ -3310,8 +3307,7 @@ The key of the property. The maximum length is 255 characters.
 =back
 
 
-Returns a L<<  >>.
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -3329,7 +3325,7 @@ sub _build_setCommentProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -3547,7 +3543,7 @@ The URL of the component.
 
 =back
 
-Returns a L<< JIRA::API::ProjectComponent >>.
+Returns a L<< JIRA::API::ProjectComponent >> on success.
 
 =cut
 
@@ -3748,7 +3744,7 @@ The ID of the component.
 =back
 
 
-Returns a L<< JIRA::API::ProjectComponent >>.
+Returns a L<< JIRA::API::ProjectComponent >> on success.
 
 =cut
 
@@ -3962,7 +3958,7 @@ The URL of the component.
 
 =back
 
-Returns a L<< JIRA::API::ProjectComponent >>.
+Returns a L<< JIRA::API::ProjectComponent >> on success.
 
 =cut
 
@@ -4071,7 +4067,7 @@ The ID of the component.
 =back
 
 
-Returns a L<< JIRA::API::ComponentIssuesCount >>.
+Returns a L<< JIRA::API::ComponentIssuesCount >> on success.
 
 =cut
 
@@ -4167,7 +4163,7 @@ Get global settings
 =back
 
 
-Returns a L<< JIRA::API::Configuration >>.
+Returns a L<< JIRA::API::Configuration >> on success.
 
 =cut
 
@@ -4254,8 +4250,7 @@ Get selected time tracking provider
 =back
 
 
-Returns a L<< JIRA::API::TimeTrackingProvider >>.
-Returns a L<<  >>.
+Returns Hashref, a L<< JIRA::API::TimeTrackingProvider >> on success.
 
 =cut
 
@@ -4377,7 +4372,7 @@ The URL of the configuration page for the time tracking provider app. For exampl
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -4473,7 +4468,7 @@ Get all time tracking providers
 =back
 
 
-Returns an array of L<< JIRA::API::TimeTrackingProvider >>.
+Returns an array of L<< JIRA::API::TimeTrackingProvider >> on success.
 
 =cut
 
@@ -4564,7 +4559,7 @@ Get time tracking settings
 =back
 
 
-Returns a L<< JIRA::API::TimeTrackingConfiguration >>.
+Returns a L<< JIRA::API::TimeTrackingConfiguration >> on success.
 
 =cut
 
@@ -4676,7 +4671,7 @@ The number of hours in a working day.
 
 =back
 
-Returns a L<< JIRA::API::TimeTrackingConfiguration >>.
+Returns a L<< JIRA::API::TimeTrackingConfiguration >> on success.
 
 =cut
 
@@ -4776,7 +4771,7 @@ The ID of the custom field option.
 =back
 
 
-Returns a L<< JIRA::API::CustomFieldOption >>.
+Returns a L<< JIRA::API::CustomFieldOption >> on success.
 
 =cut
 
@@ -4898,9 +4893,8 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageOfDashboards >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageOfDashboards >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -5040,9 +5034,8 @@ The share permissions for the dashboard.
 
 =back
 
-Returns a L<< JIRA::API::Dashboard >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::Dashboard >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -5157,9 +5150,8 @@ Get available gadgets
 =back
 
 
-Returns a L<< JIRA::API::AvailableDashboardGadgetsResponse >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::AvailableDashboardGadgetsResponse >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -5393,9 +5385,8 @@ C<isWritable> Returns whether the current user has permission to edit the dashbo
 =back
 
 
-Returns a L<< JIRA::API::PageBeanDashboard >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanDashboard >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -5537,8 +5528,8 @@ The list of gadgets IDs. To include multiple IDs, separate IDs with ampersand: C
 =back
 
 
-Returns a L<< JIRA::API::DashboardGadgetResponse >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::DashboardGadgetResponse >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -5685,9 +5676,8 @@ The URI of the gadget type. Can't be provided with C<moduleKey>.
 
 =back
 
-Returns a L<< JIRA::API::DashboardGadget >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::DashboardGadget >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -5819,8 +5809,8 @@ The ID of the gadget.
 =back
 
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -5956,9 +5946,8 @@ The title of the gadget.
 
 =back
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -6093,7 +6082,7 @@ The ID of the dashboard item.
 =back
 
 
-Returns a L<< JIRA::API::PropertyKeys >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
@@ -6311,7 +6300,7 @@ The key of the dashboard item property.
 =back
 
 
-Returns a L<< JIRA::API::EntityProperty >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
@@ -6425,8 +6414,7 @@ The key of the dashboard item property. The maximum length is 255 characters. Fo
 =back
 
 
-Returns a L<<  >>.
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -6447,7 +6435,7 @@ sub _build_setDashboardItemProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -6566,8 +6554,7 @@ The ID of the dashboard.
 =back
 
 
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -6678,9 +6665,8 @@ The ID of the dashboard.
 =back
 
 
-Returns a L<< JIRA::API::Dashboard >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::Dashboard >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -6827,10 +6813,8 @@ The share permissions for the dashboard.
 
 =back
 
-Returns a L<< JIRA::API::Dashboard >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::Dashboard >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -6989,10 +6973,8 @@ The share permissions for the dashboard.
 
 =back
 
-Returns a L<< JIRA::API::Dashboard >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::Dashboard >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -7127,7 +7109,7 @@ Get events
 =back
 
 
-Returns an array of L<< JIRA::API::IssueEvent >>.
+Returns an array of L<< JIRA::API::IssueEvent >> on success.
 
 =cut
 
@@ -7255,9 +7237,8 @@ The list of Jira expressions to analyse.
 
 =back
 
-Returns a L<< JIRA::API::JiraExpressionsAnalysis >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::JiraExpressionsAnalysis >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -7397,9 +7378,8 @@ The Jira expression to evaluate.
 
 =back
 
-Returns a L<< JIRA::API::JiraExpressionResult >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::JiraExpressionResult >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -7521,7 +7501,7 @@ Get fields
 =back
 
 
-Returns an array of L<< JIRA::API::FieldDetails >>.
+Returns an array of L<< JIRA::API::FieldDetails >> on success.
 
 =cut
 
@@ -7855,7 +7835,7 @@ To create a field based on a L<Forge custom field type|https://developer.atlassi
 
 =back
 
-Returns a L<< JIRA::API::FieldDetails >>.
+Returns a L<< JIRA::API::FieldDetails >> on success.
 
 =cut
 
@@ -8031,9 +8011,8 @@ C<searcherKey> returns the searcher key for each custom field
 =back
 
 
-Returns a L<< JIRA::API::PageBeanField >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanField >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -8197,9 +8176,8 @@ C<plannedDeletionDate> sorts by the planned deletion date
 =back
 
 
-Returns a L<< JIRA::API::PageBeanField >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanField >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -8454,7 +8432,7 @@ C<version>: C<versionsearcher>
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -8616,7 +8594,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanCustomFieldContext >>.
+Returns a L<< JIRA::API::PageBeanCustomFieldContext >> on success.
 
 =cut
 
@@ -8775,7 +8753,7 @@ The list of project IDs associated with the context. If the list is empty, the c
 
 =back
 
-Returns a L<< JIRA::API::CreateCustomFieldContext >>.
+Returns a L<< JIRA::API::CreateCustomFieldContext >> on success.
 
 =cut
 
@@ -8907,7 +8885,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanCustomFieldContextDefaultValue >>.
+Returns a L<< JIRA::API::PageBeanCustomFieldContextDefaultValue >> on success.
 
 =cut
 
@@ -9046,7 +9024,7 @@ The ID of the custom field.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -9200,7 +9178,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanIssueTypeToContextMapping >>.
+Returns a L<< JIRA::API::PageBeanIssueTypeToContextMapping >> on success.
 
 =cut
 
@@ -9335,7 +9313,7 @@ The project and issue type mappings.
 
 =back
 
-Returns a L<< JIRA::API::PageBeanContextForProjectAndIssueType >>.
+Returns a L<< JIRA::API::PageBeanContextForProjectAndIssueType >> on success.
 
 =cut
 
@@ -9494,7 +9472,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanCustomFieldContextProjectMapping >>.
+Returns a L<< JIRA::API::PageBeanCustomFieldContextProjectMapping >> on success.
 
 =cut
 
@@ -9629,7 +9607,7 @@ The ID of the context.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -9789,7 +9767,7 @@ The name of the custom field context. The name must be unique. The maximum lengt
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -9948,7 +9926,7 @@ The list of issue type IDs.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -10121,7 +10099,7 @@ The list of issue type IDs.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -10286,7 +10264,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanCustomFieldContextOption >>.
+Returns a L<< JIRA::API::PageBeanCustomFieldContextOption >> on success.
 
 =cut
 
@@ -10449,7 +10427,7 @@ Details of options to create.
 
 =back
 
-Returns a L<< JIRA::API::CustomFieldCreatedContextOptionsList >>.
+Returns a L<< JIRA::API::CustomFieldCreatedContextOptionsList >> on success.
 
 =cut
 
@@ -10608,7 +10586,7 @@ Details of the options to update.
 
 =back
 
-Returns a L<< JIRA::API::CustomFieldUpdatedContextOptionsList >>.
+Returns a L<< JIRA::API::CustomFieldUpdatedContextOptionsList >> on success.
 
 =cut
 
@@ -10775,7 +10753,7 @@ The position the custom field options should be moved to. Required if C<after> i
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -11075,7 +11053,7 @@ The IDs of projects.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -11234,7 +11212,7 @@ The IDs of projects.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -11387,7 +11365,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanContext >>.
+Returns a L<< JIRA::API::PageBeanContext >> on success.
 
 =cut
 
@@ -11504,7 +11482,7 @@ Use L<expand|#expansion> to include additional information about screens in the 
 =back
 
 
-Returns a L<< JIRA::API::PageBeanScreenWithTab >>.
+Returns a L<< JIRA::API::PageBeanScreenWithTab >> on success.
 
 =cut
 
@@ -11632,7 +11610,7 @@ run L<Get fields|#api-rest-api-3-field-get> and in the field details the value i
 =back
 
 
-Returns a L<< JIRA::API::PageBeanIssueFieldOption >>.
+Returns a L<< JIRA::API::PageBeanIssueFieldOption >> on success.
 
 =cut
 
@@ -11769,7 +11747,7 @@ The option's name, which is displayed in Jira.
 
 =back
 
-Returns a L<< JIRA::API::IssueFieldOption >>.
+Returns a L<< JIRA::API::IssueFieldOption >> on success.
 
 =cut
 
@@ -11901,7 +11879,7 @@ run L<Get fields|#api-rest-api-3-field-get> and in the field details the value i
 =back
 
 
-Returns a L<< JIRA::API::PageBeanIssueFieldOption >>.
+Returns a L<< JIRA::API::PageBeanIssueFieldOption >> on success.
 
 =cut
 
@@ -12033,7 +12011,7 @@ run L<Get fields|#api-rest-api-3-field-get> and in the field details the value i
 =back
 
 
-Returns a L<< JIRA::API::PageBeanIssueFieldOption >>.
+Returns a L<< JIRA::API::PageBeanIssueFieldOption >> on success.
 
 =cut
 
@@ -12157,7 +12135,7 @@ The ID of the option to be deleted.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -12281,7 +12259,7 @@ The ID of the option to be returned.
 =back
 
 
-Returns a L<< JIRA::API::IssueFieldOption >>.
+Returns a L<< JIRA::API::IssueFieldOption >> on success.
 
 =cut
 
@@ -12427,7 +12405,7 @@ The option's name, which is displayed in Jira.
 
 =back
 
-Returns a L<< JIRA::API::IssueFieldOption >>.
+Returns a L<< JIRA::API::IssueFieldOption >> on success.
 
 =cut
 
@@ -12570,7 +12548,7 @@ The ID of the option to be deselected.
 =back
 
 
-Returns a L<< JIRA::API::TaskProgressBeanRemoveOptionFromIssuesResult >>.
+Returns a L<< JIRA::API::TaskProgressBeanRemoveOptionFromIssuesResult >> on redirect.
 
 =cut
 
@@ -12694,12 +12672,8 @@ The ID of a custom field.
 =back
 
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
 
 =cut
 
@@ -12863,11 +12837,8 @@ The ID of a custom field.
 =back
 
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -13017,11 +12988,8 @@ The ID of a custom field.
 =back
 
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -13187,7 +13155,7 @@ The query string used to match against field configuration names and description
 =back
 
 
-Returns a L<< JIRA::API::PageBeanFieldConfigurationDetails >>.
+Returns a L<< JIRA::API::PageBeanFieldConfigurationDetails >> on success.
 
 =cut
 
@@ -13299,7 +13267,7 @@ The name of the field configuration. Must be unique.
 
 =back
 
-Returns a L<< JIRA::API::FieldConfiguration >>.
+Returns a L<< JIRA::API::FieldConfiguration >> on success.
 
 =cut
 
@@ -13399,7 +13367,7 @@ The ID of the field configuration.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -13519,7 +13487,7 @@ The name of the field configuration. Must be unique.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -13636,7 +13604,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanFieldConfigurationItem >>.
+Returns a L<< JIRA::API::PageBeanFieldConfigurationItem >> on success.
 
 =cut
 
@@ -13754,7 +13722,7 @@ Details of fields in a field configuration.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -13871,7 +13839,7 @@ The list of field configuration scheme IDs. To include multiple IDs, provide an 
 =back
 
 
-Returns a L<< JIRA::API::PageBeanFieldConfigurationScheme >>.
+Returns a L<< JIRA::API::PageBeanFieldConfigurationScheme >> on success.
 
 =cut
 
@@ -13984,7 +13952,7 @@ The name of the field configuration scheme. The name must be unique.
 
 =back
 
-Returns a L<< JIRA::API::FieldConfigurationScheme >>.
+Returns a L<< JIRA::API::FieldConfigurationScheme >> on success.
 
 =cut
 
@@ -14114,7 +14082,7 @@ The list of field configuration scheme IDs. To include multiple field configurat
 =back
 
 
-Returns a L<< JIRA::API::PageBeanFieldConfigurationIssueTypeItem >>.
+Returns a L<< JIRA::API::PageBeanFieldConfigurationIssueTypeItem >> on success.
 
 =cut
 
@@ -14228,7 +14196,7 @@ The list of project IDs. To include multiple projects, separate IDs with ampersa
 =back
 
 
-Returns a L<< JIRA::API::PageBeanFieldConfigurationSchemeProjects >>.
+Returns a L<< JIRA::API::PageBeanFieldConfigurationSchemeProjects >> on success.
 
 =cut
 
@@ -14344,7 +14312,7 @@ The ID of the project.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -14480,7 +14448,7 @@ The ID of the field configuration scheme.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -14600,7 +14568,7 @@ The name of the field configuration scheme. The name must be unique.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -14752,7 +14720,7 @@ Field configuration to issue type mappings.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -14871,11 +14839,8 @@ The list of issue type IDs. Must contain unique values not longer than 255 chara
 
 =back
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -15042,7 +15007,7 @@ C<subscriptions> Returns the users that are subscribed to the filter. If you don
 =back
 
 
-Returns an array of L<< JIRA::API::Filter >>.
+Returns an array of L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -15215,7 +15180,7 @@ A URL to view the filter results in Jira, using the ID of the filter. For exampl
 
 =back
 
-Returns a L<< JIRA::API::Filter >>.
+Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -15313,7 +15278,7 @@ Get default share scope
 =back
 
 
-Returns a L<< JIRA::API::DefaultShareScope >>.
+Returns a L<< JIRA::API::DefaultShareScope >> on success.
 
 =cut
 
@@ -15429,7 +15394,7 @@ C<PRIVATE> Not shared with any users.
 
 =back
 
-Returns a L<< JIRA::API::DefaultShareScope >>.
+Returns a L<< JIRA::API::DefaultShareScope >> on success.
 
 =cut
 
@@ -15540,7 +15505,7 @@ C<subscriptions> Returns the users that are subscribed to the filter. If you don
 =back
 
 
-Returns an array of L<< JIRA::API::Filter >>.
+Returns an array of L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -15654,7 +15619,7 @@ Include the user's favorite filters in the response.
 =back
 
 
-Returns an array of L<< JIRA::API::Filter >>.
+Returns an array of L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -15893,8 +15858,8 @@ EXPERIMENTAL: Whether share permissions are overridden to enable filters with an
 =back
 
 
-Returns a L<< JIRA::API::PageBeanFilterDetails >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanFilterDetails >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -16123,7 +16088,7 @@ EXPERIMENTAL: Whether share permissions are overridden to enable filters with an
 =back
 
 
-Returns a L<< JIRA::API::Filter >>.
+Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -16312,7 +16277,7 @@ A URL to view the filter results in Jira, using the ID of the filter. For exampl
 
 =back
 
-Returns a L<< JIRA::API::Filter >>.
+Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -16507,7 +16472,7 @@ The ID of the filter.
 =back
 
 
-Returns an array of L<< JIRA::API::ColumnItem >>.
+Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 =cut
 
@@ -16611,7 +16576,7 @@ The ID of the filter.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -16626,8 +16591,8 @@ sub _build_setColumns_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::->new( \%options );
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "array"
+    my $body = delete $options{ body } // ''; # ??? really? This is an "array"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -16734,7 +16699,7 @@ C<subscriptions> Returns the users that are subscribed to the filter. If you don
 =back
 
 
-Returns a L<< JIRA::API::Filter >>.
+Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -16853,7 +16818,7 @@ C<subscriptions> Returns the users that are subscribed to the filter. If you don
 =back
 
 
-Returns a L<< JIRA::API::Filter >>.
+Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -16964,7 +16929,7 @@ The account ID of the new owner.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -17070,7 +17035,7 @@ The ID of the filter.
 =back
 
 
-Returns an array of L<< JIRA::API::SharePermission >>.
+Returns an array of L<< JIRA::API::SharePermission >> on success.
 
 =cut
 
@@ -17239,7 +17204,7 @@ C<authenticated> Share with all logged-in users. This shows as C<loggedin> in th
 
 =back
 
-Returns an array of L<< JIRA::API::SharePermission >>.
+Returns an array of L<< JIRA::API::SharePermission >> on success.
 
 =cut
 
@@ -17444,7 +17409,7 @@ The ID of the share permission.
 =back
 
 
-Returns a L<< JIRA::API::SharePermission >>.
+Returns a L<< JIRA::API::SharePermission >> on success.
 
 =cut
 
@@ -17663,7 +17628,7 @@ List of fields to expand.
 =back
 
 
-Returns a L<< JIRA::API::Group >>.
+Returns a L<< JIRA::API::Group >> on success.
 
 =cut
 
@@ -17775,7 +17740,7 @@ The name of the group.
 
 =back
 
-Returns a L<< JIRA::API::Group >>.
+Returns a L<< JIRA::API::Group >> on success.
 
 =cut
 
@@ -17895,7 +17860,7 @@ The application key of the product user groups to search for. Valid values: 'jir
 =back
 
 
-Returns a L<< JIRA::API::PageBeanGroupDetails >>.
+Returns a L<< JIRA::API::PageBeanGroupDetails >> on success.
 
 =cut
 
@@ -18044,7 +18009,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanUserDetails >>.
+Returns a L<< JIRA::API::PageBeanUserDetails >> on success.
 
 =cut
 
@@ -18283,7 +18248,7 @@ This property is no longer available. See the L<deprecation notice|https://devel
 
 =back
 
-Returns a L<< JIRA::API::Group >>.
+Returns a L<< JIRA::API::Group >> on success.
 
 =cut
 
@@ -18417,7 +18382,7 @@ This parameter is no longer available. See the L<deprecation notice|https://deve
 =back
 
 
-Returns a L<< JIRA::API::FoundGroups >>.
+Returns a L<< JIRA::API::FoundGroups >> on success.
 
 =cut
 
@@ -18547,7 +18512,7 @@ Whether Connect app users and groups should be excluded from the search results.
 =back
 
 
-Returns a L<< JIRA::API::FoundUsersAndGroups >>.
+Returns a L<< JIRA::API::FoundUsersAndGroups >> on success.
 
 =cut
 
@@ -18658,7 +18623,7 @@ Get license
 =back
 
 
-Returns a L<< JIRA::API::License >>.
+Returns a L<< JIRA::API::License >> on success.
 
 =cut
 
@@ -18775,10 +18740,8 @@ A Map containing the field field name and a list of operations to perform on the
 
 =back
 
-Returns a L<< JIRA::API::CreatedIssue >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::CreatedIssue >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -18919,8 +18882,8 @@ Bulk create issue
 
 =back
 
-Returns a L<< JIRA::API::CreatedIssues >>.
-Returns a L<< JIRA::API::CreatedIssues >>.
+Returns a L<< JIRA::API::CreatedIssues >> on success.
+Returns a L<< JIRA::API::CreatedIssues >> on error.
 
 =cut
 
@@ -19044,7 +19007,7 @@ Use L<expand|#expansion> to include additional information about issue metadata 
 =back
 
 
-Returns a L<< JIRA::API::IssueCreateMetadata >>.
+Returns a L<< JIRA::API::IssueCreateMetadata >> on success.
 
 =cut
 
@@ -19163,7 +19126,7 @@ When C<currentIssueKey> is a subtask, whether to include the parent issue in the
 =back
 
 
-Returns a L<< JIRA::API::IssuePickerSuggestions >>.
+Returns a L<< JIRA::API::IssuePickerSuggestions >> on success.
 
 =cut
 
@@ -19273,8 +19236,7 @@ A list of entity property keys and values.
 
 =back
 
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -19388,9 +19350,7 @@ A list of issue IDs and their respective properties.
 
 =back
 
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -19526,8 +19486,7 @@ List of issues to perform the bulk delete operation on.
 
 =back
 
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -19659,8 +19618,7 @@ The value of the property. The value must be a L<valid|https://tools.ietf.org/ht
 
 =back
 
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -19780,7 +19738,7 @@ The list of issue IDs.
 
 =back
 
-Returns a L<< JIRA::API::BulkIssueIsWatching >>.
+Returns a L<< JIRA::API::BulkIssueIsWatching >> on success.
 
 =cut
 
@@ -20115,7 +20073,7 @@ Whether the project in which the issue is created is added to the user's B<Recen
 =back
 
 
-Returns a L<< JIRA::API::IssueBean >>.
+Returns a L<< JIRA::API::IssueBean >> on success.
 
 =cut
 
@@ -20261,7 +20219,7 @@ A Map containing the field field name and a list of operations to perform on the
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -20457,7 +20415,7 @@ The time zone specified in the user's profile. Depending on the user’s privacy
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -20563,7 +20521,7 @@ The ID or key of the issue that attachments are added to.
 =back
 
 
-Returns an array of L<< JIRA::API::Attachment >>.
+Returns an array of L<< JIRA::API::Attachment >> on success.
 
 =cut
 
@@ -20678,7 +20636,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanChangelog >>.
+Returns a L<< JIRA::API::PageBeanChangelog >> on success.
 
 =cut
 
@@ -20790,7 +20748,7 @@ The list of changelog IDs.
 
 =back
 
-Returns a L<< JIRA::API::PageOfChangelogs >>.
+Returns a L<< JIRA::API::PageOfChangelogs >> on success.
 
 =cut
 
@@ -20909,7 +20867,7 @@ Use L<expand|#expansion> to include additional information about comments in the
 =back
 
 
-Returns a L<< JIRA::API::PageOfComments >>.
+Returns a L<< JIRA::API::PageOfComments >> on success.
 
 =cut
 
@@ -21077,7 +21035,7 @@ The group or role to which this comment is visible. Optional on create and updat
 
 =back
 
-Returns a L<< JIRA::API::Comment >>.
+Returns a L<< JIRA::API::Comment >> on success.
 
 =cut
 
@@ -21295,7 +21253,7 @@ Use L<expand|#expansion> to include additional information about comments in the
 =back
 
 
-Returns a L<< JIRA::API::Comment >>.
+Returns a L<< JIRA::API::Comment >> on success.
 
 =cut
 
@@ -21472,7 +21430,7 @@ The group or role to which this comment is visible. Optional on create and updat
 
 =back
 
-Returns a L<< JIRA::API::Comment >>.
+Returns a L<< JIRA::API::Comment >> on success.
 
 =cut
 
@@ -21595,7 +21553,7 @@ Whether non-editable fields are returned. Available to Connect app users with I<
 =back
 
 
-Returns a L<< JIRA::API::IssueUpdateMetadata >>.
+Returns a L<< JIRA::API::IssueUpdateMetadata >> on success.
 
 =cut
 
@@ -21729,7 +21687,7 @@ The recipients of the email notification for the issue.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -21835,7 +21793,7 @@ The key or ID of the issue.
 =back
 
 
-Returns a L<< JIRA::API::PropertyKeys >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
@@ -22030,7 +21988,7 @@ The key of the property.
 =back
 
 
-Returns a L<< JIRA::API::EntityProperty >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
@@ -22137,8 +22095,7 @@ The key of the issue property. The maximum length is 255 characters.
 =back
 
 
-Returns a L<<  >>.
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -22156,7 +22113,7 @@ sub _build_setIssueProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -22371,7 +22328,7 @@ The global ID of the remote issue link.
 =back
 
 
-Returns a L<< JIRA::API::RemoteIssueLink >>.
+Returns a L<< JIRA::API::RemoteIssueLink >> on success.
 
 =cut
 
@@ -22507,8 +22464,7 @@ Description of the relationship between the issue and the linked item. If not se
 
 =back
 
-Returns a L<< JIRA::API::RemoteIssueLinkIdentifies >>.
-Returns a L<< JIRA::API::RemoteIssueLinkIdentifies >>.
+Returns a L<< JIRA::API::RemoteIssueLinkIdentifies >> on success.
 
 =cut
 
@@ -22746,7 +22702,7 @@ The ID of the remote issue link.
 =back
 
 
-Returns a L<< JIRA::API::RemoteIssueLink >>.
+Returns a L<< JIRA::API::RemoteIssueLink >> on success.
 
 =cut
 
@@ -22885,7 +22841,7 @@ Description of the relationship between the issue and the linked item. If not se
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -23028,7 +22984,7 @@ Whether the transitions are sorted by ops-bar sequence value first then category
 =back
 
 
-Returns a L<< JIRA::API::Transitions >>.
+Returns a L<< JIRA::API::Transitions >> on success.
 
 =cut
 
@@ -23162,7 +23118,7 @@ A Map containing the field field name and a list of operations to perform on the
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -23355,7 +23311,7 @@ The ID or key of the issue.
 =back
 
 
-Returns a L<< JIRA::API::Votes >>.
+Returns a L<< JIRA::API::Votes >> on success.
 
 =cut
 
@@ -23455,7 +23411,7 @@ The ID or key of the issue.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -23664,7 +23620,7 @@ The ID or key of the issue.
 =back
 
 
-Returns a L<< JIRA::API::Watchers >>.
+Returns a L<< JIRA::API::Watchers >> on success.
 
 =cut
 
@@ -23764,7 +23720,7 @@ The ID or key of the issue.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -23893,7 +23849,7 @@ Use L<expand|#expansion> to include additional information about worklogs in the
 =back
 
 
-Returns a L<< JIRA::API::PageOfWorklogs >>.
+Returns a L<< JIRA::API::PageOfWorklogs >> on success.
 
 =cut
 
@@ -24107,7 +24063,7 @@ Details about any restrictions in the visibility of the worklog. Optional when c
 
 =back
 
-Returns a L<< JIRA::API::Worklog >>.
+Returns a L<< JIRA::API::Worklog >> on success.
 
 =cut
 
@@ -24381,7 +24337,7 @@ C<properties>, which returns worklog properties.
 =back
 
 
-Returns a L<< JIRA::API::Worklog >>.
+Returns a L<< JIRA::API::Worklog >> on success.
 
 =cut
 
@@ -24589,7 +24545,7 @@ Details about any restrictions in the visibility of the worklog. Optional when c
 
 =back
 
-Returns a L<< JIRA::API::Worklog >>.
+Returns a L<< JIRA::API::Worklog >> on success.
 
 =cut
 
@@ -24710,7 +24666,7 @@ The ID of the worklog.
 =back
 
 
-Returns a L<< JIRA::API::PropertyKeys >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
@@ -24931,7 +24887,7 @@ The key of the property.
 =back
 
 
-Returns a L<< JIRA::API::EntityProperty >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
@@ -25048,8 +25004,7 @@ The key of the issue property. The maximum length is 255 characters.
 =back
 
 
-Returns a L<<  >>.
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -25070,7 +25025,7 @@ sub _build_setWorklogProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -25210,7 +25165,7 @@ In the L< issueLinkType|#api-rest-api-3-issueLinkType-post> resource it defines 
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -25403,7 +25358,7 @@ The ID of the issue link.
 =back
 
 
-Returns a L<< JIRA::API::IssueLink >>.
+Returns a L<< JIRA::API::IssueLink >> on success.
 
 =cut
 
@@ -25502,7 +25457,7 @@ Get issue link types
 =back
 
 
-Returns a L<< JIRA::API::IssueLinkTypes >>.
+Returns a L<< JIRA::API::IssueLinkTypes >> on success.
 
 =cut
 
@@ -25674,7 +25629,7 @@ The URL of the issue link type. Read only.
 
 =back
 
-Returns a L<< JIRA::API::IssueLinkType >>.
+Returns a L<< JIRA::API::IssueLinkType >> on success.
 
 =cut
 
@@ -25864,7 +25819,7 @@ The ID of the issue link type.
 =back
 
 
-Returns a L<< JIRA::API::IssueLinkType >>.
+Returns a L<< JIRA::API::IssueLinkType >> on success.
 
 =cut
 
@@ -26049,7 +26004,7 @@ The URL of the issue link type. Read only.
 
 =back
 
-Returns a L<< JIRA::API::IssueLinkType >>.
+Returns a L<< JIRA::API::IssueLinkType >> on success.
 
 =cut
 
@@ -26151,7 +26106,7 @@ Get issue security schemes
 =back
 
 
-Returns a L<< JIRA::API::SecuritySchemes >>.
+Returns a L<< JIRA::API::SecuritySchemes >> on success.
 
 =cut
 
@@ -26245,7 +26200,7 @@ The ID of the issue security scheme. Use the L<Get issue security schemes|#api-r
 =back
 
 
-Returns a L<< JIRA::API::SecurityScheme >>.
+Returns a L<< JIRA::API::SecurityScheme >> on success.
 
 =cut
 
@@ -26390,7 +26345,7 @@ C<user> Returns information about the user who is granted the permission.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanIssueSecurityLevelMember >>.
+Returns a L<< JIRA::API::PageBeanIssueSecurityLevelMember >> on success.
 
 =cut
 
@@ -26499,7 +26454,7 @@ Get all issue types for user
 =back
 
 
-Returns an array of L<< JIRA::API::IssueTypeDetails >>.
+Returns an array of L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
@@ -26627,7 +26582,7 @@ Whether the issue type is C<subtype> or C<standard>. Defaults to C<standard>.
 
 =back
 
-Returns a L<< JIRA::API::IssueTypeDetails >>.
+Returns a L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
@@ -26753,7 +26708,7 @@ C<1> for Epic.
 =back
 
 
-Returns an array of L<< JIRA::API::IssueTypeDetails >>.
+Returns an array of L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
@@ -26963,7 +26918,7 @@ The ID of the issue type.
 =back
 
 
-Returns a L<< JIRA::API::IssueTypeDetails >>.
+Returns a L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
@@ -27084,7 +27039,7 @@ The unique name for the issue type. The maximum length is 60 characters.
 
 =back
 
-Returns a L<< JIRA::API::IssueTypeDetails >>.
+Returns a L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
@@ -27196,7 +27151,7 @@ The ID of the issue type.
 =back
 
 
-Returns an array of L<< JIRA::API::IssueTypeDetails >>.
+Returns an array of L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
@@ -27309,7 +27264,7 @@ The length of each side of the crop region.
 =back
 
 
-Returns a L<< JIRA::API::Avatar >>.
+Returns a L<< JIRA::API::Avatar >> on success.
 
 =cut
 
@@ -27332,7 +27287,7 @@ sub _build_createIssueTypeAvatar_request( $self, %options ) {
               'size' => delete $options{'size'},
     );
 
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -27427,7 +27382,7 @@ The ID of the issue type.
 =back
 
 
-Returns a L<< JIRA::API::PropertyKeys >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
@@ -27631,7 +27586,7 @@ The key of the property. Use L<Get issue type property keys|#api-rest-api-3-issu
 =back
 
 
-Returns a L<< JIRA::API::EntityProperty >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
@@ -27741,8 +27696,7 @@ The key of the issue type property. The maximum length is 255 characters.
 =back
 
 
-Returns a L<<  >>.
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -27760,7 +27714,7 @@ sub _build_setIssueTypeProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -27916,7 +27870,7 @@ String used to perform a case-insensitive partial match with issue type scheme n
 =back
 
 
-Returns a L<< JIRA::API::PageBeanIssueTypeScheme >>.
+Returns a L<< JIRA::API::PageBeanIssueTypeScheme >> on success.
 
 =cut
 
@@ -28040,7 +27994,7 @@ The name of the issue type scheme. The name must be unique. The maximum length i
 
 =back
 
-Returns a L<< JIRA::API::IssueTypeSchemeID >>.
+Returns a L<< JIRA::API::IssueTypeSchemeID >> on success.
 
 =cut
 
@@ -28184,7 +28138,7 @@ The list of issue type scheme IDs. To include multiple IDs, provide an ampersand
 =back
 
 
-Returns a L<< JIRA::API::PageBeanIssueTypeSchemeMapping >>.
+Returns a L<< JIRA::API::PageBeanIssueTypeSchemeMapping >> on success.
 
 =cut
 
@@ -28295,7 +28249,7 @@ The list of project IDs. To include multiple project IDs, provide an ampersand-s
 =back
 
 
-Returns a L<< JIRA::API::PageBeanIssueTypeSchemeProjects >>.
+Returns a L<< JIRA::API::PageBeanIssueTypeSchemeProjects >> on success.
 
 =cut
 
@@ -28411,7 +28365,7 @@ The ID of the project.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -28547,7 +28501,7 @@ The ID of the issue type scheme.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -28704,7 +28658,7 @@ The name of the issue type scheme. The name must be unique. The maximum length i
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -28856,7 +28810,7 @@ The list of issue type IDs.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -29016,7 +28970,7 @@ The position the issue types should be moved to. Required if C<after> isn't prov
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -29162,7 +29116,7 @@ The ID of the issue type.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -29338,7 +29292,7 @@ Use L<expand|#expansion> to include additional information in the response. This
 =back
 
 
-Returns a L<< JIRA::API::PageBeanIssueTypeScreenScheme >>.
+Returns a L<< JIRA::API::PageBeanIssueTypeScreenScheme >> on success.
 
 =cut
 
@@ -29458,7 +29412,7 @@ The name of the issue type screen scheme. The name must be unique. The maximum l
 
 =back
 
-Returns a L<< JIRA::API::IssueTypeScreenSchemeId >>.
+Returns a L<< JIRA::API::IssueTypeScreenSchemeId >> on success.
 
 =cut
 
@@ -29616,7 +29570,7 @@ The list of issue type screen scheme IDs. To include multiple issue type screen 
 =back
 
 
-Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemeItem >>.
+Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemeItem >> on success.
 
 =cut
 
@@ -29727,7 +29681,7 @@ The list of project IDs. To include multiple projects, separate IDs with ampersa
 =back
 
 
-Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemesProjects >>.
+Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemesProjects >> on success.
 
 =cut
 
@@ -29843,7 +29797,7 @@ The ID of the project.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -29979,7 +29933,7 @@ The ID of the issue type screen scheme.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -30121,7 +30075,7 @@ The name of the issue type screen scheme. The name must be unique. The maximum l
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -30273,7 +30227,7 @@ The list of issue type to screen scheme mappings. A I<default> entry cannot be s
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -30428,7 +30382,7 @@ The ID of the screen scheme.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -30580,7 +30534,7 @@ The list of issue type IDs.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -30732,7 +30686,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanProjectDetails >>.
+Returns a L<< JIRA::API::PageBeanProjectDetails >> on success.
 
 =cut
 
@@ -30837,7 +30791,7 @@ Get field reference data (GET)
 =back
 
 
-Returns a L<< JIRA::API::JQLReferenceData >>.
+Returns a L<< JIRA::API::JQLReferenceData >> on success.
 
 =cut
 
@@ -30938,7 +30892,7 @@ List of project IDs used to filter the visible field details returned.
 
 =back
 
-Returns a L<< JIRA::API::JQLReferenceData >>.
+Returns a L<< JIRA::API::JQLReferenceData >> on success.
 
 =cut
 
@@ -31047,7 +31001,7 @@ The partial predicate item name entered by the user.
 =back
 
 
-Returns a L<< JIRA::API::AutoCompleteSuggestions >>.
+Returns a L<< JIRA::API::AutoCompleteSuggestions >> on success.
 
 =cut
 
@@ -31154,7 +31108,7 @@ Get precomputation
 =back
 
 
-Returns a L<< JIRA::API::PageBeanJqlFunctionPrecomputationBean >>.
+Returns a L<< JIRA::API::PageBeanJqlFunctionPrecomputationBean >> on success.
 
 =cut
 
@@ -31254,7 +31208,7 @@ Update precomputations
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -31355,7 +31309,7 @@ A list of JQL queries.
 
 =back
 
-Returns a L<< JIRA::API::IssueMatches >>.
+Returns a L<< JIRA::API::IssueMatches >> on success.
 
 =cut
 
@@ -31478,8 +31432,8 @@ A list of queries to parse.
 
 =back
 
-Returns a L<< JIRA::API::ParsedJqlQueries >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ParsedJqlQueries >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -31597,7 +31551,7 @@ A list of queries with user identifiers. Maximum of 100 queries.
 
 =back
 
-Returns a L<< JIRA::API::ConvertedJQLQueries >>.
+Returns a L<< JIRA::API::ConvertedJQLQueries >> on success.
 
 =cut
 
@@ -31700,10 +31654,8 @@ The list of JQL queries to sanitize. Must contain unique values. Maximum of 20 q
 
 =back
 
-Returns a L<< JIRA::API::SanitizedJqlQueries >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::SanitizedJqlQueries >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -31840,7 +31792,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanString >>.
+Returns a L<< JIRA::API::PageBeanString >> on success.
 
 =cut
 
@@ -31929,7 +31881,7 @@ Get approximate license count
 =back
 
 
-Returns a L<< JIRA::API::LicenseMetric >>.
+Returns a L<< JIRA::API::LicenseMetric >> on success.
 
 =cut
 
@@ -32021,7 +31973,7 @@ Get approximate application license count
 =back
 
 
-Returns a L<< JIRA::API::LicenseMetric >>.
+Returns a L<< JIRA::API::LicenseMetric >> on success.
 
 =cut
 
@@ -32145,10 +32097,8 @@ The ID of the comment.
 =back
 
 
-Returns a L<< JIRA::API::Permissions >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::Permissions >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -32377,7 +32327,7 @@ The key of the preference.
 =back
 
 
-Returns a L<< string >>.
+Returns a L<< string >> on success.
 
 =cut
 
@@ -32478,7 +32428,7 @@ The key of the preference. The maximum length is 255 characters.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -32502,7 +32452,8 @@ sub _build_setPreference_request( $self, %options ) {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        # XXX Need to fill the body
+        # => $body,
     );
 
     return $tx
@@ -32579,7 +32530,7 @@ Delete locale
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -32666,7 +32617,7 @@ Get locale
 =back
 
 
-Returns a L<< JIRA::API::Locale >>.
+Returns a L<< JIRA::API::Locale >> on success.
 
 =cut
 
@@ -32763,7 +32714,7 @@ The locale code. The Java the locale format is used: a two character language co
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -32874,7 +32825,7 @@ C<applicationRoles> Returns the application roles the user is assigned to.
 =back
 
 
-Returns a L<< JIRA::API::User >>.
+Returns a L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -33023,7 +32974,7 @@ C<user> Returns information about any users assigned to receive an event
 =back
 
 
-Returns a L<< JIRA::API::PageBeanNotificationScheme >>.
+Returns a L<< JIRA::API::PageBeanNotificationScheme >> on success.
 
 =cut
 
@@ -33151,10 +33102,8 @@ The list of notifications which should be added to the notification scheme.
 
 =back
 
-Returns a L<< JIRA::API::NotificationSchemeId >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::NotificationSchemeId >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -33299,9 +33248,8 @@ The list of project IDs to be filtered out
 =back
 
 
-Returns a L<< JIRA::API::PageBeanNotificationSchemeAndProjectMappingJsonBean >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanNotificationSchemeAndProjectMappingJsonBean >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -33462,7 +33410,7 @@ C<user> Returns information about any users assigned to receive an event
 =back
 
 
-Returns a L<< JIRA::API::NotificationScheme >>.
+Returns a L<< JIRA::API::NotificationScheme >> on success.
 
 =cut
 
@@ -33583,11 +33531,8 @@ The name of the notification scheme. Must be unique.
 
 =back
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -33750,11 +33695,8 @@ The list of notifications which should be added to the notification scheme.
 
 =back
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -33907,11 +33849,8 @@ The ID of the notification scheme.
 =back
 
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -34065,11 +34004,8 @@ The ID of the notification.
 =back
 
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -34218,7 +34154,7 @@ Get all permissions
 =back
 
 
-Returns a L<< JIRA::API::Permissions >>.
+Returns a L<< JIRA::API::Permissions >> on success.
 
 =cut
 
@@ -34326,9 +34262,8 @@ Project permissions with associated projects and issues to look up.
 
 =back
 
-Returns a L<< JIRA::API::BulkPermissionGrants >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::BulkPermissionGrants >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -34453,7 +34388,7 @@ A list of permission keys.
 
 =back
 
-Returns a L<< JIRA::API::PermittedProjects >>.
+Returns a L<< JIRA::API::PermittedProjects >> on success.
 
 =cut
 
@@ -34595,7 +34530,7 @@ C<user> Returns information about the user who is granted the permission.
 =back
 
 
-Returns a L<< JIRA::API::PermissionSchemes >>.
+Returns a L<< JIRA::API::PermissionSchemes >> on success.
 
 =cut
 
@@ -34758,7 +34693,7 @@ The URL of the permission scheme.
 
 =back
 
-Returns a L<< JIRA::API::PermissionScheme >>.
+Returns a L<< JIRA::API::PermissionScheme >> on success.
 
 =cut
 
@@ -34990,7 +34925,7 @@ C<user> Returns information about the user who is granted the permission.
 =back
 
 
-Returns a L<< JIRA::API::PermissionScheme >>.
+Returns a L<< JIRA::API::PermissionScheme >> on success.
 
 =cut
 
@@ -35166,7 +35101,7 @@ The URL of the permission scheme.
 
 =back
 
-Returns a L<< JIRA::API::PermissionScheme >>.
+Returns a L<< JIRA::API::PermissionScheme >> on success.
 
 =cut
 
@@ -35314,7 +35249,7 @@ C<all> Returns all expandable information.
 =back
 
 
-Returns a L<< JIRA::API::PermissionGrants >>.
+Returns a L<< JIRA::API::PermissionGrants >> on success.
 
 =cut
 
@@ -35478,7 +35413,7 @@ The URL of the permission granted details.
 
 =back
 
-Returns a L<< JIRA::API::PermissionGrant >>.
+Returns a L<< JIRA::API::PermissionGrant >> on success.
 
 =cut
 
@@ -35727,7 +35662,7 @@ C<user> Returns information about the user who is granted the permission.
 =back
 
 
-Returns a L<< JIRA::API::PermissionGrant >>.
+Returns a L<< JIRA::API::PermissionGrant >> on success.
 
 =cut
 
@@ -35830,7 +35765,7 @@ Get priorities
 =back
 
 
-Returns an array of L<< JIRA::API::Priority >>.
+Returns an array of L<< JIRA::API::Priority >> on success.
 
 =cut
 
@@ -35940,10 +35875,8 @@ The status color of the priority in 3-digit or 6-digit hexadecimal format.
 
 =back
 
-Returns a L<< JIRA::API::PriorityId >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PriorityId >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -36082,11 +36015,8 @@ The ID of the new default issue priority. Must be an existing ID or null. Settin
 
 =back
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -36247,11 +36177,8 @@ The position for issue priorities to be moved to. Required if C<after> isn't pro
 
 =back
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -36410,8 +36337,8 @@ Whether only the default priority is returned.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanPriority >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanPriority >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -36524,12 +36451,8 @@ The ID of the issue priority that will replace the currently selected resolution
 =back
 
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
 
 =cut
 
@@ -36699,7 +36622,7 @@ The ID of the issue priority.
 =back
 
 
-Returns a L<< JIRA::API::Priority >>.
+Returns a L<< JIRA::API::Priority >> on success.
 
 =cut
 
@@ -36821,11 +36744,8 @@ The status color of the priority in 3-digit or 6-digit hexadecimal format.
 
 =back
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -37010,7 +36930,7 @@ A list of project properties to return for the project. This parameter accepts a
 =back
 
 
-Returns an array of L<< JIRA::API::Project >>.
+Returns an array of L<< JIRA::API::Project >> on success.
 
 =cut
 
@@ -37182,7 +37102,7 @@ The ID of the workflow scheme for the project. Use the L<Get all workflow scheme
 
 =back
 
-Returns a L<< JIRA::API::ProjectIdentifiers >>.
+Returns a L<< JIRA::API::ProjectIdentifiers >> on success.
 
 =cut
 
@@ -37330,7 +37250,7 @@ EXPERIMENTAL. A list of project properties to return for the project. This param
 =back
 
 
-Returns an array of L<< JIRA::API::Project >>.
+Returns an array of L<< JIRA::API::Project >> on success.
 
 =cut
 
@@ -37631,7 +37551,7 @@ EXPERIMENTAL. A query string used to search properties. The query string cannot 
 =back
 
 
-Returns a L<< JIRA::API::PageBeanProject >>.
+Returns a L<< JIRA::API::PageBeanProject >> on success.
 
 =cut
 
@@ -37740,7 +37660,7 @@ Get all project types
 =back
 
 
-Returns an array of L<< JIRA::API::ProjectType >>.
+Returns an array of L<< JIRA::API::ProjectType >> on success.
 
 =cut
 
@@ -37828,7 +37748,7 @@ Get licensed project types
 =back
 
 
-Returns an array of L<< JIRA::API::ProjectType >>.
+Returns an array of L<< JIRA::API::ProjectType >> on success.
 
 =cut
 
@@ -37917,7 +37837,7 @@ The key of the project type.
 =back
 
 
-Returns a L<< JIRA::API::ProjectType >>.
+Returns a L<< JIRA::API::ProjectType >> on success.
 
 =cut
 
@@ -38017,7 +37937,7 @@ The key of the project type.
 =back
 
 
-Returns a L<< JIRA::API::ProjectType >>.
+Returns a L<< JIRA::API::ProjectType >> on success.
 
 =cut
 
@@ -38249,7 +38169,7 @@ A list of project properties to return for the project. This parameter accepts a
 =back
 
 
-Returns a L<< JIRA::API::Project >>.
+Returns a L<< JIRA::API::Project >> on success.
 
 =cut
 
@@ -38436,7 +38356,7 @@ A link to information about this project, such as project documentation
 
 =back
 
-Returns a L<< JIRA::API::Project >>.
+Returns a L<< JIRA::API::Project >> on success.
 
 =cut
 
@@ -38549,7 +38469,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -38689,7 +38609,7 @@ The list of avatar icon URLs.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -38904,7 +38824,7 @@ The length of each side of the crop region.
 =back
 
 
-Returns a L<< JIRA::API::Avatar >>.
+Returns a L<< JIRA::API::Avatar >> on success.
 
 =cut
 
@@ -38925,7 +38845,7 @@ sub _build_createProjectAvatar_request( $self, %options ) {
         maybe 'size' => delete $options{'size'},
     );
 
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -39020,7 +38940,7 @@ The ID or (case-sensitive) key of the project.
 =back
 
 
-Returns a L<< JIRA::API::ProjectAvatars >>.
+Returns a L<< JIRA::API::ProjectAvatars >> on success.
 
 =cut
 
@@ -39160,7 +39080,7 @@ Filter the results using a literal string. Components with a matching C<name> or
 =back
 
 
-Returns a L<< JIRA::API::PageBeanComponentWithIssueCount >>.
+Returns a L<< JIRA::API::PageBeanComponentWithIssueCount >> on success.
 
 =cut
 
@@ -39267,7 +39187,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns an array of L<< JIRA::API::ProjectComponent >>.
+Returns an array of L<< JIRA::API::ProjectComponent >> on success.
 
 =cut
 
@@ -39368,7 +39288,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >>.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
 
 =cut
 
@@ -39471,7 +39391,7 @@ The ID or (case-sensitive) key of the project.
 =back
 
 
-Returns a L<< JIRA::API::ContainerForProjectFeatures >>.
+Returns a L<< JIRA::API::ContainerForProjectFeatures >> on success.
 
 =cut
 
@@ -39591,7 +39511,7 @@ The feature state.
 
 =back
 
-Returns a L<< JIRA::API::ContainerForProjectFeatures >>.
+Returns a L<< JIRA::API::ContainerForProjectFeatures >> on success.
 
 =cut
 
@@ -39703,7 +39623,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns a L<< JIRA::API::PropertyKeys >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
@@ -39913,7 +39833,7 @@ The project property key. Use L<Get project property keys|#api-rest-api-3-projec
 =back
 
 
-Returns a L<< JIRA::API::EntityProperty >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
@@ -40026,8 +39946,7 @@ The key of the project property. The maximum length is 255 characters.
 =back
 
 
-Returns a L<<  >>.
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -40045,7 +39964,7 @@ sub _build_setProjectProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -40153,7 +40072,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns a L<< JIRA::API::Project >>.
+Returns a L<< JIRA::API::Project >> on success.
 
 =cut
 
@@ -40256,7 +40175,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns a L<< object >>.
+Returns a L<< object >> on success.
 
 =cut
 
@@ -40476,7 +40395,7 @@ Exclude inactive users.
 =back
 
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -40608,7 +40527,7 @@ The user account ID of the user to add.
 
 =back
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -40755,7 +40674,7 @@ The ID of the project role. Use L<Get all project roles|#api-rest-api-3-role-get
 
 =back
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -40870,7 +40789,7 @@ Whether the roles should be filtered to include only those the user is assigned 
 =back
 
 
-Returns an array of L<< JIRA::API::ProjectRoleDetails >>.
+Returns an array of L<< JIRA::API::ProjectRoleDetails >> on success.
 
 =cut
 
@@ -40976,7 +40895,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns an array of L<< JIRA::API::IssueTypeWithStatus >>.
+Returns an array of L<< JIRA::API::IssueTypeWithStatus >> on success.
 
 =cut
 
@@ -41081,7 +41000,7 @@ The key of the new project type.
 =back
 
 
-Returns a L<< JIRA::API::Project >>.
+Returns a L<< JIRA::API::Project >> on success.
 
 =cut
 
@@ -41254,7 +41173,7 @@ C<operations> Returns actions that can be performed on the specified version.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanVersion >>.
+Returns a L<< JIRA::API::PageBeanVersion >> on success.
 
 =cut
 
@@ -41364,7 +41283,7 @@ Use L<expand|#expansion> to include additional information in the response. This
 =back
 
 
-Returns an array of L<< JIRA::API::Version >>.
+Returns an array of L<< JIRA::API::Version >> on success.
 
 =cut
 
@@ -41466,7 +41385,7 @@ The project ID.
 =back
 
 
-Returns a L<< JIRA::API::ProjectEmailAddress >>.
+Returns a L<< JIRA::API::ProjectEmailAddress >> on success.
 
 =cut
 
@@ -41583,7 +41502,7 @@ When using a custom domain, the status of the email address.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -41692,7 +41611,7 @@ The ID of the project.
 =back
 
 
-Returns a L<< JIRA::API::ProjectIssueTypeHierarchy >>.
+Returns a L<< JIRA::API::ProjectIssueTypeHierarchy >> on success.
 
 =cut
 
@@ -41795,7 +41714,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns a L<< JIRA::API::SecurityScheme >>.
+Returns a L<< JIRA::API::SecurityScheme >> on success.
 
 =cut
 
@@ -41939,7 +41858,7 @@ C<user> Returns information about any users assigned to receive an event
 =back
 
 
-Returns a L<< JIRA::API::NotificationScheme >>.
+Returns a L<< JIRA::API::NotificationScheme >> on success.
 
 =cut
 
@@ -42084,7 +42003,7 @@ C<user> Returns information about the user who is granted the permission.
 =back
 
 
-Returns a L<< JIRA::API::PermissionScheme >>.
+Returns a L<< JIRA::API::PermissionScheme >> on success.
 
 =cut
 
@@ -42239,7 +42158,7 @@ The ID of the permission scheme to associate with the project. Use the L<Get all
 
 =back
 
-Returns a L<< JIRA::API::PermissionScheme >>.
+Returns a L<< JIRA::API::PermissionScheme >> on success.
 
 =cut
 
@@ -42349,7 +42268,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns a L<< JIRA::API::ProjectIssueSecurityLevels >>.
+Returns a L<< JIRA::API::ProjectIssueSecurityLevels >> on success.
 
 =cut
 
@@ -42442,7 +42361,7 @@ Get all project categories
 =back
 
 
-Returns an array of L<< JIRA::API::ProjectCategory >>.
+Returns an array of L<< JIRA::API::ProjectCategory >> on success.
 
 =cut
 
@@ -42552,7 +42471,7 @@ The URL of the project category.
 
 =back
 
-Returns a L<< JIRA::API::ProjectCategory >>.
+Returns a L<< JIRA::API::ProjectCategory >> on success.
 
 =cut
 
@@ -42745,7 +42664,7 @@ The ID of the project category.
 =back
 
 
-Returns a L<< JIRA::API::ProjectCategory >>.
+Returns a L<< JIRA::API::ProjectCategory >> on success.
 
 =cut
 
@@ -42865,7 +42784,7 @@ The URL of the project category.
 
 =back
 
-Returns a L<< JIRA::API::UpdatedProjectCategory >>.
+Returns a L<< JIRA::API::UpdatedProjectCategory >> on success.
 
 =cut
 
@@ -42974,7 +42893,7 @@ The project key.
 =back
 
 
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on success.
 
 =cut
 
@@ -43069,7 +42988,7 @@ The project key.
 =back
 
 
-Returns a L<< string >>.
+Returns a L<< string >> on success.
 
 =cut
 
@@ -43164,7 +43083,7 @@ The project name.
 =back
 
 
-Returns a L<< string >>.
+Returns a L<< string >> on success.
 
 =cut
 
@@ -43264,7 +43183,7 @@ Get resolutions
 =back
 
 
-Returns an array of L<< JIRA::API::Resolution >>.
+Returns an array of L<< JIRA::API::Resolution >> on success.
 
 =cut
 
@@ -43366,10 +43285,8 @@ The name of the resolution. Must be unique (case-insensitive).
 
 =back
 
-Returns a L<< JIRA::API::ResolutionId >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ResolutionId >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -43508,11 +43425,8 @@ The ID of the new default issue resolution. Must be an existing ID or null. Sett
 
 =back
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -43673,11 +43587,8 @@ The position for issue resolutions to be moved to. Required if C<after> isn't pr
 
 =back
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -43836,8 +43747,8 @@ When set to true, return default only, when IDs provided, if none of them is def
 =back
 
 
-Returns a L<< JIRA::API::PageBeanResolutionJsonBean >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanResolutionJsonBean >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -43950,12 +43861,8 @@ The ID of the issue resolution that will replace the currently selected resoluti
 =back
 
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
 
 =cut
 
@@ -44125,7 +44032,7 @@ The ID of the issue resolution value.
 =back
 
 
-Returns a L<< JIRA::API::Resolution >>.
+Returns a L<< JIRA::API::Resolution >> on success.
 
 =cut
 
@@ -44239,11 +44146,8 @@ The name of the resolution. Must be unique.
 
 =back
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -44392,7 +44296,7 @@ Get all project roles
 =back
 
 
-Returns an array of L<< JIRA::API::ProjectRole >>.
+Returns an array of L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -44497,7 +44401,7 @@ The name of the project role. Must be unique. Cannot begin or end with whitespac
 
 =back
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -44704,7 +44608,7 @@ The ID of the project role. Use L<Get all project roles|#api-rest-api-3-role-get
 =back
 
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -44821,7 +44725,7 @@ The name of the project role. Must be unique. Cannot begin or end with whitespac
 
 =back
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -44944,7 +44848,7 @@ The name of the project role. Must be unique. Cannot begin or end with whitespac
 
 =back
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -45065,7 +44969,7 @@ The group name of the group to be removed as a default actor.This parameter cann
 =back
 
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -45177,7 +45081,7 @@ The ID of the project role. Use L<Get all project roles|#api-rest-api-3-role-get
 =back
 
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -45301,7 +45205,7 @@ The account IDs of the users to add as default actors. This parameter accepts a 
 
 =back
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -45444,7 +45348,7 @@ C<name> Sorts by screen name.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanScreen >>.
+Returns a L<< JIRA::API::PageBeanScreen >> on success.
 
 =cut
 
@@ -45557,7 +45461,7 @@ The name of the screen. The name must be unique. The maximum length is 255 chara
 
 =back
 
-Returns a L<< JIRA::API::Screen >>.
+Returns a L<< JIRA::API::Screen >> on success.
 
 =cut
 
@@ -45679,7 +45583,7 @@ The ID of the field.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -45923,7 +45827,7 @@ The name of the screen. The name must be unique. The maximum length is 255 chara
 
 =back
 
-Returns a L<< JIRA::API::Screen >>.
+Returns a L<< JIRA::API::Screen >> on success.
 
 =cut
 
@@ -46065,7 +45969,7 @@ The ID of the screen.
 =back
 
 
-Returns an array of L<< JIRA::API::ScreenableField >>.
+Returns an array of L<< JIRA::API::ScreenableField >> on success.
 
 =cut
 
@@ -46173,7 +46077,7 @@ The key of the project.
 =back
 
 
-Returns an array of L<< JIRA::API::ScreenableTab >>.
+Returns an array of L<< JIRA::API::ScreenableTab >> on success.
 
 =cut
 
@@ -46298,7 +46202,7 @@ The name of the screen tab. The maximum length is 255 characters.
 
 =back
 
-Returns a L<< JIRA::API::ScreenableTab >>.
+Returns a L<< JIRA::API::ScreenableTab >> on success.
 
 =cut
 
@@ -46522,7 +46426,7 @@ The name of the screen tab. The maximum length is 255 characters.
 
 =back
 
-Returns a L<< JIRA::API::ScreenableTab >>.
+Returns a L<< JIRA::API::ScreenableTab >> on success.
 
 =cut
 
@@ -46642,7 +46546,7 @@ The key of the project.
 =back
 
 
-Returns an array of L<< JIRA::API::ScreenableField >>.
+Returns an array of L<< JIRA::API::ScreenableField >> on success.
 
 =cut
 
@@ -46767,7 +46671,7 @@ The ID of the field to add.
 
 =back
 
-Returns a L<< JIRA::API::ScreenableField >>.
+Returns a L<< JIRA::API::ScreenableField >> on success.
 
 =cut
 
@@ -47008,7 +46912,7 @@ The named position to which the screen tab field should be moved. Required if C<
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -47131,7 +47035,7 @@ The position of tab. The base index is 0.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -47277,7 +47181,7 @@ C<name> Sorts by screen scheme name.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanScreenScheme >>.
+Returns a L<< JIRA::API::PageBeanScreenScheme >> on success.
 
 =cut
 
@@ -47394,7 +47298,7 @@ The IDs of the screens for the screen types of the screen scheme. Only screens u
 
 =back
 
-Returns a L<< JIRA::API::ScreenSchemeId >>.
+Returns a L<< JIRA::API::ScreenSchemeId >> on success.
 
 =cut
 
@@ -47675,7 +47579,7 @@ The IDs of the screens for the screen types of the screen scheme. Only screens u
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -47983,7 +47887,7 @@ Reference fields by their key (rather than ID).
 =back
 
 
-Returns a L<< JIRA::API::SearchResults >>.
+Returns a L<< JIRA::API::SearchResults >> on success.
 
 =cut
 
@@ -48245,7 +48149,7 @@ Note: If the JQL is not correctly formed a 400 response code is returned, regard
 
 =back
 
-Returns a L<< JIRA::API::SearchResults >>.
+Returns a L<< JIRA::API::SearchResults >> on success.
 
 =cut
 
@@ -48342,7 +48246,7 @@ The ID of the issue security level.
 =back
 
 
-Returns a L<< JIRA::API::SecurityLevel >>.
+Returns a L<< JIRA::API::SecurityLevel >> on success.
 
 =cut
 
@@ -48438,7 +48342,7 @@ Get Jira instance info
 =back
 
 
-Returns a L<< JIRA::API::ServerInformation >>.
+Returns a L<< JIRA::API::ServerInformation >> on success.
 
 =cut
 
@@ -48525,7 +48429,7 @@ Get issue navigator default columns
 =back
 
 
-Returns an array of L<< JIRA::API::ColumnItem >>.
+Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 =cut
 
@@ -48616,7 +48520,7 @@ Set issue navigator default columns
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -48625,8 +48529,8 @@ sub _build_setIssueNavigatorDefaultColumns_request( $self, %options ) {
     my $path = '/rest/api/3/settings/columns';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::->new( \%options );
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "array"
+    my $body = delete $options{ body } // ''; # ??? really? This is an "array"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -48717,7 +48621,7 @@ Get all statuses
 =back
 
 
-Returns an array of L<< JIRA::API::StatusDetails >>.
+Returns an array of L<< JIRA::API::StatusDetails >> on success.
 
 =cut
 
@@ -48809,7 +48713,7 @@ The ID or name of the status.
 =back
 
 
-Returns a L<< JIRA::API::StatusDetails >>.
+Returns a L<< JIRA::API::StatusDetails >> on success.
 
 =cut
 
@@ -48905,7 +48809,7 @@ Get all status categories
 =back
 
 
-Returns an array of L<< JIRA::API::StatusCategory >>.
+Returns an array of L<< JIRA::API::StatusCategory >> on success.
 
 =cut
 
@@ -48997,7 +48901,7 @@ The ID or key of the status category.
 =back
 
 
-Returns a L<< JIRA::API::StatusCategory >>.
+Returns a L<< JIRA::API::StatusCategory >> on success.
 
 =cut
 
@@ -49099,7 +49003,7 @@ Min items C<1>, Max items C<50>
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -49223,7 +49127,7 @@ Min items C<1>, Max items C<50>
 =back
 
 
-Returns an array of L<< JIRA::API::JiraStatus >>.
+Returns an array of L<< JIRA::API::JiraStatus >> on success.
 
 =cut
 
@@ -49333,7 +49237,7 @@ Details of the statuses being created.
 
 =back
 
-Returns an array of L<< JIRA::API::JiraStatus >>.
+Returns an array of L<< JIRA::API::JiraStatus >> on success.
 
 =cut
 
@@ -49448,7 +49352,7 @@ The list of statuses that will be updated.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -49585,7 +49489,7 @@ Category of the status to filter by. The supported values are: C<TODO>, C<IN_PRO
 =back
 
 
-Returns a L<< JIRA::API::PageOfStatuses >>.
+Returns a L<< JIRA::API::PageOfStatuses >> on success.
 
 =cut
 
@@ -49688,7 +49592,7 @@ The ID of the task.
 =back
 
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >>.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on success.
 
 =cut
 
@@ -49791,11 +49695,8 @@ The ID of the task.
 =back
 
 
-Returns a L<<  >>.
-Returns an array of L<< JIRA::API:: >>.
-Returns an array of L<< JIRA::API:: >>.
-Returns an array of L<< JIRA::API:: >>.
-Returns an array of L<< JIRA::API:: >>.
+Returns Hashref on success.
+Returns an array of L<< JIRA::API:: >> on error.
 
 =cut
 
@@ -49971,7 +49872,7 @@ C<contexts> Returns UI modification contexts.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanUiModificationDetails >>.
+Returns a L<< JIRA::API::PageBeanUiModificationDetails >> on success.
 
 =cut
 
@@ -50092,7 +49993,7 @@ The name of the UI modification. The maximum length is 255 characters.
 
 =back
 
-Returns a L<< JIRA::API::UiModificationIdentifiers >>.
+Returns a L<< JIRA::API::UiModificationIdentifiers >> on success.
 
 =cut
 
@@ -50195,7 +50096,7 @@ The ID of the UI modification.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -50320,7 +50221,7 @@ The name of the UI modification. The maximum length is 255 characters.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -50433,7 +50334,7 @@ The ID of the item the avatar is associated with.
 =back
 
 
-Returns a L<< JIRA::API::Avatars >>.
+Returns a L<< JIRA::API::Avatars >> on success.
 
 =cut
 
@@ -50552,7 +50453,7 @@ The length of each side of the crop region.
 =back
 
 
-Returns a L<< JIRA::API::Avatar >>.
+Returns a L<< JIRA::API::Avatar >> on success.
 
 =cut
 
@@ -50578,7 +50479,7 @@ sub _build_storeAvatar_request( $self, %options ) {
               'size' => delete $options{'size'},
     );
 
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -50785,10 +50686,8 @@ The format to return the avatar image in. If not provided the original content f
 =back
 
 
-Returns a L<< object >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< object >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -51061,11 +50960,8 @@ The format to return the avatar image in. If not provided the original content f
 =back
 
 
-Returns a L<< object >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< object >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -51385,11 +51281,8 @@ The format to return the avatar image in. If not provided the original content f
 =back
 
 
-Returns a L<< object >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< object >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -51827,7 +51720,7 @@ C<applicationRoles> includes details of all the applications to which the user h
 =back
 
 
-Returns a L<< JIRA::API::User >>.
+Returns a L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -51961,7 +51854,7 @@ The URL of the user.
 
 =back
 
-Returns a L<< JIRA::API::User >>.
+Returns a L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -52081,7 +51974,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns an array of L<< JIRA::API::User >>.
+Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -52228,7 +52121,7 @@ The ID of the transition.
 =back
 
 
-Returns an array of L<< JIRA::API::User >>.
+Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -52358,7 +52251,7 @@ The account ID of a user. To specify multiple users, pass multiple C<accountId> 
 =back
 
 
-Returns a L<< JIRA::API::PageBeanUser >>.
+Returns a L<< JIRA::API::PageBeanUser >> on success.
 
 =cut
 
@@ -52475,7 +52368,7 @@ Key of a user. To specify multiple users, pass multiple copies of this parameter
 =back
 
 
-Returns an array of L<< JIRA::API::UserMigrationBean >>.
+Returns an array of L<< JIRA::API::UserMigrationBean >> on success.
 
 =cut
 
@@ -52671,7 +52564,7 @@ This parameter is no longer available See the L<deprecation notice|https://devel
 =back
 
 
-Returns an array of L<< JIRA::API::ColumnItem >>.
+Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 =cut
 
@@ -52774,7 +52667,7 @@ The account ID of the user, which uniquely identifies the user across all Atlass
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -52787,8 +52680,8 @@ sub _build_setUserColumns_request( $self, %options ) {
         maybe 'accountId' => delete $options{'accountId'},
     );
 
-    my $request = JIRA::API::->new( \%options );
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "array"
+    my $body = delete $options{ body } // ''; # ??? really? This is an "array"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -52886,7 +52779,7 @@ The account ID of the user, which uniquely identifies the user across all Atlass
 =back
 
 
-Returns a L<< JIRA::API::UnrestrictedUserEmail >>.
+Returns a L<< JIRA::API::UnrestrictedUserEmail >> on success.
 
 =cut
 
@@ -52993,7 +52886,7 @@ The account IDs of the users for which emails are required. An C<accountId> is a
 =back
 
 
-Returns a L<< JIRA::API::UnrestrictedUserEmail >>.
+Returns a L<< JIRA::API::UnrestrictedUserEmail >> on success.
 
 =cut
 
@@ -53105,7 +52998,7 @@ This parameter is no longer available. See the L<deprecation notice|https://deve
 =back
 
 
-Returns an array of L<< JIRA::API::GroupName >>.
+Returns an array of L<< JIRA::API::GroupName >> on success.
 
 =cut
 
@@ -53425,7 +53318,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns an array of L<< JIRA::API::User >>.
+Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -53563,7 +53456,7 @@ A list of account IDs to exclude from the search results. This parameter accepts
 =back
 
 
-Returns a L<< JIRA::API::FoundUsers >>.
+Returns a L<< JIRA::API::FoundUsers >> on success.
 
 =cut
 
@@ -53681,7 +53574,7 @@ This parameter is no longer available and will be removed from the documentation
 =back
 
 
-Returns a L<< JIRA::API::PropertyKeys >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
@@ -53910,7 +53803,7 @@ The key of the user's property.
 =back
 
 
-Returns a L<< JIRA::API::EntityProperty >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
@@ -54034,8 +53927,7 @@ The key of the user's property. The maximum length is 255 characters.
 =back
 
 
-Returns a L<<  >>.
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -54056,7 +53948,7 @@ sub _build_setUserProperty_request( $self, %options ) {
         maybe 'username' => delete $options{'username'},
     );
 
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -54185,7 +54077,7 @@ A query string used to search properties. Property keys are specified by path, s
 =back
 
 
-Returns an array of L<< JIRA::API::User >>.
+Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -54300,7 +54192,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanUser >>.
+Returns a L<< JIRA::API::PageBeanUser >> on success.
 
 =cut
 
@@ -54417,7 +54309,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanUserKey >>.
+Returns a L<< JIRA::API::PageBeanUserKey >> on success.
 
 =cut
 
@@ -54550,7 +54442,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns an array of L<< JIRA::API::User >>.
+Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -54665,7 +54557,7 @@ The maximum number of items to return.
 =back
 
 
-Returns an array of L<< JIRA::API::User >>.
+Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -54772,7 +54664,7 @@ The maximum number of items to return.
 =back
 
 
-Returns an array of L<< JIRA::API::User >>.
+Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -54961,7 +54853,7 @@ The date on which work on this version is expected to start, expressed in the in
 
 =back
 
-Returns a L<< JIRA::API::Version >>.
+Returns a L<< JIRA::API::Version >> on success.
 
 =cut
 
@@ -55182,7 +55074,7 @@ C<issuesstatus> Returns the count of issues in this version for each of the stat
 =back
 
 
-Returns a L<< JIRA::API::Version >>.
+Returns a L<< JIRA::API::Version >> on success.
 
 =cut
 
@@ -55376,7 +55268,7 @@ The date on which work on this version is expected to start, expressed in the in
 
 =back
 
-Returns a L<< JIRA::API::Version >>.
+Returns a L<< JIRA::API::Version >> on success.
 
 =cut
 
@@ -55486,7 +55378,7 @@ The ID of the version to merge into.
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -55606,7 +55498,7 @@ An absolute position in which to place the moved version. Cannot be used with C<
 
 =back
 
-Returns a L<< JIRA::API::Version >>.
+Returns a L<< JIRA::API::Version >> on success.
 
 =cut
 
@@ -55712,7 +55604,7 @@ The ID of the version.
 =back
 
 
-Returns a L<< JIRA::API::VersionIssueCounts >>.
+Returns a L<< JIRA::API::VersionIssueCounts >> on success.
 
 =cut
 
@@ -55830,7 +55722,7 @@ The ID of the version to update C<fixVersion> to when the field contains the del
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -55936,7 +55828,7 @@ The ID of the version.
 =back
 
 
-Returns a L<< JIRA::API::VersionUnresolvedIssuesCount >>.
+Returns a L<< JIRA::API::VersionUnresolvedIssuesCount >> on success.
 
 =cut
 
@@ -56042,8 +55934,7 @@ A list of webhook IDs.
 
 =back
 
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -56155,9 +56046,8 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanWebhook >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanWebhook >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -56288,9 +56178,8 @@ A list of webhooks.
 
 =back
 
-Returns a L<< JIRA::API::ContainerForRegisteredWebhooks >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ContainerForRegisteredWebhooks >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -56413,9 +56302,8 @@ The time after which any webhook failure must have occurred for the record to be
 =back
 
 
-Returns a L<< JIRA::API::FailedWebhooks >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::FailedWebhooks >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -56542,9 +56430,8 @@ A list of webhook IDs.
 
 =back
 
-Returns a L<< JIRA::API::WebhooksExpirationDate >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::WebhooksExpirationDate >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -56663,7 +56550,7 @@ The name of the workflow to be returned. Only one workflow can be specified.
 =back
 
 
-Returns an array of L<< JIRA::API::DeprecatedWorkflow >>.
+Returns an array of L<< JIRA::API::DeprecatedWorkflow >> on success.
 
 =cut
 
@@ -56818,7 +56705,7 @@ All the transition statuses must be included in C<statuses>.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowIDs >>.
+Returns a L<< JIRA::API::WorkflowIDs >> on success.
 
 =cut
 
@@ -56982,9 +56869,8 @@ Use L<expand|#expansion> to include additional information in the response. This
 =back
 
 
-Returns a L<< JIRA::API::PageBeanWorkflowTransitionRules >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanWorkflowTransitionRules >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -57123,9 +57009,8 @@ The list of workflows with transition rules to update.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowTransitionRulesUpdateErrors >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::WorkflowTransitionRulesUpdateErrors >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -57250,9 +57135,8 @@ The list of workflows with transition rules to delete.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowTransitionRulesUpdateErrors >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::WorkflowTransitionRulesUpdateErrors >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -57468,8 +57352,8 @@ Filters active and inactive workflows.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanWorkflow >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanWorkflow >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -57718,7 +57602,7 @@ The workflow status. Set to I<live> for active and inactive workflows, or I<draf
 =back
 
 
-Returns a L<< JIRA::API::WorkflowTransitionProperty >>.
+Returns a L<< JIRA::API::WorkflowTransitionProperty >> on success.
 
 =cut
 
@@ -57863,7 +57747,7 @@ The value of the transition property.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowTransitionProperty >>.
+Returns a L<< JIRA::API::WorkflowTransitionProperty >> on success.
 
 =cut
 
@@ -58012,7 +57896,7 @@ The value of the transition property.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowTransitionProperty >>.
+Returns a L<< JIRA::API::WorkflowTransitionProperty >> on success.
 
 =cut
 
@@ -58265,7 +58149,7 @@ The maximum number of items to return per page.
 =back
 
 
-Returns a L<< JIRA::API::PageBeanWorkflowScheme >>.
+Returns a L<< JIRA::API::PageBeanWorkflowScheme >> on success.
 
 =cut
 
@@ -58437,7 +58321,7 @@ Defaults to C<false>.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -58537,7 +58421,7 @@ The ID of a project to return the workflow schemes for. To include multiple proj
 =back
 
 
-Returns a L<< JIRA::API::ContainerOfWorkflowSchemeAssociations >>.
+Returns a L<< JIRA::API::ContainerOfWorkflowSchemeAssociations >> on success.
 
 =cut
 
@@ -58673,7 +58557,7 @@ The ID of the workflow scheme. If the workflow scheme ID is C<null>, the operati
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -58809,7 +58693,7 @@ The ID of the workflow scheme. Find this ID by editing the desired workflow sche
 =back
 
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -58919,7 +58803,7 @@ Returns the workflow scheme's draft rather than scheme itself, if set to true. I
 =back
 
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -59103,7 +58987,7 @@ Defaults to C<false>.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -59212,7 +59096,7 @@ The ID of the active workflow scheme that the draft is created from.
 =back
 
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -59319,7 +59203,7 @@ Set to true to create or update the draft of a workflow scheme and delete the ma
 =back
 
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -59433,7 +59317,7 @@ Set to C<true> to return the default workflow for the workflow scheme's draft ra
 =back
 
 
-Returns a L<< JIRA::API::DefaultWorkflow >>.
+Returns a L<< JIRA::API::DefaultWorkflow >> on success.
 
 =cut
 
@@ -59554,7 +59438,7 @@ The name of the workflow to set as the default workflow.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -59753,7 +59637,7 @@ The ID of the active workflow scheme that the draft was created from.
 =back
 
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -59933,7 +59817,7 @@ Defaults to C<false>.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -60042,7 +59926,7 @@ The ID of the workflow scheme that the draft belongs to.
 =back
 
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -60145,7 +60029,7 @@ The ID of the workflow scheme that the draft belongs to.
 =back
 
 
-Returns a L<< JIRA::API::DefaultWorkflow >>.
+Returns a L<< JIRA::API::DefaultWorkflow >> on success.
 
 =cut
 
@@ -60262,7 +60146,7 @@ The name of the workflow to set as the default workflow.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -60375,7 +60259,7 @@ The ID of the issue type.
 =back
 
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -60485,7 +60369,7 @@ The ID of the issue type.
 =back
 
 
-Returns a L<< JIRA::API::IssueTypeWorkflowMapping >>.
+Returns a L<< JIRA::API::IssueTypeWorkflowMapping >> on success.
 
 =cut
 
@@ -60613,7 +60497,7 @@ The name of the workflow.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -60739,7 +60623,7 @@ Mappings of statuses to new statuses for issue types.
 
 =back
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >>.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
 
 =cut
 
@@ -60981,7 +60865,7 @@ The name of a workflow in the scheme. Limits the results to the workflow-issue t
 =back
 
 
-Returns a L<< JIRA::API::IssueTypesWorkflowMapping >>.
+Returns a L<< JIRA::API::IssueTypesWorkflowMapping >> on success.
 
 =cut
 
@@ -61114,7 +60998,7 @@ The name of the workflow. Optional if updating the workflow-issue types mapping.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -61237,7 +61121,7 @@ Set to true to create or update the draft of a workflow scheme and update the ma
 =back
 
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -61358,7 +61242,7 @@ Returns the mapping from the workflow scheme's draft rather than the workflow sc
 =back
 
 
-Returns a L<< JIRA::API::IssueTypeWorkflowMapping >>.
+Returns a L<< JIRA::API::IssueTypeWorkflowMapping >> on success.
 
 =cut
 
@@ -61490,7 +61374,7 @@ The name of the workflow.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -61718,7 +61602,7 @@ Returns the mapping from the workflow scheme's draft rather than the workflow sc
 =back
 
 
-Returns a L<< JIRA::API::IssueTypesWorkflowMapping >>.
+Returns a L<< JIRA::API::IssueTypesWorkflowMapping >> on success.
 
 =cut
 
@@ -61852,7 +61736,7 @@ The name of the workflow. Optional if updating the workflow-issue types mapping.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -61967,7 +61851,7 @@ The date and time, as a UNIX timestamp in milliseconds, after which deleted work
 =back
 
 
-Returns a L<< JIRA::API::ChangedWorklogs >>.
+Returns a L<< JIRA::API::ChangedWorklogs >> on success.
 
 =cut
 
@@ -62072,7 +61956,7 @@ A list of worklog IDs.
 
 =back
 
-Returns an array of L<< JIRA::API::Worklog >>.
+Returns an array of L<< JIRA::API::Worklog >> on success.
 
 =cut
 
@@ -62178,7 +62062,7 @@ Use L<expand|#expansion> to include additional information about worklogs in the
 =back
 
 
-Returns a L<< JIRA::API::ChangedWorklogs >>.
+Returns a L<< JIRA::API::ChangedWorklogs >> on success.
 
 =cut
 
@@ -62274,8 +62158,8 @@ The key of the app, as defined in its descriptor.
 =back
 
 
-Returns a L<< JIRA::API::PropertyKeys >>.
-Returns a L<< JIRA::API::OperationMessage >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
+Returns a L<< JIRA::API::OperationMessage >> on error.
 
 =cut
 
@@ -62387,9 +62271,7 @@ The key of the property.
 =back
 
 
-Returns a L<< JIRA::API::OperationMessage >>.
-Returns a L<< JIRA::API::OperationMessage >>.
-Returns a L<< JIRA::API::OperationMessage >>.
+Returns a L<< JIRA::API::OperationMessage >> on error.
 
 =cut
 
@@ -62521,10 +62403,8 @@ The key of the property.
 =back
 
 
-Returns a L<< JIRA::API::EntityProperty >>.
-Returns a L<< JIRA::API::OperationMessage >>.
-Returns a L<< JIRA::API::OperationMessage >>.
-Returns a L<< JIRA::API::OperationMessage >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
+Returns a L<< JIRA::API::OperationMessage >> on error.
 
 =cut
 
@@ -62667,10 +62547,8 @@ The key of the property.
 =back
 
 
-Returns a L<< JIRA::API::OperationMessage >>.
-Returns a L<< JIRA::API::OperationMessage >>.
-Returns a L<< JIRA::API::OperationMessage >>.
-Returns a L<< JIRA::API::OperationMessage >>.
+Returns a L<< JIRA::API::OperationMessage >> on success.
+Returns a L<< JIRA::API::OperationMessage >> on error.
 
 =cut
 
@@ -62688,7 +62566,7 @@ sub _build_AddonPropertiesResource_putAddonProperty_put_request( $self, %options
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -62814,7 +62692,7 @@ Nonexistent keys are ignored.
 =back
 
 
-Returns a L<< JIRA::API::ErrorMessage >>.
+Returns a L<< JIRA::API::ErrorMessage >> on error.
 
 =cut
 
@@ -62905,8 +62783,8 @@ Get modules
 =back
 
 
-Returns a L<< JIRA::API::ConnectModules >>.
-Returns a L<< JIRA::API::ErrorMessage >>.
+Returns a L<< JIRA::API::ConnectModules >> on success.
+Returns a L<< JIRA::API::ErrorMessage >> on error.
 
 =cut
 
@@ -63015,8 +62893,7 @@ L<app descriptor|https://developer.atlassian.com/cloud/jira/platform/app-descrip
 
 =back
 
-Returns a L<< JIRA::API::ErrorMessage >>.
-Returns a L<< JIRA::API::ErrorMessage >>.
+Returns a L<< JIRA::API::ErrorMessage >> on error.
 
 =cut
 
@@ -63134,7 +63011,7 @@ The list of custom field update details.
 
 =back
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -63255,7 +63132,7 @@ sub _build_MigrationResource_updateEntityPropertiesValue_put_request( $self, %op
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::->new( \%options );
+    my $body = delete $options{ body } // ''; # ??? really? This is an "array"
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -63350,7 +63227,7 @@ The workflow ID.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowRulesSearchDetails >>.
+Returns a L<< JIRA::API::WorkflowRulesSearchDetails >> on success.
 
 =cut
 

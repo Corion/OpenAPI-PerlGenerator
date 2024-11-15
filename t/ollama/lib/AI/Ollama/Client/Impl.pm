@@ -324,7 +324,7 @@ If C<false> the response will be returned as a single response object, otherwise
 
 =back
 
-Returns a L<< AI::Ollama::GenerateChatCompletionResponse >>.
+Returns a L<< AI::Ollama::GenerateChatCompletionResponse >> on success.
 
 =cut
 
@@ -535,7 +535,7 @@ If C<false> the response will be returned as a single response object, otherwise
 
 =back
 
-Returns a L<< AI::Ollama::CreateModelResponse >>.
+Returns a L<< AI::Ollama::CreateModelResponse >> on success.
 
 =cut
 
@@ -733,7 +733,7 @@ Text to generate embeddings for.
 
 =back
 
-Returns a L<< AI::Ollama::GenerateEmbeddingResponse >>.
+Returns a L<< AI::Ollama::GenerateEmbeddingResponse >> on success.
 
 =cut
 
@@ -907,7 +907,7 @@ The full prompt or prompt template (overrides what is defined in the Modelfile).
 
 =back
 
-Returns a L<< AI::Ollama::GenerateCompletionResponse >>.
+Returns a L<< AI::Ollama::GenerateCompletionResponse >> on success.
 
 =cut
 
@@ -1027,7 +1027,7 @@ If C<false> the response will be returned as a single response object, otherwise
 
 =back
 
-Returns a L<< AI::Ollama::PullModelResponse >>.
+Returns a L<< AI::Ollama::PullModelResponse >> on success.
 
 =cut
 
@@ -1128,7 +1128,7 @@ If C<false> the response will be returned as a single response object, otherwise
 
 =back
 
-Returns a L<< AI::Ollama::PushModelResponse >>.
+Returns a L<< AI::Ollama::PushModelResponse >> on success.
 
 =cut
 
@@ -1221,7 +1221,7 @@ Model names follow a C<model:tag> format. Some examples are C<orca-mini:3b-q4_1>
 
 =back
 
-Returns a L<< AI::Ollama::ModelInfo >>.
+Returns a L<< AI::Ollama::ModelInfo >> on success.
 
 =cut
 
@@ -1302,7 +1302,7 @@ sub showModelInfo( $self, %options ) {
 List models that are available locally.
 
 
-Returns a L<< AI::Ollama::ModelsResponse >>.
+Returns a L<< AI::Ollama::ModelsResponse >> on success.
 
 =cut
 

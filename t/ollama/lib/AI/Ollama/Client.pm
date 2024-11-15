@@ -46,7 +46,7 @@ Create a blob from a file. Returns the server file path.
 
 Generate the next message in a chat with a provided model.
 
-Returns a L<< AI::Ollama::GenerateChatCompletionResponse >>.
+Returns a L<< AI::Ollama::GenerateChatCompletionResponse >> on success.
 
 =cut
 
@@ -65,7 +65,7 @@ Creates a model with another name from an existing model.
 
 Create a model from a Modelfile.
 
-Returns a L<< AI::Ollama::CreateModelResponse >>.
+Returns a L<< AI::Ollama::CreateModelResponse >> on success.
 
 =cut
 
@@ -84,7 +84,7 @@ Delete a model and its data.
 
 Generate embeddings from a model.
 
-Returns a L<< AI::Ollama::GenerateEmbeddingResponse >>.
+Returns a L<< AI::Ollama::GenerateEmbeddingResponse >> on success.
 
 =cut
 
@@ -94,7 +94,7 @@ Returns a L<< AI::Ollama::GenerateEmbeddingResponse >>.
 
 Generate a response for a given prompt with a provided model.
 
-Returns a L<< AI::Ollama::GenerateCompletionResponse >>.
+Returns a L<< AI::Ollama::GenerateCompletionResponse >> on success.
 
 =cut
 
@@ -104,7 +104,7 @@ Returns a L<< AI::Ollama::GenerateCompletionResponse >>.
 
 Download a model from the ollama library.
 
-Returns a L<< AI::Ollama::PullModelResponse >>.
+Returns a L<< AI::Ollama::PullModelResponse >> on success.
 
 =cut
 
@@ -114,7 +114,7 @@ Returns a L<< AI::Ollama::PullModelResponse >>.
 
 Upload a model to a model library.
 
-Returns a L<< AI::Ollama::PushModelResponse >>.
+Returns a L<< AI::Ollama::PushModelResponse >> on success.
 
 =cut
 
@@ -124,7 +124,7 @@ Returns a L<< AI::Ollama::PushModelResponse >>.
 
 Show details about a model including modelfile, template, parameters, license, and system prompt.
 
-Returns a L<< AI::Ollama::ModelInfo >>.
+Returns a L<< AI::Ollama::ModelInfo >> on success.
 
 =cut
 
@@ -134,7 +134,7 @@ Returns a L<< AI::Ollama::ModelInfo >>.
 
 List models that are available locally.
 
-Returns a L<< AI::Ollama::ModelsResponse >>.
+Returns a L<< AI::Ollama::ModelsResponse >> on success.
 
 =cut
 

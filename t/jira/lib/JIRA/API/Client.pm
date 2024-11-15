@@ -28,9 +28,8 @@ JIRA::API::Client - Client for JIRA::API
 
 Get announcement banner configuration
 
-Returns a L<< JIRA::API::AnnouncementBannerConfiguration >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::AnnouncementBannerConfiguration >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -40,10 +39,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Update announcement banner configuration
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -53,7 +50,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Update custom fields
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -63,7 +60,7 @@ Returns a L<<  >>.
 
 Get custom field configurations
 
-Returns a L<< JIRA::API::PageBeanContextualConfiguration >>.
+Returns a L<< JIRA::API::PageBeanContextualConfiguration >> on success.
 
 =cut
 
@@ -73,7 +70,7 @@ Returns a L<< JIRA::API::PageBeanContextualConfiguration >>.
 
 Update custom field configurations
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -83,7 +80,7 @@ Returns a L<<  >>.
 
 Update custom field value
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -93,7 +90,7 @@ Returns a L<<  >>.
 
 Get application property
 
-Returns an array of L<< JIRA::API::ApplicationProperty >>.
+Returns an array of L<< JIRA::API::ApplicationProperty >> on success.
 
 =cut
 
@@ -103,7 +100,7 @@ Returns an array of L<< JIRA::API::ApplicationProperty >>.
 
 Get advanced settings
 
-Returns an array of L<< JIRA::API::ApplicationProperty >>.
+Returns an array of L<< JIRA::API::ApplicationProperty >> on success.
 
 =cut
 
@@ -113,7 +110,7 @@ Returns an array of L<< JIRA::API::ApplicationProperty >>.
 
 Set application property
 
-Returns a L<< JIRA::API::ApplicationProperty >>.
+Returns a L<< JIRA::API::ApplicationProperty >> on success.
 
 =cut
 
@@ -123,7 +120,7 @@ Returns a L<< JIRA::API::ApplicationProperty >>.
 
 Get all application roles
 
-Returns an array of L<< JIRA::API::ApplicationRole >>.
+Returns an array of L<< JIRA::API::ApplicationRole >> on success.
 
 =cut
 
@@ -133,7 +130,7 @@ Returns an array of L<< JIRA::API::ApplicationRole >>.
 
 Get application role
 
-Returns a L<< JIRA::API::ApplicationRole >>.
+Returns a L<< JIRA::API::ApplicationRole >> on success.
 
 =cut
 
@@ -143,7 +140,7 @@ Returns a L<< JIRA::API::ApplicationRole >>.
 
 Get attachment content
 
-Returns a L<< object >>.
+Returns a L<< object >> on success.
 
 =cut
 
@@ -153,7 +150,7 @@ Returns a L<< object >>.
 
 Get Jira attachment settings
 
-Returns a L<< JIRA::API::AttachmentSettings >>.
+Returns a L<< JIRA::API::AttachmentSettings >> on success.
 
 =cut
 
@@ -163,7 +160,7 @@ Returns a L<< JIRA::API::AttachmentSettings >>.
 
 Get attachment thumbnail
 
-Returns a L<< object >>.
+Returns a L<< object >> on success.
 
 =cut
 
@@ -182,7 +179,7 @@ Delete attachment
 
 Get attachment metadata
 
-Returns a L<< JIRA::API::AttachmentMetadata >>.
+Returns a L<< JIRA::API::AttachmentMetadata >> on success.
 
 =cut
 
@@ -192,7 +189,7 @@ Returns a L<< JIRA::API::AttachmentMetadata >>.
 
 Get all metadata for an expanded attachment
 
-Returns a L<< JIRA::API::AttachmentArchiveMetadataReadable >>.
+Returns a L<< JIRA::API::AttachmentArchiveMetadataReadable >> on success.
 
 =cut
 
@@ -202,7 +199,7 @@ Returns a L<< JIRA::API::AttachmentArchiveMetadataReadable >>.
 
 Get contents metadata for an expanded attachment
 
-Returns a L<< JIRA::API::AttachmentArchiveImpl >>.
+Returns a L<< JIRA::API::AttachmentArchiveImpl >> on success.
 
 =cut
 
@@ -212,7 +209,7 @@ Returns a L<< JIRA::API::AttachmentArchiveImpl >>.
 
 Get audit records
 
-Returns a L<< JIRA::API::AuditRecords >>.
+Returns a L<< JIRA::API::AuditRecords >> on success.
 
 =cut
 
@@ -222,7 +219,7 @@ Returns a L<< JIRA::API::AuditRecords >>.
 
 Get system avatars by type
 
-Returns a L<< JIRA::API::SystemAvatars >>.
+Returns a L<< JIRA::API::SystemAvatars >> on success.
 
 =cut
 
@@ -232,7 +229,7 @@ Returns a L<< JIRA::API::SystemAvatars >>.
 
 Get comments by IDs
 
-Returns a L<< JIRA::API::PageBeanComment >>.
+Returns a L<< JIRA::API::PageBeanComment >> on success.
 
 =cut
 
@@ -242,7 +239,7 @@ Returns a L<< JIRA::API::PageBeanComment >>.
 
 Get comment property keys
 
-Returns a L<< JIRA::API::PropertyKeys >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
@@ -261,7 +258,7 @@ Delete comment property
 
 Get comment property
 
-Returns a L<< JIRA::API::EntityProperty >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
@@ -271,8 +268,7 @@ Returns a L<< JIRA::API::EntityProperty >>.
 
 Set comment property
 
-Returns a L<<  >>.
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -282,7 +278,7 @@ Returns a L<<  >>.
 
 Create component
 
-Returns a L<< JIRA::API::ProjectComponent >>.
+Returns a L<< JIRA::API::ProjectComponent >> on success.
 
 =cut
 
@@ -301,7 +297,7 @@ Delete component
 
 Get component
 
-Returns a L<< JIRA::API::ProjectComponent >>.
+Returns a L<< JIRA::API::ProjectComponent >> on success.
 
 =cut
 
@@ -311,7 +307,7 @@ Returns a L<< JIRA::API::ProjectComponent >>.
 
 Update component
 
-Returns a L<< JIRA::API::ProjectComponent >>.
+Returns a L<< JIRA::API::ProjectComponent >> on success.
 
 =cut
 
@@ -321,7 +317,7 @@ Returns a L<< JIRA::API::ProjectComponent >>.
 
 Get component issues count
 
-Returns a L<< JIRA::API::ComponentIssuesCount >>.
+Returns a L<< JIRA::API::ComponentIssuesCount >> on success.
 
 =cut
 
@@ -331,7 +327,7 @@ Returns a L<< JIRA::API::ComponentIssuesCount >>.
 
 Get global settings
 
-Returns a L<< JIRA::API::Configuration >>.
+Returns a L<< JIRA::API::Configuration >> on success.
 
 =cut
 
@@ -341,8 +337,7 @@ Returns a L<< JIRA::API::Configuration >>.
 
 Get selected time tracking provider
 
-Returns a L<< JIRA::API::TimeTrackingProvider >>.
-Returns a L<<  >>.
+Returns Hashref, a L<< JIRA::API::TimeTrackingProvider >> on success.
 
 =cut
 
@@ -352,7 +347,7 @@ Returns a L<<  >>.
 
 Select time tracking provider
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -362,7 +357,7 @@ Returns a L<<  >>.
 
 Get all time tracking providers
 
-Returns an array of L<< JIRA::API::TimeTrackingProvider >>.
+Returns an array of L<< JIRA::API::TimeTrackingProvider >> on success.
 
 =cut
 
@@ -372,7 +367,7 @@ Returns an array of L<< JIRA::API::TimeTrackingProvider >>.
 
 Get time tracking settings
 
-Returns a L<< JIRA::API::TimeTrackingConfiguration >>.
+Returns a L<< JIRA::API::TimeTrackingConfiguration >> on success.
 
 =cut
 
@@ -382,7 +377,7 @@ Returns a L<< JIRA::API::TimeTrackingConfiguration >>.
 
 Set time tracking settings
 
-Returns a L<< JIRA::API::TimeTrackingConfiguration >>.
+Returns a L<< JIRA::API::TimeTrackingConfiguration >> on success.
 
 =cut
 
@@ -392,7 +387,7 @@ Returns a L<< JIRA::API::TimeTrackingConfiguration >>.
 
 Get custom field option
 
-Returns a L<< JIRA::API::CustomFieldOption >>.
+Returns a L<< JIRA::API::CustomFieldOption >> on success.
 
 =cut
 
@@ -402,9 +397,8 @@ Returns a L<< JIRA::API::CustomFieldOption >>.
 
 Get all dashboards
 
-Returns a L<< JIRA::API::PageOfDashboards >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageOfDashboards >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -414,9 +408,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Create dashboard
 
-Returns a L<< JIRA::API::Dashboard >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::Dashboard >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -426,9 +419,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get available gadgets
 
-Returns a L<< JIRA::API::AvailableDashboardGadgetsResponse >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::AvailableDashboardGadgetsResponse >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -438,9 +430,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Search for dashboards
 
-Returns a L<< JIRA::API::PageBeanDashboard >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanDashboard >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -450,8 +441,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get gadgets
 
-Returns a L<< JIRA::API::DashboardGadgetResponse >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::DashboardGadgetResponse >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -461,9 +452,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Add gadget to dashboard
 
-Returns a L<< JIRA::API::DashboardGadget >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::DashboardGadget >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -473,8 +463,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Remove gadget from dashboard
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -484,9 +474,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Update gadget on dashboard
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -496,7 +485,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get dashboard item property keys
 
-Returns a L<< JIRA::API::PropertyKeys >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
@@ -515,7 +504,7 @@ Delete dashboard item property
 
 Get dashboard item property
 
-Returns a L<< JIRA::API::EntityProperty >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
@@ -525,8 +514,7 @@ Returns a L<< JIRA::API::EntityProperty >>.
 
 Set dashboard item property
 
-Returns a L<<  >>.
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -536,8 +524,7 @@ Returns a L<<  >>.
 
 Delete dashboard
 
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -547,9 +534,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get dashboard
 
-Returns a L<< JIRA::API::Dashboard >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::Dashboard >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -559,10 +545,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Update dashboard
 
-Returns a L<< JIRA::API::Dashboard >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::Dashboard >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -572,10 +556,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Copy dashboard
 
-Returns a L<< JIRA::API::Dashboard >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::Dashboard >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -585,7 +567,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get events
 
-Returns an array of L<< JIRA::API::IssueEvent >>.
+Returns an array of L<< JIRA::API::IssueEvent >> on success.
 
 =cut
 
@@ -595,9 +577,8 @@ Returns an array of L<< JIRA::API::IssueEvent >>.
 
 Analyse Jira expression
 
-Returns a L<< JIRA::API::JiraExpressionsAnalysis >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::JiraExpressionsAnalysis >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -607,9 +588,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Evaluate Jira expression
 
-Returns a L<< JIRA::API::JiraExpressionResult >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::JiraExpressionResult >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -619,7 +599,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get fields
 
-Returns an array of L<< JIRA::API::FieldDetails >>.
+Returns an array of L<< JIRA::API::FieldDetails >> on success.
 
 =cut
 
@@ -629,7 +609,7 @@ Returns an array of L<< JIRA::API::FieldDetails >>.
 
 Create custom field
 
-Returns a L<< JIRA::API::FieldDetails >>.
+Returns a L<< JIRA::API::FieldDetails >> on success.
 
 =cut
 
@@ -639,9 +619,8 @@ Returns a L<< JIRA::API::FieldDetails >>.
 
 Get fields paginated
 
-Returns a L<< JIRA::API::PageBeanField >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanField >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -651,9 +630,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get fields in trash paginated
 
-Returns a L<< JIRA::API::PageBeanField >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanField >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -663,7 +641,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Update custom field
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -673,7 +651,7 @@ Returns a L<<  >>.
 
 Get custom field contexts
 
-Returns a L<< JIRA::API::PageBeanCustomFieldContext >>.
+Returns a L<< JIRA::API::PageBeanCustomFieldContext >> on success.
 
 =cut
 
@@ -683,7 +661,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContext >>.
 
 Create custom field context
 
-Returns a L<< JIRA::API::CreateCustomFieldContext >>.
+Returns a L<< JIRA::API::CreateCustomFieldContext >> on success.
 
 =cut
 
@@ -693,7 +671,7 @@ Returns a L<< JIRA::API::CreateCustomFieldContext >>.
 
 Get custom field contexts default values
 
-Returns a L<< JIRA::API::PageBeanCustomFieldContextDefaultValue >>.
+Returns a L<< JIRA::API::PageBeanCustomFieldContextDefaultValue >> on success.
 
 =cut
 
@@ -703,7 +681,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContextDefaultValue >>.
 
 Set custom field contexts default values
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -713,7 +691,7 @@ Returns a L<<  >>.
 
 Get issue types for custom field context
 
-Returns a L<< JIRA::API::PageBeanIssueTypeToContextMapping >>.
+Returns a L<< JIRA::API::PageBeanIssueTypeToContextMapping >> on success.
 
 =cut
 
@@ -723,7 +701,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeToContextMapping >>.
 
 Get custom field contexts for projects and issue types
 
-Returns a L<< JIRA::API::PageBeanContextForProjectAndIssueType >>.
+Returns a L<< JIRA::API::PageBeanContextForProjectAndIssueType >> on success.
 
 =cut
 
@@ -733,7 +711,7 @@ Returns a L<< JIRA::API::PageBeanContextForProjectAndIssueType >>.
 
 Get project mappings for custom field context
 
-Returns a L<< JIRA::API::PageBeanCustomFieldContextProjectMapping >>.
+Returns a L<< JIRA::API::PageBeanCustomFieldContextProjectMapping >> on success.
 
 =cut
 
@@ -743,7 +721,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContextProjectMapping >>.
 
 Delete custom field context
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -753,7 +731,7 @@ Returns a L<<  >>.
 
 Update custom field context
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -763,7 +741,7 @@ Returns a L<<  >>.
 
 Add issue types to context
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -773,7 +751,7 @@ Returns a L<<  >>.
 
 Remove issue types from context
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -783,7 +761,7 @@ Returns a L<<  >>.
 
 Get custom field options (context)
 
-Returns a L<< JIRA::API::PageBeanCustomFieldContextOption >>.
+Returns a L<< JIRA::API::PageBeanCustomFieldContextOption >> on success.
 
 =cut
 
@@ -793,7 +771,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContextOption >>.
 
 Create custom field options (context)
 
-Returns a L<< JIRA::API::CustomFieldCreatedContextOptionsList >>.
+Returns a L<< JIRA::API::CustomFieldCreatedContextOptionsList >> on success.
 
 =cut
 
@@ -803,7 +781,7 @@ Returns a L<< JIRA::API::CustomFieldCreatedContextOptionsList >>.
 
 Update custom field options (context)
 
-Returns a L<< JIRA::API::CustomFieldUpdatedContextOptionsList >>.
+Returns a L<< JIRA::API::CustomFieldUpdatedContextOptionsList >> on success.
 
 =cut
 
@@ -813,7 +791,7 @@ Returns a L<< JIRA::API::CustomFieldUpdatedContextOptionsList >>.
 
 Reorder custom field options (context)
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -832,7 +810,7 @@ Delete custom field options (context)
 
 Assign custom field context to projects
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -842,7 +820,7 @@ Returns a L<<  >>.
 
 Remove custom field context from projects
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -852,7 +830,7 @@ Returns a L<<  >>.
 
 Get contexts for a field
 
-Returns a L<< JIRA::API::PageBeanContext >>.
+Returns a L<< JIRA::API::PageBeanContext >> on success.
 
 =cut
 
@@ -862,7 +840,7 @@ Returns a L<< JIRA::API::PageBeanContext >>.
 
 Get screens for a field
 
-Returns a L<< JIRA::API::PageBeanScreenWithTab >>.
+Returns a L<< JIRA::API::PageBeanScreenWithTab >> on success.
 
 =cut
 
@@ -872,7 +850,7 @@ Returns a L<< JIRA::API::PageBeanScreenWithTab >>.
 
 Get all issue field options
 
-Returns a L<< JIRA::API::PageBeanIssueFieldOption >>.
+Returns a L<< JIRA::API::PageBeanIssueFieldOption >> on success.
 
 =cut
 
@@ -882,7 +860,7 @@ Returns a L<< JIRA::API::PageBeanIssueFieldOption >>.
 
 Create issue field option
 
-Returns a L<< JIRA::API::IssueFieldOption >>.
+Returns a L<< JIRA::API::IssueFieldOption >> on success.
 
 =cut
 
@@ -892,7 +870,7 @@ Returns a L<< JIRA::API::IssueFieldOption >>.
 
 Get selectable issue field options
 
-Returns a L<< JIRA::API::PageBeanIssueFieldOption >>.
+Returns a L<< JIRA::API::PageBeanIssueFieldOption >> on success.
 
 =cut
 
@@ -902,7 +880,7 @@ Returns a L<< JIRA::API::PageBeanIssueFieldOption >>.
 
 Get visible issue field options
 
-Returns a L<< JIRA::API::PageBeanIssueFieldOption >>.
+Returns a L<< JIRA::API::PageBeanIssueFieldOption >> on success.
 
 =cut
 
@@ -912,7 +890,7 @@ Returns a L<< JIRA::API::PageBeanIssueFieldOption >>.
 
 Delete issue field option
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -922,7 +900,7 @@ Returns a L<<  >>.
 
 Get issue field option
 
-Returns a L<< JIRA::API::IssueFieldOption >>.
+Returns a L<< JIRA::API::IssueFieldOption >> on success.
 
 =cut
 
@@ -932,7 +910,7 @@ Returns a L<< JIRA::API::IssueFieldOption >>.
 
 Update issue field option
 
-Returns a L<< JIRA::API::IssueFieldOption >>.
+Returns a L<< JIRA::API::IssueFieldOption >> on success.
 
 =cut
 
@@ -942,7 +920,7 @@ Returns a L<< JIRA::API::IssueFieldOption >>.
 
 Replace issue field option
 
-Returns a L<< JIRA::API::TaskProgressBeanRemoveOptionFromIssuesResult >>.
+Returns a L<< JIRA::API::TaskProgressBeanRemoveOptionFromIssuesResult >> on redirect.
 
 =cut
 
@@ -952,12 +930,8 @@ Returns a L<< JIRA::API::TaskProgressBeanRemoveOptionFromIssuesResult >>.
 
 Delete custom field
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
 
 =cut
 
@@ -967,11 +941,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Restore custom field from trash
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -981,11 +952,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Move custom field to trash
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -995,7 +963,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get all field configurations
 
-Returns a L<< JIRA::API::PageBeanFieldConfigurationDetails >>.
+Returns a L<< JIRA::API::PageBeanFieldConfigurationDetails >> on success.
 
 =cut
 
@@ -1005,7 +973,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationDetails >>.
 
 Create field configuration
 
-Returns a L<< JIRA::API::FieldConfiguration >>.
+Returns a L<< JIRA::API::FieldConfiguration >> on success.
 
 =cut
 
@@ -1015,7 +983,7 @@ Returns a L<< JIRA::API::FieldConfiguration >>.
 
 Delete field configuration
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1025,7 +993,7 @@ Returns a L<<  >>.
 
 Update field configuration
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1035,7 +1003,7 @@ Returns a L<<  >>.
 
 Get field configuration items
 
-Returns a L<< JIRA::API::PageBeanFieldConfigurationItem >>.
+Returns a L<< JIRA::API::PageBeanFieldConfigurationItem >> on success.
 
 =cut
 
@@ -1045,7 +1013,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationItem >>.
 
 Update field configuration items
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1055,7 +1023,7 @@ Returns a L<<  >>.
 
 Get all field configuration schemes
 
-Returns a L<< JIRA::API::PageBeanFieldConfigurationScheme >>.
+Returns a L<< JIRA::API::PageBeanFieldConfigurationScheme >> on success.
 
 =cut
 
@@ -1065,7 +1033,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationScheme >>.
 
 Create field configuration scheme
 
-Returns a L<< JIRA::API::FieldConfigurationScheme >>.
+Returns a L<< JIRA::API::FieldConfigurationScheme >> on success.
 
 =cut
 
@@ -1075,7 +1043,7 @@ Returns a L<< JIRA::API::FieldConfigurationScheme >>.
 
 Get field configuration issue type items
 
-Returns a L<< JIRA::API::PageBeanFieldConfigurationIssueTypeItem >>.
+Returns a L<< JIRA::API::PageBeanFieldConfigurationIssueTypeItem >> on success.
 
 =cut
 
@@ -1085,7 +1053,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationIssueTypeItem >>.
 
 Get field configuration schemes for projects
 
-Returns a L<< JIRA::API::PageBeanFieldConfigurationSchemeProjects >>.
+Returns a L<< JIRA::API::PageBeanFieldConfigurationSchemeProjects >> on success.
 
 =cut
 
@@ -1095,7 +1063,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationSchemeProjects >>.
 
 Assign field configuration scheme to project
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1105,7 +1073,7 @@ Returns a L<<  >>.
 
 Delete field configuration scheme
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1115,7 +1083,7 @@ Returns a L<<  >>.
 
 Update field configuration scheme
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1125,7 +1093,7 @@ Returns a L<<  >>.
 
 Assign issue types to field configurations
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1135,11 +1103,8 @@ Returns a L<<  >>.
 
 Remove issue types from field configuration scheme
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -1149,7 +1114,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get filters
 
-Returns an array of L<< JIRA::API::Filter >>.
+Returns an array of L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -1159,7 +1124,7 @@ Returns an array of L<< JIRA::API::Filter >>.
 
 Create filter
 
-Returns a L<< JIRA::API::Filter >>.
+Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -1169,7 +1134,7 @@ Returns a L<< JIRA::API::Filter >>.
 
 Get default share scope
 
-Returns a L<< JIRA::API::DefaultShareScope >>.
+Returns a L<< JIRA::API::DefaultShareScope >> on success.
 
 =cut
 
@@ -1179,7 +1144,7 @@ Returns a L<< JIRA::API::DefaultShareScope >>.
 
 Set default share scope
 
-Returns a L<< JIRA::API::DefaultShareScope >>.
+Returns a L<< JIRA::API::DefaultShareScope >> on success.
 
 =cut
 
@@ -1189,7 +1154,7 @@ Returns a L<< JIRA::API::DefaultShareScope >>.
 
 Get favorite filters
 
-Returns an array of L<< JIRA::API::Filter >>.
+Returns an array of L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -1199,7 +1164,7 @@ Returns an array of L<< JIRA::API::Filter >>.
 
 Get my filters
 
-Returns an array of L<< JIRA::API::Filter >>.
+Returns an array of L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -1209,8 +1174,8 @@ Returns an array of L<< JIRA::API::Filter >>.
 
 Search for filters
 
-Returns a L<< JIRA::API::PageBeanFilterDetails >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanFilterDetails >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -1229,7 +1194,7 @@ Delete filter
 
 Get filter
 
-Returns a L<< JIRA::API::Filter >>.
+Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -1239,7 +1204,7 @@ Returns a L<< JIRA::API::Filter >>.
 
 Update filter
 
-Returns a L<< JIRA::API::Filter >>.
+Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -1258,7 +1223,7 @@ Reset columns
 
 Get columns
 
-Returns an array of L<< JIRA::API::ColumnItem >>.
+Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 =cut
 
@@ -1268,7 +1233,7 @@ Returns an array of L<< JIRA::API::ColumnItem >>.
 
 Set columns
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1278,7 +1243,7 @@ Returns a L<<  >>.
 
 Remove filter as favorite
 
-Returns a L<< JIRA::API::Filter >>.
+Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -1288,7 +1253,7 @@ Returns a L<< JIRA::API::Filter >>.
 
 Add filter as favorite
 
-Returns a L<< JIRA::API::Filter >>.
+Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
@@ -1298,7 +1263,7 @@ Returns a L<< JIRA::API::Filter >>.
 
 Change filter owner
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1308,7 +1273,7 @@ Returns a L<<  >>.
 
 Get share permissions
 
-Returns an array of L<< JIRA::API::SharePermission >>.
+Returns an array of L<< JIRA::API::SharePermission >> on success.
 
 =cut
 
@@ -1318,7 +1283,7 @@ Returns an array of L<< JIRA::API::SharePermission >>.
 
 Add share permission
 
-Returns an array of L<< JIRA::API::SharePermission >>.
+Returns an array of L<< JIRA::API::SharePermission >> on success.
 
 =cut
 
@@ -1337,7 +1302,7 @@ Delete share permission
 
 Get share permission
 
-Returns a L<< JIRA::API::SharePermission >>.
+Returns a L<< JIRA::API::SharePermission >> on success.
 
 =cut
 
@@ -1356,7 +1321,7 @@ Remove group
 
 Get group
 
-Returns a L<< JIRA::API::Group >>.
+Returns a L<< JIRA::API::Group >> on success.
 
 =cut
 
@@ -1366,7 +1331,7 @@ Returns a L<< JIRA::API::Group >>.
 
 Create group
 
-Returns a L<< JIRA::API::Group >>.
+Returns a L<< JIRA::API::Group >> on success.
 
 =cut
 
@@ -1376,7 +1341,7 @@ Returns a L<< JIRA::API::Group >>.
 
 Bulk get groups
 
-Returns a L<< JIRA::API::PageBeanGroupDetails >>.
+Returns a L<< JIRA::API::PageBeanGroupDetails >> on success.
 
 =cut
 
@@ -1386,7 +1351,7 @@ Returns a L<< JIRA::API::PageBeanGroupDetails >>.
 
 Get users from group
 
-Returns a L<< JIRA::API::PageBeanUserDetails >>.
+Returns a L<< JIRA::API::PageBeanUserDetails >> on success.
 
 =cut
 
@@ -1405,7 +1370,7 @@ Remove user from group
 
 Add user to group
 
-Returns a L<< JIRA::API::Group >>.
+Returns a L<< JIRA::API::Group >> on success.
 
 =cut
 
@@ -1415,7 +1380,7 @@ Returns a L<< JIRA::API::Group >>.
 
 Find groups
 
-Returns a L<< JIRA::API::FoundGroups >>.
+Returns a L<< JIRA::API::FoundGroups >> on success.
 
 =cut
 
@@ -1425,7 +1390,7 @@ Returns a L<< JIRA::API::FoundGroups >>.
 
 Find users and groups
 
-Returns a L<< JIRA::API::FoundUsersAndGroups >>.
+Returns a L<< JIRA::API::FoundUsersAndGroups >> on success.
 
 =cut
 
@@ -1435,7 +1400,7 @@ Returns a L<< JIRA::API::FoundUsersAndGroups >>.
 
 Get license
 
-Returns a L<< JIRA::API::License >>.
+Returns a L<< JIRA::API::License >> on success.
 
 =cut
 
@@ -1445,10 +1410,8 @@ Returns a L<< JIRA::API::License >>.
 
 Create issue
 
-Returns a L<< JIRA::API::CreatedIssue >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::CreatedIssue >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -1458,8 +1421,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Bulk create issue
 
-Returns a L<< JIRA::API::CreatedIssues >>.
-Returns a L<< JIRA::API::CreatedIssues >>.
+Returns a L<< JIRA::API::CreatedIssues >> on success.
+Returns a L<< JIRA::API::CreatedIssues >> on error.
 
 =cut
 
@@ -1469,7 +1432,7 @@ Returns a L<< JIRA::API::CreatedIssues >>.
 
 Get create issue metadata
 
-Returns a L<< JIRA::API::IssueCreateMetadata >>.
+Returns a L<< JIRA::API::IssueCreateMetadata >> on success.
 
 =cut
 
@@ -1479,7 +1442,7 @@ Returns a L<< JIRA::API::IssueCreateMetadata >>.
 
 Get issue picker suggestions
 
-Returns a L<< JIRA::API::IssuePickerSuggestions >>.
+Returns a L<< JIRA::API::IssuePickerSuggestions >> on success.
 
 =cut
 
@@ -1489,8 +1452,7 @@ Returns a L<< JIRA::API::IssuePickerSuggestions >>.
 
 Bulk set issues properties by list
 
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -1500,9 +1462,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Bulk set issue properties by issue
 
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -1512,8 +1472,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Bulk delete issue property
 
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -1523,8 +1482,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Bulk set issue property
 
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -1534,7 +1492,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get is watching issue bulk
 
-Returns a L<< JIRA::API::BulkIssueIsWatching >>.
+Returns a L<< JIRA::API::BulkIssueIsWatching >> on success.
 
 =cut
 
@@ -1553,7 +1511,7 @@ Delete issue
 
 Get issue
 
-Returns a L<< JIRA::API::IssueBean >>.
+Returns a L<< JIRA::API::IssueBean >> on success.
 
 =cut
 
@@ -1563,7 +1521,7 @@ Returns a L<< JIRA::API::IssueBean >>.
 
 Edit issue
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1573,7 +1531,7 @@ Returns a L<<  >>.
 
 Assign issue
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1583,7 +1541,7 @@ Returns a L<<  >>.
 
 Add attachment
 
-Returns an array of L<< JIRA::API::Attachment >>.
+Returns an array of L<< JIRA::API::Attachment >> on success.
 
 =cut
 
@@ -1593,7 +1551,7 @@ Returns an array of L<< JIRA::API::Attachment >>.
 
 Get changelogs
 
-Returns a L<< JIRA::API::PageBeanChangelog >>.
+Returns a L<< JIRA::API::PageBeanChangelog >> on success.
 
 =cut
 
@@ -1603,7 +1561,7 @@ Returns a L<< JIRA::API::PageBeanChangelog >>.
 
 Get changelogs by IDs
 
-Returns a L<< JIRA::API::PageOfChangelogs >>.
+Returns a L<< JIRA::API::PageOfChangelogs >> on success.
 
 =cut
 
@@ -1613,7 +1571,7 @@ Returns a L<< JIRA::API::PageOfChangelogs >>.
 
 Get comments
 
-Returns a L<< JIRA::API::PageOfComments >>.
+Returns a L<< JIRA::API::PageOfComments >> on success.
 
 =cut
 
@@ -1623,7 +1581,7 @@ Returns a L<< JIRA::API::PageOfComments >>.
 
 Add comment
 
-Returns a L<< JIRA::API::Comment >>.
+Returns a L<< JIRA::API::Comment >> on success.
 
 =cut
 
@@ -1642,7 +1600,7 @@ Delete comment
 
 Get comment
 
-Returns a L<< JIRA::API::Comment >>.
+Returns a L<< JIRA::API::Comment >> on success.
 
 =cut
 
@@ -1652,7 +1610,7 @@ Returns a L<< JIRA::API::Comment >>.
 
 Update comment
 
-Returns a L<< JIRA::API::Comment >>.
+Returns a L<< JIRA::API::Comment >> on success.
 
 =cut
 
@@ -1662,7 +1620,7 @@ Returns a L<< JIRA::API::Comment >>.
 
 Get edit issue metadata
 
-Returns a L<< JIRA::API::IssueUpdateMetadata >>.
+Returns a L<< JIRA::API::IssueUpdateMetadata >> on success.
 
 =cut
 
@@ -1672,7 +1630,7 @@ Returns a L<< JIRA::API::IssueUpdateMetadata >>.
 
 Send notification for issue
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1682,7 +1640,7 @@ Returns a L<<  >>.
 
 Get issue property keys
 
-Returns a L<< JIRA::API::PropertyKeys >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
@@ -1701,7 +1659,7 @@ Delete issue property
 
 Get issue property
 
-Returns a L<< JIRA::API::EntityProperty >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
@@ -1711,8 +1669,7 @@ Returns a L<< JIRA::API::EntityProperty >>.
 
 Set issue property
 
-Returns a L<<  >>.
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1731,7 +1688,7 @@ Delete remote issue link by global ID
 
 Get remote issue links
 
-Returns a L<< JIRA::API::RemoteIssueLink >>.
+Returns a L<< JIRA::API::RemoteIssueLink >> on success.
 
 =cut
 
@@ -1741,8 +1698,7 @@ Returns a L<< JIRA::API::RemoteIssueLink >>.
 
 Create or update remote issue link
 
-Returns a L<< JIRA::API::RemoteIssueLinkIdentifies >>.
-Returns a L<< JIRA::API::RemoteIssueLinkIdentifies >>.
+Returns a L<< JIRA::API::RemoteIssueLinkIdentifies >> on success.
 
 =cut
 
@@ -1761,7 +1717,7 @@ Delete remote issue link by ID
 
 Get remote issue link by ID
 
-Returns a L<< JIRA::API::RemoteIssueLink >>.
+Returns a L<< JIRA::API::RemoteIssueLink >> on success.
 
 =cut
 
@@ -1771,7 +1727,7 @@ Returns a L<< JIRA::API::RemoteIssueLink >>.
 
 Update remote issue link by ID
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1781,7 +1737,7 @@ Returns a L<<  >>.
 
 Get transitions
 
-Returns a L<< JIRA::API::Transitions >>.
+Returns a L<< JIRA::API::Transitions >> on success.
 
 =cut
 
@@ -1791,7 +1747,7 @@ Returns a L<< JIRA::API::Transitions >>.
 
 Transition issue
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1810,7 +1766,7 @@ Delete vote
 
 Get votes
 
-Returns a L<< JIRA::API::Votes >>.
+Returns a L<< JIRA::API::Votes >> on success.
 
 =cut
 
@@ -1820,7 +1776,7 @@ Returns a L<< JIRA::API::Votes >>.
 
 Add vote
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1839,7 +1795,7 @@ Delete watcher
 
 Get issue watchers
 
-Returns a L<< JIRA::API::Watchers >>.
+Returns a L<< JIRA::API::Watchers >> on success.
 
 =cut
 
@@ -1849,7 +1805,7 @@ Returns a L<< JIRA::API::Watchers >>.
 
 Add watcher
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1859,7 +1815,7 @@ Returns a L<<  >>.
 
 Get issue worklogs
 
-Returns a L<< JIRA::API::PageOfWorklogs >>.
+Returns a L<< JIRA::API::PageOfWorklogs >> on success.
 
 =cut
 
@@ -1869,7 +1825,7 @@ Returns a L<< JIRA::API::PageOfWorklogs >>.
 
 Add worklog
 
-Returns a L<< JIRA::API::Worklog >>.
+Returns a L<< JIRA::API::Worklog >> on success.
 
 =cut
 
@@ -1888,7 +1844,7 @@ Delete worklog
 
 Get worklog
 
-Returns a L<< JIRA::API::Worklog >>.
+Returns a L<< JIRA::API::Worklog >> on success.
 
 =cut
 
@@ -1898,7 +1854,7 @@ Returns a L<< JIRA::API::Worklog >>.
 
 Update worklog
 
-Returns a L<< JIRA::API::Worklog >>.
+Returns a L<< JIRA::API::Worklog >> on success.
 
 =cut
 
@@ -1908,7 +1864,7 @@ Returns a L<< JIRA::API::Worklog >>.
 
 Get worklog property keys
 
-Returns a L<< JIRA::API::PropertyKeys >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
@@ -1927,7 +1883,7 @@ Delete worklog property
 
 Get worklog property
 
-Returns a L<< JIRA::API::EntityProperty >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
@@ -1937,8 +1893,7 @@ Returns a L<< JIRA::API::EntityProperty >>.
 
 Set worklog property
 
-Returns a L<<  >>.
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1948,7 +1903,7 @@ Returns a L<<  >>.
 
 Create issue link
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -1967,7 +1922,7 @@ Delete issue link
 
 Get issue link
 
-Returns a L<< JIRA::API::IssueLink >>.
+Returns a L<< JIRA::API::IssueLink >> on success.
 
 =cut
 
@@ -1977,7 +1932,7 @@ Returns a L<< JIRA::API::IssueLink >>.
 
 Get issue link types
 
-Returns a L<< JIRA::API::IssueLinkTypes >>.
+Returns a L<< JIRA::API::IssueLinkTypes >> on success.
 
 =cut
 
@@ -1987,7 +1942,7 @@ Returns a L<< JIRA::API::IssueLinkTypes >>.
 
 Create issue link type
 
-Returns a L<< JIRA::API::IssueLinkType >>.
+Returns a L<< JIRA::API::IssueLinkType >> on success.
 
 =cut
 
@@ -2006,7 +1961,7 @@ Delete issue link type
 
 Get issue link type
 
-Returns a L<< JIRA::API::IssueLinkType >>.
+Returns a L<< JIRA::API::IssueLinkType >> on success.
 
 =cut
 
@@ -2016,7 +1971,7 @@ Returns a L<< JIRA::API::IssueLinkType >>.
 
 Update issue link type
 
-Returns a L<< JIRA::API::IssueLinkType >>.
+Returns a L<< JIRA::API::IssueLinkType >> on success.
 
 =cut
 
@@ -2026,7 +1981,7 @@ Returns a L<< JIRA::API::IssueLinkType >>.
 
 Get issue security schemes
 
-Returns a L<< JIRA::API::SecuritySchemes >>.
+Returns a L<< JIRA::API::SecuritySchemes >> on success.
 
 =cut
 
@@ -2036,7 +1991,7 @@ Returns a L<< JIRA::API::SecuritySchemes >>.
 
 Get issue security scheme
 
-Returns a L<< JIRA::API::SecurityScheme >>.
+Returns a L<< JIRA::API::SecurityScheme >> on success.
 
 =cut
 
@@ -2046,7 +2001,7 @@ Returns a L<< JIRA::API::SecurityScheme >>.
 
 Get issue security level members
 
-Returns a L<< JIRA::API::PageBeanIssueSecurityLevelMember >>.
+Returns a L<< JIRA::API::PageBeanIssueSecurityLevelMember >> on success.
 
 =cut
 
@@ -2056,7 +2011,7 @@ Returns a L<< JIRA::API::PageBeanIssueSecurityLevelMember >>.
 
 Get all issue types for user
 
-Returns an array of L<< JIRA::API::IssueTypeDetails >>.
+Returns an array of L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
@@ -2066,7 +2021,7 @@ Returns an array of L<< JIRA::API::IssueTypeDetails >>.
 
 Create issue type
 
-Returns a L<< JIRA::API::IssueTypeDetails >>.
+Returns a L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
@@ -2076,7 +2031,7 @@ Returns a L<< JIRA::API::IssueTypeDetails >>.
 
 Get issue types for project
 
-Returns an array of L<< JIRA::API::IssueTypeDetails >>.
+Returns an array of L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
@@ -2095,7 +2050,7 @@ Delete issue type
 
 Get issue type
 
-Returns a L<< JIRA::API::IssueTypeDetails >>.
+Returns a L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
@@ -2105,7 +2060,7 @@ Returns a L<< JIRA::API::IssueTypeDetails >>.
 
 Update issue type
 
-Returns a L<< JIRA::API::IssueTypeDetails >>.
+Returns a L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
@@ -2115,7 +2070,7 @@ Returns a L<< JIRA::API::IssueTypeDetails >>.
 
 Get alternative issue types
 
-Returns an array of L<< JIRA::API::IssueTypeDetails >>.
+Returns an array of L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
@@ -2125,7 +2080,7 @@ Returns an array of L<< JIRA::API::IssueTypeDetails >>.
 
 Load issue type avatar
 
-Returns a L<< JIRA::API::Avatar >>.
+Returns a L<< JIRA::API::Avatar >> on success.
 
 =cut
 
@@ -2135,7 +2090,7 @@ Returns a L<< JIRA::API::Avatar >>.
 
 Get issue type property keys
 
-Returns a L<< JIRA::API::PropertyKeys >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
@@ -2154,7 +2109,7 @@ Delete issue type property
 
 Get issue type property
 
-Returns a L<< JIRA::API::EntityProperty >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
@@ -2164,8 +2119,7 @@ Returns a L<< JIRA::API::EntityProperty >>.
 
 Set issue type property
 
-Returns a L<<  >>.
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2175,7 +2129,7 @@ Returns a L<<  >>.
 
 Get all issue type schemes
 
-Returns a L<< JIRA::API::PageBeanIssueTypeScheme >>.
+Returns a L<< JIRA::API::PageBeanIssueTypeScheme >> on success.
 
 =cut
 
@@ -2185,7 +2139,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeScheme >>.
 
 Create issue type scheme
 
-Returns a L<< JIRA::API::IssueTypeSchemeID >>.
+Returns a L<< JIRA::API::IssueTypeSchemeID >> on success.
 
 =cut
 
@@ -2195,7 +2149,7 @@ Returns a L<< JIRA::API::IssueTypeSchemeID >>.
 
 Get issue type scheme items
 
-Returns a L<< JIRA::API::PageBeanIssueTypeSchemeMapping >>.
+Returns a L<< JIRA::API::PageBeanIssueTypeSchemeMapping >> on success.
 
 =cut
 
@@ -2205,7 +2159,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeSchemeMapping >>.
 
 Get issue type schemes for projects
 
-Returns a L<< JIRA::API::PageBeanIssueTypeSchemeProjects >>.
+Returns a L<< JIRA::API::PageBeanIssueTypeSchemeProjects >> on success.
 
 =cut
 
@@ -2215,7 +2169,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeSchemeProjects >>.
 
 Assign issue type scheme to project
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2225,7 +2179,7 @@ Returns a L<<  >>.
 
 Delete issue type scheme
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2235,7 +2189,7 @@ Returns a L<<  >>.
 
 Update issue type scheme
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2245,7 +2199,7 @@ Returns a L<<  >>.
 
 Add issue types to issue type scheme
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2255,7 +2209,7 @@ Returns a L<<  >>.
 
 Change order of issue types
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2265,7 +2219,7 @@ Returns a L<<  >>.
 
 Remove issue type from issue type scheme
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2275,7 +2229,7 @@ Returns a L<<  >>.
 
 Get issue type screen schemes
 
-Returns a L<< JIRA::API::PageBeanIssueTypeScreenScheme >>.
+Returns a L<< JIRA::API::PageBeanIssueTypeScreenScheme >> on success.
 
 =cut
 
@@ -2285,7 +2239,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeScreenScheme >>.
 
 Create issue type screen scheme
 
-Returns a L<< JIRA::API::IssueTypeScreenSchemeId >>.
+Returns a L<< JIRA::API::IssueTypeScreenSchemeId >> on success.
 
 =cut
 
@@ -2295,7 +2249,7 @@ Returns a L<< JIRA::API::IssueTypeScreenSchemeId >>.
 
 Get issue type screen scheme items
 
-Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemeItem >>.
+Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemeItem >> on success.
 
 =cut
 
@@ -2305,7 +2259,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemeItem >>.
 
 Get issue type screen schemes for projects
 
-Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemesProjects >>.
+Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemesProjects >> on success.
 
 =cut
 
@@ -2315,7 +2269,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemesProjects >>.
 
 Assign issue type screen scheme to project
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2325,7 +2279,7 @@ Returns a L<<  >>.
 
 Delete issue type screen scheme
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2335,7 +2289,7 @@ Returns a L<<  >>.
 
 Update issue type screen scheme
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2345,7 +2299,7 @@ Returns a L<<  >>.
 
 Append mappings to issue type screen scheme
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2355,7 +2309,7 @@ Returns a L<<  >>.
 
 Update issue type screen scheme default screen scheme
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2365,7 +2319,7 @@ Returns a L<<  >>.
 
 Remove mappings from issue type screen scheme
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2375,7 +2329,7 @@ Returns a L<<  >>.
 
 Get issue type screen scheme projects
 
-Returns a L<< JIRA::API::PageBeanProjectDetails >>.
+Returns a L<< JIRA::API::PageBeanProjectDetails >> on success.
 
 =cut
 
@@ -2385,7 +2339,7 @@ Returns a L<< JIRA::API::PageBeanProjectDetails >>.
 
 Get field reference data (GET)
 
-Returns a L<< JIRA::API::JQLReferenceData >>.
+Returns a L<< JIRA::API::JQLReferenceData >> on success.
 
 =cut
 
@@ -2395,7 +2349,7 @@ Returns a L<< JIRA::API::JQLReferenceData >>.
 
 Get field reference data (POST)
 
-Returns a L<< JIRA::API::JQLReferenceData >>.
+Returns a L<< JIRA::API::JQLReferenceData >> on success.
 
 =cut
 
@@ -2405,7 +2359,7 @@ Returns a L<< JIRA::API::JQLReferenceData >>.
 
 Get field auto complete suggestions
 
-Returns a L<< JIRA::API::AutoCompleteSuggestions >>.
+Returns a L<< JIRA::API::AutoCompleteSuggestions >> on success.
 
 =cut
 
@@ -2415,7 +2369,7 @@ Returns a L<< JIRA::API::AutoCompleteSuggestions >>.
 
 Get precomputation
 
-Returns a L<< JIRA::API::PageBeanJqlFunctionPrecomputationBean >>.
+Returns a L<< JIRA::API::PageBeanJqlFunctionPrecomputationBean >> on success.
 
 =cut
 
@@ -2425,7 +2379,7 @@ Returns a L<< JIRA::API::PageBeanJqlFunctionPrecomputationBean >>.
 
 Update precomputations
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2435,7 +2389,7 @@ Returns a L<<  >>.
 
 Check issues against JQL
 
-Returns a L<< JIRA::API::IssueMatches >>.
+Returns a L<< JIRA::API::IssueMatches >> on success.
 
 =cut
 
@@ -2445,8 +2399,8 @@ Returns a L<< JIRA::API::IssueMatches >>.
 
 Parse JQL query
 
-Returns a L<< JIRA::API::ParsedJqlQueries >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ParsedJqlQueries >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2456,7 +2410,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Convert user identifiers to account IDs in JQL queries
 
-Returns a L<< JIRA::API::ConvertedJQLQueries >>.
+Returns a L<< JIRA::API::ConvertedJQLQueries >> on success.
 
 =cut
 
@@ -2466,10 +2420,8 @@ Returns a L<< JIRA::API::ConvertedJQLQueries >>.
 
 Sanitize JQL queries
 
-Returns a L<< JIRA::API::SanitizedJqlQueries >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::SanitizedJqlQueries >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2479,7 +2431,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get all labels
 
-Returns a L<< JIRA::API::PageBeanString >>.
+Returns a L<< JIRA::API::PageBeanString >> on success.
 
 =cut
 
@@ -2489,7 +2441,7 @@ Returns a L<< JIRA::API::PageBeanString >>.
 
 Get approximate license count
 
-Returns a L<< JIRA::API::LicenseMetric >>.
+Returns a L<< JIRA::API::LicenseMetric >> on success.
 
 =cut
 
@@ -2499,7 +2451,7 @@ Returns a L<< JIRA::API::LicenseMetric >>.
 
 Get approximate application license count
 
-Returns a L<< JIRA::API::LicenseMetric >>.
+Returns a L<< JIRA::API::LicenseMetric >> on success.
 
 =cut
 
@@ -2509,10 +2461,8 @@ Returns a L<< JIRA::API::LicenseMetric >>.
 
 Get my permissions
 
-Returns a L<< JIRA::API::Permissions >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::Permissions >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2531,7 +2481,7 @@ Delete preference
 
 Get preference
 
-Returns a L<< string >>.
+Returns a L<< string >> on success.
 
 =cut
 
@@ -2541,7 +2491,7 @@ Returns a L<< string >>.
 
 Set preference
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2551,7 +2501,7 @@ Returns a L<<  >>.
 
 Delete locale
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2561,7 +2511,7 @@ Returns a L<<  >>.
 
 Get locale
 
-Returns a L<< JIRA::API::Locale >>.
+Returns a L<< JIRA::API::Locale >> on success.
 
 =cut
 
@@ -2571,7 +2521,7 @@ Returns a L<< JIRA::API::Locale >>.
 
 Set locale
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -2581,7 +2531,7 @@ Returns a L<<  >>.
 
 Get current user
 
-Returns a L<< JIRA::API::User >>.
+Returns a L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -2591,7 +2541,7 @@ Returns a L<< JIRA::API::User >>.
 
 Get notification schemes paginated
 
-Returns a L<< JIRA::API::PageBeanNotificationScheme >>.
+Returns a L<< JIRA::API::PageBeanNotificationScheme >> on success.
 
 =cut
 
@@ -2601,10 +2551,8 @@ Returns a L<< JIRA::API::PageBeanNotificationScheme >>.
 
 Create notification scheme
 
-Returns a L<< JIRA::API::NotificationSchemeId >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::NotificationSchemeId >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2614,9 +2562,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get projects using notification schemes paginated
 
-Returns a L<< JIRA::API::PageBeanNotificationSchemeAndProjectMappingJsonBean >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanNotificationSchemeAndProjectMappingJsonBean >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2626,7 +2573,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get notification scheme
 
-Returns a L<< JIRA::API::NotificationScheme >>.
+Returns a L<< JIRA::API::NotificationScheme >> on success.
 
 =cut
 
@@ -2636,11 +2583,8 @@ Returns a L<< JIRA::API::NotificationScheme >>.
 
 Update notification scheme
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2650,11 +2594,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Add notifications to notification scheme
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2664,11 +2605,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Delete notification scheme
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2678,11 +2616,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Remove notification from notification scheme
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2692,7 +2627,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get all permissions
 
-Returns a L<< JIRA::API::Permissions >>.
+Returns a L<< JIRA::API::Permissions >> on success.
 
 =cut
 
@@ -2702,9 +2637,8 @@ Returns a L<< JIRA::API::Permissions >>.
 
 Get bulk permissions
 
-Returns a L<< JIRA::API::BulkPermissionGrants >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::BulkPermissionGrants >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2714,7 +2648,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get permitted projects
 
-Returns a L<< JIRA::API::PermittedProjects >>.
+Returns a L<< JIRA::API::PermittedProjects >> on success.
 
 =cut
 
@@ -2724,7 +2658,7 @@ Returns a L<< JIRA::API::PermittedProjects >>.
 
 Get all permission schemes
 
-Returns a L<< JIRA::API::PermissionSchemes >>.
+Returns a L<< JIRA::API::PermissionSchemes >> on success.
 
 =cut
 
@@ -2734,7 +2668,7 @@ Returns a L<< JIRA::API::PermissionSchemes >>.
 
 Create permission scheme
 
-Returns a L<< JIRA::API::PermissionScheme >>.
+Returns a L<< JIRA::API::PermissionScheme >> on success.
 
 =cut
 
@@ -2753,7 +2687,7 @@ Delete permission scheme
 
 Get permission scheme
 
-Returns a L<< JIRA::API::PermissionScheme >>.
+Returns a L<< JIRA::API::PermissionScheme >> on success.
 
 =cut
 
@@ -2763,7 +2697,7 @@ Returns a L<< JIRA::API::PermissionScheme >>.
 
 Update permission scheme
 
-Returns a L<< JIRA::API::PermissionScheme >>.
+Returns a L<< JIRA::API::PermissionScheme >> on success.
 
 =cut
 
@@ -2773,7 +2707,7 @@ Returns a L<< JIRA::API::PermissionScheme >>.
 
 Get permission scheme grants
 
-Returns a L<< JIRA::API::PermissionGrants >>.
+Returns a L<< JIRA::API::PermissionGrants >> on success.
 
 =cut
 
@@ -2783,7 +2717,7 @@ Returns a L<< JIRA::API::PermissionGrants >>.
 
 Create permission grant
 
-Returns a L<< JIRA::API::PermissionGrant >>.
+Returns a L<< JIRA::API::PermissionGrant >> on success.
 
 =cut
 
@@ -2802,7 +2736,7 @@ Delete permission scheme grant
 
 Get permission scheme grant
 
-Returns a L<< JIRA::API::PermissionGrant >>.
+Returns a L<< JIRA::API::PermissionGrant >> on success.
 
 =cut
 
@@ -2812,7 +2746,7 @@ Returns a L<< JIRA::API::PermissionGrant >>.
 
 Get priorities
 
-Returns an array of L<< JIRA::API::Priority >>.
+Returns an array of L<< JIRA::API::Priority >> on success.
 
 =cut
 
@@ -2822,10 +2756,8 @@ Returns an array of L<< JIRA::API::Priority >>.
 
 Create priority
 
-Returns a L<< JIRA::API::PriorityId >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PriorityId >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2835,11 +2767,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Set default priority
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2849,11 +2778,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Move priorities
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2863,8 +2789,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Search priorities
 
-Returns a L<< JIRA::API::PageBeanPriority >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanPriority >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2874,12 +2800,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Delete priority
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
 
 =cut
 
@@ -2889,7 +2811,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get priority
 
-Returns a L<< JIRA::API::Priority >>.
+Returns a L<< JIRA::API::Priority >> on success.
 
 =cut
 
@@ -2899,11 +2821,8 @@ Returns a L<< JIRA::API::Priority >>.
 
 Update priority
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -2913,7 +2832,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get all projects
 
-Returns an array of L<< JIRA::API::Project >>.
+Returns an array of L<< JIRA::API::Project >> on success.
 
 =cut
 
@@ -2923,7 +2842,7 @@ Returns an array of L<< JIRA::API::Project >>.
 
 Create project
 
-Returns a L<< JIRA::API::ProjectIdentifiers >>.
+Returns a L<< JIRA::API::ProjectIdentifiers >> on success.
 
 =cut
 
@@ -2933,7 +2852,7 @@ Returns a L<< JIRA::API::ProjectIdentifiers >>.
 
 Get recent projects
 
-Returns an array of L<< JIRA::API::Project >>.
+Returns an array of L<< JIRA::API::Project >> on success.
 
 =cut
 
@@ -2943,7 +2862,7 @@ Returns an array of L<< JIRA::API::Project >>.
 
 Get projects paginated
 
-Returns a L<< JIRA::API::PageBeanProject >>.
+Returns a L<< JIRA::API::PageBeanProject >> on success.
 
 =cut
 
@@ -2953,7 +2872,7 @@ Returns a L<< JIRA::API::PageBeanProject >>.
 
 Get all project types
 
-Returns an array of L<< JIRA::API::ProjectType >>.
+Returns an array of L<< JIRA::API::ProjectType >> on success.
 
 =cut
 
@@ -2963,7 +2882,7 @@ Returns an array of L<< JIRA::API::ProjectType >>.
 
 Get licensed project types
 
-Returns an array of L<< JIRA::API::ProjectType >>.
+Returns an array of L<< JIRA::API::ProjectType >> on success.
 
 =cut
 
@@ -2973,7 +2892,7 @@ Returns an array of L<< JIRA::API::ProjectType >>.
 
 Get project type by key
 
-Returns a L<< JIRA::API::ProjectType >>.
+Returns a L<< JIRA::API::ProjectType >> on success.
 
 =cut
 
@@ -2983,7 +2902,7 @@ Returns a L<< JIRA::API::ProjectType >>.
 
 Get accessible project type by key
 
-Returns a L<< JIRA::API::ProjectType >>.
+Returns a L<< JIRA::API::ProjectType >> on success.
 
 =cut
 
@@ -3002,7 +2921,7 @@ Delete project
 
 Get project
 
-Returns a L<< JIRA::API::Project >>.
+Returns a L<< JIRA::API::Project >> on success.
 
 =cut
 
@@ -3012,7 +2931,7 @@ Returns a L<< JIRA::API::Project >>.
 
 Update project
 
-Returns a L<< JIRA::API::Project >>.
+Returns a L<< JIRA::API::Project >> on success.
 
 =cut
 
@@ -3022,7 +2941,7 @@ Returns a L<< JIRA::API::Project >>.
 
 Archive project
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -3032,7 +2951,7 @@ Returns a L<<  >>.
 
 Set project avatar
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -3051,7 +2970,7 @@ Delete project avatar
 
 Load project avatar
 
-Returns a L<< JIRA::API::Avatar >>.
+Returns a L<< JIRA::API::Avatar >> on success.
 
 =cut
 
@@ -3061,7 +2980,7 @@ Returns a L<< JIRA::API::Avatar >>.
 
 Get all project avatars
 
-Returns a L<< JIRA::API::ProjectAvatars >>.
+Returns a L<< JIRA::API::ProjectAvatars >> on success.
 
 =cut
 
@@ -3071,7 +2990,7 @@ Returns a L<< JIRA::API::ProjectAvatars >>.
 
 Get project components paginated
 
-Returns a L<< JIRA::API::PageBeanComponentWithIssueCount >>.
+Returns a L<< JIRA::API::PageBeanComponentWithIssueCount >> on success.
 
 =cut
 
@@ -3081,7 +3000,7 @@ Returns a L<< JIRA::API::PageBeanComponentWithIssueCount >>.
 
 Get project components
 
-Returns an array of L<< JIRA::API::ProjectComponent >>.
+Returns an array of L<< JIRA::API::ProjectComponent >> on success.
 
 =cut
 
@@ -3091,7 +3010,7 @@ Returns an array of L<< JIRA::API::ProjectComponent >>.
 
 Delete project asynchronously
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >>.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
 
 =cut
 
@@ -3101,7 +3020,7 @@ Returns a L<< JIRA::API::TaskProgressBeanObject >>.
 
 Get project features
 
-Returns a L<< JIRA::API::ContainerForProjectFeatures >>.
+Returns a L<< JIRA::API::ContainerForProjectFeatures >> on success.
 
 =cut
 
@@ -3111,7 +3030,7 @@ Returns a L<< JIRA::API::ContainerForProjectFeatures >>.
 
 Set project feature state
 
-Returns a L<< JIRA::API::ContainerForProjectFeatures >>.
+Returns a L<< JIRA::API::ContainerForProjectFeatures >> on success.
 
 =cut
 
@@ -3121,7 +3040,7 @@ Returns a L<< JIRA::API::ContainerForProjectFeatures >>.
 
 Get project property keys
 
-Returns a L<< JIRA::API::PropertyKeys >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
@@ -3140,7 +3059,7 @@ Delete project property
 
 Get project property
 
-Returns a L<< JIRA::API::EntityProperty >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
@@ -3150,8 +3069,7 @@ Returns a L<< JIRA::API::EntityProperty >>.
 
 Set project property
 
-Returns a L<<  >>.
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -3161,7 +3079,7 @@ Returns a L<<  >>.
 
 Restore deleted or archived project
 
-Returns a L<< JIRA::API::Project >>.
+Returns a L<< JIRA::API::Project >> on success.
 
 =cut
 
@@ -3171,7 +3089,7 @@ Returns a L<< JIRA::API::Project >>.
 
 Get project roles for project
 
-Returns a L<< object >>.
+Returns a L<< object >> on success.
 
 =cut
 
@@ -3190,7 +3108,7 @@ Delete actors from project role
 
 Get project role for project
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -3200,7 +3118,7 @@ Returns a L<< JIRA::API::ProjectRole >>.
 
 Add actors to project role
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -3210,7 +3128,7 @@ Returns a L<< JIRA::API::ProjectRole >>.
 
 Set actors for project role
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -3220,7 +3138,7 @@ Returns a L<< JIRA::API::ProjectRole >>.
 
 Get project role details
 
-Returns an array of L<< JIRA::API::ProjectRoleDetails >>.
+Returns an array of L<< JIRA::API::ProjectRoleDetails >> on success.
 
 =cut
 
@@ -3230,7 +3148,7 @@ Returns an array of L<< JIRA::API::ProjectRoleDetails >>.
 
 Get all statuses for project
 
-Returns an array of L<< JIRA::API::IssueTypeWithStatus >>.
+Returns an array of L<< JIRA::API::IssueTypeWithStatus >> on success.
 
 =cut
 
@@ -3240,7 +3158,7 @@ Returns an array of L<< JIRA::API::IssueTypeWithStatus >>.
 
 Update project type
 
-Returns a L<< JIRA::API::Project >>.
+Returns a L<< JIRA::API::Project >> on success.
 
 =cut
 
@@ -3250,7 +3168,7 @@ Returns a L<< JIRA::API::Project >>.
 
 Get project versions paginated
 
-Returns a L<< JIRA::API::PageBeanVersion >>.
+Returns a L<< JIRA::API::PageBeanVersion >> on success.
 
 =cut
 
@@ -3260,7 +3178,7 @@ Returns a L<< JIRA::API::PageBeanVersion >>.
 
 Get project versions
 
-Returns an array of L<< JIRA::API::Version >>.
+Returns an array of L<< JIRA::API::Version >> on success.
 
 =cut
 
@@ -3270,7 +3188,7 @@ Returns an array of L<< JIRA::API::Version >>.
 
 Get project's sender email
 
-Returns a L<< JIRA::API::ProjectEmailAddress >>.
+Returns a L<< JIRA::API::ProjectEmailAddress >> on success.
 
 =cut
 
@@ -3280,7 +3198,7 @@ Returns a L<< JIRA::API::ProjectEmailAddress >>.
 
 Set project's sender email
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -3290,7 +3208,7 @@ Returns a L<<  >>.
 
 Get project issue type hierarchy
 
-Returns a L<< JIRA::API::ProjectIssueTypeHierarchy >>.
+Returns a L<< JIRA::API::ProjectIssueTypeHierarchy >> on success.
 
 =cut
 
@@ -3300,7 +3218,7 @@ Returns a L<< JIRA::API::ProjectIssueTypeHierarchy >>.
 
 Get project issue security scheme
 
-Returns a L<< JIRA::API::SecurityScheme >>.
+Returns a L<< JIRA::API::SecurityScheme >> on success.
 
 =cut
 
@@ -3310,7 +3228,7 @@ Returns a L<< JIRA::API::SecurityScheme >>.
 
 Get project notification scheme
 
-Returns a L<< JIRA::API::NotificationScheme >>.
+Returns a L<< JIRA::API::NotificationScheme >> on success.
 
 =cut
 
@@ -3320,7 +3238,7 @@ Returns a L<< JIRA::API::NotificationScheme >>.
 
 Get assigned permission scheme
 
-Returns a L<< JIRA::API::PermissionScheme >>.
+Returns a L<< JIRA::API::PermissionScheme >> on success.
 
 =cut
 
@@ -3330,7 +3248,7 @@ Returns a L<< JIRA::API::PermissionScheme >>.
 
 Assign permission scheme
 
-Returns a L<< JIRA::API::PermissionScheme >>.
+Returns a L<< JIRA::API::PermissionScheme >> on success.
 
 =cut
 
@@ -3340,7 +3258,7 @@ Returns a L<< JIRA::API::PermissionScheme >>.
 
 Get project issue security levels
 
-Returns a L<< JIRA::API::ProjectIssueSecurityLevels >>.
+Returns a L<< JIRA::API::ProjectIssueSecurityLevels >> on success.
 
 =cut
 
@@ -3350,7 +3268,7 @@ Returns a L<< JIRA::API::ProjectIssueSecurityLevels >>.
 
 Get all project categories
 
-Returns an array of L<< JIRA::API::ProjectCategory >>.
+Returns an array of L<< JIRA::API::ProjectCategory >> on success.
 
 =cut
 
@@ -3360,7 +3278,7 @@ Returns an array of L<< JIRA::API::ProjectCategory >>.
 
 Create project category
 
-Returns a L<< JIRA::API::ProjectCategory >>.
+Returns a L<< JIRA::API::ProjectCategory >> on success.
 
 =cut
 
@@ -3379,7 +3297,7 @@ Delete project category
 
 Get project category by ID
 
-Returns a L<< JIRA::API::ProjectCategory >>.
+Returns a L<< JIRA::API::ProjectCategory >> on success.
 
 =cut
 
@@ -3389,7 +3307,7 @@ Returns a L<< JIRA::API::ProjectCategory >>.
 
 Update project category
 
-Returns a L<< JIRA::API::UpdatedProjectCategory >>.
+Returns a L<< JIRA::API::UpdatedProjectCategory >> on success.
 
 =cut
 
@@ -3399,7 +3317,7 @@ Returns a L<< JIRA::API::UpdatedProjectCategory >>.
 
 Validate project key
 
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on success.
 
 =cut
 
@@ -3409,7 +3327,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get valid project key
 
-Returns a L<< string >>.
+Returns a L<< string >> on success.
 
 =cut
 
@@ -3419,7 +3337,7 @@ Returns a L<< string >>.
 
 Get valid project name
 
-Returns a L<< string >>.
+Returns a L<< string >> on success.
 
 =cut
 
@@ -3429,7 +3347,7 @@ Returns a L<< string >>.
 
 Get resolutions
 
-Returns an array of L<< JIRA::API::Resolution >>.
+Returns an array of L<< JIRA::API::Resolution >> on success.
 
 =cut
 
@@ -3439,10 +3357,8 @@ Returns an array of L<< JIRA::API::Resolution >>.
 
 Create resolution
 
-Returns a L<< JIRA::API::ResolutionId >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ResolutionId >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -3452,11 +3368,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Set default resolution
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -3466,11 +3379,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Move resolutions
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -3480,8 +3390,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Search resolutions
 
-Returns a L<< JIRA::API::PageBeanResolutionJsonBean >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanResolutionJsonBean >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -3491,12 +3401,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Delete resolution
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
 
 =cut
 
@@ -3506,7 +3412,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get resolution
 
-Returns a L<< JIRA::API::Resolution >>.
+Returns a L<< JIRA::API::Resolution >> on success.
 
 =cut
 
@@ -3516,11 +3422,8 @@ Returns a L<< JIRA::API::Resolution >>.
 
 Update resolution
 
-Returns a L<<  >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -3530,7 +3433,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get all project roles
 
-Returns an array of L<< JIRA::API::ProjectRole >>.
+Returns an array of L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -3540,7 +3443,7 @@ Returns an array of L<< JIRA::API::ProjectRole >>.
 
 Create project role
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -3559,7 +3462,7 @@ Delete project role
 
 Get project role by ID
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -3569,7 +3472,7 @@ Returns a L<< JIRA::API::ProjectRole >>.
 
 Partial update project role
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -3579,7 +3482,7 @@ Returns a L<< JIRA::API::ProjectRole >>.
 
 Fully update project role
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -3589,7 +3492,7 @@ Returns a L<< JIRA::API::ProjectRole >>.
 
 Delete default actors from project role
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -3599,7 +3502,7 @@ Returns a L<< JIRA::API::ProjectRole >>.
 
 Get default actors for project role
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -3609,7 +3512,7 @@ Returns a L<< JIRA::API::ProjectRole >>.
 
 Add default actors to project role
 
-Returns a L<< JIRA::API::ProjectRole >>.
+Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
@@ -3619,7 +3522,7 @@ Returns a L<< JIRA::API::ProjectRole >>.
 
 Get screens
 
-Returns a L<< JIRA::API::PageBeanScreen >>.
+Returns a L<< JIRA::API::PageBeanScreen >> on success.
 
 =cut
 
@@ -3629,7 +3532,7 @@ Returns a L<< JIRA::API::PageBeanScreen >>.
 
 Create screen
 
-Returns a L<< JIRA::API::Screen >>.
+Returns a L<< JIRA::API::Screen >> on success.
 
 =cut
 
@@ -3639,7 +3542,7 @@ Returns a L<< JIRA::API::Screen >>.
 
 Add field to default screen
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -3658,7 +3561,7 @@ Delete screen
 
 Update screen
 
-Returns a L<< JIRA::API::Screen >>.
+Returns a L<< JIRA::API::Screen >> on success.
 
 =cut
 
@@ -3668,7 +3571,7 @@ Returns a L<< JIRA::API::Screen >>.
 
 Get available screen fields
 
-Returns an array of L<< JIRA::API::ScreenableField >>.
+Returns an array of L<< JIRA::API::ScreenableField >> on success.
 
 =cut
 
@@ -3678,7 +3581,7 @@ Returns an array of L<< JIRA::API::ScreenableField >>.
 
 Get all screen tabs
 
-Returns an array of L<< JIRA::API::ScreenableTab >>.
+Returns an array of L<< JIRA::API::ScreenableTab >> on success.
 
 =cut
 
@@ -3688,7 +3591,7 @@ Returns an array of L<< JIRA::API::ScreenableTab >>.
 
 Create screen tab
 
-Returns a L<< JIRA::API::ScreenableTab >>.
+Returns a L<< JIRA::API::ScreenableTab >> on success.
 
 =cut
 
@@ -3707,7 +3610,7 @@ Delete screen tab
 
 Update screen tab
 
-Returns a L<< JIRA::API::ScreenableTab >>.
+Returns a L<< JIRA::API::ScreenableTab >> on success.
 
 =cut
 
@@ -3717,7 +3620,7 @@ Returns a L<< JIRA::API::ScreenableTab >>.
 
 Get all screen tab fields
 
-Returns an array of L<< JIRA::API::ScreenableField >>.
+Returns an array of L<< JIRA::API::ScreenableField >> on success.
 
 =cut
 
@@ -3727,7 +3630,7 @@ Returns an array of L<< JIRA::API::ScreenableField >>.
 
 Add screen tab field
 
-Returns a L<< JIRA::API::ScreenableField >>.
+Returns a L<< JIRA::API::ScreenableField >> on success.
 
 =cut
 
@@ -3746,7 +3649,7 @@ Remove screen tab field
 
 Move screen tab field
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -3756,7 +3659,7 @@ Returns a L<<  >>.
 
 Move screen tab
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -3766,7 +3669,7 @@ Returns a L<<  >>.
 
 Get screen schemes
 
-Returns a L<< JIRA::API::PageBeanScreenScheme >>.
+Returns a L<< JIRA::API::PageBeanScreenScheme >> on success.
 
 =cut
 
@@ -3776,7 +3679,7 @@ Returns a L<< JIRA::API::PageBeanScreenScheme >>.
 
 Create screen scheme
 
-Returns a L<< JIRA::API::ScreenSchemeId >>.
+Returns a L<< JIRA::API::ScreenSchemeId >> on success.
 
 =cut
 
@@ -3795,7 +3698,7 @@ Delete screen scheme
 
 Update screen scheme
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -3805,7 +3708,7 @@ Returns a L<<  >>.
 
 Search for issues using JQL (GET)
 
-Returns a L<< JIRA::API::SearchResults >>.
+Returns a L<< JIRA::API::SearchResults >> on success.
 
 =cut
 
@@ -3815,7 +3718,7 @@ Returns a L<< JIRA::API::SearchResults >>.
 
 Search for issues using JQL (POST)
 
-Returns a L<< JIRA::API::SearchResults >>.
+Returns a L<< JIRA::API::SearchResults >> on success.
 
 =cut
 
@@ -3825,7 +3728,7 @@ Returns a L<< JIRA::API::SearchResults >>.
 
 Get issue security level
 
-Returns a L<< JIRA::API::SecurityLevel >>.
+Returns a L<< JIRA::API::SecurityLevel >> on success.
 
 =cut
 
@@ -3835,7 +3738,7 @@ Returns a L<< JIRA::API::SecurityLevel >>.
 
 Get Jira instance info
 
-Returns a L<< JIRA::API::ServerInformation >>.
+Returns a L<< JIRA::API::ServerInformation >> on success.
 
 =cut
 
@@ -3845,7 +3748,7 @@ Returns a L<< JIRA::API::ServerInformation >>.
 
 Get issue navigator default columns
 
-Returns an array of L<< JIRA::API::ColumnItem >>.
+Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 =cut
 
@@ -3855,7 +3758,7 @@ Returns an array of L<< JIRA::API::ColumnItem >>.
 
 Set issue navigator default columns
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -3865,7 +3768,7 @@ Returns a L<<  >>.
 
 Get all statuses
 
-Returns an array of L<< JIRA::API::StatusDetails >>.
+Returns an array of L<< JIRA::API::StatusDetails >> on success.
 
 =cut
 
@@ -3875,7 +3778,7 @@ Returns an array of L<< JIRA::API::StatusDetails >>.
 
 Get status
 
-Returns a L<< JIRA::API::StatusDetails >>.
+Returns a L<< JIRA::API::StatusDetails >> on success.
 
 =cut
 
@@ -3885,7 +3788,7 @@ Returns a L<< JIRA::API::StatusDetails >>.
 
 Get all status categories
 
-Returns an array of L<< JIRA::API::StatusCategory >>.
+Returns an array of L<< JIRA::API::StatusCategory >> on success.
 
 =cut
 
@@ -3895,7 +3798,7 @@ Returns an array of L<< JIRA::API::StatusCategory >>.
 
 Get status category
 
-Returns a L<< JIRA::API::StatusCategory >>.
+Returns a L<< JIRA::API::StatusCategory >> on success.
 
 =cut
 
@@ -3905,7 +3808,7 @@ Returns a L<< JIRA::API::StatusCategory >>.
 
 Bulk delete Statuses
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -3915,7 +3818,7 @@ Returns a L<<  >>.
 
 Bulk get statuses
 
-Returns an array of L<< JIRA::API::JiraStatus >>.
+Returns an array of L<< JIRA::API::JiraStatus >> on success.
 
 =cut
 
@@ -3925,7 +3828,7 @@ Returns an array of L<< JIRA::API::JiraStatus >>.
 
 Bulk create statuses
 
-Returns an array of L<< JIRA::API::JiraStatus >>.
+Returns an array of L<< JIRA::API::JiraStatus >> on success.
 
 =cut
 
@@ -3935,7 +3838,7 @@ Returns an array of L<< JIRA::API::JiraStatus >>.
 
 Bulk update statuses
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -3945,7 +3848,7 @@ Returns a L<<  >>.
 
 Search statuses paginated
 
-Returns a L<< JIRA::API::PageOfStatuses >>.
+Returns a L<< JIRA::API::PageOfStatuses >> on success.
 
 =cut
 
@@ -3955,7 +3858,7 @@ Returns a L<< JIRA::API::PageOfStatuses >>.
 
 Get task
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >>.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on success.
 
 =cut
 
@@ -3965,11 +3868,8 @@ Returns a L<< JIRA::API::TaskProgressBeanObject >>.
 
 Cancel task
 
-Returns a L<<  >>.
-Returns an array of L<< JIRA::API:: >>.
-Returns an array of L<< JIRA::API:: >>.
-Returns an array of L<< JIRA::API:: >>.
-Returns an array of L<< JIRA::API:: >>.
+Returns Hashref on success.
+Returns an array of L<< JIRA::API:: >> on error.
 
 =cut
 
@@ -3979,7 +3879,7 @@ Returns an array of L<< JIRA::API:: >>.
 
 Get UI modifications
 
-Returns a L<< JIRA::API::PageBeanUiModificationDetails >>.
+Returns a L<< JIRA::API::PageBeanUiModificationDetails >> on success.
 
 =cut
 
@@ -3989,7 +3889,7 @@ Returns a L<< JIRA::API::PageBeanUiModificationDetails >>.
 
 Create UI modification
 
-Returns a L<< JIRA::API::UiModificationIdentifiers >>.
+Returns a L<< JIRA::API::UiModificationIdentifiers >> on success.
 
 =cut
 
@@ -3999,7 +3899,7 @@ Returns a L<< JIRA::API::UiModificationIdentifiers >>.
 
 Delete UI modification
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -4009,7 +3909,7 @@ Returns a L<<  >>.
 
 Update UI modification
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -4019,7 +3919,7 @@ Returns a L<<  >>.
 
 Get avatars
 
-Returns a L<< JIRA::API::Avatars >>.
+Returns a L<< JIRA::API::Avatars >> on success.
 
 =cut
 
@@ -4029,7 +3929,7 @@ Returns a L<< JIRA::API::Avatars >>.
 
 Load avatar
 
-Returns a L<< JIRA::API::Avatar >>.
+Returns a L<< JIRA::API::Avatar >> on success.
 
 =cut
 
@@ -4048,10 +3948,8 @@ Delete avatar
 
 Get avatar image by type
 
-Returns a L<< object >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< object >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -4061,11 +3959,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get avatar image by ID
 
-Returns a L<< object >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< object >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -4075,11 +3970,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get avatar image by owner
 
-Returns a L<< object >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< object >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -4098,7 +3990,7 @@ Delete user
 
 Get user
 
-Returns a L<< JIRA::API::User >>.
+Returns a L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -4108,7 +4000,7 @@ Returns a L<< JIRA::API::User >>.
 
 Create user
 
-Returns a L<< JIRA::API::User >>.
+Returns a L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -4118,7 +4010,7 @@ Returns a L<< JIRA::API::User >>.
 
 Find users assignable to projects
 
-Returns an array of L<< JIRA::API::User >>.
+Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -4128,7 +4020,7 @@ Returns an array of L<< JIRA::API::User >>.
 
 Find users assignable to issues
 
-Returns an array of L<< JIRA::API::User >>.
+Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -4138,7 +4030,7 @@ Returns an array of L<< JIRA::API::User >>.
 
 Bulk get users
 
-Returns a L<< JIRA::API::PageBeanUser >>.
+Returns a L<< JIRA::API::PageBeanUser >> on success.
 
 =cut
 
@@ -4148,7 +4040,7 @@ Returns a L<< JIRA::API::PageBeanUser >>.
 
 Get account IDs for users
 
-Returns an array of L<< JIRA::API::UserMigrationBean >>.
+Returns an array of L<< JIRA::API::UserMigrationBean >> on success.
 
 =cut
 
@@ -4167,7 +4059,7 @@ Reset user default columns
 
 Get user default columns
 
-Returns an array of L<< JIRA::API::ColumnItem >>.
+Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 =cut
 
@@ -4177,7 +4069,7 @@ Returns an array of L<< JIRA::API::ColumnItem >>.
 
 Set user default columns
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -4187,7 +4079,7 @@ Returns a L<<  >>.
 
 Get user email
 
-Returns a L<< JIRA::API::UnrestrictedUserEmail >>.
+Returns a L<< JIRA::API::UnrestrictedUserEmail >> on success.
 
 =cut
 
@@ -4197,7 +4089,7 @@ Returns a L<< JIRA::API::UnrestrictedUserEmail >>.
 
 Get user email bulk
 
-Returns a L<< JIRA::API::UnrestrictedUserEmail >>.
+Returns a L<< JIRA::API::UnrestrictedUserEmail >> on success.
 
 =cut
 
@@ -4207,7 +4099,7 @@ Returns a L<< JIRA::API::UnrestrictedUserEmail >>.
 
 Get user groups
 
-Returns an array of L<< JIRA::API::GroupName >>.
+Returns an array of L<< JIRA::API::GroupName >> on success.
 
 =cut
 
@@ -4217,7 +4109,7 @@ Returns an array of L<< JIRA::API::GroupName >>.
 
 Find users with permissions
 
-Returns an array of L<< JIRA::API::User >>.
+Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -4227,7 +4119,7 @@ Returns an array of L<< JIRA::API::User >>.
 
 Find users for picker
 
-Returns a L<< JIRA::API::FoundUsers >>.
+Returns a L<< JIRA::API::FoundUsers >> on success.
 
 =cut
 
@@ -4237,7 +4129,7 @@ Returns a L<< JIRA::API::FoundUsers >>.
 
 Get user property keys
 
-Returns a L<< JIRA::API::PropertyKeys >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
@@ -4256,7 +4148,7 @@ Delete user property
 
 Get user property
 
-Returns a L<< JIRA::API::EntityProperty >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
@@ -4266,8 +4158,7 @@ Returns a L<< JIRA::API::EntityProperty >>.
 
 Set user property
 
-Returns a L<<  >>.
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -4277,7 +4168,7 @@ Returns a L<<  >>.
 
 Find users
 
-Returns an array of L<< JIRA::API::User >>.
+Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -4287,7 +4178,7 @@ Returns an array of L<< JIRA::API::User >>.
 
 Find users by query
 
-Returns a L<< JIRA::API::PageBeanUser >>.
+Returns a L<< JIRA::API::PageBeanUser >> on success.
 
 =cut
 
@@ -4297,7 +4188,7 @@ Returns a L<< JIRA::API::PageBeanUser >>.
 
 Find user keys by query
 
-Returns a L<< JIRA::API::PageBeanUserKey >>.
+Returns a L<< JIRA::API::PageBeanUserKey >> on success.
 
 =cut
 
@@ -4307,7 +4198,7 @@ Returns a L<< JIRA::API::PageBeanUserKey >>.
 
 Find users with browse permission
 
-Returns an array of L<< JIRA::API::User >>.
+Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -4317,7 +4208,7 @@ Returns an array of L<< JIRA::API::User >>.
 
 Get all users default
 
-Returns an array of L<< JIRA::API::User >>.
+Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -4327,7 +4218,7 @@ Returns an array of L<< JIRA::API::User >>.
 
 Get all users
 
-Returns an array of L<< JIRA::API::User >>.
+Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
@@ -4337,7 +4228,7 @@ Returns an array of L<< JIRA::API::User >>.
 
 Create version
 
-Returns a L<< JIRA::API::Version >>.
+Returns a L<< JIRA::API::Version >> on success.
 
 =cut
 
@@ -4356,7 +4247,7 @@ Delete version
 
 Get version
 
-Returns a L<< JIRA::API::Version >>.
+Returns a L<< JIRA::API::Version >> on success.
 
 =cut
 
@@ -4366,7 +4257,7 @@ Returns a L<< JIRA::API::Version >>.
 
 Update version
 
-Returns a L<< JIRA::API::Version >>.
+Returns a L<< JIRA::API::Version >> on success.
 
 =cut
 
@@ -4376,7 +4267,7 @@ Returns a L<< JIRA::API::Version >>.
 
 Merge versions
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -4386,7 +4277,7 @@ Returns a L<<  >>.
 
 Move version
 
-Returns a L<< JIRA::API::Version >>.
+Returns a L<< JIRA::API::Version >> on success.
 
 =cut
 
@@ -4396,7 +4287,7 @@ Returns a L<< JIRA::API::Version >>.
 
 Get version's related issues count
 
-Returns a L<< JIRA::API::VersionIssueCounts >>.
+Returns a L<< JIRA::API::VersionIssueCounts >> on success.
 
 =cut
 
@@ -4406,7 +4297,7 @@ Returns a L<< JIRA::API::VersionIssueCounts >>.
 
 Delete and replace version
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -4416,7 +4307,7 @@ Returns a L<<  >>.
 
 Get version's unresolved issues count
 
-Returns a L<< JIRA::API::VersionUnresolvedIssuesCount >>.
+Returns a L<< JIRA::API::VersionUnresolvedIssuesCount >> on success.
 
 =cut
 
@@ -4426,8 +4317,7 @@ Returns a L<< JIRA::API::VersionUnresolvedIssuesCount >>.
 
 Delete webhooks by ID
 
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -4437,9 +4327,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get dynamic webhooks for app
 
-Returns a L<< JIRA::API::PageBeanWebhook >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanWebhook >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -4449,9 +4338,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Register dynamic webhooks
 
-Returns a L<< JIRA::API::ContainerForRegisteredWebhooks >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::ContainerForRegisteredWebhooks >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -4461,9 +4349,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get failed webhooks
 
-Returns a L<< JIRA::API::FailedWebhooks >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::FailedWebhooks >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -4473,9 +4360,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Extend webhook life
 
-Returns a L<< JIRA::API::WebhooksExpirationDate >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::WebhooksExpirationDate >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -4485,7 +4371,7 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get all workflows
 
-Returns an array of L<< JIRA::API::DeprecatedWorkflow >>.
+Returns an array of L<< JIRA::API::DeprecatedWorkflow >> on success.
 
 =cut
 
@@ -4495,7 +4381,7 @@ Returns an array of L<< JIRA::API::DeprecatedWorkflow >>.
 
 Create workflow
 
-Returns a L<< JIRA::API::WorkflowIDs >>.
+Returns a L<< JIRA::API::WorkflowIDs >> on success.
 
 =cut
 
@@ -4505,9 +4391,8 @@ Returns a L<< JIRA::API::WorkflowIDs >>.
 
 Get workflow transition rule configurations
 
-Returns a L<< JIRA::API::PageBeanWorkflowTransitionRules >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanWorkflowTransitionRules >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -4517,9 +4402,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Update workflow transition rule configurations
 
-Returns a L<< JIRA::API::WorkflowTransitionRulesUpdateErrors >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::WorkflowTransitionRulesUpdateErrors >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -4529,9 +4413,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Delete workflow transition rule configurations
 
-Returns a L<< JIRA::API::WorkflowTransitionRulesUpdateErrors >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::WorkflowTransitionRulesUpdateErrors >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -4541,8 +4424,8 @@ Returns a L<< JIRA::API::ErrorCollection >>.
 
 Get workflows paginated
 
-Returns a L<< JIRA::API::PageBeanWorkflow >>.
-Returns a L<< JIRA::API::ErrorCollection >>.
+Returns a L<< JIRA::API::PageBeanWorkflow >> on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
@@ -4561,7 +4444,7 @@ Delete workflow transition property
 
 Get workflow transition properties
 
-Returns a L<< JIRA::API::WorkflowTransitionProperty >>.
+Returns a L<< JIRA::API::WorkflowTransitionProperty >> on success.
 
 =cut
 
@@ -4571,7 +4454,7 @@ Returns a L<< JIRA::API::WorkflowTransitionProperty >>.
 
 Create workflow transition property
 
-Returns a L<< JIRA::API::WorkflowTransitionProperty >>.
+Returns a L<< JIRA::API::WorkflowTransitionProperty >> on success.
 
 =cut
 
@@ -4581,7 +4464,7 @@ Returns a L<< JIRA::API::WorkflowTransitionProperty >>.
 
 Update workflow transition property
 
-Returns a L<< JIRA::API::WorkflowTransitionProperty >>.
+Returns a L<< JIRA::API::WorkflowTransitionProperty >> on success.
 
 =cut
 
@@ -4600,7 +4483,7 @@ Delete inactive workflow
 
 Get all workflow schemes
 
-Returns a L<< JIRA::API::PageBeanWorkflowScheme >>.
+Returns a L<< JIRA::API::PageBeanWorkflowScheme >> on success.
 
 =cut
 
@@ -4610,7 +4493,7 @@ Returns a L<< JIRA::API::PageBeanWorkflowScheme >>.
 
 Create workflow scheme
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4620,7 +4503,7 @@ Returns a L<< JIRA::API::WorkflowScheme >>.
 
 Get workflow scheme project associations
 
-Returns a L<< JIRA::API::ContainerOfWorkflowSchemeAssociations >>.
+Returns a L<< JIRA::API::ContainerOfWorkflowSchemeAssociations >> on success.
 
 =cut
 
@@ -4630,7 +4513,7 @@ Returns a L<< JIRA::API::ContainerOfWorkflowSchemeAssociations >>.
 
 Assign workflow scheme to project
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -4640,7 +4523,7 @@ Returns a L<<  >>.
 
 Delete workflow scheme
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -4650,7 +4533,7 @@ Returns a L<<  >>.
 
 Get workflow scheme
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4660,7 +4543,7 @@ Returns a L<< JIRA::API::WorkflowScheme >>.
 
 Update workflow scheme
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4670,7 +4553,7 @@ Returns a L<< JIRA::API::WorkflowScheme >>.
 
 Create draft workflow scheme
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4680,7 +4563,7 @@ Returns a L<< JIRA::API::WorkflowScheme >>.
 
 Delete default workflow
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4690,7 +4573,7 @@ Returns a L<< JIRA::API::WorkflowScheme >>.
 
 Get default workflow
 
-Returns a L<< JIRA::API::DefaultWorkflow >>.
+Returns a L<< JIRA::API::DefaultWorkflow >> on success.
 
 =cut
 
@@ -4700,7 +4583,7 @@ Returns a L<< JIRA::API::DefaultWorkflow >>.
 
 Update default workflow
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4719,7 +4602,7 @@ Delete draft workflow scheme
 
 Get draft workflow scheme
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4729,7 +4612,7 @@ Returns a L<< JIRA::API::WorkflowScheme >>.
 
 Update draft workflow scheme
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4739,7 +4622,7 @@ Returns a L<< JIRA::API::WorkflowScheme >>.
 
 Delete draft default workflow
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4749,7 +4632,7 @@ Returns a L<< JIRA::API::WorkflowScheme >>.
 
 Get draft default workflow
 
-Returns a L<< JIRA::API::DefaultWorkflow >>.
+Returns a L<< JIRA::API::DefaultWorkflow >> on success.
 
 =cut
 
@@ -4759,7 +4642,7 @@ Returns a L<< JIRA::API::DefaultWorkflow >>.
 
 Update draft default workflow
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4769,7 +4652,7 @@ Returns a L<< JIRA::API::WorkflowScheme >>.
 
 Delete workflow for issue type in draft workflow scheme
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4779,7 +4662,7 @@ Returns a L<< JIRA::API::WorkflowScheme >>.
 
 Get workflow for issue type in draft workflow scheme
 
-Returns a L<< JIRA::API::IssueTypeWorkflowMapping >>.
+Returns a L<< JIRA::API::IssueTypeWorkflowMapping >> on success.
 
 =cut
 
@@ -4789,7 +4672,7 @@ Returns a L<< JIRA::API::IssueTypeWorkflowMapping >>.
 
 Set workflow for issue type in draft workflow scheme
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4799,7 +4682,7 @@ Returns a L<< JIRA::API::WorkflowScheme >>.
 
 Publish draft workflow scheme
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >>.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
 
 =cut
 
@@ -4818,7 +4701,7 @@ Delete issue types for workflow in draft workflow scheme
 
 Get issue types for workflows in draft workflow scheme
 
-Returns a L<< JIRA::API::IssueTypesWorkflowMapping >>.
+Returns a L<< JIRA::API::IssueTypesWorkflowMapping >> on success.
 
 =cut
 
@@ -4828,7 +4711,7 @@ Returns a L<< JIRA::API::IssueTypesWorkflowMapping >>.
 
 Set issue types for workflow in workflow scheme
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4838,7 +4721,7 @@ Returns a L<< JIRA::API::WorkflowScheme >>.
 
 Delete workflow for issue type in workflow scheme
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4848,7 +4731,7 @@ Returns a L<< JIRA::API::WorkflowScheme >>.
 
 Get workflow for issue type in workflow scheme
 
-Returns a L<< JIRA::API::IssueTypeWorkflowMapping >>.
+Returns a L<< JIRA::API::IssueTypeWorkflowMapping >> on success.
 
 =cut
 
@@ -4858,7 +4741,7 @@ Returns a L<< JIRA::API::IssueTypeWorkflowMapping >>.
 
 Set workflow for issue type in workflow scheme
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4877,7 +4760,7 @@ Delete issue types for workflow in workflow scheme
 
 Get issue types for workflows in workflow scheme
 
-Returns a L<< JIRA::API::IssueTypesWorkflowMapping >>.
+Returns a L<< JIRA::API::IssueTypesWorkflowMapping >> on success.
 
 =cut
 
@@ -4887,7 +4770,7 @@ Returns a L<< JIRA::API::IssueTypesWorkflowMapping >>.
 
 Set issue types for workflow in workflow scheme
 
-Returns a L<< JIRA::API::WorkflowScheme >>.
+Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
@@ -4897,7 +4780,7 @@ Returns a L<< JIRA::API::WorkflowScheme >>.
 
 Get IDs of deleted worklogs
 
-Returns a L<< JIRA::API::ChangedWorklogs >>.
+Returns a L<< JIRA::API::ChangedWorklogs >> on success.
 
 =cut
 
@@ -4907,7 +4790,7 @@ Returns a L<< JIRA::API::ChangedWorklogs >>.
 
 Get worklogs
 
-Returns an array of L<< JIRA::API::Worklog >>.
+Returns an array of L<< JIRA::API::Worklog >> on success.
 
 =cut
 
@@ -4917,7 +4800,7 @@ Returns an array of L<< JIRA::API::Worklog >>.
 
 Get IDs of updated worklogs
 
-Returns a L<< JIRA::API::ChangedWorklogs >>.
+Returns a L<< JIRA::API::ChangedWorklogs >> on success.
 
 =cut
 
@@ -4927,8 +4810,8 @@ Returns a L<< JIRA::API::ChangedWorklogs >>.
 
 Get app properties
 
-Returns a L<< JIRA::API::PropertyKeys >>.
-Returns a L<< JIRA::API::OperationMessage >>.
+Returns a L<< JIRA::API::PropertyKeys >> on success.
+Returns a L<< JIRA::API::OperationMessage >> on error.
 
 =cut
 
@@ -4938,9 +4821,7 @@ Returns a L<< JIRA::API::OperationMessage >>.
 
 Delete app property
 
-Returns a L<< JIRA::API::OperationMessage >>.
-Returns a L<< JIRA::API::OperationMessage >>.
-Returns a L<< JIRA::API::OperationMessage >>.
+Returns a L<< JIRA::API::OperationMessage >> on error.
 
 =cut
 
@@ -4950,10 +4831,8 @@ Returns a L<< JIRA::API::OperationMessage >>.
 
 Get app property
 
-Returns a L<< JIRA::API::EntityProperty >>.
-Returns a L<< JIRA::API::OperationMessage >>.
-Returns a L<< JIRA::API::OperationMessage >>.
-Returns a L<< JIRA::API::OperationMessage >>.
+Returns a L<< JIRA::API::EntityProperty >> on success.
+Returns a L<< JIRA::API::OperationMessage >> on error.
 
 =cut
 
@@ -4963,10 +4842,8 @@ Returns a L<< JIRA::API::OperationMessage >>.
 
 Set app property
 
-Returns a L<< JIRA::API::OperationMessage >>.
-Returns a L<< JIRA::API::OperationMessage >>.
-Returns a L<< JIRA::API::OperationMessage >>.
-Returns a L<< JIRA::API::OperationMessage >>.
+Returns a L<< JIRA::API::OperationMessage >> on success.
+Returns a L<< JIRA::API::OperationMessage >> on error.
 
 =cut
 
@@ -4976,7 +4853,7 @@ Returns a L<< JIRA::API::OperationMessage >>.
 
 Remove modules
 
-Returns a L<< JIRA::API::ErrorMessage >>.
+Returns a L<< JIRA::API::ErrorMessage >> on error.
 
 =cut
 
@@ -4986,8 +4863,8 @@ Returns a L<< JIRA::API::ErrorMessage >>.
 
 Get modules
 
-Returns a L<< JIRA::API::ConnectModules >>.
-Returns a L<< JIRA::API::ErrorMessage >>.
+Returns a L<< JIRA::API::ConnectModules >> on success.
+Returns a L<< JIRA::API::ErrorMessage >> on error.
 
 =cut
 
@@ -4997,8 +4874,7 @@ Returns a L<< JIRA::API::ErrorMessage >>.
 
 Register modules
 
-Returns a L<< JIRA::API::ErrorMessage >>.
-Returns a L<< JIRA::API::ErrorMessage >>.
+Returns a L<< JIRA::API::ErrorMessage >> on error.
 
 =cut
 
@@ -5008,7 +4884,7 @@ Returns a L<< JIRA::API::ErrorMessage >>.
 
 Bulk update custom field value
 
-Returns a L<<  >>.
+Returns Hashref on success.
 
 =cut
 
@@ -5027,7 +4903,7 @@ Bulk update entity properties
 
 Get workflow transition rule configurations
 
-Returns a L<< JIRA::API::WorkflowRulesSearchDetails >>.
+Returns a L<< JIRA::API::WorkflowRulesSearchDetails >> on success.
 
 =cut
 
