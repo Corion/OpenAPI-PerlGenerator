@@ -5,6 +5,8 @@ use experimental 'signatures';
 use stable 'postderef';
 use Carp 'croak';
 
+=encoding utf8
+
 =head1 NAME
 
 AI::OpenAI::AssistantsApiToolChoiceOption - Factory class
