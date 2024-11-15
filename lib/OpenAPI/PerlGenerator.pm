@@ -116,6 +116,11 @@ has 'version' => (
     default => '0.01',
 );
 
+sub fetch_descriptor( $self, $path, $root = $self->schema ) {
+    $path =~ s!^#!!;
+    return JSON::Pointer->get($root, $path, 1);
+}
+
 sub fixup_json_ref( $root, $curr=$root ) {
     if( ref $curr eq 'ARRAY' ) {
         for my $c ($curr->@*) {
@@ -128,7 +133,7 @@ sub fixup_json_ref( $root, $curr=$root ) {
                 my $ref = $curr->{$k};
                 $ref =~ s!^#!!;
 
-                # But we want to know its class, maybe?!
+                # But we want to know its class (name), maybe?!
 
                 $curr = JSON::Pointer->get($root, $ref, 1);
 
@@ -192,17 +197,57 @@ sub single_line( $self, $str ) {
     $str =~ s/\s+/ /gr;
 }
 
+=head2 C<< ->resolve_schema >>
+
+  my( $type, $classname ) = $self->resolve_schema($schema);
+
+Resolves a C<schema> entry into its basic type and additional data.
+
+In the case where C<$schema> contains a C<oneOf> stanza, it returns C<oneof>
+and a hashref with a C<discriminator> entry that names the field, and a hashref
+mapping field values to classnames:
+
+  {
+      discriminator => 'type',
+      mapping => {
+          string => 'Example::String',
+          number => 'Example::Number',
+      }
+  }
+
+=cut
+
 sub resolve_schema( $self, $schema ) {
     my $t = $schema->{type} // '';
-    if( exists $schema->{name} ) {
-        warn "Name: $schema->{name}";
-        return ('class', $self->prefix . "::" . $schema->{name})
-    } elsif( $t and $t ne 'object' ) {
-        warn "Type: $schema->{type}";
-        return( $t, undef );
-    } elsif( exists $schema->{oneOf} and $schema->{oneOf}->@* == 1) {
-        warn "Oneof: ...";
+    if ( exists $schema->{oneOf} and $schema->{oneOf}->@* == 1) {
         return $self->resolve_schema( $schema->{oneOf}->[0] );
+
+    } elsif( exists $schema->{oneOf} and $schema->{oneOf}->@* > 1) {
+        
+        if( my $d = $schema->{discriminator} ) {
+            my $s = $self->schema;
+            my $res = {
+                discriminator => $d->{propertyName},
+                mapping => {
+                    map {
+                        (my $name) = ($d->{mapping}->{$_} =~ /\b(\w+)$/);
+                        $_ => $self->full_package( $name ),
+                    } keys $d->{mapping}->%*
+                },
+            };
+            return ('oneOf', $res);
+            
+        } else {
+            warn "Don't know how to resolve oneOf without a discriminator entry";
+            warn "Guessing the best class is still open";
+        }
+
+    } elsif( exists $schema->{name} ) {
+        return ('class', $self->prefix . "::" . $schema->{name})
+
+    } elsif( $t and $t ne 'object' ) {
+        return( $t, undef );
+
     } else {
         use Data::Dumper;
         warn "Don't know how to derive a type for schema " . Dumper $schema;
