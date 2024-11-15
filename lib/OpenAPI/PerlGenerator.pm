@@ -229,7 +229,7 @@ sub resolve_schema( $self, $schema, $prefix = $self->prefix ) {
                 mapping => {
                     map {
                         (my $name) = ($d->{mapping}->{$_} =~ /\b(\w+)$/);
-                        $_ => $self->full_package( $name ),
+                        $_ => $self->full_package( $name, $prefix ),
                     } keys $d->{mapping}->%*
                 },
             };
@@ -364,9 +364,10 @@ sub generate_schema_classes( $self, %options ) {
             $type = 'object';
         } elsif( exists $elt->{oneOf}) {
             
-            # this simply references other entities, so we ignore this
+            $type = 'oneOfObject';
         };
 
+            die "No prefix" unless $options{ prefix };
         my %info = (
             %options,
             name => $name,
