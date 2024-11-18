@@ -908,7 +908,7 @@ Whether to generate a changelog for this update.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1166,7 +1166,7 @@ The list of custom field configuration details.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1289,7 +1289,7 @@ The list of custom field update details.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1920,7 +1920,7 @@ Whether a redirect is provided for the attachment download. Clients that do not 
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2142,7 +2142,7 @@ The maximum height to scale the thumbnail to.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -3323,7 +3323,7 @@ The key of the property. The maximum length is 255 characters.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -4266,7 +4266,7 @@ Get selected time tracking provider
 =back
 
 
-Returns Hashref, a L<< JIRA::API::TimeTrackingProvider >> on success.
+Returns Unknown, a L<< JIRA::API::TimeTrackingProvider >> on success.
 
 =cut
 
@@ -4388,7 +4388,7 @@ The URL of the configuration page for the time tracking provider app. For exampl
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -5825,7 +5825,7 @@ The ID of the gadget.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -5962,7 +5962,7 @@ The title of the gadget.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -6430,7 +6430,7 @@ The key of the dashboard item property. The maximum length is 255 characters. Fo
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -8448,7 +8448,7 @@ C<version>: C<versionsearcher>
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -9040,7 +9040,7 @@ The ID of the custom field.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -9623,7 +9623,7 @@ The ID of the context.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -9783,7 +9783,7 @@ The name of the custom field context. The name must be unique. The maximum lengt
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -9942,7 +9942,7 @@ The list of issue type IDs.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -10115,7 +10115,7 @@ The list of issue type IDs.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -10769,7 +10769,7 @@ The position the custom field options should be moved to. Required if C<after> i
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -11069,7 +11069,7 @@ The IDs of projects.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -11228,7 +11228,7 @@ The IDs of projects.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -12151,7 +12151,7 @@ The ID of the option to be deleted.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -12853,7 +12853,7 @@ The ID of a custom field.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -13004,7 +13004,7 @@ The ID of a custom field.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -13383,7 +13383,7 @@ The ID of the field configuration.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -13503,7 +13503,7 @@ The name of the field configuration. Must be unique.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -13738,7 +13738,7 @@ Details of fields in a field configuration.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -14464,7 +14464,7 @@ The ID of the field configuration scheme.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -14584,7 +14584,7 @@ The name of the field configuration scheme. The name must be unique.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -14736,7 +14736,7 @@ Field configuration to issue type mappings.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -14855,7 +14855,7 @@ The list of issue type IDs. Must contain unique values not longer than 255 chara
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -16592,7 +16592,7 @@ The ID of the filter.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -16945,7 +16945,7 @@ The account ID of the new owner.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -20235,7 +20235,7 @@ A Map containing the field field name and a list of operations to perform on the
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -20431,7 +20431,7 @@ The time zone specified in the user's profile. Depending on the user’s privacy
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -21703,7 +21703,7 @@ The recipients of the email notification for the issue.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -22111,7 +22111,7 @@ The key of the issue property. The maximum length is 255 characters.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -22857,7 +22857,7 @@ Description of the relationship between the issue and the linked item. If not se
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -23134,7 +23134,7 @@ A Map containing the field field name and a list of operations to perform on the
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -23427,7 +23427,7 @@ The ID or key of the issue.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -23736,7 +23736,7 @@ The ID or key of the issue.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -25020,7 +25020,7 @@ The key of the issue property. The maximum length is 255 characters.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -27712,7 +27712,7 @@ The key of the issue type property. The maximum length is 255 characters.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -28517,7 +28517,7 @@ The ID of the issue type scheme.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -28674,7 +28674,7 @@ The name of the issue type scheme. The name must be unique. The maximum length i
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -28826,7 +28826,7 @@ The list of issue type IDs.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -28986,7 +28986,7 @@ The position the issue types should be moved to. Required if C<after> isn't prov
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -29132,7 +29132,7 @@ The ID of the issue type.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -29949,7 +29949,7 @@ The ID of the issue type screen scheme.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -30091,7 +30091,7 @@ The name of the issue type screen scheme. The name must be unique. The maximum l
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -30243,7 +30243,7 @@ The list of issue type to screen scheme mappings. A I<default> entry cannot be s
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -30398,7 +30398,7 @@ The ID of the screen scheme.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -30550,7 +30550,7 @@ The list of issue type IDs.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -32444,7 +32444,7 @@ The key of the preference. The maximum length is 255 characters.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -32546,7 +32546,7 @@ Delete locale
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -33547,7 +33547,7 @@ The name of the notification scheme. Must be unique.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -33711,7 +33711,7 @@ The list of notifications which should be added to the notification scheme.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -33865,7 +33865,7 @@ The ID of the notification scheme.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -34020,7 +34020,7 @@ The ID of the notification.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -36760,7 +36760,7 @@ The status color of the priority in 3-digit or 6-digit hexadecimal format.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -38485,7 +38485,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -38625,7 +38625,7 @@ The list of avatar icon URLs.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -39962,7 +39962,7 @@ The key of the project property. The maximum length is 255 characters.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -40191,7 +40191,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -41518,7 +41518,7 @@ When using a custom domain, the status of the email address.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -44162,7 +44162,7 @@ The name of the resolution. Must be unique.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -45599,7 +45599,7 @@ The ID of the field.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -46928,7 +46928,7 @@ The named position to which the screen tab field should be moved. Required if C<
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -47051,7 +47051,7 @@ The position of tab. The base index is 0.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -47595,7 +47595,7 @@ The IDs of the screens for the screen types of the screen scheme. Only screens u
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -48536,7 +48536,7 @@ Set issue navigator default columns
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -49019,7 +49019,7 @@ Min items C<1>, Max items C<50>
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -49711,7 +49711,7 @@ The ID of the task.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns an array of L<< JIRA::API:: >> on error.
 
 =cut
@@ -50112,7 +50112,7 @@ The ID of the UI modification.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -50237,7 +50237,7 @@ The name of the UI modification. The maximum length is 255 characters.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -50702,7 +50702,7 @@ The format to return the avatar image in. If not provided the original content f
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -50976,7 +50976,7 @@ The format to return the avatar image in. If not provided the original content f
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -51297,7 +51297,7 @@ The format to return the avatar image in. If not provided the original content f
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -52683,7 +52683,7 @@ The account ID of the user, which uniquely identifies the user across all Atlass
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -53943,7 +53943,7 @@ The key of the user's property. The maximum length is 255 characters.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -55394,7 +55394,7 @@ The ID of the version to merge into.
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -55738,7 +55738,7 @@ The ID of the version to update C<fixVersion> to when the field contains the del
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -58709,7 +58709,7 @@ The ID of the workflow scheme. Find this ID by editing the desired workflow sche
 =back
 
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -63027,7 +63027,7 @@ The list of custom field update details.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
