@@ -196,6 +196,110 @@ sub single_line( $self, $str ) {
     $str =~ s/\s+/ /gr;
 }
 
+=head2 C<< ->find_discriminator >>
+
+Finds the "best" way to discriminate between different types. Assuming that
+your OpenAPI spec is sane.
+
+=cut
+
+sub potential_instances( $elt, $candidates={} ) {
+    for my $candidate ($elt->{oneOf}->@*) {
+        if( $candidate->{oneOf}) {
+            potential_instances( $candidate, $candidates );
+
+        } else {
+            $candidates->{ $candidate } = $candidate;
+        };
+    };
+    return $candidates
+}
+
+sub potential_values( $prop ) {
+    if( $prop->{enum} ) {
+        warn "Enum: " . join ", ", map { qq{"$_"} } $prop->{enum}->@*;
+        return $prop->{enum}->@*
+    } else {
+        return
+    }
+}
+
+sub find_discriminator( $self, $elt, $schema, $prefix=$self->prefix ) {
+    my %has_value;
+    my %has_property;
+    my %has_type;
+
+    my $idx = 0;
+    my $candidates = potential_instances( $elt );
+
+    for my $impl (values $candidates->%*) {
+        $idx++;
+        my $class = $impl;
+        if( ! ref $class) {
+            if( $class =~ /^#/ ) {
+                my $name = ($class =~ m!\b(\w+)\z!);
+                $class = $self->fetch_descriptor( $impl, $schema );
+                $class->{name} //= $name;
+
+            } else {
+                # Is a simple type
+                $has_type{ $class }->{ $idx } = $impl;
+                # Maybe it has an enum or value?!
+            }
+        };
+        if( ref $class ) {
+            for my $prop (sort keys $class->{properties}->%*) {
+                $has_property{ $prop } //= {};
+                $has_property{ $prop }->{$idx} = 1;
+                $has_value{ $prop } //= {};
+                for my $value (potential_values($class->{properties}->{$prop})) {
+                    #warn "$prop = '$value' => $idx";
+                    if( $class->{name} ) {
+                        $has_value{ $prop }->{$value}->{$class} = $self->full_package( $class->{name}, $prefix );
+                    } elsif( $class->{type} ) {
+                        $has_value{ $prop }->{$value}->{$class} = $class->{type};
+                    }
+                };
+            }
+        }
+    }
+use Data::Dumper; warn Dumper $candidates;
+    my ($discriminator, $mapping);
+    COMMON_PROPERTY: for my $d (keys %has_value) {
+        my @once = grep { scalar keys($_->%*) == 1 } values $has_value{ $d }->%*;
+        if( @once == keys $candidates->%* ) {
+            warn "Found discriminator field '$d'";
+            # There is a common field that all variants share, and each value only
+            # ever occurs once:
+            $discriminator = $d;
+            $mapping = +{
+                map {;
+                    my ($val) = $_;
+                    my ($class) = values $has_value{ $d }->{ $val }->%*;
+                    $_ => ($class // 'object')
+                } keys $has_value{ $discriminator }->%*
+            };
+            last COMMON_PROPERTY;
+        };
+    };
+
+    if( $discriminator ) {
+        my $res = {
+            discriminator => $discriminator,
+            mapping       => $mapping,
+        };
+        use Data::Dumper;
+        die Dumper $res;
+    }
+
+
+    return {
+        discriminator => undef,
+        mapping => undef,
+    }
+
+}
+
 =head2 C<< ->resolve_schema >>
 
   my( $type, $classname ) = $self->resolve_schema($schema);
@@ -234,10 +338,12 @@ sub resolve_schema( $self, $schema, $prefix = $self->prefix ) {
                 },
             };
             return ('oneOf', $res);
-            
+
         } else {
             warn "Don't know how to resolve oneOf without a discriminator entry";
             warn "Guessing the best class is still open";
+
+            return ('oneOf', $self->find_discriminator( $schema, $self->schema, $prefix ));
         }
 
     } elsif( exists $schema->{name} ) {
@@ -245,7 +351,7 @@ sub resolve_schema( $self, $schema, $prefix = $self->prefix ) {
 
     } elsif( $t ) {
         return( $t, undef );
-    
+
     } elsif( ! keys $schema->%* ) {
         # We'll just assume JSON here
         return ('object', undef);
@@ -363,7 +469,7 @@ sub generate_schema_classes( $self, %options ) {
             # We should synthesize the real type here instead of punting
             $type = 'object';
         } elsif( exists $elt->{oneOf}) {
-            
+
             $type = 'oneOfObject';
         };
 
