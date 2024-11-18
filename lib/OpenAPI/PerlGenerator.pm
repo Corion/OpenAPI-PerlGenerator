@@ -288,9 +288,7 @@ sub find_discriminator( $self, $elt, $schema, $prefix=$self->prefix ) {
     COMMON_PROPERTY: for my $d (keys %has_value) {
         my @once = grep { scalar keys($_->%*) == 1 } values $has_value{ $d }->%*;
         if( @once == keys $candidates->%* ) {
-            warn "Found discriminator field '$d'";
-            #use Data::Dumper; warn Dumper $candidates;
-            #die;
+            #warn "Found discriminator field '$d'";
             # There is a common field that all variants share, and each value only
             # ever occurs once:
             $discriminator = $d;
