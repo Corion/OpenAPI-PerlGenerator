@@ -140,7 +140,7 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
                 });
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
 %           }
 %           } else { # we don't know how to handle this, so pass $res          # known content types?
@@ -150,7 +150,7 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
 % }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d", $resp->code ), $resp);
         }
     });
 
@@ -206,7 +206,7 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
 %           }
 %           } else { # we don't know how to handle this, so pass $res          # known content types?
@@ -215,7 +215,7 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
 % }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
