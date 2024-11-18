@@ -608,8 +608,6 @@ The server to access
 
 =cut
 
-# XXX this should be more configurable, and potentially you don't want validation?!
-
 has 'schema_file' => (
     is => 'ro',
 );
@@ -635,7 +633,11 @@ has 'validate_responses' => (
 
 has 'openapi' => (
     is => 'lazy',
-    default => sub { OpenAPI::Modern->new( openapi_schema => $_[0]->schema, openapi_uri => '' )},
+    default => sub {
+        if( my $schema = $_[0]->schema ) {
+            OpenAPI::Modern->new( openapi_schema => $schema, openapi_uri => '' )
+        }
+    },
 );
 
 # The HTTP stuff should go into a ::Role I guess
@@ -838,6 +840,7 @@ extends '<%= $prefix %>::<%= $name %>::Impl';
   use <%= $prefix %>::<%= $name %>;
 
   my $client = <%= $prefix %>::<%= $name %>->new(
+      schema_file => '...',
       server => '<%= $schema->{servers}->[0]->{url} // "https://example.com/" %>',
   );
   my $res = $client->someMethod()->get;
