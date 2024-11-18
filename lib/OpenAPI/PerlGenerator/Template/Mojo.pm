@@ -295,6 +295,7 @@ has '<%= $prefix.$propname %>' => (
 
 %     }
 % }
+% } # included_types
 
 1;
 __OBJECT__
@@ -354,7 +355,7 @@ sub new( $class, $data ) {
     my $type = $data->{ '<%= $info->{discriminator} %>' };
     croak "Unknown type '$type' in field '<%= $info->{discriminator} %>'"
         unless exists $classes{ $type };
-    
+
     return $classes{ $type }->new( $data );
 }
 
