@@ -238,6 +238,8 @@ use stable 'postderef';
 use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
+use namespace::clean;
+
 =encoding utf8
 
 =head1 NAME
@@ -277,8 +279,7 @@ extends '<%= $prefix %>::<%= $item->{name} %>';
 =cut
 
 %# We need to guard against functions that Moo imports:
-% my $prefix = ($propname =~ m!^(before|after|around|with|extends)$!) ? '+' : '';
-has '<%= $prefix.$propname %>' => (
+has '<%= $propname %>' => (
     is       => 'ro',
 % if( exists $p->{enum} ) {
     isa      => Enum[

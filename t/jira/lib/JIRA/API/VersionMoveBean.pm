@@ -8,6 +8,8 @@ use stable 'postderef';
 use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
+use namespace::clean;
+
 =encoding utf8
 
 =head1 NAME
@@ -33,7 +35,7 @@ The URL (self link) of the version after which to place the moved version. Canno
 
 =cut
 
-has '+after' => (
+has 'after' => (
     is       => 'ro',
     isa      => Str,
 );

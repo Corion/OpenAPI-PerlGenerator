@@ -8,6 +8,8 @@ use stable 'postderef';
 use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
+use namespace::clean;
+
 =encoding utf8
 
 =head1 NAME
@@ -33,7 +35,7 @@ The ID of the screen tab field after which to place the moved screen tab field. 
 
 =cut
 
-has '+after' => (
+has 'after' => (
     is       => 'ro',
     isa      => Str,
 );

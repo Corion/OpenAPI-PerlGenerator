@@ -8,6 +8,8 @@ use stable 'postderef';
 use Types::Standard qw(Enum Str Bool Num Int HashRef ArrayRef);
 use MooX::TypeTiny;
 
+use namespace::clean;
+
 =encoding utf8
 
 =head1 NAME
