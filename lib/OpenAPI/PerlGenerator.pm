@@ -4,6 +4,7 @@ use Moo 2;
 use Carp 'croak';
 use experimental 'signatures'; # actually, they are stable but stable.pm doesn't know
 use stable 'postderef';
+use List::Util 'uniq';
 
 use Mojo::Template;
 use OpenAPI::PerlGenerator::Utils; # for tidy(), but we don't import that
@@ -507,6 +508,23 @@ sub generate( $self, %options ) {
     return @res
 }
 
+sub openapi_dependencies( $self, %options ) {
+    my $class  = delete $options{ type }
+        or croak "Need a 'type' parameter";
+    my $schema = delete $options{ schema } // $self->schema;
+    my $prefix = delete $options{ prefix } // $self->prefix;
+
+    my ($type, $info) = $self->resolve_schema($class, $prefix);
+    if( ref $info ) {
+        my @subclasses = uniq sort grep { $_ ne 'HashRef' }
+                              map { $self->class_type_name( $prefix, $_) }
+                              values $info->{mapping}->%*;
+        return @subclasses
+    } else {
+        return
+    }
+}
+
 sub generate_schema_classes( $self, %options ) {
     my $schema = delete $options{ schema } // $self->schema;
     my $templates = delete $options{ templates } // $self->templates;
@@ -515,6 +533,8 @@ sub generate_schema_classes( $self, %options ) {
     $options{ prefix } //= $self->prefix;
 
     my @res;
+
+    my %dependencies;
 
     for my $name ( sort keys $schema->{components}->{schemas}->%*) {
         my $elt = $schema->{components}->{schemas}->{$name};

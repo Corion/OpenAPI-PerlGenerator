@@ -93,6 +93,15 @@ sub class_type_name {
     $info->class_type_name( @_ );
 }
 
+=head2 C<< openapi_dependencies >>
+
+=cut
+
+sub openapi_dependencies {
+    $info->openapi_dependencies( @_ );
+}
+
+
 1;
 __END__
 
