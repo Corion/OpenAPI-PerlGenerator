@@ -257,12 +257,14 @@ extends '<%= $prefix %>::<%= $item->{name} %>';
 %     }
 
 % }
+% if (@included_types) {
 =head1 PROPERTIES
 
 % for my $t (@included_types) {
 %     for my $prop (sort keys $t->{properties}->%*) {
 %         my $p = $t->{properties}->{$prop};
-=head2 C<< <%= property_name( $prop ) %> >>
+%         my $propname = property_name( $prop );
+=head2 C<< <%= $propname %> >>
 
 % if( $p->{description} and $p->{description} =~ /\S/ ) {
 <%= $p->{description} =~ s/\s*$//r %>
@@ -270,7 +272,9 @@ extends '<%= $prefix %>::<%= $item->{name} %>';
 % }
 =cut
 
-has '<%= property_name( $prop ) %>' => (
+%# We need to guard against functions that Moo imports:
+% my $prefix = ($propname =~ m!^(before|after|around|with|extends)$!) ? '+' : '';
+has '<%= $prefix.$propname %>' => (
     is       => 'ro',
 % if( exists $p->{enum} ) {
     isa      => Enum[
