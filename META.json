@@ -49,6 +49,7 @@
             "OpenAPI::Modern" : "0",
             "Perl::Tidy" : "0",
             "PerlX::Maybe" : "0",
+            "URI::Template" : "0",
             "YAML::PP" : "0",
             "experimental" : "0.031",
             "perl" : "5.020",
@@ -80,6 +81,6 @@
       }
    },
    "version" : "0.02",
-   "x_serialization_backend" : "JSON::PP version 4.07",
+   "x_serialization_backend" : "JSON::PP version 4.16",
    "x_static_install" : 1
 }

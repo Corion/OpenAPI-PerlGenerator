@@ -40,6 +40,7 @@ requires:
   OpenAPI::Modern: '0'
   Perl::Tidy: '0'
   PerlX::Maybe: '0'
+  URI::Template: '0'
   YAML::PP: '0'
   experimental: '0.031'
   perl: '5.020'
