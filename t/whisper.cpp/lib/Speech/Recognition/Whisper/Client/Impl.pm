@@ -112,14 +112,14 @@ sub _build_inference_request( $self, %options ) {
     my $path = '/inference';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = Speech::Recognition::Whisper::TranscribeFile->new( \%options );
+    my $request = Speech::Recognition::Whisper::TranscribeFile->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'multipart/form-data',
         }
-        => form => $request->as_hash,
+        => form => $request,
     );
 
     return $tx
@@ -228,14 +228,14 @@ sub _build_load_request( $self, %options ) {
     my $path = '/load';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = Speech::Recognition::Whisper::LoadModel->new( \%options );
+    my $request = Speech::Recognition::Whisper::LoadModel->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json,application/text',
             "Content-Type" => 'multipart/form-data',
         }
-        => form => $request->as_hash,
+        => form => $request,
     );
 
     return $tx

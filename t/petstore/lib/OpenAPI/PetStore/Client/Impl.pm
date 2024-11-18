@@ -212,14 +212,14 @@ sub _build_addPet_request( $self, %options ) {
     my $path = '/pets';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = OpenAPI::PetStore::NewPet->new( \%options );
+    my $request = OpenAPI::PetStore::NewPet->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx

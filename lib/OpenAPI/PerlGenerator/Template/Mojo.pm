@@ -53,17 +53,17 @@ $template{generate_request_body} = <<'__REQUEST_BODY__';
 %             } elsif( $type eq 'array' ) {
     my $body = delete $options{ body } // ''; # ??? really? This is an "array"
 %             } elsif( $type eq 'object' ) {
-    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
+    my $request = \%options;
 %             } elsif( $type eq 'class') {
 %                 if( $class ) {
-    my $request = <%= $class %>->new( \%options );
+    my $request = <%= $class %>->new( \%options )->as_hash;
 %                 } else {
     # Let's hope that the content type was application/json ...
     my $request = \%options;
 %                 }
 %             } else {
-% warn "Don't know how to handle request type '$type'";
-    my $request = <%= $class %>->new( \%options );
+    # Don't know how to handle request type '$type'
+    my $request = <%= $class %>->new( \%options )->as_hash;
 %             }
 %         } elsif( $ct eq 'multipart/form-data' ) {
 %             # nothing to do
@@ -395,6 +395,7 @@ $template{return_types} = <<'__RETURN_TYPES__';
 %                        if( $class_info->{discriminator} ) {
 %                            $descriptor = sprintf 'depending on C<< %s >> one of', $class_info->{discriminator};
 %                            $class = [sort map { class_type_name($prefix, $_) } values $class_info->{mapping}->%*];
+%
 %                        } else {
 %                            $descriptor = "We couldn't find a discriminator";
 %                            $class = [""];
@@ -517,9 +518,9 @@ sub _build_<%= $method->{name} %>_request( $self, %options ) {
 % if( ! $has_body ) {
 %# nothing to do
 % } elsif( $is_json ) {
-        => json => $request->as_hash,
+        => json => $request,
 % } elsif( $content_type and $content_type eq 'multipart/form-data' ) {
-        => form => $request->as_hash,
+        => form => $request,
 % } elsif( $content_type and $content_type eq 'application/octet-stream' ) {
         => $body,
 % } else {

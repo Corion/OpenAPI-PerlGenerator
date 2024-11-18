@@ -381,14 +381,14 @@ sub _build_createAssistant_request( $self, %options ) {
     my $path = '/assistants';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateAssistantRequest->new( \%options );
+    my $request = AI::OpenAI::CreateAssistantRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -718,14 +718,14 @@ sub _build_modifyAssistant_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::ModifyAssistantRequest->new( \%options );
+    my $request = AI::OpenAI::ModifyAssistantRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -825,14 +825,14 @@ sub _build_createSpeech_request( $self, %options ) {
     my $path = '/audio/speech';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateSpeechRequest->new( \%options );
+    my $request = AI::OpenAI::CreateSpeechRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/octet-stream',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -940,14 +940,14 @@ sub _build_createTranscription_request( $self, %options ) {
     my $path = '/audio/transcriptions';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateTranscriptionRequest->new( \%options );
+    my $request = AI::OpenAI::CreateTranscriptionRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'multipart/form-data',
         }
-        => form => $request->as_hash,
+        => form => $request,
     );
 
     return $tx
@@ -1047,14 +1047,14 @@ sub _build_createTranslation_request( $self, %options ) {
     my $path = '/audio/translations';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateTranslationRequest->new( \%options );
+    my $request = AI::OpenAI::CreateTranslationRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'multipart/form-data',
         }
-        => form => $request->as_hash,
+        => form => $request,
     );
 
     return $tx
@@ -1251,14 +1251,14 @@ sub _build_createBatch_request( $self, %options ) {
     my $path = '/batches';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
+    my $request = \%options;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -1643,14 +1643,14 @@ sub _build_createChatCompletion_request( $self, %options ) {
     my $path = '/chat/completions';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateChatCompletionRequest->new( \%options );
+    my $request = AI::OpenAI::CreateChatCompletionRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -1830,14 +1830,14 @@ sub _build_createCompletion_request( $self, %options ) {
     my $path = '/completions';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateCompletionRequest->new( \%options );
+    my $request = AI::OpenAI::CreateCompletionRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -1937,14 +1937,14 @@ sub _build_createEmbedding_request( $self, %options ) {
     my $path = '/embeddings';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateEmbeddingRequest->new( \%options );
+    my $request = AI::OpenAI::CreateEmbeddingRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -2134,14 +2134,14 @@ sub _build_createFile_request( $self, %options ) {
     my $path = '/files';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateFileRequest->new( \%options );
+    my $request = AI::OpenAI::CreateFileRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'multipart/form-data',
         }
-        => form => $request->as_hash,
+        => form => $request,
     );
 
     return $tx
@@ -2651,14 +2651,14 @@ sub _build_createFineTuningJob_request( $self, %options ) {
     my $path = '/fine_tuning/jobs';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateFineTuningJobRequest->new( \%options );
+    my $request = AI::OpenAI::CreateFineTuningJobRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -3174,14 +3174,14 @@ sub _build_createImageEdit_request( $self, %options ) {
     my $path = '/images/edits';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateImageEditRequest->new( \%options );
+    my $request = AI::OpenAI::CreateImageEditRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'multipart/form-data',
         }
-        => form => $request->as_hash,
+        => form => $request,
     );
 
     return $tx
@@ -3293,14 +3293,14 @@ sub _build_createImage_request( $self, %options ) {
     my $path = '/images/generations';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateImageRequest->new( \%options );
+    my $request = AI::OpenAI::CreateImageRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -3404,14 +3404,14 @@ sub _build_createImageVariation_request( $self, %options ) {
     my $path = '/images/variations';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateImageVariationRequest->new( \%options );
+    my $request = AI::OpenAI::CreateImageVariationRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'multipart/form-data',
         }
-        => form => $request->as_hash,
+        => form => $request,
     );
 
     return $tx
@@ -3767,14 +3767,14 @@ sub _build_createModeration_request( $self, %options ) {
     my $path = '/moderations';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateModerationRequest->new( \%options );
+    my $request = AI::OpenAI::CreateModerationRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -3866,14 +3866,14 @@ sub _build_createThread_request( $self, %options ) {
     my $path = '/threads';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateThreadRequest->new( \%options );
+    my $request = AI::OpenAI::CreateThreadRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -4021,14 +4021,14 @@ sub _build_createThreadAndRun_request( $self, %options ) {
     my $path = '/threads/runs';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateThreadAndRunRequest->new( \%options );
+    my $request = AI::OpenAI::CreateThreadAndRunRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -4320,14 +4320,14 @@ sub _build_modifyThread_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::ModifyThreadRequest->new( \%options );
+    my $request = AI::OpenAI::ModifyThreadRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -4561,14 +4561,14 @@ sub _build_createMessage_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateMessageRequest->new( \%options );
+    my $request = AI::OpenAI::CreateMessageRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -4877,14 +4877,14 @@ sub _build_modifyMessage_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::ModifyMessageRequest->new( \%options );
+    my $request = AI::OpenAI::ModifyMessageRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -5167,14 +5167,14 @@ sub _build_createRun_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateRunRequest->new( \%options );
+    my $request = AI::OpenAI::CreateRunRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -5382,14 +5382,14 @@ sub _build_modifyRun_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::ModifyRunRequest->new( \%options );
+    my $request = AI::OpenAI::ModifyRunRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -5833,14 +5833,14 @@ sub _build_submitToolOuputsToRun_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::SubmitToolOutputsRunRequest->new( \%options );
+    my $request = AI::OpenAI::SubmitToolOutputsRunRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -6043,14 +6043,14 @@ sub _build_createVectorStore_request( $self, %options ) {
     my $path = '/vector_stores';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateVectorStoreRequest->new( \%options );
+    my $request = AI::OpenAI::CreateVectorStoreRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -6346,14 +6346,14 @@ sub _build_modifyVectorStore_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::UpdateVectorStoreRequest->new( \%options );
+    my $request = AI::OpenAI::UpdateVectorStoreRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -6453,14 +6453,14 @@ sub _build_createVectorStoreFileBatch_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateVectorStoreFileBatchRequest->new( \%options );
+    my $request = AI::OpenAI::CreateVectorStoreFileBatchRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -7013,14 +7013,14 @@ sub _build_createVectorStoreFile_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::OpenAI::CreateVectorStoreFileRequest->new( \%options );
+    my $request = AI::OpenAI::CreateVectorStoreFileRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx

@@ -766,7 +766,7 @@ Visibility of the announcement banner. Can be public or private.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -776,14 +776,14 @@ sub _build_setBanner_request( $self, %options ) {
     my $path = '/rest/api/3/announcementBanner';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::AnnouncementBannerConfigurationUpdate->new( \%options );
+    my $request = JIRA::API::AnnouncementBannerConfigurationUpdate->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -921,14 +921,14 @@ sub _build_updateMultipleCustomFieldValues_request( $self, %options ) {
         maybe 'generateChangelog' => delete $options{'generateChangelog'},
     );
 
-    my $request = JIRA::API::MultipleCustomFieldValuesUpdateDetails->new( \%options );
+    my $request = JIRA::API::MultipleCustomFieldValuesUpdateDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -1181,14 +1181,14 @@ sub _build_updateCustomFieldConfiguration_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::CustomFieldConfigurations->new( \%options );
+    my $request = JIRA::API::CustomFieldConfigurations->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -1308,14 +1308,14 @@ sub _build_updateCustomFieldValue_request( $self, %options ) {
         maybe 'generateChangelog' => delete $options{'generateChangelog'},
     );
 
-    my $request = JIRA::API::CustomFieldValueUpdateDetails->new( \%options );
+    my $request = JIRA::API::CustomFieldValueUpdateDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -1628,14 +1628,14 @@ sub _build_setApplicationProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::SimpleApplicationPropertyBean->new( \%options );
+    my $request = JIRA::API::SimpleApplicationPropertyBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -2915,14 +2915,14 @@ sub _build_getCommentsByIds_request( $self, %options ) {
         maybe 'expand' => delete $options{'expand'},
     );
 
-    my $request = JIRA::API::IssueCommentListRequestBean->new( \%options );
+    my $request = JIRA::API::IssueCommentListRequestBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -3341,14 +3341,14 @@ sub _build_setCommentProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
+    my $request = \%options;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -3568,14 +3568,14 @@ sub _build_createComponent_request( $self, %options ) {
     my $path = '/rest/api/3/component';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ProjectComponent->new( \%options );
+    my $request = JIRA::API::ProjectComponent->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -3989,14 +3989,14 @@ sub _build_updateComponent_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ProjectComponent->new( \%options );
+    my $request = JIRA::API::ProjectComponent->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -4397,14 +4397,14 @@ sub _build_selectTimeTrackingImplementation_request( $self, %options ) {
     my $path = '/rest/api/3/configuration/timetracking';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::TimeTrackingProvider->new( \%options );
+    my $request = JIRA::API::TimeTrackingProvider->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -4696,14 +4696,14 @@ sub _build_setSharedTimeTrackingConfiguration_request( $self, %options ) {
     my $path = '/rest/api/3/configuration/timetracking/options';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::TimeTrackingConfiguration->new( \%options );
+    my $request = JIRA::API::TimeTrackingConfiguration->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -5060,14 +5060,14 @@ sub _build_createDashboard_request( $self, %options ) {
     my $path = '/rest/api/3/dashboard';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::DashboardDetails->new( \%options );
+    my $request = JIRA::API::DashboardDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -5708,14 +5708,14 @@ sub _build_addGadget_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::DashboardGadgetSettings->new( \%options );
+    my $request = JIRA::API::DashboardGadgetSettings->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -5981,14 +5981,14 @@ sub _build_updateGadget_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::DashboardGadgetUpdateRequest->new( \%options );
+    my $request = JIRA::API::DashboardGadgetUpdateRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -6451,14 +6451,14 @@ sub _build_setDashboardItemProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
+    my $request = \%options;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -6845,14 +6845,14 @@ sub _build_updateDashboard_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::DashboardDetails->new( \%options );
+    my $request = JIRA::API::DashboardDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -7005,14 +7005,14 @@ sub _build_copyDashboard_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::DashboardDetails->new( \%options );
+    my $request = JIRA::API::DashboardDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -7267,14 +7267,14 @@ sub _build_analyseExpression_request( $self, %options ) {
         maybe 'check' => delete $options{'check'},
     );
 
-    my $request = JIRA::API::JiraExpressionForAnalysis->new( \%options );
+    my $request = JIRA::API::JiraExpressionForAnalysis->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -7408,14 +7408,14 @@ sub _build_evaluateJiraExpression_request( $self, %options ) {
         maybe 'expand' => delete $options{'expand'},
     );
 
-    my $request = JIRA::API::JiraExpressionEvalRequestBean->new( \%options );
+    my $request = JIRA::API::JiraExpressionEvalRequestBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -7860,14 +7860,14 @@ sub _build_createCustomField_request( $self, %options ) {
     my $path = '/rest/api/3/field';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::CustomFieldDefinitionJsonBean->new( \%options );
+    my $request = JIRA::API::CustomFieldDefinitionJsonBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -8463,14 +8463,14 @@ sub _build_updateCustomField_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::UpdateCustomFieldDetails->new( \%options );
+    my $request = JIRA::API::UpdateCustomFieldDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -8784,14 +8784,14 @@ sub _build_createCustomFieldContext_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::CreateCustomFieldContext->new( \%options );
+    my $request = JIRA::API::CreateCustomFieldContext->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -9055,14 +9055,14 @@ sub _build_setDefaultValues_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::CustomFieldContextDefaultValueUpdate->new( \%options );
+    my $request = JIRA::API::CustomFieldContextDefaultValueUpdate->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -9349,14 +9349,14 @@ sub _build_getCustomFieldContextsForProjectsAndIssueTypes_request( $self, %optio
         maybe 'maxResults' => delete $options{'maxResults'},
     );
 
-    my $request = JIRA::API::ProjectIssueTypeMappings->new( \%options );
+    my $request = JIRA::API::ProjectIssueTypeMappings->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -9801,14 +9801,14 @@ sub _build_updateCustomFieldContext_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::CustomFieldContextUpdateDetails->new( \%options );
+    my $request = JIRA::API::CustomFieldContextUpdateDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -9960,14 +9960,14 @@ sub _build_addIssueTypesToContext_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeIds->new( \%options );
+    my $request = JIRA::API::IssueTypeIds->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -10133,14 +10133,14 @@ sub _build_removeIssueTypesFromContext_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeIds->new( \%options );
+    my $request = JIRA::API::IssueTypeIds->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -10461,14 +10461,14 @@ sub _build_createCustomFieldOption_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::BulkCustomFieldOptionCreateRequest->new( \%options );
+    my $request = JIRA::API::BulkCustomFieldOptionCreateRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -10620,14 +10620,14 @@ sub _build_updateCustomFieldOption_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::BulkCustomFieldOptionUpdateRequest->new( \%options );
+    my $request = JIRA::API::BulkCustomFieldOptionUpdateRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -10787,14 +10787,14 @@ sub _build_reorderCustomFieldOptions_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::OrderOfCustomFieldOptions->new( \%options );
+    my $request = JIRA::API::OrderOfCustomFieldOptions->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -11087,14 +11087,14 @@ sub _build_assignProjectsToCustomFieldContext_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ProjectIds->new( \%options );
+    my $request = JIRA::API::ProjectIds->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -11246,14 +11246,14 @@ sub _build_removeCustomFieldContextFromProjects_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ProjectIds->new( \%options );
+    my $request = JIRA::API::ProjectIds->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -11778,14 +11778,14 @@ sub _build_createIssueFieldOption_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueFieldOptionCreateBean->new( \%options );
+    my $request = JIRA::API::IssueFieldOptionCreateBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -12439,14 +12439,14 @@ sub _build_updateIssueFieldOption_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueFieldOption->new( \%options );
+    my $request = JIRA::API::IssueFieldOption->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -13292,14 +13292,14 @@ sub _build_createFieldConfiguration_request( $self, %options ) {
     my $path = '/rest/api/3/fieldconfiguration';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::FieldConfigurationDetails->new( \%options );
+    my $request = JIRA::API::FieldConfigurationDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -13518,14 +13518,14 @@ sub _build_updateFieldConfiguration_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::FieldConfigurationDetails->new( \%options );
+    my $request = JIRA::API::FieldConfigurationDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -13753,14 +13753,14 @@ sub _build_updateFieldConfigurationItems_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::FieldConfigurationItemsDetails->new( \%options );
+    my $request = JIRA::API::FieldConfigurationItemsDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -13977,14 +13977,14 @@ sub _build_createFieldConfigurationScheme_request( $self, %options ) {
     my $path = '/rest/api/3/fieldconfigurationscheme';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::UpdateFieldConfigurationSchemeDetails->new( \%options );
+    my $request = JIRA::API::UpdateFieldConfigurationSchemeDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -14328,7 +14328,7 @@ The ID of the project.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -14337,14 +14337,14 @@ sub _build_assignFieldConfigurationSchemeToProject_request( $self, %options ) {
     my $path = '/rest/api/3/fieldconfigurationscheme/project';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::FieldConfigurationSchemeProjectAssociation->new( \%options );
+    my $request = JIRA::API::FieldConfigurationSchemeProjectAssociation->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -14599,14 +14599,14 @@ sub _build_updateFieldConfigurationScheme_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::UpdateFieldConfigurationSchemeDetails->new( \%options );
+    my $request = JIRA::API::UpdateFieldConfigurationSchemeDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -14751,14 +14751,14 @@ sub _build_setFieldConfigurationSchemeMapping_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::AssociateFieldConfigurationsWithIssueTypesRequest->new( \%options );
+    my $request = JIRA::API::AssociateFieldConfigurationsWithIssueTypesRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -14871,14 +14871,14 @@ sub _build_removeIssueTypesFromGlobalFieldConfigurationScheme_request( $self, %o
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeIdsToRemove->new( \%options );
+    my $request = JIRA::API::IssueTypeIdsToRemove->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -15210,14 +15210,14 @@ sub _build_createFilter_request( $self, %options ) {
         maybe 'overrideSharePermissions' => delete $options{'overrideSharePermissions'},
     );
 
-    my $request = JIRA::API::Filter->new( \%options );
+    my $request = JIRA::API::Filter->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -15419,14 +15419,14 @@ sub _build_setDefaultShareScope_request( $self, %options ) {
     my $path = '/rest/api/3/filter/defaultShareScope';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::DefaultShareScope->new( \%options );
+    my $request = JIRA::API::DefaultShareScope->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -16313,14 +16313,14 @@ sub _build_updateFilter_request( $self, %options ) {
         maybe 'overrideSharePermissions' => delete $options{'overrideSharePermissions'},
     );
 
-    my $request = JIRA::API::Filter->new( \%options );
+    my $request = JIRA::API::Filter->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -16960,14 +16960,14 @@ sub _build_changeFilterOwner_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ChangeFilterOwner->new( \%options );
+    my $request = JIRA::API::ChangeFilterOwner->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -17235,14 +17235,14 @@ sub _build_addSharePermission_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::SharePermissionInputBean->new( \%options );
+    my $request = JIRA::API::SharePermissionInputBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -17765,14 +17765,14 @@ sub _build_createGroup_request( $self, %options ) {
     my $path = '/rest/api/3/group';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::AddGroupBean->new( \%options );
+    my $request = JIRA::API::AddGroupBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -18278,14 +18278,14 @@ sub _build_addUserToGroup_request( $self, %options ) {
         maybe 'groupId' => delete $options{'groupId'},
     );
 
-    my $request = JIRA::API::UpdateUserToGroupBean->new( \%options );
+    my $request = JIRA::API::UpdateUserToGroupBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -18770,14 +18770,14 @@ sub _build_createIssue_request( $self, %options ) {
         maybe 'updateHistory' => delete $options{'updateHistory'},
     );
 
-    my $request = JIRA::API::IssueUpdateDetails->new( \%options );
+    my $request = JIRA::API::IssueUpdateDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -18908,14 +18908,14 @@ sub _build_createIssues_request( $self, %options ) {
     my $path = '/rest/api/3/issue/bulk';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssuesUpdateBean->new( \%options );
+    my $request = JIRA::API::IssuesUpdateBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -19261,14 +19261,14 @@ sub _build_bulkSetIssuesPropertiesList_request( $self, %options ) {
     my $path = '/rest/api/3/issue/properties';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueEntityProperties->new( \%options );
+    my $request = JIRA::API::IssueEntityProperties->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -19375,14 +19375,14 @@ sub _build_bulkSetIssuePropertiesByIssue_request( $self, %options ) {
     my $path = '/rest/api/3/issue/properties/multi';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::MultiIssueEntityProperties->new( \%options );
+    my $request = JIRA::API::MultiIssueEntityProperties->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -19517,14 +19517,14 @@ sub _build_bulkDeleteIssueProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueFilterForBulkPropertyDelete->new( \%options );
+    my $request = JIRA::API::IssueFilterForBulkPropertyDelete->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -19649,14 +19649,14 @@ sub _build_bulkSetIssueProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::BulkIssuePropertyUpdateRequest->new( \%options );
+    my $request = JIRA::API::BulkIssuePropertyUpdateRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -19763,14 +19763,14 @@ sub _build_getIsWatchingIssueBulk_request( $self, %options ) {
     my $path = '/rest/api/3/issue/watching';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueList->new( \%options );
+    my $request = JIRA::API::IssueList->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -20256,14 +20256,14 @@ sub _build_editIssue_request( $self, %options ) {
         maybe 'overrideEditableFlag' => delete $options{'overrideEditableFlag'},
     );
 
-    my $request = JIRA::API::IssueUpdateDetails->new( \%options );
+    my $request = JIRA::API::IssueUpdateDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -20446,14 +20446,14 @@ sub _build_assignIssue_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::User->new( \%options );
+    my $request = JIRA::API::User->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -20559,7 +20559,7 @@ sub _build_addAttachment_request( $self, %options ) {
             'Accept' => 'application/json',
             "Content-Type" => 'multipart/form-data',
         }
-        => form => $request->as_hash,
+        => form => $request,
     );
 
     return $tx
@@ -20779,14 +20779,14 @@ sub _build_getChangeLogsByIds_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueChangelogIds->new( \%options );
+    my $request = JIRA::API::IssueChangelogIds->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -21070,14 +21070,14 @@ sub _build_addComment_request( $self, %options ) {
         maybe 'expand' => delete $options{'expand'},
     );
 
-    my $request = JIRA::API::Comment->new( \%options );
+    my $request = JIRA::API::Comment->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -21470,14 +21470,14 @@ sub _build_updateComment_request( $self, %options ) {
         maybe 'expand' => delete $options{'expand'},
     );
 
-    my $request = JIRA::API::Comment->new( \%options );
+    my $request = JIRA::API::Comment->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -21718,14 +21718,14 @@ sub _build_notify_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::Notification->new( \%options );
+    my $request = JIRA::API::Notification->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -22129,14 +22129,14 @@ sub _build_setIssueProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
+    my $request = \%options;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -22495,14 +22495,14 @@ sub _build_createOrUpdateRemoteIssueLink_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::RemoteIssueLinkRequest->new( \%options );
+    my $request = JIRA::API::RemoteIssueLinkRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -22875,14 +22875,14 @@ sub _build_updateRemoteIssueLink_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::RemoteIssueLinkRequest->new( \%options );
+    my $request = JIRA::API::RemoteIssueLinkRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -23149,14 +23149,14 @@ sub _build_doTransition_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueUpdateDetails->new( \%options );
+    my $request = JIRA::API::IssueUpdateDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -23758,7 +23758,7 @@ sub _build_addWatcher_request( $self, %options ) {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -24103,14 +24103,14 @@ sub _build_addWorklog_request( $self, %options ) {
         maybe 'overrideEditableFlag' => delete $options{'overrideEditableFlag'},
     );
 
-    my $request = JIRA::API::Worklog->new( \%options );
+    my $request = JIRA::API::Worklog->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -24587,14 +24587,14 @@ sub _build_updateWorklog_request( $self, %options ) {
         maybe 'overrideEditableFlag' => delete $options{'overrideEditableFlag'},
     );
 
-    my $request = JIRA::API::Worklog->new( \%options );
+    my $request = JIRA::API::Worklog->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -25041,14 +25041,14 @@ sub _build_setWorklogProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
+    my $request = \%options;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -25181,7 +25181,7 @@ In the L< issueLinkType|#api-rest-api-3-issueLinkType-post> resource it defines 
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -25190,14 +25190,14 @@ sub _build_linkIssues_request( $self, %options ) {
     my $path = '/rest/api/3/issueLink';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::LinkIssueRequestJsonBean->new( \%options );
+    my $request = JIRA::API::LinkIssueRequestJsonBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -25654,14 +25654,14 @@ sub _build_createIssueLinkType_request( $self, %options ) {
     my $path = '/rest/api/3/issueLinkType';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueLinkType->new( \%options );
+    my $request = JIRA::API::IssueLinkType->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -26035,14 +26035,14 @@ sub _build_updateIssueLinkType_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueLinkType->new( \%options );
+    my $request = JIRA::API::IssueLinkType->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -26607,14 +26607,14 @@ sub _build_createIssueType_request( $self, %options ) {
     my $path = '/rest/api/3/issuetype';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeCreateBean->new( \%options );
+    my $request = JIRA::API::IssueTypeCreateBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -27070,14 +27070,14 @@ sub _build_updateIssueType_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeUpdateBean->new( \%options );
+    my $request = JIRA::API::IssueTypeUpdateBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -27303,7 +27303,7 @@ sub _build_createIssueTypeAvatar_request( $self, %options ) {
               'size' => delete $options{'size'},
     );
 
-    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
+    my $request = \%options;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -27730,14 +27730,14 @@ sub _build_setIssueTypeProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
+    my $request = \%options;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -28019,14 +28019,14 @@ sub _build_createIssueTypeScheme_request( $self, %options ) {
     my $path = '/rest/api/3/issuetypescheme';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeSchemeDetails->new( \%options );
+    my $request = JIRA::API::IssueTypeSchemeDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -28381,7 +28381,7 @@ The ID of the project.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -28390,14 +28390,14 @@ sub _build_assignIssueTypeSchemeToProject_request( $self, %options ) {
     my $path = '/rest/api/3/issuetypescheme/project';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeSchemeProjectAssociation->new( \%options );
+    my $request = JIRA::API::IssueTypeSchemeProjectAssociation->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -28689,14 +28689,14 @@ sub _build_updateIssueTypeScheme_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeSchemeUpdateDetails->new( \%options );
+    my $request = JIRA::API::IssueTypeSchemeUpdateDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -28841,14 +28841,14 @@ sub _build_addIssueTypesToIssueTypeScheme_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeIds->new( \%options );
+    my $request = JIRA::API::IssueTypeIds->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -29001,14 +29001,14 @@ sub _build_reorderIssueTypesInIssueTypeScheme_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::OrderOfIssueTypes->new( \%options );
+    my $request = JIRA::API::OrderOfIssueTypes->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -29437,14 +29437,14 @@ sub _build_createIssueTypeScreenScheme_request( $self, %options ) {
     my $path = '/rest/api/3/issuetypescreenscheme';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeScreenSchemeDetails->new( \%options );
+    my $request = JIRA::API::IssueTypeScreenSchemeDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -29813,7 +29813,7 @@ The ID of the project.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -29822,14 +29822,14 @@ sub _build_assignIssueTypeScreenSchemeToProject_request( $self, %options ) {
     my $path = '/rest/api/3/issuetypescreenscheme/project';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeScreenSchemeProjectAssociation->new( \%options );
+    my $request = JIRA::API::IssueTypeScreenSchemeProjectAssociation->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -30106,14 +30106,14 @@ sub _build_updateIssueTypeScreenScheme_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeScreenSchemeUpdateDetails->new( \%options );
+    my $request = JIRA::API::IssueTypeScreenSchemeUpdateDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -30258,14 +30258,14 @@ sub _build_appendMappingsForIssueTypeScreenScheme_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeScreenSchemeMappingDetails->new( \%options );
+    my $request = JIRA::API::IssueTypeScreenSchemeMappingDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -30413,14 +30413,14 @@ sub _build_updateDefaultScreenScheme_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::UpdateDefaultScreenScheme->new( \%options );
+    my $request = JIRA::API::UpdateDefaultScreenScheme->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -30565,14 +30565,14 @@ sub _build_removeMappingsFromIssueTypeScreenScheme_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeIds->new( \%options );
+    my $request = JIRA::API::IssueTypeIds->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -30917,14 +30917,14 @@ sub _build_getAutoCompletePost_request( $self, %options ) {
     my $path = '/rest/api/3/jql/autocompletedata';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::SearchAutoCompleteFilter->new( \%options );
+    my $request = JIRA::API::SearchAutoCompleteFilter->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -31224,7 +31224,7 @@ Update precomputations
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -31233,14 +31233,14 @@ sub _build_updatePrecomputations_request( $self, %options ) {
     my $path = '/rest/api/3/jql/function/computation';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::JqlFunctionPrecomputationUpdateRequestBean->new( \%options );
+    my $request = JIRA::API::JqlFunctionPrecomputationUpdateRequestBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -31334,14 +31334,14 @@ sub _build_matchIssues_request( $self, %options ) {
     my $path = '/rest/api/3/jql/match';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssuesAndJQLQueries->new( \%options );
+    my $request = JIRA::API::IssuesAndJQLQueries->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -31462,14 +31462,14 @@ sub _build_parseJqlQueries_request( $self, %options ) {
         maybe 'validation' => delete $options{'validation'},
     );
 
-    my $request = JIRA::API::JqlQueriesToParse->new( \%options );
+    my $request = JIRA::API::JqlQueriesToParse->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -31576,14 +31576,14 @@ sub _build_migrateQueries_request( $self, %options ) {
     my $path = '/rest/api/3/jql/pdcleaner';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::JQLPersonalDataMigrationRequest->new( \%options );
+    my $request = JIRA::API::JQLPersonalDataMigrationRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -31680,14 +31680,14 @@ sub _build_sanitiseJqlQueries_request( $self, %options ) {
     my $path = '/rest/api/3/jql/sanitize';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::JqlQueriesToSanitize->new( \%options );
+    my $request = JIRA::API::JqlQueriesToSanitize->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -32730,7 +32730,7 @@ The locale code. The Java the locale format is used: a two character language co
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -32739,14 +32739,14 @@ sub _build_setLocale_request( $self, %options ) {
     my $path = '/rest/api/3/mypreferences/locale';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::Locale->new( \%options );
+    my $request = JIRA::API::Locale->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -33128,14 +33128,14 @@ sub _build_createNotificationScheme_request( $self, %options ) {
     my $path = '/rest/api/3/notificationscheme';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::CreateNotificationSchemeDetails->new( \%options );
+    my $request = JIRA::API::CreateNotificationSchemeDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -33563,14 +33563,14 @@ sub _build_updateNotificationScheme_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::UpdateNotificationSchemeDetails->new( \%options );
+    my $request = JIRA::API::UpdateNotificationSchemeDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -33727,14 +33727,14 @@ sub _build_addNotifications_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::AddNotificationsDetails->new( \%options );
+    my $request = JIRA::API::AddNotificationsDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -34288,14 +34288,14 @@ sub _build_getBulkPermissions_request( $self, %options ) {
     my $path = '/rest/api/3/permissions/check';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::BulkPermissionsRequestBean->new( \%options );
+    my $request = JIRA::API::BulkPermissionsRequestBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -34413,14 +34413,14 @@ sub _build_getPermittedProjects_request( $self, %options ) {
     my $path = '/rest/api/3/permissions/project';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::PermissionsKeysBean->new( \%options );
+    my $request = JIRA::API::PermissionsKeysBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -34722,14 +34722,14 @@ sub _build_createPermissionScheme_request( $self, %options ) {
         maybe 'expand' => delete $options{'expand'},
     );
 
-    my $request = JIRA::API::PermissionScheme->new( \%options );
+    my $request = JIRA::API::PermissionScheme->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -35136,14 +35136,14 @@ sub _build_updatePermissionScheme_request( $self, %options ) {
         maybe 'expand' => delete $options{'expand'},
     );
 
-    my $request = JIRA::API::PermissionScheme->new( \%options );
+    my $request = JIRA::API::PermissionScheme->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -35448,14 +35448,14 @@ sub _build_createPermissionGrant_request( $self, %options ) {
         maybe 'expand' => delete $options{'expand'},
     );
 
-    my $request = JIRA::API::PermissionGrant->new( \%options );
+    my $request = JIRA::API::PermissionGrant->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -35901,14 +35901,14 @@ sub _build_createPriority_request( $self, %options ) {
     my $path = '/rest/api/3/priority';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::CreatePriorityDetails->new( \%options );
+    my $request = JIRA::API::CreatePriorityDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -36031,7 +36031,7 @@ The ID of the new default issue priority. Must be an existing ID or null. Settin
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -36041,14 +36041,14 @@ sub _build_setDefaultPriority_request( $self, %options ) {
     my $path = '/rest/api/3/priority/default';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::SetDefaultPriorityRequest->new( \%options );
+    my $request = JIRA::API::SetDefaultPriorityRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -36193,7 +36193,7 @@ The position for issue priorities to be moved to. Required if C<after> isn't pro
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -36203,14 +36203,14 @@ sub _build_movePriorities_request( $self, %options ) {
     my $path = '/rest/api/3/priority/move';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ReorderIssuePriorities->new( \%options );
+    my $request = JIRA::API::ReorderIssuePriorities->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -36776,14 +36776,14 @@ sub _build_updatePriority_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::UpdatePriorityDetails->new( \%options );
+    my $request = JIRA::API::UpdatePriorityDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -37127,14 +37127,14 @@ sub _build_createProject_request( $self, %options ) {
     my $path = '/rest/api/3/project';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::CreateProjectDetails->new( \%options );
+    my $request = JIRA::API::CreateProjectDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -38391,14 +38391,14 @@ sub _build_updateProject_request( $self, %options ) {
         maybe 'expand' => delete $options{'expand'},
     );
 
-    my $request = JIRA::API::UpdateProjectDetails->new( \%options );
+    my $request = JIRA::API::UpdateProjectDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -38640,14 +38640,14 @@ sub _build_updateProjectAvatar_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::Avatar->new( \%options );
+    my $request = JIRA::API::Avatar->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -38861,7 +38861,7 @@ sub _build_createProjectAvatar_request( $self, %options ) {
         maybe 'size' => delete $options{'size'},
     );
 
-    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
+    my $request = \%options;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -39545,14 +39545,14 @@ sub _build_toggleFeatureForProject_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ProjectFeatureState->new( \%options );
+    my $request = JIRA::API::ProjectFeatureState->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -39980,14 +39980,14 @@ sub _build_setProjectProperty_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
+    my $request = \%options;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -40561,14 +40561,14 @@ sub _build_addActorUsers_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ActorsMap->new( \%options );
+    my $request = JIRA::API::ActorsMap->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -40708,14 +40708,14 @@ sub _build_setActors_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ProjectRoleActorsUpdateBean->new( \%options );
+    my $request = JIRA::API::ProjectRoleActorsUpdateBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -41533,14 +41533,14 @@ sub _build_updateProjectEmail_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ProjectEmailAddress->new( \%options );
+    my $request = JIRA::API::ProjectEmailAddress->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -42193,14 +42193,14 @@ sub _build_assignPermissionScheme_request( $self, %options ) {
         maybe 'expand' => delete $options{'expand'},
     );
 
-    my $request = JIRA::API::IdBean->new( \%options );
+    my $request = JIRA::API::IdBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -42496,14 +42496,14 @@ sub _build_createProjectCategory_request( $self, %options ) {
     my $path = '/rest/api/3/projectCategory';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ProjectCategory->new( \%options );
+    my $request = JIRA::API::ProjectCategory->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -42815,14 +42815,14 @@ sub _build_updateProjectCategory_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ProjectCategory->new( \%options );
+    my $request = JIRA::API::ProjectCategory->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -43311,14 +43311,14 @@ sub _build_createResolution_request( $self, %options ) {
     my $path = '/rest/api/3/resolution';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::CreateResolutionDetails->new( \%options );
+    my $request = JIRA::API::CreateResolutionDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -43441,7 +43441,7 @@ The ID of the new default issue resolution. Must be an existing ID or null. Sett
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -43451,14 +43451,14 @@ sub _build_setDefaultResolution_request( $self, %options ) {
     my $path = '/rest/api/3/resolution/default';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::SetDefaultResolutionRequest->new( \%options );
+    my $request = JIRA::API::SetDefaultResolutionRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -43603,7 +43603,7 @@ The position for issue resolutions to be moved to. Required if C<after> isn't pr
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -43613,14 +43613,14 @@ sub _build_moveResolutions_request( $self, %options ) {
     my $path = '/rest/api/3/resolution/move';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ReorderIssueResolutionsRequest->new( \%options );
+    my $request = JIRA::API::ReorderIssueResolutionsRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -44178,14 +44178,14 @@ sub _build_updateResolution_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::UpdateResolutionDetails->new( \%options );
+    my $request = JIRA::API::UpdateResolutionDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -44426,14 +44426,14 @@ sub _build_createProjectRole_request( $self, %options ) {
     my $path = '/rest/api/3/role';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::CreateUpdateRoleRequestBean->new( \%options );
+    my $request = JIRA::API::CreateUpdateRoleRequestBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -44756,14 +44756,14 @@ sub _build_partialUpdateProjectRole_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::CreateUpdateRoleRequestBean->new( \%options );
+    my $request = JIRA::API::CreateUpdateRoleRequestBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -44879,14 +44879,14 @@ sub _build_fullyUpdateProjectRole_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::CreateUpdateRoleRequestBean->new( \%options );
+    my $request = JIRA::API::CreateUpdateRoleRequestBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -45236,14 +45236,14 @@ sub _build_addProjectRoleActorsToRole_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ActorInputBean->new( \%options );
+    my $request = JIRA::API::ActorInputBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -45486,14 +45486,14 @@ sub _build_createScreen_request( $self, %options ) {
     my $path = '/rest/api/3/screens';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ScreenDetails->new( \%options );
+    my $request = JIRA::API::ScreenDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -45858,14 +45858,14 @@ sub _build_updateScreen_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::UpdateScreenDetails->new( \%options );
+    my $request = JIRA::API::UpdateScreenDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -46233,14 +46233,14 @@ sub _build_addScreenTab_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ScreenableTab->new( \%options );
+    my $request = JIRA::API::ScreenableTab->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -46460,14 +46460,14 @@ sub _build_renameScreenTab_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ScreenableTab->new( \%options );
+    my $request = JIRA::API::ScreenableTab->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -46705,14 +46705,14 @@ sub _build_addScreenTabField_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::AddFieldBean->new( \%options );
+    my $request = JIRA::API::AddFieldBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -46949,14 +46949,14 @@ sub _build_moveScreenTabField_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::MoveFieldBean->new( \%options );
+    my $request = JIRA::API::MoveFieldBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -47323,14 +47323,14 @@ sub _build_createScreenScheme_request( $self, %options ) {
     my $path = '/rest/api/3/screenscheme';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ScreenSchemeDetails->new( \%options );
+    my $request = JIRA::API::ScreenSchemeDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -47610,14 +47610,14 @@ sub _build_updateScreenScheme_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::UpdateScreenSchemeDetails->new( \%options );
+    my $request = JIRA::API::UpdateScreenSchemeDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -48174,14 +48174,14 @@ sub _build_searchForIssuesUsingJqlPost_request( $self, %options ) {
     my $path = '/rest/api/3/search';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::SearchRequestBean->new( \%options );
+    my $request = JIRA::API::SearchRequestBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -49262,14 +49262,14 @@ sub _build_createStatuses_request( $self, %options ) {
     my $path = '/rest/api/3/statuses';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::StatusCreateRequest->new( \%options );
+    my $request = JIRA::API::StatusCreateRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -49368,7 +49368,7 @@ The list of statuses that will be updated.
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -49377,14 +49377,14 @@ sub _build_updateStatuses_request( $self, %options ) {
     my $path = '/rest/api/3/statuses';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::StatusUpdateRequest->new( \%options );
+    my $request = JIRA::API::StatusUpdateRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -50018,14 +50018,14 @@ sub _build_createUiModification_request( $self, %options ) {
     my $path = '/rest/api/3/uiModifications';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::CreateUiModificationDetails->new( \%options );
+    my $request = JIRA::API::CreateUiModificationDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -50252,14 +50252,14 @@ sub _build_updateUiModification_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::UpdateUiModificationDetails->new( \%options );
+    my $request = JIRA::API::UpdateUiModificationDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -50495,7 +50495,7 @@ sub _build_storeAvatar_request( $self, %options ) {
               'size' => delete $options{'size'},
     );
 
-    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
+    my $request = \%options;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -51879,14 +51879,14 @@ sub _build_createUser_request( $self, %options ) {
     my $path = '/rest/api/3/user';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::NewUserDetails->new( \%options );
+    my $request = JIRA::API::NewUserDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -53964,14 +53964,14 @@ sub _build_setUserProperty_request( $self, %options ) {
         maybe 'username' => delete $options{'username'},
     );
 
-    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
+    my $request = \%options;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -54878,14 +54878,14 @@ sub _build_createVersion_request( $self, %options ) {
     my $path = '/rest/api/3/version';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::Version->new( \%options );
+    my $request = JIRA::API::Version->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -55299,14 +55299,14 @@ sub _build_updateVersion_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::Version->new( \%options );
+    my $request = JIRA::API::Version->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -55529,14 +55529,14 @@ sub _build_moveVersion_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::VersionMoveBean->new( \%options );
+    my $request = JIRA::API::VersionMoveBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -55753,14 +55753,14 @@ sub _build_deleteAndReplaceVersion_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::DeleteAndReplaceVersionBean->new( \%options );
+    my $request = JIRA::API::DeleteAndReplaceVersionBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -55959,14 +55959,14 @@ sub _build_deleteWebhookById_request( $self, %options ) {
     my $path = '/rest/api/3/webhook';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ContainerForWebhookIDs->new( \%options );
+    my $request = JIRA::API::ContainerForWebhookIDs->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -56204,14 +56204,14 @@ sub _build_registerDynamicWebhooks_request( $self, %options ) {
     my $path = '/rest/api/3/webhook';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::WebhookRegistrationDetails->new( \%options );
+    my $request = JIRA::API::WebhookRegistrationDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -56456,14 +56456,14 @@ sub _build_refreshWebhooks_request( $self, %options ) {
     my $path = '/rest/api/3/webhook/refresh';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ContainerForWebhookIDs->new( \%options );
+    my $request = JIRA::API::ContainerForWebhookIDs->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -56730,14 +56730,14 @@ sub _build_createWorkflow_request( $self, %options ) {
     my $path = '/rest/api/3/workflow';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::CreateWorkflowDetails->new( \%options );
+    my $request = JIRA::API::CreateWorkflowDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -57035,14 +57035,14 @@ sub _build_updateWorkflowTransitionRuleConfigurations_request( $self, %options )
     my $path = '/rest/api/3/workflow/rule/config';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::WorkflowTransitionRulesUpdate->new( \%options );
+    my $request = JIRA::API::WorkflowTransitionRulesUpdate->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -57161,14 +57161,14 @@ sub _build_deleteWorkflowTransitionRuleConfigurations_request( $self, %options )
     my $path = '/rest/api/3/workflow/rule/config/delete';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::WorkflowsWithTransitionRulesDetails->new( \%options );
+    my $request = JIRA::API::WorkflowsWithTransitionRulesDetails->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -57788,14 +57788,14 @@ sub _build_createWorkflowTransitionProperty_request( $self, %options ) {
         maybe 'workflowMode' => delete $options{'workflowMode'},
     );
 
-    my $request = JIRA::API::WorkflowTransitionProperty->new( \%options );
+    my $request = JIRA::API::WorkflowTransitionProperty->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -57937,14 +57937,14 @@ sub _build_updateWorkflowTransitionProperty_request( $self, %options ) {
         maybe 'workflowMode' => delete $options{'workflowMode'},
     );
 
-    my $request = JIRA::API::WorkflowTransitionProperty->new( \%options );
+    my $request = JIRA::API::WorkflowTransitionProperty->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -58346,14 +58346,14 @@ sub _build_createWorkflowScheme_request( $self, %options ) {
     my $path = '/rest/api/3/workflowscheme';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::WorkflowScheme->new( \%options );
+    my $request = JIRA::API::WorkflowScheme->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -58573,7 +58573,7 @@ The ID of the workflow scheme. If the workflow scheme ID is C<null>, the operati
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -58582,14 +58582,14 @@ sub _build_assignSchemeToProject_request( $self, %options ) {
     my $path = '/rest/api/3/workflowscheme/project';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::WorkflowSchemeProjectAssociation->new( \%options );
+    my $request = JIRA::API::WorkflowSchemeProjectAssociation->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -59018,14 +59018,14 @@ sub _build_updateWorkflowScheme_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::WorkflowScheme->new( \%options );
+    my $request = JIRA::API::WorkflowScheme->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -59469,14 +59469,14 @@ sub _build_updateDefaultWorkflow_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::DefaultWorkflow->new( \%options );
+    my $request = JIRA::API::DefaultWorkflow->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -59848,14 +59848,14 @@ sub _build_updateWorkflowSchemeDraft_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::WorkflowScheme->new( \%options );
+    my $request = JIRA::API::WorkflowScheme->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -60177,14 +60177,14 @@ sub _build_updateDraftDefaultWorkflow_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::DefaultWorkflow->new( \%options );
+    my $request = JIRA::API::DefaultWorkflow->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -60531,14 +60531,14 @@ sub _build_setWorkflowSchemeDraftIssueType_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeWorkflowMapping->new( \%options );
+    my $request = JIRA::API::IssueTypeWorkflowMapping->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -60658,14 +60658,14 @@ sub _build_publishDraftWorkflowScheme_request( $self, %options ) {
         maybe 'validateOnly' => delete $options{'validateOnly'},
     );
 
-    my $request = JIRA::API::PublishDraftWorkflowScheme->new( \%options );
+    my $request = JIRA::API::PublishDraftWorkflowScheme->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -61035,14 +61035,14 @@ sub _build_updateDraftWorkflowMapping_request( $self, %options ) {
               'workflowName' => delete $options{'workflowName'},
     );
 
-    my $request = JIRA::API::IssueTypesWorkflowMapping->new( \%options );
+    my $request = JIRA::API::IssueTypesWorkflowMapping->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -61408,14 +61408,14 @@ sub _build_setWorkflowSchemeIssueType_request( $self, %options ) {
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::IssueTypeWorkflowMapping->new( \%options );
+    my $request = JIRA::API::IssueTypeWorkflowMapping->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -61773,14 +61773,14 @@ sub _build_updateWorkflowMapping_request( $self, %options ) {
               'workflowName' => delete $options{'workflowName'},
     );
 
-    my $request = JIRA::API::IssueTypesWorkflowMapping->new( \%options );
+    my $request = JIRA::API::IssueTypesWorkflowMapping->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -61985,14 +61985,14 @@ sub _build_getWorklogsForIds_request( $self, %options ) {
         maybe 'expand' => delete $options{'expand'},
     );
 
-    my $request = JIRA::API::WorklogIdsRequestBean->new( \%options );
+    my $request = JIRA::API::WorklogIdsRequestBean->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -62582,14 +62582,14 @@ sub _build_AddonPropertiesResource_putAddonProperty_put_request( $self, %options
     );
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $body = delete $options{ body } // ''; # ??? really? This is an "object"
+    my $request = \%options;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -62918,14 +62918,14 @@ sub _build_DynamicModulesResource_registerModules_post_request( $self, %options 
     my $path = '/rest/atlassian-connect/1/app/module/dynamic';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ConnectModules->new( \%options );
+    my $request = JIRA::API::ConnectModules->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -63039,7 +63039,7 @@ sub _build_AppIssueFieldValueUpdateResource_updateIssueFields_put_request( $self
     my $path = '/rest/atlassian-connect/1/migration/field';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::ConnectCustomFieldValues->new( \%options );
+    my $request = JIRA::API::ConnectCustomFieldValues->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -63047,7 +63047,7 @@ sub _build_AppIssueFieldValueUpdateResource_updateIssueFields_put_request( $self
             "Content-Type" => 'application/json',
                    'Atlassian-Transfer-Id' => delete $options{'Atlassian-Transfer-Id'}
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -63155,7 +63155,7 @@ sub _build_MigrationResource_updateEntityPropertiesValue_put_request( $self, %op
             "Content-Type" => 'application/json',
                    'Atlassian-Transfer-Id' => delete $options{'Atlassian-Transfer-Id'}
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -63255,7 +63255,7 @@ sub _build_MigrationResource_workflowRuleSearch_post_request( $self, %options ) 
     my $path = '/rest/atlassian-connect/1/migration/workflow/rule/search';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = JIRA::API::WorkflowRulesSearch->new( \%options );
+    my $request = JIRA::API::WorkflowRulesSearch->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
@@ -63263,7 +63263,7 @@ sub _build_MigrationResource_workflowRuleSearch_post_request( $self, %options ) 
             "Content-Type" => 'application/json',
                    'Atlassian-Transfer-Id' => delete $options{'Atlassian-Transfer-Id'}
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx

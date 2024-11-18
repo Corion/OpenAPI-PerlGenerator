@@ -348,14 +348,14 @@ sub _build_generateChatCompletion_request( $self, %options ) {
     my $path = '/chat';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::Ollama::GenerateChatCompletionRequest->new( \%options );
+    my $request = AI::Ollama::GenerateChatCompletionRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/x-ndjson',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -459,13 +459,13 @@ sub _build_copyModel_request( $self, %options ) {
     my $path = '/copy';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::Ollama::CopyModelRequest->new( \%options );
+    my $request = AI::Ollama::CopyModelRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -559,14 +559,14 @@ sub _build_createModel_request( $self, %options ) {
     my $path = '/create';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::Ollama::CreateModelRequest->new( \%options );
+    my $request = AI::Ollama::CreateModelRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/x-ndjson',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -668,13 +668,13 @@ sub _build_deleteModel_request( $self, %options ) {
     my $path = '/delete';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::Ollama::DeleteModelRequest->new( \%options );
+    my $request = AI::Ollama::DeleteModelRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -757,14 +757,14 @@ sub _build_generateEmbedding_request( $self, %options ) {
     my $path = '/embeddings';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::Ollama::GenerateEmbeddingRequest->new( \%options );
+    my $request = AI::Ollama::GenerateEmbeddingRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -931,14 +931,14 @@ sub _build_generateCompletion_request( $self, %options ) {
     my $path = '/generate';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::Ollama::GenerateCompletionRequest->new( \%options );
+    my $request = AI::Ollama::GenerateCompletionRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/x-ndjson',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -1051,14 +1051,14 @@ sub _build_pullModel_request( $self, %options ) {
     my $path = '/pull';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::Ollama::PullModelRequest->new( \%options );
+    my $request = AI::Ollama::PullModelRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -1152,14 +1152,14 @@ sub _build_pushModel_request( $self, %options ) {
     my $path = '/push';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::Ollama::PushModelRequest->new( \%options );
+    my $request = AI::Ollama::PushModelRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx
@@ -1245,14 +1245,14 @@ sub _build_showModelInfo_request( $self, %options ) {
     my $path = '/show';
     my $url = Mojo::URL->new( $self->server . $path );
 
-    my $request = AI::Ollama::ModelInfoRequest->new( \%options );
+    my $request = AI::Ollama::ModelInfoRequest->new( \%options )->as_hash;
     my $tx = $self->ua->build_tx(
         $method => $url,
         {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request->as_hash,
+        => json => $request,
     );
 
     return $tx

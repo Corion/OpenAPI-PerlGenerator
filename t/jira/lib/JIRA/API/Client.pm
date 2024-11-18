@@ -43,7 +43,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Update announcement banner configuration
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -54,7 +54,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Update custom fields
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -74,7 +74,7 @@ Returns a L<< JIRA::API::PageBeanContextualConfiguration >> on success.
 
 Update custom field configurations
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -84,7 +84,7 @@ Returns Hashref on success.
 
 Update custom field value
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -144,7 +144,7 @@ Returns a L<< JIRA::API::ApplicationRole >> on success.
 
 Get attachment content
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -164,7 +164,7 @@ Returns a L<< JIRA::API::AttachmentSettings >> on success.
 
 Get attachment thumbnail
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -272,7 +272,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 Set comment property
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -341,7 +341,7 @@ Returns a L<< JIRA::API::Configuration >> on success.
 
 Get selected time tracking provider
 
-Returns Hashref, a L<< JIRA::API::TimeTrackingProvider >> on success.
+Returns Unknown, a L<< JIRA::API::TimeTrackingProvider >> on success.
 
 =cut
 
@@ -351,7 +351,7 @@ Returns Hashref, a L<< JIRA::API::TimeTrackingProvider >> on success.
 
 Select time tracking provider
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -467,7 +467,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Remove gadget from dashboard
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -478,7 +478,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Update gadget on dashboard
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -518,7 +518,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 Set dashboard item property
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -645,7 +645,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Update custom field
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -685,7 +685,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContextDefaultValue >> on success.
 
 Set custom field contexts default values
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -725,7 +725,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContextProjectMapping >> on success.
 
 Delete custom field context
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -735,7 +735,7 @@ Returns Hashref on success.
 
 Update custom field context
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -745,7 +745,7 @@ Returns Hashref on success.
 
 Add issue types to context
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -755,7 +755,7 @@ Returns Hashref on success.
 
 Remove issue types from context
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -795,7 +795,7 @@ Returns a L<< JIRA::API::CustomFieldUpdatedContextOptionsList >> on success.
 
 Reorder custom field options (context)
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -814,7 +814,7 @@ Delete custom field options (context)
 
 Assign custom field context to projects
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -824,7 +824,7 @@ Returns Hashref on success.
 
 Remove custom field context from projects
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -894,7 +894,7 @@ Returns a L<< JIRA::API::PageBeanIssueFieldOption >> on success.
 
 Delete issue field option
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -945,7 +945,7 @@ Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
 
 Restore custom field from trash
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -956,7 +956,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Move custom field to trash
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -987,7 +987,7 @@ Returns a L<< JIRA::API::FieldConfiguration >> on success.
 
 Delete field configuration
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -997,7 +997,7 @@ Returns Hashref on success.
 
 Update field configuration
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1017,7 +1017,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationItem >> on success.
 
 Update field configuration items
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1067,7 +1067,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationSchemeProjects >> on success.
 
 Assign field configuration scheme to project
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1077,7 +1077,7 @@ Returns Hashref on success.
 
 Delete field configuration scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1087,7 +1087,7 @@ Returns Hashref on success.
 
 Update field configuration scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1097,7 +1097,7 @@ Returns Hashref on success.
 
 Assign issue types to field configurations
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1107,7 +1107,7 @@ Returns Hashref on success.
 
 Remove issue types from field configuration scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -1237,7 +1237,7 @@ Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 Set columns
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1267,7 +1267,7 @@ Returns a L<< JIRA::API::Filter >> on success.
 
 Change filter owner
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1525,7 +1525,7 @@ Returns a L<< JIRA::API::IssueBean >> on success.
 
 Edit issue
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1535,7 +1535,7 @@ Returns Hashref on success.
 
 Assign issue
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1634,7 +1634,7 @@ Returns a L<< JIRA::API::IssueUpdateMetadata >> on success.
 
 Send notification for issue
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1673,7 +1673,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 Set issue property
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1731,7 +1731,7 @@ Returns a L<< JIRA::API::RemoteIssueLink >> on success.
 
 Update remote issue link by ID
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1751,7 +1751,7 @@ Returns a L<< JIRA::API::Transitions >> on success.
 
 Transition issue
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1780,7 +1780,7 @@ Returns a L<< JIRA::API::Votes >> on success.
 
 Add vote
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1809,7 +1809,7 @@ Returns a L<< JIRA::API::Watchers >> on success.
 
 Add watcher
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1897,7 +1897,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 Set worklog property
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1907,7 +1907,7 @@ Returns Hashref on success.
 
 Create issue link
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2123,7 +2123,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 Set issue type property
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2173,7 +2173,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeSchemeProjects >> on success.
 
 Assign issue type scheme to project
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2183,7 +2183,7 @@ Returns Hashref on success.
 
 Delete issue type scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2193,7 +2193,7 @@ Returns Hashref on success.
 
 Update issue type scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2203,7 +2203,7 @@ Returns Hashref on success.
 
 Add issue types to issue type scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2213,7 +2213,7 @@ Returns Hashref on success.
 
 Change order of issue types
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2223,7 +2223,7 @@ Returns Hashref on success.
 
 Remove issue type from issue type scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2273,7 +2273,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemesProjects >> on success.
 
 Assign issue type screen scheme to project
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2283,7 +2283,7 @@ Returns Hashref on success.
 
 Delete issue type screen scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2293,7 +2293,7 @@ Returns Hashref on success.
 
 Update issue type screen scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2303,7 +2303,7 @@ Returns Hashref on success.
 
 Append mappings to issue type screen scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2313,7 +2313,7 @@ Returns Hashref on success.
 
 Update issue type screen scheme default screen scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2323,7 +2323,7 @@ Returns Hashref on success.
 
 Remove mappings from issue type screen scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2383,7 +2383,7 @@ Returns a L<< JIRA::API::PageBeanJqlFunctionPrecomputationBean >> on success.
 
 Update precomputations
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2495,7 +2495,7 @@ Returns a L<< string >> on success.
 
 Set preference
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2505,7 +2505,7 @@ Returns Hashref on success.
 
 Delete locale
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2525,7 +2525,7 @@ Returns a L<< JIRA::API::Locale >> on success.
 
 Set locale
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2587,7 +2587,7 @@ Returns a L<< JIRA::API::NotificationScheme >> on success.
 
 Update notification scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -2598,7 +2598,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Add notifications to notification scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -2609,7 +2609,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Delete notification scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -2620,7 +2620,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Remove notification from notification scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -2771,7 +2771,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Set default priority
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -2782,7 +2782,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Move priorities
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -2825,7 +2825,7 @@ Returns a L<< JIRA::API::Priority >> on success.
 
 Update priority
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -2945,7 +2945,7 @@ Returns a L<< JIRA::API::Project >> on success.
 
 Archive project
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -2955,7 +2955,7 @@ Returns Hashref on success.
 
 Set project avatar
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -3073,7 +3073,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 Set project property
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -3093,7 +3093,7 @@ Returns a L<< JIRA::API::Project >> on success.
 
 Get project roles for project
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -3202,7 +3202,7 @@ Returns a L<< JIRA::API::ProjectEmailAddress >> on success.
 
 Set project's sender email
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -3372,7 +3372,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Set default resolution
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -3383,7 +3383,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Move resolutions
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -3426,7 +3426,7 @@ Returns a L<< JIRA::API::Resolution >> on success.
 
 Update resolution
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -3546,7 +3546,7 @@ Returns a L<< JIRA::API::Screen >> on success.
 
 Add field to default screen
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -3653,7 +3653,7 @@ Remove screen tab field
 
 Move screen tab field
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -3663,7 +3663,7 @@ Returns Hashref on success.
 
 Move screen tab
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -3702,7 +3702,7 @@ Delete screen scheme
 
 Update screen scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -3762,7 +3762,7 @@ Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 Set issue navigator default columns
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -3812,7 +3812,7 @@ Returns a L<< JIRA::API::StatusCategory >> on success.
 
 Bulk delete Statuses
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -3842,7 +3842,7 @@ Returns an array of L<< JIRA::API::JiraStatus >> on success.
 
 Bulk update statuses
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -3872,7 +3872,7 @@ Returns a L<< JIRA::API::TaskProgressBeanObject >> on success.
 
 Cancel task
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns an array of L<< JIRA::API:: >> on error.
 
 =cut
@@ -3903,7 +3903,7 @@ Returns a L<< JIRA::API::UiModificationIdentifiers >> on success.
 
 Delete UI modification
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -3913,7 +3913,7 @@ Returns Hashref on success.
 
 Update UI modification
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -3952,7 +3952,7 @@ Delete avatar
 
 Get avatar image by type
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -3963,7 +3963,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Get avatar image by ID
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -3974,7 +3974,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Get avatar image by owner
 
-Returns Hashref on success.
+Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -4073,7 +4073,7 @@ Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 Set user default columns
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -4162,7 +4162,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 Set user property
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -4271,7 +4271,7 @@ Returns a L<< JIRA::API::Version >> on success.
 
 Merge versions
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -4301,7 +4301,7 @@ Returns a L<< JIRA::API::VersionIssueCounts >> on success.
 
 Delete and replace version
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -4517,7 +4517,7 @@ Returns a L<< JIRA::API::ContainerOfWorkflowSchemeAssociations >> on success.
 
 Assign workflow scheme to project
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -4527,7 +4527,7 @@ Returns Hashref on success.
 
 Delete workflow scheme
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -4888,7 +4888,7 @@ Returns a L<< JIRA::API::ErrorMessage >> on error.
 
 Bulk update custom field value
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
