@@ -50,7 +50,6 @@ for my $known (@testcases) {
         schema => $schema,
         prefix => "$prefix",
     );
-
     {
         my $todo;
         if( $options->{compile_todo} ) {
