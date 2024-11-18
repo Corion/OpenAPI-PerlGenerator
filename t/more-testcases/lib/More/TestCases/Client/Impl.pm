@@ -25,11 +25,25 @@ our $SCHEMA_VERSION = "1.0.0";
 
 =head1 SYNOPSIS
 
+  my $client = More::TestCases::Client::Impl->new(
+      schema_file => '...',
+  );
+
 =head1 PROPERTIES
+
+=head2 B<< schema_file >>
+
+The OpenAPI schema file we use for validation
+
+=head2 B<< schema >>
+
+The OpenAPI schema data structure we use for validation. If not given,
+we will create one using the C<schema_file> parameter.
 
 =head2 B<< openapi >>
 
-The L<OpenAPI::Modern> object we use for validation
+The L<OpenAPI::Modern> object we use for validation. If not given,
+we will create one using the C<schema> parameter.
 
 =head2 B<< ua >>
 
@@ -40,8 +54,6 @@ The L<Mojo::UserAgent> to use
 The server to access
 
 =cut
-
-# XXX this should be more configurable, and potentially you don't want validation?!
 
 has 'schema_file' => (
     is => 'ro',
@@ -68,7 +80,11 @@ has 'validate_responses' => (
 
 has 'openapi' => (
     is => 'lazy',
-    default => sub { OpenAPI::Modern->new( openapi_schema => $_[0]->schema, openapi_uri => '' )},
+    default => sub {
+        if( my $schema = $_[0]->schema ) {
+            OpenAPI::Modern->new( openapi_schema => $schema, openapi_uri => '' )
+        }
+    },
 );
 
 # The HTTP stuff should go into a ::Role I guess
