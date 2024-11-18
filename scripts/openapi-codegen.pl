@@ -78,6 +78,7 @@ if( $keep_version ) {
 
 my @packages = $generator->generate(
     schema => $schema,
+    schema_file => $api_file,
     version => $version,
 );
 

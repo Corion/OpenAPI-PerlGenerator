@@ -34,23 +34,36 @@ use Speech::Recognition::Whisper::Transcription;
 
 =head2 B<< openapi >>
 
+The L<OpenAPI::Modern> object we use for validation
+
 =head2 B<< ua >>
 
+The L<Mojo::UserAgent> to use
+
 =head2 B<< server >>
+
+The server to access
 
 =cut
 
 # XXX this should be more configurable, and potentially you don't want validation?!
+
+has 'schema_file' => (
+    is => 'ro',
+);
+
 has 'schema' => (
     is => 'lazy',
     default => sub {
-        YAML::PP->new( boolean => 'JSON::PP' )->load_file( 'ollama/ollama-curated.yaml' );
+        if( my $fn = $_[0]->schema_file ) {
+            YAML::PP->new( boolean => 'JSON::PP' )->load_file( $fn );
+        }
     },
 );
 
 has 'openapi' => (
     is => 'lazy',
-    default => sub { OpenAPI::Modern->new( openapi_schema => $_[0]->schema, openapi_uri => '/api' )},
+    default => sub { OpenAPI::Modern->new( openapi_schema => $_[0]->schema, openapi_uri => '' )},
 );
 
 # The HTTP stuff should go into a ::Role I guess
@@ -61,7 +74,7 @@ has 'ua' => (
 
 has 'server' => (
     is => 'lazy',
-    default => sub { 'http://localhost:11434/api' }, # XXX pull from OpenAPI file instead
+    default => sub { 'http://localhost:8080/' },
 );
 
 =head1 METHODS
