@@ -1920,7 +1920,7 @@ Whether a redirect is provided for the attachment download. Clients that do not 
 =back
 
 
-Returns a L<< object >> on success.
+Returns Hashref on success.
 
 =cut
 
@@ -2142,7 +2142,7 @@ The maximum height to scale the thumbnail to.
 =back
 
 
-Returns a L<< object >> on success.
+Returns Hashref on success.
 
 =cut
 
@@ -40191,7 +40191,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns a L<< object >> on success.
+Returns Hashref on success.
 
 =cut
 
@@ -50702,7 +50702,7 @@ The format to return the avatar image in. If not provided the original content f
 =back
 
 
-Returns a L<< object >> on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -50976,7 +50976,7 @@ The format to return the avatar image in. If not provided the original content f
 =back
 
 
-Returns a L<< object >> on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -51297,7 +51297,7 @@ The format to return the avatar image in. If not provided the original content f
 =back
 
 
-Returns a L<< object >> on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut

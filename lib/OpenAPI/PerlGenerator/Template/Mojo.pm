@@ -392,14 +392,25 @@ $template{return_types} = <<'__RETURN_TYPES__';
 %                        $class = [$class_info];
 %
 %                    } elsif( $type eq 'oneOf') {
-%                        $descriptor = sprintf 'depending on C<< %s >> one of', $class_info->{discrimintator};
-%                        $class = [sort values $class_info->{mapping}->%*];
+%                        if( $class_info->{discriminator} ) {
+%                            $descriptor = sprintf 'depending on C<< %s >> one of', $class_info->{discriminator};
+%                            $class = [sort map { class_type_name($prefix, $_) } values $class_info->{mapping}->%*];
+%                        } else {
+%                            $descriptor = "We couldn't find a discriminator";
+%                            $class = [""];
+%                        }
+%
+%                    } elsif( $type eq 'object' ) {
+%                        $class = [undef];
 %
 %                    } else {
 %                        $class = [$content->{$ct}->{schema}->{type}];
 %                    }
 %                    $result_types{$status_type}->{$_} = 1
-%                        for map { $_ ? qq{$descriptor L<< $_ >>} : q{Hashref} } $class->@*;
+%                        for map { !defined($_)? "Unknown"
+%                                : $_          ? qq{$descriptor L<< $_ >>}
+%                                :               q{Hashref}
+%                                } $class->@*;
 %                }
 %             }
 %         }

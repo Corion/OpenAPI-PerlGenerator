@@ -144,7 +144,7 @@ Returns a L<< JIRA::API::ApplicationRole >> on success.
 
 Get attachment content
 
-Returns a L<< object >> on success.
+Returns Hashref on success.
 
 =cut
 
@@ -164,7 +164,7 @@ Returns a L<< JIRA::API::AttachmentSettings >> on success.
 
 Get attachment thumbnail
 
-Returns a L<< object >> on success.
+Returns Hashref on success.
 
 =cut
 
@@ -3093,7 +3093,7 @@ Returns a L<< JIRA::API::Project >> on success.
 
 Get project roles for project
 
-Returns a L<< object >> on success.
+Returns Hashref on success.
 
 =cut
 
@@ -3952,7 +3952,7 @@ Delete avatar
 
 Get avatar image by type
 
-Returns a L<< object >> on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -3963,7 +3963,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Get avatar image by ID
 
-Returns a L<< object >> on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
@@ -3974,7 +3974,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Get avatar image by owner
 
-Returns a L<< object >> on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut

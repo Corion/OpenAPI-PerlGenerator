@@ -229,7 +229,7 @@ sub potential_instances( $elt, $candidates={} ) {
 
 sub potential_values( $prop ) {
     if( $prop->{enum} ) {
-        warn "Enum: " . join ", ", map { qq{"$_"} } $prop->{enum}->@*;
+        #warn "Enum: " . join ", ", map { qq{"$_"} } $prop->{enum}->@*;
         return $prop->{enum}->@*
     } else {
         return
@@ -266,21 +266,30 @@ sub find_discriminator( $self, $elt, $schema, $prefix=$self->prefix ) {
                 $has_value{ $prop } //= {};
                 for my $value (potential_values($class->{properties}->{$prop})) {
                     #warn "$prop = '$value' => $idx";
-                    if( $class->{name} ) {
-                        $has_value{ $prop }->{$value}->{$class} = $self->full_package( $class->{name}, $prefix );
-                    } elsif( $class->{type} ) {
-                        $has_value{ $prop }->{$value}->{$class} = $class->{type};
-                    }
+
+                    # This means that two { "foo": "bar" } instances are always
+                    # different, but we'll start out with that. If we want these
+                    # to be equal (types), we'll need to create a type signature
+                    $has_value{ $prop }->{$value}->{$class} = $class;
+
+                    #if( $class->{name} ) {
+                    #    $has_value{ $prop }->{$value}->{$class} = $self->full_package( $class->{name}, $prefix );
+                    #} elsif( $class->{type} ) {
+                    #    $has_value{ $prop }->{$value}->{$class} = $class->{type};
+                    #    $has_value{ $prop }->{$value}->{$class} = $class;
+                    #}
                 };
             }
         }
     }
-use Data::Dumper; warn Dumper $candidates;
+
     my ($discriminator, $mapping);
     COMMON_PROPERTY: for my $d (keys %has_value) {
         my @once = grep { scalar keys($_->%*) == 1 } values $has_value{ $d }->%*;
         if( @once == keys $candidates->%* ) {
             warn "Found discriminator field '$d'";
+            #use Data::Dumper; warn Dumper $candidates;
+            #die;
             # There is a common field that all variants share, and each value only
             # ever occurs once:
             $discriminator = $d;
@@ -288,8 +297,13 @@ use Data::Dumper; warn Dumper $candidates;
                 map {;
                     my ($val) = $_;
                     my ($class) = values $has_value{ $d }->{ $val }->%*;
+
+                    # Here, we need to store the different kinds of fields
+                    # we expect in the object!
+
                     $_ => ($class // $_)
                 } keys $has_value{ $discriminator }->%*
+                #} values $candidates->%*
             };
             last COMMON_PROPERTY;
         };
@@ -360,8 +374,8 @@ sub resolve_schema( $self, $schema, $prefix = $self->prefix ) {
             return ('oneOf', $res);
 
         } else {
-            warn "Don't know how to resolve oneOf without a discriminator entry";
-            warn "Guessing the best class is still open";
+            #warn "Don't know how to resolve oneOf without a discriminator entry";
+            #warn "Guessing the best class is still open";
 
             return ('oneOf', $self->find_discriminator( $schema, $self->schema, $prefix ));
         }
