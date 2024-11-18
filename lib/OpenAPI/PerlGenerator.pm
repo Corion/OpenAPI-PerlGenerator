@@ -549,7 +549,6 @@ sub generate_schema_classes( $self, %options ) {
             $type = 'oneOfObject';
         };
 
-            die "No prefix" unless $options{ prefix };
         my %info = (
             %options,
             name => $name,
@@ -568,6 +567,7 @@ sub generate_schema_classes( $self, %options ) {
                     filename => $filename,
                     package => $self->full_package($name, $options{ prefix }),
                     source   => $content,
+                    prerequisites => [ $self->openapi_dependencies( type => $elt, prefix => $options{ prefix }) ],
                 };
             } else {
                 # There was an error in this template...
@@ -582,7 +582,22 @@ sub generate_schema_classes( $self, %options ) {
         }
     };
 
-    return @res
+    # now, sort @res topologically so we can require one file after another
+    my %written;
+    my @out;
+    my @retry;
+    while( @res ) {
+        my $f = shift @res;
+        if( (grep { !$written{ $_ } } $f->{prerequisites}->@*) == 0 ) {
+            push @out, $f;
+            $written{ $f->{package} }++;
+            unshift @res, splice @retry;
+        } else {
+            push @retry, $f;
+        };
+    };
+
+    return @out
 }
 
 sub openapi_method_list( $self, %options ) {
