@@ -33,7 +33,7 @@ The ID of the priority. Required if `position` isn't provided.
 
 =cut
 
-has 'after' => (
+has '+after' => (
     is       => 'ro',
     isa      => Str,
 );

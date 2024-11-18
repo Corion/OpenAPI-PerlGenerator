@@ -33,7 +33,7 @@ The ID of the screen tab field after which to place the moved screen tab field. 
 
 =cut
 
-has 'after' => (
+has '+after' => (
     is       => 'ro',
     isa      => Str,
 );

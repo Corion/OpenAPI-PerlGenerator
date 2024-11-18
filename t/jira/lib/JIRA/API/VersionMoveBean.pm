@@ -33,7 +33,7 @@ The URL (self link) of the version after which to place the moved version. Canno
 
 =cut
 
-has 'after' => (
+has '+after' => (
     is       => 'ro',
     isa      => Str,
 );

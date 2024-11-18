@@ -33,7 +33,7 @@ The ID of the custom field option or cascading option to place the moved options
 
 =cut
 
-has 'after' => (
+has '+after' => (
     is       => 'ro',
     isa      => Str,
 );

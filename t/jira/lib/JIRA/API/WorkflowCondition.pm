@@ -42,7 +42,7 @@ sub new( $class, $data ) {
     my $type = $data->{ 'nodeType' };
     croak "Unknown type '$type' in field 'nodeType'"
         unless exists $classes{ $type };
-    
+
     return $classes{ $type }->new( $data );
 }
 

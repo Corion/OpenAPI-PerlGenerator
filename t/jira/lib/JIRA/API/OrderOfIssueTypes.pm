@@ -33,7 +33,7 @@ The ID of the issue type to place the moved issue types after. Required if `posi
 
 =cut
 
-has 'after' => (
+has '+after' => (
     is       => 'ro',
     isa      => Str,
 );

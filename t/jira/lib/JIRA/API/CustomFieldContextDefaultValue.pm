@@ -142,7 +142,7 @@ sub new( $class, $data ) {
     my $type = $data->{ 'type' };
     croak "Unknown type '$type' in field 'type'"
         unless exists $classes{ $type };
-    
+
     return $classes{ $type }->new( $data );
 }
 
