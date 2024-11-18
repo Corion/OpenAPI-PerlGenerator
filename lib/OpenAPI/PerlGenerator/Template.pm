@@ -69,17 +69,12 @@ sub render( $name, $args ) {
 }
 *include = *include = \&render;
 
-our %locations;
-sub elsif_chain($id) {
-    # Ignore all Mojo:: stuff!
-    my $level = 0;
-    if( !$locations{ $id }++) {
-        return "if"
-    #} elsif( $final ) {
-    #    return " else "
-    } else {
-        return "} elsif"
-    }
+=head2 C<< resolve_schema >>
+
+=cut
+
+sub elsif_chain( $id ) {
+    $info->elsif_chain( $id );
 }
 
 =head2 C<< resolve_schema >>

@@ -116,6 +116,12 @@ has 'version' => (
     default => '0.01',
 );
 
+has 'locations' => (
+    is => 'rw',
+    default => sub { {} },
+);
+
+
 sub fetch_descriptor( $self, $path, $root = $self->schema ) {
     $path =~ s!^#!!;
     return JSON::Pointer->get($root, $path, 1);
@@ -576,10 +582,25 @@ sub openapi_method_list( $self, %options ) {
     return \@methods
 }
 
+sub elsif_chain($self, $id) {
+    # Ignore all Mojo:: stuff!
+    my $locations = $self->locations;
+
+    if( !$locations->{ $id }++) {
+        return "if"
+    #} elsif( $final ) {
+    #    return " else "
+    } else {
+        return "} elsif"
+    }
+}
+
 sub generate_client_implementation( $self, %options ) {
     my $schema = delete $options{ schema } // $self->schema;
     my $methods = delete $options{ methods } // $self->openapi_method_list( schema => $schema );
     $options{ prefix } //= $self->prefix;
+
+    $self->locations( {} );
 
     my $content = $self->render('client_implementation',{
         methods => $methods,
@@ -598,6 +619,9 @@ sub generate_client( $self, %options ) {
     my $schema = delete $options{ schema } // $self->schema;
     my $methods = delete $options{ methods } // $self->openapi_method_list( schema => $schema );
     $options{ prefix } //= $self->prefix;
+
+    $self->locations( {} );
+
     my $content = $self->render('client', {
         methods => $methods,
         name => 'Client',

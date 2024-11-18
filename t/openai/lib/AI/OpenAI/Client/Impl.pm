@@ -3515,11 +3515,11 @@ sub listModels( $self, %options ) {
     $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
-        } elsif( $resp->code == 200 ) {
+        if( $resp->code == 200 ) {
             # OK
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
-            } elsif( $ct eq 'application/json' ) {
+            if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
                 $res->done(
                     AI::OpenAI::ListModelsResponse->new($payload),
@@ -3609,7 +3609,7 @@ sub deleteModel( $self, %options ) {
     $r1->then( sub( $tx ) {
         my $resp = $tx->res;
         # Should we validate using OpenAPI::Modern here?!
-        } elsif( $resp->code == 200 ) {
+        if( $resp->code == 200 ) {
             # OK
             my $ct = $resp->headers->content_type;
             $ct =~ s/;\s+.*//;
