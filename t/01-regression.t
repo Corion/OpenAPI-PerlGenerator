@@ -12,7 +12,9 @@ use File::Path 'make_path';
 use Getopt::Long;
 GetOptions(
     'update|u' => \my $update,
+    'only=s' => \my $only_cases,
 );
+$only_cases //= '.*';
 
 =head1 NAME
 
@@ -34,7 +36,7 @@ my %test_configs = (
     'whisper.cpp'    => { prefix => 'Speech::Recognition::Whisper', },
 );
 
-my @testcases = grep { -d } curfile()->dirname->list({ dir => 1 })->@*;
+my @testcases = grep { /$only_cases/ } grep { -d } curfile()->dirname->list({ dir => 1 })->@*;
 for my $known (@testcases) {
     (my $api_file_yaml) = grep { /\.yaml$/ } $known->list->@*;
     (my $api_file_json) = grep { /\.json$/ } $known->list->@*;
