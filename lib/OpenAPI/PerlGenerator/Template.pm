@@ -90,6 +90,14 @@ sub resolve_schema {
     $info->resolve_schema( @_ );
 }
 
+=head2 C<< class_type_name >>
+
+=cut
+
+sub class_type_name {
+    $info->class_type_name( @_ );
+}
+
 1;
 __END__
 

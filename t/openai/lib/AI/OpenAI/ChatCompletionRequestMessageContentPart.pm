@@ -17,23 +17,32 @@ AI::OpenAI::ChatCompletionRequestMessageContentPart - Factory class
   ...
 
 This is a factory class that returns one of the following types
-based on the C<<  >> field:
+based on the C<< type >> field:
+
+C<< image_url >> - L<< AI::OpenAI::ChatCompletionRequestMessageContentPartImage >>
+
+C<< text >> - L<< AI::OpenAI::ChatCompletionRequestMessageContentPartText >>
 
 
 =cut
 
+use AI::OpenAI::ChatCompletionRequestMessageContentPartImage;
+use AI::OpenAI::ChatCompletionRequestMessageContentPartText;
+
 
 our %classes = (
+    'image_url' => 'AI::OpenAI::ChatCompletionRequestMessageContentPartImage',
+    'text' => 'AI::OpenAI::ChatCompletionRequestMessageContentPartText',
 );
 
 sub new( $class, $data ) {
-    if( ! exists $data->{ '' } ) {
-        croak "Need a '' field";
+    if( ! exists $data->{ 'type' } ) {
+        croak "Need a 'type' field";
     };
-    my $type = $data->{ '' };
-    croak "Unknown type '$type' in field ''"
+    my $type = $data->{ 'type' };
+    croak "Unknown type '$type' in field 'type'"
         unless exists $classes{ $type };
-    
+
     return $classes{ $type }->new( $data );
 }
 

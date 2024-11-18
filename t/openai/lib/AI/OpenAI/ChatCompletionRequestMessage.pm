@@ -17,23 +17,44 @@ AI::OpenAI::ChatCompletionRequestMessage - Factory class
   ...
 
 This is a factory class that returns one of the following types
-based on the C<<  >> field:
+based on the C<< role >> field:
+
+C<< assistant >> - L<< AI::OpenAI::ChatCompletionRequestAssistantMessage >>
+
+C<< function >> - L<< AI::OpenAI::ChatCompletionRequestFunctionMessage >>
+
+C<< system >> - L<< AI::OpenAI::ChatCompletionRequestSystemMessage >>
+
+C<< tool >> - L<< AI::OpenAI::ChatCompletionRequestToolMessage >>
+
+C<< user >> - L<< AI::OpenAI::ChatCompletionRequestUserMessage >>
 
 
 =cut
 
+use AI::OpenAI::ChatCompletionRequestAssistantMessage;
+use AI::OpenAI::ChatCompletionRequestFunctionMessage;
+use AI::OpenAI::ChatCompletionRequestSystemMessage;
+use AI::OpenAI::ChatCompletionRequestToolMessage;
+use AI::OpenAI::ChatCompletionRequestUserMessage;
+
 
 our %classes = (
+    'assistant' => 'AI::OpenAI::ChatCompletionRequestAssistantMessage',
+    'function' => 'AI::OpenAI::ChatCompletionRequestFunctionMessage',
+    'system' => 'AI::OpenAI::ChatCompletionRequestSystemMessage',
+    'tool' => 'AI::OpenAI::ChatCompletionRequestToolMessage',
+    'user' => 'AI::OpenAI::ChatCompletionRequestUserMessage',
 );
 
 sub new( $class, $data ) {
-    if( ! exists $data->{ '' } ) {
-        croak "Need a '' field";
+    if( ! exists $data->{ 'role' } ) {
+        croak "Need a 'role' field";
     };
-    my $type = $data->{ '' };
-    croak "Unknown type '$type' in field ''"
+    my $type = $data->{ 'role' };
+    croak "Unknown type '$type' in field 'role'"
         unless exists $classes{ $type };
-    
+
     return $classes{ $type }->new( $data );
 }
 

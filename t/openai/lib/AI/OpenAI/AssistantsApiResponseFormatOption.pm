@@ -17,23 +17,31 @@ AI::OpenAI::AssistantsApiResponseFormatOption - Factory class
   ...
 
 This is a factory class that returns one of the following types
-based on the C<<  >> field:
+based on the C<< type >> field:
+
+C<< json_object >> - L<< AI::OpenAI::AssistantsApiResponseFormat >>
+
+C<< text >> - L<< AI::OpenAI::AssistantsApiResponseFormat >>
 
 
 =cut
 
+use AI::OpenAI::AssistantsApiResponseFormat;
+
 
 our %classes = (
+    'json_object' => 'AI::OpenAI::AssistantsApiResponseFormat',
+    'text' => 'AI::OpenAI::AssistantsApiResponseFormat',
 );
 
 sub new( $class, $data ) {
-    if( ! exists $data->{ '' } ) {
-        croak "Need a '' field";
+    if( ! exists $data->{ 'type' } ) {
+        croak "Need a 'type' field";
     };
-    my $type = $data->{ '' };
-    croak "Unknown type '$type' in field ''"
+    my $type = $data->{ 'type' };
+    croak "Unknown type '$type' in field 'type'"
         unless exists $classes{ $type };
-    
+
     return $classes{ $type }->new( $data );
 }
 

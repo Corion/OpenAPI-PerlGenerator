@@ -17,23 +17,38 @@ AI::OpenAI::MessageStreamEvent - Factory class
   ...
 
 This is a factory class that returns one of the following types
-based on the C<<  >> field:
+based on the C<< event >> field:
+
+C<< thread.message.completed >> - L<< HashRef >>
+
+C<< thread.message.created >> - L<< HashRef >>
+
+C<< thread.message.delta >> - L<< HashRef >>
+
+C<< thread.message.in_progress >> - L<< HashRef >>
+
+C<< thread.message.incomplete >> - L<< HashRef >>
 
 
 =cut
 
 
 our %classes = (
+    'thread.message.completed' => 'HashRef',
+    'thread.message.created' => 'HashRef',
+    'thread.message.delta' => 'HashRef',
+    'thread.message.in_progress' => 'HashRef',
+    'thread.message.incomplete' => 'HashRef',
 );
 
 sub new( $class, $data ) {
-    if( ! exists $data->{ '' } ) {
-        croak "Need a '' field";
+    if( ! exists $data->{ 'event' } ) {
+        croak "Need a 'event' field";
     };
-    my $type = $data->{ '' };
-    croak "Unknown type '$type' in field ''"
+    my $type = $data->{ 'event' };
+    croak "Unknown type '$type' in field 'event'"
         unless exists $classes{ $type };
-    
+
     return $classes{ $type }->new( $data );
 }
 

@@ -17,23 +17,101 @@ AI::OpenAI::AssistantStreamEvent - Factory class
   ...
 
 This is a factory class that returns one of the following types
-based on the C<<  >> field:
+based on the C<< event >> field:
+
+C<< done >> - L<< AI::OpenAI::DoneEvent >>
+
+C<< error >> - L<< AI::OpenAI::ErrorEvent >>
+
+C<< thread.created >> - L<< HashRef >>
+
+C<< thread.message.completed >> - L<< HashRef >>
+
+C<< thread.message.created >> - L<< HashRef >>
+
+C<< thread.message.delta >> - L<< HashRef >>
+
+C<< thread.message.in_progress >> - L<< HashRef >>
+
+C<< thread.message.incomplete >> - L<< HashRef >>
+
+C<< thread.run.cancelled >> - L<< HashRef >>
+
+C<< thread.run.cancelling >> - L<< HashRef >>
+
+C<< thread.run.completed >> - L<< HashRef >>
+
+C<< thread.run.created >> - L<< HashRef >>
+
+C<< thread.run.expired >> - L<< HashRef >>
+
+C<< thread.run.failed >> - L<< HashRef >>
+
+C<< thread.run.in_progress >> - L<< HashRef >>
+
+C<< thread.run.incomplete >> - L<< HashRef >>
+
+C<< thread.run.queued >> - L<< HashRef >>
+
+C<< thread.run.requires_action >> - L<< HashRef >>
+
+C<< thread.run.step.cancelled >> - L<< HashRef >>
+
+C<< thread.run.step.completed >> - L<< HashRef >>
+
+C<< thread.run.step.created >> - L<< HashRef >>
+
+C<< thread.run.step.delta >> - L<< HashRef >>
+
+C<< thread.run.step.expired >> - L<< HashRef >>
+
+C<< thread.run.step.failed >> - L<< HashRef >>
+
+C<< thread.run.step.in_progress >> - L<< HashRef >>
 
 
 =cut
 
+use AI::OpenAI::DoneEvent;
+use AI::OpenAI::ErrorEvent;
+
 
 our %classes = (
+    'done' => 'AI::OpenAI::DoneEvent',
+    'error' => 'AI::OpenAI::ErrorEvent',
+    'thread.created' => 'HashRef',
+    'thread.message.completed' => 'HashRef',
+    'thread.message.created' => 'HashRef',
+    'thread.message.delta' => 'HashRef',
+    'thread.message.in_progress' => 'HashRef',
+    'thread.message.incomplete' => 'HashRef',
+    'thread.run.cancelled' => 'HashRef',
+    'thread.run.cancelling' => 'HashRef',
+    'thread.run.completed' => 'HashRef',
+    'thread.run.created' => 'HashRef',
+    'thread.run.expired' => 'HashRef',
+    'thread.run.failed' => 'HashRef',
+    'thread.run.in_progress' => 'HashRef',
+    'thread.run.incomplete' => 'HashRef',
+    'thread.run.queued' => 'HashRef',
+    'thread.run.requires_action' => 'HashRef',
+    'thread.run.step.cancelled' => 'HashRef',
+    'thread.run.step.completed' => 'HashRef',
+    'thread.run.step.created' => 'HashRef',
+    'thread.run.step.delta' => 'HashRef',
+    'thread.run.step.expired' => 'HashRef',
+    'thread.run.step.failed' => 'HashRef',
+    'thread.run.step.in_progress' => 'HashRef',
 );
 
 sub new( $class, $data ) {
-    if( ! exists $data->{ '' } ) {
-        croak "Need a '' field";
+    if( ! exists $data->{ 'event' } ) {
+        croak "Need a 'event' field";
     };
-    my $type = $data->{ '' };
-    croak "Unknown type '$type' in field ''"
+    my $type = $data->{ 'event' };
+    croak "Unknown type '$type' in field 'event'"
         unless exists $classes{ $type };
-    
+
     return $classes{ $type }->new( $data );
 }
 

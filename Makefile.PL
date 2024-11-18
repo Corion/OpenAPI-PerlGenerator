@@ -59,6 +59,7 @@ my %module = (
         'Getopt::Long'        => 0,
         'HTTP::Request::Diff' => 0,
         'JSON::Pointer'       => 0,
+        'List::Util'          => 0, # for 'uniq'
         'Mojolicious'         => 0,
         'Mojo::File'          => 0,
         'Mojo::Template'      => 0,

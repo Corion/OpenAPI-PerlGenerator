@@ -133,9 +133,15 @@ sub fixup_json_ref( $root, $curr=$root ) {
                 my $ref = $curr->{$k};
                 $ref =~ s!^#!!;
 
-                # But we want to know its class (name), maybe?!
+                (my $name) = ($ref =~ m!/([^/]+)\z!);
 
                 $curr = JSON::Pointer->get($root, $ref, 1);
+
+                # Guard against duplicate references to the same data structure (?!)
+                croak "two names for $ref: $curr->{ __name } and $name"
+                    if exists $curr->{__name} and $name ne $curr->{__name};
+
+                $curr->{ __name } = $name;
 
             } else {
                 $curr->{$k} = fixup_json_ref( $root, $curr->{ $k });
@@ -276,7 +282,7 @@ use Data::Dumper; warn Dumper $candidates;
                 map {;
                     my ($val) = $_;
                     my ($class) = values $has_value{ $d }->{ $val }->%*;
-                    $_ => ($class // 'object')
+                    $_ => ($class // $_)
                 } keys $has_value{ $discriminator }->%*
             };
             last COMMON_PROPERTY;
@@ -288,10 +294,15 @@ use Data::Dumper; warn Dumper $candidates;
             discriminator => $discriminator,
             mapping       => $mapping,
         };
-        use Data::Dumper;
-        die Dumper $res;
-    }
+        return $res;
+    } else {
 
+        # We should check the different return types here
+
+        #use Data::Dumper;
+        #warn "Couldn't find a (single-field) discriminator for " . Dumper $candidates;
+        warn "Couldn't find a (single-field) discriminator for some result";
+    };
 
     return {
         discriminator => undef,
@@ -317,6 +328,9 @@ mapping field values to classnames:
           number => 'Example::Number',
       }
   }
+
+For more complex items, a reference to the schema hashref will be returned
+to allow for better downstream type checking.
 
 =cut
 
@@ -360,6 +374,28 @@ sub resolve_schema( $self, $schema, $prefix = $self->prefix ) {
         use Data::Dumper;
         warn "Don't know how to derive a type for schema " . Dumper $schema;
         return ('object', undef);
+    }
+}
+
+=head2 C<< class_type_name >>
+
+Returns a user-facing class-name for an OpenAPI schema entry
+
+=cut
+
+sub class_type_name( $self, $prefix, $info ) {
+    if( ref $info and $info->{__name}) {
+        return "$prefix\::" . $info->{__name};
+
+    } elsif( ref $info and $info->{type} eq 'object') {
+        return 'HashRef'
+
+    } elsif( ref $info ) {
+        use Data::Dumper;
+        die Dumper $info;
+
+    } else {
+        return $info
     }
 }
 

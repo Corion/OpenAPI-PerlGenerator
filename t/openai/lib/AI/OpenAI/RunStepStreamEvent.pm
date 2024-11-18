@@ -17,23 +17,44 @@ AI::OpenAI::RunStepStreamEvent - Factory class
   ...
 
 This is a factory class that returns one of the following types
-based on the C<<  >> field:
+based on the C<< event >> field:
+
+C<< thread.run.step.cancelled >> - L<< HashRef >>
+
+C<< thread.run.step.completed >> - L<< HashRef >>
+
+C<< thread.run.step.created >> - L<< HashRef >>
+
+C<< thread.run.step.delta >> - L<< HashRef >>
+
+C<< thread.run.step.expired >> - L<< HashRef >>
+
+C<< thread.run.step.failed >> - L<< HashRef >>
+
+C<< thread.run.step.in_progress >> - L<< HashRef >>
 
 
 =cut
 
 
 our %classes = (
+    'thread.run.step.cancelled' => 'HashRef',
+    'thread.run.step.completed' => 'HashRef',
+    'thread.run.step.created' => 'HashRef',
+    'thread.run.step.delta' => 'HashRef',
+    'thread.run.step.expired' => 'HashRef',
+    'thread.run.step.failed' => 'HashRef',
+    'thread.run.step.in_progress' => 'HashRef',
 );
 
 sub new( $class, $data ) {
-    if( ! exists $data->{ '' } ) {
-        croak "Need a '' field";
+    if( ! exists $data->{ 'event' } ) {
+        croak "Need a 'event' field";
     };
-    my $type = $data->{ '' };
-    croak "Unknown type '$type' in field ''"
+    my $type = $data->{ 'event' };
+    croak "Unknown type '$type' in field 'event'"
         unless exists $classes{ $type };
-    
+
     return $classes{ $type }->new( $data );
 }
 

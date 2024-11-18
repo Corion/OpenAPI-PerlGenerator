@@ -17,23 +17,53 @@ AI::OpenAI::RunStreamEvent - Factory class
   ...
 
 This is a factory class that returns one of the following types
-based on the C<<  >> field:
+based on the C<< event >> field:
+
+C<< thread.run.cancelled >> - L<< HashRef >>
+
+C<< thread.run.cancelling >> - L<< HashRef >>
+
+C<< thread.run.completed >> - L<< HashRef >>
+
+C<< thread.run.created >> - L<< HashRef >>
+
+C<< thread.run.expired >> - L<< HashRef >>
+
+C<< thread.run.failed >> - L<< HashRef >>
+
+C<< thread.run.in_progress >> - L<< HashRef >>
+
+C<< thread.run.incomplete >> - L<< HashRef >>
+
+C<< thread.run.queued >> - L<< HashRef >>
+
+C<< thread.run.requires_action >> - L<< HashRef >>
 
 
 =cut
 
 
 our %classes = (
+    'thread.run.cancelled' => 'HashRef',
+    'thread.run.cancelling' => 'HashRef',
+    'thread.run.completed' => 'HashRef',
+    'thread.run.created' => 'HashRef',
+    'thread.run.expired' => 'HashRef',
+    'thread.run.failed' => 'HashRef',
+    'thread.run.in_progress' => 'HashRef',
+    'thread.run.incomplete' => 'HashRef',
+    'thread.run.queued' => 'HashRef',
+    'thread.run.requires_action' => 'HashRef',
 );
 
 sub new( $class, $data ) {
-    if( ! exists $data->{ '' } ) {
-        croak "Need a '' field";
+    if( ! exists $data->{ 'event' } ) {
+        croak "Need a 'event' field";
     };
-    my $type = $data->{ '' };
-    croak "Unknown type '$type' in field ''"
+    my $type = $data->{ 'event' };
+    croak "Unknown type '$type' in field 'event'"
         unless exists $classes{ $type };
-    
+
     return $classes{ $type }->new( $data );
 }
 
