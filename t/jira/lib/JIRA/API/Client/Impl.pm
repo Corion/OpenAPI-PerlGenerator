@@ -626,6 +626,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getBanner()->get;
 
+    {"message":"This is a public, enabled, non-dismissible banner, set using the API","isDismissible":false,"isEnabled":true,"hashId":"9HN2FJK9DM8BHRWERVW3RRTGDJ4G4D5C","visibility":"public"}
 Get announcement banner configuration
 
 =head3 Parameters
@@ -1029,6 +1030,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"maxResults":1000,"startAt":0,"total":2,"isLast":true,"values":[{"id":"10000","fieldContextId":"10010"},{"id":"10001","fieldContextId":"10011","configuration":{"minValue":0,"maxValue":10000},"schema":{"properties":{"amount":{"type":"number"},"currency":{"type":"string"}},"required":["amount","currency"]}}]}
 Get custom field configurations
 
 =head3 Parameters
@@ -1437,6 +1439,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'keyFilter' => '...',
   )->get;
 
+    [{"id":"jira.home","key":"jira.home","value":"/var/jira/jira-home","name":"jira.home","desc":"Jira home directory","type":"string","defaultValue":""},{"id":"jira.clone.prefix","key":"jira.clone.prefix","value":"CLONE -","name":"The prefix added to the Summary field of cloned issues","type":"string","defaultValue":"CLONE -"}]
 Get application property
 
 =head3 Parameters
@@ -1550,6 +1553,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getAdvancedSettings()->get;
 
+    [{"id":"jira.home","key":"jira.home","value":"/var/jira/jira-home","name":"jira.home","desc":"Jira home directory","type":"string","defaultValue":""},{"id":"jira.clone.prefix","key":"jira.clone.prefix","value":"CLONE -","name":"The prefix added to the Summary field of cloned issues","type":"string","defaultValue":"CLONE -"}]
 Get advanced settings
 
 =head3 Parameters
@@ -1774,6 +1778,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getAllApplicationRoles()->get;
 
+    [{"key":"jira-software","groups":["jira-software-users","jira-testers"],"groupDetails":[{"name":"jira-testers","groupId":"42c8955c-63d7-42c8-9520-63d7aca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=42c8955c-63d7-42c8-9520-63d7aca0625"},{"name":"jira-software-users","groupId":"276f955c-63d7-42c8-9520-92d01dca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"}],"name":"Jira Software","defaultGroups":["jira-software-users"],"defaultGroupsDetails":[{"name":"jira-software-users","groupId":"276f955c-63d7-42c8-9520-92d01dca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"}],"selectedByDefault":false,"defined":false,"numberOfSeats":10,"remainingSeats":5,"userCount":5,"userCountDescription":"5 developers","hasUnlimitedSeats":false,"platform":false},{"key":"jira-core","groups":["jira-core-users"],"groupDetails":[{"name":"jira-core-users","groupId":"92d01dca0625-42c8-42c8-9520-276f955c","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=92d01dca0625-42c8-42c8-9520-276f955c"}],"name":"Jira Core","defaultGroups":["jira-core-users"],"defaultGroupsDetails":[{"name":"jira-core-users","groupId":"92d01dca0625-42c8-42c8-9520-276f955c","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=92d01dca0625-42c8-42c8-9520-276f955c"}],"selectedByDefault":false,"defined":false,"numberOfSeats":1,"remainingSeats":1,"userCount":0,"userCountDescription":"0 users","hasUnlimitedSeats":false,"platform":true}]
 Get all application roles
 
 =head3 Parameters
@@ -1871,6 +1876,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'key' => '...',
   )->get;
 
+    {"key":"jira-software","groups":["jira-software-users","jira-testers"],"groupDetails":[{"name":"jira-testers","groupId":"42c8955c-63d7-42c8-9520-63d7aca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=42c8955c-63d7-42c8-9520-63d7aca0625"},{"name":"jira-software-users","groupId":"276f955c-63d7-42c8-9520-92d01dca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"}],"name":"Jira Software","defaultGroups":["jira-software-users"],"defaultGroupsDetails":[{"name":"jira-software-users","groupId":"276f955c-63d7-42c8-9520-92d01dca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"}],"selectedByDefault":false,"defined":false,"numberOfSeats":10,"remainingSeats":5,"userCount":5,"userCountDescription":"5 developers","hasUnlimitedSeats":false,"platform":false}
 Get application role
 
 =head3 Parameters
@@ -2108,6 +2114,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getAttachmentMeta()->get;
 
+    {"enabled":true,"uploadLimit":1000000}
 Get Jira attachment settings
 
 =head3 Parameters
@@ -2436,6 +2443,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"id":10000,"self":"https://your-domain.atlassian.net/rest/api/3/attachments/10000","filename":"picture.jpg","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"created":"2023-02-28T09:45:11.830+0000","size":23123,"mimeType":"image/jpeg","content":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/content/10000","thumbnail":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/thumbnail/10000"}
 Get attachment metadata
 
 =head3 Parameters
@@ -2545,6 +2553,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"id":7237823,"name":"images.zip","entries":[{"path":"MG00N067.JPG","index":0,"size":"119 kB","mediaType":"image/jpeg","label":"MG00N067.JPG"},{"path":"Allegro from Duet in C Major.mp3","index":1,"size":"1.36 MB","mediaType":"audio/mpeg","label":"Allegro from Duet in C Major.mp3"},{"path":"long/path/thanks/to/lots/of/subdirectories/inside/making/it/quite/hard/to/reach/the/leaf.txt","index":2,"size":"0.0 k","mediaType":"text/plain","label":"long/path/thanks/to/.../reach/the/leaf.txt"}],"totalEntryCount":39,"mediaType":"application/zip"}
 Get all metadata for an expanded attachment
 
 =head3 Parameters
@@ -2657,6 +2666,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"entries":[{"entryIndex":0,"name":"Allegro from Duet in C Major.mp3","size":1430174,"mediaType":"audio/mpeg"},{"entryIndex":1,"name":"lrm.rtf","size":331,"mediaType":"text/rtf"}],"totalEntryCount":24}
 Get contents metadata for an expanded attachment
 
 =head3 Parameters
@@ -2773,6 +2783,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'to' => '...',
   )->get;
 
+    {"offset":0,"limit":1000,"total":1,"records":[{"id":1,"summary":"User created","remoteAddress":"192.168.1.1","authorKey":"administrator","authorAccountId":"5ab8f18d741e9c2c7e9d4538","created":"2014-03-19T18:45:42.967+0000","category":"user management","eventSource":"Jira Connect Plugin","description":"Optional description","objectItem":{"id":"user","name":"user","typeName":"USER","parentId":"1","parentName":"Jira Internal Directory"},"changedValues":[{"fieldName":"email","changedFrom":"user@atlassian.com","changedTo":"newuser@atlassian.com"}],"associatedItems":[{"id":"jira-software-users","name":"jira-software-users","typeName":"GROUP","parentId":"1","parentName":"Jira Internal Directory"}]}]}
 Get audit records
 
 =head3 Parameters
@@ -2897,6 +2908,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'type' => '...',
   )->get;
 
+    {"system":[{"id":"1000","isSystemAvatar":true,"isSelected":false,"isDeletable":false,"urls":{"16x16":"/secure/useravatar?size=xsmall&avatarId=10040&avatarType=project","24x24":"/secure/useravatar?size=small&avatarId=10040&avatarType=project","32x32":"/secure/useravatar?size=medium&avatarId=10040&avatarType=project","48x48":"/secure/useravatar?avatarId=10040&avatarType=project"}}]}
 Get system avatars by type
 
 =head3 Parameters
@@ -3003,6 +3015,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"maxResults":1048576,"startAt":0,"total":1,"isLast":true,"values":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/10010/comment/10000","id":"10000","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper."}]}]},"updateAuthor":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"created":"2021-01-17T12:34:00.000+0000","updated":"2021-01-18T23:45:00.000+0000","visibility":{"type":"role","value":"Administrators","identifier":"Administrators"}}]}
 Get comments by IDs
 
 =head3 Parameters
@@ -3131,6 +3144,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'commentId' => '...',
   )->get;
 
+    {"keys":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/EX-2/properties/issue.support","key":"issue.support"}]}
 Get comment property keys
 
 =head3 Parameters
@@ -3351,6 +3365,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'propertyKey' => '...',
   )->get;
 
+    {"key":"issue.support","value":{"system.conversation.id":"b1bf38be-5e94-4b40-a3b8-9278735ee1e6","system.support.time":"1m"}}
 Get comment property
 
 =head3 Parameters
@@ -3930,6 +3945,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/component/10000","id":"10000","name":"Component 1","description":"This is a Jira component","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"assigneeType":"PROJECT_LEAD","assignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"realAssigneeType":"PROJECT_LEAD","realAssignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"isAssigneeTypeValid":false,"project":"HSP","projectId":10000}
 Get component
 
 =head3 Parameters
@@ -4036,6 +4052,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/component/10000","id":"10000","name":"Component 1","description":"This is a Jira component","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"assigneeType":"PROJECT_LEAD","assignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"realAssigneeType":"PROJECT_LEAD","realAssignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"isAssigneeTypeValid":false,"project":"HSP","projectId":10000}
 Update component
 
 =head3 Parameters
@@ -4265,6 +4282,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/component/10000","issueCount":23}
 Get component issues count
 
 =head3 Parameters
@@ -4369,6 +4387,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getConfiguration()->get;
 
+    {"votingEnabled":true,"watchingEnabled":true,"unassignedIssuesAllowed":false,"subTasksEnabled":false,"issueLinkingEnabled":true,"timeTrackingEnabled":true,"attachmentsEnabled":true,"timeTrackingConfiguration":{"workingHoursPerDay":8.0,"workingDaysPerWeek":5.0,"timeFormat":"pretty","defaultUnit":"day"}}
 Get global settings
 
 =head3 Parameters
@@ -4460,6 +4479,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getSelectedTimeTrackingImplementation()->get;
 
+    {"key":"Jira","name":"JIRA provided time tracking","url":"/example/config/url"}
 Get selected time tracking provider
 
 =head3 Parameters
@@ -4687,6 +4707,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getAvailableTimeTrackingImplementations()->get;
 
+    [{"key":"Jira","name":"JIRA provided time tracking","url":"/example/config/url"}]
 Get all time tracking providers
 
 =head3 Parameters
@@ -4782,6 +4803,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getSharedTimeTrackingConfiguration()->get;
 
+    {"workingHoursPerDay":7.6,"workingDaysPerWeek":5.5,"timeFormat":"pretty","defaultUnit":"hour"}
 Get time tracking settings
 
 =head3 Parameters
@@ -4876,6 +4898,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->setSharedTimeTrackingConfiguration()->get;
 
+    {"workingHoursPerDay":7.6,"workingDaysPerWeek":5.5,"timeFormat":"pretty","defaultUnit":"hour"}
 Set time tracking settings
 
 =head3 Parameters
@@ -5000,6 +5023,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/customFieldOption/10000","value":"To Do"}
 Get custom field option
 
 =head3 Parameters
@@ -5108,6 +5132,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"startAt":10,"maxResults":10,"total":143,"prev":"https://your-domain.atlassian.net/rest/api/3/dashboard?startAt=0","next":"https://your-domain.atlassian.net/rest/api/3/dashboard?startAt=10","dashboards":[{"id":"10000","isFavourite":false,"name":"System Dashboard","popularity":1,"self":"https://your-domain.atlassian.net/rest/api/3/dashboard/10000","sharePermissions":[{"type":"global"}],"view":"https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=10000"},{"id":"20000","isFavourite":true,"name":"Build Engineering","owner":{"key":"Mia","self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","name":"mia","displayName":"Mia Krystof","avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"}},"popularity":1,"self":"https://your-domain.atlassian.net/rest/api/3/dashboard/20000","sharePermissions":[{"id":10105,"type":"group","group":{"name":"administrators","self":"https://your-domain.atlassian.net/rest/api/3/group?groupname=administrators"}}],"view":"https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=20000"}]}
 Get all dashboards
 
 =head3 Parameters
@@ -5258,6 +5283,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createDashboard()->get;
 
+    {"id":"10000","isFavourite":false,"name":"System Dashboard","popularity":1,"self":"https://your-domain.atlassian.net/rest/api/3/dashboard/10000","sharePermissions":[{"type":"global"}],"view":"https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=10000"}
 Create dashboard
 
 =head3 Parameters
@@ -5401,6 +5427,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getAllAvailableDashboardGadgets()->get;
 
+    {"gadgets":[{"moduleKey":"com.atlassian.plugins.atlassian-connect-plugin:com.atlassian.connect.node.sample-addon__sample-dashboard-item","title":"Issue statistics"},{"uri":"rest/gadgets/1.0/g/com.atlassian.streams.streams-jira-plugin:activitystream-gadget/gadgets/activitystream-gadget.xml","title":"Activity Stream"}]}
 Get available gadgets
 
 =head3 Parameters
@@ -5531,6 +5558,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/dashboard/search?expand=owner&maxResults=50&startAt=0","maxResults":100,"startAt":0,"total":2,"isLast":true,"values":[{"description":"Testing program","id":"1","isFavourite":true,"name":"Testing","owner":{"self":"https://your-domain.atlassian.net/user?accountId=5b10a2844c20165700ede21g","displayName":"Mia","active":true,"accountId":"5b10a2844c20165700ede21g","avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"}},"popularity":1,"self":"https://your-domain.atlassian.net/rest/api/3/dashboard/1","sharePermissions":[{"type":"global"}],"view":"https://your-domain.atlassian.net/Dashboard.jspa?selectPageId=1"},{"description":"Quantum initiative","id":"2","isFavourite":false,"name":"Quantum ","owner":{"self":"https://your-domain.atlassian.net/user?accountId=5b10a2844c20165700ede21g","displayName":"Mia","active":true,"accountId":"5b10a2844c20165700ede21g","avatarUrls":{"16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32","48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48"}},"popularity":0,"self":"https://your-domain.atlassian.net/rest/api/3/dashboard/2","sharePermissions":[{"type":"loggedin"}],"view":"https://your-domain.atlassian.net/Dashboard.jspa?selectPageId=2"}]}
 Search for dashboards
 
 =head3 Parameters
@@ -5790,6 +5818,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'gadgetId' => '...',
   )->get;
 
+    {"gadgets":[{"id":10001,"moduleKey":"com.atlassian.plugins.atlassian-connect-plugin:com.atlassian.connect.node.sample-addon__sample-dashboard-item","color":"blue","position":{"row":0,"column":0},"title":"Issue statistics"},{"id":10002,"moduleKey":"com.atlassian.plugins.atlassian-connect-plugin:com.atlassian.connect.node.sample-addon__sample-dashboard-graph","color":"red","position":{"row":1,"column":0},"title":"Activity stream"},{"id":10003,"moduleKey":"com.atlassian.plugins.atlassian-connect-plugin:com.atlassian.connect.node.sample-addon__sample-dashboard-item","color":"yellow","position":{"row":0,"column":1},"title":"Bubble chart"}]}
 Get gadgets
 
 =head3 Parameters
@@ -5926,6 +5955,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'dashboardId' => '...',
   )->get;
 
+    {"id":10001,"moduleKey":"com.atlassian.plugins.atlassian-connect-plugin:com.atlassian.connect.node.sample-addon__sample-dashboard-item","color":"blue","position":{"row":0,"column":1},"title":"Issue statistics"}
 Add gadget to dashboard
 
 =head3 Parameters
@@ -6381,6 +6411,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'itemId' => '...',
   )->get;
 
+    {"keys":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/EX-2/properties/issue.support","key":"issue.support"}]}
 Get dashboard item property keys
 
 =head3 Parameters
@@ -6611,6 +6642,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'propertyKey' => '...',
   )->get;
 
+    {"key":"issue.support","value":{"system.conversation.id":"b1bf38be-5e94-4b40-a3b8-9278735ee1e6","system.support.time":"1m"}}
 Get dashboard item property
 
 =head3 Parameters
@@ -7006,6 +7038,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"id":"10000","isFavourite":false,"name":"System Dashboard","popularity":1,"self":"https://your-domain.atlassian.net/rest/api/3/dashboard/10000","sharePermissions":[{"type":"global"}],"view":"https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=10000"}
 Get dashboard
 
 =head3 Parameters
@@ -7139,6 +7172,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"id":"10000","isFavourite":false,"name":"System Dashboard","popularity":1,"self":"https://your-domain.atlassian.net/rest/api/3/dashboard/10000","sharePermissions":[{"type":"global"}],"view":"https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=10000"}
 Update dashboard
 
 =head3 Parameters
@@ -7309,6 +7343,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"id":"10000","isFavourite":false,"name":"System Dashboard","popularity":1,"self":"https://your-domain.atlassian.net/rest/api/3/dashboard/10000","sharePermissions":[{"type":"global"}],"view":"https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=10000"}
 Copy dashboard
 
 =head3 Parameters
@@ -7475,6 +7510,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getEvents()->get;
 
+    [{"id":1,"name":"Issue Created"},{"id":2,"name":"Issue Updated"}]
 Get events
 
 =head3 Parameters
@@ -7572,6 +7608,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'check' => '...',
   )->get;
 
+    {"results":[{"expression":"analysed expression","errors":[{"line":1,"column":4,"message":"!, -, typeof, (, IDENTIFIER, null, true, false, NUMBER, STRING, TEMPLATE_LITERAL, new, [ or { expected, > encountered.","type":"syntax"},{"message":"Jira expression is too long (1040), limit: 1000 characters","type":"other"},{"message":"Jira expression has too many nodes (150), limit: 100 leaves","type":"other"}],"valid":false},{"expression":"issues.map(i => {idAndKey: [i.id, i.key], summary: i.summary, comments: i.comments})","valid":true,"type":"List<{idAndKey: [Number, String], summary: String, comments: List<Comment>}>","complexity":{"expensiveOperations":"N","variables":{"N":"issues"}}},{"expression":"issues.map(i => i.id > '0')","errors":[{"expression":"i.id > 0","message":"Can't compare Number to String.","type":"type"}],"valid":false,"type":"TypeError"}]}
 Analyse Jira expression
 
 =head3 Parameters
@@ -7739,6 +7776,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"value":"The expression's result. This value can be any JSON, not necessarily a String","meta":{"complexity":{"steps":{"value":1,"limit":10000},"expensiveOperations":{"value":3,"limit":10},"beans":{"value":0,"limit":1000},"primitiveValues":{"value":1,"limit":10000}},"issues":{"jql":{"startAt":0,"maxResults":1000,"count":140,"totalCount":140,"validationWarnings":["There is a problem with the JQL query."]}}}}
 Evaluate Jira expression
 
 =head3 Parameters
@@ -7885,6 +7923,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getFields()->get;
 
+    [{"id":"description","name":"Description","custom":false,"orderable":true,"navigable":true,"searchable":true,"clauseNames":["description"],"schema":{"type":"string","system":"description"}},{"id":"summary","key":"summary","name":"Summary","custom":false,"orderable":true,"navigable":true,"searchable":true,"clauseNames":["summary"],"schema":{"type":"string","system":"summary"}}]
 Get fields
 
 =head3 Parameters
@@ -8325,6 +8364,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"maxResults":50,"startAt":0,"total":2,"isLast":false,"values":[{"id":"customfield_10000","name":"Approvers","schema":{"type":"array","items":"user","custom":"com.atlassian.jira.plugin.system.customfieldtypes:multiuserpicker","customId":10000},"description":"Contains users needed for approval. This custom field was created by Jira Service Desk.","key":"customfield_10000","isLocked":true,"searcherKey":"com.atlassian.jira.plugin.system.customfieldtypes:userpickergroupsearcher","screensCount":2,"contextsCount":2,"lastUsed":{"type":"TRACKED","value":"2019-09-12T10:10:00.934+0000"}},{"id":"customfield_10001","name":"Change reason","schema":{"type":"option","custom":"com.atlassian.jira.plugin.system.customfieldtypes:select","customId":10001},"description":"Choose the reason for the change request","key":"customfield_10001","isLocked":false,"searcherKey":"com.atlassian.jira.plugin.system.customfieldtypes:multiselectsearcher","screensCount":2,"contextsCount":2,"projectsCount":2,"lastUsed":{"type":"NOT_TRACKED"}}]}
 Get fields paginated
 
 =head3 Parameters
@@ -8549,6 +8589,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'orderBy' => '...',
   )->get;
 
+    {"maxResults":50,"startAt":0,"total":1,"isLast":false,"values":[{"id":"customfield_10000","name":"Approvers","schema":{"type":"array","custom":"com.atlassian.jira.plugin.system.customfieldtypes:multiuserpicker","customId":10003},"description":"Contains users needed for approval. This custom field was created by Jira Service Desk.","key":"customfield_10003","trashedDate":"2019-09-12T10:10:00.936+0000","trashedBy":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney"},"plannedDeletionDate":"2019-09-30T10:10:00.936+0000"}]}
 Get fields in trash paginated
 
 =head3 Parameters
@@ -9000,6 +9041,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":2,"isLast":true,"values":[{"id":"10025","name":"Bug fields context","description":"A context used to define the custom field options for bugs.","isGlobalContext":true,"isAnyIssueType":false},{"id":"10026","name":"Task fields context","description":"A context used to define the custom field options for tasks.","isGlobalContext":false,"isAnyIssueType":false}]}
 Get custom field contexts
 
 =head3 Parameters
@@ -9314,6 +9356,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"maxResults":50,"startAt":0,"total":3,"isLast":true,"values":[{"type":"option.single","contextId":"10100","optionId":"10001"},{"type":"option.single","contextId":"10101","optionId":"10003"},{"type":"option.single","contextId":"10103"}]}
 Get custom field contexts default values
 
 =head3 Parameters
@@ -9622,6 +9665,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":3,"isLast":true,"values":[{"contextId":"10001","issueTypeId":"10010"},{"contextId":"10001","issueTypeId":"10011"},{"contextId":"10002","isAnyIssueType":true}]}
 Get issue types for custom field context
 
 =head3 Parameters
@@ -9759,6 +9803,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"maxResults":50,"startAt":0,"total":3,"isLast":true,"values":[{"projectId":"10000","issueTypeId":"10000","contextId":"10000"},{"projectId":"10000","issueTypeId":"10001","contextId":null},{"projectId":"10001","issueTypeId":"10002","contextId":"10003"}]}
 Get custom field contexts for projects and issue types
 
 =head3 Parameters
@@ -9933,6 +9978,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":2,"isLast":true,"values":[{"contextId":"10025","projectId":"10001"},{"contextId":"10026","isGlobalContext":true}]}
 Get project mappings for custom field context
 
 =head3 Parameters
@@ -10756,6 +10802,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":4,"isLast":true,"values":[{"id":"10001","value":"New York"},{"id":"10002","value":"Boston","disabled":true},{"id":"10004","value":"Denver"},{"id":"10003","value":"Brooklyn","optionId":"10001"}]}
 Get custom field options (context)
 
 =head3 Parameters
@@ -10932,6 +10979,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'contextId' => '...',
   )->get;
 
+    {"options":[{"id":"10001","value":"Scranton","disabled":false},{"id":"10002","value":"Manhattan","optionId":"10000","disabled":true},{"id":"10003","value":"The Electric City","disabled":false}]}
 Create custom field options (context)
 
 =head3 Parameters
@@ -11098,6 +11146,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'contextId' => '...',
   )->get;
 
+    {"options":[{"id":"10001","value":"Scranton","disabled":false},{"id":"10002","value":"Manhattan","disabled":true},{"id":"10003","value":"The Electric City","disabled":false}]}
 Update custom field options (context)
 
 =head3 Parameters
@@ -11920,6 +11969,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"maxResults":1,"startAt":0,"total":5,"isLast":false,"values":[{"id":10001,"name":"Default Context"}]}
 Get contexts for a field
 
 =head3 Parameters
@@ -12042,6 +12092,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"maxResults":1,"startAt":0,"total":5,"isLast":false,"values":[{"id":10001,"name":"Default Screen","description":"Provides for the update of all system fields.","tab":{"id":10000,"name":"Fields Tab"}}]}
 Get screens for a field
 
 =head3 Parameters
@@ -12168,6 +12219,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'fieldKey' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/field/fieldKey/option?startAt=0&maxResults=1","nextPage":"https://your-domain.atlassian.net/rest/api/3/field/fieldKey/option?startAt=1&maxResults=1","maxResults":1,"startAt":0,"total":10,"isLast":false,"values":[{"id":1,"value":"Team 1","properties":{"leader":{"name":"Leader Name","email":"lname@example.com"},"members":42,"description":"The team's description","founded":"2016-06-06"},"config":{"scope":{"projects":[],"projects2":[{"id":1001,"attributes":["notSelectable"]},{"id":1002,"attributes":["notSelectable"]}],"global":{}},"attributes":[]}}]}
 Get all issue field options
 
 =head3 Parameters
@@ -12301,6 +12353,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'fieldKey' => '...',
   )->get;
 
+    {"id":1,"value":"Team 1","properties":{"leader":{"name":"Leader Name","email":"lname@example.com"},"members":42,"description":"The team's description","founded":"2016-06-06"},"config":{"scope":{"projects":[],"projects2":[{"id":1001,"attributes":["notSelectable"]},{"id":1002,"attributes":["notSelectable"]}],"global":{}},"attributes":[]}}
 Create issue field option
 
 =head3 Parameters
@@ -12448,6 +12501,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'fieldKey' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/field/fieldKey/option/suggestions?startAt=0&maxResults=1","nextPage":"https://your-domain.atlassian.net/rest/api/3/field/fieldKey/option/suggestions?startAt=1&maxResults=1","maxResults":1,"startAt":0,"total":10,"isLast":false,"values":[{"id":1,"value":"Team 1","properties":{"leader":{"name":"Leader Name","email":"lname@example.com"},"members":42,"description":"The team's description","founded":"2016-06-06"}}]}
 Get selectable issue field options
 
 =head3 Parameters
@@ -12589,6 +12643,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'fieldKey' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/field/fieldKey/option/suggestions?startAt=0&maxResults=1","nextPage":"https://your-domain.atlassian.net/rest/api/3/field/fieldKey/option/suggestions?startAt=1&maxResults=1","maxResults":1,"startAt":0,"total":10,"isLast":false,"values":[{"id":1,"value":"Team 1","properties":{"leader":{"name":"Leader Name","email":"lname@example.com"},"members":42,"description":"The team's description","founded":"2016-06-06"}}]}
 Get visible issue field options
 
 =head3 Parameters
@@ -12859,6 +12914,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'optionId' => '...',
   )->get;
 
+    {"id":1,"value":"Team 1","properties":{"leader":{"name":"Leader Name","email":"lname@example.com"},"members":42,"description":"The team's description","founded":"2016-06-06"},"config":{"scope":{"projects":[],"projects2":[{"id":1001,"attributes":["notSelectable"]},{"id":1002,"attributes":["notSelectable"]}],"global":{}},"attributes":[]}}
 Get issue field option
 
 =head3 Parameters
@@ -12990,6 +13046,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'optionId' => '...',
   )->get;
 
+    {"id":1,"value":"Team 1","properties":{"leader":{"name":"Leader Name","email":"lname@example.com"},"members":42,"description":"The team's description","founded":"2016-06-06"},"config":{"scope":{"projects":[],"projects2":[{"id":1001,"attributes":["notSelectable"]},{"id":1002,"attributes":["notSelectable"]}],"global":{}},"attributes":[]}}
 Update issue field option
 
 =head3 Parameters
@@ -13813,6 +13870,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'query' => '...',
   )->get;
 
+    {"maxResults":50,"startAt":0,"total":2,"isLast":true,"values":[{"id":10000,"name":"Default Field Configuration","description":"The default field configuration description","isDefault":true},{"id":10001,"name":"My Field Configuration","description":"My field configuration description"}]}
 Get all field configurations
 
 =head3 Parameters
@@ -13935,6 +13993,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createFieldConfiguration()->get;
 
+    {"id":10001,"name":"My Field Configuration","description":"My field configuration description"}
 Create field configuration
 
 =head3 Parameters
@@ -14294,6 +14353,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"maxResults":50,"startAt":0,"total":2,"isLast":true,"values":[{"id":"environment","description":"For example operating system, software platform and/or hardware specifications (include as appropriate for the issue).","isHidden":false,"isRequired":false},{"id":"description","isHidden":false,"isRequired":false}]}
 Get field configuration items
 
 =head3 Parameters
@@ -14543,6 +14603,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"maxResults":10,"startAt":0,"total":3,"isLast":true,"values":[{"id":"10000","name":"Field Configuration Scheme for Bugs","description":"This field configuration scheme is for bugs only."},{"id":"10001","name":"Field Configuration Scheme for software related projects","description":"We can use this one for software projects."},{"id":"10002","name":"Field Configuration Scheme for Epics","description":"Use this one for Epic issue type."}]}
 Get all field configuration schemes
 
 =head3 Parameters
@@ -14798,6 +14859,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'fieldConfigurationSchemeId' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":5,"isLast":true,"values":[{"fieldConfigurationSchemeId":"10020","issueTypeId":"10000","fieldConfigurationId":"10010"},{"fieldConfigurationSchemeId":"10020","issueTypeId":"10001","fieldConfigurationId":"10010"},{"fieldConfigurationSchemeId":"10021","issueTypeId":"10002","fieldConfigurationId":"10000"},{"fieldConfigurationSchemeId":"10022","issueTypeId":"default","fieldConfigurationId":"10011"},{"fieldConfigurationSchemeId":"10023","issueTypeId":"default","fieldConfigurationId":"10000"}]}
 Get field configuration issue type items
 
 =head3 Parameters
@@ -14920,6 +14982,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectId' => '...',
   )->get;
 
+    {"maxResults":50,"startAt":0,"total":5,"isLast":true,"values":[{"projectIds":["10","11"]},{"fieldConfigurationScheme":{"id":"10002","name":"Field Configuration Scheme for software related projects","description":"We can use this one for software projects."},"projectIds":["12","13","14"]}]}
 Get field configuration schemes for projects
 
 =head3 Parameters
@@ -15876,6 +15939,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'overrideSharePermissions' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/filter/10000","id":"10000","name":"All Open Bugs","description":"Lists all open bugs","owner":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"jql":"type = Bug and resolution is empty","viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000","searchUrl":"https://your-domain.atlassian.net/rest/api/3/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","favourite":true,"favouritedCount":0,"sharePermissions":[],"editPermissions":[],"subscriptions":{"size":0,"items":[],"max-results":0,"start-index":0,"end-index":0}}
 Create filter
 
 =head3 Parameters
@@ -16062,6 +16126,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getDefaultShareScope()->get;
 
+    {"scope":"GLOBAL"}
 Get default share scope
 
 =head3 Parameters
@@ -16153,6 +16218,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->setDefaultShareScope()->get;
 
+    {"scope":"GLOBAL"}
 Set default share scope
 
 =head3 Parameters
@@ -16281,6 +16347,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/filter/10000","id":"10000","name":"All Open Bugs","description":"Lists all open bugs","owner":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"jql":"type = Bug and resolution is empty","viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000","searchUrl":"https://your-domain.atlassian.net/rest/api/3/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","favourite":true,"favouritedCount":0,"sharePermissions":[],"editPermissions":[],"subscriptions":{"size":0,"items":[],"max-results":0,"start-index":0,"end-index":0}},{"self":"https://your-domain.atlassian.net/rest/api/3/filter/10010","id":"10010","name":"My issues","description":"Issues assigned to me","owner":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"jql":"assignee = currentUser() and resolution is empty","viewUrl":"https://your-domain.atlassian.net/issues/?filter=10010","searchUrl":"https://your-domain.atlassian.net/rest/api/3/search?jql=assignee+in+%28currentUser%28%29%29+and+resolution+is+empty","favourite":true,"favouritedCount":0,"sharePermissions":[{"id":10000,"type":"global"},{"id":10010,"type":"project","project":{"self":"https://your-domain.atlassian.net/rest/api/3/project/EX","id":"10000","key":"EX","name":"Example","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}}}],"editPermissions":[],"subscriptions":{"size":0,"items":[],"max-results":0,"start-index":0,"end-index":0}}]
 Get favorite filters
 
 =head3 Parameters
@@ -16398,6 +16465,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'includeFavourites' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/filter/10000","id":"10000","name":"All Open Bugs","description":"Lists all open bugs","owner":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"jql":"type = Bug and resolution is empty","viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000","searchUrl":"https://your-domain.atlassian.net/rest/api/3/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","favourite":true,"favouritedCount":0,"sharePermissions":[],"editPermissions":[],"subscriptions":{"size":0,"items":[],"max-results":0,"start-index":0,"end-index":0}},{"self":"https://your-domain.atlassian.net/rest/api/3/filter/10010","id":"10010","name":"My issues","description":"Issues assigned to me","owner":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"jql":"assignee = currentUser() and resolution is empty","viewUrl":"https://your-domain.atlassian.net/issues/?filter=10010","searchUrl":"https://your-domain.atlassian.net/rest/api/3/search?jql=assignee+in+%28currentUser%28%29%29+and+resolution+is+empty","favourite":true,"favouritedCount":0,"sharePermissions":[{"id":10000,"type":"global"},{"id":10010,"type":"project","project":{"self":"https://your-domain.atlassian.net/rest/api/3/project/EX","id":"10000","key":"EX","name":"Example","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}}}],"editPermissions":[],"subscriptions":{"size":0,"items":[],"max-results":0,"start-index":0,"end-index":0}}]
 Get my filters
 
 =head3 Parameters
@@ -16530,6 +16598,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'overrideSharePermissions' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/filter/search?accountId=&maxResults=50&filterName=&orderBy=name&startAt=0&expand=description,owner,jql,searchUrl,viewUrl,favourite,favouritedCount,sharePermissions,editPermissions,isWritable,subscriptions","maxResults":100,"startAt":0,"total":2,"isLast":true,"values":[{"expand":"description,owner,jql,searchUrl,viewUrl,favourite,favouritedCount,sharePermissions,editPermissions,isWritable,subscriptions","self":"https://your-domain.atlassian.net/rest/api/3/filter/10000","id":"10000","name":"All Open Bugs","description":"Lists all open bugs","owner":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"jql":"type = Bug and resolution is empty","viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000","searchUrl":"https://your-domain.atlassian.net/rest/api/3/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","favourite":false,"favouritedCount":0,"sharePermissions":[],"editPermissions":[],"subscriptions":[]},{"expand":"description,owner,jql,searchUrl,viewUrl,favourite,favouritedCount,sharePermissions,editPermissions,isWritable,subscriptions","self":"https://your-domain.atlassian.net/rest/api/3/filter/10010","id":"10010","name":"My issues","description":"Issues assigned to me","owner":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"jql":"assignee = currentUser() and resolution is empty","viewUrl":"https://your-domain.atlassian.net/issues/?filter=10010","searchUrl":"https://your-domain.atlassian.net/rest/api/3/search?jql=assignee+in+%28currentUser%28%29%29+and+resolution+is+empty","favourite":true,"favouritedCount":123,"sharePermissions":[{"id":10000,"type":"global"},{"id":10010,"type":"project","project":{"self":"https://your-domain.atlassian.net/rest/api/3/project/EX","id":"10000","key":"EX","name":"Example","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}}}],"editPermissions":[{"id":10010,"type":"project","project":{"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY","id":"10002","key":"MKY","name":"Example","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10002","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10002","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10002","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10002"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"},"deleted":true,"retentionTillDate":"2023-04-29T09:45:09.985+0000","deletedDate":"2023-02-28T09:45:09.985+0000","deletedBy":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false}},"role":{"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}},{"id":10010,"type":"group","group":{"name":"jira-administrators","groupId":"276f955c-63d7-42c8-9520-92d01dca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"}}],"subscriptions":[{"id":1,"user":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney","groups":{"size":3,"items":[]},"applicationRoles":{"size":1,"items":[]}}}]}]}
 Search for filters
 
 =head3 Parameters
@@ -16894,6 +16963,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'overrideSharePermissions' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/filter/10000","id":"10000","name":"All Open Bugs","description":"Lists all open bugs","owner":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"jql":"type = Bug and resolution is empty","viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000","searchUrl":"https://your-domain.atlassian.net/rest/api/3/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","favourite":true,"favouritedCount":0,"sharePermissions":[],"editPermissions":[],"subscriptions":{"size":0,"items":[],"max-results":0,"start-index":0,"end-index":0}}
 Get filter
 
 =head3 Parameters
@@ -17029,6 +17099,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'overrideSharePermissions' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/filter/10000","id":"10000","name":"All Open Bugs","description":"Lists all open bugs","owner":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"jql":"type = Bug and resolution is empty","viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000","searchUrl":"https://your-domain.atlassian.net/rest/api/3/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","favourite":true,"favouritedCount":0,"sharePermissions":[],"editPermissions":[],"subscriptions":{"size":0,"items":[],"max-results":0,"start-index":0,"end-index":0}}
 Update filter
 
 =head3 Parameters
@@ -17320,6 +17391,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    [{"label":"Key","value":"issuekey"},{"label":"Summary","value":"summary"}]
 Get columns
 
 =head3 Parameters
@@ -17542,6 +17614,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/filter/10000","id":"10000","name":"All Open Bugs","description":"Lists all open bugs","owner":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"jql":"type = Bug and resolution is empty","viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000","searchUrl":"https://your-domain.atlassian.net/rest/api/3/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","favourite":true,"favouritedCount":0,"sharePermissions":[],"editPermissions":[],"subscriptions":{"size":0,"items":[],"max-results":0,"start-index":0,"end-index":0}}
 Remove filter as favorite
 
 =head3 Parameters
@@ -17668,6 +17741,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/filter/10000","id":"10000","name":"All Open Bugs","description":"Lists all open bugs","owner":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"jql":"type = Bug and resolution is empty","viewUrl":"https://your-domain.atlassian.net/issues/?filter=10000","searchUrl":"https://your-domain.atlassian.net/rest/api/3/search?jql=type%20%3D%20Bug%20and%20resolutino%20is%20empty","favourite":true,"favouritedCount":0,"sharePermissions":[],"editPermissions":[],"subscriptions":{"size":0,"items":[],"max-results":0,"start-index":0,"end-index":0}}
 Add filter as favorite
 
 =head3 Parameters
@@ -17915,6 +17989,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    [{"id":10000,"type":"global"},{"id":10010,"type":"project","project":{"self":"https://your-domain.atlassian.net/rest/api/3/project/EX","id":"10000","key":"EX","name":"Example","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}}},{"id":10010,"type":"project","project":{"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY","id":"10002","key":"MKY","name":"Example","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10002","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10002","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10002","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10002"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"},"deleted":true,"retentionTillDate":"2023-04-29T09:45:09.985+0000","deletedDate":"2023-02-28T09:45:09.985+0000","deletedBy":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false}},"role":{"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}},{"id":10010,"type":"group","group":{"name":"jira-administrators","groupId":"276f955c-63d7-42c8-9520-92d01dca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"}}]
 Get share permissions
 
 =head3 Parameters
@@ -18305,6 +18380,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'permissionId' => '...',
   )->get;
 
+    {"id":10000,"type":"global"}
 Get share permission
 
 =head3 Parameters
@@ -18772,6 +18848,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'applicationKey' => '...',
   )->get;
 
+    {"maxResults":10,"startAt":0,"total":2,"isLast":true,"values":[{"name":"jdog-developers","groupId":"276f955c-63d7-42c8-9520-92d01dca0625"},{"name":"juvenal-bot","groupId":"6e87dc72-4f1f-421f-9382-2fee8b652487"}]}
 Bulk get groups
 
 =head3 Parameters
@@ -18933,6 +19010,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/group/member?groupname=jira-administrators&includeInactiveUsers=false&startAt=2&maxResults=2","nextPage":"https://your-domain.atlassian.net/rest/api/3/group/member?groupname=jira-administrators&includeInactiveUsers=false&startAt=4&maxResults=2","maxResults":2,"startAt":3,"total":5,"isLast":false,"values":[{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","name":"","key":"","accountId":"5b10a2844c20165700ede21g","emailAddress":"mia@example.com","avatarUrls":{},"displayName":"Mia","active":true,"timeZone":"Australia/Sydney","accountType":"atlassian"},{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a0effa615349cb016cd8","name":"","key":"","accountId":"5b10a0effa615349cb016cd8","emailAddress":"will@example.com","avatarUrls":{},"displayName":"Will","active":false,"timeZone":"Australia/Sydney","accountType":"atlassian"}]}
 Get users from group
 
 =head3 Parameters
@@ -19326,6 +19404,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'userName' => '...',
   )->get;
 
+    {"header":"Showing 20 of 25 matching groups","total":25,"groups":[{"name":"jdog-developers","html":"<b>j</b>dog-developers","groupId":"276f955c-63d7-42c8-9520-92d01dca0625"},{"name":"juvenal-bot","html":"<b>j</b>uvenal-bot","groupId":"6e87dc72-4f1f-421f-9382-2fee8b652487"}]}
 Find groups
 
 =head3 Parameters
@@ -19464,6 +19543,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'excludeConnectAddons' => '...',
   )->get;
 
+    {"users":{"users":[{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"mia","key":"mia","html":"<strong>Mi</strong>a Krystof - <strong>mi</strong>a@example.com (<strong>mi</strong>a)","displayName":"Mia Krystof","avatarUrl":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16"}],"total":25,"header":"Showing 20 of 25 matching groups"},"groups":{"header":"Showing 20 of 25 matching groups","total":25,"groups":[{"name":"jdog-developers","html":"<b>j</b>dog-developers","groupId":"276f955c-63d7-42c8-9520-92d01dca0625"},{"name":"juvenal-bot","html":"<b>j</b>uvenal-bot","groupId":"6e87dc72-4f1f-421f-9382-2fee8b652487"}]}}
 Find users and groups
 
 =head3 Parameters
@@ -19615,6 +19695,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getLicense()->get;
 
+    {"applications":[{"id":"jira-core","plan":"PAID"},{"id":"jira-servicedesk","plan":"FREE"},{"id":"jira-software","plan":"PAID"},{"id":"jira-product-discovery","plan":"FREE"}]}
 Get license
 
 =head3 Parameters
@@ -20001,6 +20082,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"projects":[{"self":"https://your-domain.atlassian.net/rest/api/3/project/ED","id":"10000","key":"ED","name":"Edison Project","avatarUrls":{"16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000&avatarId=10011","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000&avatarId=10011","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000&avatarId=10011","48x48":"https://your-domain.atlassian.net/secure/projectavatar?pid=10000&avatarId=10011"},"issuetypes":[{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/1","id":"1","description":"An error in the code","iconUrl":"https://your-domain.atlassian.net/images/icons/issuetypes/bug.png","name":"Bug","subtask":false,"fields":{"issuetype":{"required":true,"name":"Issue Type","key":"issuetype","hasDefaultValue":false,"operations":["set"]}}}]}]}
 Get create issue metadata
 
 =head3 Parameters
@@ -20782,6 +20864,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getIsWatchingIssueBulk()->get;
 
+    {"issuesIsWatching":{"10001":true,"10002":false,"10005":true}}
 Get is watching issue bulk
 
 =head3 Parameters
@@ -21001,6 +21084,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'updateHistory' => '...',
   )->get;
 
+    {"id":"10002","self":"https://your-domain.atlassian.net/rest/api/3/issue/10002","key":"ED-1","fields":{"watcher":{"self":"https://your-domain.atlassian.net/rest/api/3/issue/EX-1/watchers","isWatching":false,"watchCount":1,"watchers":[{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false}]},"attachment":[{"id":10000,"self":"https://your-domain.atlassian.net/rest/api/3/attachments/10000","filename":"picture.jpg","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"created":"2023-02-28T09:45:11.830+0000","size":23123,"mimeType":"image/jpeg","content":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/content/10000","thumbnail":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/thumbnail/10000"}],"sub-tasks":[{"id":"10000","type":{"id":"10000","name":"","inward":"Parent","outward":"Sub-task"},"outwardIssue":{"id":"10003","key":"ED-2","self":"https://your-domain.atlassian.net/rest/api/3/issue/ED-2","fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}}}}],"description":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Main order flow broken"}]}]},"project":{"self":"https://your-domain.atlassian.net/rest/api/3/project/EX","id":"10000","key":"EX","name":"Example","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}},"comment":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/10010/comment/10000","id":"10000","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper."}]}]},"updateAuthor":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"created":"2021-01-17T12:34:00.000+0000","updated":"2021-01-18T23:45:00.000+0000","visibility":{"type":"role","value":"Administrators","identifier":"Administrators"}}],"issuelinks":[{"id":"10001","type":{"id":"10000","name":"Dependent","inward":"depends on","outward":"is depended by"},"outwardIssue":{"id":"10004L","key":"PR-2","self":"https://your-domain.atlassian.net/rest/api/3/issue/PR-2","fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}}}},{"id":"10002","type":{"id":"10000","name":"Dependent","inward":"depends on","outward":"is depended by"},"inwardIssue":{"id":"10004","key":"PR-3","self":"https://your-domain.atlassian.net/rest/api/3/issue/PR-3","fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}}}}],"worklog":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/10010/worklog/10000","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"updateAuthor":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"comment":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"I did some work here."}]}]},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"type":"group","value":"jira-developers","identifier":"276f955c-63d7-42c8-9520-92d01dca0625"},"started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"id":"100028","issueId":"10002"}],"updated":1,"timetracking":{"originalEstimate":"10m","remainingEstimate":"3m","timeSpent":"6m","originalEstimateSeconds":600,"remainingEstimateSeconds":200,"timeSpentSeconds":400}}}
 Get issue
 
 =head3 Parameters
@@ -21610,6 +21694,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueIdOrKey' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/attachments/10000","id":"10001","filename":"picture.jpg","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney"},"created":"2023-02-28T09:45:12.882+0000","size":23123,"mimeType":"image/jpeg","content":"https://your-domain.atlassian.net/rest/api/3/attachment/content/10000","thumbnail":"https://your-domain.atlassian.net/rest/api/3/attachment/thumbnail/10000"},{"self":"https://your-domain.atlassian.net/rest/api/3/attachments/10001","filename":"dbeuglog.txt","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney"},"created":"2023-02-28T09:45:12.882+0000","size":2460,"mimeType":"text/plain","content":"https://your-domain.atlassian.net/rest/api/3/attachment/content/10001"}]
 Add attachment
 
 =head3 Parameters
@@ -21725,6 +21810,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/issue/TT-1/changelog?startAt=2&maxResults=2","nextPage":"https://your-domain.atlassian.net/rest/api/3/issue/TT-1/changelog?&startAt=4&maxResults=2","maxResults":2,"startAt":2,"total":5,"isLast":false,"values":[{"id":"10001","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney"},"created":"1970-01-18T06:27:50.429+0000","items":[{"field":"fields","fieldtype":"jira","fieldId":"fieldId","from":null,"fromString":"","to":null,"toString":"label-1"}]},{"id":"10002","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney"},"created":"1970-01-18T06:27:51.429+0000","items":[{"field":"fields","fieldtype":"jira","fieldId":"fieldId","from":null,"fromString":"label-1","to":null,"toString":"label-1 label-2"}]}]}
 Get changelogs
 
 =head3 Parameters
@@ -21841,6 +21927,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueIdOrKey' => '...',
   )->get;
 
+    {"startAt":0,"maxResults":2,"total":2,"histories":[{"id":"10001","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney"},"created":"1970-01-18T06:27:50.429+0000","items":[{"field":"fields","fieldtype":"jira","fieldId":"fieldId","from":null,"fromString":"","to":null,"toString":"label-1"}]},{"id":"10002","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney"},"created":"1970-01-18T06:27:51.429+0000","items":[{"field":"fields","fieldtype":"jira","fieldId":"fieldId","from":null,"fromString":"label-1","to":null,"toString":"label-1 label-2"}]}]}
 Get changelogs by IDs
 
 =head3 Parameters
@@ -21964,6 +22051,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"startAt":0,"maxResults":1,"total":1,"comments":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/10010/comment/10000","id":"10000","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper."}]}]},"updateAuthor":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"created":"2021-01-17T12:34:00.000+0000","updated":"2021-01-18T23:45:00.000+0000","visibility":{"type":"role","value":"Administrators","identifier":"Administrators"}}]}
 Get comments
 
 =head3 Parameters
@@ -22380,6 +22468,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/issue/10010/comment/10000","id":"10000","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper."}]}]},"updateAuthor":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"created":"2021-01-17T12:34:00.000+0000","updated":"2021-01-18T23:45:00.000+0000","visibility":{"type":"role","value":"Administrators","identifier":"Administrators"}}
 Get comment
 
 =head3 Parameters
@@ -22505,6 +22594,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/issue/10010/comment/10000","id":"10000","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper."}]}]},"updateAuthor":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"created":"2021-01-17T12:34:00.000+0000","updated":"2021-01-18T23:45:00.000+0000","visibility":{"type":"role","value":"Administrators","identifier":"Administrators"}}
 Update comment
 
 =head3 Parameters
@@ -22698,6 +22788,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'overrideEditableFlag' => '...',
   )->get;
 
+    {"fields":{"summary":{"required":false,"schema":{"type":"array","items":"option","custom":"com.atlassian.jira.plugin.system.customfieldtypes:multiselect","customId":10001},"name":"My Multi Select","key":"field_key","hasDefaultValue":false,"operations":["set","add"],"allowedValues":["red","blue"],"defaultValue":"red"}}}
 Get edit issue metadata
 
 =head3 Parameters
@@ -22958,6 +23049,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueIdOrKey' => '...',
   )->get;
 
+    {"keys":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/EX-2/properties/issue.support","key":"issue.support"}]}
 Get issue property keys
 
 =head3 Parameters
@@ -23163,6 +23255,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'propertyKey' => '...',
   )->get;
 
+    {"key":"issue.support","value":{"system.conversation.id":"b1bf38be-5e94-4b40-a3b8-9278735ee1e6","system.support.time":"1m"}}
 Get issue property
 
 =head3 Parameters
@@ -23525,6 +23618,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'globalId' => '...',
   )->get;
 
+    [{"id":10000,"self":"https://your-domain.atlassian.net/rest/api/issue/MKY-1/remotelink/10000","globalId":"system=http://www.mycompany.com/support&id=1","application":{"type":"com.acme.tracker","name":"My Acme Tracker"},"relationship":"causes","object":{"url":"http://www.mycompany.com/support?id=1","title":"TSTSUP-111","summary":"Customer support issue","icon":{"url16x16":"http://www.mycompany.com/support/ticket.png","title":"Support Ticket"},"status":{"resolved":true,"icon":{"url16x16":"http://www.mycompany.com/support/resolved.png","title":"Case Closed","link":"http://www.mycompany.com/support?id=1&details=closed"}}}},{"id":10001,"self":"https://your-domain.atlassian.net/rest/api/issue/MKY-1/remotelink/10001","globalId":"system=http://www.anothercompany.com/tester&id=1234","application":{"type":"com.acme.tester","name":"My Acme Tester"},"relationship":"is tested by","object":{"url":"http://www.anothercompany.com/tester/testcase/1234","title":"Test Case #1234","summary":"Test that the submit button saves the item","icon":{"url16x16":"http://www.anothercompany.com/tester/images/testcase.gif","title":"Test Case"},"status":{"resolved":false,"icon":{"url16x16":"http://www.anothercompany.com/tester/images/person/mia.gif","title":"Tested by Mia Krystof","link":"http://www.anothercompany.com/tester/person?accountId=5b10a2844c20165700ede21g"}}}}]
 Get remote issue links
 
 =head3 Parameters
@@ -23645,6 +23739,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueIdOrKey' => '...',
   )->get;
 
+    {"id":10000,"self":"https://your-domain.atlassian.net/rest/api/issue/MKY-1/remotelink/10000"}
 Create or update remote issue link
 
 =head3 Parameters
@@ -23920,6 +24015,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'linkId' => '...',
   )->get;
 
+    {"id":10000,"self":"https://your-domain.atlassian.net/rest/api/issue/MKY-1/remotelink/10000","globalId":"system=http://www.mycompany.com/support&id=1","application":{"type":"com.acme.tracker","name":"My Acme Tracker"},"relationship":"causes","object":{"url":"http://www.mycompany.com/support?id=1","title":"TSTSUP-111","summary":"Customer support issue","icon":{"url16x16":"http://www.mycompany.com/support/ticket.png","title":"Support Ticket"},"status":{"resolved":true,"icon":{"url16x16":"http://www.mycompany.com/support/resolved.png","title":"Case Closed","link":"http://www.mycompany.com/support?id=1&details=closed"}}}}
 Get remote issue link by ID
 
 =head3 Parameters
@@ -24204,6 +24300,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'sortByOpsBarAndStatus' => '...',
   )->get;
 
+    {"transitions":[{"id":"2","name":"Close Issue","to":{"self":"https://your-domain.atlassian.net/rest/api/3/status/10000","description":"The issue is currently being worked on.","iconUrl":"https://your-domain.atlassian.net/images/icons/progress.gif","name":"In Progress","id":"10000","statusCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/statuscategory/1","id":1,"key":"in-flight","colorName":"yellow","name":"In Progress"}},"hasScreen":false,"isGlobal":false,"isInitial":false,"isAvailable":true,"isConditional":false,"fields":{"summary":{"required":false,"schema":{"type":"array","items":"option","custom":"com.atlassian.jira.plugin.system.customfieldtypes:multiselect","customId":10001},"name":"My Multi Select","key":"field_key","hasDefaultValue":false,"operations":["set","add"],"allowedValues":["red","blue"],"defaultValue":"red"}}},{"id":"711","name":"QA Review","to":{"self":"https://your-domain.atlassian.net/rest/api/3/status/5","description":"The issue is closed.","iconUrl":"https://your-domain.atlassian.net/images/icons/closed.gif","name":"Closed","id":"5","statusCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/statuscategory/9","id":9,"key":"completed","colorName":"green"}},"hasScreen":true,"fields":{"summary":{"required":false,"schema":{"type":"array","items":"option","custom":"com.atlassian.jira.plugin.system.customfieldtypes:multiselect","customId":10001},"name":"My Multi Select","key":"field_key","hasDefaultValue":false,"operations":["set","add"],"allowedValues":["red","blue"],"defaultValue":"red"},"colour":{"required":false,"schema":{"type":"array","items":"option","custom":"com.atlassian.jira.plugin.system.customfieldtypes:multiselect","customId":10001},"name":"My Multi Select","key":"field_key","hasDefaultValue":false,"operations":["set","add"],"allowedValues":["red","blue"],"defaultValue":"red"}}}]}
 Get transitions
 
 =head3 Parameters
@@ -24569,6 +24666,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueIdOrKey' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/issue/MKY-1/votes","votes":24,"hasVoted":true,"voters":[{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false}]}
 Get votes
 
 =head3 Parameters
@@ -24898,6 +24996,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueIdOrKey' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/issue/EX-1/watchers","isWatching":false,"watchCount":1,"watchers":[{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false}]}
 Get issue watchers
 
 =head3 Parameters
@@ -25124,6 +25223,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"startAt":0,"maxResults":1,"total":1,"worklogs":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/10010/worklog/10000","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"updateAuthor":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"comment":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"I did some work here."}]}]},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"type":"group","value":"jira-developers","identifier":"276f955c-63d7-42c8-9520-92d01dca0625"},"started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"id":"100028","issueId":"10002"}]}
 Get issue worklogs
 
 =head3 Parameters
@@ -25654,6 +25754,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/issue/10010/worklog/10000","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"updateAuthor":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"comment":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"I did some work here."}]}]},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"type":"group","value":"jira-developers","identifier":"276f955c-63d7-42c8-9520-92d01dca0625"},"started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"id":"100028","issueId":"10002"}
 Get worklog
 
 =head3 Parameters
@@ -25783,6 +25884,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'overrideEditableFlag' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/issue/10010/worklog/10000","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"updateAuthor":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"comment":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"I did some work here."}]}]},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"type":"group","value":"jira-developers","identifier":"276f955c-63d7-42c8-9520-92d01dca0625"},"started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"id":"100028","issueId":"10002"}
 Update worklog
 
 =head3 Parameters
@@ -26008,6 +26110,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'worklogId' => '...',
   )->get;
 
+    {"keys":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/EX-2/properties/issue.support","key":"issue.support"}]}
 Get worklog property keys
 
 =head3 Parameters
@@ -26241,6 +26344,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'propertyKey' => '...',
   )->get;
 
+    {"key":"issue.support","value":{"system.conversation.id":"b1bf38be-5e94-4b40-a3b8-9278735ee1e6","system.support.time":"1m"}}
 Get worklog property
 
 =head3 Parameters
@@ -26745,6 +26849,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'linkId' => '...',
   )->get;
 
+    {"id":"10001","type":{"id":"1000","name":"Duplicate","inward":"Duplicated by","outward":"Duplicates","self":"https://your-domain.atlassian.net/rest/api/3/issueLinkType/1000"},"inwardIssue":{"id":"10004","key":"PR-3","self":"https://your-domain.atlassian.net/rest/api/3/issue/PR-3","fields":{"status":{"self":"https://your-domain.atlassian.net/rest/api/3/status/5","description":"The issue is closed.","iconUrl":"https://your-domain.atlassian.net/images/icons/closed.gif","name":"Closed","id":"5","statusCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/statuscategory/9","id":9,"key":"completed","colorName":"green"}},"priority":{"self":"https://your-domain.atlassian.net/rest/api/3/priority/5","statusColor":"#cfcfcf","description":"Very little impact.","iconUrl":"https://your-domain.atlassian.net/images/icons/priorities/trivial.png","name":"Trivial","id":"2"},"issuetype":{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/1","id":"1","description":"A problem with the software.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","name":"Bug","subtask":false,"avatarId":10002,"entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}}},"outwardIssue":{"id":"10004L","key":"PR-2","self":"https://your-domain.atlassian.net/rest/api/3/issue/PR-2","fields":{"status":{"self":"https://your-domain.atlassian.net/rest/api/3/status/10000","description":"The issue is currently being worked on.","iconUrl":"https://your-domain.atlassian.net/images/icons/progress.gif","name":"In Progress","id":"10000","statusCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/statuscategory/1","id":1,"key":"in-flight","colorName":"yellow","name":"In Progress"}},"priority":{"self":"https://your-domain.atlassian.net/rest/api/3/priority/3","statusColor":"#009900","description":"Major loss of function.","iconUrl":"https://your-domain.atlassian.net/images/icons/priorities/major.png","name":"Major","id":"1"},"issuetype":{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/3","id":"3","description":"A task that needs to be done.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","name":"Task","subtask":false,"avatarId":1,"hierarchyLevel":0}}}}
 Get issue link
 
 =head3 Parameters
@@ -26852,6 +26957,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getIssueLinkTypes()->get;
 
+    {"issueLinkTypes":[{"id":"1000","name":"Duplicate","inward":"Duplicated by","outward":"Duplicates","self":"https://your-domain.atlassian.net/rest/api/3/issueLinkType/1000"},{"id":"1010","name":"Blocks","inward":"Blocked by","outward":"Blocks","self":"https://your-domain.atlassian.net/rest/api/3/issueLinkType/1010"}]}
 Get issue link types
 
 =head3 Parameters
@@ -27226,6 +27332,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueLinkTypeId' => '...',
   )->get;
 
+    {"id":"1000","name":"Duplicate","inward":"Duplicated by","outward":"Duplicates","self":"https://your-domain.atlassian.net/rest/api/3/issueLinkType/1000"}
 Get issue link type
 
 =head3 Parameters
@@ -27335,6 +27442,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueLinkTypeId' => '...',
   )->get;
 
+    {"id":"1000","name":"Duplicate","inward":"Duplicated by","outward":"Duplicates","self":"https://your-domain.atlassian.net/rest/api/3/issueLinkType/1000"}
 Update issue link type
 
 =head3 Parameters
@@ -27527,6 +27635,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getIssueSecuritySchemes()->get;
 
+    {"issueSecuritySchemes":[{"self":"https://your-domain.atlassian.net/rest/api/3/issuesecurityschemes/10000","id":10000,"name":"Default Issue Security Scheme","description":"Description for the default issue security scheme","defaultSecurityLevelId":10021}]}
 Get issue security schemes
 
 =head3 Parameters
@@ -27623,6 +27732,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/issuesecurityschemes/10000","id":10000,"name":"Default Issue Security Scheme","description":"Description for the default issue security scheme","defaultSecurityLevelId":10021,"levels":[{"self":"https://your-domain.atlassian.net/rest/api/3/securitylevel/10021","id":"10021","description":"Only the reporter and internal staff can see this issue.","name":"Reporter Only"}]}
 Get issue security scheme
 
 =head3 Parameters
@@ -27733,6 +27843,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":3,"isLast":true,"values":[{"id":10000,"issueSecurityLevelId":10020,"holder":{"type":"user","user":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney"},"expand":"user"}},{"id":10001,"issueSecurityLevelId":10020,"holder":{"type":"group","parameter":"jira-core-users","value":"9c559b11-6c5d-4f96-992c-a746cabab28b","expand":"group"}},{"id":10002,"issueSecurityLevelId":10021,"holder":{"type":"assignee"}}]}
 Get issue security level members
 
 =head3 Parameters
@@ -27895,6 +28006,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getIssueAllTypes()->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/3","id":"3","description":"A task that needs to be done.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","name":"Task","subtask":false,"avatarId":1,"hierarchyLevel":0},{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/1","id":"1","description":"A problem with the software.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","name":"Bug","subtask":false,"avatarId":10002,"entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}]
 Get all issue types for user
 
 =head3 Parameters
@@ -28133,6 +28245,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'level' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/1","id":"1","description":"A problem with the software.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","name":"Bug","subtask":false,"avatarId":10002,"entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}},{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/3","id":"3","description":"A task that needs to be done.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","name":"Task","subtask":false,"avatarId":1,"hierarchyLevel":0,"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}]
 Get issue types for project
 
 =head3 Parameters
@@ -28379,6 +28492,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/issueType/3","id":"3","description":"A task that needs to be done.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","name":"Task","subtask":false,"avatarId":1,"hierarchyLevel":0}
 Get issue type
 
 =head3 Parameters
@@ -28624,6 +28738,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/3","id":"3","description":"A task that needs to be done.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","name":"Task","subtask":false,"avatarId":1,"hierarchyLevel":0},{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/1","id":"1","description":"A problem with the software.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","name":"Bug","subtask":false,"avatarId":10002,"entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}]
 Get alternative issue types
 
 =head3 Parameters
@@ -28870,6 +28985,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueTypeId' => '...',
   )->get;
 
+    {"keys":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/EX-2/properties/issue.support","key":"issue.support"}]}
 Get issue type property keys
 
 =head3 Parameters
@@ -29084,6 +29200,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'propertyKey' => '...',
   )->get;
 
+    {"key":"issue.support","value":{"system.conversation.id":"b1bf38be-5e94-4b40-a3b8-9278735ee1e6","system.support.time":"1m"}}
 Get issue type property
 
 =head3 Parameters
@@ -29343,6 +29460,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'queryString' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":3,"isLast":true,"values":[{"id":"10000","name":"Default Issue Type Scheme","description":"Default issue type scheme is the list of global issue types. All newly created issue types will automatically be added to this scheme.","defaultIssueTypeId":"10003","isDefault":true},{"id":"10001","name":"SUP: Kanban Issue Type Scheme","description":"A collection of issue types suited to use in a kanban style project.","projects":{"maxResults":100,"startAt":0,"total":1,"isLast":true,"values":[{"self":"project/EX","id":"10000","key":"EX","name":"Example","projectTypeKey":"ProjectTypeKey{key='software'}","simplified":false,"avatarUrls":{"48x48":"secure/projectavatar?size=large&pid=10000","24x24":"secure/projectavatar?size=small&pid=10000","16x16":"secure/projectavatar?size=xsmall&pid=10000","32x32":"secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"id":"10000","description":"Project category description","name":"A project category"}}]}},{"id":"10002","name":"HR: Scrum issue type scheme","description":"","defaultIssueTypeId":"10004","issueTypes":{"maxResults":100,"startAt":0,"total":1,"isLast":true,"values":[{"id":"1000L","description":"Improvement Issue Type","iconUrl":"www.example.com","name":"Improvements","subtask":true,"hierarchyLevel":-1}]}}]}
 Get all issue type schemes
 
 =head3 Parameters
@@ -29663,6 +29781,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueTypeSchemeId' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":4,"isLast":true,"values":[{"issueTypeSchemeId":"10000","issueTypeId":"10000"},{"issueTypeSchemeId":"10000","issueTypeId":"10001"},{"issueTypeSchemeId":"10000","issueTypeId":"10002"},{"issueTypeSchemeId":"10001","issueTypeId":"10000"}]}
 Get issue type scheme items
 
 =head3 Parameters
@@ -29782,6 +29901,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectId' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":3,"isLast":true,"values":[{"issueTypeScheme":{"id":"10000","name":"Default Issue Type Scheme","description":"Default issue type scheme is the list of global issue types. All newly created issue types will automatically be added to this scheme.","defaultIssueTypeId":"10003","isDefault":true},"projectIds":["10000","10001"]},{"issueTypeScheme":{"id":"10001","name":"SUP: Kanban Issue Type Scheme","description":"A collection of issue types suited to use in a kanban style project.","projects":{"maxResults":100,"startAt":0,"total":1,"isLast":true,"values":[{"self":"project/EX","id":"10000","key":"EX","name":"Example","projectTypeKey":"ProjectTypeKey{key='software'}","simplified":false,"avatarUrls":{"48x48":"secure/projectavatar?size=large&pid=10000","24x24":"secure/projectavatar?size=small&pid=10000","16x16":"secure/projectavatar?size=xsmall&pid=10000","32x32":"secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"id":"10000","description":"Project category description","name":"A project category"}}]}},"projectIds":["10002"]},{"issueTypeScheme":{"id":"10002","name":"HR: Scrum issue type scheme","description":"","defaultIssueTypeId":"10004","issueTypes":{"maxResults":100,"startAt":0,"total":1,"isLast":true,"values":[{"id":"1000L","description":"Improvement Issue Type","iconUrl":"www.example.com","name":"Improvements","subtask":true,"hierarchyLevel":-1}]}},"projectIds":["10003","10004","10005"]}]}
 Get issue type schemes for projects
 
 =head3 Parameters
@@ -30845,6 +30965,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":2,"isLast":true,"values":[{"id":"1","name":"Default Issue Type Screen Scheme","description":"The default issue type screen scheme"},{"id":"10000","name":"Office issue type screen scheme","description":"Managing office projects","projects":{"maxResults":100,"startAt":0,"total":1,"isLast":true,"values":[{"self":"project/EX","id":"10000","key":"EX","name":"Example","projectTypeKey":"ProjectTypeKey{key='software'}","simplified":false,"avatarUrls":{"48x48":"secure/projectavatar?size=large&pid=10000","24x24":"secure/projectavatar?size=small&pid=10000","16x16":"secure/projectavatar?size=xsmall&pid=10000","32x32":"secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"id":"10000","description":"Project category description","name":"A project category"}}]}}]}
 Get issue type screen schemes
 
 =head3 Parameters
@@ -31161,6 +31282,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueTypeScreenSchemeId' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":4,"isLast":true,"values":[{"issueTypeScreenSchemeId":"10020","issueTypeId":"10000","screenSchemeId":"10010"},{"issueTypeScreenSchemeId":"10021","issueTypeId":"10001","screenSchemeId":"10010"},{"issueTypeScreenSchemeId":"10022","issueTypeId":"10002","screenSchemeId":"10010"},{"issueTypeScreenSchemeId":"10023","issueTypeId":"default","screenSchemeId":"10011"}]}
 Get issue type screen scheme items
 
 =head3 Parameters
@@ -31280,6 +31402,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectId' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":1,"isLast":true,"values":[{"issueTypeScreenScheme":{"id":"1","name":"Default Issue Type Screen Scheme","description":"The default issue type screen scheme"},"projectIds":["10000","10001"]}]}
 Get issue type screen schemes for projects
 
 =head3 Parameters
@@ -32326,6 +32449,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'query' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":1,"isLast":true,"values":[{"self":"project/EX","id":"10000","key":"EX","name":"Example","projectTypeKey":"ProjectTypeKey{key='software'}","simplified":false,"avatarUrls":{"48x48":"secure/projectavatar?size=large&pid=10000","24x24":"secure/projectavatar?size=small&pid=10000","16x16":"secure/projectavatar?size=xsmall&pid=10000","32x32":"secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"id":"10000","description":"Project category description","name":"A project category"}}]}
 Get issue type screen scheme projects
 
 =head3 Parameters
@@ -32449,6 +32573,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getAutoComplete()->get;
 
+    {"visibleFieldNames":[{"value":"summary","displayName":"summary","orderable":"true","searchable":"true","operators":["~","!~","is","is not"],"types":["java.lang.String"]},{"value":"Sprint","displayName":"Sprint - cf[10880]","orderable":"true","searchable":"true","auto":"true","cfid":"cf[10880]","operators":["=","!=","in","not in","is","is not"],"types":["com.atlassian.greenhopper.service.sprint.Sprint"]}],"visibleFunctionNames":[{"value":"standardIssueTypes()","displayName":"standardIssueTypes()","isList":"true","types":["com.atlassian.jira.issue.issuetype.IssueType"]}],"jqlReservedWords":["empty","and","or","in","distinct"]}
 Get field reference data (GET)
 
 =head3 Parameters
@@ -32540,6 +32665,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getAutoCompletePost()->get;
 
+    {"visibleFieldNames":[{"value":"summary","displayName":"summary","orderable":"true","searchable":"true","operators":["~","!~","is","is not"],"types":["java.lang.String"]},{"value":"cf[10061]","displayName":"Component - cf[10061]","orderable":"true","auto":"true","cfid":"cf[10061]","operators":["=","!=","in","not in","is","is not"],"types":["com.atlassian.jira.issue.customfields.option.Option"]},{"value":"cf[10062]","displayName":"Component - cf[10062]","orderable":"true","auto":"true","cfid":"cf[10062]","operators":["=","!=","in","not in","is","is not"],"types":["com.atlassian.jira.issue.customfields.option.Option"]},{"value":"\"Component[Dropdown]\"","displayName":"Component - Component[Dropdown]","searchable":"true","auto":"true","operators":["=","!=","in","not in","is","is not"],"types":["com.atlassian.jira.issue.customfields.option.Option"]}],"visibleFunctionNames":[{"value":"standardIssueTypes()","displayName":"standardIssueTypes()","isList":"true","types":["com.atlassian.jira.issue.issuetype.IssueType"]}],"jqlReservedWords":["empty","and","or","in","distinct"]}
 Get field reference data (POST)
 
 =head3 Parameters
@@ -32656,6 +32782,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'predicateValue' => '...',
   )->get;
 
+    {"results":[{"value":"ActiveObjects","displayName":"<b>Ac</b>tiveObjects (AO)"},{"value":"Atlassian Connect","displayName":"Atlassian Connect (<b>AC</b>)"},{"value":"Atlassian Connect in Jira","displayName":"Atlassian Connect in Jira (<b>AC</b>JIRA)"}]}
 Get field auto complete suggestions
 
 =head3 Parameters
@@ -32984,6 +33111,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->matchIssues()->get;
 
+    {"matches":[{"matchedIssues":[10000,10004],"errors":[]},{"matchedIssues":[100134,10025,10236],"errors":[]},{"matchedIssues":[],"errors":[]},{"matchedIssues":[],"errors":["Invalid JQL: broken = value"]}]}
 Check issues against JQL
 
 =head3 Parameters
@@ -33094,6 +33222,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'validation' => '...',
   )->get;
 
+    {"queries":[{"query":"summary ~ test AND (labels in (urgent, blocker) OR lastCommentedBy = currentUser()) AND status CHANGED AFTER -5d ORDER BY updated DESC","structure":{"where":{"clauses":[{"field":{"name":"summary","encodedName":"summary"},"operator":"~","operand":{"value":"test","encodedValue":"test"}},{"clauses":[{"field":{"name":"labels","encodedName":"labels"},"operator":"in","operand":{"values":[{"value":"urgent","encodedValue":"urgent"},{"value":"blocker","encodedValue":"blocker"}],"encodedOperand":"urgent, blocker)"}},{"field":{"name":"lastCommentedBy","encodedName":"lastCommentedBy","property":[{"entity":"issue","key":"propertyKey","path":"path.in.property","type":"user"}]},"operator":"=","operand":{"function":"currentUser","arguments":[],"encodedOperand":"currentUser()"}}],"operator":"or"},{"field":{"name":"status","encodedName":"status"},"operator":"changed","predicates":[{"operator":"after","operand":{"function":"startOfMonth","arguments":["-1M"],"encodedOperand":"startOfMonth(-1M)"}}]}],"operator":"and"},"orderBy":{"fields":[{"field":{"name":"updated","encodedName":"updated"},"direction":"desc"}]}}},{"query":"issue.property[\"spaces here\"].value in (\"Service requests\", Incidents)","structure":{"where":{"field":{"name":"issue.property[spaces here].value","encodedName":"issue.property[\"spaces here\"].value","property":[{"entity":"issue","key":"spaces here","path":"value"}]},"operator":"in","operand":{"values":[{"value":"Service requests","encodedValue":"\"Service requests\""},{"value":"Incidents","encodedValue":"Incidents"}],"encodedOperand":"(\"Service requests\", Incidents)"}}}},{"query":"invalid query","errors":["Error in the JQL Query: Expecting operator but got 'query'. The valid operators are '=', '!=', '<', '>', '<=', '>=', '~', '!~', 'IN', 'NOT IN', 'IS' and 'IS NOT'. (line 1, character 9)"]},{"query":"summary = test","errors":["The operator '=' is not supported by the 'summary' field."]},{"query":"summary in test","errors":["Operator 'in' does not support the non-list value '\"test\"' for field 'summary'."]},{"query":"project = INVALID","errors":["The value 'INVALID' does not exist for the field 'project'."]},{"query":"universe = 42","errors":["Field 'universe' does not exist or you do not have permission to view it."]}]}
 Parse JQL query
 
 =head3 Parameters
@@ -33240,6 +33369,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->migrateQueries()->get;
 
+    {"queryStrings":["issuetype = Bug AND assignee in (abcde-12345) AND reporter in (abc551-c4e99) order by lastViewed DESC"],"queriesWithUnknownUsers":[{"originalQuery":"assignee = mia","convertedQuery":"assignee = unknown"}]}
 Convert user identifiers to account IDs in JQL queries
 
 =head3 Parameters
@@ -33347,6 +33477,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->sanitiseJqlQueries()->get;
 
+    {"queries":[{"initialQuery":"project = 'Sample project'","sanitizedQuery":"project = 12345"},{"initialQuery":"project = 'Sample project'","sanitizedQuery":"project = 'Sample project'","accountId":"5b10ac8d82e05b22cc7d4ef5"},{"initialQuery":"project = 'Sample project'","sanitizedQuery":"project = 12345","accountId":"cda2aa1395ac195d951b3387"},{"initialQuery":"non-parsable query","errors":{"errorMessages":["Error in the JQL Query: Expecting operator but got 'query'. The valid operators are '=', '!=', '<', '>', '<=', '>=', '~', '!~', 'IN', 'NOT IN', 'IS' and 'IS NOT'. (line 1, character 9)"],"errors":{}},"accountId":"5b10ac8d82e05b22cc7d4ef5"}]}
 Sanitize JQL queries
 
 =head3 Parameters
@@ -33496,6 +33627,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"maxResults":2,"startAt":0,"total":100,"isLast":false,"values":["performance","security"]}
 Get all labels
 
 =head3 Parameters
@@ -33804,6 +33936,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'commentId' => '...',
   )->get;
 
+    {"permissions":{"EDIT_ISSUES":{"id":"12","key":"EDIT_ISSUES","name":"Edit Issues","type":"PROJECT","description":"Ability to edit issues.","havePermission":true}}}
 Get my permissions
 
 =head3 Parameters
@@ -34216,7 +34349,8 @@ sub build_setPreference_request( $self, %options ) {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request,
+        # XXX Need to fill the body
+        # => $body,
     );
 
     # validate our request while developing
@@ -34379,6 +34513,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getLocale()->get;
 
+    {"locale":"en_US"}
 Get locale
 
 =head3 Parameters
@@ -34579,6 +34714,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney","groups":{"size":3,"items":[]},"applicationRoles":{"size":1,"items":[]}}
 Get current user
 
 =head3 Parameters
@@ -34699,6 +34835,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"maxResults":6,"startAt":1,"total":5,"isLast":false,"values":[{"expand":"notificationSchemeEvents,user,group,projectRole,field,all","id":10100,"self":"https://your-domain.atlassian.net/rest/api/3/notificationscheme","name":"notification scheme name","description":"description","notificationSchemeEvents":[{"event":{"id":1,"name":"Issue created","description":"Event published when an issue is created"},"notifications":[{"id":1,"notificationType":"Group","parameter":"jira-administrators","recipient":"276f955c-63d7-42c8-9520-92d01dca0625","group":{"name":"jira-administrators","groupId":"276f955c-63d7-42c8-9520-92d01dca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"expand":"group"},{"id":2,"notificationType":"CurrentAssignee"},{"id":3,"notificationType":"ProjectRole","parameter":"10360","recipient":"10360","projectRole":{"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}},"expand":"projectRole"},{"id":4,"notificationType":"EmailAddress","parameter":"rest-developer@atlassian.com","recipient":"rest-developer@atlassian.com","emailAddress":"rest-developer@atlassian.com"},{"id":5,"notificationType":"User","parameter":"5b10a2844c20165700ede21g","recipient":"5b10a2844c20165700ede21g","user":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"expand":"user"},{"id":6,"notificationType":"GroupCustomField","parameter":"customfield_10101","recipient":"customfield_10101","field":{"id":"customfield_10101","key":"customfield_10101","name":"New custom field","untranslatedName":"New custom field","custom":true,"orderable":true,"navigable":true,"searchable":true,"clauseNames":["cf[10101]","New custom field"],"schema":{"type":"project","custom":"com.atlassian.jira.plugin.system.customfieldtypes:project","customId":10101}},"expand":"field"}]},{"event":{"id":20,"name":"Custom event","description":"Custom event that is published together with an issue created event","templateEvent":{"id":1,"name":"Issue created","description":"Event published when an issue is created"}},"notifications":[{"id":1,"notificationType":"Group","parameter":"jira-administrators","recipient":"276f955c-63d7-42c8-9520-92d01dca0625","group":{"name":"jira-administrators","groupId":"276f955c-63d7-42c8-9520-92d01dca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"expand":"group"},{"id":2,"notificationType":"CurrentAssignee"},{"id":3,"notificationType":"ProjectRole","parameter":"10360","recipient":"10360","projectRole":{"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}},"expand":"projectRole"},{"id":4,"notificationType":"EmailAddress","parameter":"rest-developer@atlassian.com","recipient":"rest-developer@atlassian.com","emailAddress":"rest-developer@atlassian.com"},{"id":5,"notificationType":"User","parameter":"5b10a2844c20165700ede21g","recipient":"5b10a2844c20165700ede21g","user":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"expand":"user"},{"id":6,"notificationType":"GroupCustomField","parameter":"customfield_10101","recipient":"customfield_10101","field":{"id":"customfield_10101","key":"customfield_10101","name":"New custom field","untranslatedName":"New custom field","custom":true,"orderable":true,"navigable":true,"searchable":true,"clauseNames":["cf[10101]","New custom field"],"schema":{"type":"project","custom":"com.atlassian.jira.plugin.system.customfieldtypes:project","customId":10101}},"expand":"field"}]}],"projects":[10001,10002]}]}
 Get notification schemes paginated
 
 =head3 Parameters
@@ -35030,6 +35167,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectId' => '...',
   )->get;
 
+    {"maxResults":50,"startAt":0,"total":4,"isLast":true,"values":[{"notificationSchemeId":"10001","projectId":"100001"}]}
 Get projects using notification schemes paginated
 
 =head3 Parameters
@@ -35174,6 +35312,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"expand":"notificationSchemeEvents,user,group,projectRole,field,all","id":10100,"self":"https://your-domain.atlassian.net/rest/api/3/notificationscheme","name":"notification scheme name","description":"description","notificationSchemeEvents":[{"event":{"id":1,"name":"Issue created","description":"Event published when an issue is created"},"notifications":[{"id":1,"notificationType":"Group","parameter":"jira-administrators","recipient":"276f955c-63d7-42c8-9520-92d01dca0625","group":{"name":"jira-administrators","groupId":"276f955c-63d7-42c8-9520-92d01dca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"expand":"group"},{"id":2,"notificationType":"CurrentAssignee"},{"id":3,"notificationType":"ProjectRole","parameter":"10360","recipient":"10360","projectRole":{"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}},"expand":"projectRole"},{"id":4,"notificationType":"EmailAddress","parameter":"rest-developer@atlassian.com","recipient":"rest-developer@atlassian.com","emailAddress":"rest-developer@atlassian.com"},{"id":5,"notificationType":"User","parameter":"5b10a2844c20165700ede21g","recipient":"5b10a2844c20165700ede21g","user":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"expand":"user"},{"id":6,"notificationType":"GroupCustomField","parameter":"customfield_10101","recipient":"customfield_10101","field":{"id":"customfield_10101","key":"customfield_10101","name":"New custom field","untranslatedName":"New custom field","custom":true,"orderable":true,"navigable":true,"searchable":true,"clauseNames":["cf[10101]","New custom field"],"schema":{"type":"project","custom":"com.atlassian.jira.plugin.system.customfieldtypes:project","customId":10101}},"expand":"field"}]},{"event":{"id":20,"name":"Custom event","description":"Custom event that is published together with an issue created event","templateEvent":{"id":1,"name":"Issue created","description":"Event published when an issue is created"}},"notifications":[{"id":1,"notificationType":"Group","parameter":"jira-administrators","recipient":"276f955c-63d7-42c8-9520-92d01dca0625","group":{"name":"jira-administrators","groupId":"276f955c-63d7-42c8-9520-92d01dca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"expand":"group"},{"id":2,"notificationType":"CurrentAssignee"},{"id":3,"notificationType":"ProjectRole","parameter":"10360","recipient":"10360","projectRole":{"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}},"expand":"projectRole"},{"id":4,"notificationType":"EmailAddress","parameter":"rest-developer@atlassian.com","recipient":"rest-developer@atlassian.com","emailAddress":"rest-developer@atlassian.com"},{"id":5,"notificationType":"User","parameter":"5b10a2844c20165700ede21g","recipient":"5b10a2844c20165700ede21g","user":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"expand":"user"},{"id":6,"notificationType":"GroupCustomField","parameter":"customfield_10101","recipient":"customfield_10101","field":{"id":"customfield_10101","key":"customfield_10101","name":"New custom field","untranslatedName":"New custom field","custom":true,"orderable":true,"navigable":true,"searchable":true,"clauseNames":["cf[10101]","New custom field"],"schema":{"type":"project","custom":"com.atlassian.jira.plugin.system.customfieldtypes:project","customId":10101}},"expand":"field"}]}],"projects":[10001,10002]}
 Get notification scheme
 
 =head3 Parameters
@@ -36001,6 +36140,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getAllPermissions()->get;
 
+    {"permissions":{"BULK_CHANGE":{"key":"BULK_CHANGE","name":"Bulk Change","type":"GLOBAL","description":"Ability to modify a collection of issues at once. For example, resolve multiple issues in one step."}}}
 Get all permissions
 
 =head3 Parameters
@@ -36095,6 +36235,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getBulkPermissions()->get;
 
+    {"projectPermissions":[{"permission":"EDIT_ISSUES","issues":[10010,10013,10014],"projects":[10001]}],"globalPermissions":["ADMINISTER"]}
 Get bulk permissions
 
 =head3 Parameters
@@ -36354,6 +36495,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"permissionSchemes":[{"id":10000,"self":"https://your-domain.atlassian.net/rest/api/3/permissionscheme/10000","name":"Example permission scheme","description":"description"}]}
 Get all permission schemes
 
 =head3 Parameters
@@ -36764,6 +36906,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"id":10000,"self":"https://your-domain.atlassian.net/rest/api/3/permissionscheme/10000","name":"Example permission scheme","description":"description","permissions":[{"id":10000,"self":"https://your-domain.atlassian.net/rest/api/3/permissionscheme/permission/10000","holder":{"type":"group","parameter":"jira-core-users","value":"ca85fac0-d974-40ca-a615-7af99c48d24f","expand":"group"},"permission":"ADMINISTER_PROJECTS"}]}
 Get permission scheme
 
 =head3 Parameters
@@ -36913,6 +37056,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"id":10000,"self":"https://your-domain.atlassian.net/rest/api/3/permissionscheme/10000","name":"Example permission scheme","description":"description","permissions":[{"id":10000,"self":"https://your-domain.atlassian.net/rest/api/3/permissionscheme/permission/10000","holder":{"type":"group","parameter":"jira-core-users","value":"ca85fac0-d974-40ca-a615-7af99c48d24f","expand":"group"},"permission":"ADMINISTER_PROJECTS"}]}
 Update permission scheme
 
 =head3 Parameters
@@ -37102,6 +37246,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"permissions":[{"id":10000,"self":"https://your-domain.atlassian.net/rest/api/3/permissionscheme/permission/10000","holder":{"type":"group","parameter":"jira-core-users","value":"ca85fac0-d974-40ca-a615-7af99c48d24f","expand":"group"},"permission":"ADMINISTER_PROJECTS"}],"expand":"user,group,projectRole,field,all"}
 Get permission scheme grants
 
 =head3 Parameters
@@ -37533,6 +37678,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"id":10000,"self":"https://your-domain.atlassian.net/rest/api/3/permissionscheme/permission/10000","holder":{"type":"group","parameter":"jira-core-users","value":"ca85fac0-d974-40ca-a615-7af99c48d24f","expand":"group"},"permission":"ADMINISTER_PROJECTS"}
 Get permission scheme grant
 
 =head3 Parameters
@@ -37686,6 +37832,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getPriorities()->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/priority/3","statusColor":"#009900","description":"Major loss of function.","iconUrl":"https://your-domain.atlassian.net/images/icons/priorities/major.png","name":"Major","id":"1"},{"self":"https://your-domain.atlassian.net/rest/api/3/priority/5","statusColor":"#cfcfcf","description":"Very little impact.","iconUrl":"https://your-domain.atlassian.net/images/icons/priorities/trivial.png","name":"Trivial","id":"2"}]
 Get priorities
 
 =head3 Parameters
@@ -38271,6 +38418,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'onlyDefault' => '...',
   )->get;
 
+    {"maxResults":50,"startAt":0,"total":2,"isLast":true,"values":[{"self":"https://your-domain.atlassian.net/rest/api/3/priority/3","statusColor":"#009900","description":"Major loss of function.","iconUrl":"https://your-domain.atlassian.net/images/icons/priorities/major.png","name":"Major","id":"1","isDefault":true},{"self":"https://your-domain.atlassian.net/rest/api/3/priority/5","statusColor":"#cfcfcf","description":"Very little impact.","iconUrl":"https://your-domain.atlassian.net/images/icons/priorities/trivial.png","name":"Trivial","id":"2","isDefault":false}]}
 Search priorities
 
 =head3 Parameters
@@ -38585,6 +38733,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/priority/3","statusColor":"#009900","description":"Major loss of function.","iconUrl":"https://your-domain.atlassian.net/images/icons/priorities/major.png","name":"Major","id":"1"}
 Get priority
 
 =head3 Parameters
@@ -38878,6 +39027,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'properties' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/project/EX","id":"10000","key":"EX","name":"Example","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}},{"self":"https://your-domain.atlassian.net/rest/api/3/project/ABC","id":"10001","key":"ABC","name":"Alphabetical","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10001","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10001","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10001","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10001"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}}]
 Get all projects
 
 =head3 Parameters
@@ -39193,6 +39343,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'properties' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/project/EX","id":"10000","key":"EX","name":"Example","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}},{"self":"https://your-domain.atlassian.net/rest/api/3/project/ABC","id":"10001","key":"ABC","name":"Alphabetical","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10001","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10001","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10001","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10001"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}}]
 Get recent projects
 
 =head3 Parameters
@@ -39359,6 +39510,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'propertyQuery' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/project/search?startAt=0&maxResults=2","nextPage":"https://your-domain.atlassian.net/rest/api/3/project/search?startAt=2&maxResults=2","maxResults":2,"startAt":0,"total":7,"isLast":false,"values":[{"self":"https://your-domain.atlassian.net/rest/api/3/project/EX","id":"10000","key":"EX","name":"Example","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}},{"self":"https://your-domain.atlassian.net/rest/api/3/project/ABC","id":"10001","key":"ABC","name":"Alphabetical","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10001","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10001","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10001","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10001"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}}]}
 Get projects paginated
 
 =head3 Parameters
@@ -39677,6 +39829,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getAllProjectTypes()->get;
 
+    [{"key":"business","formattedKey":"Business","descriptionI18nKey":"jira.project.type.business.description","icon":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzMiAzMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZmlsbD0iIzY2NjY2NiIgZD0iTTE2LDBDNy4yLDAsMCw3LjIsMCwxNmMwLDguOCw3LjIsMTYsMTYsMTZjOC44LDAsMTYtNy4yLDE2LTE2QzMyLDcuMiwyNC44LDAsMTYsMHogTTI1LjcsMjMNCgkJYzAsMS44LTEuNCwzLjItMy4yLDMuMkg5LjJDNy41LDI2LjIsNiwyNC44LDYsMjNWOS44QzYsOCw3LjUsNi42LDkuMiw2LjZoMTMuMmMwLjIsMCwwLjQsMCwwLjcsMC4xbC0yLjgsMi44SDkuMg0KCQlDOSw5LjQsOC44LDkuNiw4LjgsOS44VjIzYzAsMC4yLDAuMiwwLjQsMC40LDAuNGgxMy4yYzAuMiwwLDAuNC0wLjIsMC40LTAuNHYtNS4zbDIuOC0yLjhWMjN6IE0xNS45LDIxLjNMMTEsMTYuNGwyLTJsMi45LDIuOQ0KCQlMMjYuNCw2LjhjMC42LDAuNywxLjIsMS41LDEuNywyLjNMMTUuOSwyMS4zeiIvPg0KPC9nPg0KPC9zdmc+","color":"#FFFFFF"},{"key":"software","formattedKey":"Software","descriptionI18nKey":"jira.project.type.software.description","icon":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzMiAzMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZmlsbD0iIzY2NjY2NiIgZD0iTTE2LDBDNy4yLDAsMCw3LjIsMCwxNmMwLDguOCw3LjIsMTYsMTYsMTZjOC44LDAsMTYtNy4yLDE2LTE2QzMyLDcuMiwyNC44LDAsMTYsMHogTTI1LjcsMjMNCgkJYzAsMS44LTEuNCwzLjItMy4yLDMuMkg5LjJDNy41LDI2LjIsNiwyNC44LDYsMjNWOS44QzYsOCw3LjUsNi42LDkuMiw2LjZoMTMuMmMwLjIsMCwwLjQsMCwwLjcsMC4xbC0yLjgsMi44SDkuMg0KCQlDOSw5LjQsOC44LDkuNiw4LjgsOS44VjIzYzAsMC4yLDAuMiwwLjQsMC40LDAuNGgxMy4yYzAuMiwwLDAuNC0wLjIsMC40LTAuNHYtNS4zbDIuOC0yLjhWMjN6IE0xNS45LDIxLjNMMTEsMTYuNGwyLTJsMi45LDIuOQ0KCQlMMjYuNCw2LjhjMC42LDAuNywxLjIsMS41LDEuNywyLjNMMTUuOSwyMS4zeiIvPg0KPC9nPg0KPC9zdmc+","color":"#AAAAAA"}]
 Get all project types
 
 =head3 Parameters
@@ -39769,6 +39922,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getAllAccessibleProjectTypes()->get;
 
+    [{"key":"business","formattedKey":"Business","descriptionI18nKey":"jira.project.type.business.description","icon":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzMiAzMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZmlsbD0iIzY2NjY2NiIgZD0iTTE2LDBDNy4yLDAsMCw3LjIsMCwxNmMwLDguOCw3LjIsMTYsMTYsMTZjOC44LDAsMTYtNy4yLDE2LTE2QzMyLDcuMiwyNC44LDAsMTYsMHogTTI1LjcsMjMNCgkJYzAsMS44LTEuNCwzLjItMy4yLDMuMkg5LjJDNy41LDI2LjIsNiwyNC44LDYsMjNWOS44QzYsOCw3LjUsNi42LDkuMiw2LjZoMTMuMmMwLjIsMCwwLjQsMCwwLjcsMC4xbC0yLjgsMi44SDkuMg0KCQlDOSw5LjQsOC44LDkuNiw4LjgsOS44VjIzYzAsMC4yLDAuMiwwLjQsMC40LDAuNGgxMy4yYzAuMiwwLDAuNC0wLjIsMC40LTAuNHYtNS4zbDIuOC0yLjhWMjN6IE0xNS45LDIxLjNMMTEsMTYuNGwyLTJsMi45LDIuOQ0KCQlMMjYuNCw2LjhjMC42LDAuNywxLjIsMS41LDEuNywyLjNMMTUuOSwyMS4zeiIvPg0KPC9nPg0KPC9zdmc+","color":"#FFFFFF"},{"key":"software","formattedKey":"Software","descriptionI18nKey":"jira.project.type.software.description","icon":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzMiAzMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZmlsbD0iIzY2NjY2NiIgZD0iTTE2LDBDNy4yLDAsMCw3LjIsMCwxNmMwLDguOCw3LjIsMTYsMTYsMTZjOC44LDAsMTYtNy4yLDE2LTE2QzMyLDcuMiwyNC44LDAsMTYsMHogTTI1LjcsMjMNCgkJYzAsMS44LTEuNCwzLjItMy4yLDMuMkg5LjJDNy41LDI2LjIsNiwyNC44LDYsMjNWOS44QzYsOCw3LjUsNi42LDkuMiw2LjZoMTMuMmMwLjIsMCwwLjQsMCwwLjcsMC4xbC0yLjgsMi44SDkuMg0KCQlDOSw5LjQsOC44LDkuNiw4LjgsOS44VjIzYzAsMC4yLDAuMiwwLjQsMC40LDAuNGgxMy4yYzAuMiwwLDAuNC0wLjIsMC40LTAuNHYtNS4zbDIuOC0yLjhWMjN6IE0xNS45LDIxLjNMMTEsMTYuNGwyLTJsMi45LDIuOQ0KCQlMMjYuNCw2LjhjMC42LDAuNywxLjIsMS41LDEuNywyLjNMMTUuOSwyMS4zeiIvPg0KPC9nPg0KPC9zdmc+","color":"#AAAAAA"}]
 Get licensed project types
 
 =head3 Parameters
@@ -39860,6 +40014,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectTypeKey' => '...',
   )->get;
 
+    {"key":"business","formattedKey":"Business","descriptionI18nKey":"jira.project.type.business.description","icon":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzMiAzMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZmlsbD0iIzY2NjY2NiIgZD0iTTE2LDBDNy4yLDAsMCw3LjIsMCwxNmMwLDguOCw3LjIsMTYsMTYsMTZjOC44LDAsMTYtNy4yLDE2LTE2QzMyLDcuMiwyNC44LDAsMTYsMHogTTI1LjcsMjMNCgkJYzAsMS44LTEuNCwzLjItMy4yLDMuMkg5LjJDNy41LDI2LjIsNiwyNC44LDYsMjNWOS44QzYsOCw3LjUsNi42LDkuMiw2LjZoMTMuMmMwLjIsMCwwLjQsMCwwLjcsMC4xbC0yLjgsMi44SDkuMg0KCQlDOSw5LjQsOC44LDkuNiw4LjgsOS44VjIzYzAsMC4yLDAuMiwwLjQsMC40LDAuNGgxMy4yYzAuMiwwLDAuNC0wLjIsMC40LTAuNHYtNS4zbDIuOC0yLjhWMjN6IE0xNS45LDIxLjNMMTEsMTYuNGwyLTJsMi45LDIuOQ0KCQlMMjYuNCw2LjhjMC42LDAuNywxLjIsMS41LDEuNywyLjNMMTUuOSwyMS4zeiIvPg0KPC9nPg0KPC9zdmc+","color":"#FFFFFF"}
 Get project type by key
 
 =head3 Parameters
@@ -39966,6 +40121,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectTypeKey' => '...',
   )->get;
 
+    {"key":"business","formattedKey":"Business","descriptionI18nKey":"jira.project.type.business.description","icon":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzMiAzMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZmlsbD0iIzY2NjY2NiIgZD0iTTE2LDBDNy4yLDAsMCw3LjIsMCwxNmMwLDguOCw3LjIsMTYsMTYsMTZjOC44LDAsMTYtNy4yLDE2LTE2QzMyLDcuMiwyNC44LDAsMTYsMHogTTI1LjcsMjMNCgkJYzAsMS44LTEuNCwzLjItMy4yLDMuMkg5LjJDNy41LDI2LjIsNiwyNC44LDYsMjNWOS44QzYsOCw3LjUsNi42LDkuMiw2LjZoMTMuMmMwLjIsMCwwLjQsMCwwLjcsMC4xbC0yLjgsMi44SDkuMg0KCQlDOSw5LjQsOC44LDkuNiw4LjgsOS44VjIzYzAsMC4yLDAuMiwwLjQsMC40LDAuNGgxMy4yYzAuMiwwLDAuNC0wLjIsMC40LTAuNHYtNS4zbDIuOC0yLjhWMjN6IE0xNS45LDIxLjNMMTEsMTYuNGwyLTJsMi45LDIuOQ0KCQlMMjYuNCw2LjhjMC42LDAuNywxLjIsMS41LDEuNywyLjNMMTUuOSwyMS4zeiIvPg0KPC9nPg0KPC9zdmc+","color":"#FFFFFF"}
 Get accessible project type by key
 
 =head3 Parameters
@@ -40176,6 +40332,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'properties' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/project/EX","id":"10000","key":"EX","description":"This project was created as an example for REST.","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"components":[{"self":"https://your-domain.atlassian.net/rest/api/3/component/10000","id":"10000","name":"Component 1","description":"This is a Jira component","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"assigneeType":"PROJECT_LEAD","assignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"realAssigneeType":"PROJECT_LEAD","realAssignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"isAssigneeTypeValid":false,"project":"HSP","projectId":10000}],"issueTypes":[{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/3","id":"3","description":"A task that needs to be done.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","name":"Task","subtask":false,"avatarId":1,"hierarchyLevel":0},{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/1","id":"1","description":"A problem with the software.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","name":"Bug","subtask":false,"avatarId":10002,"entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}],"url":"https://www.example.com","email":"from-jira@example.com","assigneeType":"PROJECT_LEAD","versions":[],"name":"Example","roles":{"Developers":"https://your-domain.atlassian.net/rest/api/3/project/EX/role/10000"},"avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","properties":{"propertyKey":"propertyValue"},"insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}}
 Get project
 
 =head3 Parameters
@@ -40325,6 +40482,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/project/EX","id":"10000","key":"EX","description":"This project was created as an example for REST.","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"components":[{"self":"https://your-domain.atlassian.net/rest/api/3/component/10000","id":"10000","name":"Component 1","description":"This is a Jira component","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"assigneeType":"PROJECT_LEAD","assignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"realAssigneeType":"PROJECT_LEAD","realAssignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"isAssigneeTypeValid":false,"project":"HSP","projectId":10000}],"issueTypes":[{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/3","id":"3","description":"A task that needs to be done.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","name":"Task","subtask":false,"avatarId":1,"hierarchyLevel":0},{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/1","id":"1","description":"A problem with the software.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","name":"Bug","subtask":false,"avatarId":10002,"entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}],"url":"https://www.example.com","email":"from-jira@example.com","assigneeType":"PROJECT_LEAD","versions":[],"name":"Example","roles":{"Developers":"https://your-domain.atlassian.net/rest/api/3/project/EX/role/10000"},"avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","properties":{"propertyKey":"propertyValue"},"insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}}
 Update project
 
 =head3 Parameters
@@ -41025,6 +41183,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectIdOrKey' => '...',
   )->get;
 
+    {"system":[{"id":"1000","isSystemAvatar":true,"isSelected":false,"isDeletable":false,"urls":{"16x16":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10040&avatarType=project","24x24":"https://your-domain.atlassian.net/secure/viewavatar?size=small&avatarId=10040&avatarType=project","32x32":"https://your-domain.atlassian.net/secure/viewavatar?size=medium&avatarId=10040&avatarType=project","48x48":"https://your-domain.atlassian.net/secure/viewavatar?avatarId=10040&avatarType=project"}}],"custom":[{"id":"1010","isSystemAvatar":false,"isSelected":false,"isDeletable":true,"urls":{"16x16":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10080&avatarType=project","24x24":"https://your-domain.atlassian.net/secure/viewavatar?size=small&avatarId=10080&avatarType=project","32x32":"https://your-domain.atlassian.net/secure/viewavatar?size=medium&avatarId=10080&avatarType=project","48x48":"https://your-domain.atlassian.net/secure/viewavatar?avatarId=10080&avatarType=project"}}]}
 Get all project avatars
 
 =head3 Parameters
@@ -41135,6 +41294,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'query' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/project/PR/component?startAt=0&maxResults=2","nextPage":"https://your-domain.atlassian.net/rest/api/3/project/PR/component?startAt=2&maxResults=2","maxResults":2,"startAt":0,"total":7,"isLast":false,"values":[{"componentBean":{"self":"https://your-domain.atlassian.net/rest/api/3/component/10000","id":"10000","name":"Component 1","description":"This is a Jira component","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"assigneeType":"PROJECT_LEAD","assignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"realAssigneeType":"PROJECT_LEAD","realAssignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"isAssigneeTypeValid":false,"project":"HSP","projectId":10000},"issueCount":1,"assignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"realAssigneeType":"PROJECT_LEAD","realAssignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"isAssigneeTypeValid":false,"name":"Component 1","id":"10000","description":"This is a Jira component","projectId":10000,"self":"https://your-domain.atlassian.net/rest/api/3/component/10000","project":"HSP","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"assigneeType":"PROJECT_LEAD"},{"componentBean":{"self":"https://your-domain.atlassian.net/rest/api/3/component/10000","id":"10050","name":"PXA","description":"This is a another Jira component","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"assigneeType":"PROJECT_LEAD","assignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"realAssigneeType":"PROJECT_LEAD","realAssignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"isAssigneeTypeValid":false,"project":"PROJECTKEY","projectId":10000},"issueCount":5,"assignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"realAssigneeType":"PROJECT_LEAD","realAssignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"isAssigneeTypeValid":false,"name":"PXA","id":"10050","description":"This is a another Jira component","projectId":10000,"self":"https://your-domain.atlassian.net/rest/api/3/component/10000","project":"PROJECTKEY","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"assigneeType":"PROJECT_LEAD"}]}
 Get project components paginated
 
 =head3 Parameters
@@ -41288,6 +41448,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectIdOrKey' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/component/10000","id":"10000","name":"Component 1","description":"This is a Jira component","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"assigneeType":"PROJECT_LEAD","assignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"realAssigneeType":"PROJECT_LEAD","realAssignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"isAssigneeTypeValid":false,"project":"HSP","projectId":10000},{"self":"https://your-domain.atlassian.net/rest/api/3/component/10000","id":"10050","name":"PXA","description":"This is a another Jira component","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"assigneeType":"PROJECT_LEAD","assignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"realAssigneeType":"PROJECT_LEAD","realAssignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"isAssigneeTypeValid":false,"project":"PROJECTKEY","projectId":10000}]
 Get project components
 
 =head3 Parameters
@@ -41504,6 +41665,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectIdOrKey' => '...',
   )->get;
 
+    {"features":[{"projectId":10001,"state":"ENABLED","toggleLocked":true,"feature":"jsw.classic.roadmap","prerequisites":[],"localisedName":"Roadmap","localisedDescription":"Your roadmap is an optimized location to create and manage your epics.","imageUri":"https://jira.atlassian.com/s/sb53l8/b/3/ab8a7691e4738b4f147e293f0864adfd5b8d3c85/_/download/resources/com.atlassian.jira.rest:classic-project-features/simple-roadmap-feature.svg"},{"projectId":10001,"state":"ENABLED","toggleLocked":true,"feature":"jsw.classic.backlog","prerequisites":[],"localisedName":"Backlog","localisedDescription":"Plan and prioritize work in a dedicated space. To enable and configure the backlog for each board, go to board settings.","imageUri":"https://jira.atlassian.com/s/sb53l8/b/3/ab8a7691e4738b4f147e293f0864adfd5b8d3c85/_/download/resources/com.atlassian.jira.rest:classic-project-features/simple-backlog-feature.svg"}]}
 Get project features
 
 =head3 Parameters
@@ -41617,6 +41779,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'featureKey' => '...',
   )->get;
 
+    {"features":[{"projectId":10001,"state":"ENABLED","toggleLocked":true,"feature":"jsw.classic.roadmap","prerequisites":[],"localisedName":"Roadmap","localisedDescription":"Your roadmap is an optimized location to create and manage your epics.","imageUri":"https://jira.atlassian.com/s/sb53l8/b/3/ab8a7691e4738b4f147e293f0864adfd5b8d3c85/_/download/resources/com.atlassian.jira.rest:classic-project-features/simple-roadmap-feature.svg"},{"projectId":10001,"state":"ENABLED","toggleLocked":true,"feature":"jsw.classic.backlog","prerequisites":[],"localisedName":"Backlog","localisedDescription":"Plan and prioritize work in a dedicated space. To enable and configure the backlog for each board, go to board settings.","imageUri":"https://jira.atlassian.com/s/sb53l8/b/3/ab8a7691e4738b4f147e293f0864adfd5b8d3c85/_/download/resources/com.atlassian.jira.rest:classic-project-features/simple-backlog-feature.svg"}]}
 Set project feature state
 
 =head3 Parameters
@@ -41749,6 +41912,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectIdOrKey' => '...',
   )->get;
 
+    {"keys":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/EX-2/properties/issue.support","key":"issue.support"}]}
 Get project property keys
 
 =head3 Parameters
@@ -41969,6 +42133,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'propertyKey' => '...',
   )->get;
 
+    {"key":"issue.support","value":{"system.conversation.id":"b1bf38be-5e94-4b40-a3b8-9278735ee1e6","system.support.time":"1m"}}
 Get project property
 
 =head3 Parameters
@@ -42226,6 +42391,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectIdOrKey' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/project/EX","id":"10000","key":"EX","description":"This project was created as an example for REST.","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"components":[{"self":"https://your-domain.atlassian.net/rest/api/3/component/10000","id":"10000","name":"Component 1","description":"This is a Jira component","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"assigneeType":"PROJECT_LEAD","assignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"realAssigneeType":"PROJECT_LEAD","realAssignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"isAssigneeTypeValid":false,"project":"HSP","projectId":10000}],"issueTypes":[{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/3","id":"3","description":"A task that needs to be done.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","name":"Task","subtask":false,"avatarId":1,"hierarchyLevel":0},{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/1","id":"1","description":"A problem with the software.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","name":"Bug","subtask":false,"avatarId":10002,"entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}],"url":"https://www.example.com","email":"from-jira@example.com","assigneeType":"PROJECT_LEAD","versions":[],"name":"Example","roles":{"Developers":"https://your-domain.atlassian.net/rest/api/3/project/EX/role/10000"},"avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","properties":{"propertyKey":"propertyValue"},"insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}}
 Restore deleted or archived project
 
 =head3 Parameters
@@ -42335,6 +42501,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectIdOrKey' => '...',
   )->get;
 
+    {"Administrators":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10002","Users":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10001","Developers":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10000"}
 Get project roles for project
 
 =head3 Parameters
@@ -42565,6 +42732,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'excludeInactiveUsers' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}
 Get project role for project
 
 =head3 Parameters
@@ -42690,6 +42858,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}
 Add actors to project role
 
 =head3 Parameters
@@ -42828,6 +42997,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}
 Set actors for project role
 
 =head3 Parameters
@@ -42983,6 +43153,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'excludeConnectAddons' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","admin":false,"default":true,"roleConfigurable":true,"translatedName":"Developers"}]
 Get project role details
 
 =head3 Parameters
@@ -43101,6 +43272,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectIdOrKey' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/3","id":"3","name":"Task","subtask":false,"statuses":[{"self":"https://your-domain.atlassian.net/rest/api/3/status/10000","description":"The issue is currently being worked on.","iconUrl":"https://your-domain.atlassian.net/images/icons/progress.gif","name":"In Progress","id":"10000"},{"self":"https://your-domain.atlassian.net/rest/api/3/status/5","description":"The issue is closed.","iconUrl":"https://your-domain.atlassian.net/images/icons/closed.gif","name":"Closed","id":"5"}]}]
 Get all statuses for project
 
 =head3 Parameters
@@ -43209,6 +43381,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'newProjectTypeKey' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/project/EX","id":"10000","key":"EX","description":"This project was created as an example for REST.","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"components":[{"self":"https://your-domain.atlassian.net/rest/api/3/component/10000","id":"10000","name":"Component 1","description":"This is a Jira component","lead":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"assigneeType":"PROJECT_LEAD","assignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"realAssigneeType":"PROJECT_LEAD","realAssignee":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"isAssigneeTypeValid":false,"project":"HSP","projectId":10000}],"issueTypes":[{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/3","id":"3","description":"A task that needs to be done.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10299&avatarType=issuetype\",","name":"Task","subtask":false,"avatarId":1,"hierarchyLevel":0},{"self":"https://your-domain.atlassian.net/rest/api/3/issueType/1","id":"1","description":"A problem with the software.","iconUrl":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype\",","name":"Bug","subtask":false,"avatarId":10002,"entityId":"9d7dd6f7-e8b6-4247-954b-7b2c9b2a5ba2","hierarchyLevel":0,"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}],"url":"https://www.example.com","email":"from-jira@example.com","assigneeType":"PROJECT_LEAD","versions":[],"name":"Example","roles":{"Developers":"https://your-domain.atlassian.net/rest/api/3/project/EX/role/10000"},"avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","properties":{"propertyKey":"propertyValue"},"insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}}
 Update project type
 
 =head3 Parameters
@@ -43331,6 +43504,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/project/PR/version?startAt=0&maxResults=2","nextPage":"https://your-domain.atlassian.net/rest/api/3/project/PR/version?startAt=2&maxResults=2","maxResults":2,"startAt":0,"total":7,"isLast":false,"values":[{"self":"https://your-domain.atlassian.net/rest/api/3/version/10000","id":"10000","description":"An excellent version","name":"New Version 1","archived":false,"released":true,"releaseDate":"2010-07-06","overdue":true,"userReleaseDate":"6/Jul/2010","projectId":10000},{"self":"https://your-domain.atlassian.net/rest/api/3/version/10010","id":"10010","description":"Minor Bugfix version","name":"Next Version","archived":false,"released":false,"overdue":false,"projectId":10000,"issuesStatusForFixVersion":{"unmapped":0,"toDo":10,"inProgress":20,"done":100}}]}
 Get project versions paginated
 
 =head3 Parameters
@@ -43511,6 +43685,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/version/10000","id":"10000","description":"An excellent version","name":"New Version 1","archived":false,"released":true,"releaseDate":"2010-07-06","overdue":true,"userReleaseDate":"6/Jul/2010","projectId":10000},{"self":"https://your-domain.atlassian.net/rest/api/3/version/10010","id":"10010","description":"Minor Bugfix version","name":"Next Version","archived":false,"released":false,"overdue":false,"projectId":10000,"issuesStatusForFixVersion":{"unmapped":0,"toDo":10,"inProgress":20,"done":100}}]
 Get project versions
 
 =head3 Parameters
@@ -43623,6 +43798,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectId' => '...',
   )->get;
 
+    {"emailAddress":"jira@example.customdomain.com","emailAddressStatus":["Email address or domain not verified."]}
 Get project's sender email
 
 =head3 Parameters
@@ -43861,6 +44037,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectId' => '...',
   )->get;
 
+    {"projectId":10030,"hierarchy":[{"entityId":"16599036-3548-4c8c-ad30-03622d85a109","level":0,"name":"Base","issueTypes":[{"id":10008,"entityId":"ed121e03-026c-4cf9-a9e5-f76c08bca48d","name":"Story","avatarId":10324},{"id":10001,"entityId":"96ba96f4-3ad7-43df-841f-b1be84ed3ca3","name":"Bug","avatarId":10324}]},{"entityId":"4d7107ce-55ce-41bc-83c3-b6949995d000","level":1,"name":"Epic","issueTypes":[{"id":10007,"entityId":"d4a7ba82-85be-4774-a042-b9c5ed0a2b61","name":"Epic","avatarId":10179}]},{"entityId":"3babdbb8-cf99-42c1-b216-f5344f55ec9e","level":-1,"name":"Subtask","issueTypes":[{"id":10009,"entityId":"ec31307a-e0ae-4116-ad14-96b0769edeb7","name":"Subtask","avatarId":10573}]}]}
 Get project issue type hierarchy
 
 =head3 Parameters
@@ -43970,6 +44147,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectKeyOrId' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/issuesecurityschemes/10000","id":10000,"name":"Default Issue Security Scheme","description":"Description for the default issue security scheme","defaultSecurityLevelId":10021,"levels":[{"self":"https://your-domain.atlassian.net/rest/api/3/securitylevel/10021","id":"10021","description":"Only the reporter and internal staff can see this issue.","name":"Reporter Only"}]}
 Get project issue security scheme
 
 =head3 Parameters
@@ -44083,6 +44261,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"expand":"notificationSchemeEvents,user,group,projectRole,field,all","id":10100,"self":"https://your-domain.atlassian.net/rest/api/3/notificationscheme","name":"notification scheme name","description":"description","notificationSchemeEvents":[{"event":{"id":1,"name":"Issue created","description":"Event published when an issue is created"},"notifications":[{"id":1,"notificationType":"Group","parameter":"jira-administrators","recipient":"276f955c-63d7-42c8-9520-92d01dca0625","group":{"name":"jira-administrators","groupId":"276f955c-63d7-42c8-9520-92d01dca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"expand":"group"},{"id":2,"notificationType":"CurrentAssignee"},{"id":3,"notificationType":"ProjectRole","parameter":"10360","recipient":"10360","projectRole":{"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}},"expand":"projectRole"},{"id":4,"notificationType":"EmailAddress","parameter":"rest-developer@atlassian.com","recipient":"rest-developer@atlassian.com","emailAddress":"rest-developer@atlassian.com"},{"id":5,"notificationType":"User","parameter":"5b10a2844c20165700ede21g","recipient":"5b10a2844c20165700ede21g","user":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"expand":"user"},{"id":6,"notificationType":"GroupCustomField","parameter":"customfield_10101","recipient":"customfield_10101","field":{"id":"customfield_10101","key":"customfield_10101","name":"New custom field","untranslatedName":"New custom field","custom":true,"orderable":true,"navigable":true,"searchable":true,"clauseNames":["cf[10101]","New custom field"],"schema":{"type":"project","custom":"com.atlassian.jira.plugin.system.customfieldtypes:project","customId":10101}},"expand":"field"}]},{"event":{"id":20,"name":"Custom event","description":"Custom event that is published together with an issue created event","templateEvent":{"id":1,"name":"Issue created","description":"Event published when an issue is created"}},"notifications":[{"id":1,"notificationType":"Group","parameter":"jira-administrators","recipient":"276f955c-63d7-42c8-9520-92d01dca0625","group":{"name":"jira-administrators","groupId":"276f955c-63d7-42c8-9520-92d01dca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"},"expand":"group"},{"id":2,"notificationType":"CurrentAssignee"},{"id":3,"notificationType":"ProjectRole","parameter":"10360","recipient":"10360","projectRole":{"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}},"expand":"projectRole"},{"id":4,"notificationType":"EmailAddress","parameter":"rest-developer@atlassian.com","recipient":"rest-developer@atlassian.com","emailAddress":"rest-developer@atlassian.com"},{"id":5,"notificationType":"User","parameter":"5b10a2844c20165700ede21g","recipient":"5b10a2844c20165700ede21g","user":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"expand":"user"},{"id":6,"notificationType":"GroupCustomField","parameter":"customfield_10101","recipient":"customfield_10101","field":{"id":"customfield_10101","key":"customfield_10101","name":"New custom field","untranslatedName":"New custom field","custom":true,"orderable":true,"navigable":true,"searchable":true,"clauseNames":["cf[10101]","New custom field"],"schema":{"type":"project","custom":"com.atlassian.jira.plugin.system.customfieldtypes:project","customId":10101}},"expand":"field"}]}],"projects":[10001,10002]}
 Get project notification scheme
 
 =head3 Parameters
@@ -44235,6 +44414,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"id":10000,"self":"https://your-domain.atlassian.net/rest/api/3/permissionscheme/10000","name":"Example permission scheme","description":"description"}
 Get assigned permission scheme
 
 =head3 Parameters
@@ -44387,6 +44567,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"id":10000,"self":"https://your-domain.atlassian.net/rest/api/3/permissionscheme/10000","name":"Example permission scheme","description":"description"}
 Assign permission scheme
 
 =head3 Parameters
@@ -44551,6 +44732,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectKeyOrId' => '...',
   )->get;
 
+    {"levels":[{"self":"https://your-domain.atlassian.net/rest/api/3/securitylevel/100000","id":"100000","description":"Only the reporter and internal staff can see this issue.","name":"Reporter Only"},{"self":"https://your-domain.atlassian.net/rest/api/3/securitylevel/100001","id":"100001","description":"Only internal staff can see this issue.","name":"Staff Only"}]}
 Get project issue security levels
 
 =head3 Parameters
@@ -44652,6 +44834,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getAllProjectCategories()->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10001","id":"10001","name":"SECOND","description":"Second Project Category"}]
 Get all project categories
 
 =head3 Parameters
@@ -44967,6 +45150,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"}
 Get project category by ID
 
 =head3 Parameters
@@ -45073,6 +45257,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10100","id":"10100","name":"UPDATED","description":"Updated Project Category"}
 Update project category
 
 =head3 Parameters
@@ -45208,6 +45393,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'key' => '...',
   )->get;
 
+    {"errorMessages":[],"errors":{"projectKey":"A project with that project key already exists."}}
 Validate project key
 
 =head3 Parameters
@@ -45309,6 +45495,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'key' => '...',
   )->get;
 
+    "VPNE"
 Get valid project key
 
 =head3 Parameters
@@ -45410,6 +45597,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'name' => '...',
   )->get;
 
+    "Valid Project Name Example"
 Get valid project name
 
 =head3 Parameters
@@ -45518,6 +45706,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getResolutions()->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/resolution/1","id":"10000","description":"A fix for this issue is checked into the tree and tested.","name":"Fixed"},{"self":"https://your-domain.atlassian.net/rest/api/3/resolution/3","id":"10001","description":"This is what it is supposed to do.","name":"Works as designed"}]
 Get resolutions
 
 =head3 Parameters
@@ -46095,6 +46284,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'onlyDefault' => '...',
   )->get;
 
+    {"maxResults":50,"startAt":0,"total":1,"isLast":true,"values":[{"id":"10001","description":"This is what it is supposed to do.","name":"Works as designed","isDefault":true}]}
 Search resolutions
 
 =head3 Parameters
@@ -46409,6 +46599,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/resolution/1","id":"10000","description":"A fix for this issue is checked into the tree and tested.","name":"Fixed"}
 Get resolution
 
 =head3 Parameters
@@ -46690,6 +46881,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getAllProjectRoles()->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}]
 Get all project roles
 
 =head3 Parameters
@@ -46785,6 +46977,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createProjectRole()->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project"}
 Create project role
 
 =head3 Parameters
@@ -47015,6 +47208,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}
 Get project role by ID
 
 =head3 Parameters
@@ -47124,6 +47318,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}
 Partial update project role
 
 =head3 Parameters
@@ -47253,6 +47448,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360","name":"Developers","id":10360,"description":"A project role that represents developers in a project","actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}},{"id":10241,"displayName":"Mia Krystof","type":"atlassian-user-role-actor","actorUser":{"accountId":"5b10a2844c20165700ede21g"}}],"scope":{"type":"PROJECT","project":{"id":"10000","key":"KEY","name":"Next Gen Project"}}}
 Fully update project role
 
 =head3 Parameters
@@ -47385,6 +47581,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'group' => '...',
   )->get;
 
+    {"actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}}]}
 Delete default actors from project role
 
 =head3 Parameters
@@ -47515,6 +47712,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}}]}
 Get default actors for project role
 
 =head3 Parameters
@@ -47627,6 +47825,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"actors":[{"id":10240,"displayName":"jira-developers","type":"atlassian-group-role-actor","name":"jira-developers","actorGroup":{"name":"jira-developers","displayName":"jira-developers","groupId":"952d12c3-5b5b-4d04-bb32-44d383afc4b2"}}]}
 Add default actors to project role
 
 =head3 Parameters
@@ -47765,6 +47964,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'orderBy' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/screens","maxResults":100,"startAt":0,"total":3,"isLast":true,"values":[{"id":1,"name":"Default Screen","description":"Provides for the update all system fields."},{"id":2,"name":"Workflow Screen","description":"This screen is used in the workflow and enables you to assign issues."},{"id":3,"name":"Resolve Issue Screen","description":"Offers the ability to set resolution, change fix versions, and assign an issue."}]}
 Get screens
 
 =head3 Parameters
@@ -48286,6 +48486,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'screenId' => '...',
   )->get;
 
+    {"id":10005,"name":"Resolve Security Issue Screen","description":"Enables changes to resolution and linked issues."}
 Update screen
 
 =head3 Parameters
@@ -48680,6 +48881,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'screenId' => '...',
   )->get;
 
+    {"id":10000,"name":"Fields Tab"}
 Create screen tab
 
 =head3 Parameters
@@ -48914,6 +49116,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'tabId' => '...',
   )->get;
 
+    {"id":10000,"name":"Fields Tab"}
 Update screen tab
 
 =head3 Parameters
@@ -49178,6 +49381,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'tabId' => '...',
   )->get;
 
+    {"id":"summary","name":"Summary"}
 Add screen tab field
 
 =head3 Parameters
@@ -49703,6 +49907,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'orderBy' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/screenscheme?maxResults=25&startAt=0","maxResults":100,"startAt":0,"total":2,"isLast":true,"values":[{"id":10010,"name":"Employee screen scheme","description":"Manage employee data","screens":{"default":10017,"edit":10019,"create":10019,"view":10020},"issueTypeScreenSchemes":{"maxResults":100,"startAt":0,"total":1,"isLast":true,"values":[{"id":"10000","name":"Office issue type screen scheme","description":"Managing office projects"}]}},{"id":10032,"name":"Office screen scheme","description":"Manage office data","screens":{"default":10020}}]}
 Get screen schemes
 
 =head3 Parameters
@@ -50306,6 +50511,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'fieldsByKeys' => '...',
   )->get;
 
+    {"expand":"names,schema","startAt":0,"maxResults":50,"total":1,"issues":[{"expand":"","id":"10002","self":"https://your-domain.atlassian.net/rest/api/3/issue/10002","key":"ED-1","fields":{"watcher":{"self":"https://your-domain.atlassian.net/rest/api/3/issue/EX-1/watchers","isWatching":false,"watchCount":1,"watchers":[{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false}]},"attachment":[{"id":10000,"self":"https://your-domain.atlassian.net/rest/api/3/attachments/10000","filename":"picture.jpg","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"created":"2023-02-28T09:45:11.830+0000","size":23123,"mimeType":"image/jpeg","content":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/content/10000","thumbnail":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/thumbnail/10000"}],"sub-tasks":[{"id":"10000","type":{"id":"10000","name":"","inward":"Parent","outward":"Sub-task"},"outwardIssue":{"id":"10003","key":"ED-2","self":"https://your-domain.atlassian.net/rest/api/3/issue/ED-2","fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}}}}],"description":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Main order flow broken"}]}]},"project":{"self":"https://your-domain.atlassian.net/rest/api/3/project/EX","id":"10000","key":"EX","name":"Example","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}},"comment":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/10010/comment/10000","id":"10000","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper."}]}]},"updateAuthor":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"created":"2021-01-17T12:34:00.000+0000","updated":"2021-01-18T23:45:00.000+0000","visibility":{"type":"role","value":"Administrators","identifier":"Administrators"}}],"issuelinks":[{"id":"10001","type":{"id":"10000","name":"Dependent","inward":"depends on","outward":"is depended by"},"outwardIssue":{"id":"10004L","key":"PR-2","self":"https://your-domain.atlassian.net/rest/api/3/issue/PR-2","fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}}}},{"id":"10002","type":{"id":"10000","name":"Dependent","inward":"depends on","outward":"is depended by"},"inwardIssue":{"id":"10004","key":"PR-3","self":"https://your-domain.atlassian.net/rest/api/3/issue/PR-3","fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}}}}],"worklog":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/10010/worklog/10000","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"updateAuthor":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"comment":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"I did some work here."}]}]},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"type":"group","value":"jira-developers","identifier":"276f955c-63d7-42c8-9520-92d01dca0625"},"started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"id":"100028","issueId":"10002"}],"updated":1,"timetracking":{"originalEstimate":"10m","remainingEstimate":"3m","timeSpent":"6m","originalEstimateSeconds":600,"remainingEstimateSeconds":200,"timeSpentSeconds":400}}}],"warningMessages":["The value 'bar' does not exist for the field 'foo'."]}
 Search for issues using JQL (GET)
 
 =head3 Parameters
@@ -50581,6 +50787,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->searchForIssuesUsingJqlPost()->get;
 
+    {"expand":"names,schema","startAt":0,"maxResults":50,"total":1,"issues":[{"expand":"","id":"10002","self":"https://your-domain.atlassian.net/rest/api/3/issue/10002","key":"ED-1","fields":{"watcher":{"self":"https://your-domain.atlassian.net/rest/api/3/issue/EX-1/watchers","isWatching":false,"watchCount":1,"watchers":[{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false}]},"attachment":[{"id":10000,"self":"https://your-domain.atlassian.net/rest/api/3/attachments/10000","filename":"picture.jpg","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},"created":"2023-02-28T09:45:11.830+0000","size":23123,"mimeType":"image/jpeg","content":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/content/10000","thumbnail":"https://your-domain.atlassian.net/jira/rest/api/3/attachment/thumbnail/10000"}],"sub-tasks":[{"id":"10000","type":{"id":"10000","name":"","inward":"Parent","outward":"Sub-task"},"outwardIssue":{"id":"10003","key":"ED-2","self":"https://your-domain.atlassian.net/rest/api/3/issue/ED-2","fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}}}}],"description":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Main order flow broken"}]}]},"project":{"self":"https://your-domain.atlassian.net/rest/api/3/project/EX","id":"10000","key":"EX","name":"Example","avatarUrls":{"48x48":"https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000","24x24":"https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000","16x16":"https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000","32x32":"https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/projectCategory/10000","id":"10000","name":"FIRST","description":"First Project Category"},"simplified":false,"style":"classic","insight":{"totalIssueCount":100,"lastIssueUpdateTime":"2023-02-28T09:45:09.984+0000"}},"comment":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/10010/comment/10000","id":"10000","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper."}]}]},"updateAuthor":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"created":"2021-01-17T12:34:00.000+0000","updated":"2021-01-18T23:45:00.000+0000","visibility":{"type":"role","value":"Administrators","identifier":"Administrators"}}],"issuelinks":[{"id":"10001","type":{"id":"10000","name":"Dependent","inward":"depends on","outward":"is depended by"},"outwardIssue":{"id":"10004L","key":"PR-2","self":"https://your-domain.atlassian.net/rest/api/3/issue/PR-2","fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}}}},{"id":"10002","type":{"id":"10000","name":"Dependent","inward":"depends on","outward":"is depended by"},"inwardIssue":{"id":"10004","key":"PR-3","self":"https://your-domain.atlassian.net/rest/api/3/issue/PR-3","fields":{"status":{"iconUrl":"https://your-domain.atlassian.net/images/icons/statuses/open.png","name":"Open"}}}}],"worklog":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/10010/worklog/10000","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"updateAuthor":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"comment":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"I did some work here."}]}]},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"type":"group","value":"jira-developers","identifier":"276f955c-63d7-42c8-9520-92d01dca0625"},"started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"id":"100028","issueId":"10002"}],"updated":1,"timetracking":{"originalEstimate":"10m","remainingEstimate":"3m","timeSpent":"6m","originalEstimateSeconds":600,"remainingEstimateSeconds":200,"timeSpentSeconds":400}}}],"warningMessages":["The value 'bar' does not exist for the field 'foo'."]}
 Search for issues using JQL (POST)
 
 =head3 Parameters
@@ -50841,6 +51048,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/securitylevel/10021","id":"10021","description":"Only the reporter and internal staff can see this issue.","name":"Reporter Only"}
 Get issue security level
 
 =head3 Parameters
@@ -50945,6 +51153,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getServerInfo()->get;
 
+    {"baseUrl":"https://your-domain.atlassian.net/jira","version":"1001.0.0-SNAPSHOT","versionNumbers":[5,0,0],"buildNumber":582,"buildDate":"2023-02-28T09:45:06.962+0000","serverTime":"2023-02-28T09:45:06.962+0000","scmInfo":"1f51473f5c7b75c1a69a0090f4832cdc5053702a","serverTitle":"My Jira instance","defaultLocale":{"locale":"en_AU"}}
 Get Jira instance info
 
 =head3 Parameters
@@ -51036,6 +51245,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getIssueNavigatorDefaultColumns()->get;
 
+    [{"label":"Key","value":"issuekey"},{"label":"Summary","value":"summary"}]
 Get issue navigator default columns
 
 =head3 Parameters
@@ -51236,6 +51446,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getStatuses()->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/status/10000","description":"The issue is currently being worked on.","iconUrl":"https://your-domain.atlassian.net/images/icons/progress.gif","name":"In Progress","id":"10000","statusCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/statuscategory/1","id":1,"key":"in-flight","colorName":"yellow","name":"In Progress"}},{"self":"https://your-domain.atlassian.net/rest/api/3/status/5","description":"The issue is closed.","iconUrl":"https://your-domain.atlassian.net/images/icons/closed.gif","name":"Closed","id":"5","statusCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/statuscategory/9","id":9,"key":"completed","colorName":"green"}}]
 Get all statuses
 
 =head3 Parameters
@@ -51330,6 +51541,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'idOrName' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/status/10000","description":"The issue is currently being worked on.","iconUrl":"https://your-domain.atlassian.net/images/icons/progress.gif","name":"In Progress","id":"10000","statusCategory":{"self":"https://your-domain.atlassian.net/rest/api/3/statuscategory/1","id":1,"key":"in-flight","colorName":"yellow","name":"In Progress"}}
 Get status
 
 =head3 Parameters
@@ -51434,6 +51646,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->getStatusCategories()->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/statuscategory/1","id":1,"key":"in-flight","colorName":"yellow","name":"In Progress"},{"self":"https://your-domain.atlassian.net/rest/api/3/statuscategory/9","id":9,"key":"completed","colorName":"green"}]
 Get all status categories
 
 =head3 Parameters
@@ -51528,6 +51741,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'idOrKey' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/statuscategory/1","id":1,"key":"in-flight","colorName":"yellow","name":"In Progress"}
 Get status category
 
 =head3 Parameters
@@ -51752,6 +51966,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    [{"id":"1000","name":"Finished","statusCategory":"DONE","scope":{"type":"PROJECT","project":{"id":"1"}},"description":"The issue is resolved","usages":[{"project":{"id":"1"},"issueTypes":["10002"]}]}]
 Bulk get statuses
 
 =head3 Parameters
@@ -51871,6 +52086,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createStatuses()->get;
 
+    [{"id":"1000","name":"Finished","statusCategory":"DONE","scope":{"type":"PROJECT","project":{"id":"1"}},"description":"The issue is resolved","usages":[]}]
 Bulk create statuses
 
 =head3 Parameters
@@ -52119,6 +52335,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'statusCategory' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/statuses/search?startAt=0&maxResults=2","nextPage":"https://your-domain.atlassian.net/rest/api/3/statuses/search?startAt=2&maxResults=2","maxResults":2,"startAt":0,"total":5,"isLast":true,"values":[{"id":"1000","name":"Finished","statusCategory":"DONE","scope":{"type":"PROJECT","project":{"id":"1"}},"description":"The issue is resolved","usages":[{"project":{"id":"1"},"issueTypes":["10002"]}]}]}
 Search statuses paginated
 
 =head3 Parameters
@@ -52257,6 +52474,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'taskId' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/task/1","id":"1","description":"Task description","status":"COMPLETE","result":"the task result, this may be any JSON","submittedBy":10000,"progress":100,"elapsedRuntime":156,"submitted":1677577514805,"started":1677577514905,"finished":1677577515006,"lastUpdate":1677577515006}
 Get task
 
 =head3 Parameters
@@ -52532,6 +52750,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":3,"isLast":true,"values":[{"id":"d7dbda8a-6239-4b63-8e13-a5ef975c8e61","name":"Reveal Story Points","description":"Reveals Story Points field when any Sprint is selected.","self":"https://api.atlassian.com/ex/jira/{cloudid}/rest/api/2/uiModifications/d7dbda8a-6239-4b63-8e13-a5ef975c8e61","data":"{field: 'Story Points', config: {hidden: false}}","contexts":[{"id":"1533537a-bda3-4ac6-8481-846128cd9ef4","projectId":"10000","issueTypeId":"10000","viewType":"GIC","isAvailable":true},{"id":"c016fefa-6eb3-40c9-8596-4c4ef273e67c","projectId":"10000","issueTypeId":"10001","viewType":"GIC","isAvailable":true}]},{"id":"e4fe8db5-f82f-416b-a3aa-b260b55da577","name":"Set Assignee","description":"Sets the Assignee field automatically.","self":"https://api.atlassian.com/ex/jira/{cloudid}/rest/api/2/uiModifications/e4fe8db5-f82f-416b-a3aa-b260b55da577","contexts":[{"id":"8b3740f9-8780-4958-8228-69dcfbda11d9","projectId":"10000","issueTypeId":"10000","viewType":"GIC","isAvailable":true}]},{"id":"1453f993-79ce-4389-a36d-eb72d5c85dd6","name":"Hide Labels","description":"Hides Labels if any component is provided.","self":"https://api.atlassian.com/ex/jira/{cloudid}/rest/api/2/uiModifications/1453f993-79ce-4389-a36d-eb72d5c85dd6","contexts":[]}]}
 Get UI modifications
 
 =head3 Parameters
@@ -53035,6 +53254,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'entityId' => '...',
   )->get;
 
+    {"system":[{"id":"1000","isSystemAvatar":true,"isSelected":false,"isDeletable":false,"urls":{"16x16":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10040&avatarType=project","24x24":"https://your-domain.atlassian.net/secure/viewavatar?size=small&avatarId=10040&avatarType=project","32x32":"https://your-domain.atlassian.net/secure/viewavatar?size=medium&avatarId=10040&avatarType=project","48x48":"https://your-domain.atlassian.net/secure/viewavatar?avatarId=10040&avatarType=project"}}],"custom":[{"id":"1010","isSystemAvatar":false,"isSelected":false,"isDeletable":true,"urls":{"16x16":"https://your-domain.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10080&avatarType=project","24x24":"https://your-domain.atlassian.net/secure/viewavatar?size=small&avatarId=10080&avatarType=project","32x32":"https://your-domain.atlassian.net/secure/viewavatar?size=medium&avatarId=10080&avatarType=project","48x48":"https://your-domain.atlassian.net/secure/viewavatar?avatarId=10080&avatarType=project"}}]}
 Get avatars
 
 =head3 Parameters
@@ -54468,6 +54688,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney","groups":{"size":3,"items":[]},"applicationRoles":{"size":1,"items":[]}}
 Get user
 
 =head3 Parameters
@@ -54743,6 +54964,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10ac8d82e05b22cc7d4ef5","key":"","accountId":"5b10ac8d82e05b22cc7d4ef5","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=32&s=32"},"displayName":"Emma Richards","active":false}]
 Find users assignable to projects
 
 =head3 Parameters
@@ -54891,6 +55113,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'recommend' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney","groups":{"size":3,"items":[]},"applicationRoles":{"size":1,"items":[]}}
 Find users assignable to issues
 
 =head3 Parameters
@@ -55049,6 +55272,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'accountId' => '...',
   )->get;
 
+    {"maxResults":100,"startAt":0,"total":1,"isLast":true,"values":[{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney"}]}
 Bulk get users
 
 =head3 Parameters
@@ -55179,6 +55403,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'key' => '...',
   )->get;
 
+    [{"username":"mia","accountId":"5b10a2844c20165700ede21g"},{"username":"emma","accountId":"5b10ac8d82e05b22cc7d4ef5"}]
 Get account IDs for users
 
 =head3 Parameters
@@ -55628,6 +55853,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'accountId' => '...',
   )->get;
 
+    name@example.com
 Get user email
 
 =head3 Parameters
@@ -55853,6 +56079,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'key' => '...',
   )->get;
 
+    {"name":"jira-administrators","groupId":"276f955c-63d7-42c8-9520-92d01dca0625","self":"https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"}
 Get user groups
 
 =head3 Parameters
@@ -55981,6 +56208,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10ac8d82e05b22cc7d4ef5","key":"","accountId":"5b10ac8d82e05b22cc7d4ef5","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=32&s=32"},"displayName":"Emma Richards","active":false}]
 Find users with permissions
 
 =head3 Parameters
@@ -56324,6 +56552,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'excludeConnectUsers' => '...',
   )->get;
 
+    {"users":[{"accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"mia","key":"mia","html":"<strong>Mi</strong>a Krystof - <strong>mi</strong>a@example.com (<strong>mi</strong>a)","displayName":"Mia Krystof","avatarUrl":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16"}],"total":25,"header":"Showing 20 of 25 matching groups"}
 Find users for picker
 
 =head3 Parameters
@@ -56462,6 +56691,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'username' => '...',
   )->get;
 
+    {"keys":[{"self":"https://your-domain.atlassian.net/rest/api/3/issue/EX-2/properties/issue.support","key":"issue.support"}]}
 Get user property keys
 
 =head3 Parameters
@@ -56705,6 +56935,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'propertyKey' => '...',
   )->get;
 
+    {"key":"issue.support","value":{"system.conversation.id":"b1bf38be-5e94-4b40-a3b8-9278735ee1e6","system.support.time":"1m"}}
 Get user property
 
 =head3 Parameters
@@ -56994,6 +57225,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'property' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10ac8d82e05b22cc7d4ef5","key":"","accountId":"5b10ac8d82e05b22cc7d4ef5","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=32&s=32"},"displayName":"Emma Richards","active":false}]
 Find users
 
 =head3 Parameters
@@ -57381,6 +57613,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10ac8d82e05b22cc7d4ef5","key":"","accountId":"5b10ac8d82e05b22cc7d4ef5","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=32&s=32"},"displayName":"Emma Richards","active":false}]
 Find users with browse permission
 
 =head3 Parameters
@@ -57523,6 +57756,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10ac8d82e05b22cc7d4ef5","key":"","accountId":"5b10ac8d82e05b22cc7d4ef5","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=32&s=32"},"displayName":"Emma Richards","active":false}]
 Get all users default
 
 =head3 Parameters
@@ -57637,6 +57871,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":false},{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10ac8d82e05b22cc7d4ef5","key":"","accountId":"5b10ac8d82e05b22cc7d4ef5","accountType":"atlassian","name":"","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/AA-3.png?size=32&s=32"},"displayName":"Emma Richards","active":false}]
 Get all users
 
 =head3 Parameters
@@ -58052,6 +58287,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/version/10000","id":"10000","description":"An excellent version","name":"New Version 1","archived":false,"released":true,"releaseDate":"2010-07-06","overdue":true,"userReleaseDate":"6/Jul/2010","projectId":10000}
 Get version
 
 =head3 Parameters
@@ -58180,6 +58416,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/version/10000","id":"10000","description":"An excellent version","name":"New Version 1","archived":false,"released":true,"releaseDate":"2010-07-06","userReleaseDate":"6/Jul/2010","project":"PXA","projectId":10000}
 Update version
 
 =head3 Parameters
@@ -58499,6 +58736,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/version/10000","id":"10000","description":"An excellent version","name":"New Version 1","archived":false,"released":true,"releaseDate":"2010-07-06","overdue":true,"userReleaseDate":"6/Jul/2010","projectId":10000}
 Move version
 
 =head3 Parameters
@@ -58625,6 +58863,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/version/10000","issuesFixedCount":23,"issuesAffectedCount":101,"issueCountWithCustomFieldsShowingVersion":54,"customFieldUsage":[{"fieldName":"Field1","customFieldId":10000,"issueCountWithVersionInCustomField":2},{"fieldName":"Field2","customFieldId":10010,"issueCountWithVersionInCustomField":3}]}
 Get version's related issues count
 
 =head3 Parameters
@@ -58861,6 +59100,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"self":"https://your-domain.atlassian.net/rest/api/3/version/10000","issuesUnresolvedCount":23,"issuesCount":30}
 Get version's unresolved issues count
 
 =head3 Parameters
@@ -59087,6 +59327,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"maxResults":3,"startAt":0,"total":3,"isLast":true,"values":[{"id":10000,"jqlFilter":"project = PRJ","fieldIdsFilter":["summary","customfield_10029"],"events":["jira:issue_updated","jira:issue_created"],"expirationDate":"2019-06-01T12:42:30.000+0000"},{"id":10001,"jqlFilter":"issuetype = Bug","events":["jira:issue_created"],"expirationDate":"2019-06-01T12:42:30.000+0000"},{"id":10002,"jqlFilter":"project = PRJ","issuePropertyKeysFilter":["my-issue-property-key"],"events":["issue_property_set"],"expirationDate":"2019-06-01T12:42:30.000+0000"}]}
 Get dynamic webhooks for app
 
 =head3 Parameters
@@ -59218,6 +59459,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->registerDynamicWebhooks()->get;
 
+    {"webhookRegistrationResult":[{"createdWebhookId":1000},{"errors":["The clause watchCount is unsupported"]},{"createdWebhookId":1001}]}
 Register dynamic webhooks
 
 =head3 Parameters
@@ -59356,6 +59598,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'after' => '...',
   )->get;
 
+    {"values":[{"id":"1","body":"{\"data\":\"webhook data\"}","url":"https://example.com","failureTime":1573118132000},{"id":"2","url":"https://example.com","failureTime":1573540473480}],"maxResults":100,"next":"https://your-domain.atlassian.net/rest/api/3/webhook/failed?failedAfter=1573540473480&maxResults=100"}
 Get failed webhooks
 
 =head3 Parameters
@@ -59487,6 +59730,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->refreshWebhooks()->get;
 
+    {"expirationDate":"2019-06-01T12:42:30.000+0000"}
 Extend webhook life
 
 =head3 Parameters
@@ -59620,6 +59864,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'workflowName' => '...',
   )->get;
 
+    [{"name":"classic workflow","description":"A classic Jira workflow","lastModifiedDate":"01-01-2011","lastModifiedUser":"admin","lastModifiedUserAccountId":"5b10a2844c20165700ede21g","steps":5,"default":true}]
 Get all workflows
 
 =head3 Parameters
@@ -59928,6 +60173,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"maxResults":10,"startAt":0,"total":1,"isLast":true,"values":[{"workflowId":{"name":"My Workflow name","draft":false},"postFunctions":[{"id":"b4d6cbdc-59f5-11e9-8647-d663bd873d93","key":"postfunction-key","configuration":{"value":"{ \"color\": \"red\" }","disabled":false},"transition":{"id":1,"name":"Open"}}],"conditions":[{"id":"d663bd873d93-59f5-11e9-8647-b4d6cbdc","key":"condition-key","configuration":{"value":"{ \"size\": \"medium\" }","disabled":false},"transition":{"id":1,"name":"Open"}}],"validators":[{"id":"11e9-59f5-b4d6cbdc-8647-d663bd873d93","key":"validator-key","configuration":{"value":"\"{ \\\"shape\\\": \\\"square\\\" }\"","disabled":false},"transition":{"id":1,"name":"Open"}}]}]}
 Get workflow transition rule configurations
 
 =head3 Parameters
@@ -60095,6 +60341,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->updateWorkflowTransitionRuleConfigurations()->get;
 
+    {"updateResults":[{"workflowId":{"name":"Workflow with one rule not updated","draft":false},"ruleUpdateErrors":{"example-rule-id":["The rule with this id does not exist: example-rule-id"]},"updateErrors":[]},{"workflowId":{"name":"Workflow with all rules successfully updated","draft":true},"ruleUpdateErrors":{},"updateErrors":[]},{"workflowId":{"name":"Non-existing workflow","draft":false},"ruleUpdateErrors":{},"updateErrors":["Workflow not found: WorkflowIdBean{name=Non-existing workflow, draft=false}"]}]}
 Update workflow transition rule configurations
 
 =head3 Parameters
@@ -60226,6 +60473,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->deleteWorkflowTransitionRuleConfigurations()->get;
 
+    {"updateResults":[{"workflowId":{"name":"Workflow with one rule not updated","draft":false},"ruleUpdateErrors":{"example-rule-id":["The rule with this id does not exist: example-rule-id"]},"updateErrors":[]},{"workflowId":{"name":"Workflow with all rules successfully updated","draft":true},"ruleUpdateErrors":{},"updateErrors":[]},{"workflowId":{"name":"Non-existing workflow","draft":false},"ruleUpdateErrors":{},"updateErrors":["Workflow not found: WorkflowIdBean{name=Non-existing workflow, draft=false}"]}]}
 Delete workflow transition rule configurations
 
 =head3 Parameters
@@ -60365,6 +60613,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'isActive' => '...',
   )->get;
 
+    {"maxResults":1,"startAt":0,"total":5,"isLast":false,"values":[{"id":{"name":"SCRUM Workflow","entityId":"5ed312c5-f7a6-4a78-a1f6-8ff7f307d063"},"description":"A workflow used for Software projects in the SCRUM methodology","transitions":[{"id":"5","name":"In Progress","description":"Start working on the issue.","from":["10","13"],"to":"14","type":"directed","screen":{"id":"10000","name":"Issue screen"},"rules":{"conditionsTree":{"nodeType":"compound","operator":"AND","conditions":[{"nodeType":"simple","type":"PermissionCondition","configuration":{"permissionKey":"WORK_ON_ISSUES"}},{"nodeType":"simple","type":"PermissionCondition","configuration":{"permissionKey":"RESOLVE_ISSUES"}}]},"validators":[{"type":"FieldRequiredValidator","configuration":{"ignoreContext":true,"errorMessage":"A custom error message","fields":["description","assignee"]}}],"postFunctions":[{"type":"UpdateIssueStatusFunction"},{"type":"GenerateChangeHistoryFunction"},{"type":"FireIssueEventFunction"}]},"properties":{"jira.fieldscreen.id":1}}],"statuses":[{"id":"3","name":"In Progress","properties":{"jira.issue.editable":"false","issueEditable":false}}],"isDefault":false,"schemes":[{"id":"10001","name":"Test Workflow Scheme"}],"projects":[{"self":"project/EX","id":"10000","key":"EX","name":"Example","projectTypeKey":"ProjectTypeKey{key='software'}","simplified":false,"avatarUrls":{"48x48":"secure/projectavatar?size=large&pid=10000","24x24":"secure/projectavatar?size=small&pid=10000","16x16":"secure/projectavatar?size=xsmall&pid=10000","32x32":"secure/projectavatar?size=medium&pid=10000"},"projectCategory":{"id":"10000","description":"Project category description","name":"A project category"}}],"hasDraftWorkflow":true,"operations":{"canEdit":true,"canDelete":false},"created":"2023-02-28T09:45:09.592+0000","updated":"2023-02-28T09:45:09.592+0000"}]}
 Get workflows paginated
 
 =head3 Parameters
@@ -60715,6 +60964,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'workflowMode' => '...',
   )->get;
 
+    [{"key":"jira.i18n.title","value":"some.title","id":"jira.i18n.title"},{"key":"jira.permission","value":"createissue","id":"jira.permission"}]
 Get workflow transition properties
 
 =head3 Parameters
@@ -60855,6 +61105,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'workflowMode' => '...',
   )->get;
 
+    {"key":"jira.i18n.title","value":"some.title","id":"jira.i18n.title"}
 Create workflow transition property
 
 =head3 Parameters
@@ -61013,6 +61264,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'workflowMode' => '...',
   )->get;
 
+    {"key":"jira.i18n.title","value":"some.title","id":"jira.i18n.title"}
 Update workflow transition property
 
 =head3 Parameters
@@ -61305,6 +61557,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'maxResults' => '...',
   )->get;
 
+    {"maxResults":50,"startAt":0,"total":2,"isLast":true,"values":[{"id":101010,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"jira","issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"},{"id":101011,"name":"Another example workflow scheme","description":"The description of the another example workflow scheme.","defaultWorkflow":"jira","issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/101011"}]}
 Get all workflow schemes
 
 =head3 Parameters
@@ -61591,6 +61844,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'projectId' => '...',
   )->get;
 
+    {"values":[{"projectIds":["10010","10020"],"workflowScheme":{"id":101010,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"jira","issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"}}]}
 Get workflow scheme project associations
 
 =head3 Parameters
@@ -61986,6 +62240,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'returnDraftIfExists' => '...',
   )->get;
 
+    {"id":101010,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"jira","issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"draft":false,"self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"}
 Get workflow scheme
 
 =head3 Parameters
@@ -62103,6 +62358,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"id":101010,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"jira","issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"draft":false,"self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"}
 Update workflow scheme
 
 =head3 Parameters
@@ -62405,6 +62661,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'updateDraftIfNeeded' => '...',
   )->get;
 
+    {"id":101010,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"jira","issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"draft":false,"self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"}
 Delete default workflow
 
 =head3 Parameters
@@ -62526,6 +62783,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'returnDraftIfExists' => '...',
   )->get;
 
+    {"workflow":"jira"}
 Get default workflow
 
 =head3 Parameters
@@ -62643,6 +62901,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"id":101010,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"jira","issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"draft":false,"self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"}
 Update default workflow
 
 =head3 Parameters
@@ -62868,6 +63127,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"id":17218781,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"scrum workflow","issueTypeMappings":{"10000":"jira","10001":"jira"},"originalDefaultWorkflow":"jira","originalIssueTypeMappings":{"10001":"builds workflow"},"draft":true,"lastModifiedUser":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney","groups":{"size":3,"items":[]},"applicationRoles":{"size":1,"items":[]}},"lastModified":"Today 6:38 PM","self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/17218781/draft"}
 Get draft workflow scheme
 
 =head3 Parameters
@@ -62977,6 +63237,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"id":17218781,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"scrum workflow","issueTypeMappings":{"10000":"jira","10001":"jira"},"originalDefaultWorkflow":"jira","originalIssueTypeMappings":{"10001":"builds workflow"},"draft":true,"lastModifiedUser":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney","groups":{"size":3,"items":[]},"applicationRoles":{"size":1,"items":[]}},"lastModified":"Today 6:38 PM","self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/17218781/draft"}
 Update draft workflow scheme
 
 =head3 Parameters
@@ -63169,6 +63430,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"id":17218781,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"scrum workflow","issueTypeMappings":{"10000":"jira","10001":"jira"},"originalDefaultWorkflow":"jira","originalIssueTypeMappings":{"10001":"builds workflow"},"draft":true,"lastModifiedUser":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney","groups":{"size":3,"items":[]},"applicationRoles":{"size":1,"items":[]}},"lastModified":"Today 6:38 PM","self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/17218781/draft"}
 Delete draft default workflow
 
 =head3 Parameters
@@ -63278,6 +63540,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"workflow":"jira"}
 Get draft default workflow
 
 =head3 Parameters
@@ -63387,6 +63650,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+    {"id":17218781,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"scrum workflow","issueTypeMappings":{"10000":"jira","10001":"jira"},"originalDefaultWorkflow":"jira","originalIssueTypeMappings":{"10001":"builds workflow"},"draft":true,"lastModifiedUser":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney","groups":{"size":3,"items":[]},"applicationRoles":{"size":1,"items":[]}},"lastModified":"Today 6:38 PM","self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/17218781/draft"}
 Update draft default workflow
 
 =head3 Parameters
@@ -63517,6 +63781,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueType' => '...',
   )->get;
 
+    {"id":17218781,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"scrum workflow","issueTypeMappings":{"10000":"jira","10001":"jira"},"originalDefaultWorkflow":"jira","originalIssueTypeMappings":{"10001":"builds workflow"},"draft":true,"lastModifiedUser":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney","groups":{"size":3,"items":[]},"applicationRoles":{"size":1,"items":[]}},"lastModified":"Today 6:38 PM","self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/17218781/draft"}
 Delete workflow for issue type in draft workflow scheme
 
 =head3 Parameters
@@ -63634,6 +63899,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueType' => '...',
   )->get;
 
+    {"issueType":"10000","workflow":"jira"}
 Get workflow for issue type in draft workflow scheme
 
 =head3 Parameters
@@ -63751,6 +64017,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueType' => '...',
   )->get;
 
+    {"id":17218781,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"scrum workflow","issueTypeMappings":{"10000":"jira","10001":"jira"},"originalDefaultWorkflow":"jira","originalIssueTypeMappings":{"10001":"builds workflow"},"draft":true,"lastModifiedUser":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","key":"","accountId":"5b10a2844c20165700ede21g","accountType":"atlassian","name":"","emailAddress":"mia@example.com","avatarUrls":{"48x48":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48","24x24":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24","16x16":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16","32x32":"https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"},"displayName":"Mia Krystof","active":true,"timeZone":"Australia/Sydney","groups":{"size":3,"items":[]},"applicationRoles":{"size":1,"items":[]}},"lastModified":"Today 6:38 PM","self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/17218781/draft"}
 Set workflow for issue type in draft workflow scheme
 
 =head3 Parameters
@@ -64158,6 +64425,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'workflowName' => '...',
   )->get;
 
+    {"workflow":"jira","issueTypes":["10000","10001"],"defaultMapping":false}
 Get issue types for workflows in draft workflow scheme
 
 =head3 Parameters
@@ -64276,6 +64544,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'workflowName' => '...',
   )->get;
 
+    {"id":101010,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"jira","issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"draft":false,"self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"}
 Set issue types for workflow in workflow scheme
 
 =head3 Parameters
@@ -64425,6 +64694,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'updateDraftIfNeeded' => '...',
   )->get;
 
+    {"id":101010,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"jira","issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"draft":false,"self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"}
 Delete workflow for issue type in workflow scheme
 
 =head3 Parameters
@@ -64554,6 +64824,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'returnDraftIfExists' => '...',
   )->get;
 
+    {"issueType":"10000","workflow":"jira"}
 Get workflow for issue type in workflow scheme
 
 =head3 Parameters
@@ -64679,6 +64950,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueType' => '...',
   )->get;
 
+    {"id":101010,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"jira","issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"draft":false,"self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"}
 Set workflow for issue type in workflow scheme
 
 =head3 Parameters
@@ -64937,6 +65209,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'returnDraftIfExists' => '...',
   )->get;
 
+    {"workflow":"jira","issueTypes":["10000","10001"],"defaultMapping":false}
 Get issue types for workflows in workflow scheme
 
 =head3 Parameters
@@ -65060,6 +65333,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'workflowName' => '...',
   )->get;
 
+    {"id":101010,"name":"Example workflow scheme","description":"The description of the example workflow scheme.","defaultWorkflow":"jira","issueTypeMappings":{"10000":"scrum workflow","10001":"builds workflow"},"draft":false,"self":"https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"}
 Set issue types for workflow in workflow scheme
 
 =head3 Parameters
@@ -65207,6 +65481,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'since' => '...',
   )->get;
 
+    {"values":[{"worklogId":103,"updatedTime":1438013671562,"properties":[]},{"worklogId":104,"updatedTime":1438013672165,"properties":[]},{"worklogId":105,"updatedTime":1438013693136,"properties":[]}],"since":1438013671562,"until":1438013693136,"self":"https://your-domain.atlassian.net/api/~ver~/worklog/deleted?since=1438013671562","nextPage":"https://your-domain.atlassian.net/api/~ver~/worklog/deleted?since=1438013693136","lastPage":true}
 Get IDs of deleted worklogs
 
 =head3 Parameters
@@ -65308,6 +65583,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    [{"self":"https://your-domain.atlassian.net/rest/api/3/issue/10010/worklog/10000","author":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"updateAuthor":{"self":"https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g","accountId":"5b10a2844c20165700ede21g","displayName":"Mia Krystof","active":false},"comment":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"I did some work here."}]}]},"updated":"2021-01-18T23:45:00.000+0000","visibility":{"type":"group","value":"jira-developers","identifier":"276f955c-63d7-42c8-9520-92d01dca0625"},"started":"2021-01-17T12:34:00.000+0000","timeSpent":"3h 20m","timeSpentSeconds":12000,"id":"100028","issueId":"10002"}]
 Get worklogs
 
 =head3 Parameters
@@ -65427,6 +65703,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+    {"values":[{"worklogId":103,"updatedTime":1438013671562,"properties":[]},{"worklogId":104,"updatedTime":1438013672165,"properties":[]},{"worklogId":105,"updatedTime":1438013693136,"properties":[]}],"since":1438013671562,"until":1438013693136,"self":"https://your-domain.atlassian.net/api/~ver~/worklog/updated?since=1438013671562","nextPage":"https://your-domain.atlassian.net/api/~ver~/worklog/updated?since=1438013693136","lastPage":true}
 Get IDs of updated worklogs
 
 =head3 Parameters
@@ -65533,6 +65810,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'addonKey' => '...',
   )->get;
 
+    HASH(0x2758ef993e8)
 Get app properties
 
 =head3 Parameters
@@ -65790,6 +66068,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'propertyKey' => '...',
   )->get;
 
+    HASH(0x2758efa6078)
 Get app property
 
 =head3 Parameters
@@ -65943,6 +66222,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'propertyKey' => '...',
   )->get;
 
+    HASH(0x2758efa6be8)
 Set app property
 
 =head3 Parameters
@@ -66645,6 +66925,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'Atlassian-Transfer-Id' => '...',
   )->get;
 
+    HASH(0x2758efa1c80)
 Get workflow transition rule configurations
 
 =head3 Parameters

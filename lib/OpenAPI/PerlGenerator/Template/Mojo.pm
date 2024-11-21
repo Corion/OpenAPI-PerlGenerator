@@ -684,6 +684,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 %     }
 % }
 
+% if(     $elt->{responses}->{200}
+%     and $elt->{responses}->{200}->{content}
+%     and $elt->{responses}->{200}->{content}->{"application/json"}
+%     and $elt->{responses}->{200}->{content}->{"application/json"}->{example} ) {
+#    <%= $elt->{responses}->{200}->{content}->{"application/json"}->{example} %>
+% }
+%
+%# pretty-print the JSON response?
 % if( $elt->{summary}  and $elt->{summary} =~ /\S/ ) {
 <%= markdown_to_pod( $elt->{summary} =~ s/\s*$//r ) %>
 
