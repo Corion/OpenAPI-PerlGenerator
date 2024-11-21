@@ -370,9 +370,10 @@ __FACTORYCLASS__
 $template{return_types} = <<'__RETURN_TYPES__';
 % my %result_types;
 % for my $code (sort keys $elt->{responses}->%*) {
-%     my $status_type =   $code =~ /2../ ? 'on success'
-%                       : $code =~ /3../ ? 'on redirect'
-%                       : $code =~ /4../ ? 'on error'
+%     my $status_type =   $code =~ /200/ ? 'on success'
+%                       : $code =~ /30[12]/ ? 'on redirect'
+%                       : $code =~ /400/ ? 'on error'
+%                       : $code eq 'default' ? 'otherwise'
 %                       :                  "on HTTP code $code"
 %                       ;
 %     my $info = $elt->{responses}->{ $code };
