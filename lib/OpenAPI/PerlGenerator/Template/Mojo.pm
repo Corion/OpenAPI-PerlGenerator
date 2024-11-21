@@ -715,7 +715,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 %     and $elt->{responses}->{200}->{content}
 %     and $elt->{responses}->{200}->{content}->{"application/json"}
 %     and $elt->{responses}->{200}->{content}->{"application/json"}->{example} ) {
-#    <%= $elt->{responses}->{200}->{content}->{"application/json"}->{example} %>
+%         my $pretty = Cpanel::JSON::XS->new->ascii->pretty->allow_nonref;
+%         my $ex = $elt->{responses}->{200}->{content}->{"application/json"}->{example};
+%         use feature 'try';
+%         my $str;
+%         try { $str=$pretty->encode($pretty->decode( $ex )) } catch($e) { $str = $ex }
+<%= perl_comment( '  ', $str ) %>
 % }
 %
 %# pretty-print the JSON response?

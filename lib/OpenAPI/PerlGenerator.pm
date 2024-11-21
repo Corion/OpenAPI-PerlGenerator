@@ -11,6 +11,7 @@ use OpenAPI::PerlGenerator::Utils; # for tidy(), but we don't import that
 use OpenAPI::PerlGenerator::Template;
 use JSON::Pointer;
 use Markdown::Pod;
+use Cpanel::JSON::XS;
 
 =head1 NAME
 
@@ -207,6 +208,10 @@ sub property_name( $self, $name ) {
 # Maybe line-wrap into a comment?!
 sub single_line( $self, $str ) {
     $str =~ s/\s+/ /gr;
+}
+
+sub perl_comment( $self, $prefix, $str ) {
+    $str =~ s/(\A|\n)/\n$prefix# /gr;
 }
 
 =head2 C<< ->find_discriminator >>

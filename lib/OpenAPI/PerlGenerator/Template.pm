@@ -47,6 +47,13 @@ sub single_line {
     $info->single_line( @_ );
 }
 
+=head2 C<< perl_comment >>
+
+=cut
+
+sub perl_comment {
+    $info->perl_comment( @_ );
+}
 
 =head2 C<< openapi_submodules >>
 
@@ -100,7 +107,6 @@ sub class_type_name {
 sub openapi_dependencies {
     $info->openapi_dependencies( @_ );
 }
-
 
 1;
 __END__
