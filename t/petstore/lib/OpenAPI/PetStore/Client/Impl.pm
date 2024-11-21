@@ -76,6 +76,10 @@ has 'server' => (
 
 =head1 METHODS
 
+=head2 C<< build_findPets_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< findPets >>
 
   my $res = $client->findPets(
@@ -103,7 +107,7 @@ Returns a L<< OpenAPI::PetStore::Error >> otherwise.
 
 =cut
 
-sub _build_findPets_request( $self, %options ) {
+sub build_findPets_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/pets';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -190,6 +194,10 @@ sub findPets( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addPet_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addPet >>
 
   my $res = $client->addPet()->get;
@@ -210,7 +218,7 @@ Returns a L<< OpenAPI::PetStore::Error >> otherwise.
 
 =cut
 
-sub _build_addPet_request( $self, %options ) {
+sub build_addPet_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/pets';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -294,6 +302,10 @@ sub addPet( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deletePet_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deletePet >>
 
   my $res = $client->deletePet(
@@ -315,7 +327,7 @@ Returns a L<< OpenAPI::PetStore::Error >> otherwise.
 
 =cut
 
-sub _build_deletePet_request( $self, %options ) {
+sub build_deletePet_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -391,6 +403,10 @@ sub deletePet( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_find_pet_by_id_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< find_pet_by_id >>
 
   my $res = $client->find_pet_by_id(
@@ -413,7 +429,7 @@ Returns a L<< OpenAPI::PetStore::Error >> otherwise.
 
 =cut
 
-sub _build_find_pet_by_id_request( $self, %options ) {
+sub build_find_pet_by_id_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 

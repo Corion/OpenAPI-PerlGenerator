@@ -93,6 +93,10 @@ has 'server' => (
 
 =head1 METHODS
 
+=head2 C<< build_checkBlob_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< checkBlob >>
 
   my $res = $client->checkBlob(
@@ -115,7 +119,7 @@ the SHA256 digest of the blob
 
 =cut
 
-sub _build_checkBlob_request( $self, %options ) {
+sub build_checkBlob_request( $self, %options ) {
     croak "Missing required parameter 'digest'"
         unless exists $options{ 'digest' };
 
@@ -179,6 +183,10 @@ sub checkBlob( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createBlob_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createBlob >>
 
   my $res = $client->createBlob(
@@ -201,7 +209,7 @@ the SHA256 digest of the blob
 
 =cut
 
-sub _build_createBlob_request( $self, %options ) {
+sub build_createBlob_request( $self, %options ) {
     croak "Missing required parameter 'digest'"
         unless exists $options{ 'digest' };
 
@@ -264,6 +272,10 @@ sub createBlob( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_generateChatCompletion_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< generateChatCompletion >>
 
@@ -347,7 +359,7 @@ Returns a L<< AI::Ollama::GenerateChatCompletionResponse >> on success.
 
 =cut
 
-sub _build_generateChatCompletion_request( $self, %options ) {
+sub build_generateChatCompletion_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/chat';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -434,6 +446,10 @@ sub generateChatCompletion( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_copyModel_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< copyModel >>
 
   my $res = $client->copyModel()->get;
@@ -458,7 +474,7 @@ Name of the model to copy.
 
 =cut
 
-sub _build_copyModel_request( $self, %options ) {
+sub build_copyModel_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/copy';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -516,6 +532,10 @@ sub copyModel( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createModel_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createModel >>
 
   use Future::Utils 'repeat';
@@ -558,7 +578,7 @@ Returns a L<< AI::Ollama::CreateModelResponse >> on success.
 
 =cut
 
-sub _build_createModel_request( $self, %options ) {
+sub build_createModel_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/create';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -645,6 +665,10 @@ sub createModel( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteModel_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteModel >>
 
   my $res = $client->deleteModel()->get;
@@ -667,7 +691,7 @@ Model names follow a C<model:tag> format. Some examples are C<orca-mini:3b-q4_1>
 
 =cut
 
-sub _build_deleteModel_request( $self, %options ) {
+sub build_deleteModel_request( $self, %options ) {
     my $method = 'DELETE';
     my $path = '/delete';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -725,6 +749,10 @@ sub deleteModel( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_generateEmbedding_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< generateEmbedding >>
 
   my $res = $client->generateEmbedding()->get;
@@ -756,7 +784,7 @@ Returns a L<< AI::Ollama::GenerateEmbeddingResponse >> on success.
 
 =cut
 
-sub _build_generateEmbedding_request( $self, %options ) {
+sub build_generateEmbedding_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/embeddings';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -825,6 +853,10 @@ sub generateEmbedding( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_generateCompletion_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< generateCompletion >>
 
@@ -930,7 +962,7 @@ Returns a L<< AI::Ollama::GenerateCompletionResponse >> on success.
 
 =cut
 
-sub _build_generateCompletion_request( $self, %options ) {
+sub build_generateCompletion_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/generate';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -1017,6 +1049,10 @@ sub generateCompletion( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_pullModel_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< pullModel >>
 
   my $res = $client->pullModel()->get;
@@ -1050,7 +1086,7 @@ Returns a L<< AI::Ollama::PullModelResponse >> on success.
 
 =cut
 
-sub _build_pullModel_request( $self, %options ) {
+sub build_pullModel_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/pull';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -1120,6 +1156,10 @@ sub pullModel( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_pushModel_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< pushModel >>
 
   my $res = $client->pushModel()->get;
@@ -1151,7 +1191,7 @@ Returns a L<< AI::Ollama::PushModelResponse >> on success.
 
 =cut
 
-sub _build_pushModel_request( $self, %options ) {
+sub build_pushModel_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/push';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -1221,6 +1261,10 @@ sub pushModel( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_showModelInfo_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< showModelInfo >>
 
   my $res = $client->showModelInfo()->get;
@@ -1244,7 +1288,7 @@ Returns a L<< AI::Ollama::ModelInfo >> on success.
 
 =cut
 
-sub _build_showModelInfo_request( $self, %options ) {
+sub build_showModelInfo_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/show';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -1314,6 +1358,10 @@ sub showModelInfo( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_listModels_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< listModels >>
 
   my $res = $client->listModels()->get;
@@ -1325,7 +1373,7 @@ Returns a L<< AI::Ollama::ModelsResponse >> on success.
 
 =cut
 
-sub _build_listModels_request( $self, %options ) {
+sub build_listModels_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/tags';
     my $url = Mojo::URL->new( $self->server . $path );

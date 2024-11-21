@@ -79,6 +79,10 @@ has 'server' => (
 
 =head1 METHODS
 
+=head2 C<< build_inference_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< inference >>
 
   my $res = $client->inference()->get;
@@ -107,7 +111,7 @@ Returns a L<< Speech::Recognition::Whisper::Error >> otherwise.
 
 =cut
 
-sub _build_inference_request( $self, %options ) {
+sub build_inference_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/inference';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -191,6 +195,10 @@ sub inference( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_load_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< load >>
 
   my $res = $client->load()->get;
@@ -223,7 +231,7 @@ Returns a L<< Speech::Recognition::Whisper::Error >> otherwise.
 
 =cut
 
-sub _build_load_request( $self, %options ) {
+sub build_load_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/load';
     my $url = Mojo::URL->new( $self->server . $path );

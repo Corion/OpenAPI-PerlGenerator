@@ -206,6 +206,10 @@ has 'server' => (
 
 =head1 METHODS
 
+=head2 C<< build_listAssistants_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< listAssistants >>
 
   my $res = $client->listAssistants(
@@ -244,7 +248,7 @@ Returns a L<< AI::OpenAI::ListAssistantsResponse >> on success.
 
 =cut
 
-sub _build_listAssistants_request( $self, %options ) {
+sub build_listAssistants_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/assistants';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -318,6 +322,10 @@ sub listAssistants( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createAssistant_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createAssistant >>
 
   my $res = $client->createAssistant()->get;
@@ -381,7 +389,7 @@ Returns a L<< AI::OpenAI::AssistantObject >> on success.
 
 =cut
 
-sub _build_createAssistant_request( $self, %options ) {
+sub build_createAssistant_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/assistants';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -451,6 +459,10 @@ sub createAssistant( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteAssistant_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteAssistant >>
 
   my $res = $client->deleteAssistant(
@@ -474,7 +486,7 @@ Returns a L<< AI::OpenAI::DeleteAssistantResponse >> on success.
 
 =cut
 
-sub _build_deleteAssistant_request( $self, %options ) {
+sub build_deleteAssistant_request( $self, %options ) {
     croak "Missing required parameter 'assistant_id'"
         unless exists $options{ 'assistant_id' };
 
@@ -547,6 +559,10 @@ sub deleteAssistant( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAssistant_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAssistant >>
 
   my $res = $client->getAssistant(
@@ -570,7 +586,7 @@ Returns a L<< AI::OpenAI::AssistantObject >> on success.
 
 =cut
 
-sub _build_getAssistant_request( $self, %options ) {
+sub build_getAssistant_request( $self, %options ) {
     croak "Missing required parameter 'assistant_id'"
         unless exists $options{ 'assistant_id' };
 
@@ -642,6 +658,10 @@ sub getAssistant( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_modifyAssistant_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< modifyAssistant >>
 
@@ -718,7 +738,7 @@ Returns a L<< AI::OpenAI::AssistantObject >> on success.
 
 =cut
 
-sub _build_modifyAssistant_request( $self, %options ) {
+sub build_modifyAssistant_request( $self, %options ) {
     croak "Missing required parameter 'assistant_id'"
         unless exists $options{ 'assistant_id' };
 
@@ -794,6 +814,10 @@ sub modifyAssistant( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createSpeech_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createSpeech >>
 
   my $res = $client->createSpeech()->get;
@@ -831,7 +855,7 @@ Returns a L<< string >> on success.
 
 =cut
 
-sub _build_createSpeech_request( $self, %options ) {
+sub build_createSpeech_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/audio/speech';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -901,6 +925,10 @@ sub createSpeech( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createTranscription_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createTranscription >>
 
   my $res = $client->createTranscription()->get;
@@ -946,7 +974,7 @@ Returns Hashref on success.
 
 =cut
 
-sub _build_createTranscription_request( $self, %options ) {
+sub build_createTranscription_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/audio/transcriptions';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -1016,6 +1044,10 @@ sub createTranscription( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createTranslation_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createTranslation >>
 
   my $res = $client->createTranslation()->get;
@@ -1053,7 +1085,7 @@ Returns Hashref on success.
 
 =cut
 
-sub _build_createTranslation_request( $self, %options ) {
+sub build_createTranslation_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/audio/translations';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -1123,6 +1155,10 @@ sub createTranslation( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_listBatches_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< listBatches >>
 
   my $res = $client->listBatches(
@@ -1151,7 +1187,7 @@ Returns a L<< AI::OpenAI::ListBatchesResponse >> on success.
 
 =cut
 
-sub _build_listBatches_request( $self, %options ) {
+sub build_listBatches_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/batches';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -1223,6 +1259,10 @@ sub listBatches( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createBatch_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createBatch >>
 
   my $res = $client->createBatch()->get;
@@ -1260,7 +1300,7 @@ Returns a L<< AI::OpenAI::Batch >> on success.
 
 =cut
 
-sub _build_createBatch_request( $self, %options ) {
+sub build_createBatch_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/batches';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -1330,6 +1370,10 @@ sub createBatch( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_retrieveBatch_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< retrieveBatch >>
 
   my $res = $client->retrieveBatch(
@@ -1353,7 +1397,7 @@ Returns a L<< AI::OpenAI::Batch >> on success.
 
 =cut
 
-sub _build_retrieveBatch_request( $self, %options ) {
+sub build_retrieveBatch_request( $self, %options ) {
     croak "Missing required parameter 'batch_id'"
         unless exists $options{ 'batch_id' };
 
@@ -1426,6 +1470,10 @@ sub retrieveBatch( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_cancelBatch_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< cancelBatch >>
 
   my $res = $client->cancelBatch(
@@ -1449,7 +1497,7 @@ Returns a L<< AI::OpenAI::Batch >> on success.
 
 =cut
 
-sub _build_cancelBatch_request( $self, %options ) {
+sub build_cancelBatch_request( $self, %options ) {
     croak "Missing required parameter 'batch_id'"
         unless exists $options{ 'batch_id' };
 
@@ -1521,6 +1569,10 @@ sub cancelBatch( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_createChatCompletion_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< createChatCompletion >>
 
@@ -1656,7 +1708,7 @@ Returns a L<< AI::OpenAI::CreateChatCompletionResponse >> on success.
 
 =cut
 
-sub _build_createChatCompletion_request( $self, %options ) {
+sub build_createChatCompletion_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/chat/completions';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -1725,6 +1777,10 @@ sub createChatCompletion( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_createCompletion_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< createCompletion >>
 
@@ -1843,7 +1899,7 @@ Returns a L<< AI::OpenAI::CreateCompletionResponse >> on success.
 
 =cut
 
-sub _build_createCompletion_request( $self, %options ) {
+sub build_createCompletion_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/completions';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -1913,6 +1969,10 @@ sub createCompletion( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createEmbedding_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createEmbedding >>
 
   my $res = $client->createEmbedding()->get;
@@ -1950,7 +2010,7 @@ Returns a L<< AI::OpenAI::CreateEmbeddingResponse >> on success.
 
 =cut
 
-sub _build_createEmbedding_request( $self, %options ) {
+sub build_createEmbedding_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/embeddings';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -2020,6 +2080,10 @@ sub createEmbedding( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_listFiles_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< listFiles >>
 
   my $res = $client->listFiles(
@@ -2043,7 +2107,7 @@ Returns a L<< AI::OpenAI::ListFilesResponse >> on success.
 
 =cut
 
-sub _build_listFiles_request( $self, %options ) {
+sub build_listFiles_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/files';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -2114,6 +2178,10 @@ sub listFiles( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createFile_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createFile >>
 
   my $res = $client->createFile()->get;
@@ -2149,7 +2217,7 @@ Returns a L<< AI::OpenAI::OpenAIFile >> on success.
 
 =cut
 
-sub _build_createFile_request( $self, %options ) {
+sub build_createFile_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/files';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -2219,6 +2287,10 @@ sub createFile( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteFile_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteFile >>
 
   my $res = $client->deleteFile(
@@ -2242,7 +2314,7 @@ Returns a L<< AI::OpenAI::DeleteFileResponse >> on success.
 
 =cut
 
-sub _build_deleteFile_request( $self, %options ) {
+sub build_deleteFile_request( $self, %options ) {
     croak "Missing required parameter 'file_id'"
         unless exists $options{ 'file_id' };
 
@@ -2315,6 +2387,10 @@ sub deleteFile( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_retrieveFile_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< retrieveFile >>
 
   my $res = $client->retrieveFile(
@@ -2338,7 +2414,7 @@ Returns a L<< AI::OpenAI::OpenAIFile >> on success.
 
 =cut
 
-sub _build_retrieveFile_request( $self, %options ) {
+sub build_retrieveFile_request( $self, %options ) {
     croak "Missing required parameter 'file_id'"
         unless exists $options{ 'file_id' };
 
@@ -2411,6 +2487,10 @@ sub retrieveFile( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_downloadFile_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< downloadFile >>
 
   my $res = $client->downloadFile(
@@ -2434,7 +2514,7 @@ Returns a L<< string >> on success.
 
 =cut
 
-sub _build_downloadFile_request( $self, %options ) {
+sub build_downloadFile_request( $self, %options ) {
     croak "Missing required parameter 'file_id'"
         unless exists $options{ 'file_id' };
 
@@ -2507,6 +2587,10 @@ sub downloadFile( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_listPaginatedFineTuningJobs_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< listPaginatedFineTuningJobs >>
 
   my $res = $client->listPaginatedFineTuningJobs(
@@ -2535,7 +2619,7 @@ Returns a L<< AI::OpenAI::ListPaginatedFineTuningJobsResponse >> on success.
 
 =cut
 
-sub _build_listPaginatedFineTuningJobs_request( $self, %options ) {
+sub build_listPaginatedFineTuningJobs_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/fine_tuning/jobs';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -2607,6 +2691,10 @@ sub listPaginatedFineTuningJobs( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createFineTuningJob_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createFineTuningJob >>
 
   my $res = $client->createFineTuningJob()->get;
@@ -2675,7 +2763,7 @@ Returns a L<< AI::OpenAI::FineTuningJob >> on success.
 
 =cut
 
-sub _build_createFineTuningJob_request( $self, %options ) {
+sub build_createFineTuningJob_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/fine_tuning/jobs';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -2745,6 +2833,10 @@ sub createFineTuningJob( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_retrieveFineTuningJob_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< retrieveFineTuningJob >>
 
   my $res = $client->retrieveFineTuningJob(
@@ -2770,7 +2862,7 @@ Returns a L<< AI::OpenAI::FineTuningJob >> on success.
 
 =cut
 
-sub _build_retrieveFineTuningJob_request( $self, %options ) {
+sub build_retrieveFineTuningJob_request( $self, %options ) {
     croak "Missing required parameter 'fine_tuning_job_id'"
         unless exists $options{ 'fine_tuning_job_id' };
 
@@ -2843,6 +2935,10 @@ sub retrieveFineTuningJob( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_cancelFineTuningJob_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< cancelFineTuningJob >>
 
   my $res = $client->cancelFineTuningJob(
@@ -2866,7 +2962,7 @@ Returns a L<< AI::OpenAI::FineTuningJob >> on success.
 
 =cut
 
-sub _build_cancelFineTuningJob_request( $self, %options ) {
+sub build_cancelFineTuningJob_request( $self, %options ) {
     croak "Missing required parameter 'fine_tuning_job_id'"
         unless exists $options{ 'fine_tuning_job_id' };
 
@@ -2939,6 +3035,10 @@ sub cancelFineTuningJob( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_listFineTuningJobCheckpoints_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< listFineTuningJobCheckpoints >>
 
   my $res = $client->listFineTuningJobCheckpoints(
@@ -2972,7 +3072,7 @@ Returns a L<< AI::OpenAI::ListFineTuningJobCheckpointsResponse >> on success.
 
 =cut
 
-sub _build_listFineTuningJobCheckpoints_request( $self, %options ) {
+sub build_listFineTuningJobCheckpoints_request( $self, %options ) {
     croak "Missing required parameter 'fine_tuning_job_id'"
         unless exists $options{ 'fine_tuning_job_id' };
 
@@ -3050,6 +3150,10 @@ sub listFineTuningJobCheckpoints( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_listFineTuningEvents_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< listFineTuningEvents >>
 
   my $res = $client->listFineTuningEvents(
@@ -3083,7 +3187,7 @@ Returns a L<< AI::OpenAI::ListFineTuningJobEventsResponse >> on success.
 
 =cut
 
-sub _build_listFineTuningEvents_request( $self, %options ) {
+sub build_listFineTuningEvents_request( $self, %options ) {
     croak "Missing required parameter 'fine_tuning_job_id'"
         unless exists $options{ 'fine_tuning_job_id' };
 
@@ -3161,6 +3265,10 @@ sub listFineTuningEvents( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createImageEdit_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createImageEdit >>
 
   my $res = $client->createImageEdit()->get;
@@ -3210,7 +3318,7 @@ Returns a L<< AI::OpenAI::ImagesResponse >> on success.
 
 =cut
 
-sub _build_createImageEdit_request( $self, %options ) {
+sub build_createImageEdit_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/images/edits';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -3280,6 +3388,10 @@ sub createImageEdit( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createImage_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createImage >>
 
   my $res = $client->createImage()->get;
@@ -3329,7 +3441,7 @@ Returns a L<< AI::OpenAI::ImagesResponse >> on success.
 
 =cut
 
-sub _build_createImage_request( $self, %options ) {
+sub build_createImage_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/images/generations';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -3399,6 +3511,10 @@ sub createImage( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createImageVariation_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createImageVariation >>
 
   my $res = $client->createImageVariation()->get;
@@ -3440,7 +3556,7 @@ Returns a L<< AI::OpenAI::ImagesResponse >> on success.
 
 =cut
 
-sub _build_createImageVariation_request( $self, %options ) {
+sub build_createImageVariation_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/images/variations';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -3510,6 +3626,10 @@ sub createImageVariation( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_listModels_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< listModels >>
 
   my $res = $client->listModels()->get;
@@ -3521,7 +3641,7 @@ Returns a L<< AI::OpenAI::ListModelsResponse >> on success.
 
 =cut
 
-sub _build_listModels_request( $self, %options ) {
+sub build_listModels_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/models';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -3588,6 +3708,10 @@ sub listModels( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteModel_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteModel >>
 
   my $res = $client->deleteModel(
@@ -3611,7 +3735,7 @@ Returns a L<< AI::OpenAI::DeleteModelResponse >> on success.
 
 =cut
 
-sub _build_deleteModel_request( $self, %options ) {
+sub build_deleteModel_request( $self, %options ) {
     croak "Missing required parameter 'model'"
         unless exists $options{ 'model' };
 
@@ -3684,6 +3808,10 @@ sub deleteModel( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_retrieveModel_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< retrieveModel >>
 
   my $res = $client->retrieveModel(
@@ -3707,7 +3835,7 @@ Returns a L<< AI::OpenAI::Model >> on success.
 
 =cut
 
-sub _build_retrieveModel_request( $self, %options ) {
+sub build_retrieveModel_request( $self, %options ) {
     croak "Missing required parameter 'model'"
         unless exists $options{ 'model' };
 
@@ -3780,6 +3908,10 @@ sub retrieveModel( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createModeration_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createModeration >>
 
   my $res = $client->createModeration()->get;
@@ -3807,7 +3939,7 @@ Returns a L<< AI::OpenAI::CreateModerationResponse >> on success.
 
 =cut
 
-sub _build_createModeration_request( $self, %options ) {
+sub build_createModeration_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/moderations';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -3877,6 +4009,10 @@ sub createModeration( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createThread_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createThread >>
 
   my $res = $client->createThread()->get;
@@ -3906,7 +4042,7 @@ Returns a L<< AI::OpenAI::ThreadObject >> on success.
 
 =cut
 
-sub _build_createThread_request( $self, %options ) {
+sub build_createThread_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/threads';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -3975,6 +4111,10 @@ sub createThread( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_createThreadAndRun_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< createThreadAndRun >>
 
@@ -4061,7 +4201,7 @@ Returns a L<< AI::OpenAI::RunObject >> on success.
 
 =cut
 
-sub _build_createThreadAndRun_request( $self, %options ) {
+sub build_createThreadAndRun_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/threads/runs';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -4131,6 +4271,10 @@ sub createThreadAndRun( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteThread_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteThread >>
 
   my $res = $client->deleteThread(
@@ -4154,7 +4298,7 @@ Returns a L<< AI::OpenAI::DeleteThreadResponse >> on success.
 
 =cut
 
-sub _build_deleteThread_request( $self, %options ) {
+sub build_deleteThread_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
 
@@ -4227,6 +4371,10 @@ sub deleteThread( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getThread_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getThread >>
 
   my $res = $client->getThread(
@@ -4250,7 +4398,7 @@ Returns a L<< AI::OpenAI::ThreadObject >> on success.
 
 =cut
 
-sub _build_getThread_request( $self, %options ) {
+sub build_getThread_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
 
@@ -4323,6 +4471,10 @@ sub getThread( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_modifyThread_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< modifyThread >>
 
   my $res = $client->modifyThread(
@@ -4360,7 +4512,7 @@ Returns a L<< AI::OpenAI::ThreadObject >> on success.
 
 =cut
 
-sub _build_modifyThread_request( $self, %options ) {
+sub build_modifyThread_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
 
@@ -4436,6 +4588,10 @@ sub modifyThread( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_listMessages_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< listMessages >>
 
   my $res = $client->listMessages(
@@ -4484,7 +4640,7 @@ Returns a L<< AI::OpenAI::ListMessagesResponse >> on success.
 
 =cut
 
-sub _build_listMessages_request( $self, %options ) {
+sub build_listMessages_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
 
@@ -4565,6 +4721,10 @@ sub listMessages( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createMessage_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createMessage >>
 
   my $res = $client->createMessage(
@@ -4610,7 +4770,7 @@ Returns a L<< AI::OpenAI::MessageObject >> on success.
 
 =cut
 
-sub _build_createMessage_request( $self, %options ) {
+sub build_createMessage_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
 
@@ -4686,6 +4846,10 @@ sub createMessage( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteMessage_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteMessage >>
 
   my $res = $client->deleteMessage(
@@ -4714,7 +4878,7 @@ Returns a L<< AI::OpenAI::DeleteMessageResponse >> on success.
 
 =cut
 
-sub _build_deleteMessage_request( $self, %options ) {
+sub build_deleteMessage_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
     croak "Missing required parameter 'message_id'"
@@ -4790,6 +4954,10 @@ sub deleteMessage( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getMessage_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getMessage >>
 
   my $res = $client->getMessage(
@@ -4818,7 +4986,7 @@ Returns a L<< AI::OpenAI::MessageObject >> on success.
 
 =cut
 
-sub _build_getMessage_request( $self, %options ) {
+sub build_getMessage_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
     croak "Missing required parameter 'message_id'"
@@ -4894,6 +5062,10 @@ sub getMessage( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_modifyMessage_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< modifyMessage >>
 
   my $res = $client->modifyMessage(
@@ -4932,7 +5104,7 @@ Returns a L<< AI::OpenAI::MessageObject >> on success.
 
 =cut
 
-sub _build_modifyMessage_request( $self, %options ) {
+sub build_modifyMessage_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
     croak "Missing required parameter 'message_id'"
@@ -5011,6 +5183,10 @@ sub modifyMessage( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_listRuns_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< listRuns >>
 
   my $res = $client->listRuns(
@@ -5054,7 +5230,7 @@ Returns a L<< AI::OpenAI::ListRunsResponse >> on success.
 
 =cut
 
-sub _build_listRuns_request( $self, %options ) {
+sub build_listRuns_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
 
@@ -5133,6 +5309,10 @@ sub listRuns( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_createRun_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< createRun >>
 
@@ -5233,7 +5413,7 @@ Returns a L<< AI::OpenAI::RunObject >> on success.
 
 =cut
 
-sub _build_createRun_request( $self, %options ) {
+sub build_createRun_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
 
@@ -5309,6 +5489,10 @@ sub createRun( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getRun_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getRun >>
 
   my $res = $client->getRun(
@@ -5337,7 +5521,7 @@ Returns a L<< AI::OpenAI::RunObject >> on success.
 
 =cut
 
-sub _build_getRun_request( $self, %options ) {
+sub build_getRun_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
     croak "Missing required parameter 'run_id'"
@@ -5413,6 +5597,10 @@ sub getRun( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_modifyRun_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< modifyRun >>
 
   my $res = $client->modifyRun(
@@ -5451,7 +5639,7 @@ Returns a L<< AI::OpenAI::RunObject >> on success.
 
 =cut
 
-sub _build_modifyRun_request( $self, %options ) {
+sub build_modifyRun_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
     croak "Missing required parameter 'run_id'"
@@ -5530,6 +5718,10 @@ sub modifyRun( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_cancelRun_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< cancelRun >>
 
   my $res = $client->cancelRun(
@@ -5558,7 +5750,7 @@ Returns a L<< AI::OpenAI::RunObject >> on success.
 
 =cut
 
-sub _build_cancelRun_request( $self, %options ) {
+sub build_cancelRun_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
     croak "Missing required parameter 'run_id'"
@@ -5634,6 +5826,10 @@ sub cancelRun( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_listRunSteps_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< listRunSteps >>
 
   my $res = $client->listRunSteps(
@@ -5682,7 +5878,7 @@ Returns a L<< AI::OpenAI::ListRunStepsResponse >> on success.
 
 =cut
 
-sub _build_listRunSteps_request( $self, %options ) {
+sub build_listRunSteps_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
     croak "Missing required parameter 'run_id'"
@@ -5765,6 +5961,10 @@ sub listRunSteps( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getRunStep_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getRunStep >>
 
   my $res = $client->getRunStep(
@@ -5798,7 +5998,7 @@ Returns a L<< AI::OpenAI::RunStepObject >> on success.
 
 =cut
 
-sub _build_getRunStep_request( $self, %options ) {
+sub build_getRunStep_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
     croak "Missing required parameter 'run_id'"
@@ -5877,6 +6077,10 @@ sub getRunStep( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_submitToolOuputsToRun_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< submitToolOuputsToRun >>
 
   my $res = $client->submitToolOuputsToRun(
@@ -5919,7 +6123,7 @@ Returns a L<< AI::OpenAI::RunObject >> on success.
 
 =cut
 
-sub _build_submitToolOuputsToRun_request( $self, %options ) {
+sub build_submitToolOuputsToRun_request( $self, %options ) {
     croak "Missing required parameter 'thread_id'"
         unless exists $options{ 'thread_id' };
     croak "Missing required parameter 'run_id'"
@@ -5998,6 +6202,10 @@ sub submitToolOuputsToRun( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_listVectorStores_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< listVectorStores >>
 
   my $res = $client->listVectorStores(
@@ -6036,7 +6244,7 @@ Returns a L<< AI::OpenAI::ListVectorStoresResponse >> on success.
 
 =cut
 
-sub _build_listVectorStores_request( $self, %options ) {
+sub build_listVectorStores_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/vector_stores';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -6110,6 +6318,10 @@ sub listVectorStores( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createVectorStore_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createVectorStore >>
 
   my $res = $client->createVectorStore()->get;
@@ -6143,7 +6355,7 @@ Returns a L<< AI::OpenAI::VectorStoreObject >> on success.
 
 =cut
 
-sub _build_createVectorStore_request( $self, %options ) {
+sub build_createVectorStore_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/vector_stores';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -6213,6 +6425,10 @@ sub createVectorStore( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteVectorStore_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteVectorStore >>
 
   my $res = $client->deleteVectorStore(
@@ -6236,7 +6452,7 @@ Returns a L<< AI::OpenAI::DeleteVectorStoreResponse >> on success.
 
 =cut
 
-sub _build_deleteVectorStore_request( $self, %options ) {
+sub build_deleteVectorStore_request( $self, %options ) {
     croak "Missing required parameter 'vector_store_id'"
         unless exists $options{ 'vector_store_id' };
 
@@ -6309,6 +6525,10 @@ sub deleteVectorStore( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getVectorStore_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getVectorStore >>
 
   my $res = $client->getVectorStore(
@@ -6332,7 +6552,7 @@ Returns a L<< AI::OpenAI::VectorStoreObject >> on success.
 
 =cut
 
-sub _build_getVectorStore_request( $self, %options ) {
+sub build_getVectorStore_request( $self, %options ) {
     croak "Missing required parameter 'vector_store_id'"
         unless exists $options{ 'vector_store_id' };
 
@@ -6405,6 +6625,10 @@ sub getVectorStore( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_modifyVectorStore_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< modifyVectorStore >>
 
   my $res = $client->modifyVectorStore(
@@ -6446,7 +6670,7 @@ Returns a L<< AI::OpenAI::VectorStoreObject >> on success.
 
 =cut
 
-sub _build_modifyVectorStore_request( $self, %options ) {
+sub build_modifyVectorStore_request( $self, %options ) {
     croak "Missing required parameter 'vector_store_id'"
         unless exists $options{ 'vector_store_id' };
 
@@ -6522,6 +6746,10 @@ sub modifyVectorStore( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createVectorStoreFileBatch_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createVectorStoreFileBatch >>
 
   my $res = $client->createVectorStoreFileBatch(
@@ -6555,7 +6783,7 @@ Returns a L<< AI::OpenAI::VectorStoreFileBatchObject >> on success.
 
 =cut
 
-sub _build_createVectorStoreFileBatch_request( $self, %options ) {
+sub build_createVectorStoreFileBatch_request( $self, %options ) {
     croak "Missing required parameter 'vector_store_id'"
         unless exists $options{ 'vector_store_id' };
 
@@ -6631,6 +6859,10 @@ sub createVectorStoreFileBatch( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getVectorStoreFileBatch_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getVectorStoreFileBatch >>
 
   my $res = $client->getVectorStoreFileBatch(
@@ -6659,7 +6891,7 @@ Returns a L<< AI::OpenAI::VectorStoreFileBatchObject >> on success.
 
 =cut
 
-sub _build_getVectorStoreFileBatch_request( $self, %options ) {
+sub build_getVectorStoreFileBatch_request( $self, %options ) {
     croak "Missing required parameter 'vector_store_id'"
         unless exists $options{ 'vector_store_id' };
     croak "Missing required parameter 'batch_id'"
@@ -6735,6 +6967,10 @@ sub getVectorStoreFileBatch( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_cancelVectorStoreFileBatch_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< cancelVectorStoreFileBatch >>
 
   my $res = $client->cancelVectorStoreFileBatch(
@@ -6763,7 +6999,7 @@ Returns a L<< AI::OpenAI::VectorStoreFileBatchObject >> on success.
 
 =cut
 
-sub _build_cancelVectorStoreFileBatch_request( $self, %options ) {
+sub build_cancelVectorStoreFileBatch_request( $self, %options ) {
     croak "Missing required parameter 'vector_store_id'"
         unless exists $options{ 'vector_store_id' };
     croak "Missing required parameter 'batch_id'"
@@ -6839,6 +7075,10 @@ sub cancelVectorStoreFileBatch( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_listFilesInVectorStoreBatch_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< listFilesInVectorStoreBatch >>
 
   my $res = $client->listFilesInVectorStoreBatch(
@@ -6892,7 +7132,7 @@ Returns a L<< AI::OpenAI::ListVectorStoreFilesResponse >> on success.
 
 =cut
 
-sub _build_listFilesInVectorStoreBatch_request( $self, %options ) {
+sub build_listFilesInVectorStoreBatch_request( $self, %options ) {
     croak "Missing required parameter 'vector_store_id'"
         unless exists $options{ 'vector_store_id' };
     croak "Missing required parameter 'batch_id'"
@@ -6976,6 +7216,10 @@ sub listFilesInVectorStoreBatch( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_listVectorStoreFiles_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< listVectorStoreFiles >>
 
   my $res = $client->listVectorStoreFiles(
@@ -7024,7 +7268,7 @@ Returns a L<< AI::OpenAI::ListVectorStoreFilesResponse >> on success.
 
 =cut
 
-sub _build_listVectorStoreFiles_request( $self, %options ) {
+sub build_listVectorStoreFiles_request( $self, %options ) {
     croak "Missing required parameter 'vector_store_id'"
         unless exists $options{ 'vector_store_id' };
 
@@ -7105,6 +7349,10 @@ sub listVectorStoreFiles( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createVectorStoreFile_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createVectorStoreFile >>
 
   my $res = $client->createVectorStoreFile(
@@ -7138,7 +7386,7 @@ Returns a L<< AI::OpenAI::VectorStoreFileObject >> on success.
 
 =cut
 
-sub _build_createVectorStoreFile_request( $self, %options ) {
+sub build_createVectorStoreFile_request( $self, %options ) {
     croak "Missing required parameter 'vector_store_id'"
         unless exists $options{ 'vector_store_id' };
 
@@ -7214,6 +7462,10 @@ sub createVectorStoreFile( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteVectorStoreFile_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteVectorStoreFile >>
 
   my $res = $client->deleteVectorStoreFile(
@@ -7242,7 +7494,7 @@ Returns a L<< AI::OpenAI::DeleteVectorStoreFileResponse >> on success.
 
 =cut
 
-sub _build_deleteVectorStoreFile_request( $self, %options ) {
+sub build_deleteVectorStoreFile_request( $self, %options ) {
     croak "Missing required parameter 'vector_store_id'"
         unless exists $options{ 'vector_store_id' };
     croak "Missing required parameter 'file_id'"
@@ -7318,6 +7570,10 @@ sub deleteVectorStoreFile( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getVectorStoreFile_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getVectorStoreFile >>
 
   my $res = $client->getVectorStoreFile(
@@ -7346,7 +7602,7 @@ Returns a L<< AI::OpenAI::VectorStoreFileObject >> on success.
 
 =cut
 
-sub _build_getVectorStoreFile_request( $self, %options ) {
+sub build_getVectorStoreFile_request( $self, %options ) {
     croak "Missing required parameter 'vector_store_id'"
         unless exists $options{ 'vector_store_id' };
     croak "Missing required parameter 'file_id'"

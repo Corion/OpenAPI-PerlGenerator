@@ -618,6 +618,10 @@ has 'server' => (
 
 =head1 METHODS
 
+=head2 C<< build_getBanner_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getBanner >>
 
   my $res = $client->getBanner()->get;
@@ -637,7 +641,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_getBanner_request( $self, %options ) {
+sub build_getBanner_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/announcementBanner';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -732,6 +736,10 @@ sub getBanner( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setBanner_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setBanner >>
 
   my $res = $client->setBanner()->get;
@@ -774,7 +782,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_setBanner_request( $self, %options ) {
+sub build_setBanner_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/announcementBanner';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -886,6 +894,10 @@ sub setBanner( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateMultipleCustomFieldValues_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateMultipleCustomFieldValues >>
 
   my $res = $client->updateMultipleCustomFieldValues(
@@ -917,7 +929,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateMultipleCustomFieldValues_request( $self, %options ) {
+sub build_updateMultipleCustomFieldValues_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/app/field/value';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -1000,6 +1012,10 @@ sub updateMultipleCustomFieldValues( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getCustomFieldConfiguration_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getCustomFieldConfiguration >>
 
   my $res = $client->getCustomFieldConfiguration(
@@ -1058,7 +1074,7 @@ Returns a L<< JIRA::API::PageBeanContextualConfiguration >> on success.
 
 =cut
 
-sub _build_getCustomFieldConfiguration_request( $self, %options ) {
+sub build_getCustomFieldConfiguration_request( $self, %options ) {
     croak "Missing required parameter 'fieldIdOrKey'"
         unless exists $options{ 'fieldIdOrKey' };
 
@@ -1153,6 +1169,10 @@ sub getCustomFieldConfiguration( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateCustomFieldConfiguration_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateCustomFieldConfiguration >>
 
   my $res = $client->updateCustomFieldConfiguration(
@@ -1186,7 +1206,7 @@ Returns Unknown on success.
 
 =cut
 
-sub _build_updateCustomFieldConfiguration_request( $self, %options ) {
+sub build_updateCustomFieldConfiguration_request( $self, %options ) {
     croak "Missing required parameter 'fieldIdOrKey'"
         unless exists $options{ 'fieldIdOrKey' };
 
@@ -1274,6 +1294,10 @@ sub updateCustomFieldConfiguration( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateCustomFieldValue_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateCustomFieldValue >>
 
   my $res = $client->updateCustomFieldValue(
@@ -1312,7 +1336,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateCustomFieldValue_request( $self, %options ) {
+sub build_updateCustomFieldValue_request( $self, %options ) {
     croak "Missing required parameter 'fieldIdOrKey'"
         unless exists $options{ 'fieldIdOrKey' };
 
@@ -1401,6 +1425,10 @@ sub updateCustomFieldValue( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getApplicationProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getApplicationProperty >>
 
   my $res = $client->getApplicationProperty(
@@ -1434,7 +1462,7 @@ Returns an array of L<< JIRA::API::ApplicationProperty >> on success.
 
 =cut
 
-sub _build_getApplicationProperty_request( $self, %options ) {
+sub build_getApplicationProperty_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/application-properties';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -1514,6 +1542,10 @@ sub getApplicationProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAdvancedSettings_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAdvancedSettings >>
 
   my $res = $client->getAdvancedSettings()->get;
@@ -1531,7 +1563,7 @@ Returns an array of L<< JIRA::API::ApplicationProperty >> on success.
 
 =cut
 
-sub _build_getAdvancedSettings_request( $self, %options ) {
+sub build_getAdvancedSettings_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/application-properties/advanced-settings';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -1605,6 +1637,10 @@ sub getAdvancedSettings( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setApplicationProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setApplicationProperty >>
 
   my $res = $client->setApplicationProperty(
@@ -1642,7 +1678,7 @@ Returns a L<< JIRA::API::ApplicationProperty >> on success.
 
 =cut
 
-sub _build_setApplicationProperty_request( $self, %options ) {
+sub build_setApplicationProperty_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -1730,6 +1766,10 @@ sub setApplicationProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllApplicationRoles_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllApplicationRoles >>
 
   my $res = $client->getAllApplicationRoles()->get;
@@ -1747,7 +1787,7 @@ Returns an array of L<< JIRA::API::ApplicationRole >> on success.
 
 =cut
 
-sub _build_getAllApplicationRoles_request( $self, %options ) {
+sub build_getAllApplicationRoles_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/applicationrole';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -1821,6 +1861,10 @@ sub getAllApplicationRoles( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getApplicationRole_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getApplicationRole >>
 
   my $res = $client->getApplicationRole(
@@ -1844,7 +1888,7 @@ Returns a L<< JIRA::API::ApplicationRole >> on success.
 
 =cut
 
-sub _build_getApplicationRole_request( $self, %options ) {
+sub build_getApplicationRole_request( $self, %options ) {
     croak "Missing required parameter 'key'"
         unless exists $options{ 'key' };
 
@@ -1926,6 +1970,10 @@ sub getApplicationRole( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAttachmentContent_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAttachmentContent >>
 
   my $res = $client->getAttachmentContent(
@@ -1954,7 +2002,7 @@ Returns Unknown on success.
 
 =cut
 
-sub _build_getAttachmentContent_request( $self, %options ) {
+sub build_getAttachmentContent_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -2052,6 +2100,10 @@ sub getAttachmentContent( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAttachmentMeta_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAttachmentMeta >>
 
   my $res = $client->getAttachmentMeta()->get;
@@ -2069,7 +2121,7 @@ Returns a L<< JIRA::API::AttachmentSettings >> on success.
 
 =cut
 
-sub _build_getAttachmentMeta_request( $self, %options ) {
+sub build_getAttachmentMeta_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/attachment/meta';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -2139,6 +2191,10 @@ sub getAttachmentMeta( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAttachmentThumbnail_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAttachmentThumbnail >>
 
   my $res = $client->getAttachmentThumbnail(
@@ -2182,7 +2238,7 @@ Returns Unknown on success.
 
 =cut
 
-sub _build_getAttachmentThumbnail_request( $self, %options ) {
+sub build_getAttachmentThumbnail_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -2277,6 +2333,10 @@ sub getAttachmentThumbnail( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeAttachment_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeAttachment >>
 
   my $res = $client->removeAttachment(
@@ -2299,7 +2359,7 @@ The ID of the attachment.
 
 =cut
 
-sub _build_removeAttachment_request( $self, %options ) {
+sub build_removeAttachment_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -2366,6 +2426,10 @@ sub removeAttachment( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAttachment_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAttachment >>
 
   my $res = $client->getAttachment(
@@ -2389,7 +2453,7 @@ Returns a L<< JIRA::API::AttachmentMetadata >> on success.
 
 =cut
 
-sub _build_getAttachment_request( $self, %options ) {
+sub build_getAttachment_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -2471,6 +2535,10 @@ sub getAttachment( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_expandAttachmentForHumans_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< expandAttachmentForHumans >>
 
   my $res = $client->expandAttachmentForHumans(
@@ -2494,7 +2562,7 @@ Returns a L<< JIRA::API::AttachmentArchiveMetadataReadable >> on success.
 
 =cut
 
-sub _build_expandAttachmentForHumans_request( $self, %options ) {
+sub build_expandAttachmentForHumans_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -2579,6 +2647,10 @@ sub expandAttachmentForHumans( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_expandAttachmentForMachines_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< expandAttachmentForMachines >>
 
   my $res = $client->expandAttachmentForMachines(
@@ -2602,7 +2674,7 @@ Returns a L<< JIRA::API::AttachmentArchiveImpl >> on success.
 
 =cut
 
-sub _build_expandAttachmentForMachines_request( $self, %options ) {
+sub build_expandAttachmentForMachines_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -2687,6 +2759,10 @@ sub expandAttachmentForMachines( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAuditRecords_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAuditRecords >>
 
   my $res = $client->getAuditRecords(
@@ -2730,7 +2806,7 @@ Returns a L<< JIRA::API::AuditRecords >> on success.
 
 =cut
 
-sub _build_getAuditRecords_request( $self, %options ) {
+sub build_getAuditRecords_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/auditing/record';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -2811,6 +2887,10 @@ sub getAuditRecords( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllSystemAvatars_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllSystemAvatars >>
 
   my $res = $client->getAllSystemAvatars(
@@ -2834,7 +2914,7 @@ Returns a L<< JIRA::API::SystemAvatars >> on success.
 
 =cut
 
-sub _build_getAllSystemAvatars_request( $self, %options ) {
+sub build_getAllSystemAvatars_request( $self, %options ) {
     croak "Missing required parameter 'type'"
         unless exists $options{ 'type' };
 
@@ -2913,6 +2993,10 @@ sub getAllSystemAvatars( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getCommentsByIds_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getCommentsByIds >>
 
   my $res = $client->getCommentsByIds(
@@ -2960,7 +3044,7 @@ Returns a L<< JIRA::API::PageBeanComment >> on success.
 
 =cut
 
-sub _build_getCommentsByIds_request( $self, %options ) {
+sub build_getCommentsByIds_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/comment/list';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -3037,6 +3121,10 @@ sub getCommentsByIds( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getCommentPropertyKeys_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getCommentPropertyKeys >>
 
   my $res = $client->getCommentPropertyKeys(
@@ -3060,7 +3148,7 @@ Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
-sub _build_getCommentPropertyKeys_request( $self, %options ) {
+sub build_getCommentPropertyKeys_request( $self, %options ) {
     croak "Missing required parameter 'commentId'"
         unless exists $options{ 'commentId' };
 
@@ -3145,6 +3233,10 @@ sub getCommentPropertyKeys( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteCommentProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteCommentProperty >>
 
   my $res = $client->deleteCommentProperty(
@@ -3172,7 +3264,7 @@ The key of the property.
 
 =cut
 
-sub _build_deleteCommentProperty_request( $self, %options ) {
+sub build_deleteCommentProperty_request( $self, %options ) {
     croak "Missing required parameter 'commentId'"
         unless exists $options{ 'commentId' };
     croak "Missing required parameter 'propertyKey'"
@@ -3248,6 +3340,10 @@ sub deleteCommentProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getCommentProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getCommentProperty >>
 
   my $res = $client->getCommentProperty(
@@ -3276,7 +3372,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
-sub _build_getCommentProperty_request( $self, %options ) {
+sub build_getCommentProperty_request( $self, %options ) {
     croak "Missing required parameter 'commentId'"
         unless exists $options{ 'commentId' };
     croak "Missing required parameter 'propertyKey'"
@@ -3364,6 +3460,10 @@ sub getCommentProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setCommentProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setCommentProperty >>
 
   my $res = $client->setCommentProperty(
@@ -3393,7 +3493,7 @@ Returns Unknown on HTTP code 201.
 
 =cut
 
-sub _build_setCommentProperty_request( $self, %options ) {
+sub build_setCommentProperty_request( $self, %options ) {
     croak "Missing required parameter 'commentId'"
         unless exists $options{ 'commentId' };
     croak "Missing required parameter 'propertyKey'"
@@ -3497,6 +3597,10 @@ sub setCommentProperty( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_createComponent_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< createComponent >>
 
@@ -3629,7 +3733,7 @@ Returns a L<< JIRA::API::ProjectComponent >> on HTTP code 201.
 
 =cut
 
-sub _build_createComponent_request( $self, %options ) {
+sub build_createComponent_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/component';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -3711,6 +3815,10 @@ sub createComponent( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteComponent_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteComponent >>
 
   my $res = $client->deleteComponent(
@@ -3738,7 +3846,7 @@ The ID of the component to replace the deleted component. If this value is null 
 
 =cut
 
-sub _build_deleteComponent_request( $self, %options ) {
+sub build_deleteComponent_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -3812,6 +3920,10 @@ sub deleteComponent( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getComponent_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getComponent >>
 
   my $res = $client->getComponent(
@@ -3835,7 +3947,7 @@ Returns a L<< JIRA::API::ProjectComponent >> on success.
 
 =cut
 
-sub _build_getComponent_request( $self, %options ) {
+sub build_getComponent_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -3913,6 +4025,10 @@ sub getComponent( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_updateComponent_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< updateComponent >>
 
@@ -4051,7 +4167,7 @@ Returns a L<< JIRA::API::ProjectComponent >> on success.
 
 =cut
 
-sub _build_updateComponent_request( $self, %options ) {
+sub build_updateComponent_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -4139,6 +4255,10 @@ sub updateComponent( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getComponentRelatedIssues_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getComponentRelatedIssues >>
 
   my $res = $client->getComponentRelatedIssues(
@@ -4162,7 +4282,7 @@ Returns a L<< JIRA::API::ComponentIssuesCount >> on success.
 
 =cut
 
-sub _build_getComponentRelatedIssues_request( $self, %options ) {
+sub build_getComponentRelatedIssues_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -4241,6 +4361,10 @@ sub getComponentRelatedIssues( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getConfiguration_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getConfiguration >>
 
   my $res = $client->getConfiguration()->get;
@@ -4258,7 +4382,7 @@ Returns a L<< JIRA::API::Configuration >> on success.
 
 =cut
 
-sub _build_getConfiguration_request( $self, %options ) {
+sub build_getConfiguration_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/configuration';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -4328,6 +4452,10 @@ sub getConfiguration( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getSelectedTimeTrackingImplementation_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getSelectedTimeTrackingImplementation >>
 
   my $res = $client->getSelectedTimeTrackingImplementation()->get;
@@ -4346,7 +4474,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_getSelectedTimeTrackingImplementation_request( $self, %options ) {
+sub build_getSelectedTimeTrackingImplementation_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/configuration/timetracking';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -4433,6 +4561,10 @@ sub getSelectedTimeTrackingImplementation( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_selectTimeTrackingImplementation_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< selectTimeTrackingImplementation >>
 
   my $res = $client->selectTimeTrackingImplementation()->get;
@@ -4468,7 +4600,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_selectTimeTrackingImplementation_request( $self, %options ) {
+sub build_selectTimeTrackingImplementation_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/configuration/timetracking';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -4547,6 +4679,10 @@ sub selectTimeTrackingImplementation( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAvailableTimeTrackingImplementations_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAvailableTimeTrackingImplementations >>
 
   my $res = $client->getAvailableTimeTrackingImplementations()->get;
@@ -4564,7 +4700,7 @@ Returns an array of L<< JIRA::API::TimeTrackingProvider >> on success.
 
 =cut
 
-sub _build_getAvailableTimeTrackingImplementations_request( $self, %options ) {
+sub build_getAvailableTimeTrackingImplementations_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/configuration/timetracking/list';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -4638,6 +4774,10 @@ sub getAvailableTimeTrackingImplementations( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getSharedTimeTrackingConfiguration_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getSharedTimeTrackingConfiguration >>
 
   my $res = $client->getSharedTimeTrackingConfiguration()->get;
@@ -4655,7 +4795,7 @@ Returns a L<< JIRA::API::TimeTrackingConfiguration >> on success.
 
 =cut
 
-sub _build_getSharedTimeTrackingConfiguration_request( $self, %options ) {
+sub build_getSharedTimeTrackingConfiguration_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/configuration/timetracking/options';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -4728,6 +4868,10 @@ sub getSharedTimeTrackingConfiguration( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setSharedTimeTrackingConfiguration_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setSharedTimeTrackingConfiguration >>
 
   my $res = $client->setSharedTimeTrackingConfiguration()->get;
@@ -4767,7 +4911,7 @@ Returns a L<< JIRA::API::TimeTrackingConfiguration >> on success.
 
 =cut
 
-sub _build_setSharedTimeTrackingConfiguration_request( $self, %options ) {
+sub build_setSharedTimeTrackingConfiguration_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/configuration/timetracking/options';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -4846,6 +4990,10 @@ sub setSharedTimeTrackingConfiguration( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getCustomFieldOption_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getCustomFieldOption >>
 
   my $res = $client->getCustomFieldOption(
@@ -4869,7 +5017,7 @@ Returns a L<< JIRA::API::CustomFieldOption >> on success.
 
 =cut
 
-sub _build_getCustomFieldOption_request( $self, %options ) {
+sub build_getCustomFieldOption_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -4948,6 +5096,10 @@ sub getCustomFieldOption( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllDashboards_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllDashboards >>
 
   my $res = $client->getAllDashboards(
@@ -4997,7 +5149,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
-sub _build_getAllDashboards_request( $self, %options ) {
+sub build_getAllDashboards_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/dashboard';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -5098,6 +5250,10 @@ sub getAllDashboards( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createDashboard_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createDashboard >>
 
   my $res = $client->createDashboard()->get;
@@ -5139,7 +5295,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
-sub _build_createDashboard_request( $self, %options ) {
+sub build_createDashboard_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/dashboard';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -5237,6 +5393,10 @@ sub createDashboard( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllAvailableDashboardGadgets_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllAvailableDashboardGadgets >>
 
   my $res = $client->getAllAvailableDashboardGadgets()->get;
@@ -5256,7 +5416,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
-sub _build_getAllAvailableDashboardGadgets_request( $self, %options ) {
+sub build_getAllAvailableDashboardGadgets_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/dashboard/gadgets';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -5350,6 +5510,10 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_getDashboardsPaginated_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< getDashboardsPaginated >>
 
@@ -5504,7 +5668,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
-sub _build_getDashboardsPaginated_request( $self, %options ) {
+sub build_getDashboardsPaginated_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/dashboard/search';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -5613,6 +5777,10 @@ sub getDashboardsPaginated( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllGadgets_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllGadgets >>
 
   my $res = $client->getAllGadgets(
@@ -5652,7 +5820,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_getAllGadgets_request( $self, %options ) {
+sub build_getAllGadgets_request( $self, %options ) {
     croak "Missing required parameter 'dashboardId'"
         unless exists $options{ 'dashboardId' };
 
@@ -5748,6 +5916,10 @@ sub getAllGadgets( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addGadget_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addGadget >>
 
   my $res = $client->addGadget(
@@ -5803,7 +5975,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_addGadget_request( $self, %options ) {
+sub build_addGadget_request( $self, %options ) {
     croak "Missing required parameter 'dashboardId'"
         unless exists $options{ 'dashboardId' };
 
@@ -5910,6 +6082,10 @@ sub addGadget( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeGadget_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeGadget >>
 
   my $res = $client->removeGadget(
@@ -5939,7 +6115,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_removeGadget_request( $self, %options ) {
+sub build_removeGadget_request( $self, %options ) {
     croak "Missing required parameter 'dashboardId'"
         unless exists $options{ 'dashboardId' };
     croak "Missing required parameter 'gadgetId'"
@@ -6032,6 +6208,10 @@ sub removeGadget( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateGadget_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateGadget >>
 
   my $res = $client->updateGadget(
@@ -6080,7 +6260,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_updateGadget_request( $self, %options ) {
+sub build_updateGadget_request( $self, %options ) {
     croak "Missing required parameter 'dashboardId'"
         unless exists $options{ 'dashboardId' };
     croak "Missing required parameter 'gadgetId'"
@@ -6190,6 +6370,10 @@ sub updateGadget( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getDashboardItemPropertyKeys_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getDashboardItemPropertyKeys >>
 
   my $res = $client->getDashboardItemPropertyKeys(
@@ -6218,7 +6402,7 @@ Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
-sub _build_getDashboardItemPropertyKeys_request( $self, %options ) {
+sub build_getDashboardItemPropertyKeys_request( $self, %options ) {
     croak "Missing required parameter 'dashboardId'"
         unless exists $options{ 'dashboardId' };
     croak "Missing required parameter 'itemId'"
@@ -6300,6 +6484,10 @@ sub getDashboardItemPropertyKeys( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteDashboardItemProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteDashboardItemProperty >>
 
   my $res = $client->deleteDashboardItemProperty(
@@ -6332,7 +6520,7 @@ The key of the dashboard item property.
 
 =cut
 
-sub _build_deleteDashboardItemProperty_request( $self, %options ) {
+sub build_deleteDashboardItemProperty_request( $self, %options ) {
     croak "Missing required parameter 'dashboardId'"
         unless exists $options{ 'dashboardId' };
     croak "Missing required parameter 'itemId'"
@@ -6411,6 +6599,10 @@ sub deleteDashboardItemProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getDashboardItemProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getDashboardItemProperty >>
 
   my $res = $client->getDashboardItemProperty(
@@ -6444,7 +6636,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
-sub _build_getDashboardItemProperty_request( $self, %options ) {
+sub build_getDashboardItemProperty_request( $self, %options ) {
     croak "Missing required parameter 'dashboardId'"
         unless exists $options{ 'dashboardId' };
     croak "Missing required parameter 'itemId'"
@@ -6529,6 +6721,10 @@ sub getDashboardItemProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setDashboardItemProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setDashboardItemProperty >>
 
   my $res = $client->setDashboardItemProperty(
@@ -6563,7 +6759,7 @@ Returns Unknown on HTTP code 201.
 
 =cut
 
-sub _build_setDashboardItemProperty_request( $self, %options ) {
+sub build_setDashboardItemProperty_request( $self, %options ) {
     croak "Missing required parameter 'dashboardId'"
         unless exists $options{ 'dashboardId' };
     croak "Missing required parameter 'itemId'"
@@ -6682,6 +6878,10 @@ sub setDashboardItemProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteDashboard_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteDashboard >>
 
   my $res = $client->deleteDashboard(
@@ -6706,7 +6906,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
-sub _build_deleteDashboard_request( $self, %options ) {
+sub build_deleteDashboard_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -6796,6 +6996,10 @@ sub deleteDashboard( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getDashboard_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getDashboard >>
 
   my $res = $client->getDashboard(
@@ -6821,7 +7025,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
-sub _build_getDashboard_request( $self, %options ) {
+sub build_getDashboard_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -6925,6 +7129,10 @@ sub getDashboard( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateDashboard_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateDashboard >>
 
   my $res = $client->updateDashboard(
@@ -6973,7 +7181,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_updateDashboard_request( $self, %options ) {
+sub build_updateDashboard_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -7091,6 +7299,10 @@ sub updateDashboard( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_copyDashboard_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< copyDashboard >>
 
   my $res = $client->copyDashboard(
@@ -7137,7 +7349,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_copyDashboard_request( $self, %options ) {
+sub build_copyDashboard_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -7255,6 +7467,10 @@ sub copyDashboard( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getEvents_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getEvents >>
 
   my $res = $client->getEvents()->get;
@@ -7272,7 +7488,7 @@ Returns an array of L<< JIRA::API::IssueEvent >> on success.
 
 =cut
 
-sub _build_getEvents_request( $self, %options ) {
+sub build_getEvents_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/events';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -7346,6 +7562,10 @@ sub getEvents( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_analyseExpression_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< analyseExpression >>
 
   my $res = $client->analyseExpression(
@@ -7404,7 +7624,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_analyseExpression_request( $self, %options ) {
+sub build_analyseExpression_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/expression/analyse';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -7509,6 +7729,10 @@ sub analyseExpression( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_evaluateJiraExpression_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< evaluateJiraExpression >>
 
   my $res = $client->evaluateJiraExpression(
@@ -7548,7 +7772,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_evaluateJiraExpression_request( $self, %options ) {
+sub build_evaluateJiraExpression_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/expression/eval';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -7653,6 +7877,10 @@ sub evaluateJiraExpression( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getFields_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getFields >>
 
   my $res = $client->getFields()->get;
@@ -7670,7 +7898,7 @@ Returns an array of L<< JIRA::API::FieldDetails >> on success.
 
 =cut
 
-sub _build_getFields_request( $self, %options ) {
+sub build_getFields_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/field';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -7740,6 +7968,10 @@ sub getFields( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_createCustomField_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< createCustomField >>
 
@@ -8004,7 +8236,7 @@ Returns a L<< JIRA::API::FieldDetails >> on HTTP code 201.
 
 =cut
 
-sub _build_createCustomField_request( $self, %options ) {
+sub build_createCustomField_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/field';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -8076,6 +8308,10 @@ sub createCustomField( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_getFieldsPaginated_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< getFieldsPaginated >>
 
@@ -8190,7 +8426,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_getFieldsPaginated_request( $self, %options ) {
+sub build_getFieldsPaginated_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/field/search';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -8298,6 +8534,10 @@ sub getFieldsPaginated( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getTrashedFieldsPaginated_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getTrashedFieldsPaginated >>
 
   my $res = $client->getTrashedFieldsPaginated(
@@ -8363,7 +8603,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_getTrashedFieldsPaginated_request( $self, %options ) {
+sub build_getTrashedFieldsPaginated_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/field/search/trashed';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -8469,6 +8709,10 @@ sub getTrashedFieldsPaginated( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_updateCustomField_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< updateCustomField >>
 
@@ -8620,7 +8864,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateCustomField_request( $self, %options ) {
+sub build_updateCustomField_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
 
@@ -8741,6 +8985,10 @@ sub updateCustomField( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getContextsForField_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getContextsForField >>
 
   my $res = $client->getContextsForField(
@@ -8789,7 +9037,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContext >> on success.
 
 =cut
 
-sub _build_getContextsForField_request( $self, %options ) {
+sub build_getContextsForField_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
 
@@ -8901,6 +9149,10 @@ sub getContextsForField( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createCustomFieldContext_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createCustomFieldContext >>
 
   my $res = $client->createCustomFieldContext(
@@ -8950,7 +9202,7 @@ Returns a L<< JIRA::API::CreateCustomFieldContext >> on HTTP code 201.
 
 =cut
 
-sub _build_createCustomFieldContext_request( $self, %options ) {
+sub build_createCustomFieldContext_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
 
@@ -9049,6 +9301,10 @@ sub createCustomFieldContext( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getDefaultValues_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getDefaultValues >>
 
   my $res = $client->getDefaultValues(
@@ -9087,7 +9343,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContextDefaultValue >> on success.
 
 =cut
 
-sub _build_getDefaultValues_request( $self, %options ) {
+sub build_getDefaultValues_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
 
@@ -9197,6 +9453,10 @@ sub getDefaultValues( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setDefaultValues_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setDefaultValues >>
 
   my $res = $client->setDefaultValues(
@@ -9228,7 +9488,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_setDefaultValues_request( $self, %options ) {
+sub build_setDefaultValues_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
 
@@ -9349,6 +9609,10 @@ sub setDefaultValues( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueTypeMappingsForContexts_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueTypeMappingsForContexts >>
 
   my $res = $client->getIssueTypeMappingsForContexts(
@@ -9387,7 +9651,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeToContextMapping >> on success.
 
 =cut
 
-sub _build_getIssueTypeMappingsForContexts_request( $self, %options ) {
+sub build_getIssueTypeMappingsForContexts_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
 
@@ -9483,6 +9747,10 @@ sub getIssueTypeMappingsForContexts( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getCustomFieldContextsForProjectsAndIssueTypes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getCustomFieldContextsForProjectsAndIssueTypes >>
 
   my $res = $client->getCustomFieldContextsForProjectsAndIssueTypes(
@@ -9526,7 +9794,7 @@ Returns a L<< JIRA::API::PageBeanContextForProjectAndIssueType >> on success.
 
 =cut
 
-sub _build_getCustomFieldContextsForProjectsAndIssueTypes_request( $self, %options ) {
+sub build_getCustomFieldContextsForProjectsAndIssueTypes_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
 
@@ -9652,6 +9920,10 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectContextMapping_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectContextMapping >>
 
   my $res = $client->getProjectContextMapping(
@@ -9690,7 +9962,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContextProjectMapping >> on success.
 
 =cut
 
-sub _build_getProjectContextMapping_request( $self, %options ) {
+sub build_getProjectContextMapping_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
 
@@ -9800,6 +10072,10 @@ sub getProjectContextMapping( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteCustomFieldContext_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteCustomFieldContext >>
 
   my $res = $client->deleteCustomFieldContext(
@@ -9828,7 +10104,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_deleteCustomFieldContext_request( $self, %options ) {
+sub build_deleteCustomFieldContext_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
     croak "Missing required parameter 'contextId'"
@@ -9949,6 +10225,10 @@ sub deleteCustomFieldContext( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateCustomFieldContext_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateCustomFieldContext >>
 
   my $res = $client->updateCustomFieldContext(
@@ -9991,7 +10271,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateCustomFieldContext_request( $self, %options ) {
+sub build_updateCustomFieldContext_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
     croak "Missing required parameter 'contextId'"
@@ -10115,6 +10395,10 @@ sub updateCustomFieldContext( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addIssueTypesToContext_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addIssueTypesToContext >>
 
   my $res = $client->addIssueTypesToContext(
@@ -10153,7 +10437,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_addIssueTypesToContext_request( $self, %options ) {
+sub build_addIssueTypesToContext_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
     croak "Missing required parameter 'contextId'"
@@ -10291,6 +10575,10 @@ sub addIssueTypesToContext( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeIssueTypesFromContext_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeIssueTypesFromContext >>
 
   my $res = $client->removeIssueTypesFromContext(
@@ -10329,7 +10617,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_removeIssueTypesFromContext_request( $self, %options ) {
+sub build_removeIssueTypesFromContext_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
     croak "Missing required parameter 'contextId'"
@@ -10453,6 +10741,10 @@ sub removeIssueTypesFromContext( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getOptionsForContext_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getOptionsForContext >>
 
   my $res = $client->getOptionsForContext(
@@ -10501,7 +10793,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContextOption >> on success.
 
 =cut
 
-sub _build_getOptionsForContext_request( $self, %options ) {
+sub build_getOptionsForContext_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
     croak "Missing required parameter 'contextId'"
@@ -10629,6 +10921,10 @@ sub getOptionsForContext( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createCustomFieldOption_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createCustomFieldOption >>
 
   my $res = $client->createCustomFieldOption(
@@ -10667,7 +10963,7 @@ Returns a L<< JIRA::API::CustomFieldCreatedContextOptionsList >> on success.
 
 =cut
 
-sub _build_createCustomFieldOption_request( $self, %options ) {
+sub build_createCustomFieldOption_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
     croak "Missing required parameter 'contextId'"
@@ -10791,6 +11087,10 @@ sub createCustomFieldOption( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateCustomFieldOption_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateCustomFieldOption >>
 
   my $res = $client->updateCustomFieldOption(
@@ -10829,7 +11129,7 @@ Returns a L<< JIRA::API::CustomFieldUpdatedContextOptionsList >> on success.
 
 =cut
 
-sub _build_updateCustomFieldOption_request( $self, %options ) {
+sub build_updateCustomFieldOption_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
     croak "Missing required parameter 'contextId'"
@@ -10953,6 +11253,10 @@ sub updateCustomFieldOption( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_reorderCustomFieldOptions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< reorderCustomFieldOptions >>
 
   my $res = $client->reorderCustomFieldOptions(
@@ -10999,7 +11303,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_reorderCustomFieldOptions_request( $self, %options ) {
+sub build_reorderCustomFieldOptions_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
     croak "Missing required parameter 'contextId'"
@@ -11123,6 +11427,10 @@ sub reorderCustomFieldOptions( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteCustomFieldOption_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteCustomFieldOption >>
 
   my $res = $client->deleteCustomFieldOption(
@@ -11155,7 +11463,7 @@ The ID of the option to delete.
 
 =cut
 
-sub _build_deleteCustomFieldOption_request( $self, %options ) {
+sub build_deleteCustomFieldOption_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
     croak "Missing required parameter 'contextId'"
@@ -11268,6 +11576,10 @@ sub deleteCustomFieldOption( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_assignProjectsToCustomFieldContext_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< assignProjectsToCustomFieldContext >>
 
   my $res = $client->assignProjectsToCustomFieldContext(
@@ -11306,7 +11618,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_assignProjectsToCustomFieldContext_request( $self, %options ) {
+sub build_assignProjectsToCustomFieldContext_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
     croak "Missing required parameter 'contextId'"
@@ -11430,6 +11742,10 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeCustomFieldContextFromProjects_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeCustomFieldContextFromProjects >>
 
   my $res = $client->removeCustomFieldContextFromProjects(
@@ -11468,7 +11784,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_removeCustomFieldContextFromProjects_request( $self, %options ) {
+sub build_removeCustomFieldContextFromProjects_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
     croak "Missing required parameter 'contextId'"
@@ -11592,6 +11908,10 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getContextsForFieldDeprecated_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getContextsForFieldDeprecated >>
 
   my $res = $client->getContextsForFieldDeprecated(
@@ -11625,7 +11945,7 @@ Returns a L<< JIRA::API::PageBeanContext >> on success.
 
 =cut
 
-sub _build_getContextsForFieldDeprecated_request( $self, %options ) {
+sub build_getContextsForFieldDeprecated_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
 
@@ -11709,6 +12029,10 @@ sub getContextsForFieldDeprecated( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getScreensForField_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getScreensForField >>
 
   my $res = $client->getScreensForField(
@@ -11747,7 +12071,7 @@ Returns a L<< JIRA::API::PageBeanScreenWithTab >> on success.
 
 =cut
 
-sub _build_getScreensForField_request( $self, %options ) {
+sub build_getScreensForField_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
 
@@ -11832,6 +12156,10 @@ sub getScreensForField( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllIssueFieldOptions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllIssueFieldOptions >>
 
   my $res = $client->getAllIssueFieldOptions(
@@ -11879,7 +12207,7 @@ Returns a L<< JIRA::API::PageBeanIssueFieldOption >> on success.
 
 =cut
 
-sub _build_getAllIssueFieldOptions_request( $self, %options ) {
+sub build_getAllIssueFieldOptions_request( $self, %options ) {
     croak "Missing required parameter 'fieldKey'"
         unless exists $options{ 'fieldKey' };
 
@@ -11963,6 +12291,10 @@ sub getAllIssueFieldOptions( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createIssueFieldOption_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createIssueFieldOption >>
 
   my $res = $client->createIssueFieldOption(
@@ -12018,7 +12350,7 @@ Returns a L<< JIRA::API::IssueFieldOption >> on success.
 
 =cut
 
-sub _build_createIssueFieldOption_request( $self, %options ) {
+sub build_createIssueFieldOption_request( $self, %options ) {
     croak "Missing required parameter 'fieldKey'"
         unless exists $options{ 'fieldKey' };
 
@@ -12103,6 +12435,10 @@ sub createIssueFieldOption( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getSelectableIssueFieldOptions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getSelectableIssueFieldOptions >>
 
   my $res = $client->getSelectableIssueFieldOptions(
@@ -12155,7 +12491,7 @@ Returns a L<< JIRA::API::PageBeanIssueFieldOption >> on success.
 
 =cut
 
-sub _build_getSelectableIssueFieldOptions_request( $self, %options ) {
+sub build_getSelectableIssueFieldOptions_request( $self, %options ) {
     croak "Missing required parameter 'fieldKey'"
         unless exists $options{ 'fieldKey' };
 
@@ -12240,6 +12576,10 @@ sub getSelectableIssueFieldOptions( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getVisibleIssueFieldOptions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getVisibleIssueFieldOptions >>
 
   my $res = $client->getVisibleIssueFieldOptions(
@@ -12292,7 +12632,7 @@ Returns a L<< JIRA::API::PageBeanIssueFieldOption >> on success.
 
 =cut
 
-sub _build_getVisibleIssueFieldOptions_request( $self, %options ) {
+sub build_getVisibleIssueFieldOptions_request( $self, %options ) {
     croak "Missing required parameter 'fieldKey'"
         unless exists $options{ 'fieldKey' };
 
@@ -12377,6 +12717,10 @@ sub getVisibleIssueFieldOptions( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteIssueFieldOption_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteIssueFieldOption >>
 
   my $res = $client->deleteIssueFieldOption(
@@ -12419,7 +12763,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_deleteIssueFieldOption_request( $self, %options ) {
+sub build_deleteIssueFieldOption_request( $self, %options ) {
     croak "Missing required parameter 'fieldKey'"
         unless exists $options{ 'fieldKey' };
     croak "Missing required parameter 'optionId'"
@@ -12504,6 +12848,10 @@ sub deleteIssueFieldOption( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueFieldOption_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueFieldOption >>
 
   my $res = $client->getIssueFieldOption(
@@ -12546,7 +12894,7 @@ Returns a L<< JIRA::API::IssueFieldOption >> on success.
 
 =cut
 
-sub _build_getIssueFieldOption_request( $self, %options ) {
+sub build_getIssueFieldOption_request( $self, %options ) {
     croak "Missing required parameter 'fieldKey'"
         unless exists $options{ 'fieldKey' };
     croak "Missing required parameter 'optionId'"
@@ -12631,6 +12979,10 @@ sub getIssueFieldOption( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateIssueFieldOption_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateIssueFieldOption >>
 
   my $res = $client->updateIssueFieldOption(
@@ -12695,7 +13047,7 @@ Returns a L<< JIRA::API::IssueFieldOption >> on success.
 
 =cut
 
-sub _build_updateIssueFieldOption_request( $self, %options ) {
+sub build_updateIssueFieldOption_request( $self, %options ) {
     croak "Missing required parameter 'fieldKey'"
         unless exists $options{ 'fieldKey' };
     croak "Missing required parameter 'optionId'"
@@ -12783,6 +13135,10 @@ sub updateIssueFieldOption( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_replaceIssueFieldOption_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< replaceIssueFieldOption >>
 
   my $res = $client->replaceIssueFieldOption(
@@ -12845,7 +13201,7 @@ Returns a L<< JIRA::API::TaskProgressBeanRemoveOptionFromIssuesResult >> on HTTP
 
 =cut
 
-sub _build_replaceIssueFieldOption_request( $self, %options ) {
+sub build_replaceIssueFieldOption_request( $self, %options ) {
     croak "Missing required parameter 'fieldKey'"
         unless exists $options{ 'fieldKey' };
     croak "Missing required parameter 'optionId'"
@@ -12948,6 +13304,10 @@ sub replaceIssueFieldOption( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteCustomField_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteCustomField >>
 
   my $res = $client->deleteCustomField(
@@ -12976,7 +13336,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 409.
 
 =cut
 
-sub _build_deleteCustomField_request( $self, %options ) {
+sub build_deleteCustomField_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -13119,6 +13479,10 @@ sub deleteCustomField( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_restoreCustomField_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< restoreCustomField >>
 
   my $res = $client->restoreCustomField(
@@ -13146,7 +13510,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_restoreCustomField_request( $self, %options ) {
+sub build_restoreCustomField_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -13275,6 +13639,10 @@ sub restoreCustomField( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_trashCustomField_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< trashCustomField >>
 
   my $res = $client->trashCustomField(
@@ -13302,7 +13670,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_trashCustomField_request( $self, %options ) {
+sub build_trashCustomField_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -13431,6 +13799,10 @@ sub trashCustomField( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllFieldConfigurations_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllFieldConfigurations >>
 
   my $res = $client->getAllFieldConfigurations(
@@ -13474,7 +13846,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationDetails >> on success.
 
 =cut
 
-sub _build_getAllFieldConfigurations_request( $self, %options ) {
+sub build_getAllFieldConfigurations_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/fieldconfiguration';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -13555,6 +13927,10 @@ sub getAllFieldConfigurations( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createFieldConfiguration_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createFieldConfiguration >>
 
   my $res = $client->createFieldConfiguration()->get;
@@ -13586,7 +13962,7 @@ Returns a L<< JIRA::API::FieldConfiguration >> on success.
 
 =cut
 
-sub _build_createFieldConfiguration_request( $self, %options ) {
+sub build_createFieldConfiguration_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/fieldconfiguration';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -13665,6 +14041,10 @@ sub createFieldConfiguration( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteFieldConfiguration_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteFieldConfiguration >>
 
   my $res = $client->deleteFieldConfiguration(
@@ -13688,7 +14068,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_deleteFieldConfiguration_request( $self, %options ) {
+sub build_deleteFieldConfiguration_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -13773,6 +14153,10 @@ sub deleteFieldConfiguration( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateFieldConfiguration_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateFieldConfiguration >>
 
   my $res = $client->updateFieldConfiguration(
@@ -13810,7 +14194,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateFieldConfiguration_request( $self, %options ) {
+sub build_updateFieldConfiguration_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -13898,6 +14282,10 @@ sub updateFieldConfiguration( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getFieldConfigurationItems_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getFieldConfigurationItems >>
 
   my $res = $client->getFieldConfigurationItems(
@@ -13931,7 +14319,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationItem >> on success.
 
 =cut
 
-sub _build_getFieldConfigurationItems_request( $self, %options ) {
+sub build_getFieldConfigurationItems_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -14018,6 +14406,10 @@ sub getFieldConfigurationItems( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateFieldConfigurationItems_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateFieldConfigurationItems >>
 
   my $res = $client->updateFieldConfigurationItems(
@@ -14051,7 +14443,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateFieldConfigurationItems_request( $self, %options ) {
+sub build_updateFieldConfigurationItems_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -14139,6 +14531,10 @@ sub updateFieldConfigurationItems( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllFieldConfigurationSchemes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllFieldConfigurationSchemes >>
 
   my $res = $client->getAllFieldConfigurationSchemes(
@@ -14172,7 +14568,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationScheme >> on success.
 
 =cut
 
-sub _build_getAllFieldConfigurationSchemes_request( $self, %options ) {
+sub build_getAllFieldConfigurationSchemes_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/fieldconfigurationscheme';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -14254,6 +14650,10 @@ sub getAllFieldConfigurationSchemes( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createFieldConfigurationScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createFieldConfigurationScheme >>
 
   my $res = $client->createFieldConfigurationScheme()->get;
@@ -14285,7 +14685,7 @@ Returns a L<< JIRA::API::FieldConfigurationScheme >> on HTTP code 201.
 
 =cut
 
-sub _build_createFieldConfigurationScheme_request( $self, %options ) {
+sub build_createFieldConfigurationScheme_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/fieldconfigurationscheme';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -14386,6 +14786,10 @@ sub createFieldConfigurationScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getFieldConfigurationSchemeMappings_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getFieldConfigurationSchemeMappings >>
 
   my $res = $client->getFieldConfigurationSchemeMappings(
@@ -14419,7 +14823,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationIssueTypeItem >> on success.
 
 =cut
 
-sub _build_getFieldConfigurationSchemeMappings_request( $self, %options ) {
+sub build_getFieldConfigurationSchemeMappings_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/fieldconfigurationscheme/mapping';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -14504,6 +14908,10 @@ sub getFieldConfigurationSchemeMappings( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getFieldConfigurationSchemeProjectMapping_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getFieldConfigurationSchemeProjectMapping >>
 
   my $res = $client->getFieldConfigurationSchemeProjectMapping(
@@ -14537,7 +14945,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationSchemeProjects >> on success.
 
 =cut
 
-sub _build_getFieldConfigurationSchemeProjectMapping_request( $self, %options ) {
+sub build_getFieldConfigurationSchemeProjectMapping_request( $self, %options ) {
     croak "Missing required parameter 'projectId'"
         unless exists $options{ 'projectId' };
 
@@ -14622,6 +15030,10 @@ sub getFieldConfigurationSchemeProjectMapping( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_assignFieldConfigurationSchemeToProject_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< assignFieldConfigurationSchemeToProject >>
 
   my $res = $client->assignFieldConfigurationSchemeToProject()->get;
@@ -14653,7 +15065,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_assignFieldConfigurationSchemeToProject_request( $self, %options ) {
+sub build_assignFieldConfigurationSchemeToProject_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/fieldconfigurationscheme/project';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -14768,6 +15180,10 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteFieldConfigurationScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteFieldConfigurationScheme >>
 
   my $res = $client->deleteFieldConfigurationScheme(
@@ -14791,7 +15207,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_deleteFieldConfigurationScheme_request( $self, %options ) {
+sub build_deleteFieldConfigurationScheme_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -14876,6 +15292,10 @@ sub deleteFieldConfigurationScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateFieldConfigurationScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateFieldConfigurationScheme >>
 
   my $res = $client->updateFieldConfigurationScheme(
@@ -14913,7 +15333,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateFieldConfigurationScheme_request( $self, %options ) {
+sub build_updateFieldConfigurationScheme_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -15034,6 +15454,10 @@ sub updateFieldConfigurationScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setFieldConfigurationSchemeMapping_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setFieldConfigurationSchemeMapping >>
 
   my $res = $client->setFieldConfigurationSchemeMapping(
@@ -15067,7 +15491,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_setFieldConfigurationSchemeMapping_request( $self, %options ) {
+sub build_setFieldConfigurationSchemeMapping_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -15155,6 +15579,10 @@ sub setFieldConfigurationSchemeMapping( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeIssueTypesFromGlobalFieldConfigurationScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeIssueTypesFromGlobalFieldConfigurationScheme >>
 
   my $res = $client->removeIssueTypesFromGlobalFieldConfigurationScheme(
@@ -15192,7 +15620,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_removeIssueTypesFromGlobalFieldConfigurationScheme_request( $self, %options ) {
+sub build_removeIssueTypesFromGlobalFieldConfigurationScheme_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -15324,6 +15752,10 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getFilters_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getFilters >>
 
   my $res = $client->getFilters(
@@ -15361,7 +15793,7 @@ Returns an array of L<< JIRA::API::Filter >> on success.
 
 =cut
 
-sub _build_getFilters_request( $self, %options ) {
+sub build_getFilters_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/filter';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -15432,6 +15864,10 @@ sub getFilters( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_createFilter_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< createFilter >>
 
@@ -15537,7 +15973,7 @@ Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
-sub _build_createFilter_request( $self, %options ) {
+sub build_createFilter_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/filter';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -15618,6 +16054,10 @@ sub createFilter( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getDefaultShareScope_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getDefaultShareScope >>
 
   my $res = $client->getDefaultShareScope()->get;
@@ -15635,7 +16075,7 @@ Returns a L<< JIRA::API::DefaultShareScope >> on success.
 
 =cut
 
-sub _build_getDefaultShareScope_request( $self, %options ) {
+sub build_getDefaultShareScope_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/filter/defaultShareScope';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -15705,6 +16145,10 @@ sub getDefaultShareScope( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setDefaultShareScope_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setDefaultShareScope >>
 
   my $res = $client->setDefaultShareScope()->get;
@@ -15751,7 +16195,7 @@ Returns a L<< JIRA::API::DefaultShareScope >> on success.
 
 =cut
 
-sub _build_setDefaultShareScope_request( $self, %options ) {
+sub build_setDefaultShareScope_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/filter/defaultShareScope';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -15827,6 +16271,10 @@ sub setDefaultShareScope( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getFavouriteFilters_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getFavouriteFilters >>
 
   my $res = $client->getFavouriteFilters(
@@ -15864,7 +16312,7 @@ Returns an array of L<< JIRA::API::Filter >> on success.
 
 =cut
 
-sub _build_getFavouriteFilters_request( $self, %options ) {
+sub build_getFavouriteFilters_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/filter/favourite';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -15939,6 +16387,10 @@ sub getFavouriteFilters( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getMyFilters_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getMyFilters >>
 
   my $res = $client->getMyFilters(
@@ -15981,7 +16433,7 @@ Returns an array of L<< JIRA::API::Filter >> on success.
 
 =cut
 
-sub _build_getMyFilters_request( $self, %options ) {
+sub build_getMyFilters_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/filter/my';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -16056,6 +16508,10 @@ sub getMyFilters( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_getFiltersPaginated_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< getFiltersPaginated >>
 
@@ -16234,7 +16690,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
-sub _build_getFiltersPaginated_request( $self, %options ) {
+sub build_getFiltersPaginated_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/filter/search';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -16333,6 +16789,10 @@ sub getFiltersPaginated( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteFilter_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteFilter >>
 
   my $res = $client->deleteFilter(
@@ -16355,7 +16815,7 @@ The ID of the filter to delete.
 
 =cut
 
-sub _build_deleteFilter_request( $self, %options ) {
+sub build_deleteFilter_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -16422,6 +16882,10 @@ sub deleteFilter( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getFilter_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getFilter >>
 
   my $res = $client->getFilter(
@@ -16469,7 +16933,7 @@ Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
-sub _build_getFilter_request( $self, %options ) {
+sub build_getFilter_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -16552,6 +17016,10 @@ sub getFilter( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_updateFilter_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< updateFilter >>
 
@@ -16662,7 +17130,7 @@ Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
-sub _build_updateFilter_request( $self, %options ) {
+sub build_updateFilter_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -16749,6 +17217,10 @@ sub updateFilter( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_resetColumns_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< resetColumns >>
 
   my $res = $client->resetColumns(
@@ -16771,7 +17243,7 @@ The ID of the filter.
 
 =cut
 
-sub _build_resetColumns_request( $self, %options ) {
+sub build_resetColumns_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -16838,6 +17310,10 @@ sub resetColumns( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getColumns_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getColumns >>
 
   my $res = $client->getColumns(
@@ -16861,7 +17337,7 @@ Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 =cut
 
-sub _build_getColumns_request( $self, %options ) {
+sub build_getColumns_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -16944,6 +17420,10 @@ sub getColumns( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setColumns_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setColumns >>
 
   my $res = $client->setColumns(
@@ -16967,7 +17447,7 @@ Returns Unknown on success.
 
 =cut
 
-sub _build_setColumns_request( $self, %options ) {
+sub build_setColumns_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -17051,6 +17531,10 @@ sub setColumns( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteFavouriteForFilter_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteFavouriteForFilter >>
 
   my $res = $client->deleteFavouriteForFilter(
@@ -17093,7 +17577,7 @@ Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
-sub _build_deleteFavouriteForFilter_request( $self, %options ) {
+sub build_deleteFavouriteForFilter_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -17173,6 +17657,10 @@ sub deleteFavouriteForFilter( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setFavouriteForFilter_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setFavouriteForFilter >>
 
   my $res = $client->setFavouriteForFilter(
@@ -17215,7 +17703,7 @@ Returns a L<< JIRA::API::Filter >> on success.
 
 =cut
 
-sub _build_setFavouriteForFilter_request( $self, %options ) {
+sub build_setFavouriteForFilter_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -17295,6 +17783,10 @@ sub setFavouriteForFilter( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_changeFilterOwner_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< changeFilterOwner >>
 
   my $res = $client->changeFilterOwner(
@@ -17328,7 +17820,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_changeFilterOwner_request( $self, %options ) {
+sub build_changeFilterOwner_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -17413,6 +17905,10 @@ sub changeFilterOwner( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getSharePermissions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getSharePermissions >>
 
   my $res = $client->getSharePermissions(
@@ -17436,7 +17932,7 @@ Returns an array of L<< JIRA::API::SharePermission >> on success.
 
 =cut
 
-sub _build_getSharePermissions_request( $self, %options ) {
+sub build_getSharePermissions_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -17515,6 +18011,10 @@ sub getSharePermissions( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_addSharePermission_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< addSharePermission >>
 
@@ -17607,7 +18107,7 @@ Returns an array of L<< JIRA::API::SharePermission >> on HTTP code 201.
 
 =cut
 
-sub _build_addSharePermission_request( $self, %options ) {
+sub build_addSharePermission_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -17693,6 +18193,10 @@ sub addSharePermission( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteSharePermission_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteSharePermission >>
 
   my $res = $client->deleteSharePermission(
@@ -17720,7 +18224,7 @@ The ID of the share permission.
 
 =cut
 
-sub _build_deleteSharePermission_request( $self, %options ) {
+sub build_deleteSharePermission_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'permissionId'"
@@ -17790,6 +18294,10 @@ sub deleteSharePermission( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getSharePermission_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getSharePermission >>
 
   my $res = $client->getSharePermission(
@@ -17818,7 +18326,7 @@ Returns a L<< JIRA::API::SharePermission >> on success.
 
 =cut
 
-sub _build_getSharePermission_request( $self, %options ) {
+sub build_getSharePermission_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'permissionId'"
@@ -17900,6 +18408,10 @@ sub getSharePermission( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeGroup_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeGroup >>
 
   my $res = $client->removeGroup(
@@ -17937,7 +18449,7 @@ The ID of the group to transfer restrictions to. Only comments and worklogs are 
 
 =cut
 
-sub _build_removeGroup_request( $self, %options ) {
+sub build_removeGroup_request( $self, %options ) {
     my $method = 'DELETE';
     my $path = '/rest/api/3/group';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -18011,6 +18523,10 @@ sub removeGroup( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getGroup_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getGroup >>
 
   my $res = $client->getGroup(
@@ -18046,7 +18562,7 @@ Returns a L<< JIRA::API::Group >> on success.
 
 =cut
 
-sub _build_getGroup_request( $self, %options ) {
+sub build_getGroup_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/group';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -18131,6 +18647,10 @@ sub getGroup( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createGroup_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createGroup >>
 
   my $res = $client->createGroup()->get;
@@ -18158,7 +18678,7 @@ Returns a L<< JIRA::API::Group >> on HTTP code 201.
 
 =cut
 
-sub _build_createGroup_request( $self, %options ) {
+sub build_createGroup_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/group';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -18237,6 +18757,10 @@ sub createGroup( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_bulkGetGroups_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< bulkGetGroups >>
 
   my $res = $client->bulkGetGroups(
@@ -18285,7 +18809,7 @@ Returns a L<< JIRA::API::PageBeanGroupDetails >> on success.
 
 =cut
 
-sub _build_bulkGetGroups_request( $self, %options ) {
+sub build_bulkGetGroups_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/group/bulk';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -18395,6 +18919,10 @@ sub bulkGetGroups( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getUsersFromGroup_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getUsersFromGroup >>
 
   my $res = $client->getUsersFromGroup(
@@ -18440,7 +18968,7 @@ Returns a L<< JIRA::API::PageBeanUserDetails >> on success.
 
 =cut
 
-sub _build_getUsersFromGroup_request( $self, %options ) {
+sub build_getUsersFromGroup_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/group/member';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -18527,6 +19055,10 @@ sub getUsersFromGroup( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeUserFromGroup_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeUserFromGroup >>
 
   my $res = $client->removeUserFromGroup(
@@ -18566,7 +19098,7 @@ The account ID of the user, which uniquely identifies the user across all Atlass
 
 =cut
 
-sub _build_removeUserFromGroup_request( $self, %options ) {
+sub build_removeUserFromGroup_request( $self, %options ) {
     croak "Missing required parameter 'accountId'"
         unless exists $options{ 'accountId' };
 
@@ -18643,6 +19175,10 @@ sub removeUserFromGroup( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addUserToGroup_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addUserToGroup >>
 
   my $res = $client->addUserToGroup(
@@ -18687,7 +19223,7 @@ Returns a L<< JIRA::API::Group >> on HTTP code 201.
 
 =cut
 
-sub _build_addUserToGroup_request( $self, %options ) {
+sub build_addUserToGroup_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/group/user';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -18774,6 +19310,10 @@ sub addUserToGroup( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_findGroups_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< findGroups >>
 
   my $res = $client->findGroups(
@@ -18829,7 +19369,7 @@ Returns a L<< JIRA::API::FoundGroups >> on success.
 
 =cut
 
-sub _build_findGroups_request( $self, %options ) {
+sub build_findGroups_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/groups/picker';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -18906,6 +19446,10 @@ sub findGroups( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_findUsersAndGroups_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< findUsersAndGroups >>
 
   my $res = $client->findUsersAndGroups(
@@ -18969,7 +19513,7 @@ Returns a L<< JIRA::API::FoundUsersAndGroups >> on success.
 
 =cut
 
-sub _build_findUsersAndGroups_request( $self, %options ) {
+sub build_findUsersAndGroups_request( $self, %options ) {
     croak "Missing required parameter 'query'"
         unless exists $options{ 'query' };
 
@@ -19063,6 +19607,10 @@ sub findUsersAndGroups( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getLicense_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getLicense >>
 
   my $res = $client->getLicense()->get;
@@ -19080,7 +19628,7 @@ Returns a L<< JIRA::API::License >> on success.
 
 =cut
 
-sub _build_getLicense_request( $self, %options ) {
+sub build_getLicense_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/instance/license';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -19150,6 +19698,10 @@ sub getLicense( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createIssue_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createIssue >>
 
   my $res = $client->createIssue(
@@ -19202,7 +19754,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_createIssue_request( $self, %options ) {
+sub build_createIssue_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/issue';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -19318,6 +19870,10 @@ sub createIssue( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createIssues_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createIssues >>
 
   my $res = $client->createIssues()->get;
@@ -19344,7 +19900,7 @@ Returns a L<< JIRA::API::CreatedIssues >> on HTTP code 201.
 
 =cut
 
-sub _build_createIssues_request( $self, %options ) {
+sub build_createIssues_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/issue/bulk';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -19431,6 +19987,10 @@ sub createIssues( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getCreateIssueMeta_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getCreateIssueMeta >>
 
   my $res = $client->getCreateIssueMeta(
@@ -19474,7 +20034,7 @@ Returns a L<< JIRA::API::IssueCreateMetadata >> on success.
 
 =cut
 
-sub _build_getCreateIssueMeta_request( $self, %options ) {
+sub build_getCreateIssueMeta_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/issue/createmeta';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -19552,6 +20112,10 @@ sub getCreateIssueMeta( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssuePickerResource_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssuePickerResource >>
 
   my $res = $client->getIssuePickerResource(
@@ -19600,7 +20164,7 @@ Returns a L<< JIRA::API::IssuePickerSuggestions >> on success.
 
 =cut
 
-sub _build_getIssuePickerResource_request( $self, %options ) {
+sub build_getIssuePickerResource_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/issue/picker';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -19679,6 +20243,10 @@ sub getIssuePickerResource( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_bulkSetIssuesPropertiesList_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< bulkSetIssuesPropertiesList >>
 
   my $res = $client->bulkSetIssuesPropertiesList()->get;
@@ -19711,7 +20279,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
-sub _build_bulkSetIssuesPropertiesList_request( $self, %options ) {
+sub build_bulkSetIssuesPropertiesList_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/issue/properties';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -19798,6 +20366,10 @@ sub bulkSetIssuesPropertiesList( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_bulkSetIssuePropertiesByIssue_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< bulkSetIssuePropertiesByIssue >>
 
   my $res = $client->bulkSetIssuePropertiesByIssue()->get;
@@ -19827,7 +20399,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_bulkSetIssuePropertiesByIssue_request( $self, %options ) {
+sub build_bulkSetIssuePropertiesByIssue_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/issue/properties/multi';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -19928,6 +20500,10 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_bulkDeleteIssueProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< bulkDeleteIssueProperty >>
 
   my $res = $client->bulkDeleteIssueProperty(
@@ -19966,7 +20542,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
-sub _build_bulkDeleteIssueProperty_request( $self, %options ) {
+sub build_bulkDeleteIssueProperty_request( $self, %options ) {
     croak "Missing required parameter 'propertyKey'"
         unless exists $options{ 'propertyKey' };
 
@@ -20059,6 +20635,10 @@ sub bulkDeleteIssueProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_bulkSetIssueProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< bulkSetIssueProperty >>
 
   my $res = $client->bulkSetIssueProperty(
@@ -20101,7 +20681,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
-sub _build_bulkSetIssueProperty_request( $self, %options ) {
+sub build_bulkSetIssueProperty_request( $self, %options ) {
     croak "Missing required parameter 'propertyKey'"
         unless exists $options{ 'propertyKey' };
 
@@ -20194,6 +20774,10 @@ sub bulkSetIssueProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIsWatchingIssueBulk_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIsWatchingIssueBulk >>
 
   my $res = $client->getIsWatchingIssueBulk()->get;
@@ -20221,7 +20805,7 @@ Returns a L<< JIRA::API::BulkIssueIsWatching >> on success.
 
 =cut
 
-sub _build_getIsWatchingIssueBulk_request( $self, %options ) {
+sub build_getIsWatchingIssueBulk_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/issue/watching';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -20294,6 +20878,10 @@ sub getIsWatchingIssueBulk( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteIssue_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteIssue >>
 
   my $res = $client->deleteIssue(
@@ -20321,7 +20909,7 @@ Whether the issue's subtasks are deleted when the issue is deleted.
 
 =cut
 
-sub _build_deleteIssue_request( $self, %options ) {
+sub build_deleteIssue_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -20397,6 +20985,10 @@ sub deleteIssue( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_getIssue_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< getIssue >>
 
@@ -20566,7 +21158,7 @@ Returns a L<< JIRA::API::IssueBean >> on success.
 
 =cut
 
-sub _build_getIssue_request( $self, %options ) {
+sub build_getIssue_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -20653,6 +21245,10 @@ sub getIssue( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_editIssue_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< editIssue >>
 
   my $res = $client->editIssue(
@@ -20717,7 +21313,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_editIssue_request( $self, %options ) {
+sub build_editIssue_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -20810,6 +21406,10 @@ sub editIssue( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_assignIssue_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< assignIssue >>
 
@@ -20915,7 +21515,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_assignIssue_request( $self, %options ) {
+sub build_assignIssue_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -21000,6 +21600,10 @@ sub assignIssue( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addAttachment_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addAttachment >>
 
   my $res = $client->addAttachment(
@@ -21023,7 +21627,7 @@ Returns an array of L<< JIRA::API::Attachment >> on success.
 
 =cut
 
-sub _build_addAttachment_request( $self, %options ) {
+sub build_addAttachment_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -21109,6 +21713,10 @@ sub addAttachment( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getChangeLogs_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getChangeLogs >>
 
   my $res = $client->getChangeLogs(
@@ -21142,7 +21750,7 @@ Returns a L<< JIRA::API::PageBeanChangelog >> on success.
 
 =cut
 
-sub _build_getChangeLogs_request( $self, %options ) {
+sub build_getChangeLogs_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -21223,6 +21831,10 @@ sub getChangeLogs( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getChangeLogsByIds_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getChangeLogsByIds >>
 
   my $res = $client->getChangeLogsByIds(
@@ -21256,7 +21868,7 @@ Returns a L<< JIRA::API::PageOfChangelogs >> on success.
 
 =cut
 
-sub _build_getChangeLogsByIds_request( $self, %options ) {
+sub build_getChangeLogsByIds_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -21338,6 +21950,10 @@ sub getChangeLogsByIds( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getComments_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getComments >>
 
   my $res = $client->getComments(
@@ -21381,7 +21997,7 @@ Returns a L<< JIRA::API::PageOfComments >> on success.
 
 =cut
 
-sub _build_getComments_request( $self, %options ) {
+sub build_getComments_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -21470,6 +22086,10 @@ sub getComments( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addComment_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addComment >>
 
   my $res = $client->addComment(
@@ -21552,7 +22172,7 @@ Returns a L<< JIRA::API::Comment >> on HTTP code 201.
 
 =cut
 
-sub _build_addComment_request( $self, %options ) {
+sub build_addComment_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -21641,6 +22261,10 @@ sub addComment( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteComment_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteComment >>
 
   my $res = $client->deleteComment(
@@ -21668,7 +22292,7 @@ The ID of the comment.
 
 =cut
 
-sub _build_deleteComment_request( $self, %options ) {
+sub build_deleteComment_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'id'"
@@ -21744,6 +22368,10 @@ sub deleteComment( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getComment_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getComment >>
 
   my $res = $client->getComment(
@@ -21777,7 +22405,7 @@ Returns a L<< JIRA::API::Comment >> on success.
 
 =cut
 
-sub _build_getComment_request( $self, %options ) {
+sub build_getComment_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'id'"
@@ -21862,6 +22490,10 @@ sub getComment( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_updateComment_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< updateComment >>
 
@@ -21960,7 +22592,7 @@ Returns a L<< JIRA::API::Comment >> on success.
 
 =cut
 
-sub _build_updateComment_request( $self, %options ) {
+sub build_updateComment_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'id'"
@@ -22054,6 +22686,10 @@ sub updateComment( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getEditIssueMeta_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getEditIssueMeta >>
 
   my $res = $client->getEditIssueMeta(
@@ -22087,7 +22723,7 @@ Returns a L<< JIRA::API::IssueUpdateMetadata >> on success.
 
 =cut
 
-sub _build_getEditIssueMeta_request( $self, %options ) {
+sub build_getEditIssueMeta_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -22174,6 +22810,10 @@ sub getEditIssueMeta( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_notify_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< notify >>
 
   my $res = $client->notify(
@@ -22223,7 +22863,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_notify_request( $self, %options ) {
+sub build_notify_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -22308,6 +22948,10 @@ sub notify( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssuePropertyKeys_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssuePropertyKeys >>
 
   my $res = $client->getIssuePropertyKeys(
@@ -22331,7 +22975,7 @@ Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
-sub _build_getIssuePropertyKeys_request( $self, %options ) {
+sub build_getIssuePropertyKeys_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -22407,6 +23051,10 @@ sub getIssuePropertyKeys( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteIssueProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteIssueProperty >>
 
   my $res = $client->deleteIssueProperty(
@@ -22434,7 +23082,7 @@ The key of the property.
 
 =cut
 
-sub _build_deleteIssueProperty_request( $self, %options ) {
+sub build_deleteIssueProperty_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'propertyKey'"
@@ -22504,6 +23152,10 @@ sub deleteIssueProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueProperty >>
 
   my $res = $client->getIssueProperty(
@@ -22532,7 +23184,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
-sub _build_getIssueProperty_request( $self, %options ) {
+sub build_getIssueProperty_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'propertyKey'"
@@ -22614,6 +23266,10 @@ sub getIssueProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setIssueProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setIssueProperty >>
 
   my $res = $client->setIssueProperty(
@@ -22643,7 +23299,7 @@ Returns Unknown on HTTP code 201.
 
 =cut
 
-sub _build_setIssueProperty_request( $self, %options ) {
+sub build_setIssueProperty_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'propertyKey'"
@@ -22748,6 +23404,10 @@ sub setIssueProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteRemoteIssueLinkByGlobalId_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteRemoteIssueLinkByGlobalId >>
 
   my $res = $client->deleteRemoteIssueLinkByGlobalId(
@@ -22775,7 +23435,7 @@ The global ID of a remote issue link.
 
 =cut
 
-sub _build_deleteRemoteIssueLinkByGlobalId_request( $self, %options ) {
+sub build_deleteRemoteIssueLinkByGlobalId_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'globalId'"
@@ -22854,6 +23514,10 @@ sub deleteRemoteIssueLinkByGlobalId( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getRemoteIssueLinks_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getRemoteIssueLinks >>
 
   my $res = $client->getRemoteIssueLinks(
@@ -22882,7 +23546,7 @@ Returns a L<< JIRA::API::RemoteIssueLink >> on success.
 
 =cut
 
-sub _build_getRemoteIssueLinks_request( $self, %options ) {
+sub build_getRemoteIssueLinks_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -22971,6 +23635,10 @@ sub getRemoteIssueLinks( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createOrUpdateRemoteIssueLink_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createOrUpdateRemoteIssueLink >>
 
   my $res = $client->createOrUpdateRemoteIssueLink(
@@ -23021,7 +23689,7 @@ Returns a L<< JIRA::API::RemoteIssueLinkIdentifies >> on HTTP code 201.
 
 =cut
 
-sub _build_createOrUpdateRemoteIssueLink_request( $self, %options ) {
+sub build_createOrUpdateRemoteIssueLink_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -23134,6 +23802,10 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteRemoteIssueLinkById_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteRemoteIssueLinkById >>
 
   my $res = $client->deleteRemoteIssueLinkById(
@@ -23161,7 +23833,7 @@ The ID of a remote issue link.
 
 =cut
 
-sub _build_deleteRemoteIssueLinkById_request( $self, %options ) {
+sub build_deleteRemoteIssueLinkById_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'linkId'"
@@ -23237,6 +23909,10 @@ sub deleteRemoteIssueLinkById( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getRemoteIssueLinkById_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getRemoteIssueLinkById >>
 
   my $res = $client->getRemoteIssueLinkById(
@@ -23265,7 +23941,7 @@ Returns a L<< JIRA::API::RemoteIssueLink >> on success.
 
 =cut
 
-sub _build_getRemoteIssueLinkById_request( $self, %options ) {
+sub build_getRemoteIssueLinkById_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'linkId'"
@@ -23353,6 +24029,10 @@ sub getRemoteIssueLinkById( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateRemoteIssueLink_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateRemoteIssueLink >>
 
   my $res = $client->updateRemoteIssueLink(
@@ -23407,7 +24087,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateRemoteIssueLink_request( $self, %options ) {
+sub build_updateRemoteIssueLink_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'linkId'"
@@ -23509,6 +24189,10 @@ sub updateRemoteIssueLink( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getTransitions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getTransitions >>
 
   my $res = $client->getTransitions(
@@ -23557,7 +24241,7 @@ Returns a L<< JIRA::API::Transitions >> on success.
 
 =cut
 
-sub _build_getTransitions_request( $self, %options ) {
+sub build_getTransitions_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -23644,6 +24328,10 @@ sub getTransitions( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_doTransition_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< doTransition >>
 
   my $res = $client->doTransition(
@@ -23693,7 +24381,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_doTransition_request( $self, %options ) {
+sub build_doTransition_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -23778,6 +24466,10 @@ sub doTransition( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeVote_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeVote >>
 
   my $res = $client->removeVote(
@@ -23800,7 +24492,7 @@ The ID or key of the issue.
 
 =cut
 
-sub _build_removeVote_request( $self, %options ) {
+sub build_removeVote_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -23867,6 +24559,10 @@ sub removeVote( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getVotes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getVotes >>
 
   my $res = $client->getVotes(
@@ -23890,7 +24586,7 @@ Returns a L<< JIRA::API::Votes >> on success.
 
 =cut
 
-sub _build_getVotes_request( $self, %options ) {
+sub build_getVotes_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -23969,6 +24665,10 @@ sub getVotes( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addVote_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addVote >>
 
   my $res = $client->addVote(
@@ -23992,7 +24692,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_addVote_request( $self, %options ) {
+sub build_addVote_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -24074,6 +24774,10 @@ sub addVote( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeWatcher_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeWatcher >>
 
   my $res = $client->removeWatcher(
@@ -24106,7 +24810,7 @@ The account ID of the user, which uniquely identifies the user across all Atlass
 
 =cut
 
-sub _build_removeWatcher_request( $self, %options ) {
+sub build_removeWatcher_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -24184,6 +24888,10 @@ sub removeWatcher( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueWatchers_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueWatchers >>
 
   my $res = $client->getIssueWatchers(
@@ -24207,7 +24915,7 @@ Returns a L<< JIRA::API::Watchers >> on success.
 
 =cut
 
-sub _build_getIssueWatchers_request( $self, %options ) {
+sub build_getIssueWatchers_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -24286,6 +24994,10 @@ sub getIssueWatchers( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addWatcher_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addWatcher >>
 
   my $res = $client->addWatcher(
@@ -24309,7 +25021,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_addWatcher_request( $self, %options ) {
+sub build_addWatcher_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -24397,6 +25109,10 @@ sub addWatcher( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueWorklog_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueWorklog >>
 
   my $res = $client->getIssueWorklog(
@@ -24445,7 +25161,7 @@ Returns a L<< JIRA::API::PageOfWorklogs >> on success.
 
 =cut
 
-sub _build_getIssueWorklog_request( $self, %options ) {
+sub build_getIssueWorklog_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -24531,6 +25247,10 @@ sub getIssueWorklog( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_addWorklog_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< addWorklog >>
 
@@ -24667,7 +25387,7 @@ Returns a L<< JIRA::API::Worklog >> on HTTP code 201.
 
 =cut
 
-sub _build_addWorklog_request( $self, %options ) {
+sub build_addWorklog_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
 
@@ -24761,6 +25481,10 @@ sub addWorklog( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteWorklog_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteWorklog >>
 
   my $res = $client->deleteWorklog(
@@ -24837,7 +25561,7 @@ Whether the work log entry should be added to the issue even if the issue is not
 
 =cut
 
-sub _build_deleteWorklog_request( $self, %options ) {
+sub build_deleteWorklog_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'id'"
@@ -24918,6 +25642,10 @@ sub deleteWorklog( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getWorklog_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getWorklog >>
 
   my $res = $client->getWorklog(
@@ -24953,7 +25681,7 @@ Returns a L<< JIRA::API::Worklog >> on success.
 
 =cut
 
-sub _build_getWorklog_request( $self, %options ) {
+sub build_getWorklog_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'id'"
@@ -25038,6 +25766,10 @@ sub getWorklog( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_updateWorklog_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< updateWorklog >>
 
@@ -25169,7 +25901,7 @@ Returns a L<< JIRA::API::Worklog >> on success.
 
 =cut
 
-sub _build_updateWorklog_request( $self, %options ) {
+sub build_updateWorklog_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'id'"
@@ -25265,6 +25997,10 @@ sub updateWorklog( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getWorklogPropertyKeys_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getWorklogPropertyKeys >>
 
   my $res = $client->getWorklogPropertyKeys(
@@ -25293,7 +26029,7 @@ Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
-sub _build_getWorklogPropertyKeys_request( $self, %options ) {
+sub build_getWorklogPropertyKeys_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'worklogId'"
@@ -25378,6 +26114,10 @@ sub getWorklogPropertyKeys( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteWorklogProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteWorklogProperty >>
 
   my $res = $client->deleteWorklogProperty(
@@ -25410,7 +26150,7 @@ The key of the property.
 
 =cut
 
-sub _build_deleteWorklogProperty_request( $self, %options ) {
+sub build_deleteWorklogProperty_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'worklogId'"
@@ -25489,6 +26229,10 @@ sub deleteWorklogProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getWorklogProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getWorklogProperty >>
 
   my $res = $client->getWorklogProperty(
@@ -25522,7 +26266,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
-sub _build_getWorklogProperty_request( $self, %options ) {
+sub build_getWorklogProperty_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'worklogId'"
@@ -25610,6 +26354,10 @@ sub getWorklogProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setWorklogProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setWorklogProperty >>
 
   my $res = $client->setWorklogProperty(
@@ -25644,7 +26392,7 @@ Returns Unknown on HTTP code 201.
 
 =cut
 
-sub _build_setWorklogProperty_request( $self, %options ) {
+sub build_setWorklogProperty_request( $self, %options ) {
     croak "Missing required parameter 'issueIdOrKey'"
         unless exists $options{ 'issueIdOrKey' };
     croak "Missing required parameter 'worklogId'"
@@ -25752,6 +26500,10 @@ sub setWorklogProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_linkIssues_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< linkIssues >>
 
   my $res = $client->linkIssues()->get;
@@ -25805,7 +26557,7 @@ Returns Unknown on HTTP code 201.
 
 =cut
 
-sub _build_linkIssues_request( $self, %options ) {
+sub build_linkIssues_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/issueLink';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -25884,6 +26636,10 @@ sub linkIssues( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteIssueLink_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteIssueLink >>
 
   my $res = $client->deleteIssueLink(
@@ -25906,7 +26662,7 @@ The ID of the issue link.
 
 =cut
 
-sub _build_deleteIssueLink_request( $self, %options ) {
+sub build_deleteIssueLink_request( $self, %options ) {
     croak "Missing required parameter 'linkId'"
         unless exists $options{ 'linkId' };
 
@@ -25979,6 +26735,10 @@ sub deleteIssueLink( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueLink_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueLink >>
 
   my $res = $client->getIssueLink(
@@ -26002,7 +26762,7 @@ Returns a L<< JIRA::API::IssueLink >> on success.
 
 =cut
 
-sub _build_getIssueLink_request( $self, %options ) {
+sub build_getIssueLink_request( $self, %options ) {
     croak "Missing required parameter 'linkId'"
         unless exists $options{ 'linkId' };
 
@@ -26084,6 +26844,10 @@ sub getIssueLink( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueLinkTypes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueLinkTypes >>
 
   my $res = $client->getIssueLinkTypes()->get;
@@ -26101,7 +26865,7 @@ Returns a L<< JIRA::API::IssueLinkTypes >> on success.
 
 =cut
 
-sub _build_getIssueLinkTypes_request( $self, %options ) {
+sub build_getIssueLinkTypes_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/issueLinkType';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -26173,6 +26937,10 @@ sub getIssueLinkTypes( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_createIssueLinkType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< createIssueLinkType >>
 
@@ -26273,7 +27041,7 @@ Returns a L<< JIRA::API::IssueLinkType >> on HTTP code 201.
 
 =cut
 
-sub _build_createIssueLinkType_request( $self, %options ) {
+sub build_createIssueLinkType_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/issueLinkType';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -26352,6 +27120,10 @@ sub createIssueLinkType( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteIssueLinkType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteIssueLinkType >>
 
   my $res = $client->deleteIssueLinkType(
@@ -26374,7 +27146,7 @@ The ID of the issue link type.
 
 =cut
 
-sub _build_deleteIssueLinkType_request( $self, %options ) {
+sub build_deleteIssueLinkType_request( $self, %options ) {
     croak "Missing required parameter 'issueLinkTypeId'"
         unless exists $options{ 'issueLinkTypeId' };
 
@@ -26444,6 +27216,10 @@ sub deleteIssueLinkType( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueLinkType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueLinkType >>
 
   my $res = $client->getIssueLinkType(
@@ -26467,7 +27243,7 @@ Returns a L<< JIRA::API::IssueLinkType >> on success.
 
 =cut
 
-sub _build_getIssueLinkType_request( $self, %options ) {
+sub build_getIssueLinkType_request( $self, %options ) {
     croak "Missing required parameter 'issueLinkTypeId'"
         unless exists $options{ 'issueLinkTypeId' };
 
@@ -26548,6 +27324,10 @@ sub getIssueLinkType( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_updateIssueLinkType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< updateIssueLinkType >>
 
@@ -26654,7 +27434,7 @@ Returns a L<< JIRA::API::IssueLinkType >> on success.
 
 =cut
 
-sub _build_updateIssueLinkType_request( $self, %options ) {
+sub build_updateIssueLinkType_request( $self, %options ) {
     croak "Missing required parameter 'issueLinkTypeId'"
         unless exists $options{ 'issueLinkTypeId' };
 
@@ -26739,6 +27519,10 @@ sub updateIssueLinkType( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueSecuritySchemes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueSecuritySchemes >>
 
   my $res = $client->getIssueSecuritySchemes()->get;
@@ -26756,7 +27540,7 @@ Returns a L<< JIRA::API::SecuritySchemes >> on success.
 
 =cut
 
-sub _build_getIssueSecuritySchemes_request( $self, %options ) {
+sub build_getIssueSecuritySchemes_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/issuesecurityschemes';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -26829,6 +27613,10 @@ sub getIssueSecuritySchemes( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueSecurityScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueSecurityScheme >>
 
   my $res = $client->getIssueSecurityScheme(
@@ -26852,7 +27640,7 @@ Returns a L<< JIRA::API::SecurityScheme >> on success.
 
 =cut
 
-sub _build_getIssueSecurityScheme_request( $self, %options ) {
+sub build_getIssueSecurityScheme_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -26931,6 +27719,10 @@ sub getIssueSecurityScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueSecurityLevelMembers_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueSecurityLevelMembers >>
 
   my $res = $client->getIssueSecurityLevelMembers(
@@ -27003,7 +27795,7 @@ Returns a L<< JIRA::API::PageBeanIssueSecurityLevelMember >> on success.
 
 =cut
 
-sub _build_getIssueSecurityLevelMembers_request( $self, %options ) {
+sub build_getIssueSecurityLevelMembers_request( $self, %options ) {
     croak "Missing required parameter 'issueSecuritySchemeId'"
         unless exists $options{ 'issueSecuritySchemeId' };
 
@@ -27095,6 +27887,10 @@ sub getIssueSecurityLevelMembers( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueAllTypes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueAllTypes >>
 
   my $res = $client->getIssueAllTypes()->get;
@@ -27112,7 +27908,7 @@ Returns an array of L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
-sub _build_getIssueAllTypes_request( $self, %options ) {
+sub build_getIssueAllTypes_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/issuetype';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -27183,6 +27979,10 @@ sub getIssueAllTypes( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createIssueType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createIssueType >>
 
   my $res = $client->createIssueType()->get;
@@ -27240,7 +28040,7 @@ Returns a L<< JIRA::API::IssueTypeDetails >> on HTTP code 201.
 
 =cut
 
-sub _build_createIssueType_request( $self, %options ) {
+sub build_createIssueType_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/issuetype';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -27322,6 +28122,10 @@ sub createIssueType( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueTypesForProject_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueTypesForProject >>
 
   my $res = $client->getIssueTypesForProject(
@@ -27369,7 +28173,7 @@ Returns an array of L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
-sub _build_getIssueTypesForProject_request( $self, %options ) {
+sub build_getIssueTypesForProject_request( $self, %options ) {
     croak "Missing required parameter 'projectId'"
         unless exists $options{ 'projectId' };
 
@@ -27454,6 +28258,10 @@ sub getIssueTypesForProject( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteIssueType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteIssueType >>
 
   my $res = $client->deleteIssueType(
@@ -27481,7 +28289,7 @@ The ID of the replacement issue type.
 
 =cut
 
-sub _build_deleteIssueType_request( $self, %options ) {
+sub build_deleteIssueType_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -27561,6 +28369,10 @@ sub deleteIssueType( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueType >>
 
   my $res = $client->getIssueType(
@@ -27584,7 +28396,7 @@ Returns a L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
-sub _build_getIssueType_request( $self, %options ) {
+sub build_getIssueType_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -27666,6 +28478,10 @@ sub getIssueType( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateIssueType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateIssueType >>
 
   my $res = $client->updateIssueType(
@@ -27707,7 +28523,7 @@ Returns a L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
-sub _build_updateIssueType_request( $self, %options ) {
+sub build_updateIssueType_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -27798,6 +28614,10 @@ sub updateIssueType( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAlternativeIssueTypes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAlternativeIssueTypes >>
 
   my $res = $client->getAlternativeIssueTypes(
@@ -27821,7 +28641,7 @@ Returns an array of L<< JIRA::API::IssueTypeDetails >> on success.
 
 =cut
 
-sub _build_getAlternativeIssueTypes_request( $self, %options ) {
+sub build_getAlternativeIssueTypes_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -27901,6 +28721,10 @@ sub getAlternativeIssueTypes( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createIssueTypeAvatar_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createIssueTypeAvatar >>
 
   my $res = $client->createIssueTypeAvatar(
@@ -27939,7 +28763,7 @@ Returns a L<< JIRA::API::Avatar >> on HTTP code 201.
 
 =cut
 
-sub _build_createIssueTypeAvatar_request( $self, %options ) {
+sub build_createIssueTypeAvatar_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'size'"
@@ -28036,6 +28860,10 @@ sub createIssueTypeAvatar( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueTypePropertyKeys_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueTypePropertyKeys >>
 
   my $res = $client->getIssueTypePropertyKeys(
@@ -28059,7 +28887,7 @@ Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
-sub _build_getIssueTypePropertyKeys_request( $self, %options ) {
+sub build_getIssueTypePropertyKeys_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeId'"
         unless exists $options{ 'issueTypeId' };
 
@@ -28138,6 +28966,10 @@ sub getIssueTypePropertyKeys( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteIssueTypeProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteIssueTypeProperty >>
 
   my $res = $client->deleteIssueTypeProperty(
@@ -28165,7 +28997,7 @@ The key of the property. Use L<Get issue type property keys|#api-rest-api-3-issu
 
 =cut
 
-sub _build_deleteIssueTypeProperty_request( $self, %options ) {
+sub build_deleteIssueTypeProperty_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeId'"
         unless exists $options{ 'issueTypeId' };
     croak "Missing required parameter 'propertyKey'"
@@ -28241,6 +29073,10 @@ sub deleteIssueTypeProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueTypeProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueTypeProperty >>
 
   my $res = $client->getIssueTypeProperty(
@@ -28269,7 +29105,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
-sub _build_getIssueTypeProperty_request( $self, %options ) {
+sub build_getIssueTypeProperty_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeId'"
         unless exists $options{ 'issueTypeId' };
     croak "Missing required parameter 'propertyKey'"
@@ -28354,6 +29190,10 @@ sub getIssueTypeProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setIssueTypeProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setIssueTypeProperty >>
 
   my $res = $client->setIssueTypeProperty(
@@ -28383,7 +29223,7 @@ Returns Unknown on HTTP code 201.
 
 =cut
 
-sub _build_setIssueTypeProperty_request( $self, %options ) {
+sub build_setIssueTypeProperty_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeId'"
         unless exists $options{ 'issueTypeId' };
     croak "Missing required parameter 'propertyKey'"
@@ -28488,6 +29328,10 @@ sub setIssueTypeProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllIssueTypeSchemes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllIssueTypeSchemes >>
 
   my $res = $client->getAllIssueTypeSchemes(
@@ -28564,7 +29408,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeScheme >> on success.
 
 =cut
 
-sub _build_getAllIssueTypeSchemes_request( $self, %options ) {
+sub build_getAllIssueTypeSchemes_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/issuetypescheme';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -28649,6 +29493,10 @@ sub getAllIssueTypeSchemes( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createIssueTypeScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createIssueTypeScheme >>
 
   my $res = $client->createIssueTypeScheme()->get;
@@ -28688,7 +29536,7 @@ Returns a L<< JIRA::API::IssueTypeSchemeID >> on HTTP code 201.
 
 =cut
 
-sub _build_createIssueTypeScheme_request( $self, %options ) {
+sub build_createIssueTypeScheme_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/issuetypescheme';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -28803,6 +29651,10 @@ sub createIssueTypeScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueTypeSchemesMapping_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueTypeSchemesMapping >>
 
   my $res = $client->getIssueTypeSchemesMapping(
@@ -28836,7 +29688,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeSchemeMapping >> on success.
 
 =cut
 
-sub _build_getIssueTypeSchemesMapping_request( $self, %options ) {
+sub build_getIssueTypeSchemesMapping_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/issuetypescheme/mapping';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -28918,6 +29770,10 @@ sub getIssueTypeSchemesMapping( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueTypeSchemeForProjects_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueTypeSchemeForProjects >>
 
   my $res = $client->getIssueTypeSchemeForProjects(
@@ -28951,7 +29807,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeSchemeProjects >> on success.
 
 =cut
 
-sub _build_getIssueTypeSchemeForProjects_request( $self, %options ) {
+sub build_getIssueTypeSchemeForProjects_request( $self, %options ) {
     croak "Missing required parameter 'projectId'"
         unless exists $options{ 'projectId' };
 
@@ -29036,6 +29892,10 @@ sub getIssueTypeSchemeForProjects( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_assignIssueTypeSchemeToProject_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< assignIssueTypeSchemeToProject >>
 
   my $res = $client->assignIssueTypeSchemeToProject()->get;
@@ -29067,7 +29927,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_assignIssueTypeSchemeToProject_request( $self, %options ) {
+sub build_assignIssueTypeSchemeToProject_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/issuetypescheme/project';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -29182,6 +30042,10 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteIssueTypeScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteIssueTypeScheme >>
 
   my $res = $client->deleteIssueTypeScheme(
@@ -29205,7 +30069,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_deleteIssueTypeScheme_request( $self, %options ) {
+sub build_deleteIssueTypeScheme_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeSchemeId'"
         unless exists $options{ 'issueTypeSchemeId' };
 
@@ -29323,6 +30187,10 @@ sub deleteIssueTypeScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateIssueTypeScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateIssueTypeScheme >>
 
   my $res = $client->updateIssueTypeScheme(
@@ -29364,7 +30232,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateIssueTypeScheme_request( $self, %options ) {
+sub build_updateIssueTypeScheme_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeSchemeId'"
         unless exists $options{ 'issueTypeSchemeId' };
 
@@ -29485,6 +30353,10 @@ sub updateIssueTypeScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addIssueTypesToIssueTypeScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addIssueTypesToIssueTypeScheme >>
 
   my $res = $client->addIssueTypesToIssueTypeScheme(
@@ -29518,7 +30390,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_addIssueTypesToIssueTypeScheme_request( $self, %options ) {
+sub build_addIssueTypesToIssueTypeScheme_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeSchemeId'"
         unless exists $options{ 'issueTypeSchemeId' };
 
@@ -29639,6 +30511,10 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_reorderIssueTypesInIssueTypeScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< reorderIssueTypesInIssueTypeScheme >>
 
   my $res = $client->reorderIssueTypesInIssueTypeScheme(
@@ -29680,7 +30556,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_reorderIssueTypesInIssueTypeScheme_request( $self, %options ) {
+sub build_reorderIssueTypesInIssueTypeScheme_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeSchemeId'"
         unless exists $options{ 'issueTypeSchemeId' };
 
@@ -29801,6 +30677,10 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeIssueTypeFromIssueTypeScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeIssueTypeFromIssueTypeScheme >>
 
   my $res = $client->removeIssueTypeFromIssueTypeScheme(
@@ -29829,7 +30709,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_removeIssueTypeFromIssueTypeScheme_request( $self, %options ) {
+sub build_removeIssueTypeFromIssueTypeScheme_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeSchemeId'"
         unless exists $options{ 'issueTypeSchemeId' };
     croak "Missing required parameter 'issueTypeId'"
@@ -29950,6 +30830,10 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueTypeScreenSchemes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueTypeScreenSchemes >>
 
   my $res = $client->getIssueTypeScreenSchemes(
@@ -30012,7 +30896,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeScreenScheme >> on success.
 
 =cut
 
-sub _build_getIssueTypeScreenSchemes_request( $self, %options ) {
+sub build_getIssueTypeScreenSchemes_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/issuetypescreenscheme';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -30097,6 +30981,10 @@ sub getIssueTypeScreenSchemes( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createIssueTypeScreenScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createIssueTypeScreenScheme >>
 
   my $res = $client->createIssueTypeScreenScheme()->get;
@@ -30132,7 +31020,7 @@ Returns a L<< JIRA::API::IssueTypeScreenSchemeId >> on HTTP code 201.
 
 =cut
 
-sub _build_createIssueTypeScreenScheme_request( $self, %options ) {
+sub build_createIssueTypeScreenScheme_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/issuetypescreenscheme';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -30261,6 +31149,10 @@ sub createIssueTypeScreenScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueTypeScreenSchemeMappings_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueTypeScreenSchemeMappings >>
 
   my $res = $client->getIssueTypeScreenSchemeMappings(
@@ -30294,7 +31186,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemeItem >> on success.
 
 =cut
 
-sub _build_getIssueTypeScreenSchemeMappings_request( $self, %options ) {
+sub build_getIssueTypeScreenSchemeMappings_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/issuetypescreenscheme/mapping';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -30376,6 +31268,10 @@ sub getIssueTypeScreenSchemeMappings( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueTypeScreenSchemeProjectAssociations_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueTypeScreenSchemeProjectAssociations >>
 
   my $res = $client->getIssueTypeScreenSchemeProjectAssociations(
@@ -30409,7 +31305,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemesProjects >> on success.
 
 =cut
 
-sub _build_getIssueTypeScreenSchemeProjectAssociations_request( $self, %options ) {
+sub build_getIssueTypeScreenSchemeProjectAssociations_request( $self, %options ) {
     croak "Missing required parameter 'projectId'"
         unless exists $options{ 'projectId' };
 
@@ -30494,6 +31390,10 @@ sub getIssueTypeScreenSchemeProjectAssociations( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_assignIssueTypeScreenSchemeToProject_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< assignIssueTypeScreenSchemeToProject >>
 
   my $res = $client->assignIssueTypeScreenSchemeToProject()->get;
@@ -30525,7 +31425,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_assignIssueTypeScreenSchemeToProject_request( $self, %options ) {
+sub build_assignIssueTypeScreenSchemeToProject_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/issuetypescreenscheme/project';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -30640,6 +31540,10 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteIssueTypeScreenScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteIssueTypeScreenScheme >>
 
   my $res = $client->deleteIssueTypeScreenScheme(
@@ -30663,7 +31567,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_deleteIssueTypeScreenScheme_request( $self, %options ) {
+sub build_deleteIssueTypeScreenScheme_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeScreenSchemeId'"
         unless exists $options{ 'issueTypeScreenSchemeId' };
 
@@ -30770,6 +31674,10 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateIssueTypeScreenScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateIssueTypeScreenScheme >>
 
   my $res = $client->updateIssueTypeScreenScheme(
@@ -30807,7 +31715,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateIssueTypeScreenScheme_request( $self, %options ) {
+sub build_updateIssueTypeScreenScheme_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeScreenSchemeId'"
         unless exists $options{ 'issueTypeScreenSchemeId' };
 
@@ -30928,6 +31836,10 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_appendMappingsForIssueTypeScreenScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< appendMappingsForIssueTypeScreenScheme >>
 
   my $res = $client->appendMappingsForIssueTypeScreenScheme(
@@ -30961,7 +31873,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_appendMappingsForIssueTypeScreenScheme_request( $self, %options ) {
+sub build_appendMappingsForIssueTypeScreenScheme_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeScreenSchemeId'"
         unless exists $options{ 'issueTypeScreenSchemeId' };
 
@@ -31085,6 +31997,10 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateDefaultScreenScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateDefaultScreenScheme >>
 
   my $res = $client->updateDefaultScreenScheme(
@@ -31118,7 +32034,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateDefaultScreenScheme_request( $self, %options ) {
+sub build_updateDefaultScreenScheme_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeScreenSchemeId'"
         unless exists $options{ 'issueTypeScreenSchemeId' };
 
@@ -31239,6 +32155,10 @@ sub updateDefaultScreenScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeMappingsFromIssueTypeScreenScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeMappingsFromIssueTypeScreenScheme >>
 
   my $res = $client->removeMappingsFromIssueTypeScreenScheme(
@@ -31272,7 +32192,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_removeMappingsFromIssueTypeScreenScheme_request( $self, %options ) {
+sub build_removeMappingsFromIssueTypeScreenScheme_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeScreenSchemeId'"
         unless exists $options{ 'issueTypeScreenSchemeId' };
 
@@ -31393,6 +32313,10 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectsForIssueTypeScreenScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectsForIssueTypeScreenScheme >>
 
   my $res = $client->getProjectsForIssueTypeScreenScheme(
@@ -31429,7 +32353,7 @@ Returns a L<< JIRA::API::PageBeanProjectDetails >> on success.
 
 =cut
 
-sub _build_getProjectsForIssueTypeScreenScheme_request( $self, %options ) {
+sub build_getProjectsForIssueTypeScreenScheme_request( $self, %options ) {
     croak "Missing required parameter 'issueTypeScreenSchemeId'"
         unless exists $options{ 'issueTypeScreenSchemeId' };
 
@@ -31517,6 +32441,10 @@ sub getProjectsForIssueTypeScreenScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAutoComplete_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAutoComplete >>
 
   my $res = $client->getAutoComplete()->get;
@@ -31534,7 +32462,7 @@ Returns a L<< JIRA::API::JQLReferenceData >> on success.
 
 =cut
 
-sub _build_getAutoComplete_request( $self, %options ) {
+sub build_getAutoComplete_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/jql/autocompletedata';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -31604,6 +32532,10 @@ sub getAutoComplete( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAutoCompletePost_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAutoCompletePost >>
 
   my $res = $client->getAutoCompletePost()->get;
@@ -31635,7 +32567,7 @@ Returns a L<< JIRA::API::JQLReferenceData >> on success.
 
 =cut
 
-sub _build_getAutoCompletePost_request( $self, %options ) {
+sub build_getAutoCompletePost_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/jql/autocompletedata';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -31711,6 +32643,10 @@ sub getAutoCompletePost( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getFieldAutoCompleteForQueryString_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getFieldAutoCompleteForQueryString >>
 
   my $res = $client->getFieldAutoCompleteForQueryString(
@@ -31749,7 +32685,7 @@ Returns a L<< JIRA::API::AutoCompleteSuggestions >> on success.
 
 =cut
 
-sub _build_getFieldAutoCompleteForQueryString_request( $self, %options ) {
+sub build_getFieldAutoCompleteForQueryString_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/jql/autocompletedata/suggestions';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -31829,6 +32765,10 @@ sub getFieldAutoCompleteForQueryString( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getPrecomputations_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getPrecomputations >>
 
   my $res = $client->getPrecomputations(
@@ -31862,7 +32802,7 @@ Returns a L<< JIRA::API::PageBeanJqlFunctionPrecomputationBean >> on success.
 
 =cut
 
-sub _build_getPrecomputations_request( $self, %options ) {
+sub build_getPrecomputations_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/jql/function/computation';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -31937,6 +32877,10 @@ sub getPrecomputations( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updatePrecomputations_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updatePrecomputations >>
 
   my $res = $client->updatePrecomputations()->get;
@@ -31962,7 +32906,7 @@ Returns Unknown on success.
 
 =cut
 
-sub _build_updatePrecomputations_request( $self, %options ) {
+sub build_updatePrecomputations_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/jql/function/computation';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -32032,6 +32976,10 @@ sub updatePrecomputations( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_matchIssues_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< matchIssues >>
 
   my $res = $client->matchIssues()->get;
@@ -32063,7 +33011,7 @@ Returns a L<< JIRA::API::IssueMatches >> on success.
 
 =cut
 
-sub _build_matchIssues_request( $self, %options ) {
+sub build_matchIssues_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/jql/match';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -32136,6 +33084,10 @@ sub matchIssues( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_parseJqlQueries_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< parseJqlQueries >>
 
   my $res = $client->parseJqlQueries(
@@ -32189,7 +33141,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 =cut
 
-sub _build_parseJqlQueries_request( $self, %options ) {
+sub build_parseJqlQueries_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/jql/parse';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -32280,6 +33232,10 @@ sub parseJqlQueries( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_migrateQueries_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< migrateQueries >>
 
   my $res = $client->migrateQueries()->get;
@@ -32307,7 +33263,7 @@ Returns a L<< JIRA::API::ConvertedJQLQueries >> on success.
 
 =cut
 
-sub _build_migrateQueries_request( $self, %options ) {
+sub build_migrateQueries_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/jql/pdcleaner';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -32383,6 +33339,10 @@ sub migrateQueries( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_sanitiseJqlQueries_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< sanitiseJqlQueries >>
 
   my $res = $client->sanitiseJqlQueries()->get;
@@ -32413,7 +33373,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_sanitiseJqlQueries_request( $self, %options ) {
+sub build_sanitiseJqlQueries_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/jql/sanitize';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -32525,6 +33485,10 @@ sub sanitiseJqlQueries( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllLabels_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllLabels >>
 
   my $res = $client->getAllLabels(
@@ -32553,7 +33517,7 @@ Returns a L<< JIRA::API::PageBeanString >> on success.
 
 =cut
 
-sub _build_getAllLabels_request( $self, %options ) {
+sub build_getAllLabels_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/label';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -32625,6 +33589,10 @@ sub getAllLabels( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getApproximateLicenseCount_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getApproximateLicenseCount >>
 
   my $res = $client->getApproximateLicenseCount()->get;
@@ -32642,7 +33610,7 @@ Returns a L<< JIRA::API::LicenseMetric >> on success.
 
 =cut
 
-sub _build_getApproximateLicenseCount_request( $self, %options ) {
+sub build_getApproximateLicenseCount_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/license/approximateLicenseCount';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -32715,6 +33683,10 @@ sub getApproximateLicenseCount( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getApproximateApplicationLicenseCount_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getApproximateApplicationLicenseCount >>
 
   my $res = $client->getApproximateApplicationLicenseCount(
@@ -32736,7 +33708,7 @@ Returns a L<< JIRA::API::LicenseMetric >> on success.
 
 =cut
 
-sub _build_getApproximateApplicationLicenseCount_request( $self, %options ) {
+sub build_getApproximateApplicationLicenseCount_request( $self, %options ) {
     croak "Missing required parameter 'applicationKey'"
         unless exists $options{ 'applicationKey' };
 
@@ -32815,6 +33787,10 @@ sub getApproximateApplicationLicenseCount( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getMyPermissions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getMyPermissions >>
 
   my $res = $client->getMyPermissions(
@@ -32872,7 +33848,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_getMyPermissions_request( $self, %options ) {
+sub build_getMyPermissions_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/mypermissions';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -32992,6 +33968,10 @@ sub getMyPermissions( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removePreference_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removePreference >>
 
   my $res = $client->removePreference(
@@ -33014,7 +33994,7 @@ The key of the preference.
 
 =cut
 
-sub _build_removePreference_request( $self, %options ) {
+sub build_removePreference_request( $self, %options ) {
     croak "Missing required parameter 'key'"
         unless exists $options{ 'key' };
 
@@ -33082,6 +34062,10 @@ sub removePreference( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getPreference_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getPreference >>
 
   my $res = $client->getPreference(
@@ -33105,7 +34089,7 @@ Returns a L<< string >> on success.
 
 =cut
 
-sub _build_getPreference_request( $self, %options ) {
+sub build_getPreference_request( $self, %options ) {
     croak "Missing required parameter 'key'"
         unless exists $options{ 'key' };
 
@@ -33185,6 +34169,10 @@ sub getPreference( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setPreference_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setPreference >>
 
   my $res = $client->setPreference(
@@ -33208,7 +34196,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_setPreference_request( $self, %options ) {
+sub build_setPreference_request( $self, %options ) {
     croak "Missing required parameter 'key'"
         unless exists $options{ 'key' };
 
@@ -33228,7 +34216,8 @@ sub _build_setPreference_request( $self, %options ) {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request,
+        # XXX Need to fill the body
+        # => $body,
     );
 
     return $tx
@@ -33292,6 +34281,10 @@ sub setPreference( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteLocale_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteLocale >>
 
   my $res = $client->deleteLocale()->get;
@@ -33309,7 +34302,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_deleteLocale_request( $self, %options ) {
+sub build_deleteLocale_request( $self, %options ) {
     my $method = 'DELETE';
     my $path = '/rest/api/3/mypreferences/locale';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -33379,6 +34372,10 @@ sub deleteLocale( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getLocale_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getLocale >>
 
   my $res = $client->getLocale()->get;
@@ -33396,7 +34393,7 @@ Returns a L<< JIRA::API::Locale >> on success.
 
 =cut
 
-sub _build_getLocale_request( $self, %options ) {
+sub build_getLocale_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/mypreferences/locale';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -33466,6 +34463,10 @@ sub getLocale( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setLocale_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setLocale >>
 
   my $res = $client->setLocale()->get;
@@ -33493,7 +34494,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_setLocale_request( $self, %options ) {
+sub build_setLocale_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/mypreferences/locale';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -33569,6 +34570,10 @@ sub setLocale( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getCurrentUser_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getCurrentUser >>
 
   my $res = $client->getCurrentUser(
@@ -33606,7 +34611,7 @@ Returns a L<< JIRA::API::User >> on success.
 
 =cut
 
-sub _build_getCurrentUser_request( $self, %options ) {
+sub build_getCurrentUser_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/myself';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -33679,6 +34684,10 @@ sub getCurrentUser( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_getNotificationSchemes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< getNotificationSchemes >>
 
@@ -33762,7 +34771,7 @@ Returns a L<< JIRA::API::PageBeanNotificationScheme >> on success.
 
 =cut
 
-sub _build_getNotificationSchemes_request( $self, %options ) {
+sub build_getNotificationSchemes_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/notificationscheme';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -33855,6 +34864,10 @@ sub getNotificationSchemes( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createNotificationScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createNotificationScheme >>
 
   my $res = $client->createNotificationScheme()->get;
@@ -33893,7 +34906,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_createNotificationScheme_request( $self, %options ) {
+sub build_createNotificationScheme_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/notificationscheme';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -34005,6 +35018,10 @@ sub createNotificationScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getNotificationSchemeToProjectMappings_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getNotificationSchemeToProjectMappings >>
 
   my $res = $client->getNotificationSchemeToProjectMappings(
@@ -34045,7 +35062,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
-sub _build_getNotificationSchemeToProjectMappings_request( $self, %options ) {
+sub build_getNotificationSchemeToProjectMappings_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/notificationscheme/project';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -34147,6 +35164,10 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getNotificationScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getNotificationScheme >>
 
   my $res = $client->getNotificationScheme(
@@ -34209,7 +35230,7 @@ Returns a L<< JIRA::API::NotificationScheme >> on success.
 
 =cut
 
-sub _build_getNotificationScheme_request( $self, %options ) {
+sub build_getNotificationScheme_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -34295,6 +35316,10 @@ sub getNotificationScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateNotificationScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateNotificationScheme >>
 
   my $res = $client->updateNotificationScheme(
@@ -34336,7 +35361,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_updateNotificationScheme_request( $self, %options ) {
+sub build_updateNotificationScheme_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -34468,6 +35493,10 @@ sub updateNotificationScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addNotifications_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addNotifications >>
 
   my $res = $client->addNotifications(
@@ -34505,7 +35534,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_addNotifications_request( $self, %options ) {
+sub build_addNotifications_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -34637,6 +35666,10 @@ sub addNotifications( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteNotificationScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteNotificationScheme >>
 
   my $res = $client->deleteNotificationScheme(
@@ -34664,7 +35697,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_deleteNotificationScheme_request( $self, %options ) {
+sub build_deleteNotificationScheme_request( $self, %options ) {
     croak "Missing required parameter 'notificationSchemeId'"
         unless exists $options{ 'notificationSchemeId' };
 
@@ -34793,6 +35826,10 @@ sub deleteNotificationScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeNotificationFromNotificationScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeNotificationFromNotificationScheme >>
 
   my $res = $client->removeNotificationFromNotificationScheme(
@@ -34825,7 +35862,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_removeNotificationFromNotificationScheme_request( $self, %options ) {
+sub build_removeNotificationFromNotificationScheme_request( $self, %options ) {
     croak "Missing required parameter 'notificationSchemeId'"
         unless exists $options{ 'notificationSchemeId' };
     croak "Missing required parameter 'notificationId'"
@@ -34957,6 +35994,10 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllPermissions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllPermissions >>
 
   my $res = $client->getAllPermissions()->get;
@@ -34974,7 +36015,7 @@ Returns a L<< JIRA::API::Permissions >> on success.
 
 =cut
 
-sub _build_getAllPermissions_request( $self, %options ) {
+sub build_getAllPermissions_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/permissions';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -35047,6 +36088,10 @@ sub getAllPermissions( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getBulkPermissions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getBulkPermissions >>
 
   my $res = $client->getBulkPermissions()->get;
@@ -35084,7 +36129,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_getBulkPermissions_request( $self, %options ) {
+sub build_getBulkPermissions_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/permissions/check';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -35182,6 +36227,10 @@ sub getBulkPermissions( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getPermittedProjects_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getPermittedProjects >>
 
   my $res = $client->getPermittedProjects()->get;
@@ -35209,7 +36258,7 @@ Returns a L<< JIRA::API::PermittedProjects >> on success.
 
 =cut
 
-sub _build_getPermittedProjects_request( $self, %options ) {
+sub build_getPermittedProjects_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/permissions/project';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -35296,6 +36345,10 @@ sub getPermittedProjects( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllPermissionSchemes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllPermissionSchemes >>
 
   my $res = $client->getAllPermissionSchemes(
@@ -35353,7 +36406,7 @@ Returns a L<< JIRA::API::PermissionSchemes >> on success.
 
 =cut
 
-sub _build_getAllPermissionSchemes_request( $self, %options ) {
+sub build_getAllPermissionSchemes_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/permissionscheme';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -35426,6 +36479,10 @@ sub getAllPermissionSchemes( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_createPermissionScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< createPermissionScheme >>
 
@@ -35518,7 +36575,7 @@ Returns a L<< JIRA::API::PermissionScheme >> on HTTP code 201.
 
 =cut
 
-sub _build_createPermissionScheme_request( $self, %options ) {
+sub build_createPermissionScheme_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/permissionscheme';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -35601,6 +36658,10 @@ sub createPermissionScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deletePermissionScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deletePermissionScheme >>
 
   my $res = $client->deletePermissionScheme(
@@ -35623,7 +36684,7 @@ The ID of the permission scheme being deleted.
 
 =cut
 
-sub _build_deletePermissionScheme_request( $self, %options ) {
+sub build_deletePermissionScheme_request( $self, %options ) {
     croak "Missing required parameter 'schemeId'"
         unless exists $options{ 'schemeId' };
 
@@ -35693,6 +36754,10 @@ sub deletePermissionScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getPermissionScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getPermissionScheme >>
 
   my $res = $client->getPermissionScheme(
@@ -35755,7 +36820,7 @@ Returns a L<< JIRA::API::PermissionScheme >> on success.
 
 =cut
 
-sub _build_getPermissionScheme_request( $self, %options ) {
+sub build_getPermissionScheme_request( $self, %options ) {
     croak "Missing required parameter 'schemeId'"
         unless exists $options{ 'schemeId' };
 
@@ -35837,6 +36902,10 @@ sub getPermissionScheme( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_updatePermissionScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< updatePermissionScheme >>
 
@@ -35934,7 +37003,7 @@ Returns a L<< JIRA::API::PermissionScheme >> on success.
 
 =cut
 
-sub _build_updatePermissionScheme_request( $self, %options ) {
+sub build_updatePermissionScheme_request( $self, %options ) {
     croak "Missing required parameter 'schemeId'"
         unless exists $options{ 'schemeId' };
 
@@ -36023,6 +37092,10 @@ sub updatePermissionScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getPermissionSchemeGrants_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getPermissionSchemeGrants >>
 
   my $res = $client->getPermissionSchemeGrants(
@@ -36085,7 +37158,7 @@ Returns a L<< JIRA::API::PermissionGrants >> on success.
 
 =cut
 
-sub _build_getPermissionSchemeGrants_request( $self, %options ) {
+sub build_getPermissionSchemeGrants_request( $self, %options ) {
     croak "Missing required parameter 'schemeId'"
         unless exists $options{ 'schemeId' };
 
@@ -36167,6 +37240,10 @@ sub getPermissionSchemeGrants( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_createPermissionGrant_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< createPermissionGrant >>
 
@@ -36252,7 +37329,7 @@ Returns a L<< JIRA::API::PermissionGrant >> on HTTP code 201.
 
 =cut
 
-sub _build_createPermissionGrant_request( $self, %options ) {
+sub build_createPermissionGrant_request( $self, %options ) {
     croak "Missing required parameter 'schemeId'"
         unless exists $options{ 'schemeId' };
 
@@ -36341,6 +37418,10 @@ sub createPermissionGrant( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deletePermissionSchemeEntity_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deletePermissionSchemeEntity >>
 
   my $res = $client->deletePermissionSchemeEntity(
@@ -36368,7 +37449,7 @@ The ID of the permission grant to delete.
 
 =cut
 
-sub _build_deletePermissionSchemeEntity_request( $self, %options ) {
+sub build_deletePermissionSchemeEntity_request( $self, %options ) {
     croak "Missing required parameter 'schemeId'"
         unless exists $options{ 'schemeId' };
     croak "Missing required parameter 'permissionId'"
@@ -36441,6 +37522,10 @@ sub deletePermissionSchemeEntity( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getPermissionSchemeGrant_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getPermissionSchemeGrant >>
 
   my $res = $client->getPermissionSchemeGrant(
@@ -36508,7 +37593,7 @@ Returns a L<< JIRA::API::PermissionGrant >> on success.
 
 =cut
 
-sub _build_getPermissionSchemeGrant_request( $self, %options ) {
+sub build_getPermissionSchemeGrant_request( $self, %options ) {
     croak "Missing required parameter 'schemeId'"
         unless exists $options{ 'schemeId' };
     croak "Missing required parameter 'permissionId'"
@@ -36594,6 +37679,10 @@ sub getPermissionSchemeGrant( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getPriorities_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getPriorities >>
 
   my $res = $client->getPriorities()->get;
@@ -36611,7 +37700,7 @@ Returns an array of L<< JIRA::API::Priority >> on success.
 
 =cut
 
-sub _build_getPriorities_request( $self, %options ) {
+sub build_getPriorities_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/priority';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -36682,6 +37771,10 @@ sub getPriorities( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createPriority_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createPriority >>
 
   my $res = $client->createPriority()->get;
@@ -36724,7 +37817,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_createPriority_request( $self, %options ) {
+sub build_createPriority_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/priority';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -36836,6 +37929,10 @@ sub createPriority( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setDefaultPriority_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setDefaultPriority >>
 
   my $res = $client->setDefaultPriority()->get;
@@ -36867,7 +37964,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_setDefaultPriority_request( $self, %options ) {
+sub build_setDefaultPriority_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/priority/default';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -36993,6 +38090,10 @@ sub setDefaultPriority( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_movePriorities_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< movePriorities >>
 
   my $res = $client->movePriorities()->get;
@@ -37032,7 +38133,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_movePriorities_request( $self, %options ) {
+sub build_movePriorities_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/priority/move';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -37158,6 +38259,10 @@ sub movePriorities( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_searchPriorities_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< searchPriorities >>
 
   my $res = $client->searchPriorities(
@@ -37197,7 +38302,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
-sub _build_searchPriorities_request( $self, %options ) {
+sub build_searchPriorities_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/priority/search';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -37285,6 +38390,10 @@ sub searchPriorities( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deletePriority_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deletePriority >>
 
   my $res = $client->deletePriority(
@@ -37318,7 +38427,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 409.
 
 =cut
 
-sub _build_deletePriority_request( $self, %options ) {
+sub build_deletePriority_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'replaceWith'"
@@ -37467,6 +38576,10 @@ sub deletePriority( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getPriority_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getPriority >>
 
   my $res = $client->getPriority(
@@ -37490,7 +38603,7 @@ Returns a L<< JIRA::API::Priority >> on success.
 
 =cut
 
-sub _build_getPriority_request( $self, %options ) {
+sub build_getPriority_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -37569,6 +38682,10 @@ sub getPriority( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updatePriority_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updatePriority >>
 
   my $res = $client->updatePriority(
@@ -37618,7 +38735,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_updatePriority_request( $self, %options ) {
+sub build_updatePriority_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -37750,6 +38867,10 @@ sub updatePriority( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllProjects_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllProjects >>
 
   my $res = $client->getAllProjects(
@@ -37807,7 +38928,7 @@ Returns an array of L<< JIRA::API::Project >> on success.
 
 =cut
 
-sub _build_getAllProjects_request( $self, %options ) {
+sub build_getAllProjects_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/project';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -37883,6 +39004,10 @@ sub getAllProjects( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_createProject_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< createProject >>
 
@@ -37979,7 +39104,7 @@ Returns a L<< JIRA::API::ProjectIdentifiers >> on HTTP code 201.
 
 =cut
 
-sub _build_createProject_request( $self, %options ) {
+sub build_createProject_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/project';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -38058,6 +39183,10 @@ sub createProject( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getRecent_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getRecent >>
 
   my $res = $client->getRecent(
@@ -38130,7 +39259,7 @@ Returns an array of L<< JIRA::API::Project >> on success.
 
 =cut
 
-sub _build_getRecent_request( $self, %options ) {
+sub build_getRecent_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/project/recent';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -38208,6 +39337,10 @@ sub getRecent( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_searchProjects_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< searchProjects >>
 
@@ -38445,7 +39578,7 @@ Returns a L<< JIRA::API::PageBeanProject >> on success.
 
 =cut
 
-sub _build_searchProjects_request( $self, %options ) {
+sub build_searchProjects_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/project/search';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -38537,6 +39670,10 @@ sub searchProjects( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllProjectTypes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllProjectTypes >>
 
   my $res = $client->getAllProjectTypes()->get;
@@ -38554,7 +39691,7 @@ Returns an array of L<< JIRA::API::ProjectType >> on success.
 
 =cut
 
-sub _build_getAllProjectTypes_request( $self, %options ) {
+sub build_getAllProjectTypes_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/project/type';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -38625,6 +39762,10 @@ sub getAllProjectTypes( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllAccessibleProjectTypes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllAccessibleProjectTypes >>
 
   my $res = $client->getAllAccessibleProjectTypes()->get;
@@ -38642,7 +39783,7 @@ Returns an array of L<< JIRA::API::ProjectType >> on success.
 
 =cut
 
-sub _build_getAllAccessibleProjectTypes_request( $self, %options ) {
+sub build_getAllAccessibleProjectTypes_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/project/type/accessible';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -38710,6 +39851,10 @@ sub getAllAccessibleProjectTypes( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectTypeByKey_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectTypeByKey >>
 
   my $res = $client->getProjectTypeByKey(
@@ -38733,7 +39878,7 @@ Returns a L<< JIRA::API::ProjectType >> on success.
 
 =cut
 
-sub _build_getProjectTypeByKey_request( $self, %options ) {
+sub build_getProjectTypeByKey_request( $self, %options ) {
     croak "Missing required parameter 'projectTypeKey'"
         unless exists $options{ 'projectTypeKey' };
 
@@ -38812,6 +39957,10 @@ sub getProjectTypeByKey( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAccessibleProjectTypeByKey_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAccessibleProjectTypeByKey >>
 
   my $res = $client->getAccessibleProjectTypeByKey(
@@ -38835,7 +39984,7 @@ Returns a L<< JIRA::API::ProjectType >> on success.
 
 =cut
 
-sub _build_getAccessibleProjectTypeByKey_request( $self, %options ) {
+sub build_getAccessibleProjectTypeByKey_request( $self, %options ) {
     croak "Missing required parameter 'projectTypeKey'"
         unless exists $options{ 'projectTypeKey' };
 
@@ -38914,6 +40063,10 @@ sub getAccessibleProjectTypeByKey( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteProject_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteProject >>
 
   my $res = $client->deleteProject(
@@ -38941,7 +40094,7 @@ Whether this project is placed in the Jira recycle bin where it will be availabl
 
 =cut
 
-sub _build_deleteProject_request( $self, %options ) {
+sub build_deleteProject_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -39012,6 +40165,10 @@ sub deleteProject( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProject_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProject >>
 
   my $res = $client->getProject(
@@ -39074,7 +40231,7 @@ Returns a L<< JIRA::API::Project >> on success.
 
 =cut
 
-sub _build_getProject_request( $self, %options ) {
+sub build_getProject_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -39157,6 +40314,10 @@ sub getProject( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_updateProject_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< updateProject >>
 
@@ -39264,7 +40425,7 @@ Returns a L<< JIRA::API::Project >> on success.
 
 =cut
 
-sub _build_updateProject_request( $self, %options ) {
+sub build_updateProject_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -39356,6 +40517,10 @@ sub updateProject( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_archiveProject_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< archiveProject >>
 
   my $res = $client->archiveProject(
@@ -39379,7 +40544,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_archiveProject_request( $self, %options ) {
+sub build_archiveProject_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -39464,6 +40629,10 @@ sub archiveProject( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateProjectAvatar_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateProjectAvatar >>
 
   my $res = $client->updateProjectAvatar(
@@ -39521,7 +40690,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateProjectAvatar_request( $self, %options ) {
+sub build_updateProjectAvatar_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -39606,6 +40775,10 @@ sub updateProjectAvatar( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteProjectAvatar_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteProjectAvatar >>
 
   my $res = $client->deleteProjectAvatar(
@@ -39633,7 +40806,7 @@ The ID of the avatar.
 
 =cut
 
-sub _build_deleteProjectAvatar_request( $self, %options ) {
+sub build_deleteProjectAvatar_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
     croak "Missing required parameter 'id'"
@@ -39706,6 +40879,10 @@ sub deleteProjectAvatar( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createProjectAvatar_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createProjectAvatar >>
 
   my $res = $client->createProjectAvatar(
@@ -39744,7 +40921,7 @@ Returns a L<< JIRA::API::Avatar >> on HTTP code 201.
 
 =cut
 
-sub _build_createProjectAvatar_request( $self, %options ) {
+sub build_createProjectAvatar_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -39839,6 +41016,10 @@ sub createProjectAvatar( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllProjectAvatars_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllProjectAvatars >>
 
   my $res = $client->getAllProjectAvatars(
@@ -39862,7 +41043,7 @@ Returns a L<< JIRA::API::ProjectAvatars >> on success.
 
 =cut
 
-sub _build_getAllProjectAvatars_request( $self, %options ) {
+sub build_getAllProjectAvatars_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -39941,6 +41122,10 @@ sub getAllProjectAvatars( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectComponentsPaginated_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectComponentsPaginated >>
 
   my $res = $client->getProjectComponentsPaginated(
@@ -40008,7 +41193,7 @@ Returns a L<< JIRA::API::PageBeanComponentWithIssueCount >> on success.
 
 =cut
 
-sub _build_getProjectComponentsPaginated_request( $self, %options ) {
+sub build_getProjectComponentsPaginated_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -40094,6 +41279,10 @@ sub getProjectComponentsPaginated( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectComponents_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectComponents >>
 
   my $res = $client->getProjectComponents(
@@ -40117,7 +41306,7 @@ Returns an array of L<< JIRA::API::ProjectComponent >> on success.
 
 =cut
 
-sub _build_getProjectComponents_request( $self, %options ) {
+sub build_getProjectComponents_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -40197,6 +41386,10 @@ sub getProjectComponents( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteProjectAsynchronously_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteProjectAsynchronously >>
 
   my $res = $client->deleteProjectAsynchronously(
@@ -40220,7 +41413,7 @@ Returns a L<< JIRA::API::TaskProgressBeanObject >> on HTTP code 303.
 
 =cut
 
-sub _build_deleteProjectAsynchronously_request( $self, %options ) {
+sub build_deleteProjectAsynchronously_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -40302,6 +41495,10 @@ sub deleteProjectAsynchronously( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getFeaturesForProject_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getFeaturesForProject >>
 
   my $res = $client->getFeaturesForProject(
@@ -40325,7 +41522,7 @@ Returns a L<< JIRA::API::ContainerForProjectFeatures >> on success.
 
 =cut
 
-sub _build_getFeaturesForProject_request( $self, %options ) {
+sub build_getFeaturesForProject_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -40410,6 +41607,10 @@ sub getFeaturesForProject( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_toggleFeatureForProject_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< toggleFeatureForProject >>
 
   my $res = $client->toggleFeatureForProject(
@@ -40448,7 +41649,7 @@ Returns a L<< JIRA::API::ContainerForProjectFeatures >> on success.
 
 =cut
 
-sub _build_toggleFeatureForProject_request( $self, %options ) {
+sub build_toggleFeatureForProject_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
     croak "Missing required parameter 'featureKey'"
@@ -40539,6 +41740,10 @@ sub toggleFeatureForProject( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectPropertyKeys_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectPropertyKeys >>
 
   my $res = $client->getProjectPropertyKeys(
@@ -40562,7 +41767,7 @@ Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
-sub _build_getProjectPropertyKeys_request( $self, %options ) {
+sub build_getProjectPropertyKeys_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -40647,6 +41852,10 @@ sub getProjectPropertyKeys( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteProjectProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteProjectProperty >>
 
   my $res = $client->deleteProjectProperty(
@@ -40674,7 +41883,7 @@ The project property key. Use L<Get project property keys|#api-rest-api-3-projec
 
 =cut
 
-sub _build_deleteProjectProperty_request( $self, %options ) {
+sub build_deleteProjectProperty_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
     croak "Missing required parameter 'propertyKey'"
@@ -40750,6 +41959,10 @@ sub deleteProjectProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectProperty >>
 
   my $res = $client->getProjectProperty(
@@ -40778,7 +41991,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
-sub _build_getProjectProperty_request( $self, %options ) {
+sub build_getProjectProperty_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
     croak "Missing required parameter 'propertyKey'"
@@ -40866,6 +42079,10 @@ sub getProjectProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setProjectProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setProjectProperty >>
 
   my $res = $client->setProjectProperty(
@@ -40895,7 +42112,7 @@ Returns Unknown on HTTP code 201.
 
 =cut
 
-sub _build_setProjectProperty_request( $self, %options ) {
+sub build_setProjectProperty_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
     croak "Missing required parameter 'propertyKey'"
@@ -41000,6 +42217,10 @@ sub setProjectProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_restore_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< restore >>
 
   my $res = $client->restore(
@@ -41023,7 +42244,7 @@ Returns a L<< JIRA::API::Project >> on success.
 
 =cut
 
-sub _build_restore_request( $self, %options ) {
+sub build_restore_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -41105,6 +42326,10 @@ sub restore( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectRoles_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectRoles >>
 
   my $res = $client->getProjectRoles(
@@ -41128,7 +42353,7 @@ Returns Unknown on success.
 
 =cut
 
-sub _build_getProjectRoles_request( $self, %options ) {
+sub build_getProjectRoles_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -41207,6 +42432,10 @@ sub getProjectRoles( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteActor_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteActor >>
 
   my $res = $client->deleteActor(
@@ -41249,7 +42478,7 @@ The ID of the group to remove from the project role. This parameter cannot be us
 
 =cut
 
-sub _build_deleteActor_request( $self, %options ) {
+sub build_deleteActor_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
     croak "Missing required parameter 'id'"
@@ -41325,6 +42554,10 @@ sub deleteActor( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectRole_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectRole >>
 
   my $res = $client->getProjectRole(
@@ -41358,7 +42591,7 @@ Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
-sub _build_getProjectRole_request( $self, %options ) {
+sub build_getProjectRole_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
     croak "Missing required parameter 'id'"
@@ -41447,6 +42680,10 @@ sub getProjectRole( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addActorUsers_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addActorUsers >>
 
   my $res = $client->addActorUsers(
@@ -41493,7 +42730,7 @@ Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
-sub _build_addActorUsers_request( $self, %options ) {
+sub build_addActorUsers_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
     croak "Missing required parameter 'id'"
@@ -41581,6 +42818,10 @@ sub addActorUsers( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setActors_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setActors >>
 
   my $res = $client->setActors(
@@ -41643,7 +42884,7 @@ Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
-sub _build_setActors_request( $self, %options ) {
+sub build_setActors_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
     croak "Missing required parameter 'id'"
@@ -41731,6 +42972,10 @@ sub setActors( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectRoleDetails_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectRoleDetails >>
 
   my $res = $client->getProjectRoleDetails(
@@ -41762,7 +43007,7 @@ Returns an array of L<< JIRA::API::ProjectRoleDetails >> on success.
 
 =cut
 
-sub _build_getProjectRoleDetails_request( $self, %options ) {
+sub build_getProjectRoleDetails_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -41847,6 +43092,10 @@ sub getProjectRoleDetails( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllStatuses_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllStatuses >>
 
   my $res = $client->getAllStatuses(
@@ -41870,7 +43119,7 @@ Returns an array of L<< JIRA::API::IssueTypeWithStatus >> on success.
 
 =cut
 
-sub _build_getAllStatuses_request( $self, %options ) {
+sub build_getAllStatuses_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -41950,6 +43199,10 @@ sub getAllStatuses( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateProjectType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateProjectType >>
 
   my $res = $client->updateProjectType(
@@ -41978,7 +43231,7 @@ Returns a L<< JIRA::API::Project >> on success.
 
 =cut
 
-sub _build_updateProjectType_request( $self, %options ) {
+sub build_updateProjectType_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
     croak "Missing required parameter 'newProjectTypeKey'"
@@ -42062,6 +43315,10 @@ sub updateProjectType( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_getProjectVersionsPaginated_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< getProjectVersionsPaginated >>
 
@@ -42159,7 +43416,7 @@ Returns a L<< JIRA::API::PageBeanVersion >> on success.
 
 =cut
 
-sub _build_getProjectVersionsPaginated_request( $self, %options ) {
+sub build_getProjectVersionsPaginated_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -42244,6 +43501,10 @@ sub getProjectVersionsPaginated( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectVersions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectVersions >>
 
   my $res = $client->getProjectVersions(
@@ -42272,7 +43533,7 @@ Returns an array of L<< JIRA::API::Version >> on success.
 
 =cut
 
-sub _build_getProjectVersions_request( $self, %options ) {
+sub build_getProjectVersions_request( $self, %options ) {
     croak "Missing required parameter 'projectIdOrKey'"
         unless exists $options{ 'projectIdOrKey' };
 
@@ -42353,6 +43614,10 @@ sub getProjectVersions( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectEmail_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectEmail >>
 
   my $res = $client->getProjectEmail(
@@ -42376,7 +43641,7 @@ Returns a L<< JIRA::API::ProjectEmailAddress >> on success.
 
 =cut
 
-sub _build_getProjectEmail_request( $self, %options ) {
+sub build_getProjectEmail_request( $self, %options ) {
     croak "Missing required parameter 'projectId'"
         unless exists $options{ 'projectId' };
 
@@ -42458,6 +43723,10 @@ sub getProjectEmail( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateProjectEmail_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateProjectEmail >>
 
   my $res = $client->updateProjectEmail(
@@ -42495,7 +43764,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateProjectEmail_request( $self, %options ) {
+sub build_updateProjectEmail_request( $self, %options ) {
     croak "Missing required parameter 'projectId'"
         unless exists $options{ 'projectId' };
 
@@ -42583,6 +43852,10 @@ sub updateProjectEmail( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getHierarchy_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getHierarchy >>
 
   my $res = $client->getHierarchy(
@@ -42606,7 +43879,7 @@ Returns a L<< JIRA::API::ProjectIssueTypeHierarchy >> on success.
 
 =cut
 
-sub _build_getHierarchy_request( $self, %options ) {
+sub build_getHierarchy_request( $self, %options ) {
     croak "Missing required parameter 'projectId'"
         unless exists $options{ 'projectId' };
 
@@ -42688,6 +43961,10 @@ sub getHierarchy( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectIssueSecurityScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectIssueSecurityScheme >>
 
   my $res = $client->getProjectIssueSecurityScheme(
@@ -42711,7 +43988,7 @@ Returns a L<< JIRA::API::SecurityScheme >> on success.
 
 =cut
 
-sub _build_getProjectIssueSecurityScheme_request( $self, %options ) {
+sub build_getProjectIssueSecurityScheme_request( $self, %options ) {
     croak "Missing required parameter 'projectKeyOrId'"
         unless exists $options{ 'projectKeyOrId' };
 
@@ -42796,6 +44073,10 @@ sub getProjectIssueSecurityScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getNotificationSchemeForProject_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getNotificationSchemeForProject >>
 
   my $res = $client->getNotificationSchemeForProject(
@@ -42858,7 +44139,7 @@ Returns a L<< JIRA::API::NotificationScheme >> on success.
 
 =cut
 
-sub _build_getNotificationSchemeForProject_request( $self, %options ) {
+sub build_getNotificationSchemeForProject_request( $self, %options ) {
     croak "Missing required parameter 'projectKeyOrId'"
         unless exists $options{ 'projectKeyOrId' };
 
@@ -42944,6 +44225,10 @@ sub getNotificationSchemeForProject( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAssignedPermissionScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAssignedPermissionScheme >>
 
   my $res = $client->getAssignedPermissionScheme(
@@ -43006,7 +44291,7 @@ Returns a L<< JIRA::API::PermissionScheme >> on success.
 
 =cut
 
-sub _build_getAssignedPermissionScheme_request( $self, %options ) {
+sub build_getAssignedPermissionScheme_request( $self, %options ) {
     croak "Missing required parameter 'projectKeyOrId'"
         unless exists $options{ 'projectKeyOrId' };
 
@@ -43092,6 +44377,10 @@ sub getAssignedPermissionScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_assignPermissionScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< assignPermissionScheme >>
 
   my $res = $client->assignPermissionScheme(
@@ -43164,7 +44453,7 @@ Returns a L<< JIRA::API::PermissionScheme >> on success.
 
 =cut
 
-sub _build_assignPermissionScheme_request( $self, %options ) {
+sub build_assignPermissionScheme_request( $self, %options ) {
     croak "Missing required parameter 'projectKeyOrId'"
         unless exists $options{ 'projectKeyOrId' };
 
@@ -43253,6 +44542,10 @@ sub assignPermissionScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getSecurityLevelsForProject_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getSecurityLevelsForProject >>
 
   my $res = $client->getSecurityLevelsForProject(
@@ -43276,7 +44569,7 @@ Returns a L<< JIRA::API::ProjectIssueSecurityLevels >> on success.
 
 =cut
 
-sub _build_getSecurityLevelsForProject_request( $self, %options ) {
+sub build_getSecurityLevelsForProject_request( $self, %options ) {
     croak "Missing required parameter 'projectKeyOrId'"
         unless exists $options{ 'projectKeyOrId' };
 
@@ -43352,6 +44645,10 @@ sub getSecurityLevelsForProject( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllProjectCategories_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllProjectCategories >>
 
   my $res = $client->getAllProjectCategories()->get;
@@ -43369,7 +44666,7 @@ Returns an array of L<< JIRA::API::ProjectCategory >> on success.
 
 =cut
 
-sub _build_getAllProjectCategories_request( $self, %options ) {
+sub build_getAllProjectCategories_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/projectCategory';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -43440,6 +44737,10 @@ sub getAllProjectCategories( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createProjectCategory_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createProjectCategory >>
 
   my $res = $client->createProjectCategory()->get;
@@ -43479,7 +44780,7 @@ Returns a L<< JIRA::API::ProjectCategory >> on HTTP code 201.
 
 =cut
 
-sub _build_createProjectCategory_request( $self, %options ) {
+sub build_createProjectCategory_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/projectCategory';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -43561,6 +44862,10 @@ sub createProjectCategory( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeProjectCategory_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeProjectCategory >>
 
   my $res = $client->removeProjectCategory(
@@ -43583,7 +44888,7 @@ ID of the project category to delete.
 
 =cut
 
-sub _build_removeProjectCategory_request( $self, %options ) {
+sub build_removeProjectCategory_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -43653,6 +44958,10 @@ sub removeProjectCategory( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectCategoryById_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectCategoryById >>
 
   my $res = $client->getProjectCategoryById(
@@ -43676,7 +44985,7 @@ Returns a L<< JIRA::API::ProjectCategory >> on success.
 
 =cut
 
-sub _build_getProjectCategoryById_request( $self, %options ) {
+sub build_getProjectCategoryById_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -43755,6 +45064,10 @@ sub getProjectCategoryById( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateProjectCategory_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateProjectCategory >>
 
   my $res = $client->updateProjectCategory(
@@ -43798,7 +45111,7 @@ Returns a L<< JIRA::API::UpdatedProjectCategory >> on success.
 
 =cut
 
-sub _build_updateProjectCategory_request( $self, %options ) {
+sub build_updateProjectCategory_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -43886,6 +45199,10 @@ sub updateProjectCategory( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_validateProjectKey_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< validateProjectKey >>
 
   my $res = $client->validateProjectKey(
@@ -43909,7 +45226,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on success.
 
 =cut
 
-sub _build_validateProjectKey_request( $self, %options ) {
+sub build_validateProjectKey_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/projectvalidate/key';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -43983,6 +45300,10 @@ sub validateProjectKey( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getValidProjectKey_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getValidProjectKey >>
 
   my $res = $client->getValidProjectKey(
@@ -44006,7 +45327,7 @@ Returns a L<< string >> on success.
 
 =cut
 
-sub _build_getValidProjectKey_request( $self, %options ) {
+sub build_getValidProjectKey_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/projectvalidate/validProjectKey';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -44080,6 +45401,10 @@ sub getValidProjectKey( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getValidProjectName_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getValidProjectName >>
 
   my $res = $client->getValidProjectName(
@@ -44103,7 +45428,7 @@ Returns a L<< string >> on success.
 
 =cut
 
-sub _build_getValidProjectName_request( $self, %options ) {
+sub build_getValidProjectName_request( $self, %options ) {
     croak "Missing required parameter 'name'"
         unless exists $options{ 'name' };
 
@@ -44186,6 +45511,10 @@ sub getValidProjectName( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getResolutions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getResolutions >>
 
   my $res = $client->getResolutions()->get;
@@ -44203,7 +45532,7 @@ Returns an array of L<< JIRA::API::Resolution >> on success.
 
 =cut
 
-sub _build_getResolutions_request( $self, %options ) {
+sub build_getResolutions_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/resolution';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -44274,6 +45603,10 @@ sub getResolutions( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createResolution_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createResolution >>
 
   my $res = $client->createResolution()->get;
@@ -44308,7 +45641,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_createResolution_request( $self, %options ) {
+sub build_createResolution_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/resolution';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -44420,6 +45753,10 @@ sub createResolution( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setDefaultResolution_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setDefaultResolution >>
 
   my $res = $client->setDefaultResolution()->get;
@@ -44451,7 +45788,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_setDefaultResolution_request( $self, %options ) {
+sub build_setDefaultResolution_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/resolution/default';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -44577,6 +45914,10 @@ sub setDefaultResolution( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_moveResolutions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< moveResolutions >>
 
   my $res = $client->moveResolutions()->get;
@@ -44616,7 +45957,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_moveResolutions_request( $self, %options ) {
+sub build_moveResolutions_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/resolution/move';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -44742,6 +46083,10 @@ sub moveResolutions( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_searchResolutions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< searchResolutions >>
 
   my $res = $client->searchResolutions(
@@ -44781,7 +46126,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
-sub _build_searchResolutions_request( $self, %options ) {
+sub build_searchResolutions_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/resolution/search';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -44869,6 +46214,10 @@ sub searchResolutions( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteResolution_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteResolution >>
 
   my $res = $client->deleteResolution(
@@ -44902,7 +46251,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 409.
 
 =cut
 
-sub _build_deleteResolution_request( $self, %options ) {
+sub build_deleteResolution_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'replaceWith'"
@@ -45051,6 +46400,10 @@ sub deleteResolution( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getResolution_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getResolution >>
 
   my $res = $client->getResolution(
@@ -45074,7 +46427,7 @@ Returns a L<< JIRA::API::Resolution >> on success.
 
 =cut
 
-sub _build_getResolution_request( $self, %options ) {
+sub build_getResolution_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -45153,6 +46506,10 @@ sub getResolution( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateResolution_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateResolution >>
 
   my $res = $client->updateResolution(
@@ -45194,7 +46551,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_updateResolution_request( $self, %options ) {
+sub build_updateResolution_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -45326,6 +46683,10 @@ sub updateResolution( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllProjectRoles_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllProjectRoles >>
 
   my $res = $client->getAllProjectRoles()->get;
@@ -45343,7 +46704,7 @@ Returns an array of L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
-sub _build_getAllProjectRoles_request( $self, %options ) {
+sub build_getAllProjectRoles_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/role';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -45417,6 +46778,10 @@ sub getAllProjectRoles( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createProjectRole_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createProjectRole >>
 
   my $res = $client->createProjectRole()->get;
@@ -45448,7 +46813,7 @@ Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
-sub _build_createProjectRole_request( $self, %options ) {
+sub build_createProjectRole_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/role';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -45530,6 +46895,10 @@ sub createProjectRole( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteProjectRole_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteProjectRole >>
 
   my $res = $client->deleteProjectRole(
@@ -45557,7 +46926,7 @@ The ID of the project role that will replace the one being deleted.
 
 =cut
 
-sub _build_deleteProjectRole_request( $self, %options ) {
+sub build_deleteProjectRole_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -45637,6 +47006,10 @@ sub deleteProjectRole( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectRoleById_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectRoleById >>
 
   my $res = $client->getProjectRoleById(
@@ -45660,7 +47033,7 @@ Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
-sub _build_getProjectRoleById_request( $self, %options ) {
+sub build_getProjectRoleById_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -45742,6 +47115,10 @@ sub getProjectRoleById( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_partialUpdateProjectRole_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< partialUpdateProjectRole >>
 
   my $res = $client->partialUpdateProjectRole(
@@ -45779,7 +47156,7 @@ Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
-sub _build_partialUpdateProjectRole_request( $self, %options ) {
+sub build_partialUpdateProjectRole_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -45867,6 +47244,10 @@ sub partialUpdateProjectRole( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_fullyUpdateProjectRole_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< fullyUpdateProjectRole >>
 
   my $res = $client->fullyUpdateProjectRole(
@@ -45904,7 +47285,7 @@ Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
-sub _build_fullyUpdateProjectRole_request( $self, %options ) {
+sub build_fullyUpdateProjectRole_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -45992,6 +47373,10 @@ sub fullyUpdateProjectRole( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteProjectRoleActorsFromRole_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteProjectRoleActorsFromRole >>
 
   my $res = $client->deleteProjectRoleActorsFromRole(
@@ -46030,7 +47415,7 @@ Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
-sub _build_deleteProjectRoleActorsFromRole_request( $self, %options ) {
+sub build_deleteProjectRoleActorsFromRole_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -46121,6 +47506,10 @@ sub deleteProjectRoleActorsFromRole( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getProjectRoleActorsForRole_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getProjectRoleActorsForRole >>
 
   my $res = $client->getProjectRoleActorsForRole(
@@ -46144,7 +47533,7 @@ Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
-sub _build_getProjectRoleActorsForRole_request( $self, %options ) {
+sub build_getProjectRoleActorsForRole_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -46229,6 +47618,10 @@ sub getProjectRoleActorsForRole( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addProjectRoleActorsToRole_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addProjectRoleActorsToRole >>
 
   my $res = $client->addProjectRoleActorsToRole(
@@ -46270,7 +47663,7 @@ Returns a L<< JIRA::API::ProjectRole >> on success.
 
 =cut
 
-sub _build_addProjectRoleActorsToRole_request( $self, %options ) {
+sub build_addProjectRoleActorsToRole_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -46358,6 +47751,10 @@ sub addProjectRoleActorsToRole( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getScreens_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getScreens >>
 
   my $res = $client->getScreens(
@@ -46420,7 +47817,7 @@ Returns a L<< JIRA::API::PageBeanScreen >> on success.
 
 =cut
 
-sub _build_getScreens_request( $self, %options ) {
+sub build_getScreens_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/screens';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -46502,6 +47899,10 @@ sub getScreens( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createScreen_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createScreen >>
 
   my $res = $client->createScreen()->get;
@@ -46533,7 +47934,7 @@ Returns a L<< JIRA::API::Screen >> on HTTP code 201.
 
 =cut
 
-sub _build_createScreen_request( $self, %options ) {
+sub build_createScreen_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/screens';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -46634,6 +48035,10 @@ sub createScreen( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addFieldToDefaultScreen_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addFieldToDefaultScreen >>
 
   my $res = $client->addFieldToDefaultScreen(
@@ -46657,7 +48062,7 @@ Returns Unknown on success.
 
 =cut
 
-sub _build_addFieldToDefaultScreen_request( $self, %options ) {
+sub build_addFieldToDefaultScreen_request( $self, %options ) {
     croak "Missing required parameter 'fieldId'"
         unless exists $options{ 'fieldId' };
 
@@ -46739,6 +48144,10 @@ sub addFieldToDefaultScreen( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteScreen_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteScreen >>
 
   my $res = $client->deleteScreen(
@@ -46761,7 +48170,7 @@ The ID of the screen.
 
 =cut
 
-sub _build_deleteScreen_request( $self, %options ) {
+sub build_deleteScreen_request( $self, %options ) {
     croak "Missing required parameter 'screenId'"
         unless exists $options{ 'screenId' };
 
@@ -46868,6 +48277,10 @@ sub deleteScreen( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateScreen_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateScreen >>
 
   my $res = $client->updateScreen(
@@ -46905,7 +48318,7 @@ Returns a L<< JIRA::API::Screen >> on success.
 
 =cut
 
-sub _build_updateScreen_request( $self, %options ) {
+sub build_updateScreen_request( $self, %options ) {
     croak "Missing required parameter 'screenId'"
         unless exists $options{ 'screenId' };
 
@@ -47026,6 +48439,10 @@ sub updateScreen( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAvailableScreenFields_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAvailableScreenFields >>
 
   my $res = $client->getAvailableScreenFields(
@@ -47049,7 +48466,7 @@ Returns an array of L<< JIRA::API::ScreenableField >> on success.
 
 =cut
 
-sub _build_getAvailableScreenFields_request( $self, %options ) {
+sub build_getAvailableScreenFields_request( $self, %options ) {
     croak "Missing required parameter 'screenId'"
         unless exists $options{ 'screenId' };
 
@@ -47132,6 +48549,10 @@ sub getAvailableScreenFields( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllScreenTabs_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllScreenTabs >>
 
   my $res = $client->getAllScreenTabs(
@@ -47160,7 +48581,7 @@ Returns an array of L<< JIRA::API::ScreenableTab >> on success.
 
 =cut
 
-sub _build_getAllScreenTabs_request( $self, %options ) {
+sub build_getAllScreenTabs_request( $self, %options ) {
     croak "Missing required parameter 'screenId'"
         unless exists $options{ 'screenId' };
 
@@ -47250,6 +48671,10 @@ sub getAllScreenTabs( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addScreenTab_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addScreenTab >>
 
   my $res = $client->addScreenTab(
@@ -47287,7 +48712,7 @@ Returns a L<< JIRA::API::ScreenableTab >> on success.
 
 =cut
 
-sub _build_addScreenTab_request( $self, %options ) {
+sub build_addScreenTab_request( $self, %options ) {
     croak "Missing required parameter 'screenId'"
         unless exists $options{ 'screenId' };
 
@@ -47375,6 +48800,10 @@ sub addScreenTab( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteScreenTab_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteScreenTab >>
 
   my $res = $client->deleteScreenTab(
@@ -47402,7 +48831,7 @@ The ID of the screen tab.
 
 =cut
 
-sub _build_deleteScreenTab_request( $self, %options ) {
+sub build_deleteScreenTab_request( $self, %options ) {
     croak "Missing required parameter 'screenId'"
         unless exists $options{ 'screenId' };
     croak "Missing required parameter 'tabId'"
@@ -47475,6 +48904,10 @@ sub deleteScreenTab( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_renameScreenTab_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< renameScreenTab >>
 
   my $res = $client->renameScreenTab(
@@ -47517,7 +48950,7 @@ Returns a L<< JIRA::API::ScreenableTab >> on success.
 
 =cut
 
-sub _build_renameScreenTab_request( $self, %options ) {
+sub build_renameScreenTab_request( $self, %options ) {
     croak "Missing required parameter 'screenId'"
         unless exists $options{ 'screenId' };
     croak "Missing required parameter 'tabId'"
@@ -47608,6 +49041,10 @@ sub renameScreenTab( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllScreenTabFields_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllScreenTabFields >>
 
   my $res = $client->getAllScreenTabFields(
@@ -47641,7 +49078,7 @@ Returns an array of L<< JIRA::API::ScreenableField >> on success.
 
 =cut
 
-sub _build_getAllScreenTabFields_request( $self, %options ) {
+sub build_getAllScreenTabFields_request( $self, %options ) {
     croak "Missing required parameter 'screenId'"
         unless exists $options{ 'screenId' };
     croak "Missing required parameter 'tabId'"
@@ -47731,6 +49168,10 @@ sub getAllScreenTabFields( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_addScreenTabField_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< addScreenTabField >>
 
   my $res = $client->addScreenTabField(
@@ -47769,7 +49210,7 @@ Returns a L<< JIRA::API::ScreenableField >> on success.
 
 =cut
 
-sub _build_addScreenTabField_request( $self, %options ) {
+sub build_addScreenTabField_request( $self, %options ) {
     croak "Missing required parameter 'screenId'"
         unless exists $options{ 'screenId' };
     croak "Missing required parameter 'tabId'"
@@ -47860,6 +49301,10 @@ sub addScreenTabField( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeScreenTabField_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeScreenTabField >>
 
   my $res = $client->removeScreenTabField(
@@ -47892,7 +49337,7 @@ The ID of the field.
 
 =cut
 
-sub _build_removeScreenTabField_request( $self, %options ) {
+sub build_removeScreenTabField_request( $self, %options ) {
     croak "Missing required parameter 'screenId'"
         unless exists $options{ 'screenId' };
     croak "Missing required parameter 'tabId'"
@@ -47971,6 +49416,10 @@ sub removeScreenTabField( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_moveScreenTabField_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< moveScreenTabField >>
 
   my $res = $client->moveScreenTabField(
@@ -48018,7 +49467,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_moveScreenTabField_request( $self, %options ) {
+sub build_moveScreenTabField_request( $self, %options ) {
     croak "Missing required parameter 'screenId'"
         unless exists $options{ 'screenId' };
     croak "Missing required parameter 'tabId'"
@@ -48112,6 +49561,10 @@ sub moveScreenTabField( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_moveScreenTab_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< moveScreenTab >>
 
   my $res = $client->moveScreenTab(
@@ -48145,7 +49598,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_moveScreenTab_request( $self, %options ) {
+sub build_moveScreenTab_request( $self, %options ) {
     croak "Missing required parameter 'screenId'"
         unless exists $options{ 'screenId' };
     croak "Missing required parameter 'tabId'"
@@ -48236,6 +49689,10 @@ sub moveScreenTab( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getScreenSchemes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getScreenSchemes >>
 
   my $res = $client->getScreenSchemes(
@@ -48298,7 +49755,7 @@ Returns a L<< JIRA::API::PageBeanScreenScheme >> on success.
 
 =cut
 
-sub _build_getScreenSchemes_request( $self, %options ) {
+sub build_getScreenSchemes_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/screenscheme';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -48380,6 +49837,10 @@ sub getScreenSchemes( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createScreenScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createScreenScheme >>
 
   my $res = $client->createScreenScheme()->get;
@@ -48415,7 +49876,7 @@ Returns a L<< JIRA::API::ScreenSchemeId >> on HTTP code 201.
 
 =cut
 
-sub _build_createScreenScheme_request( $self, %options ) {
+sub build_createScreenScheme_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/screenscheme';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -48530,6 +49991,10 @@ sub createScreenScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteScreenScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteScreenScheme >>
 
   my $res = $client->deleteScreenScheme(
@@ -48552,7 +50017,7 @@ The ID of the screen scheme.
 
 =cut
 
-sub _build_deleteScreenScheme_request( $self, %options ) {
+sub build_deleteScreenScheme_request( $self, %options ) {
     croak "Missing required parameter 'screenSchemeId'"
         unless exists $options{ 'screenSchemeId' };
 
@@ -48659,6 +50124,10 @@ sub deleteScreenScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateScreenScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateScreenScheme >>
 
   my $res = $client->updateScreenScheme(
@@ -48700,7 +50169,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateScreenScheme_request( $self, %options ) {
+sub build_updateScreenScheme_request( $self, %options ) {
     croak "Missing required parameter 'screenSchemeId'"
         unless exists $options{ 'screenSchemeId' };
 
@@ -48820,6 +50289,10 @@ sub updateScreenScheme( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_searchForIssuesUsingJql_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< searchForIssuesUsingJql >>
 
@@ -49017,7 +50490,7 @@ Returns a L<< JIRA::API::SearchResults >> on success.
 
 =cut
 
-sub _build_searchForIssuesUsingJql_request( $self, %options ) {
+sub build_searchForIssuesUsingJql_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/search';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -49100,6 +50573,10 @@ sub searchForIssuesUsingJql( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_searchForIssuesUsingJqlPost_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< searchForIssuesUsingJqlPost >>
 
@@ -49279,7 +50756,7 @@ Returns a L<< JIRA::API::SearchResults >> on success.
 
 =cut
 
-sub _build_searchForIssuesUsingJqlPost_request( $self, %options ) {
+sub build_searchForIssuesUsingJqlPost_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/search';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -49355,6 +50832,10 @@ sub searchForIssuesUsingJqlPost( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueSecurityLevel_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueSecurityLevel >>
 
   my $res = $client->getIssueSecurityLevel(
@@ -49378,7 +50859,7 @@ Returns a L<< JIRA::API::SecurityLevel >> on success.
 
 =cut
 
-sub _build_getIssueSecurityLevel_request( $self, %options ) {
+sub build_getIssueSecurityLevel_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -49457,6 +50938,10 @@ sub getIssueSecurityLevel( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getServerInfo_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getServerInfo >>
 
   my $res = $client->getServerInfo()->get;
@@ -49474,7 +50959,7 @@ Returns a L<< JIRA::API::ServerInformation >> on success.
 
 =cut
 
-sub _build_getServerInfo_request( $self, %options ) {
+sub build_getServerInfo_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/serverInfo';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -49544,6 +51029,10 @@ sub getServerInfo( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIssueNavigatorDefaultColumns_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIssueNavigatorDefaultColumns >>
 
   my $res = $client->getIssueNavigatorDefaultColumns()->get;
@@ -49561,7 +51050,7 @@ Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 =cut
 
-sub _build_getIssueNavigatorDefaultColumns_request( $self, %options ) {
+sub build_getIssueNavigatorDefaultColumns_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/settings/columns';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -49635,6 +51124,10 @@ sub getIssueNavigatorDefaultColumns( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setIssueNavigatorDefaultColumns_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setIssueNavigatorDefaultColumns >>
 
   my $res = $client->setIssueNavigatorDefaultColumns()->get;
@@ -49652,7 +51145,7 @@ Returns Unknown on success.
 
 =cut
 
-sub _build_setIssueNavigatorDefaultColumns_request( $self, %options ) {
+sub build_setIssueNavigatorDefaultColumns_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/settings/columns';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -49736,6 +51229,10 @@ sub setIssueNavigatorDefaultColumns( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getStatuses_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getStatuses >>
 
   my $res = $client->getStatuses()->get;
@@ -49753,7 +51250,7 @@ Returns an array of L<< JIRA::API::StatusDetails >> on success.
 
 =cut
 
-sub _build_getStatuses_request( $self, %options ) {
+sub build_getStatuses_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/status';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -49824,6 +51321,10 @@ sub getStatuses( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getStatus_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getStatus >>
 
   my $res = $client->getStatus(
@@ -49847,7 +51348,7 @@ Returns a L<< JIRA::API::StatusDetails >> on success.
 
 =cut
 
-sub _build_getStatus_request( $self, %options ) {
+sub build_getStatus_request( $self, %options ) {
     croak "Missing required parameter 'idOrName'"
         unless exists $options{ 'idOrName' };
 
@@ -49926,6 +51427,10 @@ sub getStatus( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getStatusCategories_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getStatusCategories >>
 
   my $res = $client->getStatusCategories()->get;
@@ -49943,7 +51448,7 @@ Returns an array of L<< JIRA::API::StatusCategory >> on success.
 
 =cut
 
-sub _build_getStatusCategories_request( $self, %options ) {
+sub build_getStatusCategories_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/statuscategory';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -50014,6 +51519,10 @@ sub getStatusCategories( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getStatusCategory_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getStatusCategory >>
 
   my $res = $client->getStatusCategory(
@@ -50037,7 +51546,7 @@ Returns a L<< JIRA::API::StatusCategory >> on success.
 
 =cut
 
-sub _build_getStatusCategory_request( $self, %options ) {
+sub build_getStatusCategory_request( $self, %options ) {
     croak "Missing required parameter 'idOrKey'"
         unless exists $options{ 'idOrKey' };
 
@@ -50116,6 +51625,10 @@ sub getStatusCategory( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteStatusesById_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteStatusesById >>
 
   my $res = $client->deleteStatusesById(
@@ -50141,7 +51654,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_deleteStatusesById_request( $self, %options ) {
+sub build_deleteStatusesById_request( $self, %options ) {
     my $method = 'DELETE';
     my $path = '/rest/api/3/statuses';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -50229,6 +51742,10 @@ sub deleteStatusesById( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getStatusesById_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getStatusesById >>
 
   my $res = $client->getStatusesById(
@@ -50268,7 +51785,7 @@ Returns an array of L<< JIRA::API::JiraStatus >> on success.
 
 =cut
 
-sub _build_getStatusesById_request( $self, %options ) {
+sub build_getStatusesById_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/statuses';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -50347,6 +51864,10 @@ sub getStatusesById( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createStatuses_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createStatuses >>
 
   my $res = $client->createStatuses()->get;
@@ -50378,7 +51899,7 @@ Returns an array of L<< JIRA::API::JiraStatus >> on success.
 
 =cut
 
-sub _build_createStatuses_request( $self, %options ) {
+sub build_createStatuses_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/statuses';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -50466,6 +51987,10 @@ sub createStatuses( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateStatuses_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateStatuses >>
 
   my $res = $client->updateStatuses()->get;
@@ -50493,7 +52018,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateStatuses_request( $self, %options ) {
+sub build_updateStatuses_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/statuses';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -50580,6 +52105,10 @@ sub updateStatuses( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_search_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< search >>
 
   my $res = $client->search(
@@ -50637,7 +52166,7 @@ Returns a L<< JIRA::API::PageOfStatuses >> on success.
 
 =cut
 
-sub _build_search_request( $self, %options ) {
+sub build_search_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/statuses/search';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -50719,6 +52248,10 @@ sub search( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getTask_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getTask >>
 
   my $res = $client->getTask(
@@ -50742,7 +52275,7 @@ Returns a L<< JIRA::API::TaskProgressBeanObject >> on success.
 
 =cut
 
-sub _build_getTask_request( $self, %options ) {
+sub build_getTask_request( $self, %options ) {
     croak "Missing required parameter 'taskId'"
         unless exists $options{ 'taskId' };
 
@@ -50824,6 +52357,10 @@ sub getTask( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_cancelTask_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< cancelTask >>
 
   my $res = $client->cancelTask(
@@ -50851,7 +52388,7 @@ Returns an array of L<< JIRA::API:: >> on HTTP code 404.
 
 =cut
 
-sub _build_cancelTask_request( $self, %options ) {
+sub build_cancelTask_request( $self, %options ) {
     croak "Missing required parameter 'taskId'"
         unless exists $options{ 'taskId' };
 
@@ -50984,6 +52521,10 @@ sub cancelTask( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getUiModifications_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getUiModifications >>
 
   my $res = $client->getUiModifications(
@@ -51031,7 +52572,7 @@ Returns a L<< JIRA::API::PageBeanUiModificationDetails >> on success.
 
 =cut
 
-sub _build_getUiModifications_request( $self, %options ) {
+sub build_getUiModifications_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/uiModifications';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -51113,6 +52654,10 @@ sub getUiModifications( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createUiModification_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createUiModification >>
 
   my $res = $client->createUiModification()->get;
@@ -51152,7 +52697,7 @@ Returns a L<< JIRA::API::UiModificationIdentifiers >> on HTTP code 201.
 
 =cut
 
-sub _build_createUiModification_request( $self, %options ) {
+sub build_createUiModification_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/uiModifications';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -51234,6 +52779,10 @@ sub createUiModification( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteUiModification_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteUiModification >>
 
   my $res = $client->deleteUiModification(
@@ -51257,7 +52806,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_deleteUiModification_request( $self, %options ) {
+sub build_deleteUiModification_request( $self, %options ) {
     croak "Missing required parameter 'uiModificationId'"
         unless exists $options{ 'uiModificationId' };
 
@@ -51339,6 +52888,10 @@ sub deleteUiModification( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateUiModification_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateUiModification >>
 
   my $res = $client->updateUiModification(
@@ -51384,7 +52937,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_updateUiModification_request( $self, %options ) {
+sub build_updateUiModification_request( $self, %options ) {
     croak "Missing required parameter 'uiModificationId'"
         unless exists $options{ 'uiModificationId' };
 
@@ -51472,6 +53025,10 @@ sub updateUiModification( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAvatars_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAvatars >>
 
   my $res = $client->getAvatars(
@@ -51500,7 +53057,7 @@ Returns a L<< JIRA::API::Avatars >> on success.
 
 =cut
 
-sub _build_getAvatars_request( $self, %options ) {
+sub build_getAvatars_request( $self, %options ) {
     croak "Missing required parameter 'type'"
         unless exists $options{ 'type' };
     croak "Missing required parameter 'entityId'"
@@ -51582,6 +53139,10 @@ sub getAvatars( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_storeAvatar_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< storeAvatar >>
 
   my $res = $client->storeAvatar(
@@ -51625,7 +53186,7 @@ Returns a L<< JIRA::API::Avatar >> on HTTP code 201.
 
 =cut
 
-sub _build_storeAvatar_request( $self, %options ) {
+sub build_storeAvatar_request( $self, %options ) {
     croak "Missing required parameter 'type'"
         unless exists $options{ 'type' };
     croak "Missing required parameter 'entityId'"
@@ -51725,6 +53286,10 @@ sub storeAvatar( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteAvatar_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteAvatar >>
 
   my $res = $client->deleteAvatar(
@@ -51757,7 +53322,7 @@ The ID of the avatar.
 
 =cut
 
-sub _build_deleteAvatar_request( $self, %options ) {
+sub build_deleteAvatar_request( $self, %options ) {
     croak "Missing required parameter 'type'"
         unless exists $options{ 'type' };
     croak "Missing required parameter 'owningObjectId'"
@@ -51833,6 +53398,10 @@ sub deleteAvatar( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAvatarImageByType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAvatarImageByType >>
 
   my $res = $client->getAvatarImageByType(
@@ -51869,7 +53438,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_getAvatarImageByType_request( $self, %options ) {
+sub build_getAvatarImageByType_request( $self, %options ) {
     croak "Missing required parameter 'type'"
         unless exists $options{ 'type' };
 
@@ -52109,6 +53678,10 @@ sub getAvatarImageByType( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAvatarImageByID_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAvatarImageByID >>
 
   my $res = $client->getAvatarImageByID(
@@ -52151,7 +53724,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_getAvatarImageByID_request( $self, %options ) {
+sub build_getAvatarImageByID_request( $self, %options ) {
     croak "Missing required parameter 'type'"
         unless exists $options{ 'type' };
     croak "Missing required parameter 'id'"
@@ -52438,6 +54011,10 @@ sub getAvatarImageByID( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAvatarImageByOwner_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAvatarImageByOwner >>
 
   my $res = $client->getAvatarImageByOwner(
@@ -52480,7 +54057,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
-sub _build_getAvatarImageByOwner_request( $self, %options ) {
+sub build_getAvatarImageByOwner_request( $self, %options ) {
     croak "Missing required parameter 'type'"
         unless exists $options{ 'type' };
     croak "Missing required parameter 'entityId'"
@@ -52767,6 +54344,10 @@ sub getAvatarImageByOwner( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_removeUser_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< removeUser >>
 
   my $res = $client->removeUser(
@@ -52799,7 +54380,7 @@ This parameter is no longer available. See the L<deprecation notice|https://deve
 
 =cut
 
-sub _build_removeUser_request( $self, %options ) {
+sub build_removeUser_request( $self, %options ) {
     croak "Missing required parameter 'accountId'"
         unless exists $options{ 'accountId' };
 
@@ -52875,6 +54456,10 @@ sub removeUser( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getUser_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getUser >>
 
   my $res = $client->getUser(
@@ -52927,7 +54512,7 @@ Returns a L<< JIRA::API::User >> on success.
 
 =cut
 
-sub _build_getUser_request( $self, %options ) {
+sub build_getUser_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/user';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -53010,6 +54595,10 @@ sub getUser( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createUser_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createUser >>
 
   my $res = $client->createUser()->get;
@@ -53061,7 +54650,7 @@ Returns a L<< JIRA::API::User >> on HTTP code 201.
 
 =cut
 
-sub _build_createUser_request( $self, %options ) {
+sub build_createUser_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/user';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -53140,6 +54729,10 @@ sub createUser( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_findBulkAssignableUsers_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< findBulkAssignableUsers >>
 
   my $res = $client->findBulkAssignableUsers(
@@ -53188,7 +54781,7 @@ Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
-sub _build_findBulkAssignableUsers_request( $self, %options ) {
+sub build_findBulkAssignableUsers_request( $self, %options ) {
     croak "Missing required parameter 'projectKeys'"
         unless exists $options{ 'projectKeys' };
 
@@ -53280,6 +54873,10 @@ sub findBulkAssignableUsers( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_findAssignableUsers_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< findAssignableUsers >>
 
   my $res = $client->findAssignableUsers(
@@ -53346,7 +54943,7 @@ Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
-sub _build_findAssignableUsers_request( $self, %options ) {
+sub build_findAssignableUsers_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/user/assignable/search';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -53439,6 +55036,10 @@ sub findAssignableUsers( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_bulkGetUsers_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< bulkGetUsers >>
 
   my $res = $client->bulkGetUsers(
@@ -53482,7 +55083,7 @@ Returns a L<< JIRA::API::PageBeanUser >> on success.
 
 =cut
 
-sub _build_bulkGetUsers_request( $self, %options ) {
+sub build_bulkGetUsers_request( $self, %options ) {
     croak "Missing required parameter 'accountId'"
         unless exists $options{ 'accountId' };
 
@@ -53566,6 +55167,10 @@ sub bulkGetUsers( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_bulkGetUsersMigration_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< bulkGetUsersMigration >>
 
   my $res = $client->bulkGetUsersMigration(
@@ -53604,7 +55209,7 @@ Returns an array of L<< JIRA::API::UserMigrationBean >> on success.
 
 =cut
 
-sub _build_bulkGetUsersMigration_request( $self, %options ) {
+sub build_bulkGetUsersMigration_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/user/bulk/migration';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -53685,6 +55290,10 @@ sub bulkGetUsersMigration( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_resetUserColumns_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< resetUserColumns >>
 
   my $res = $client->resetUserColumns(
@@ -53712,7 +55321,7 @@ This parameter is no longer available. See the L<deprecation notice|https://deve
 
 =cut
 
-sub _build_resetUserColumns_request( $self, %options ) {
+sub build_resetUserColumns_request( $self, %options ) {
     my $method = 'DELETE';
     my $path = '/rest/api/3/user/columns';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -53778,6 +55387,10 @@ sub resetUserColumns( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getUserDefaultColumns_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getUserDefaultColumns >>
 
   my $res = $client->getUserDefaultColumns(
@@ -53806,7 +55419,7 @@ Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 =cut
 
-sub _build_getUserDefaultColumns_request( $self, %options ) {
+sub build_getUserDefaultColumns_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/user/columns';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -53888,6 +55501,10 @@ sub getUserDefaultColumns( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setUserColumns_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setUserColumns >>
 
   my $res = $client->setUserColumns(
@@ -53911,7 +55528,7 @@ Returns Unknown on success.
 
 =cut
 
-sub _build_setUserColumns_request( $self, %options ) {
+sub build_setUserColumns_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/user/columns';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -54002,6 +55619,10 @@ sub setUserColumns( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getUserEmail_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getUserEmail >>
 
   my $res = $client->getUserEmail(
@@ -54025,7 +55646,7 @@ Returns a L<< JIRA::API::UnrestrictedUserEmail >> on success.
 
 =cut
 
-sub _build_getUserEmail_request( $self, %options ) {
+sub build_getUserEmail_request( $self, %options ) {
     croak "Missing required parameter 'accountId'"
         unless exists $options{ 'accountId' };
 
@@ -54111,6 +55732,10 @@ sub getUserEmail( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getUserEmailBulk_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getUserEmailBulk >>
 
   my $res = $client->getUserEmailBulk(
@@ -54134,7 +55759,7 @@ Returns a L<< JIRA::API::UnrestrictedUserEmail >> on success.
 
 =cut
 
-sub _build_getUserEmailBulk_request( $self, %options ) {
+sub build_getUserEmailBulk_request( $self, %options ) {
     croak "Missing required parameter 'accountId'"
         unless exists $options{ 'accountId' };
 
@@ -54217,6 +55842,10 @@ sub getUserEmailBulk( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getUserGroups_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getUserGroups >>
 
   my $res = $client->getUserGroups(
@@ -54250,7 +55879,7 @@ Returns an array of L<< JIRA::API::GroupName >> on success.
 
 =cut
 
-sub _build_getUserGroups_request( $self, %options ) {
+sub build_getUserGroups_request( $self, %options ) {
     croak "Missing required parameter 'accountId'"
         unless exists $options{ 'accountId' };
 
@@ -54335,6 +55964,10 @@ sub getUserGroups( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_findUsersWithAllPermissions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< findUsersWithAllPermissions >>
 
@@ -54579,7 +56212,7 @@ Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
-sub _build_findUsersWithAllPermissions_request( $self, %options ) {
+sub build_findUsersWithAllPermissions_request( $self, %options ) {
     croak "Missing required parameter 'permissions'"
         unless exists $options{ 'permissions' };
 
@@ -54676,6 +56309,10 @@ sub findUsersWithAllPermissions( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_findUsersForPicker_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< findUsersForPicker >>
 
   my $res = $client->findUsersForPicker(
@@ -54725,7 +56362,7 @@ Returns a L<< JIRA::API::FoundUsers >> on success.
 
 =cut
 
-sub _build_findUsersForPicker_request( $self, %options ) {
+sub build_findUsersForPicker_request( $self, %options ) {
     croak "Missing required parameter 'query'"
         unless exists $options{ 'query' };
 
@@ -54814,6 +56451,10 @@ sub findUsersForPicker( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getUserPropertyKeys_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getUserPropertyKeys >>
 
   my $res = $client->getUserPropertyKeys(
@@ -54847,7 +56488,7 @@ Returns a L<< JIRA::API::PropertyKeys >> on success.
 
 =cut
 
-sub _build_getUserPropertyKeys_request( $self, %options ) {
+sub build_getUserPropertyKeys_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/user/properties';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -54932,6 +56573,10 @@ sub getUserPropertyKeys( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteUserProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteUserProperty >>
 
   my $res = $client->deleteUserProperty(
@@ -54969,7 +56614,7 @@ The key of the user's property.
 
 =cut
 
-sub _build_deleteUserProperty_request( $self, %options ) {
+sub build_deleteUserProperty_request( $self, %options ) {
     croak "Missing required parameter 'propertyKey'"
         unless exists $options{ 'propertyKey' };
 
@@ -55048,6 +56693,10 @@ sub deleteUserProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getUserProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getUserProperty >>
 
   my $res = $client->getUserProperty(
@@ -55086,7 +56735,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 =cut
 
-sub _build_getUserProperty_request( $self, %options ) {
+sub build_getUserProperty_request( $self, %options ) {
     croak "Missing required parameter 'propertyKey'"
         unless exists $options{ 'propertyKey' };
 
@@ -55177,6 +56826,10 @@ sub getUserProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setUserProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setUserProperty >>
 
   my $res = $client->setUserProperty(
@@ -55216,7 +56869,7 @@ Returns Unknown on HTTP code 201.
 
 =cut
 
-sub _build_setUserProperty_request( $self, %options ) {
+sub build_setUserProperty_request( $self, %options ) {
     croak "Missing required parameter 'propertyKey'"
         unless exists $options{ 'propertyKey' };
 
@@ -55327,6 +56980,10 @@ sub setUserProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_findUsers_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< findUsers >>
 
   my $res = $client->findUsers(
@@ -55373,7 +57030,7 @@ Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
-sub _build_findUsers_request( $self, %options ) {
+sub build_findUsers_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/user/search';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -55459,6 +57116,10 @@ sub findUsers( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_findUsersByQuery_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< findUsersByQuery >>
 
   my $res = $client->findUsersByQuery(
@@ -55492,7 +57153,7 @@ Returns a L<< JIRA::API::PageBeanUser >> on success.
 
 =cut
 
-sub _build_findUsersByQuery_request( $self, %options ) {
+sub build_findUsersByQuery_request( $self, %options ) {
     croak "Missing required parameter 'query'"
         unless exists $options{ 'query' };
 
@@ -55580,6 +57241,10 @@ sub findUsersByQuery( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_findUserKeysByQuery_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< findUserKeysByQuery >>
 
   my $res = $client->findUserKeysByQuery(
@@ -55613,7 +57278,7 @@ Returns a L<< JIRA::API::PageBeanUserKey >> on success.
 
 =cut
 
-sub _build_findUserKeysByQuery_request( $self, %options ) {
+sub build_findUserKeysByQuery_request( $self, %options ) {
     croak "Missing required parameter 'query'"
         unless exists $options{ 'query' };
 
@@ -55701,6 +57366,10 @@ sub findUserKeysByQuery( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_findUsersWithBrowsePermission_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< findUsersWithBrowsePermission >>
 
   my $res = $client->findUsersWithBrowsePermission(
@@ -55754,7 +57423,7 @@ Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
-sub _build_findUsersWithBrowsePermission_request( $self, %options ) {
+sub build_findUsersWithBrowsePermission_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/user/viewissue/search';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -55844,6 +57513,10 @@ sub findUsersWithBrowsePermission( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllUsersDefault_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllUsersDefault >>
 
   my $res = $client->getAllUsersDefault(
@@ -55872,7 +57545,7 @@ Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
-sub _build_getAllUsersDefault_request( $self, %options ) {
+sub build_getAllUsersDefault_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/users';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -55954,6 +57627,10 @@ sub getAllUsersDefault( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllUsers_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllUsers >>
 
   my $res = $client->getAllUsers(
@@ -55982,7 +57659,7 @@ Returns an array of L<< JIRA::API::User >> on success.
 
 =cut
 
-sub _build_getAllUsers_request( $self, %options ) {
+sub build_getAllUsers_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/users/search';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -56063,6 +57740,10 @@ sub getAllUsers( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_createVersion_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< createVersion >>
 
@@ -56171,7 +57852,7 @@ Returns a L<< JIRA::API::Version >> on HTTP code 201.
 
 =cut
 
-sub _build_createVersion_request( $self, %options ) {
+sub build_createVersion_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/version';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -56250,6 +57931,10 @@ sub createVersion( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteVersion_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteVersion >>
 
   my $res = $client->deleteVersion(
@@ -56282,7 +57967,7 @@ The ID of the version to update C<affectedVersion> to when the field contains th
 
 =cut
 
-sub _build_deleteVersion_request( $self, %options ) {
+sub build_deleteVersion_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -56357,6 +58042,10 @@ sub deleteVersion( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getVersion_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getVersion >>
 
   my $res = $client->getVersion(
@@ -56399,7 +58088,7 @@ Returns a L<< JIRA::API::Version >> on success.
 
 =cut
 
-sub _build_getVersion_request( $self, %options ) {
+sub build_getVersion_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -56481,6 +58170,10 @@ sub getVersion( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_updateVersion_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< updateVersion >>
 
@@ -56595,7 +58288,7 @@ Returns a L<< JIRA::API::Version >> on success.
 
 =cut
 
-sub _build_updateVersion_request( $self, %options ) {
+sub build_updateVersion_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -56680,6 +58373,10 @@ sub updateVersion( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_mergeVersions_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< mergeVersions >>
 
   my $res = $client->mergeVersions(
@@ -56708,7 +58405,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_mergeVersions_request( $self, %options ) {
+sub build_mergeVersions_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'moveIssuesTo'"
@@ -56793,6 +58490,10 @@ sub mergeVersions( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_moveVersion_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< moveVersion >>
 
   my $res = $client->moveVersion(
@@ -56830,7 +58531,7 @@ Returns a L<< JIRA::API::Version >> on success.
 
 =cut
 
-sub _build_moveVersion_request( $self, %options ) {
+sub build_moveVersion_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -56915,6 +58616,10 @@ sub moveVersion( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getVersionRelatedIssues_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getVersionRelatedIssues >>
 
   my $res = $client->getVersionRelatedIssues(
@@ -56938,7 +58643,7 @@ Returns a L<< JIRA::API::VersionIssueCounts >> on success.
 
 =cut
 
-sub _build_getVersionRelatedIssues_request( $self, %options ) {
+sub build_getVersionRelatedIssues_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -57017,6 +58722,10 @@ sub getVersionRelatedIssues( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteAndReplaceVersion_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteAndReplaceVersion >>
 
   my $res = $client->deleteAndReplaceVersion(
@@ -57058,7 +58767,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_deleteAndReplaceVersion_request( $self, %options ) {
+sub build_deleteAndReplaceVersion_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -57143,6 +58852,10 @@ sub deleteAndReplaceVersion( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getVersionUnresolvedIssues_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getVersionUnresolvedIssues >>
 
   my $res = $client->getVersionUnresolvedIssues(
@@ -57166,7 +58879,7 @@ Returns a L<< JIRA::API::VersionUnresolvedIssuesCount >> on success.
 
 =cut
 
-sub _build_getVersionUnresolvedIssues_request( $self, %options ) {
+sub build_getVersionUnresolvedIssues_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -57245,6 +58958,10 @@ sub getVersionUnresolvedIssues( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteWebhookById_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteWebhookById >>
 
   my $res = $client->deleteWebhookById()->get;
@@ -57273,7 +58990,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_deleteWebhookById_request( $self, %options ) {
+sub build_deleteWebhookById_request( $self, %options ) {
     my $method = 'DELETE';
     my $path = '/rest/api/3/webhook';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -57360,6 +59077,10 @@ sub deleteWebhookById( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getDynamicWebhooksForApp_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getDynamicWebhooksForApp >>
 
   my $res = $client->getDynamicWebhooksForApp(
@@ -57390,7 +59111,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_getDynamicWebhooksForApp_request( $self, %options ) {
+sub build_getDynamicWebhooksForApp_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/webhook';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -57490,6 +59211,10 @@ sub getDynamicWebhooksForApp( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_registerDynamicWebhooks_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< registerDynamicWebhooks >>
 
   my $res = $client->registerDynamicWebhooks()->get;
@@ -57523,7 +59248,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_registerDynamicWebhooks_request( $self, %options ) {
+sub build_registerDynamicWebhooks_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/webhook';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -57621,6 +59346,10 @@ sub registerDynamicWebhooks( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getFailedWebhooks_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getFailedWebhooks >>
 
   my $res = $client->getFailedWebhooks(
@@ -57651,7 +59380,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_getFailedWebhooks_request( $self, %options ) {
+sub build_getFailedWebhooks_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/webhook/failed';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -57751,6 +59480,10 @@ sub getFailedWebhooks( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_refreshWebhooks_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< refreshWebhooks >>
 
   my $res = $client->refreshWebhooks()->get;
@@ -57780,7 +59513,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_refreshWebhooks_request( $self, %options ) {
+sub build_refreshWebhooks_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/webhook/refresh';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -57878,6 +59611,10 @@ sub refreshWebhooks( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllWorkflows_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllWorkflows >>
 
   my $res = $client->getAllWorkflows(
@@ -57901,7 +59638,7 @@ Returns an array of L<< JIRA::API::DeprecatedWorkflow >> on success.
 
 =cut
 
-sub _build_getAllWorkflows_request( $self, %options ) {
+sub build_getAllWorkflows_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/workflow';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -57975,6 +59712,10 @@ sub getAllWorkflows( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_createWorkflow_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< createWorkflow >>
 
@@ -58056,7 +59797,7 @@ Returns a L<< JIRA::API::WorkflowIDs >> on HTTP code 201.
 
 =cut
 
-sub _build_createWorkflow_request( $self, %options ) {
+sub build_createWorkflow_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/workflow';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -58171,6 +59912,10 @@ sub createWorkflow( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getWorkflowTransitionRuleConfigurations_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getWorkflowTransitionRuleConfigurations >>
 
   my $res = $client->getWorkflowTransitionRuleConfigurations(
@@ -58231,7 +59976,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_getWorkflowTransitionRuleConfigurations_request( $self, %options ) {
+sub build_getWorkflowTransitionRuleConfigurations_request( $self, %options ) {
     croak "Missing required parameter 'types'"
         unless exists $options{ 'types' };
 
@@ -58343,6 +60088,10 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateWorkflowTransitionRuleConfigurations_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateWorkflowTransitionRuleConfigurations >>
 
   my $res = $client->updateWorkflowTransitionRuleConfigurations()->get;
@@ -58372,7 +60121,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_updateWorkflowTransitionRuleConfigurations_request( $self, %options ) {
+sub build_updateWorkflowTransitionRuleConfigurations_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/workflow/rule/config';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -58470,6 +60219,10 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteWorkflowTransitionRuleConfigurations_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteWorkflowTransitionRuleConfigurations >>
 
   my $res = $client->deleteWorkflowTransitionRuleConfigurations()->get;
@@ -58499,7 +60252,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_deleteWorkflowTransitionRuleConfigurations_request( $self, %options ) {
+sub build_deleteWorkflowTransitionRuleConfigurations_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/workflow/rule/config/delete';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -58596,6 +60349,10 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_getWorkflowsPaginated_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< getWorkflowsPaginated >>
 
@@ -58724,7 +60481,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
-sub _build_getWorkflowsPaginated_request( $self, %options ) {
+sub build_getWorkflowsPaginated_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/workflow/search';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -58818,6 +60575,10 @@ sub getWorkflowsPaginated( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteWorkflowTransitionProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteWorkflowTransitionProperty >>
 
   my $res = $client->deleteWorkflowTransitionProperty(
@@ -58855,7 +60616,7 @@ The workflow status. Set to C<live> for inactive workflows or C<draft> for draft
 
 =cut
 
-sub _build_deleteWorkflowTransitionProperty_request( $self, %options ) {
+sub build_deleteWorkflowTransitionProperty_request( $self, %options ) {
     croak "Missing required parameter 'transitionId'"
         unless exists $options{ 'transitionId' };
     croak "Missing required parameter 'key'"
@@ -58941,6 +60702,10 @@ sub deleteWorkflowTransitionProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getWorkflowTransitionProperties_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getWorkflowTransitionProperties >>
 
   my $res = $client->getWorkflowTransitionProperties(
@@ -58984,7 +60749,7 @@ Returns a L<< JIRA::API::WorkflowTransitionProperty >> on success.
 
 =cut
 
-sub _build_getWorkflowTransitionProperties_request( $self, %options ) {
+sub build_getWorkflowTransitionProperties_request( $self, %options ) {
     croak "Missing required parameter 'transitionId'"
         unless exists $options{ 'transitionId' };
     croak "Missing required parameter 'workflowName'"
@@ -59078,6 +60843,10 @@ sub getWorkflowTransitionProperties( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createWorkflowTransitionProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createWorkflowTransitionProperty >>
 
   my $res = $client->createWorkflowTransitionProperty(
@@ -59134,7 +60903,7 @@ Returns a L<< JIRA::API::WorkflowTransitionProperty >> on success.
 
 =cut
 
-sub _build_createWorkflowTransitionProperty_request( $self, %options ) {
+sub build_createWorkflowTransitionProperty_request( $self, %options ) {
     croak "Missing required parameter 'transitionId'"
         unless exists $options{ 'transitionId' };
     croak "Missing required parameter 'key'"
@@ -59232,6 +61001,10 @@ sub createWorkflowTransitionProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateWorkflowTransitionProperty_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateWorkflowTransitionProperty >>
 
   my $res = $client->updateWorkflowTransitionProperty(
@@ -59288,7 +61061,7 @@ Returns a L<< JIRA::API::WorkflowTransitionProperty >> on success.
 
 =cut
 
-sub _build_updateWorkflowTransitionProperty_request( $self, %options ) {
+sub build_updateWorkflowTransitionProperty_request( $self, %options ) {
     croak "Missing required parameter 'transitionId'"
         unless exists $options{ 'transitionId' };
     croak "Missing required parameter 'key'"
@@ -59389,6 +61162,10 @@ sub updateWorkflowTransitionProperty( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteInactiveWorkflow_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteInactiveWorkflow >>
 
   my $res = $client->deleteInactiveWorkflow(
@@ -59411,7 +61188,7 @@ The entity ID of the workflow.
 
 =cut
 
-sub _build_deleteInactiveWorkflow_request( $self, %options ) {
+sub build_deleteInactiveWorkflow_request( $self, %options ) {
     croak "Missing required parameter 'entityId'"
         unless exists $options{ 'entityId' };
 
@@ -59518,6 +61295,10 @@ sub deleteInactiveWorkflow( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getAllWorkflowSchemes_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getAllWorkflowSchemes >>
 
   my $res = $client->getAllWorkflowSchemes(
@@ -59546,7 +61327,7 @@ Returns a L<< JIRA::API::PageBeanWorkflowScheme >> on success.
 
 =cut
 
-sub _build_getAllWorkflowSchemes_request( $self, %options ) {
+sub build_getAllWorkflowSchemes_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/workflowscheme';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -59623,6 +61404,10 @@ sub getAllWorkflowSchemes( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_createWorkflowScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< createWorkflowScheme >>
 
@@ -59718,7 +61503,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on HTTP code 201.
 
 =cut
 
-sub _build_createWorkflowScheme_request( $self, %options ) {
+sub build_createWorkflowScheme_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/workflowscheme';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -59797,6 +61582,10 @@ sub createWorkflowScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getWorkflowSchemeProjectAssociations_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getWorkflowSchemeProjectAssociations >>
 
   my $res = $client->getWorkflowSchemeProjectAssociations(
@@ -59820,7 +61609,7 @@ Returns a L<< JIRA::API::ContainerOfWorkflowSchemeAssociations >> on success.
 
 =cut
 
-sub _build_getWorkflowSchemeProjectAssociations_request( $self, %options ) {
+sub build_getWorkflowSchemeProjectAssociations_request( $self, %options ) {
     croak "Missing required parameter 'projectId'"
         unless exists $options{ 'projectId' };
 
@@ -59925,6 +61714,10 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_assignSchemeToProject_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< assignSchemeToProject >>
 
   my $res = $client->assignSchemeToProject()->get;
@@ -59956,7 +61749,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_assignSchemeToProject_request( $self, %options ) {
+sub build_assignSchemeToProject_request( $self, %options ) {
     my $method = 'PUT';
     my $path = '/rest/api/3/workflowscheme/project';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -60071,6 +61864,10 @@ sub assignSchemeToProject( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteWorkflowScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteWorkflowScheme >>
 
   my $res = $client->deleteWorkflowScheme(
@@ -60094,7 +61891,7 @@ Returns Unknown on HTTP code 204.
 
 =cut
 
-sub _build_deleteWorkflowScheme_request( $self, %options ) {
+sub build_deleteWorkflowScheme_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -60179,6 +61976,10 @@ sub deleteWorkflowScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getWorkflowScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getWorkflowScheme >>
 
   my $res = $client->getWorkflowScheme(
@@ -60207,7 +62008,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
-sub _build_getWorkflowScheme_request( $self, %options ) {
+sub build_getWorkflowScheme_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -60292,6 +62093,10 @@ sub getWorkflowScheme( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_updateWorkflowScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< updateWorkflowScheme >>
 
@@ -60393,7 +62198,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
-sub _build_updateWorkflowScheme_request( $self, %options ) {
+sub build_updateWorkflowScheme_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -60481,6 +62286,10 @@ sub updateWorkflowScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_createWorkflowSchemeDraftFromParent_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< createWorkflowSchemeDraftFromParent >>
 
   my $res = $client->createWorkflowSchemeDraftFromParent(
@@ -60504,7 +62313,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on HTTP code 201.
 
 =cut
 
-sub _build_createWorkflowSchemeDraftFromParent_request( $self, %options ) {
+sub build_createWorkflowSchemeDraftFromParent_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -60586,6 +62395,10 @@ sub createWorkflowSchemeDraftFromParent( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteDefaultWorkflow_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteDefaultWorkflow >>
 
   my $res = $client->deleteDefaultWorkflow(
@@ -60614,7 +62427,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
-sub _build_deleteDefaultWorkflow_request( $self, %options ) {
+sub build_deleteDefaultWorkflow_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -60703,6 +62516,10 @@ sub deleteDefaultWorkflow( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getDefaultWorkflow_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getDefaultWorkflow >>
 
   my $res = $client->getDefaultWorkflow(
@@ -60731,7 +62548,7 @@ Returns a L<< JIRA::API::DefaultWorkflow >> on success.
 
 =cut
 
-sub _build_getDefaultWorkflow_request( $self, %options ) {
+sub build_getDefaultWorkflow_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -60817,6 +62634,10 @@ sub getDefaultWorkflow( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateDefaultWorkflow_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateDefaultWorkflow >>
 
   my $res = $client->updateDefaultWorkflow(
@@ -60854,7 +62675,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
-sub _build_updateDefaultWorkflow_request( $self, %options ) {
+sub build_updateDefaultWorkflow_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -60942,6 +62763,10 @@ sub updateDefaultWorkflow( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteWorkflowSchemeDraft_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteWorkflowSchemeDraft >>
 
   my $res = $client->deleteWorkflowSchemeDraft(
@@ -60964,7 +62789,7 @@ The ID of the active workflow scheme that the draft was created from.
 
 =cut
 
-sub _build_deleteWorkflowSchemeDraft_request( $self, %options ) {
+sub build_deleteWorkflowSchemeDraft_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -61034,6 +62859,10 @@ sub deleteWorkflowSchemeDraft( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getWorkflowSchemeDraft_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getWorkflowSchemeDraft >>
 
   my $res = $client->getWorkflowSchemeDraft(
@@ -61057,7 +62886,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
-sub _build_getWorkflowSchemeDraft_request( $self, %options ) {
+sub build_getWorkflowSchemeDraft_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -61138,6 +62967,10 @@ sub getWorkflowSchemeDraft( $self, %options ) {
 
     return $res
 }
+
+=head2 C<< build_updateWorkflowSchemeDraft_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 =head2 C<< updateWorkflowSchemeDraft >>
 
@@ -61239,7 +63072,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
-sub _build_updateWorkflowSchemeDraft_request( $self, %options ) {
+sub build_updateWorkflowSchemeDraft_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -61327,6 +63160,10 @@ sub updateWorkflowSchemeDraft( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteDraftDefaultWorkflow_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteDraftDefaultWorkflow >>
 
   my $res = $client->deleteDraftDefaultWorkflow(
@@ -61350,7 +63187,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
-sub _build_deleteDraftDefaultWorkflow_request( $self, %options ) {
+sub build_deleteDraftDefaultWorkflow_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -61432,6 +63269,10 @@ sub deleteDraftDefaultWorkflow( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getDraftDefaultWorkflow_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getDraftDefaultWorkflow >>
 
   my $res = $client->getDraftDefaultWorkflow(
@@ -61455,7 +63296,7 @@ Returns a L<< JIRA::API::DefaultWorkflow >> on success.
 
 =cut
 
-sub _build_getDraftDefaultWorkflow_request( $self, %options ) {
+sub build_getDraftDefaultWorkflow_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -61537,6 +63378,10 @@ sub getDraftDefaultWorkflow( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateDraftDefaultWorkflow_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateDraftDefaultWorkflow >>
 
   my $res = $client->updateDraftDefaultWorkflow(
@@ -61574,7 +63419,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
-sub _build_updateDraftDefaultWorkflow_request( $self, %options ) {
+sub build_updateDraftDefaultWorkflow_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -61662,6 +63507,10 @@ sub updateDraftDefaultWorkflow( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteWorkflowSchemeDraftIssueType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteWorkflowSchemeDraftIssueType >>
 
   my $res = $client->deleteWorkflowSchemeDraftIssueType(
@@ -61690,7 +63539,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
-sub _build_deleteWorkflowSchemeDraftIssueType_request( $self, %options ) {
+sub build_deleteWorkflowSchemeDraftIssueType_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'issueType'"
@@ -61775,6 +63624,10 @@ sub deleteWorkflowSchemeDraftIssueType( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getWorkflowSchemeDraftIssueType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getWorkflowSchemeDraftIssueType >>
 
   my $res = $client->getWorkflowSchemeDraftIssueType(
@@ -61803,7 +63656,7 @@ Returns a L<< JIRA::API::IssueTypeWorkflowMapping >> on success.
 
 =cut
 
-sub _build_getWorkflowSchemeDraftIssueType_request( $self, %options ) {
+sub build_getWorkflowSchemeDraftIssueType_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'issueType'"
@@ -61888,6 +63741,10 @@ sub getWorkflowSchemeDraftIssueType( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setWorkflowSchemeDraftIssueType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setWorkflowSchemeDraftIssueType >>
 
   my $res = $client->setWorkflowSchemeDraftIssueType(
@@ -61934,7 +63791,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
-sub _build_setWorkflowSchemeDraftIssueType_request( $self, %options ) {
+sub build_setWorkflowSchemeDraftIssueType_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'issueType'"
@@ -62025,6 +63882,10 @@ sub setWorkflowSchemeDraftIssueType( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_publishDraftWorkflowScheme_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< publishDraftWorkflowScheme >>
 
   my $res = $client->publishDraftWorkflowScheme(
@@ -62063,7 +63924,7 @@ Returns a L<< JIRA::API::TaskProgressBeanObject >> on HTTP code 303.
 
 =cut
 
-sub _build_publishDraftWorkflowScheme_request( $self, %options ) {
+sub build_publishDraftWorkflowScheme_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -62180,6 +64041,10 @@ sub publishDraftWorkflowScheme( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteDraftWorkflowMapping_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteDraftWorkflowMapping >>
 
   my $res = $client->deleteDraftWorkflowMapping(
@@ -62207,7 +64072,7 @@ The name of the workflow.
 
 =cut
 
-sub _build_deleteDraftWorkflowMapping_request( $self, %options ) {
+sub build_deleteDraftWorkflowMapping_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'workflowName'"
@@ -62283,6 +64148,10 @@ sub deleteDraftWorkflowMapping( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getDraftWorkflow_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getDraftWorkflow >>
 
   my $res = $client->getDraftWorkflow(
@@ -62311,7 +64180,7 @@ Returns a L<< JIRA::API::IssueTypesWorkflowMapping >> on success.
 
 =cut
 
-sub _build_getDraftWorkflow_request( $self, %options ) {
+sub build_getDraftWorkflow_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -62397,6 +64266,10 @@ sub getDraftWorkflow( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateDraftWorkflowMapping_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateDraftWorkflowMapping >>
 
   my $res = $client->updateDraftWorkflowMapping(
@@ -62447,7 +64320,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
-sub _build_updateDraftWorkflowMapping_request( $self, %options ) {
+sub build_updateDraftWorkflowMapping_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'workflowName'"
@@ -62541,6 +64414,10 @@ sub updateDraftWorkflowMapping( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteWorkflowSchemeIssueType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteWorkflowSchemeIssueType >>
 
   my $res = $client->deleteWorkflowSchemeIssueType(
@@ -62574,7 +64451,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
-sub _build_deleteWorkflowSchemeIssueType_request( $self, %options ) {
+sub build_deleteWorkflowSchemeIssueType_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'issueType'"
@@ -62666,6 +64543,10 @@ sub deleteWorkflowSchemeIssueType( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getWorkflowSchemeIssueType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getWorkflowSchemeIssueType >>
 
   my $res = $client->getWorkflowSchemeIssueType(
@@ -62699,7 +64580,7 @@ Returns a L<< JIRA::API::IssueTypeWorkflowMapping >> on success.
 
 =cut
 
-sub _build_getWorkflowSchemeIssueType_request( $self, %options ) {
+sub build_getWorkflowSchemeIssueType_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'issueType'"
@@ -62788,6 +64669,10 @@ sub getWorkflowSchemeIssueType( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_setWorkflowSchemeIssueType_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< setWorkflowSchemeIssueType >>
 
   my $res = $client->setWorkflowSchemeIssueType(
@@ -62834,7 +64719,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
-sub _build_setWorkflowSchemeIssueType_request( $self, %options ) {
+sub build_setWorkflowSchemeIssueType_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'issueType'"
@@ -62925,6 +64810,10 @@ sub setWorkflowSchemeIssueType( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_deleteWorkflowMapping_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< deleteWorkflowMapping >>
 
   my $res = $client->deleteWorkflowMapping(
@@ -62957,7 +64846,7 @@ Set to true to create or update the draft of a workflow scheme and delete the ma
 
 =cut
 
-sub _build_deleteWorkflowMapping_request( $self, %options ) {
+sub build_deleteWorkflowMapping_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'workflowName'"
@@ -63037,6 +64926,10 @@ sub deleteWorkflowMapping( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getWorkflow_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getWorkflow >>
 
   my $res = $client->getWorkflow(
@@ -63070,7 +64963,7 @@ Returns a L<< JIRA::API::IssueTypesWorkflowMapping >> on success.
 
 =cut
 
-sub _build_getWorkflow_request( $self, %options ) {
+sub build_getWorkflow_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
 
@@ -63157,6 +65050,10 @@ sub getWorkflow( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_updateWorkflowMapping_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< updateWorkflowMapping >>
 
   my $res = $client->updateWorkflowMapping(
@@ -63207,7 +65104,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 =cut
 
-sub _build_updateWorkflowMapping_request( $self, %options ) {
+sub build_updateWorkflowMapping_request( $self, %options ) {
     croak "Missing required parameter 'id'"
         unless exists $options{ 'id' };
     croak "Missing required parameter 'workflowName'"
@@ -63301,6 +65198,10 @@ sub updateWorkflowMapping( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIdsOfWorklogsDeletedSince_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIdsOfWorklogsDeletedSince >>
 
   my $res = $client->getIdsOfWorklogsDeletedSince(
@@ -63324,7 +65225,7 @@ Returns a L<< JIRA::API::ChangedWorklogs >> on success.
 
 =cut
 
-sub _build_getIdsOfWorklogsDeletedSince_request( $self, %options ) {
+sub build_getIdsOfWorklogsDeletedSince_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/worklog/deleted';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -63398,6 +65299,10 @@ sub getIdsOfWorklogsDeletedSince( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getWorklogsForIds_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getWorklogsForIds >>
 
   my $res = $client->getWorklogsForIds(
@@ -63431,7 +65336,7 @@ Returns an array of L<< JIRA::API::Worklog >> on success.
 
 =cut
 
-sub _build_getWorklogsForIds_request( $self, %options ) {
+sub build_getWorklogsForIds_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/api/3/worklog/list';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -63512,6 +65417,10 @@ sub getWorklogsForIds( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_getIdsOfWorklogsModifiedSince_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< getIdsOfWorklogsModifiedSince >>
 
   my $res = $client->getIdsOfWorklogsModifiedSince(
@@ -63540,7 +65449,7 @@ Returns a L<< JIRA::API::ChangedWorklogs >> on success.
 
 =cut
 
-sub _build_getIdsOfWorklogsModifiedSince_request( $self, %options ) {
+sub build_getIdsOfWorklogsModifiedSince_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/api/3/worklog/updated';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -63615,6 +65524,10 @@ sub getIdsOfWorklogsModifiedSince( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_AddonPropertiesResource_getAddonProperties_get_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< AddonPropertiesResource_getAddonProperties_get >>
 
   my $res = $client->AddonPropertiesResource_getAddonProperties_get(
@@ -63639,7 +65552,7 @@ Returns a L<< JIRA::API::OperationMessage >> on HTTP code 401.
 
 =cut
 
-sub _build_AddonPropertiesResource_getAddonProperties_get_request( $self, %options ) {
+sub build_AddonPropertiesResource_getAddonProperties_get_request( $self, %options ) {
     croak "Missing required parameter 'addonKey'"
         unless exists $options{ 'addonKey' };
 
@@ -63726,6 +65639,10 @@ sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_AddonPropertiesResource_deleteAddonProperty_delete_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< AddonPropertiesResource_deleteAddonProperty_delete >>
 
   my $res = $client->AddonPropertiesResource_deleteAddonProperty_delete(
@@ -63756,7 +65673,7 @@ Returns a L<< JIRA::API::OperationMessage >> on HTTP code 404.
 
 =cut
 
-sub _build_AddonPropertiesResource_deleteAddonProperty_delete_request( $self, %options ) {
+sub build_AddonPropertiesResource_deleteAddonProperty_delete_request( $self, %options ) {
     croak "Missing required parameter 'addonKey'"
         unless exists $options{ 'addonKey' };
     croak "Missing required parameter 'propertyKey'"
@@ -63863,6 +65780,10 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_AddonPropertiesResource_getAddonProperty_get_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< AddonPropertiesResource_getAddonProperty_get >>
 
   my $res = $client->AddonPropertiesResource_getAddonProperty_get(
@@ -63894,7 +65815,7 @@ Returns a L<< JIRA::API::OperationMessage >> on HTTP code 404.
 
 =cut
 
-sub _build_AddonPropertiesResource_getAddonProperty_get_request( $self, %options ) {
+sub build_AddonPropertiesResource_getAddonProperty_get_request( $self, %options ) {
     croak "Missing required parameter 'addonKey'"
         unless exists $options{ 'addonKey' };
     croak "Missing required parameter 'propertyKey'"
@@ -64012,6 +65933,10 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_AddonPropertiesResource_putAddonProperty_put_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< AddonPropertiesResource_putAddonProperty_put >>
 
   my $res = $client->AddonPropertiesResource_putAddonProperty_put(
@@ -64043,7 +65968,7 @@ Returns a L<< JIRA::API::OperationMessage >> on HTTP code 401.
 
 =cut
 
-sub _build_AddonPropertiesResource_putAddonProperty_put_request( $self, %options ) {
+sub build_AddonPropertiesResource_putAddonProperty_put_request( $self, %options ) {
     croak "Missing required parameter 'addonKey'"
         unless exists $options{ 'addonKey' };
     croak "Missing required parameter 'propertyKey'"
@@ -64164,6 +66089,10 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_DynamicModulesResource_removeModules_delete_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< DynamicModulesResource_removeModules_delete >>
 
   my $res = $client->DynamicModulesResource_removeModules_delete(
@@ -64189,7 +66118,7 @@ Returns a L<< JIRA::API::ErrorMessage >> on HTTP code 401.
 
 =cut
 
-sub _build_DynamicModulesResource_removeModules_delete_request( $self, %options ) {
+sub build_DynamicModulesResource_removeModules_delete_request( $self, %options ) {
     my $method = 'DELETE';
     my $path = '/rest/atlassian-connect/1/app/module/dynamic';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -64263,6 +66192,10 @@ sub DynamicModulesResource_removeModules_delete( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_DynamicModulesResource_getModules_get_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< DynamicModulesResource_getModules_get >>
 
   my $res = $client->DynamicModulesResource_getModules_get()->get;
@@ -64281,7 +66214,7 @@ Returns a L<< JIRA::API::ErrorMessage >> on HTTP code 401.
 
 =cut
 
-sub _build_DynamicModulesResource_getModules_get_request( $self, %options ) {
+sub build_DynamicModulesResource_getModules_get_request( $self, %options ) {
     my $method = 'GET';
     my $path = '/rest/atlassian-connect/1/app/module/dynamic';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -64362,6 +66295,10 @@ sub DynamicModulesResource_getModules_get( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_DynamicModulesResource_registerModules_post_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< DynamicModulesResource_registerModules_post >>
 
   my $res = $client->DynamicModulesResource_registerModules_post()->get;
@@ -64391,7 +66328,7 @@ Returns a L<< JIRA::API::ErrorMessage >> on HTTP code 401.
 
 =cut
 
-sub _build_DynamicModulesResource_registerModules_post_request( $self, %options ) {
+sub build_DynamicModulesResource_registerModules_post_request( $self, %options ) {
     my $method = 'POST';
     my $path = '/rest/atlassian-connect/1/app/module/dynamic';
     my $url = Mojo::URL->new( $self->server . $path );
@@ -64478,6 +66415,10 @@ sub DynamicModulesResource_registerModules_post( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_AppIssueFieldValueUpdateResource_updateIssueFields_put_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< AppIssueFieldValueUpdateResource_updateIssueFields_put >>
 
   my $res = $client->AppIssueFieldValueUpdateResource_updateIssueFields_put(
@@ -64511,7 +66452,7 @@ Returns Unknown on success.
 
 =cut
 
-sub _build_AppIssueFieldValueUpdateResource_updateIssueFields_put_request( $self, %options ) {
+sub build_AppIssueFieldValueUpdateResource_updateIssueFields_put_request( $self, %options ) {
     croak "Missing required parameter 'Atlassian-Transfer-Id'"
         unless exists $options{ 'Atlassian-Transfer-Id' };
 
@@ -64591,6 +66532,10 @@ sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_MigrationResource_updateEntityPropertiesValue_put_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< MigrationResource_updateEntityPropertiesValue_put >>
 
   my $res = $client->MigrationResource_updateEntityPropertiesValue_put(
@@ -64618,7 +66563,7 @@ The type indicating the object that contains the entity properties.
 
 =cut
 
-sub _build_MigrationResource_updateEntityPropertiesValue_put_request( $self, %options ) {
+sub build_MigrationResource_updateEntityPropertiesValue_put_request( $self, %options ) {
     croak "Missing required parameter 'Atlassian-Transfer-Id'"
         unless exists $options{ 'Atlassian-Transfer-Id' };
     croak "Missing required parameter 'entityType'"
@@ -64691,6 +66636,10 @@ sub MigrationResource_updateEntityPropertiesValue_put( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_MigrationResource_workflowRuleSearch_post_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< MigrationResource_workflowRuleSearch_post >>
 
   my $res = $client->MigrationResource_workflowRuleSearch_post(
@@ -64732,7 +66681,7 @@ Returns a L<< JIRA::API::WorkflowRulesSearchDetails >> on success.
 
 =cut
 
-sub _build_MigrationResource_workflowRuleSearch_post_request( $self, %options ) {
+sub build_MigrationResource_workflowRuleSearch_post_request( $self, %options ) {
     croak "Missing required parameter 'Atlassian-Transfer-Id'"
         unless exists $options{ 'Atlassian-Transfer-Id' };
 

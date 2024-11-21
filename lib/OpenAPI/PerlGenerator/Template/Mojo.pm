@@ -424,7 +424,7 @@ Returns <%= join ", ", sort keys $result_types{$t}->%* %> <%= $t %>.
 __RETURN_TYPES__
 
 $template{ build_request } = <<'__BUILD_REQUEST__';
-sub _build_<%= $method->{name} %>_request( $self, %options ) {
+sub build_<%= $method->{name} %>_request( $self, %options ) {
 <%= include( 'required_parameters', { elt => $elt }); =%>
 %#
     my $method = '<%= uc $method->{http_method} %>';
@@ -636,6 +636,10 @@ has 'server' => (
 %     }
 % }
 %
+=head2 C<< build_<%= $method->{name} %>_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< <%= $method->{name} %> >>
 
 %# Generate the example invocation

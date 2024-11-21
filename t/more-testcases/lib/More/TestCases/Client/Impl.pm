@@ -74,6 +74,10 @@ has 'server' => (
 
 =head1 METHODS
 
+=head2 C<< build_withCookie_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< withCookie >>
 
   my $res = $client->withCookie(
@@ -94,7 +98,7 @@ token to be passed as a header
 
 =cut
 
-sub _build_withCookie_request( $self, %options ) {
+sub build_withCookie_request( $self, %options ) {
     croak "Missing required parameter 'session-id'"
         unless exists $options{ 'session-id' };
 
@@ -156,6 +160,10 @@ sub withCookie( $self, %options ) {
     return $res
 }
 
+=head2 C<< build_withHeader_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
 =head2 C<< withHeader >>
 
   my $res = $client->withHeader(
@@ -176,7 +184,7 @@ token to be passed as a header
 
 =cut
 
-sub _build_withHeader_request( $self, %options ) {
+sub build_withHeader_request( $self, %options ) {
     croak "Missing required parameter 'X-token'"
         unless exists $options{ 'X-token' };
 
