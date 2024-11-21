@@ -776,7 +776,7 @@ Visibility of the announcement banner. Can be public or private.
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
@@ -925,7 +925,7 @@ Whether to generate a changelog for this update.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1202,7 +1202,7 @@ The list of custom field configuration details.
 
 =back
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -1332,7 +1332,7 @@ The list of custom field update details.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1998,7 +1998,7 @@ Whether a redirect is provided for the attachment download. Clients that do not 
 =back
 
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -2234,7 +2234,7 @@ The maximum height to scale the thumbnail to.
 =back
 
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -3488,8 +3488,8 @@ The key of the property. The maximum length is 255 characters.
 =back
 
 
-Returns Unknown on success.
-Returns Unknown on HTTP code 201.
+Returns Hashref on success.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -4470,7 +4470,7 @@ Get selected time tracking provider
 
 
 Returns a L<< JIRA::API::TimeTrackingProvider >> on success.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -4596,7 +4596,7 @@ The URL of the configuration page for the time tracking provider app. For exampl
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -6110,7 +6110,7 @@ The ID of the gadget.
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
@@ -6255,7 +6255,7 @@ The title of the gadget.
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
@@ -6754,8 +6754,8 @@ The key of the dashboard item property. The maximum length is 255 characters. Fo
 =back
 
 
-Returns Unknown on success.
-Returns Unknown on HTTP code 201.
+Returns Hashref on success.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -8860,7 +8860,7 @@ C<version>: C<versionsearcher>
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -9484,7 +9484,7 @@ The ID of the custom field.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -10100,7 +10100,7 @@ The ID of the context.
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -10267,7 +10267,7 @@ The name of the custom field context. The name must be unique. The maximum lengt
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -10433,7 +10433,7 @@ The list of issue type IDs.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -10613,7 +10613,7 @@ The list of issue type IDs.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -11299,7 +11299,7 @@ The position the custom field options should be moved to. Required if C<after> i
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -11614,7 +11614,7 @@ The IDs of projects.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -11780,7 +11780,7 @@ The IDs of projects.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -12759,7 +12759,7 @@ The ID of the option to be deleted.
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -13502,7 +13502,7 @@ The ID of a custom field.
 =back
 
 
-Returns Unknown on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
@@ -13662,7 +13662,7 @@ The ID of a custom field.
 =back
 
 
-Returns Unknown on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
@@ -14064,7 +14064,7 @@ The ID of the field configuration.
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -14190,7 +14190,7 @@ The name of the field configuration. Must be unique.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -14439,7 +14439,7 @@ Details of fields in a field configuration.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -15061,7 +15061,7 @@ The ID of the project.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -15203,7 +15203,7 @@ The ID of the field configuration scheme.
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -15329,7 +15329,7 @@ The name of the field configuration scheme. The name must be unique.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -15487,7 +15487,7 @@ Field configuration to issue type mappings.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -15613,7 +15613,7 @@ The list of issue type IDs. Must contain unique values not longer than 255 chara
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -17443,7 +17443,7 @@ The ID of the filter.
 =back
 
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -17816,7 +17816,7 @@ The account ID of the new owner.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -21309,7 +21309,7 @@ A Map containing the field field name and a list of operations to perform on the
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -21511,7 +21511,7 @@ The time zone specified in the user's profile. Depending on the user’s privacy
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -22859,7 +22859,7 @@ The recipients of the email notification for the issue.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -23294,8 +23294,8 @@ The key of the issue property. The maximum length is 255 characters.
 =back
 
 
-Returns Unknown on success.
-Returns Unknown on HTTP code 201.
+Returns Hashref on success.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -24083,7 +24083,7 @@ Description of the relationship between the issue and the linked item. If not se
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -24377,7 +24377,7 @@ A Map containing the field field name and a list of operations to perform on the
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -24688,7 +24688,7 @@ The ID or key of the issue.
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -25017,7 +25017,7 @@ The ID or key of the issue.
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -26387,8 +26387,8 @@ The key of the issue property. The maximum length is 255 characters.
 =back
 
 
-Returns Unknown on success.
-Returns Unknown on HTTP code 201.
+Returns Hashref on success.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -26553,7 +26553,7 @@ In the L< issueLinkType|#api-rest-api-3-issueLinkType-post> resource it defines 
 
 =back
 
-Returns Unknown on HTTP code 201.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -29218,8 +29218,8 @@ The key of the issue type property. The maximum length is 255 characters.
 =back
 
 
-Returns Unknown on success.
-Returns Unknown on HTTP code 201.
+Returns Hashref on success.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -29923,7 +29923,7 @@ The ID of the project.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -30065,7 +30065,7 @@ The ID of the issue type scheme.
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -30228,7 +30228,7 @@ The name of the issue type scheme. The name must be unique. The maximum length i
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -30386,7 +30386,7 @@ The list of issue type IDs.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -30552,7 +30552,7 @@ The position the issue types should be moved to. Required if C<after> isn't prov
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -30705,7 +30705,7 @@ The ID of the issue type.
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -31421,7 +31421,7 @@ The ID of the project.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -31563,7 +31563,7 @@ The ID of the issue type screen scheme.
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -31711,7 +31711,7 @@ The name of the issue type screen scheme. The name must be unique. The maximum l
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -31869,7 +31869,7 @@ The list of issue type to screen scheme mappings. A I<default> entry cannot be s
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -32030,7 +32030,7 @@ The ID of the screen scheme.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -32188,7 +32188,7 @@ The list of issue type IDs.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -32902,7 +32902,7 @@ Update precomputations
 
 =back
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -34192,7 +34192,7 @@ The key of the preference. The maximum length is 255 characters.
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -34216,8 +34216,7 @@ sub build_setPreference_request( $self, %options ) {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
+        => json => $request,
     );
 
     # validate our request while developing
@@ -34298,7 +34297,7 @@ Delete locale
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -34490,7 +34489,7 @@ The locale code. The Java the locale format is used: a two character language co
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -35354,7 +35353,7 @@ The name of the notification scheme. Must be unique.
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -35527,7 +35526,7 @@ The list of notifications which should be added to the notification scheme.
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -35690,7 +35689,7 @@ The ID of the notification scheme.
 
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -35855,7 +35854,7 @@ The ID of the notification.
 
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -37957,7 +37956,7 @@ The ID of the new default issue priority. Must be an existing ID or null. Settin
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -38126,7 +38125,7 @@ The position for issue priorities to be moved to. Required if C<after> isn't pro
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -38728,7 +38727,7 @@ The status color of the priority in 3-digit or 6-digit hexadecimal format.
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -40540,7 +40539,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -40686,7 +40685,7 @@ The list of avatar icon URLs.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -42107,8 +42106,8 @@ The key of the project property. The maximum length is 255 characters.
 =back
 
 
-Returns Unknown on success.
-Returns Unknown on HTTP code 201.
+Returns Hashref on success.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -42349,7 +42348,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -43760,7 +43759,7 @@ When using a custom domain, the status of the email address.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -45781,7 +45780,7 @@ The ID of the new default issue resolution. Must be an existing ID or null. Sett
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -45950,7 +45949,7 @@ The position for issue resolutions to be moved to. Required if C<after> isn't pr
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -46544,7 +46543,7 @@ The name of the resolution. Must be unique.
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -48058,7 +48057,7 @@ The ID of the field.
 =back
 
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -49463,7 +49462,7 @@ The named position to which the screen tab field should be moved. Required if C<
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -49594,7 +49593,7 @@ The position of tab. The base index is 0.
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -50165,7 +50164,7 @@ The IDs of the screens for the screen types of the screen scheme. Only screens u
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -51141,7 +51140,7 @@ Set issue navigator default columns
 =back
 
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -51650,7 +51649,7 @@ Min items C<1>, Max items C<50>
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -52014,7 +52013,7 @@ The list of statuses that will be updated.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -52381,7 +52380,7 @@ The ID of the task.
 
 
 Returns an array of L<< JIRA::API:: >> on error.
-Returns Unknown on HTTP code 202.
+Returns Hashref on HTTP code 202.
 Returns an array of L<< JIRA::API:: >> on HTTP code 401.
 Returns an array of L<< JIRA::API:: >> on HTTP code 403.
 Returns an array of L<< JIRA::API:: >> on HTTP code 404.
@@ -52802,7 +52801,7 @@ The ID of the UI modification.
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -52933,7 +52932,7 @@ The name of the UI modification. The maximum length is 255 characters.
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -53431,7 +53430,7 @@ The format to return the avatar image in. If not provided the original content f
 =back
 
 
-Returns Unknown on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -53716,7 +53715,7 @@ The format to return the avatar image in. If not provided the original content f
 =back
 
 
-Returns Unknown on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
@@ -54049,7 +54048,7 @@ The format to return the avatar image in. If not provided the original content f
 =back
 
 
-Returns Unknown on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
@@ -55524,7 +55523,7 @@ The account ID of the user, which uniquely identifies the user across all Atlass
 =back
 
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -56864,8 +56863,8 @@ The key of the user's property. The maximum length is 255 characters.
 =back
 
 
-Returns Unknown on success.
-Returns Unknown on HTTP code 201.
+Returns Hashref on success.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -58401,7 +58400,7 @@ The ID of the version to merge into.
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -58763,7 +58762,7 @@ The ID of the version to update C<fixVersion> to when the field contains the del
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -61745,7 +61744,7 @@ The ID of the workflow scheme. If the workflow scheme ID is C<null>, the operati
 
 =back
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -61887,7 +61886,7 @@ The ID of the workflow scheme. Find this ID by editing the desired workflow sche
 =back
 
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -66448,7 +66447,7 @@ The list of custom field update details.
 
 =back
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 

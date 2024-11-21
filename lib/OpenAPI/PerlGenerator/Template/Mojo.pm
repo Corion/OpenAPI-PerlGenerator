@@ -407,9 +407,9 @@ $template{return_types} = <<'__RETURN_TYPES__';
 %                        $class = [$content->{$ct}->{schema}->{type}];
 %                    }
 %                    $result_types{$status_type}->{$_} = 1
-%                        for map { !defined($_)? "Unknown"
+%                        for map { !defined($_)? q{Hashref}
 %                                : $_          ? qq{$descriptor L<< $_ >>}
-%                                :               q{Hashref}
+%                                :               "Unknown"
 %                                } $class->@*;
 %                }
 %             }

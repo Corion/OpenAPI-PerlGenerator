@@ -92,7 +92,7 @@ Returns a L<< string >> on success.
 
 Transcribes audio into the input language.
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -102,7 +102,7 @@ Returns Hashref on success.
 
 Translates audio into English.
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 

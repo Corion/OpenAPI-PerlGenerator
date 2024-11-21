@@ -45,7 +45,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Update announcement banner configuration
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
@@ -57,7 +57,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 Update custom fields
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -77,7 +77,7 @@ Returns a L<< JIRA::API::PageBeanContextualConfiguration >> on success.
 
 Update custom field configurations
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -87,7 +87,7 @@ Returns Unknown on success.
 
 Update custom field value
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -147,7 +147,7 @@ Returns a L<< JIRA::API::ApplicationRole >> on success.
 
 Get attachment content
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -167,7 +167,7 @@ Returns a L<< JIRA::API::AttachmentSettings >> on success.
 
 Get attachment thumbnail
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -275,8 +275,8 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 Set comment property
 
-Returns Unknown on success.
-Returns Unknown on HTTP code 201.
+Returns Hashref on success.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -346,7 +346,7 @@ Returns a L<< JIRA::API::Configuration >> on success.
 Get selected time tracking provider
 
 Returns a L<< JIRA::API::TimeTrackingProvider >> on success.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -356,7 +356,7 @@ Returns Unknown on HTTP code 204.
 
 Select time tracking provider
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -477,7 +477,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 Remove gadget from dashboard
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
@@ -489,7 +489,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 Update gadget on dashboard
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
@@ -529,8 +529,8 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 Set dashboard item property
 
-Returns Unknown on success.
-Returns Unknown on HTTP code 201.
+Returns Hashref on success.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -667,7 +667,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 Update custom field
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -707,7 +707,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContextDefaultValue >> on success.
 
 Set custom field contexts default values
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -747,7 +747,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContextProjectMapping >> on success.
 
 Delete custom field context
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -757,7 +757,7 @@ Returns Unknown on HTTP code 204.
 
 Update custom field context
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -767,7 +767,7 @@ Returns Unknown on HTTP code 204.
 
 Add issue types to context
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -777,7 +777,7 @@ Returns Unknown on HTTP code 204.
 
 Remove issue types from context
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -817,7 +817,7 @@ Returns a L<< JIRA::API::CustomFieldUpdatedContextOptionsList >> on success.
 
 Reorder custom field options (context)
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -836,7 +836,7 @@ Delete custom field options (context)
 
 Assign custom field context to projects
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -846,7 +846,7 @@ Returns Unknown on HTTP code 204.
 
 Remove custom field context from projects
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -916,7 +916,7 @@ Returns a L<< JIRA::API::PageBeanIssueFieldOption >> on success.
 
 Delete issue field option
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -971,7 +971,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 409.
 
 Restore custom field from trash
 
-Returns Unknown on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
@@ -985,7 +985,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 Move custom field to trash
 
-Returns Unknown on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
@@ -1019,7 +1019,7 @@ Returns a L<< JIRA::API::FieldConfiguration >> on success.
 
 Delete field configuration
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1029,7 +1029,7 @@ Returns Unknown on HTTP code 204.
 
 Update field configuration
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1049,7 +1049,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationItem >> on success.
 
 Update field configuration items
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1099,7 +1099,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationSchemeProjects >> on success.
 
 Assign field configuration scheme to project
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1109,7 +1109,7 @@ Returns Unknown on HTTP code 204.
 
 Delete field configuration scheme
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1119,7 +1119,7 @@ Returns Unknown on HTTP code 204.
 
 Update field configuration scheme
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1129,7 +1129,7 @@ Returns Unknown on HTTP code 204.
 
 Assign issue types to field configurations
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1140,7 +1140,7 @@ Returns Unknown on HTTP code 204.
 Remove issue types from field configuration scheme
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -1272,7 +1272,7 @@ Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 Set columns
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -1302,7 +1302,7 @@ Returns a L<< JIRA::API::Filter >> on success.
 
 Change filter owner
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1567,7 +1567,7 @@ Returns a L<< JIRA::API::IssueBean >> on success.
 
 Edit issue
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1577,7 +1577,7 @@ Returns Unknown on HTTP code 204.
 
 Assign issue
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1676,7 +1676,7 @@ Returns a L<< JIRA::API::IssueUpdateMetadata >> on success.
 
 Send notification for issue
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1715,8 +1715,8 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 Set issue property
 
-Returns Unknown on success.
-Returns Unknown on HTTP code 201.
+Returns Hashref on success.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -1775,7 +1775,7 @@ Returns a L<< JIRA::API::RemoteIssueLink >> on success.
 
 Update remote issue link by ID
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1795,7 +1795,7 @@ Returns a L<< JIRA::API::Transitions >> on success.
 
 Transition issue
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1824,7 +1824,7 @@ Returns a L<< JIRA::API::Votes >> on success.
 
 Add vote
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1853,7 +1853,7 @@ Returns a L<< JIRA::API::Watchers >> on success.
 
 Add watcher
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -1941,8 +1941,8 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 Set worklog property
 
-Returns Unknown on success.
-Returns Unknown on HTTP code 201.
+Returns Hashref on success.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -1952,7 +1952,7 @@ Returns Unknown on HTTP code 201.
 
 Create issue link
 
-Returns Unknown on HTTP code 201.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -2168,8 +2168,8 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 Set issue type property
 
-Returns Unknown on success.
-Returns Unknown on HTTP code 201.
+Returns Hashref on success.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -2219,7 +2219,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeSchemeProjects >> on success.
 
 Assign issue type scheme to project
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2229,7 +2229,7 @@ Returns Unknown on HTTP code 204.
 
 Delete issue type scheme
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2239,7 +2239,7 @@ Returns Unknown on HTTP code 204.
 
 Update issue type scheme
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2249,7 +2249,7 @@ Returns Unknown on HTTP code 204.
 
 Add issue types to issue type scheme
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2259,7 +2259,7 @@ Returns Unknown on HTTP code 204.
 
 Change order of issue types
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2269,7 +2269,7 @@ Returns Unknown on HTTP code 204.
 
 Remove issue type from issue type scheme
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2319,7 +2319,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemesProjects >> on success.
 
 Assign issue type screen scheme to project
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2329,7 +2329,7 @@ Returns Unknown on HTTP code 204.
 
 Delete issue type screen scheme
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2339,7 +2339,7 @@ Returns Unknown on HTTP code 204.
 
 Update issue type screen scheme
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2349,7 +2349,7 @@ Returns Unknown on HTTP code 204.
 
 Append mappings to issue type screen scheme
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2359,7 +2359,7 @@ Returns Unknown on HTTP code 204.
 
 Update issue type screen scheme default screen scheme
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2369,7 +2369,7 @@ Returns Unknown on HTTP code 204.
 
 Remove mappings from issue type screen scheme
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2429,7 +2429,7 @@ Returns a L<< JIRA::API::PageBeanJqlFunctionPrecomputationBean >> on success.
 
 Update precomputations
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -2545,7 +2545,7 @@ Returns a L<< string >> on success.
 
 Set preference
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2555,7 +2555,7 @@ Returns Unknown on HTTP code 204.
 
 Delete locale
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2575,7 +2575,7 @@ Returns a L<< JIRA::API::Locale >> on success.
 
 Set locale
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -2641,7 +2641,7 @@ Returns a L<< JIRA::API::NotificationScheme >> on success.
 Update notification scheme
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -2655,7 +2655,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 Add notifications to notification scheme
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -2669,7 +2669,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 Delete notification scheme
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -2683,7 +2683,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 Remove notification from notification scheme
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -2840,7 +2840,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Set default priority
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -2854,7 +2854,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 Move priorities
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -2904,7 +2904,7 @@ Returns a L<< JIRA::API::Priority >> on success.
 Update priority
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -3026,7 +3026,7 @@ Returns a L<< JIRA::API::Project >> on success.
 
 Archive project
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -3036,7 +3036,7 @@ Returns Unknown on HTTP code 204.
 
 Set project avatar
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -3154,8 +3154,8 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 Set project property
 
-Returns Unknown on success.
-Returns Unknown on HTTP code 201.
+Returns Hashref on success.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -3175,7 +3175,7 @@ Returns a L<< JIRA::API::Project >> on success.
 
 Get project roles for project
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -3284,7 +3284,7 @@ Returns a L<< JIRA::API::ProjectEmailAddress >> on success.
 
 Set project's sender email
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -3457,7 +3457,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Set default resolution
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -3471,7 +3471,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 Move resolutions
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -3521,7 +3521,7 @@ Returns a L<< JIRA::API::Resolution >> on success.
 Update resolution
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -3643,7 +3643,7 @@ Returns a L<< JIRA::API::Screen >> on HTTP code 201.
 
 Add field to default screen
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -3750,7 +3750,7 @@ Remove screen tab field
 
 Move screen tab field
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -3760,7 +3760,7 @@ Returns Unknown on HTTP code 204.
 
 Move screen tab
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -3799,7 +3799,7 @@ Delete screen scheme
 
 Update screen scheme
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -3859,7 +3859,7 @@ Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 Set issue navigator default columns
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -3909,7 +3909,7 @@ Returns a L<< JIRA::API::StatusCategory >> on success.
 
 Bulk delete Statuses
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -3939,7 +3939,7 @@ Returns an array of L<< JIRA::API::JiraStatus >> on success.
 
 Bulk update statuses
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -3970,7 +3970,7 @@ Returns a L<< JIRA::API::TaskProgressBeanObject >> on success.
 Cancel task
 
 Returns an array of L<< JIRA::API:: >> on error.
-Returns Unknown on HTTP code 202.
+Returns Hashref on HTTP code 202.
 Returns an array of L<< JIRA::API:: >> on HTTP code 401.
 Returns an array of L<< JIRA::API:: >> on HTTP code 403.
 Returns an array of L<< JIRA::API:: >> on HTTP code 404.
@@ -4003,7 +4003,7 @@ Returns a L<< JIRA::API::UiModificationIdentifiers >> on HTTP code 201.
 
 Delete UI modification
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -4013,7 +4013,7 @@ Returns Unknown on HTTP code 204.
 
 Update UI modification
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -4052,7 +4052,7 @@ Delete avatar
 
 Get avatar image by type
 
-Returns Unknown on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
@@ -4065,7 +4065,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 Get avatar image by ID
 
-Returns Unknown on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
@@ -4079,7 +4079,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 Get avatar image by owner
 
-Returns Unknown on success.
+Returns Hashref on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
@@ -4181,7 +4181,7 @@ Returns an array of L<< JIRA::API::ColumnItem >> on success.
 
 Set user default columns
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 
@@ -4270,8 +4270,8 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 
 Set user property
 
-Returns Unknown on success.
-Returns Unknown on HTTP code 201.
+Returns Hashref on success.
+Returns Hashref on HTTP code 201.
 
 =cut
 
@@ -4380,7 +4380,7 @@ Returns a L<< JIRA::API::Version >> on success.
 
 Merge versions
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -4410,7 +4410,7 @@ Returns a L<< JIRA::API::VersionIssueCounts >> on success.
 
 Delete and replace version
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -4634,7 +4634,7 @@ Returns a L<< JIRA::API::ContainerOfWorkflowSchemeAssociations >> on success.
 
 Assign workflow scheme to project
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -4644,7 +4644,7 @@ Returns Unknown on HTTP code 204.
 
 Delete workflow scheme
 
-Returns Unknown on HTTP code 204.
+Returns Hashref on HTTP code 204.
 
 =cut
 
@@ -5012,7 +5012,7 @@ Returns a L<< JIRA::API::ErrorMessage >> on HTTP code 401.
 
 Bulk update custom field value
 
-Returns Unknown on success.
+Returns Hashref on success.
 
 =cut
 

@@ -970,7 +970,7 @@ The timestamp granularities to populate for this transcription. C<response_forma
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
@@ -1081,7 +1081,7 @@ The sampling temperature, between 0 and 1. Higher values like 0.8 will make the 
 
 =back
 
-Returns Hashref on success.
+Returns Unknown on success.
 
 =cut
 
