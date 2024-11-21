@@ -621,6 +621,7 @@ has 'server' => (
 
 % for my $method ($methods->@*) {
 % my $elt = $method->{elt};
+% my $parameters = $elt->{parameters};
 % my $is_streaming =    exists $elt->{responses}->{200}
 %                    && $elt->{responses}->{200}->{content}
 %                    && [keys $elt->{responses}->{200}->{content}->%*]->[0] eq 'application/x-ndjson'
@@ -652,7 +653,22 @@ has 'server' => (
       Future::Mojo->done( defined $res );
   } until => sub($done) { $done->get };
 % } else {
+%     if( $parameters and $parameters->@* ) {
+%         my $required = $elt->{required} // [];
+%         my %seen;
+  my $res = $client-><%= $method->{name} %>(
+%         for my $p ($required->@*) {
+      '<%= $p->{name} %>' => '<%= $p->{default} // '...' %>', # required
+%             $seen{ $p->{name} } = 1;
+%         }
+%         for my $p ($parameters->@*) {
+%             next if $seen{ $p->{name} };
+      '<%= $p->{name} %>' => '<%= $p->{default} // '...' %>',
+%         }
+  )->get;
+%     } else {
   my $res = $client-><%= $method->{name} %>()->get;
+%     }
 % }
 
 % if( $elt->{summary}  and $elt->{summary} =~ /\S/ ) {
@@ -660,7 +676,6 @@ has 'server' => (
 
 %}
 %# List/add the invocation parameters
-% my $parameters = $elt->{parameters};
 % if( $parameters ) { # parameters
 =head3 Parameters
 

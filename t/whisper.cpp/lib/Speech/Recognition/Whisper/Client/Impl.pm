@@ -103,7 +103,7 @@ Temperature
 =back
 
 Returns a L<< Speech::Recognition::Whisper::Transcription >> on success.
-Returns a L<< Speech::Recognition::Whisper::Error >> on HTTP code default.
+Returns a L<< Speech::Recognition::Whisper::Error >> otherwise.
 
 =cut
 
@@ -219,7 +219,7 @@ Temperature
 =back
 
 Returns a L<< Speech::Recognition::Whisper::SuccessfulLoad >> on success.
-Returns a L<< Speech::Recognition::Whisper::Error >> on HTTP code default.
+Returns a L<< Speech::Recognition::Whisper::Error >> otherwise.
 
 =cut
 

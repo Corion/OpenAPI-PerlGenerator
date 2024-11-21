@@ -95,7 +95,9 @@ has 'server' => (
 
 =head2 C<< checkBlob >>
 
-  my $res = $client->checkBlob()->get;
+  my $res = $client->checkBlob(
+      'digest' => '...',
+  )->get;
 
 Check to see if a blob exists on the Ollama server which is useful when creating models.
 
@@ -179,7 +181,9 @@ sub checkBlob( $self, %options ) {
 
 =head2 C<< createBlob >>
 
-  my $res = $client->createBlob()->get;
+  my $res = $client->createBlob(
+      'digest' => '...',
+  )->get;
 
 Create a blob from a file. Returns the server file path.
 

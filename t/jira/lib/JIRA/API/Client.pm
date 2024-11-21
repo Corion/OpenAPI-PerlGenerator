@@ -33,7 +33,8 @@ JIRA::API::Client - Client for JIRA::API
 Get announcement banner configuration
 
 Returns a L<< JIRA::API::AnnouncementBannerConfiguration >> on success.
-Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -43,8 +44,10 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Update announcement banner configuration
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -54,7 +57,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Update custom fields
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -84,7 +87,7 @@ Returns Unknown on success.
 
 Update custom field value
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -273,6 +276,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 Set comment property
 
 Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -282,7 +286,7 @@ Returns Unknown on success.
 
 Create component
 
-Returns a L<< JIRA::API::ProjectComponent >> on success.
+Returns a L<< JIRA::API::ProjectComponent >> on HTTP code 201.
 
 =cut
 
@@ -341,7 +345,8 @@ Returns a L<< JIRA::API::Configuration >> on success.
 
 Get selected time tracking provider
 
-Returns Unknown, a L<< JIRA::API::TimeTrackingProvider >> on success.
+Returns a L<< JIRA::API::TimeTrackingProvider >> on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -351,7 +356,7 @@ Returns Unknown, a L<< JIRA::API::TimeTrackingProvider >> on success.
 
 Select time tracking provider
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -403,6 +408,7 @@ Get all dashboards
 
 Returns a L<< JIRA::API::PageOfDashboards >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -414,6 +420,7 @@ Create dashboard
 
 Returns a L<< JIRA::API::Dashboard >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -425,6 +432,7 @@ Get available gadgets
 
 Returns a L<< JIRA::API::AvailableDashboardGadgetsResponse >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -436,6 +444,7 @@ Search for dashboards
 
 Returns a L<< JIRA::API::PageBeanDashboard >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -446,7 +455,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 Get gadgets
 
 Returns a L<< JIRA::API::DashboardGadgetResponse >> on success.
-Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -458,6 +467,7 @@ Add gadget to dashboard
 
 Returns a L<< JIRA::API::DashboardGadget >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -467,8 +477,8 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Remove gadget from dashboard
 
-Returns Unknown on success.
-Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -478,8 +488,9 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Update gadget on dashboard
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -519,6 +530,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 Set dashboard item property
 
 Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -529,6 +541,7 @@ Returns Unknown on success.
 Delete dashboard
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -540,6 +553,7 @@ Get dashboard
 
 Returns a L<< JIRA::API::Dashboard >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -551,6 +565,8 @@ Update dashboard
 
 Returns a L<< JIRA::API::Dashboard >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -562,6 +578,8 @@ Copy dashboard
 
 Returns a L<< JIRA::API::Dashboard >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -583,6 +601,7 @@ Analyse Jira expression
 
 Returns a L<< JIRA::API::JiraExpressionsAnalysis >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -594,6 +613,7 @@ Evaluate Jira expression
 
 Returns a L<< JIRA::API::JiraExpressionResult >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -613,7 +633,7 @@ Returns an array of L<< JIRA::API::FieldDetails >> on success.
 
 Create custom field
 
-Returns a L<< JIRA::API::FieldDetails >> on success.
+Returns a L<< JIRA::API::FieldDetails >> on HTTP code 201.
 
 =cut
 
@@ -625,6 +645,7 @@ Get fields paginated
 
 Returns a L<< JIRA::API::PageBeanField >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -636,6 +657,7 @@ Get fields in trash paginated
 
 Returns a L<< JIRA::API::PageBeanField >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -645,7 +667,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Update custom field
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -665,7 +687,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContext >> on success.
 
 Create custom field context
 
-Returns a L<< JIRA::API::CreateCustomFieldContext >> on success.
+Returns a L<< JIRA::API::CreateCustomFieldContext >> on HTTP code 201.
 
 =cut
 
@@ -685,7 +707,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContextDefaultValue >> on success.
 
 Set custom field contexts default values
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -725,7 +747,7 @@ Returns a L<< JIRA::API::PageBeanCustomFieldContextProjectMapping >> on success.
 
 Delete custom field context
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -735,7 +757,7 @@ Returns Unknown on success.
 
 Update custom field context
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -745,7 +767,7 @@ Returns Unknown on success.
 
 Add issue types to context
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -755,7 +777,7 @@ Returns Unknown on success.
 
 Remove issue types from context
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -795,7 +817,7 @@ Returns a L<< JIRA::API::CustomFieldUpdatedContextOptionsList >> on success.
 
 Reorder custom field options (context)
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -814,7 +836,7 @@ Delete custom field options (context)
 
 Assign custom field context to projects
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -824,7 +846,7 @@ Returns Unknown on success.
 
 Remove custom field context from projects
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -894,7 +916,7 @@ Returns a L<< JIRA::API::PageBeanIssueFieldOption >> on success.
 
 Delete issue field option
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -924,7 +946,7 @@ Returns a L<< JIRA::API::IssueFieldOption >> on success.
 
 Replace issue field option
 
-Returns a L<< JIRA::API::TaskProgressBeanRemoveOptionFromIssuesResult >> on redirect.
+Returns a L<< JIRA::API::TaskProgressBeanRemoveOptionFromIssuesResult >> on HTTP code 303.
 
 =cut
 
@@ -935,7 +957,11 @@ Returns a L<< JIRA::API::TaskProgressBeanRemoveOptionFromIssuesResult >> on redi
 Delete custom field
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on HTTP code 303.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 409.
 
 =cut
 
@@ -947,6 +973,9 @@ Restore custom field from trash
 
 Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -958,6 +987,9 @@ Move custom field to trash
 
 Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -987,7 +1019,7 @@ Returns a L<< JIRA::API::FieldConfiguration >> on success.
 
 Delete field configuration
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -997,7 +1029,7 @@ Returns Unknown on success.
 
 Update field configuration
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1017,7 +1049,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationItem >> on success.
 
 Update field configuration items
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1037,7 +1069,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationScheme >> on success.
 
 Create field configuration scheme
 
-Returns a L<< JIRA::API::FieldConfigurationScheme >> on success.
+Returns a L<< JIRA::API::FieldConfigurationScheme >> on HTTP code 201.
 
 =cut
 
@@ -1067,7 +1099,7 @@ Returns a L<< JIRA::API::PageBeanFieldConfigurationSchemeProjects >> on success.
 
 Assign field configuration scheme to project
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1077,7 +1109,7 @@ Returns Unknown on success.
 
 Delete field configuration scheme
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1087,7 +1119,7 @@ Returns Unknown on success.
 
 Update field configuration scheme
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1097,7 +1129,7 @@ Returns Unknown on success.
 
 Assign issue types to field configurations
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1107,8 +1139,11 @@ Returns Unknown on success.
 
 Remove issue types from field configuration scheme
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -1267,7 +1302,7 @@ Returns a L<< JIRA::API::Filter >> on success.
 
 Change filter owner
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1287,7 +1322,7 @@ Returns an array of L<< JIRA::API::SharePermission >> on success.
 
 Add share permission
 
-Returns an array of L<< JIRA::API::SharePermission >> on success.
+Returns an array of L<< JIRA::API::SharePermission >> on HTTP code 201.
 
 =cut
 
@@ -1335,7 +1370,7 @@ Returns a L<< JIRA::API::Group >> on success.
 
 Create group
 
-Returns a L<< JIRA::API::Group >> on success.
+Returns a L<< JIRA::API::Group >> on HTTP code 201.
 
 =cut
 
@@ -1374,7 +1409,7 @@ Remove user from group
 
 Add user to group
 
-Returns a L<< JIRA::API::Group >> on success.
+Returns a L<< JIRA::API::Group >> on HTTP code 201.
 
 =cut
 
@@ -1414,8 +1449,10 @@ Returns a L<< JIRA::API::License >> on success.
 
 Create issue
 
-Returns a L<< JIRA::API::CreatedIssue >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::CreatedIssue >> on HTTP code 201.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -1425,8 +1462,8 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Bulk create issue
 
-Returns a L<< JIRA::API::CreatedIssues >> on success.
 Returns a L<< JIRA::API::CreatedIssues >> on error.
+Returns a L<< JIRA::API::CreatedIssues >> on HTTP code 201.
 
 =cut
 
@@ -1457,6 +1494,7 @@ Returns a L<< JIRA::API::IssuePickerSuggestions >> on success.
 Bulk set issues properties by list
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -1467,6 +1505,8 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 Bulk set issue properties by issue
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -1477,6 +1517,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 Bulk delete issue property
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -1487,6 +1528,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 Bulk set issue property
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -1525,7 +1567,7 @@ Returns a L<< JIRA::API::IssueBean >> on success.
 
 Edit issue
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1535,7 +1577,7 @@ Returns Unknown on success.
 
 Assign issue
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1585,7 +1627,7 @@ Returns a L<< JIRA::API::PageOfComments >> on success.
 
 Add comment
 
-Returns a L<< JIRA::API::Comment >> on success.
+Returns a L<< JIRA::API::Comment >> on HTTP code 201.
 
 =cut
 
@@ -1634,7 +1676,7 @@ Returns a L<< JIRA::API::IssueUpdateMetadata >> on success.
 
 Send notification for issue
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1674,6 +1716,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 Set issue property
 
 Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -1703,6 +1746,7 @@ Returns a L<< JIRA::API::RemoteIssueLink >> on success.
 Create or update remote issue link
 
 Returns a L<< JIRA::API::RemoteIssueLinkIdentifies >> on success.
+Returns a L<< JIRA::API::RemoteIssueLinkIdentifies >> on HTTP code 201.
 
 =cut
 
@@ -1731,7 +1775,7 @@ Returns a L<< JIRA::API::RemoteIssueLink >> on success.
 
 Update remote issue link by ID
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1751,7 +1795,7 @@ Returns a L<< JIRA::API::Transitions >> on success.
 
 Transition issue
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1780,7 +1824,7 @@ Returns a L<< JIRA::API::Votes >> on success.
 
 Add vote
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1809,7 +1853,7 @@ Returns a L<< JIRA::API::Watchers >> on success.
 
 Add watcher
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1829,7 +1873,7 @@ Returns a L<< JIRA::API::PageOfWorklogs >> on success.
 
 Add worklog
 
-Returns a L<< JIRA::API::Worklog >> on success.
+Returns a L<< JIRA::API::Worklog >> on HTTP code 201.
 
 =cut
 
@@ -1898,6 +1942,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 Set worklog property
 
 Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -1907,7 +1952,7 @@ Returns Unknown on success.
 
 Create issue link
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -1946,7 +1991,7 @@ Returns a L<< JIRA::API::IssueLinkTypes >> on success.
 
 Create issue link type
 
-Returns a L<< JIRA::API::IssueLinkType >> on success.
+Returns a L<< JIRA::API::IssueLinkType >> on HTTP code 201.
 
 =cut
 
@@ -2025,7 +2070,7 @@ Returns an array of L<< JIRA::API::IssueTypeDetails >> on success.
 
 Create issue type
 
-Returns a L<< JIRA::API::IssueTypeDetails >> on success.
+Returns a L<< JIRA::API::IssueTypeDetails >> on HTTP code 201.
 
 =cut
 
@@ -2084,7 +2129,7 @@ Returns an array of L<< JIRA::API::IssueTypeDetails >> on success.
 
 Load issue type avatar
 
-Returns a L<< JIRA::API::Avatar >> on success.
+Returns a L<< JIRA::API::Avatar >> on HTTP code 201.
 
 =cut
 
@@ -2124,6 +2169,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 Set issue type property
 
 Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -2143,7 +2189,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeScheme >> on success.
 
 Create issue type scheme
 
-Returns a L<< JIRA::API::IssueTypeSchemeID >> on success.
+Returns a L<< JIRA::API::IssueTypeSchemeID >> on HTTP code 201.
 
 =cut
 
@@ -2173,7 +2219,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeSchemeProjects >> on success.
 
 Assign issue type scheme to project
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2183,7 +2229,7 @@ Returns Unknown on success.
 
 Delete issue type scheme
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2193,7 +2239,7 @@ Returns Unknown on success.
 
 Update issue type scheme
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2203,7 +2249,7 @@ Returns Unknown on success.
 
 Add issue types to issue type scheme
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2213,7 +2259,7 @@ Returns Unknown on success.
 
 Change order of issue types
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2223,7 +2269,7 @@ Returns Unknown on success.
 
 Remove issue type from issue type scheme
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2243,7 +2289,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeScreenScheme >> on success.
 
 Create issue type screen scheme
 
-Returns a L<< JIRA::API::IssueTypeScreenSchemeId >> on success.
+Returns a L<< JIRA::API::IssueTypeScreenSchemeId >> on HTTP code 201.
 
 =cut
 
@@ -2273,7 +2319,7 @@ Returns a L<< JIRA::API::PageBeanIssueTypeScreenSchemesProjects >> on success.
 
 Assign issue type screen scheme to project
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2283,7 +2329,7 @@ Returns Unknown on success.
 
 Delete issue type screen scheme
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2293,7 +2339,7 @@ Returns Unknown on success.
 
 Update issue type screen scheme
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2303,7 +2349,7 @@ Returns Unknown on success.
 
 Append mappings to issue type screen scheme
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2313,7 +2359,7 @@ Returns Unknown on success.
 
 Update issue type screen scheme default screen scheme
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2323,7 +2369,7 @@ Returns Unknown on success.
 
 Remove mappings from issue type screen scheme
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2426,6 +2472,8 @@ Sanitize JQL queries
 
 Returns a L<< JIRA::API::SanitizedJqlQueries >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -2467,6 +2515,8 @@ Get my permissions
 
 Returns a L<< JIRA::API::Permissions >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -2495,7 +2545,7 @@ Returns a L<< string >> on success.
 
 Set preference
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2505,7 +2555,7 @@ Returns Unknown on success.
 
 Delete locale
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2525,7 +2575,7 @@ Returns a L<< JIRA::API::Locale >> on success.
 
 Set locale
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2555,8 +2605,10 @@ Returns a L<< JIRA::API::PageBeanNotificationScheme >> on success.
 
 Create notification scheme
 
-Returns a L<< JIRA::API::NotificationSchemeId >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::NotificationSchemeId >> on HTTP code 201.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -2568,6 +2620,7 @@ Get projects using notification schemes paginated
 
 Returns a L<< JIRA::API::PageBeanNotificationSchemeAndProjectMappingJsonBean >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -2587,8 +2640,11 @@ Returns a L<< JIRA::API::NotificationScheme >> on success.
 
 Update notification scheme
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -2598,8 +2654,11 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Add notifications to notification scheme
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -2609,8 +2668,11 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Delete notification scheme
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -2620,8 +2682,11 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Remove notification from notification scheme
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -2643,6 +2708,7 @@ Get bulk permissions
 
 Returns a L<< JIRA::API::BulkPermissionGrants >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -2672,7 +2738,7 @@ Returns a L<< JIRA::API::PermissionSchemes >> on success.
 
 Create permission scheme
 
-Returns a L<< JIRA::API::PermissionScheme >> on success.
+Returns a L<< JIRA::API::PermissionScheme >> on HTTP code 201.
 
 =cut
 
@@ -2721,7 +2787,7 @@ Returns a L<< JIRA::API::PermissionGrants >> on success.
 
 Create permission grant
 
-Returns a L<< JIRA::API::PermissionGrant >> on success.
+Returns a L<< JIRA::API::PermissionGrant >> on HTTP code 201.
 
 =cut
 
@@ -2760,8 +2826,10 @@ Returns an array of L<< JIRA::API::Priority >> on success.
 
 Create priority
 
-Returns a L<< JIRA::API::PriorityId >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::PriorityId >> on HTTP code 201.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -2771,8 +2839,11 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Set default priority
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -2782,8 +2853,11 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Move priorities
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -2794,7 +2868,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 Search priorities
 
 Returns a L<< JIRA::API::PageBeanPriority >> on success.
-Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -2805,7 +2879,11 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 Delete priority
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on HTTP code 303.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 409.
 
 =cut
 
@@ -2825,8 +2903,11 @@ Returns a L<< JIRA::API::Priority >> on success.
 
 Update priority
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -2846,7 +2927,7 @@ Returns an array of L<< JIRA::API::Project >> on success.
 
 Create project
 
-Returns a L<< JIRA::API::ProjectIdentifiers >> on success.
+Returns a L<< JIRA::API::ProjectIdentifiers >> on HTTP code 201.
 
 =cut
 
@@ -2945,7 +3026,7 @@ Returns a L<< JIRA::API::Project >> on success.
 
 Archive project
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2955,7 +3036,7 @@ Returns Unknown on success.
 
 Set project avatar
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -2974,7 +3055,7 @@ Delete project avatar
 
 Load project avatar
 
-Returns a L<< JIRA::API::Avatar >> on success.
+Returns a L<< JIRA::API::Avatar >> on HTTP code 201.
 
 =cut
 
@@ -3014,7 +3095,7 @@ Returns an array of L<< JIRA::API::ProjectComponent >> on success.
 
 Delete project asynchronously
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on HTTP code 303.
 
 =cut
 
@@ -3074,6 +3155,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 Set project property
 
 Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -3202,7 +3284,7 @@ Returns a L<< JIRA::API::ProjectEmailAddress >> on success.
 
 Set project's sender email
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -3282,7 +3364,7 @@ Returns an array of L<< JIRA::API::ProjectCategory >> on success.
 
 Create project category
 
-Returns a L<< JIRA::API::ProjectCategory >> on success.
+Returns a L<< JIRA::API::ProjectCategory >> on HTTP code 201.
 
 =cut
 
@@ -3361,8 +3443,10 @@ Returns an array of L<< JIRA::API::Resolution >> on success.
 
 Create resolution
 
-Returns a L<< JIRA::API::ResolutionId >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ResolutionId >> on HTTP code 201.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -3372,8 +3456,11 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Set default resolution
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -3383,8 +3470,11 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 
 Move resolutions
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -3395,7 +3485,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 Search resolutions
 
 Returns a L<< JIRA::API::PageBeanResolutionJsonBean >> on success.
-Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -3406,7 +3496,11 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 Delete resolution
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on HTTP code 303.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 409.
 
 =cut
 
@@ -3426,8 +3520,11 @@ Returns a L<< JIRA::API::Resolution >> on success.
 
 Update resolution
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -3536,7 +3633,7 @@ Returns a L<< JIRA::API::PageBeanScreen >> on success.
 
 Create screen
 
-Returns a L<< JIRA::API::Screen >> on success.
+Returns a L<< JIRA::API::Screen >> on HTTP code 201.
 
 =cut
 
@@ -3653,7 +3750,7 @@ Remove screen tab field
 
 Move screen tab field
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -3663,7 +3760,7 @@ Returns Unknown on success.
 
 Move screen tab
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -3683,7 +3780,7 @@ Returns a L<< JIRA::API::PageBeanScreenScheme >> on success.
 
 Create screen scheme
 
-Returns a L<< JIRA::API::ScreenSchemeId >> on success.
+Returns a L<< JIRA::API::ScreenSchemeId >> on HTTP code 201.
 
 =cut
 
@@ -3702,7 +3799,7 @@ Delete screen scheme
 
 Update screen scheme
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -3812,7 +3909,7 @@ Returns a L<< JIRA::API::StatusCategory >> on success.
 
 Bulk delete Statuses
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -3842,7 +3939,7 @@ Returns an array of L<< JIRA::API::JiraStatus >> on success.
 
 Bulk update statuses
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -3872,8 +3969,11 @@ Returns a L<< JIRA::API::TaskProgressBeanObject >> on success.
 
 Cancel task
 
-Returns Unknown on success.
 Returns an array of L<< JIRA::API:: >> on error.
+Returns Unknown on HTTP code 202.
+Returns an array of L<< JIRA::API:: >> on HTTP code 401.
+Returns an array of L<< JIRA::API:: >> on HTTP code 403.
+Returns an array of L<< JIRA::API:: >> on HTTP code 404.
 
 =cut
 
@@ -3893,7 +3993,7 @@ Returns a L<< JIRA::API::PageBeanUiModificationDetails >> on success.
 
 Create UI modification
 
-Returns a L<< JIRA::API::UiModificationIdentifiers >> on success.
+Returns a L<< JIRA::API::UiModificationIdentifiers >> on HTTP code 201.
 
 =cut
 
@@ -3903,7 +4003,7 @@ Returns a L<< JIRA::API::UiModificationIdentifiers >> on success.
 
 Delete UI modification
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -3913,7 +4013,7 @@ Returns Unknown on success.
 
 Update UI modification
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -3933,7 +4033,7 @@ Returns a L<< JIRA::API::Avatars >> on success.
 
 Load avatar
 
-Returns a L<< JIRA::API::Avatar >> on success.
+Returns a L<< JIRA::API::Avatar >> on HTTP code 201.
 
 =cut
 
@@ -3953,7 +4053,9 @@ Delete avatar
 Get avatar image by type
 
 Returns Unknown on success.
-Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -3965,6 +4067,9 @@ Get avatar image by ID
 
 Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -3976,6 +4081,9 @@ Get avatar image by owner
 
 Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -4004,7 +4112,7 @@ Returns a L<< JIRA::API::User >> on success.
 
 Create user
 
-Returns a L<< JIRA::API::User >> on success.
+Returns a L<< JIRA::API::User >> on HTTP code 201.
 
 =cut
 
@@ -4163,6 +4271,7 @@ Returns a L<< JIRA::API::EntityProperty >> on success.
 Set user property
 
 Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -4232,7 +4341,7 @@ Returns an array of L<< JIRA::API::User >> on success.
 
 Create version
 
-Returns a L<< JIRA::API::Version >> on success.
+Returns a L<< JIRA::API::Version >> on HTTP code 201.
 
 =cut
 
@@ -4271,7 +4380,7 @@ Returns a L<< JIRA::API::Version >> on success.
 
 Merge versions
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -4301,7 +4410,7 @@ Returns a L<< JIRA::API::VersionIssueCounts >> on success.
 
 Delete and replace version
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -4322,6 +4431,7 @@ Returns a L<< JIRA::API::VersionUnresolvedIssuesCount >> on success.
 Delete webhooks by ID
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -4333,6 +4443,7 @@ Get dynamic webhooks for app
 
 Returns a L<< JIRA::API::PageBeanWebhook >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -4344,6 +4455,7 @@ Register dynamic webhooks
 
 Returns a L<< JIRA::API::ContainerForRegisteredWebhooks >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -4355,6 +4467,7 @@ Get failed webhooks
 
 Returns a L<< JIRA::API::FailedWebhooks >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -4366,6 +4479,7 @@ Extend webhook life
 
 Returns a L<< JIRA::API::WebhooksExpirationDate >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -4385,7 +4499,7 @@ Returns an array of L<< JIRA::API::DeprecatedWorkflow >> on success.
 
 Create workflow
 
-Returns a L<< JIRA::API::WorkflowIDs >> on success.
+Returns a L<< JIRA::API::WorkflowIDs >> on HTTP code 201.
 
 =cut
 
@@ -4397,6 +4511,7 @@ Get workflow transition rule configurations
 
 Returns a L<< JIRA::API::PageBeanWorkflowTransitionRules >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -4408,6 +4523,7 @@ Update workflow transition rule configurations
 
 Returns a L<< JIRA::API::WorkflowTransitionRulesUpdateErrors >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -4419,6 +4535,7 @@ Delete workflow transition rule configurations
 
 Returns a L<< JIRA::API::WorkflowTransitionRulesUpdateErrors >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -4429,7 +4546,7 @@ Returns a L<< JIRA::API::ErrorCollection >> on error.
 Get workflows paginated
 
 Returns a L<< JIRA::API::PageBeanWorkflow >> on success.
-Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -4497,7 +4614,7 @@ Returns a L<< JIRA::API::PageBeanWorkflowScheme >> on success.
 
 Create workflow scheme
 
-Returns a L<< JIRA::API::WorkflowScheme >> on success.
+Returns a L<< JIRA::API::WorkflowScheme >> on HTTP code 201.
 
 =cut
 
@@ -4517,7 +4634,7 @@ Returns a L<< JIRA::API::ContainerOfWorkflowSchemeAssociations >> on success.
 
 Assign workflow scheme to project
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -4527,7 +4644,7 @@ Returns Unknown on success.
 
 Delete workflow scheme
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -4557,7 +4674,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 Create draft workflow scheme
 
-Returns a L<< JIRA::API::WorkflowScheme >> on success.
+Returns a L<< JIRA::API::WorkflowScheme >> on HTTP code 201.
 
 =cut
 
@@ -4686,7 +4803,7 @@ Returns a L<< JIRA::API::WorkflowScheme >> on success.
 
 Publish draft workflow scheme
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on HTTP code 303.
 
 =cut
 
@@ -4815,7 +4932,7 @@ Returns a L<< JIRA::API::ChangedWorklogs >> on success.
 Get app properties
 
 Returns a L<< JIRA::API::PropertyKeys >> on success.
-Returns a L<< JIRA::API::OperationMessage >> on error.
+Returns a L<< JIRA::API::OperationMessage >> on HTTP code 401.
 
 =cut
 
@@ -4826,6 +4943,8 @@ Returns a L<< JIRA::API::OperationMessage >> on error.
 Delete app property
 
 Returns a L<< JIRA::API::OperationMessage >> on error.
+Returns a L<< JIRA::API::OperationMessage >> on HTTP code 401.
+Returns a L<< JIRA::API::OperationMessage >> on HTTP code 404.
 
 =cut
 
@@ -4837,6 +4956,8 @@ Get app property
 
 Returns a L<< JIRA::API::EntityProperty >> on success.
 Returns a L<< JIRA::API::OperationMessage >> on error.
+Returns a L<< JIRA::API::OperationMessage >> on HTTP code 401.
+Returns a L<< JIRA::API::OperationMessage >> on HTTP code 404.
 
 =cut
 
@@ -4848,6 +4969,8 @@ Set app property
 
 Returns a L<< JIRA::API::OperationMessage >> on success.
 Returns a L<< JIRA::API::OperationMessage >> on error.
+Returns a L<< JIRA::API::OperationMessage >> on HTTP code 201.
+Returns a L<< JIRA::API::OperationMessage >> on HTTP code 401.
 
 =cut
 
@@ -4857,7 +4980,7 @@ Returns a L<< JIRA::API::OperationMessage >> on error.
 
 Remove modules
 
-Returns a L<< JIRA::API::ErrorMessage >> on error.
+Returns a L<< JIRA::API::ErrorMessage >> on HTTP code 401.
 
 =cut
 
@@ -4868,7 +4991,7 @@ Returns a L<< JIRA::API::ErrorMessage >> on error.
 Get modules
 
 Returns a L<< JIRA::API::ConnectModules >> on success.
-Returns a L<< JIRA::API::ErrorMessage >> on error.
+Returns a L<< JIRA::API::ErrorMessage >> on HTTP code 401.
 
 =cut
 
@@ -4879,6 +5002,7 @@ Returns a L<< JIRA::API::ErrorMessage >> on error.
 Register modules
 
 Returns a L<< JIRA::API::ErrorMessage >> on error.
+Returns a L<< JIRA::API::ErrorMessage >> on HTTP code 401.
 
 =cut
 

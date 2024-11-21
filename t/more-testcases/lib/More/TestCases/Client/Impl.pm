@@ -76,7 +76,9 @@ has 'server' => (
 
 =head2 C<< withCookie >>
 
-  my $res = $client->withCookie()->get;
+  my $res = $client->withCookie(
+      'session-id' => '...',
+  )->get;
 
 =head3 Parameters
 
@@ -156,7 +158,9 @@ sub withCookie( $self, %options ) {
 
 =head2 C<< withHeader >>
 
-  my $res = $client->withHeader()->get;
+  my $res = $client->withHeader(
+      'X-token' => '...',
+  )->get;
 
 =head3 Parameters
 

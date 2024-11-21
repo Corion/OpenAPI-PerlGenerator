@@ -208,7 +208,12 @@ has 'server' => (
 
 =head2 C<< listAssistants >>
 
-  my $res = $client->listAssistants()->get;
+  my $res = $client->listAssistants(
+      'limit' => '...',
+      'order' => '...',
+      'after' => '...',
+      'before' => '...',
+  )->get;
 
 Returns a list of assistants.
 
@@ -448,7 +453,9 @@ sub createAssistant( $self, %options ) {
 
 =head2 C<< deleteAssistant >>
 
-  my $res = $client->deleteAssistant()->get;
+  my $res = $client->deleteAssistant(
+      'assistant_id' => '...',
+  )->get;
 
 Delete an assistant.
 
@@ -542,7 +549,9 @@ sub deleteAssistant( $self, %options ) {
 
 =head2 C<< getAssistant >>
 
-  my $res = $client->getAssistant()->get;
+  my $res = $client->getAssistant(
+      'assistant_id' => '...',
+  )->get;
 
 Retrieves an assistant.
 
@@ -636,7 +645,9 @@ sub getAssistant( $self, %options ) {
 
 =head2 C<< modifyAssistant >>
 
-  my $res = $client->modifyAssistant()->get;
+  my $res = $client->modifyAssistant(
+      'assistant_id' => '...',
+  )->get;
 
 Modifies an assistant.
 
@@ -1114,7 +1125,10 @@ sub createTranslation( $self, %options ) {
 
 =head2 C<< listBatches >>
 
-  my $res = $client->listBatches()->get;
+  my $res = $client->listBatches(
+      'after' => '...',
+      'limit' => '...',
+  )->get;
 
 List your organization's batches.
 
@@ -1318,7 +1332,9 @@ sub createBatch( $self, %options ) {
 
 =head2 C<< retrieveBatch >>
 
-  my $res = $client->retrieveBatch()->get;
+  my $res = $client->retrieveBatch(
+      'batch_id' => '...',
+  )->get;
 
 Retrieves a batch.
 
@@ -1412,7 +1428,9 @@ sub retrieveBatch( $self, %options ) {
 
 =head2 C<< cancelBatch >>
 
-  my $res = $client->cancelBatch()->get;
+  my $res = $client->cancelBatch(
+      'batch_id' => '...',
+  )->get;
 
 Cancels an in-progress batch.
 
@@ -2004,7 +2022,9 @@ sub createEmbedding( $self, %options ) {
 
 =head2 C<< listFiles >>
 
-  my $res = $client->listFiles()->get;
+  my $res = $client->listFiles(
+      'purpose' => '...',
+  )->get;
 
 Returns a list of files that belong to the user's organization.
 
@@ -2201,7 +2221,9 @@ sub createFile( $self, %options ) {
 
 =head2 C<< deleteFile >>
 
-  my $res = $client->deleteFile()->get;
+  my $res = $client->deleteFile(
+      'file_id' => '...',
+  )->get;
 
 Delete a file.
 
@@ -2295,7 +2317,9 @@ sub deleteFile( $self, %options ) {
 
 =head2 C<< retrieveFile >>
 
-  my $res = $client->retrieveFile()->get;
+  my $res = $client->retrieveFile(
+      'file_id' => '...',
+  )->get;
 
 Returns information about a specific file.
 
@@ -2389,7 +2413,9 @@ sub retrieveFile( $self, %options ) {
 
 =head2 C<< downloadFile >>
 
-  my $res = $client->downloadFile()->get;
+  my $res = $client->downloadFile(
+      'file_id' => '...',
+  )->get;
 
 Returns the contents of the specified file.
 
@@ -2483,7 +2509,10 @@ sub downloadFile( $self, %options ) {
 
 =head2 C<< listPaginatedFineTuningJobs >>
 
-  my $res = $client->listPaginatedFineTuningJobs()->get;
+  my $res = $client->listPaginatedFineTuningJobs(
+      'after' => '...',
+      'limit' => '...',
+  )->get;
 
 List your organization's fine-tuning jobs
 
@@ -2718,7 +2747,9 @@ sub createFineTuningJob( $self, %options ) {
 
 =head2 C<< retrieveFineTuningJob >>
 
-  my $res = $client->retrieveFineTuningJob()->get;
+  my $res = $client->retrieveFineTuningJob(
+      'fine_tuning_job_id' => '...',
+  )->get;
 
 Get info about a fine-tuning job.
 
@@ -2814,7 +2845,9 @@ sub retrieveFineTuningJob( $self, %options ) {
 
 =head2 C<< cancelFineTuningJob >>
 
-  my $res = $client->cancelFineTuningJob()->get;
+  my $res = $client->cancelFineTuningJob(
+      'fine_tuning_job_id' => '...',
+  )->get;
 
 Immediately cancel a fine-tune job.
 
@@ -2908,7 +2941,11 @@ sub cancelFineTuningJob( $self, %options ) {
 
 =head2 C<< listFineTuningJobCheckpoints >>
 
-  my $res = $client->listFineTuningJobCheckpoints()->get;
+  my $res = $client->listFineTuningJobCheckpoints(
+      'fine_tuning_job_id' => '...',
+      'after' => '...',
+      'limit' => '...',
+  )->get;
 
 List checkpoints for a fine-tuning job.
 
@@ -3015,7 +3052,11 @@ sub listFineTuningJobCheckpoints( $self, %options ) {
 
 =head2 C<< listFineTuningEvents >>
 
-  my $res = $client->listFineTuningEvents()->get;
+  my $res = $client->listFineTuningEvents(
+      'fine_tuning_job_id' => '...',
+      'after' => '...',
+      'limit' => '...',
+  )->get;
 
 Get status updates for a fine-tuning job.
 
@@ -3549,7 +3590,9 @@ sub listModels( $self, %options ) {
 
 =head2 C<< deleteModel >>
 
-  my $res = $client->deleteModel()->get;
+  my $res = $client->deleteModel(
+      'model' => '...',
+  )->get;
 
 Delete a fine-tuned model. You must have the Owner role in your organization to delete a model.
 
@@ -3643,7 +3686,9 @@ sub deleteModel( $self, %options ) {
 
 =head2 C<< retrieveModel >>
 
-  my $res = $client->retrieveModel()->get;
+  my $res = $client->retrieveModel(
+      'model' => '...',
+  )->get;
 
 Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
 
@@ -4088,7 +4133,9 @@ sub createThreadAndRun( $self, %options ) {
 
 =head2 C<< deleteThread >>
 
-  my $res = $client->deleteThread()->get;
+  my $res = $client->deleteThread(
+      'thread_id' => '...',
+  )->get;
 
 Delete a thread.
 
@@ -4182,7 +4229,9 @@ sub deleteThread( $self, %options ) {
 
 =head2 C<< getThread >>
 
-  my $res = $client->getThread()->get;
+  my $res = $client->getThread(
+      'thread_id' => '...',
+  )->get;
 
 Retrieves a thread.
 
@@ -4276,7 +4325,9 @@ sub getThread( $self, %options ) {
 
 =head2 C<< modifyThread >>
 
-  my $res = $client->modifyThread()->get;
+  my $res = $client->modifyThread(
+      'thread_id' => '...',
+  )->get;
 
 Modifies a thread.
 
@@ -4387,7 +4438,14 @@ sub modifyThread( $self, %options ) {
 
 =head2 C<< listMessages >>
 
-  my $res = $client->listMessages()->get;
+  my $res = $client->listMessages(
+      'thread_id' => '...',
+      'limit' => '...',
+      'order' => '...',
+      'after' => '...',
+      'before' => '...',
+      'run_id' => '...',
+  )->get;
 
 Returns a list of messages for a given thread.
 
@@ -4509,7 +4567,9 @@ sub listMessages( $self, %options ) {
 
 =head2 C<< createMessage >>
 
-  my $res = $client->createMessage()->get;
+  my $res = $client->createMessage(
+      'thread_id' => '...',
+  )->get;
 
 Create a message.
 
@@ -4628,7 +4688,10 @@ sub createMessage( $self, %options ) {
 
 =head2 C<< deleteMessage >>
 
-  my $res = $client->deleteMessage()->get;
+  my $res = $client->deleteMessage(
+      'thread_id' => '...',
+      'message_id' => '...',
+  )->get;
 
 Deletes a message.
 
@@ -4729,7 +4792,10 @@ sub deleteMessage( $self, %options ) {
 
 =head2 C<< getMessage >>
 
-  my $res = $client->getMessage()->get;
+  my $res = $client->getMessage(
+      'thread_id' => '...',
+      'message_id' => '...',
+  )->get;
 
 Retrieve a message.
 
@@ -4830,7 +4896,10 @@ sub getMessage( $self, %options ) {
 
 =head2 C<< modifyMessage >>
 
-  my $res = $client->modifyMessage()->get;
+  my $res = $client->modifyMessage(
+      'thread_id' => '...',
+      'message_id' => '...',
+  )->get;
 
 Modifies a message.
 
@@ -4944,7 +5013,13 @@ sub modifyMessage( $self, %options ) {
 
 =head2 C<< listRuns >>
 
-  my $res = $client->listRuns()->get;
+  my $res = $client->listRuns(
+      'thread_id' => '...',
+      'limit' => '...',
+      'order' => '...',
+      'after' => '...',
+      'before' => '...',
+  )->get;
 
 Returns a list of runs belonging to a thread.
 
@@ -5061,7 +5136,9 @@ sub listRuns( $self, %options ) {
 
 =head2 C<< createRun >>
 
-  my $res = $client->createRun()->get;
+  my $res = $client->createRun(
+      'thread_id' => '...',
+  )->get;
 
 Create a run.
 
@@ -5234,7 +5311,10 @@ sub createRun( $self, %options ) {
 
 =head2 C<< getRun >>
 
-  my $res = $client->getRun()->get;
+  my $res = $client->getRun(
+      'thread_id' => '...',
+      'run_id' => '...',
+  )->get;
 
 Retrieves a run.
 
@@ -5335,7 +5415,10 @@ sub getRun( $self, %options ) {
 
 =head2 C<< modifyRun >>
 
-  my $res = $client->modifyRun()->get;
+  my $res = $client->modifyRun(
+      'thread_id' => '...',
+      'run_id' => '...',
+  )->get;
 
 Modifies a run.
 
@@ -5449,7 +5532,10 @@ sub modifyRun( $self, %options ) {
 
 =head2 C<< cancelRun >>
 
-  my $res = $client->cancelRun()->get;
+  my $res = $client->cancelRun(
+      'thread_id' => '...',
+      'run_id' => '...',
+  )->get;
 
 Cancels a run that is C<in_progress>.
 
@@ -5550,7 +5636,14 @@ sub cancelRun( $self, %options ) {
 
 =head2 C<< listRunSteps >>
 
-  my $res = $client->listRunSteps()->get;
+  my $res = $client->listRunSteps(
+      'thread_id' => '...',
+      'run_id' => '...',
+      'limit' => '...',
+      'order' => '...',
+      'after' => '...',
+      'before' => '...',
+  )->get;
 
 Returns a list of run steps belonging to a run.
 
@@ -5674,7 +5767,11 @@ sub listRunSteps( $self, %options ) {
 
 =head2 C<< getRunStep >>
 
-  my $res = $client->getRunStep()->get;
+  my $res = $client->getRunStep(
+      'thread_id' => '...',
+      'run_id' => '...',
+      'step_id' => '...',
+  )->get;
 
 Retrieves a run step.
 
@@ -5782,7 +5879,10 @@ sub getRunStep( $self, %options ) {
 
 =head2 C<< submitToolOuputsToRun >>
 
-  my $res = $client->submitToolOuputsToRun()->get;
+  my $res = $client->submitToolOuputsToRun(
+      'thread_id' => '...',
+      'run_id' => '...',
+  )->get;
 
 When a run has the C<status: "requires_action"> and C<required_action.type> is C<submit_tool_outputs>, this endpoint can be used to submit the outputs from the tool calls once they're all completed. All outputs must be submitted in a single request.
 
@@ -5900,7 +6000,12 @@ sub submitToolOuputsToRun( $self, %options ) {
 
 =head2 C<< listVectorStores >>
 
-  my $res = $client->listVectorStores()->get;
+  my $res = $client->listVectorStores(
+      'limit' => '...',
+      'order' => '...',
+      'after' => '...',
+      'before' => '...',
+  )->get;
 
 Returns a list of vector stores.
 
@@ -6110,7 +6215,9 @@ sub createVectorStore( $self, %options ) {
 
 =head2 C<< deleteVectorStore >>
 
-  my $res = $client->deleteVectorStore()->get;
+  my $res = $client->deleteVectorStore(
+      'vector_store_id' => '...',
+  )->get;
 
 Delete a vector store.
 
@@ -6204,7 +6311,9 @@ sub deleteVectorStore( $self, %options ) {
 
 =head2 C<< getVectorStore >>
 
-  my $res = $client->getVectorStore()->get;
+  my $res = $client->getVectorStore(
+      'vector_store_id' => '...',
+  )->get;
 
 Retrieves a vector store.
 
@@ -6298,7 +6407,9 @@ sub getVectorStore( $self, %options ) {
 
 =head2 C<< modifyVectorStore >>
 
-  my $res = $client->modifyVectorStore()->get;
+  my $res = $client->modifyVectorStore(
+      'vector_store_id' => '...',
+  )->get;
 
 Modifies a vector store.
 
@@ -6413,7 +6524,9 @@ sub modifyVectorStore( $self, %options ) {
 
 =head2 C<< createVectorStoreFileBatch >>
 
-  my $res = $client->createVectorStoreFileBatch()->get;
+  my $res = $client->createVectorStoreFileBatch(
+      'vector_store_id' => '...',
+  )->get;
 
 Create a vector store file batch.
 
@@ -6520,7 +6633,10 @@ sub createVectorStoreFileBatch( $self, %options ) {
 
 =head2 C<< getVectorStoreFileBatch >>
 
-  my $res = $client->getVectorStoreFileBatch()->get;
+  my $res = $client->getVectorStoreFileBatch(
+      'vector_store_id' => '...',
+      'batch_id' => '...',
+  )->get;
 
 Retrieves a vector store file batch.
 
@@ -6621,7 +6737,10 @@ sub getVectorStoreFileBatch( $self, %options ) {
 
 =head2 C<< cancelVectorStoreFileBatch >>
 
-  my $res = $client->cancelVectorStoreFileBatch()->get;
+  my $res = $client->cancelVectorStoreFileBatch(
+      'vector_store_id' => '...',
+      'batch_id' => '...',
+  )->get;
 
 Cancel a vector store file batch. This attempts to cancel the processing of files in this batch as soon as possible.
 
@@ -6722,7 +6841,15 @@ sub cancelVectorStoreFileBatch( $self, %options ) {
 
 =head2 C<< listFilesInVectorStoreBatch >>
 
-  my $res = $client->listFilesInVectorStoreBatch()->get;
+  my $res = $client->listFilesInVectorStoreBatch(
+      'vector_store_id' => '...',
+      'batch_id' => '...',
+      'limit' => '...',
+      'order' => '...',
+      'after' => '...',
+      'before' => '...',
+      'filter' => '...',
+  )->get;
 
 Returns a list of vector store files in a batch.
 
@@ -6851,7 +6978,14 @@ sub listFilesInVectorStoreBatch( $self, %options ) {
 
 =head2 C<< listVectorStoreFiles >>
 
-  my $res = $client->listVectorStoreFiles()->get;
+  my $res = $client->listVectorStoreFiles(
+      'vector_store_id' => '...',
+      'limit' => '...',
+      'order' => '...',
+      'after' => '...',
+      'before' => '...',
+      'filter' => '...',
+  )->get;
 
 Returns a list of vector store files.
 
@@ -6973,7 +7107,9 @@ sub listVectorStoreFiles( $self, %options ) {
 
 =head2 C<< createVectorStoreFile >>
 
-  my $res = $client->createVectorStoreFile()->get;
+  my $res = $client->createVectorStoreFile(
+      'vector_store_id' => '...',
+  )->get;
 
 Create a vector store file by attaching a L<File|/docs/api-reference/files> to a L<vector store|/docs/api-reference/vector-stores/object>.
 
@@ -7080,7 +7216,10 @@ sub createVectorStoreFile( $self, %options ) {
 
 =head2 C<< deleteVectorStoreFile >>
 
-  my $res = $client->deleteVectorStoreFile()->get;
+  my $res = $client->deleteVectorStoreFile(
+      'vector_store_id' => '...',
+      'file_id' => '...',
+  )->get;
 
 Delete a vector store file. This will remove the file from the vector store but the file itself will not be deleted. To delete the file, use the L<delete file|/docs/api-reference/files/delete> endpoint.
 
@@ -7181,7 +7320,10 @@ sub deleteVectorStoreFile( $self, %options ) {
 
 =head2 C<< getVectorStoreFile >>
 
-  my $res = $client->getVectorStoreFile()->get;
+  my $res = $client->getVectorStoreFile(
+      'vector_store_id' => '...',
+      'file_id' => '...',
+  )->get;
 
 Retrieves a vector store file.
 

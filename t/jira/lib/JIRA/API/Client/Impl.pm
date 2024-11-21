@@ -632,7 +632,8 @@ Get announcement banner configuration
 
 
 Returns a L<< JIRA::API::AnnouncementBannerConfiguration >> on success.
-Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -766,8 +767,10 @@ Visibility of the announcement banner. Can be public or private.
 
 =back
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -885,7 +888,9 @@ sub setBanner( $self, %options ) {
 
 =head2 C<< updateMultipleCustomFieldValues >>
 
-  my $res = $client->updateMultipleCustomFieldValues()->get;
+  my $res = $client->updateMultipleCustomFieldValues(
+      'generateChangelog' => '...',
+  )->get;
 
 Update custom fields
 
@@ -908,7 +913,7 @@ Whether to generate a changelog for this update.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -997,7 +1002,16 @@ sub updateMultipleCustomFieldValues( $self, %options ) {
 
 =head2 C<< getCustomFieldConfiguration >>
 
-  my $res = $client->getCustomFieldConfiguration()->get;
+  my $res = $client->getCustomFieldConfiguration(
+      'fieldIdOrKey' => '...',
+      'id' => '...',
+      'fieldContextId' => '...',
+      'issueId' => '...',
+      'projectKeyOrId' => '...',
+      'issueTypeId' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get custom field configurations
 
@@ -1141,7 +1155,9 @@ sub getCustomFieldConfiguration( $self, %options ) {
 
 =head2 C<< updateCustomFieldConfiguration >>
 
-  my $res = $client->updateCustomFieldConfiguration()->get;
+  my $res = $client->updateCustomFieldConfiguration(
+      'fieldIdOrKey' => '...',
+  )->get;
 
 Update custom field configurations
 
@@ -1260,7 +1276,10 @@ sub updateCustomFieldConfiguration( $self, %options ) {
 
 =head2 C<< updateCustomFieldValue >>
 
-  my $res = $client->updateCustomFieldValue()->get;
+  my $res = $client->updateCustomFieldValue(
+      'fieldIdOrKey' => '...',
+      'generateChangelog' => '...',
+  )->get;
 
 Update custom field value
 
@@ -1289,7 +1308,7 @@ The list of custom field update details.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -1384,7 +1403,11 @@ sub updateCustomFieldValue( $self, %options ) {
 
 =head2 C<< getApplicationProperty >>
 
-  my $res = $client->getApplicationProperty()->get;
+  my $res = $client->getApplicationProperty(
+      'key' => '...',
+      'permissionLevel' => '...',
+      'keyFilter' => '...',
+  )->get;
 
 Get application property
 
@@ -1584,7 +1607,9 @@ sub getAdvancedSettings( $self, %options ) {
 
 =head2 C<< setApplicationProperty >>
 
-  my $res = $client->setApplicationProperty()->get;
+  my $res = $client->setApplicationProperty(
+      'id' => '...',
+  )->get;
 
 Set application property
 
@@ -1798,7 +1823,9 @@ sub getAllApplicationRoles( $self, %options ) {
 
 =head2 C<< getApplicationRole >>
 
-  my $res = $client->getApplicationRole()->get;
+  my $res = $client->getApplicationRole(
+      'key' => '...',
+  )->get;
 
 Get application role
 
@@ -1901,7 +1928,10 @@ sub getApplicationRole( $self, %options ) {
 
 =head2 C<< getAttachmentContent >>
 
-  my $res = $client->getAttachmentContent()->get;
+  my $res = $client->getAttachmentContent(
+      'id' => '...',
+      'redirect' => '...',
+  )->get;
 
 Get attachment content
 
@@ -2111,7 +2141,13 @@ sub getAttachmentMeta( $self, %options ) {
 
 =head2 C<< getAttachmentThumbnail >>
 
-  my $res = $client->getAttachmentThumbnail()->get;
+  my $res = $client->getAttachmentThumbnail(
+      'id' => '...',
+      'redirect' => '...',
+      'fallbackToDefault' => '...',
+      'width' => '...',
+      'height' => '...',
+  )->get;
 
 Get attachment thumbnail
 
@@ -2243,7 +2279,9 @@ sub getAttachmentThumbnail( $self, %options ) {
 
 =head2 C<< removeAttachment >>
 
-  my $res = $client->removeAttachment()->get;
+  my $res = $client->removeAttachment(
+      'id' => '...',
+  )->get;
 
 Delete attachment
 
@@ -2330,7 +2368,9 @@ sub removeAttachment( $self, %options ) {
 
 =head2 C<< getAttachment >>
 
-  my $res = $client->getAttachment()->get;
+  my $res = $client->getAttachment(
+      'id' => '...',
+  )->get;
 
 Get attachment metadata
 
@@ -2433,7 +2473,9 @@ sub getAttachment( $self, %options ) {
 
 =head2 C<< expandAttachmentForHumans >>
 
-  my $res = $client->expandAttachmentForHumans()->get;
+  my $res = $client->expandAttachmentForHumans(
+      'id' => '...',
+  )->get;
 
 Get all metadata for an expanded attachment
 
@@ -2539,7 +2581,9 @@ sub expandAttachmentForHumans( $self, %options ) {
 
 =head2 C<< expandAttachmentForMachines >>
 
-  my $res = $client->expandAttachmentForMachines()->get;
+  my $res = $client->expandAttachmentForMachines(
+      'id' => '...',
+  )->get;
 
 Get contents metadata for an expanded attachment
 
@@ -2645,7 +2689,13 @@ sub expandAttachmentForMachines( $self, %options ) {
 
 =head2 C<< getAuditRecords >>
 
-  my $res = $client->getAuditRecords()->get;
+  my $res = $client->getAuditRecords(
+      'offset' => '...',
+      'limit' => '...',
+      'filter' => '...',
+      'from' => '...',
+      'to' => '...',
+  )->get;
 
 Get audit records
 
@@ -2763,7 +2813,9 @@ sub getAuditRecords( $self, %options ) {
 
 =head2 C<< getAllSystemAvatars >>
 
-  my $res = $client->getAllSystemAvatars()->get;
+  my $res = $client->getAllSystemAvatars(
+      'type' => '...',
+  )->get;
 
 Get system avatars by type
 
@@ -2863,7 +2915,9 @@ sub getAllSystemAvatars( $self, %options ) {
 
 =head2 C<< getCommentsByIds >>
 
-  my $res = $client->getCommentsByIds()->get;
+  my $res = $client->getCommentsByIds(
+      'expand' => '...',
+  )->get;
 
 Get comments by IDs
 
@@ -2985,7 +3039,9 @@ sub getCommentsByIds( $self, %options ) {
 
 =head2 C<< getCommentPropertyKeys >>
 
-  my $res = $client->getCommentPropertyKeys()->get;
+  my $res = $client->getCommentPropertyKeys(
+      'commentId' => '...',
+  )->get;
 
 Get comment property keys
 
@@ -3091,7 +3147,10 @@ sub getCommentPropertyKeys( $self, %options ) {
 
 =head2 C<< deleteCommentProperty >>
 
-  my $res = $client->deleteCommentProperty()->get;
+  my $res = $client->deleteCommentProperty(
+      'commentId' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Delete comment property
 
@@ -3191,7 +3250,10 @@ sub deleteCommentProperty( $self, %options ) {
 
 =head2 C<< getCommentProperty >>
 
-  my $res = $client->getCommentProperty()->get;
+  my $res = $client->getCommentProperty(
+      'commentId' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Get comment property
 
@@ -3304,7 +3366,10 @@ sub getCommentProperty( $self, %options ) {
 
 =head2 C<< setCommentProperty >>
 
-  my $res = $client->setCommentProperty()->get;
+  my $res = $client->setCommentProperty(
+      'commentId' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Set comment property
 
@@ -3324,6 +3389,7 @@ The key of the property. The maximum length is 255 characters.
 
 
 Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -3559,7 +3625,7 @@ The URL of the component.
 
 =back
 
-Returns a L<< JIRA::API::ProjectComponent >> on success.
+Returns a L<< JIRA::API::ProjectComponent >> on HTTP code 201.
 
 =cut
 
@@ -3647,7 +3713,10 @@ sub createComponent( $self, %options ) {
 
 =head2 C<< deleteComponent >>
 
-  my $res = $client->deleteComponent()->get;
+  my $res = $client->deleteComponent(
+      'id' => '...',
+      'moveIssuesTo' => '...',
+  )->get;
 
 Delete component
 
@@ -3745,7 +3814,9 @@ sub deleteComponent( $self, %options ) {
 
 =head2 C<< getComponent >>
 
-  my $res = $client->getComponent()->get;
+  my $res = $client->getComponent(
+      'id' => '...',
+  )->get;
 
 Get component
 
@@ -3845,7 +3916,9 @@ sub getComponent( $self, %options ) {
 
 =head2 C<< updateComponent >>
 
-  my $res = $client->updateComponent()->get;
+  my $res = $client->updateComponent(
+      'id' => '...',
+  )->get;
 
 Update component
 
@@ -4068,7 +4141,9 @@ sub updateComponent( $self, %options ) {
 
 =head2 C<< getComponentRelatedIssues >>
 
-  my $res = $client->getComponentRelatedIssues()->get;
+  my $res = $client->getComponentRelatedIssues(
+      'id' => '...',
+  )->get;
 
 Get component issues count
 
@@ -4266,7 +4341,8 @@ Get selected time tracking provider
 =back
 
 
-Returns Unknown, a L<< JIRA::API::TimeTrackingProvider >> on success.
+Returns a L<< JIRA::API::TimeTrackingProvider >> on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -4388,7 +4464,7 @@ The URL of the configuration page for the time tracking provider app. For exampl
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -4772,7 +4848,9 @@ sub setSharedTimeTrackingConfiguration( $self, %options ) {
 
 =head2 C<< getCustomFieldOption >>
 
-  my $res = $client->getCustomFieldOption()->get;
+  my $res = $client->getCustomFieldOption(
+      'id' => '...',
+  )->get;
 
 Get custom field option
 
@@ -4872,7 +4950,11 @@ sub getCustomFieldOption( $self, %options ) {
 
 =head2 C<< getAllDashboards >>
 
-  my $res = $client->getAllDashboards()->get;
+  my $res = $client->getAllDashboards(
+      'filter' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get all dashboards
 
@@ -4911,6 +4993,7 @@ The maximum number of items to return per page.
 
 Returns a L<< JIRA::API::PageOfDashboards >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -5052,6 +5135,7 @@ The share permissions for the dashboard.
 
 Returns a L<< JIRA::API::Dashboard >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -5168,6 +5252,7 @@ Get available gadgets
 
 Returns a L<< JIRA::API::AvailableDashboardGadgetsResponse >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -5268,7 +5353,19 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
 
 =head2 C<< getDashboardsPaginated >>
 
-  my $res = $client->getDashboardsPaginated()->get;
+  my $res = $client->getDashboardsPaginated(
+      'dashboardName' => '...',
+      'accountId' => '...',
+      'owner' => '...',
+      'groupname' => '...',
+      'groupId' => '...',
+      'projectId' => '...',
+      'orderBy' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+      'status' => '...',
+      'expand' => '...',
+  )->get;
 
 Search for dashboards
 
@@ -5403,6 +5500,7 @@ C<isWritable> Returns whether the current user has permission to edit the dashbo
 
 Returns a L<< JIRA::API::PageBeanDashboard >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -5517,7 +5615,12 @@ sub getDashboardsPaginated( $self, %options ) {
 
 =head2 C<< getAllGadgets >>
 
-  my $res = $client->getAllGadgets()->get;
+  my $res = $client->getAllGadgets(
+      'dashboardId' => '...',
+      'moduleKey' => '...',
+      'uri' => '...',
+      'gadgetId' => '...',
+  )->get;
 
 Get gadgets
 
@@ -5545,7 +5648,7 @@ The list of gadgets IDs. To include multiple IDs, separate IDs with ampersand: C
 
 
 Returns a L<< JIRA::API::DashboardGadgetResponse >> on success.
-Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -5647,7 +5750,9 @@ sub getAllGadgets( $self, %options ) {
 
 =head2 C<< addGadget >>
 
-  my $res = $client->addGadget()->get;
+  my $res = $client->addGadget(
+      'dashboardId' => '...',
+  )->get;
 
 Add gadget to dashboard
 
@@ -5694,6 +5799,7 @@ The URI of the gadget type. Can't be provided with C<moduleKey>.
 
 Returns a L<< JIRA::API::DashboardGadget >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -5806,7 +5912,10 @@ sub addGadget( $self, %options ) {
 
 =head2 C<< removeGadget >>
 
-  my $res = $client->removeGadget()->get;
+  my $res = $client->removeGadget(
+      'dashboardId' => '...',
+      'gadgetId' => '...',
+  )->get;
 
 Remove gadget from dashboard
 
@@ -5825,8 +5934,8 @@ The ID of the gadget.
 =back
 
 
-Returns Unknown on success.
-Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -5925,7 +6034,10 @@ sub removeGadget( $self, %options ) {
 
 =head2 C<< updateGadget >>
 
-  my $res = $client->updateGadget()->get;
+  my $res = $client->updateGadget(
+      'dashboardId' => '...',
+      'gadgetId' => '...',
+  )->get;
 
 Update gadget on dashboard
 
@@ -5962,8 +6074,9 @@ The title of the gadget.
 
 =back
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -6079,7 +6192,10 @@ sub updateGadget( $self, %options ) {
 
 =head2 C<< getDashboardItemPropertyKeys >>
 
-  my $res = $client->getDashboardItemPropertyKeys()->get;
+  my $res = $client->getDashboardItemPropertyKeys(
+      'dashboardId' => '...',
+      'itemId' => '...',
+  )->get;
 
 Get dashboard item property keys
 
@@ -6186,7 +6302,11 @@ sub getDashboardItemPropertyKeys( $self, %options ) {
 
 =head2 C<< deleteDashboardItemProperty >>
 
-  my $res = $client->deleteDashboardItemProperty()->get;
+  my $res = $client->deleteDashboardItemProperty(
+      'dashboardId' => '...',
+      'itemId' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Delete dashboard item property
 
@@ -6293,7 +6413,11 @@ sub deleteDashboardItemProperty( $self, %options ) {
 
 =head2 C<< getDashboardItemProperty >>
 
-  my $res = $client->getDashboardItemProperty()->get;
+  my $res = $client->getDashboardItemProperty(
+      'dashboardId' => '...',
+      'itemId' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Get dashboard item property
 
@@ -6407,7 +6531,11 @@ sub getDashboardItemProperty( $self, %options ) {
 
 =head2 C<< setDashboardItemProperty >>
 
-  my $res = $client->setDashboardItemProperty()->get;
+  my $res = $client->setDashboardItemProperty(
+      'dashboardId' => '...',
+      'itemId' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Set dashboard item property
 
@@ -6431,6 +6559,7 @@ The key of the dashboard item property. The maximum length is 255 characters. Fo
 
 
 Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -6555,7 +6684,9 @@ sub setDashboardItemProperty( $self, %options ) {
 
 =head2 C<< deleteDashboard >>
 
-  my $res = $client->deleteDashboard()->get;
+  my $res = $client->deleteDashboard(
+      'id' => '...',
+  )->get;
 
 Delete dashboard
 
@@ -6571,6 +6702,7 @@ The ID of the dashboard.
 
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -6666,7 +6798,9 @@ sub deleteDashboard( $self, %options ) {
 
 =head2 C<< getDashboard >>
 
-  my $res = $client->getDashboard()->get;
+  my $res = $client->getDashboard(
+      'id' => '...',
+  )->get;
 
 Get dashboard
 
@@ -6683,6 +6817,7 @@ The ID of the dashboard.
 
 Returns a L<< JIRA::API::Dashboard >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -6792,7 +6927,9 @@ sub getDashboard( $self, %options ) {
 
 =head2 C<< updateDashboard >>
 
-  my $res = $client->updateDashboard()->get;
+  my $res = $client->updateDashboard(
+      'id' => '...',
+  )->get;
 
 Update dashboard
 
@@ -6831,6 +6968,8 @@ The share permissions for the dashboard.
 
 Returns a L<< JIRA::API::Dashboard >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -6954,7 +7093,9 @@ sub updateDashboard( $self, %options ) {
 
 =head2 C<< copyDashboard >>
 
-  my $res = $client->copyDashboard()->get;
+  my $res = $client->copyDashboard(
+      'id' => '...',
+  )->get;
 
 Copy dashboard
 
@@ -6991,6 +7132,8 @@ The share permissions for the dashboard.
 
 Returns a L<< JIRA::API::Dashboard >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -7205,7 +7348,9 @@ sub getEvents( $self, %options ) {
 
 =head2 C<< analyseExpression >>
 
-  my $res = $client->analyseExpression()->get;
+  my $res = $client->analyseExpression(
+      'check' => '...',
+  )->get;
 
 Analyse Jira expression
 
@@ -7255,6 +7400,7 @@ The list of Jira expressions to analyse.
 
 Returns a L<< JIRA::API::JiraExpressionsAnalysis >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -7365,7 +7511,9 @@ sub analyseExpression( $self, %options ) {
 
 =head2 C<< evaluateJiraExpression >>
 
-  my $res = $client->evaluateJiraExpression()->get;
+  my $res = $client->evaluateJiraExpression(
+      'expand' => '...',
+  )->get;
 
 Evaluate Jira expression
 
@@ -7396,6 +7544,7 @@ The Jira expression to evaluate.
 
 Returns a L<< JIRA::API::JiraExpressionResult >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -7851,7 +8000,7 @@ To create a field based on a L<Forge custom field type|https://developer.atlassi
 
 =back
 
-Returns a L<< JIRA::API::FieldDetails >> on success.
+Returns a L<< JIRA::API::FieldDetails >> on HTTP code 201.
 
 =cut
 
@@ -7930,7 +8079,15 @@ sub createCustomField( $self, %options ) {
 
 =head2 C<< getFieldsPaginated >>
 
-  my $res = $client->getFieldsPaginated()->get;
+  my $res = $client->getFieldsPaginated(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'type' => '...',
+      'id' => '...',
+      'query' => '...',
+      'orderBy' => '...',
+      'expand' => '...',
+  )->get;
 
 Get fields paginated
 
@@ -8029,6 +8186,7 @@ C<searcherKey> returns the searcher key for each custom field
 
 Returns a L<< JIRA::API::PageBeanField >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -8142,7 +8300,14 @@ sub getFieldsPaginated( $self, %options ) {
 
 =head2 C<< getTrashedFieldsPaginated >>
 
-  my $res = $client->getTrashedFieldsPaginated()->get;
+  my $res = $client->getTrashedFieldsPaginated(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'id' => '...',
+      'query' => '...',
+      'expand' => '...',
+      'orderBy' => '...',
+  )->get;
 
 Get fields in trash paginated
 
@@ -8194,6 +8359,7 @@ C<plannedDeletionDate> sorts by the planned deletion date
 
 Returns a L<< JIRA::API::PageBeanField >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -8306,7 +8472,9 @@ sub getTrashedFieldsPaginated( $self, %options ) {
 
 =head2 C<< updateCustomField >>
 
-  my $res = $client->updateCustomField()->get;
+  my $res = $client->updateCustomField(
+      'fieldId' => '...',
+  )->get;
 
 Update custom field
 
@@ -8448,7 +8616,7 @@ C<version>: C<versionsearcher>
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -8575,7 +8743,14 @@ sub updateCustomField( $self, %options ) {
 
 =head2 C<< getContextsForField >>
 
-  my $res = $client->getContextsForField()->get;
+  my $res = $client->getContextsForField(
+      'fieldId' => '...',
+      'isAnyIssueType' => '...',
+      'isGlobalContext' => '...',
+      'contextId' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get custom field contexts
 
@@ -8728,7 +8903,9 @@ sub getContextsForField( $self, %options ) {
 
 =head2 C<< createCustomFieldContext >>
 
-  my $res = $client->createCustomFieldContext()->get;
+  my $res = $client->createCustomFieldContext(
+      'fieldId' => '...',
+  )->get;
 
 Create custom field context
 
@@ -8769,7 +8946,7 @@ The list of project IDs associated with the context. If the list is empty, the c
 
 =back
 
-Returns a L<< JIRA::API::CreateCustomFieldContext >> on success.
+Returns a L<< JIRA::API::CreateCustomFieldContext >> on HTTP code 201.
 
 =cut
 
@@ -8874,7 +9051,12 @@ sub createCustomFieldContext( $self, %options ) {
 
 =head2 C<< getDefaultValues >>
 
-  my $res = $client->getDefaultValues()->get;
+  my $res = $client->getDefaultValues(
+      'fieldId' => '...',
+      'contextId' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get custom field contexts default values
 
@@ -9017,7 +9199,9 @@ sub getDefaultValues( $self, %options ) {
 
 =head2 C<< setDefaultValues >>
 
-  my $res = $client->setDefaultValues()->get;
+  my $res = $client->setDefaultValues(
+      'fieldId' => '...',
+  )->get;
 
 Set custom field contexts default values
 
@@ -9040,7 +9224,7 @@ The ID of the custom field.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -9167,7 +9351,12 @@ sub setDefaultValues( $self, %options ) {
 
 =head2 C<< getIssueTypeMappingsForContexts >>
 
-  my $res = $client->getIssueTypeMappingsForContexts()->get;
+  my $res = $client->getIssueTypeMappingsForContexts(
+      'fieldId' => '...',
+      'contextId' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get issue types for custom field context
 
@@ -9296,7 +9485,11 @@ sub getIssueTypeMappingsForContexts( $self, %options ) {
 
 =head2 C<< getCustomFieldContextsForProjectsAndIssueTypes >>
 
-  my $res = $client->getCustomFieldContextsForProjectsAndIssueTypes()->get;
+  my $res = $client->getCustomFieldContextsForProjectsAndIssueTypes(
+      'fieldId' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get custom field contexts for projects and issue types
 
@@ -9461,7 +9654,12 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
 
 =head2 C<< getProjectContextMapping >>
 
-  my $res = $client->getProjectContextMapping()->get;
+  my $res = $client->getProjectContextMapping(
+      'fieldId' => '...',
+      'contextId' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get project mappings for custom field context
 
@@ -9604,7 +9802,10 @@ sub getProjectContextMapping( $self, %options ) {
 
 =head2 C<< deleteCustomFieldContext >>
 
-  my $res = $client->deleteCustomFieldContext()->get;
+  my $res = $client->deleteCustomFieldContext(
+      'fieldId' => '...',
+      'contextId' => '...',
+  )->get;
 
 Delete custom field context
 
@@ -9623,7 +9824,7 @@ The ID of the context.
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -9750,7 +9951,10 @@ sub deleteCustomFieldContext( $self, %options ) {
 
 =head2 C<< updateCustomFieldContext >>
 
-  my $res = $client->updateCustomFieldContext()->get;
+  my $res = $client->updateCustomFieldContext(
+      'fieldId' => '...',
+      'contextId' => '...',
+  )->get;
 
 Update custom field context
 
@@ -9783,7 +9987,7 @@ The name of the custom field context. The name must be unique. The maximum lengt
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -9913,7 +10117,10 @@ sub updateCustomFieldContext( $self, %options ) {
 
 =head2 C<< addIssueTypesToContext >>
 
-  my $res = $client->addIssueTypesToContext()->get;
+  my $res = $client->addIssueTypesToContext(
+      'fieldId' => '...',
+      'contextId' => '...',
+  )->get;
 
 Add issue types to context
 
@@ -9942,7 +10149,7 @@ The list of issue type IDs.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -10086,7 +10293,10 @@ sub addIssueTypesToContext( $self, %options ) {
 
 =head2 C<< removeIssueTypesFromContext >>
 
-  my $res = $client->removeIssueTypesFromContext()->get;
+  my $res = $client->removeIssueTypesFromContext(
+      'fieldId' => '...',
+      'contextId' => '...',
+  )->get;
 
 Remove issue types from context
 
@@ -10115,7 +10325,7 @@ The list of issue type IDs.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -10245,7 +10455,14 @@ sub removeIssueTypesFromContext( $self, %options ) {
 
 =head2 C<< getOptionsForContext >>
 
-  my $res = $client->getOptionsForContext()->get;
+  my $res = $client->getOptionsForContext(
+      'fieldId' => '...',
+      'contextId' => '...',
+      'optionId' => '...',
+      'onlyOptions' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get custom field options (context)
 
@@ -10414,7 +10631,10 @@ sub getOptionsForContext( $self, %options ) {
 
 =head2 C<< createCustomFieldOption >>
 
-  my $res = $client->createCustomFieldOption()->get;
+  my $res = $client->createCustomFieldOption(
+      'fieldId' => '...',
+      'contextId' => '...',
+  )->get;
 
 Create custom field options (context)
 
@@ -10573,7 +10793,10 @@ sub createCustomFieldOption( $self, %options ) {
 
 =head2 C<< updateCustomFieldOption >>
 
-  my $res = $client->updateCustomFieldOption()->get;
+  my $res = $client->updateCustomFieldOption(
+      'fieldId' => '...',
+      'contextId' => '...',
+  )->get;
 
 Update custom field options (context)
 
@@ -10732,7 +10955,10 @@ sub updateCustomFieldOption( $self, %options ) {
 
 =head2 C<< reorderCustomFieldOptions >>
 
-  my $res = $client->reorderCustomFieldOptions()->get;
+  my $res = $client->reorderCustomFieldOptions(
+      'fieldId' => '...',
+      'contextId' => '...',
+  )->get;
 
 Reorder custom field options (context)
 
@@ -10769,7 +10995,7 @@ The position the custom field options should be moved to. Required if C<after> i
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -10899,7 +11125,11 @@ sub reorderCustomFieldOptions( $self, %options ) {
 
 =head2 C<< deleteCustomFieldOption >>
 
-  my $res = $client->deleteCustomFieldOption()->get;
+  my $res = $client->deleteCustomFieldOption(
+      'fieldId' => '...',
+      'contextId' => '...',
+      'optionId' => '...',
+  )->get;
 
 Delete custom field options (context)
 
@@ -11040,7 +11270,10 @@ sub deleteCustomFieldOption( $self, %options ) {
 
 =head2 C<< assignProjectsToCustomFieldContext >>
 
-  my $res = $client->assignProjectsToCustomFieldContext()->get;
+  my $res = $client->assignProjectsToCustomFieldContext(
+      'fieldId' => '...',
+      'contextId' => '...',
+  )->get;
 
 Assign custom field context to projects
 
@@ -11069,7 +11302,7 @@ The IDs of projects.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -11199,7 +11432,10 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
 
 =head2 C<< removeCustomFieldContextFromProjects >>
 
-  my $res = $client->removeCustomFieldContextFromProjects()->get;
+  my $res = $client->removeCustomFieldContextFromProjects(
+      'fieldId' => '...',
+      'contextId' => '...',
+  )->get;
 
 Remove custom field context from projects
 
@@ -11228,7 +11464,7 @@ The IDs of projects.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -11358,7 +11594,11 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
 
 =head2 C<< getContextsForFieldDeprecated >>
 
-  my $res = $client->getContextsForFieldDeprecated()->get;
+  my $res = $client->getContextsForFieldDeprecated(
+      'fieldId' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get contexts for a field
 
@@ -11471,7 +11711,12 @@ sub getContextsForFieldDeprecated( $self, %options ) {
 
 =head2 C<< getScreensForField >>
 
-  my $res = $client->getScreensForField()->get;
+  my $res = $client->getScreensForField(
+      'fieldId' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+      'expand' => '...',
+  )->get;
 
 Get screens for a field
 
@@ -11589,7 +11834,11 @@ sub getScreensForField( $self, %options ) {
 
 =head2 C<< getAllIssueFieldOptions >>
 
-  my $res = $client->getAllIssueFieldOptions()->get;
+  my $res = $client->getAllIssueFieldOptions(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'fieldKey' => '...',
+  )->get;
 
 Get all issue field options
 
@@ -11716,7 +11965,9 @@ sub getAllIssueFieldOptions( $self, %options ) {
 
 =head2 C<< createIssueFieldOption >>
 
-  my $res = $client->createIssueFieldOption()->get;
+  my $res = $client->createIssueFieldOption(
+      'fieldKey' => '...',
+  )->get;
 
 Create issue field option
 
@@ -11854,7 +12105,12 @@ sub createIssueFieldOption( $self, %options ) {
 
 =head2 C<< getSelectableIssueFieldOptions >>
 
-  my $res = $client->getSelectableIssueFieldOptions()->get;
+  my $res = $client->getSelectableIssueFieldOptions(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'projectId' => '...',
+      'fieldKey' => '...',
+  )->get;
 
 Get selectable issue field options
 
@@ -11986,7 +12242,12 @@ sub getSelectableIssueFieldOptions( $self, %options ) {
 
 =head2 C<< getVisibleIssueFieldOptions >>
 
-  my $res = $client->getVisibleIssueFieldOptions()->get;
+  my $res = $client->getVisibleIssueFieldOptions(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'projectId' => '...',
+      'fieldKey' => '...',
+  )->get;
 
 Get visible issue field options
 
@@ -12118,7 +12379,10 @@ sub getVisibleIssueFieldOptions( $self, %options ) {
 
 =head2 C<< deleteIssueFieldOption >>
 
-  my $res = $client->deleteIssueFieldOption()->get;
+  my $res = $client->deleteIssueFieldOption(
+      'fieldKey' => '...',
+      'optionId' => '...',
+  )->get;
 
 Delete issue field option
 
@@ -12151,7 +12415,7 @@ The ID of the option to be deleted.
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -12242,7 +12506,10 @@ sub deleteIssueFieldOption( $self, %options ) {
 
 =head2 C<< getIssueFieldOption >>
 
-  my $res = $client->getIssueFieldOption()->get;
+  my $res = $client->getIssueFieldOption(
+      'fieldKey' => '...',
+      'optionId' => '...',
+  )->get;
 
 Get issue field option
 
@@ -12366,7 +12633,10 @@ sub getIssueFieldOption( $self, %options ) {
 
 =head2 C<< updateIssueFieldOption >>
 
-  my $res = $client->updateIssueFieldOption()->get;
+  my $res = $client->updateIssueFieldOption(
+      'fieldKey' => '...',
+      'optionId' => '...',
+  )->get;
 
 Update issue field option
 
@@ -12515,7 +12785,14 @@ sub updateIssueFieldOption( $self, %options ) {
 
 =head2 C<< replaceIssueFieldOption >>
 
-  my $res = $client->replaceIssueFieldOption()->get;
+  my $res = $client->replaceIssueFieldOption(
+      'replaceWith' => '...',
+      'jql' => '...',
+      'overrideScreenSecurity' => '...',
+      'overrideEditableFlag' => '...',
+      'fieldKey' => '...',
+      'optionId' => '...',
+  )->get;
 
 Replace issue field option
 
@@ -12564,7 +12841,7 @@ The ID of the option to be deselected.
 =back
 
 
-Returns a L<< JIRA::API::TaskProgressBeanRemoveOptionFromIssuesResult >> on redirect.
+Returns a L<< JIRA::API::TaskProgressBeanRemoveOptionFromIssuesResult >> on HTTP code 303.
 
 =cut
 
@@ -12673,7 +12950,9 @@ sub replaceIssueFieldOption( $self, %options ) {
 
 =head2 C<< deleteCustomField >>
 
-  my $res = $client->deleteCustomField()->get;
+  my $res = $client->deleteCustomField(
+      'id' => '...',
+  )->get;
 
 Delete custom field
 
@@ -12689,7 +12968,11 @@ The ID of a custom field.
 
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on HTTP code 303.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 409.
 
 =cut
 
@@ -12838,7 +13121,9 @@ sub deleteCustomField( $self, %options ) {
 
 =head2 C<< restoreCustomField >>
 
-  my $res = $client->restoreCustomField()->get;
+  my $res = $client->restoreCustomField(
+      'id' => '...',
+  )->get;
 
 Restore custom field from trash
 
@@ -12855,6 +13140,9 @@ The ID of a custom field.
 
 Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -12989,7 +13277,9 @@ sub restoreCustomField( $self, %options ) {
 
 =head2 C<< trashCustomField >>
 
-  my $res = $client->trashCustomField()->get;
+  my $res = $client->trashCustomField(
+      'id' => '...',
+  )->get;
 
 Move custom field to trash
 
@@ -13006,6 +13296,9 @@ The ID of a custom field.
 
 Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -13140,7 +13433,13 @@ sub trashCustomField( $self, %options ) {
 
 =head2 C<< getAllFieldConfigurations >>
 
-  my $res = $client->getAllFieldConfigurations()->get;
+  my $res = $client->getAllFieldConfigurations(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'id' => '...',
+      'isDefault' => '...',
+      'query' => '...',
+  )->get;
 
 Get all field configurations
 
@@ -13368,7 +13667,9 @@ sub createFieldConfiguration( $self, %options ) {
 
 =head2 C<< deleteFieldConfiguration >>
 
-  my $res = $client->deleteFieldConfiguration()->get;
+  my $res = $client->deleteFieldConfiguration(
+      'id' => '...',
+  )->get;
 
 Delete field configuration
 
@@ -13383,7 +13684,7 @@ The ID of the field configuration.
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -13474,7 +13775,9 @@ sub deleteFieldConfiguration( $self, %options ) {
 
 =head2 C<< updateFieldConfiguration >>
 
-  my $res = $client->updateFieldConfiguration()->get;
+  my $res = $client->updateFieldConfiguration(
+      'id' => '...',
+  )->get;
 
 Update field configuration
 
@@ -13503,7 +13806,7 @@ The name of the field configuration. Must be unique.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -13597,7 +13900,11 @@ sub updateFieldConfiguration( $self, %options ) {
 
 =head2 C<< getFieldConfigurationItems >>
 
-  my $res = $client->getFieldConfigurationItems()->get;
+  my $res = $client->getFieldConfigurationItems(
+      'id' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get field configuration items
 
@@ -13713,7 +14020,9 @@ sub getFieldConfigurationItems( $self, %options ) {
 
 =head2 C<< updateFieldConfigurationItems >>
 
-  my $res = $client->updateFieldConfigurationItems()->get;
+  my $res = $client->updateFieldConfigurationItems(
+      'id' => '...',
+  )->get;
 
 Update field configuration items
 
@@ -13738,7 +14047,7 @@ Details of fields in a field configuration.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -13832,7 +14141,11 @@ sub updateFieldConfigurationItems( $self, %options ) {
 
 =head2 C<< getAllFieldConfigurationSchemes >>
 
-  my $res = $client->getAllFieldConfigurationSchemes()->get;
+  my $res = $client->getAllFieldConfigurationSchemes(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'id' => '...',
+  )->get;
 
 Get all field configuration schemes
 
@@ -13968,7 +14281,7 @@ The name of the field configuration scheme. The name must be unique.
 
 =back
 
-Returns a L<< JIRA::API::FieldConfigurationScheme >> on success.
+Returns a L<< JIRA::API::FieldConfigurationScheme >> on HTTP code 201.
 
 =cut
 
@@ -14075,7 +14388,11 @@ sub createFieldConfigurationScheme( $self, %options ) {
 
 =head2 C<< getFieldConfigurationSchemeMappings >>
 
-  my $res = $client->getFieldConfigurationSchemeMappings()->get;
+  my $res = $client->getFieldConfigurationSchemeMappings(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'fieldConfigurationSchemeId' => '...',
+  )->get;
 
 Get field configuration issue type items
 
@@ -14189,7 +14506,11 @@ sub getFieldConfigurationSchemeMappings( $self, %options ) {
 
 =head2 C<< getFieldConfigurationSchemeProjectMapping >>
 
-  my $res = $client->getFieldConfigurationSchemeProjectMapping()->get;
+  my $res = $client->getFieldConfigurationSchemeProjectMapping(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'projectId' => '...',
+  )->get;
 
 Get field configuration schemes for projects
 
@@ -14328,7 +14649,7 @@ The ID of the project.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -14449,7 +14770,9 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
 
 =head2 C<< deleteFieldConfigurationScheme >>
 
-  my $res = $client->deleteFieldConfigurationScheme()->get;
+  my $res = $client->deleteFieldConfigurationScheme(
+      'id' => '...',
+  )->get;
 
 Delete field configuration scheme
 
@@ -14464,7 +14787,7 @@ The ID of the field configuration scheme.
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -14555,7 +14878,9 @@ sub deleteFieldConfigurationScheme( $self, %options ) {
 
 =head2 C<< updateFieldConfigurationScheme >>
 
-  my $res = $client->updateFieldConfigurationScheme()->get;
+  my $res = $client->updateFieldConfigurationScheme(
+      'id' => '...',
+  )->get;
 
 Update field configuration scheme
 
@@ -14584,7 +14909,7 @@ The name of the field configuration scheme. The name must be unique.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -14711,7 +15036,9 @@ sub updateFieldConfigurationScheme( $self, %options ) {
 
 =head2 C<< setFieldConfigurationSchemeMapping >>
 
-  my $res = $client->setFieldConfigurationSchemeMapping()->get;
+  my $res = $client->setFieldConfigurationSchemeMapping(
+      'id' => '...',
+  )->get;
 
 Assign issue types to field configurations
 
@@ -14736,7 +15063,7 @@ Field configuration to issue type mappings.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -14830,7 +15157,9 @@ sub setFieldConfigurationSchemeMapping( $self, %options ) {
 
 =head2 C<< removeIssueTypesFromGlobalFieldConfigurationScheme >>
 
-  my $res = $client->removeIssueTypesFromGlobalFieldConfigurationScheme()->get;
+  my $res = $client->removeIssueTypesFromGlobalFieldConfigurationScheme(
+      'id' => '...',
+  )->get;
 
 Remove issue types from field configuration scheme
 
@@ -14855,8 +15184,11 @@ The list of issue type IDs. Must contain unique values not longer than 255 chara
 
 =back
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -14994,7 +15326,9 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
 
 =head2 C<< getFilters >>
 
-  my $res = $client->getFilters()->get;
+  my $res = $client->getFilters(
+      'expand' => '...',
+  )->get;
 
 Get filters
 
@@ -15101,7 +15435,10 @@ sub getFilters( $self, %options ) {
 
 =head2 C<< createFilter >>
 
-  my $res = $client->createFilter()->get;
+  my $res = $client->createFilter(
+      'expand' => '...',
+      'overrideSharePermissions' => '...',
+  )->get;
 
 Create filter
 
@@ -15492,7 +15829,9 @@ sub setDefaultShareScope( $self, %options ) {
 
 =head2 C<< getFavouriteFilters >>
 
-  my $res = $client->getFavouriteFilters()->get;
+  my $res = $client->getFavouriteFilters(
+      'expand' => '...',
+  )->get;
 
 Get favorite filters
 
@@ -15602,7 +15941,10 @@ sub getFavouriteFilters( $self, %options ) {
 
 =head2 C<< getMyFilters >>
 
-  my $res = $client->getMyFilters()->get;
+  my $res = $client->getMyFilters(
+      'expand' => '...',
+      'includeFavourites' => '...',
+  )->get;
 
 Get my filters
 
@@ -15717,7 +16059,20 @@ sub getMyFilters( $self, %options ) {
 
 =head2 C<< getFiltersPaginated >>
 
-  my $res = $client->getFiltersPaginated()->get;
+  my $res = $client->getFiltersPaginated(
+      'filterName' => '...',
+      'accountId' => '...',
+      'owner' => '...',
+      'groupname' => '...',
+      'groupId' => '...',
+      'projectId' => '...',
+      'id' => '...',
+      'orderBy' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+      'expand' => '...',
+      'overrideSharePermissions' => '...',
+  )->get;
 
 Search for filters
 
@@ -15980,7 +16335,9 @@ sub getFiltersPaginated( $self, %options ) {
 
 =head2 C<< deleteFilter >>
 
-  my $res = $client->deleteFilter()->get;
+  my $res = $client->deleteFilter(
+      'id' => '...',
+  )->get;
 
 Delete filter
 
@@ -16067,7 +16424,11 @@ sub deleteFilter( $self, %options ) {
 
 =head2 C<< getFilter >>
 
-  my $res = $client->getFilter()->get;
+  my $res = $client->getFilter(
+      'id' => '...',
+      'expand' => '...',
+      'overrideSharePermissions' => '...',
+  )->get;
 
 Get filter
 
@@ -16194,7 +16555,11 @@ sub getFilter( $self, %options ) {
 
 =head2 C<< updateFilter >>
 
-  my $res = $client->updateFilter()->get;
+  my $res = $client->updateFilter(
+      'id' => '...',
+      'expand' => '...',
+      'overrideSharePermissions' => '...',
+  )->get;
 
 Update filter
 
@@ -16386,7 +16751,9 @@ sub updateFilter( $self, %options ) {
 
 =head2 C<< resetColumns >>
 
-  my $res = $client->resetColumns()->get;
+  my $res = $client->resetColumns(
+      'id' => '...',
+  )->get;
 
 Reset columns
 
@@ -16473,7 +16840,9 @@ sub resetColumns( $self, %options ) {
 
 =head2 C<< getColumns >>
 
-  my $res = $client->getColumns()->get;
+  my $res = $client->getColumns(
+      'id' => '...',
+  )->get;
 
 Get columns
 
@@ -16577,7 +16946,9 @@ sub getColumns( $self, %options ) {
 
 =head2 C<< setColumns >>
 
-  my $res = $client->setColumns()->get;
+  my $res = $client->setColumns(
+      'id' => '...',
+  )->get;
 
 Set columns
 
@@ -16682,7 +17053,10 @@ sub setColumns( $self, %options ) {
 
 =head2 C<< deleteFavouriteForFilter >>
 
-  my $res = $client->deleteFavouriteForFilter()->get;
+  my $res = $client->deleteFavouriteForFilter(
+      'id' => '...',
+      'expand' => '...',
+  )->get;
 
 Remove filter as favorite
 
@@ -16801,7 +17175,10 @@ sub deleteFavouriteForFilter( $self, %options ) {
 
 =head2 C<< setFavouriteForFilter >>
 
-  my $res = $client->setFavouriteForFilter()->get;
+  my $res = $client->setFavouriteForFilter(
+      'id' => '...',
+      'expand' => '...',
+  )->get;
 
 Add filter as favorite
 
@@ -16920,7 +17297,9 @@ sub setFavouriteForFilter( $self, %options ) {
 
 =head2 C<< changeFilterOwner >>
 
-  my $res = $client->changeFilterOwner()->get;
+  my $res = $client->changeFilterOwner(
+      'id' => '...',
+  )->get;
 
 Change filter owner
 
@@ -16945,7 +17324,7 @@ The account ID of the new owner.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -17036,7 +17415,9 @@ sub changeFilterOwner( $self, %options ) {
 
 =head2 C<< getSharePermissions >>
 
-  my $res = $client->getSharePermissions()->get;
+  my $res = $client->getSharePermissions(
+      'id' => '...',
+  )->get;
 
 Get share permissions
 
@@ -17137,7 +17518,9 @@ sub getSharePermissions( $self, %options ) {
 
 =head2 C<< addSharePermission >>
 
-  my $res = $client->addSharePermission()->get;
+  my $res = $client->addSharePermission(
+      'id' => '...',
+  )->get;
 
 Add share permission
 
@@ -17220,7 +17603,7 @@ C<authenticated> Share with all logged-in users. This shows as C<loggedin> in th
 
 =back
 
-Returns an array of L<< JIRA::API::SharePermission >> on success.
+Returns an array of L<< JIRA::API::SharePermission >> on HTTP code 201.
 
 =cut
 
@@ -17312,7 +17695,10 @@ sub addSharePermission( $self, %options ) {
 
 =head2 C<< deleteSharePermission >>
 
-  my $res = $client->deleteSharePermission()->get;
+  my $res = $client->deleteSharePermission(
+      'id' => '...',
+      'permissionId' => '...',
+  )->get;
 
 Delete share permission
 
@@ -17406,7 +17792,10 @@ sub deleteSharePermission( $self, %options ) {
 
 =head2 C<< getSharePermission >>
 
-  my $res = $client->getSharePermission()->get;
+  my $res = $client->getSharePermission(
+      'id' => '...',
+      'permissionId' => '...',
+  )->get;
 
 Get share permission
 
@@ -17513,7 +17902,12 @@ sub getSharePermission( $self, %options ) {
 
 =head2 C<< removeGroup >>
 
-  my $res = $client->removeGroup()->get;
+  my $res = $client->removeGroup(
+      'groupname' => '...',
+      'groupId' => '...',
+      'swapGroup' => '...',
+      'swapGroupId' => '...',
+  )->get;
 
 Remove group
 
@@ -17619,7 +18013,11 @@ sub removeGroup( $self, %options ) {
 
 =head2 C<< getGroup >>
 
-  my $res = $client->getGroup()->get;
+  my $res = $client->getGroup(
+      'groupname' => '...',
+      'groupId' => '...',
+      'expand' => '...',
+  )->get;
 
 Get group
 
@@ -17756,7 +18154,7 @@ The name of the group.
 
 =back
 
-Returns a L<< JIRA::API::Group >> on success.
+Returns a L<< JIRA::API::Group >> on HTTP code 201.
 
 =cut
 
@@ -17841,7 +18239,14 @@ sub createGroup( $self, %options ) {
 
 =head2 C<< bulkGetGroups >>
 
-  my $res = $client->bulkGetGroups()->get;
+  my $res = $client->bulkGetGroups(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'groupId' => '...',
+      'groupName' => '...',
+      'accessType' => '...',
+      'applicationKey' => '...',
+  )->get;
 
 Bulk get groups
 
@@ -17992,7 +18397,13 @@ sub bulkGetGroups( $self, %options ) {
 
 =head2 C<< getUsersFromGroup >>
 
-  my $res = $client->getUsersFromGroup()->get;
+  my $res = $client->getUsersFromGroup(
+      'groupname' => '...',
+      'groupId' => '...',
+      'includeInactiveUsers' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get users from group
 
@@ -18118,7 +18529,12 @@ sub getUsersFromGroup( $self, %options ) {
 
 =head2 C<< removeUserFromGroup >>
 
-  my $res = $client->removeUserFromGroup()->get;
+  my $res = $client->removeUserFromGroup(
+      'groupname' => '...',
+      'groupId' => '...',
+      'username' => '...',
+      'accountId' => '...',
+  )->get;
 
 Remove user from group
 
@@ -18229,7 +18645,10 @@ sub removeUserFromGroup( $self, %options ) {
 
 =head2 C<< addUserToGroup >>
 
-  my $res = $client->addUserToGroup()->get;
+  my $res = $client->addUserToGroup(
+      'groupname' => '...',
+      'groupId' => '...',
+  )->get;
 
 Add user to group
 
@@ -18264,7 +18683,7 @@ This property is no longer available. See the L<deprecation notice|https://devel
 
 =back
 
-Returns a L<< JIRA::API::Group >> on success.
+Returns a L<< JIRA::API::Group >> on HTTP code 201.
 
 =cut
 
@@ -18357,7 +18776,15 @@ sub addUserToGroup( $self, %options ) {
 
 =head2 C<< findGroups >>
 
-  my $res = $client->findGroups()->get;
+  my $res = $client->findGroups(
+      'accountId' => '...',
+      'query' => '...',
+      'exclude' => '...',
+      'excludeId' => '...',
+      'maxResults' => '...',
+      'caseInsensitive' => '...',
+      'userName' => '...',
+  )->get;
 
 Find groups
 
@@ -18481,7 +18908,17 @@ sub findGroups( $self, %options ) {
 
 =head2 C<< findUsersAndGroups >>
 
-  my $res = $client->findUsersAndGroups()->get;
+  my $res = $client->findUsersAndGroups(
+      'query' => '...',
+      'maxResults' => '...',
+      'showAvatar' => '...',
+      'fieldId' => '...',
+      'projectId' => '...',
+      'issueTypeId' => '...',
+      'avatarSize' => '...',
+      'caseInsensitive' => '...',
+      'excludeConnectAddons' => '...',
+  )->get;
 
 Find users and groups
 
@@ -18715,7 +19152,9 @@ sub getLicense( $self, %options ) {
 
 =head2 C<< createIssue >>
 
-  my $res = $client->createIssue()->get;
+  my $res = $client->createIssue(
+      'updateHistory' => '...',
+  )->get;
 
 Create issue
 
@@ -18756,8 +19195,10 @@ A Map containing the field field name and a list of operations to perform on the
 
 =back
 
-Returns a L<< JIRA::API::CreatedIssue >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::CreatedIssue >> on HTTP code 201.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -18898,8 +19339,8 @@ Bulk create issue
 
 =back
 
-Returns a L<< JIRA::API::CreatedIssues >> on success.
 Returns a L<< JIRA::API::CreatedIssues >> on error.
+Returns a L<< JIRA::API::CreatedIssues >> on HTTP code 201.
 
 =cut
 
@@ -18992,7 +19433,13 @@ sub createIssues( $self, %options ) {
 
 =head2 C<< getCreateIssueMeta >>
 
-  my $res = $client->getCreateIssueMeta()->get;
+  my $res = $client->getCreateIssueMeta(
+      'projectIds' => '...',
+      'projectKeys' => '...',
+      'issuetypeIds' => '...',
+      'issuetypeNames' => '...',
+      'expand' => '...',
+  )->get;
 
 Get create issue metadata
 
@@ -19107,7 +19554,14 @@ sub getCreateIssueMeta( $self, %options ) {
 
 =head2 C<< getIssuePickerResource >>
 
-  my $res = $client->getIssuePickerResource()->get;
+  my $res = $client->getIssuePickerResource(
+      'query' => '...',
+      'currentJQL' => '...',
+      'currentIssueKey' => '...',
+      'currentProjectId' => '...',
+      'showSubTasks' => '...',
+      'showSubTaskParent' => '...',
+  )->get;
 
 Get issue picker suggestions
 
@@ -19253,6 +19707,7 @@ A list of entity property keys and values.
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -19367,6 +19822,8 @@ A list of issue IDs and their respective properties.
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -19473,7 +19930,9 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
 
 =head2 C<< bulkDeleteIssueProperty >>
 
-  my $res = $client->bulkDeleteIssueProperty()->get;
+  my $res = $client->bulkDeleteIssueProperty(
+      'propertyKey' => '...',
+  )->get;
 
 Bulk delete issue property
 
@@ -19503,6 +19962,7 @@ List of issues to perform the bulk delete operation on.
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -19601,7 +20061,9 @@ sub bulkDeleteIssueProperty( $self, %options ) {
 
 =head2 C<< bulkSetIssueProperty >>
 
-  my $res = $client->bulkSetIssueProperty()->get;
+  my $res = $client->bulkSetIssueProperty(
+      'propertyKey' => '...',
+  )->get;
 
 Bulk set issue property
 
@@ -19635,6 +20097,7 @@ The value of the property. The value must be a L<valid|https://tools.ietf.org/ht
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -19833,7 +20296,10 @@ sub getIsWatchingIssueBulk( $self, %options ) {
 
 =head2 C<< deleteIssue >>
 
-  my $res = $client->deleteIssue()->get;
+  my $res = $client->deleteIssue(
+      'issueIdOrKey' => '...',
+      'deleteSubtasks' => '...',
+  )->get;
 
 Delete issue
 
@@ -19934,7 +20400,14 @@ sub deleteIssue( $self, %options ) {
 
 =head2 C<< getIssue >>
 
-  my $res = $client->getIssue()->get;
+  my $res = $client->getIssue(
+      'issueIdOrKey' => '...',
+      'fields' => '...',
+      'fieldsByKeys' => '...',
+      'expand' => '...',
+      'properties' => '...',
+      'updateHistory' => '...',
+  )->get;
 
 Get issue
 
@@ -20182,7 +20655,12 @@ sub getIssue( $self, %options ) {
 
 =head2 C<< editIssue >>
 
-  my $res = $client->editIssue()->get;
+  my $res = $client->editIssue(
+      'issueIdOrKey' => '...',
+      'notifyUsers' => '...',
+      'overrideScreenSecurity' => '...',
+      'overrideEditableFlag' => '...',
+  )->get;
 
 Edit issue
 
@@ -20235,7 +20713,7 @@ A Map containing the field field name and a list of operations to perform on the
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -20335,7 +20813,9 @@ sub editIssue( $self, %options ) {
 
 =head2 C<< assignIssue >>
 
-  my $res = $client->assignIssue()->get;
+  my $res = $client->assignIssue(
+      'issueIdOrKey' => '...',
+  )->get;
 
 Assign issue
 
@@ -20431,7 +20911,7 @@ The time zone specified in the user's profile. Depending on the user’s privacy
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -20522,7 +21002,9 @@ sub assignIssue( $self, %options ) {
 
 =head2 C<< addAttachment >>
 
-  my $res = $client->addAttachment()->get;
+  my $res = $client->addAttachment(
+      'issueIdOrKey' => '...',
+  )->get;
 
 Add attachment
 
@@ -20629,7 +21111,11 @@ sub addAttachment( $self, %options ) {
 
 =head2 C<< getChangeLogs >>
 
-  my $res = $client->getChangeLogs()->get;
+  my $res = $client->getChangeLogs(
+      'issueIdOrKey' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get changelogs
 
@@ -20739,7 +21225,9 @@ sub getChangeLogs( $self, %options ) {
 
 =head2 C<< getChangeLogsByIds >>
 
-  my $res = $client->getChangeLogsByIds()->get;
+  my $res = $client->getChangeLogsByIds(
+      'issueIdOrKey' => '...',
+  )->get;
 
 Get changelogs by IDs
 
@@ -20852,7 +21340,13 @@ sub getChangeLogsByIds( $self, %options ) {
 
 =head2 C<< getComments >>
 
-  my $res = $client->getComments()->get;
+  my $res = $client->getComments(
+      'issueIdOrKey' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+      'orderBy' => '...',
+      'expand' => '...',
+  )->get;
 
 Get comments
 
@@ -20978,7 +21472,10 @@ sub getComments( $self, %options ) {
 
 =head2 C<< addComment >>
 
-  my $res = $client->addComment()->get;
+  my $res = $client->addComment(
+      'issueIdOrKey' => '...',
+      'expand' => '...',
+  )->get;
 
 Add comment
 
@@ -21051,7 +21548,7 @@ The group or role to which this comment is visible. Optional on create and updat
 
 =back
 
-Returns a L<< JIRA::API::Comment >> on success.
+Returns a L<< JIRA::API::Comment >> on HTTP code 201.
 
 =cut
 
@@ -21146,7 +21643,10 @@ sub addComment( $self, %options ) {
 
 =head2 C<< deleteComment >>
 
-  my $res = $client->deleteComment()->get;
+  my $res = $client->deleteComment(
+      'issueIdOrKey' => '...',
+      'id' => '...',
+  )->get;
 
 Delete comment
 
@@ -21246,7 +21746,11 @@ sub deleteComment( $self, %options ) {
 
 =head2 C<< getComment >>
 
-  my $res = $client->getComment()->get;
+  my $res = $client->getComment(
+      'issueIdOrKey' => '...',
+      'id' => '...',
+      'expand' => '...',
+  )->get;
 
 Get comment
 
@@ -21361,7 +21865,13 @@ sub getComment( $self, %options ) {
 
 =head2 C<< updateComment >>
 
-  my $res = $client->updateComment()->get;
+  my $res = $client->updateComment(
+      'issueIdOrKey' => '...',
+      'id' => '...',
+      'notifyUsers' => '...',
+      'overrideEditableFlag' => '...',
+      'expand' => '...',
+  )->get;
 
 Update comment
 
@@ -21546,7 +22056,11 @@ sub updateComment( $self, %options ) {
 
 =head2 C<< getEditIssueMeta >>
 
-  my $res = $client->getEditIssueMeta()->get;
+  my $res = $client->getEditIssueMeta(
+      'issueIdOrKey' => '...',
+      'overrideScreenSecurity' => '...',
+      'overrideEditableFlag' => '...',
+  )->get;
 
 Get edit issue metadata
 
@@ -21662,7 +22176,9 @@ sub getEditIssueMeta( $self, %options ) {
 
 =head2 C<< notify >>
 
-  my $res = $client->notify()->get;
+  my $res = $client->notify(
+      'issueIdOrKey' => '...',
+  )->get;
 
 Send notification for issue
 
@@ -21703,7 +22219,7 @@ The recipients of the email notification for the issue.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -21794,7 +22310,9 @@ sub notify( $self, %options ) {
 
 =head2 C<< getIssuePropertyKeys >>
 
-  my $res = $client->getIssuePropertyKeys()->get;
+  my $res = $client->getIssuePropertyKeys(
+      'issueIdOrKey' => '...',
+  )->get;
 
 Get issue property keys
 
@@ -21891,7 +22409,10 @@ sub getIssuePropertyKeys( $self, %options ) {
 
 =head2 C<< deleteIssueProperty >>
 
-  my $res = $client->deleteIssueProperty()->get;
+  my $res = $client->deleteIssueProperty(
+      'issueIdOrKey' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Delete issue property
 
@@ -21985,7 +22506,10 @@ sub deleteIssueProperty( $self, %options ) {
 
 =head2 C<< getIssueProperty >>
 
-  my $res = $client->getIssueProperty()->get;
+  my $res = $client->getIssueProperty(
+      'issueIdOrKey' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Get issue property
 
@@ -22092,7 +22616,10 @@ sub getIssueProperty( $self, %options ) {
 
 =head2 C<< setIssueProperty >>
 
-  my $res = $client->setIssueProperty()->get;
+  my $res = $client->setIssueProperty(
+      'issueIdOrKey' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Set issue property
 
@@ -22112,6 +22639,7 @@ The key of the issue property. The maximum length is 255 characters.
 
 
 Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -22222,7 +22750,10 @@ sub setIssueProperty( $self, %options ) {
 
 =head2 C<< deleteRemoteIssueLinkByGlobalId >>
 
-  my $res = $client->deleteRemoteIssueLinkByGlobalId()->get;
+  my $res = $client->deleteRemoteIssueLinkByGlobalId(
+      'issueIdOrKey' => '...',
+      'globalId' => '...',
+  )->get;
 
 Delete remote issue link by global ID
 
@@ -22325,7 +22856,10 @@ sub deleteRemoteIssueLinkByGlobalId( $self, %options ) {
 
 =head2 C<< getRemoteIssueLinks >>
 
-  my $res = $client->getRemoteIssueLinks()->get;
+  my $res = $client->getRemoteIssueLinks(
+      'issueIdOrKey' => '...',
+      'globalId' => '...',
+  )->get;
 
 Get remote issue links
 
@@ -22439,7 +22973,9 @@ sub getRemoteIssueLinks( $self, %options ) {
 
 =head2 C<< createOrUpdateRemoteIssueLink >>
 
-  my $res = $client->createOrUpdateRemoteIssueLink()->get;
+  my $res = $client->createOrUpdateRemoteIssueLink(
+      'issueIdOrKey' => '...',
+  )->get;
 
 Create or update remote issue link
 
@@ -22481,6 +23017,7 @@ Description of the relationship between the issue and the linked item. If not se
 =back
 
 Returns a L<< JIRA::API::RemoteIssueLinkIdentifies >> on success.
+Returns a L<< JIRA::API::RemoteIssueLinkIdentifies >> on HTTP code 201.
 
 =cut
 
@@ -22599,7 +23136,10 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
 
 =head2 C<< deleteRemoteIssueLinkById >>
 
-  my $res = $client->deleteRemoteIssueLinkById()->get;
+  my $res = $client->deleteRemoteIssueLinkById(
+      'issueIdOrKey' => '...',
+      'linkId' => '...',
+  )->get;
 
 Delete remote issue link by ID
 
@@ -22699,7 +23239,10 @@ sub deleteRemoteIssueLinkById( $self, %options ) {
 
 =head2 C<< getRemoteIssueLinkById >>
 
-  my $res = $client->getRemoteIssueLinkById()->get;
+  my $res = $client->getRemoteIssueLinkById(
+      'issueIdOrKey' => '...',
+      'linkId' => '...',
+  )->get;
 
 Get remote issue link by ID
 
@@ -22812,7 +23355,10 @@ sub getRemoteIssueLinkById( $self, %options ) {
 
 =head2 C<< updateRemoteIssueLink >>
 
-  my $res = $client->updateRemoteIssueLink()->get;
+  my $res = $client->updateRemoteIssueLink(
+      'issueIdOrKey' => '...',
+      'linkId' => '...',
+  )->get;
 
 Update remote issue link by ID
 
@@ -22857,7 +23403,7 @@ Description of the relationship between the issue and the linked item. If not se
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -22965,7 +23511,14 @@ sub updateRemoteIssueLink( $self, %options ) {
 
 =head2 C<< getTransitions >>
 
-  my $res = $client->getTransitions()->get;
+  my $res = $client->getTransitions(
+      'issueIdOrKey' => '...',
+      'expand' => '...',
+      'transitionId' => '...',
+      'skipRemoteOnlyCondition' => '...',
+      'includeUnavailableTransitions' => '...',
+      'sortByOpsBarAndStatus' => '...',
+  )->get;
 
 Get transitions
 
@@ -23093,7 +23646,9 @@ sub getTransitions( $self, %options ) {
 
 =head2 C<< doTransition >>
 
-  my $res = $client->doTransition()->get;
+  my $res = $client->doTransition(
+      'issueIdOrKey' => '...',
+  )->get;
 
 Transition issue
 
@@ -23134,7 +23689,7 @@ A Map containing the field field name and a list of operations to perform on the
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -23225,7 +23780,9 @@ sub doTransition( $self, %options ) {
 
 =head2 C<< removeVote >>
 
-  my $res = $client->removeVote()->get;
+  my $res = $client->removeVote(
+      'issueIdOrKey' => '...',
+  )->get;
 
 Delete vote
 
@@ -23312,7 +23869,9 @@ sub removeVote( $self, %options ) {
 
 =head2 C<< getVotes >>
 
-  my $res = $client->getVotes()->get;
+  my $res = $client->getVotes(
+      'issueIdOrKey' => '...',
+  )->get;
 
 Get votes
 
@@ -23412,7 +23971,9 @@ sub getVotes( $self, %options ) {
 
 =head2 C<< addVote >>
 
-  my $res = $client->addVote()->get;
+  my $res = $client->addVote(
+      'issueIdOrKey' => '...',
+  )->get;
 
 Add vote
 
@@ -23427,7 +23988,7 @@ The ID or key of the issue.
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -23515,7 +24076,11 @@ sub addVote( $self, %options ) {
 
 =head2 C<< removeWatcher >>
 
-  my $res = $client->removeWatcher()->get;
+  my $res = $client->removeWatcher(
+      'issueIdOrKey' => '...',
+      'username' => '...',
+      'accountId' => '...',
+  )->get;
 
 Delete watcher
 
@@ -23621,7 +24186,9 @@ sub removeWatcher( $self, %options ) {
 
 =head2 C<< getIssueWatchers >>
 
-  my $res = $client->getIssueWatchers()->get;
+  my $res = $client->getIssueWatchers(
+      'issueIdOrKey' => '...',
+  )->get;
 
 Get issue watchers
 
@@ -23721,7 +24288,9 @@ sub getIssueWatchers( $self, %options ) {
 
 =head2 C<< addWatcher >>
 
-  my $res = $client->addWatcher()->get;
+  my $res = $client->addWatcher(
+      'issueIdOrKey' => '...',
+  )->get;
 
 Add watcher
 
@@ -23736,7 +24305,7 @@ The ID or key of the issue.
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -23830,7 +24399,14 @@ sub addWatcher( $self, %options ) {
 
 =head2 C<< getIssueWorklog >>
 
-  my $res = $client->getIssueWorklog()->get;
+  my $res = $client->getIssueWorklog(
+      'issueIdOrKey' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+      'startedAfter' => '...',
+      'startedBefore' => '...',
+      'expand' => '...',
+  )->get;
 
 Get issue worklogs
 
@@ -23958,7 +24534,15 @@ sub getIssueWorklog( $self, %options ) {
 
 =head2 C<< addWorklog >>
 
-  my $res = $client->addWorklog()->get;
+  my $res = $client->addWorklog(
+      'issueIdOrKey' => '...',
+      'notifyUsers' => '...',
+      'adjustEstimate' => '...',
+      'newEstimate' => '...',
+      'reduceBy' => '...',
+      'expand' => '...',
+      'overrideEditableFlag' => '...',
+  )->get;
 
 Add worklog
 
@@ -24079,7 +24663,7 @@ Details about any restrictions in the visibility of the worklog. Optional when c
 
 =back
 
-Returns a L<< JIRA::API::Worklog >> on success.
+Returns a L<< JIRA::API::Worklog >> on HTTP code 201.
 
 =cut
 
@@ -24179,7 +24763,15 @@ sub addWorklog( $self, %options ) {
 
 =head2 C<< deleteWorklog >>
 
-  my $res = $client->deleteWorklog()->get;
+  my $res = $client->deleteWorklog(
+      'issueIdOrKey' => '...',
+      'id' => '...',
+      'notifyUsers' => '...',
+      'adjustEstimate' => '...',
+      'newEstimate' => '...',
+      'increaseBy' => '...',
+      'overrideEditableFlag' => '...',
+  )->get;
 
 Delete worklog
 
@@ -24328,7 +24920,11 @@ sub deleteWorklog( $self, %options ) {
 
 =head2 C<< getWorklog >>
 
-  my $res = $client->getWorklog()->get;
+  my $res = $client->getWorklog(
+      'issueIdOrKey' => '...',
+      'id' => '...',
+      'expand' => '...',
+  )->get;
 
 Get worklog
 
@@ -24445,7 +25041,15 @@ sub getWorklog( $self, %options ) {
 
 =head2 C<< updateWorklog >>
 
-  my $res = $client->updateWorklog()->get;
+  my $res = $client->updateWorklog(
+      'issueIdOrKey' => '...',
+      'id' => '...',
+      'notifyUsers' => '...',
+      'adjustEstimate' => '...',
+      'newEstimate' => '...',
+      'expand' => '...',
+      'overrideEditableFlag' => '...',
+  )->get;
 
 Update worklog
 
@@ -24663,7 +25267,10 @@ sub updateWorklog( $self, %options ) {
 
 =head2 C<< getWorklogPropertyKeys >>
 
-  my $res = $client->getWorklogPropertyKeys()->get;
+  my $res = $client->getWorklogPropertyKeys(
+      'issueIdOrKey' => '...',
+      'worklogId' => '...',
+  )->get;
 
 Get worklog property keys
 
@@ -24773,7 +25380,11 @@ sub getWorklogPropertyKeys( $self, %options ) {
 
 =head2 C<< deleteWorklogProperty >>
 
-  my $res = $client->deleteWorklogProperty()->get;
+  my $res = $client->deleteWorklogProperty(
+      'issueIdOrKey' => '...',
+      'worklogId' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Delete worklog property
 
@@ -24880,7 +25491,11 @@ sub deleteWorklogProperty( $self, %options ) {
 
 =head2 C<< getWorklogProperty >>
 
-  my $res = $client->getWorklogProperty()->get;
+  my $res = $client->getWorklogProperty(
+      'issueIdOrKey' => '...',
+      'worklogId' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Get worklog property
 
@@ -24997,7 +25612,11 @@ sub getWorklogProperty( $self, %options ) {
 
 =head2 C<< setWorklogProperty >>
 
-  my $res = $client->setWorklogProperty()->get;
+  my $res = $client->setWorklogProperty(
+      'issueIdOrKey' => '...',
+      'worklogId' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Set worklog property
 
@@ -25021,6 +25640,7 @@ The key of the issue property. The maximum length is 255 characters.
 
 
 Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -25181,7 +25801,7 @@ In the L< issueLinkType|#api-rest-api-3-issueLinkType-post> resource it defines 
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -25266,7 +25886,9 @@ sub linkIssues( $self, %options ) {
 
 =head2 C<< deleteIssueLink >>
 
-  my $res = $client->deleteIssueLink()->get;
+  my $res = $client->deleteIssueLink(
+      'linkId' => '...',
+  )->get;
 
 Delete issue link
 
@@ -25359,7 +25981,9 @@ sub deleteIssueLink( $self, %options ) {
 
 =head2 C<< getIssueLink >>
 
-  my $res = $client->getIssueLink()->get;
+  my $res = $client->getIssueLink(
+      'linkId' => '...',
+  )->get;
 
 Get issue link
 
@@ -25645,7 +26269,7 @@ The URL of the issue link type. Read only.
 
 =back
 
-Returns a L<< JIRA::API::IssueLinkType >> on success.
+Returns a L<< JIRA::API::IssueLinkType >> on HTTP code 201.
 
 =cut
 
@@ -25730,7 +26354,9 @@ sub createIssueLinkType( $self, %options ) {
 
 =head2 C<< deleteIssueLinkType >>
 
-  my $res = $client->deleteIssueLinkType()->get;
+  my $res = $client->deleteIssueLinkType(
+      'issueLinkTypeId' => '...',
+  )->get;
 
 Delete issue link type
 
@@ -25820,7 +26446,9 @@ sub deleteIssueLinkType( $self, %options ) {
 
 =head2 C<< getIssueLinkType >>
 
-  my $res = $client->getIssueLinkType()->get;
+  my $res = $client->getIssueLinkType(
+      'issueLinkTypeId' => '...',
+  )->get;
 
 Get issue link type
 
@@ -25923,7 +26551,9 @@ sub getIssueLinkType( $self, %options ) {
 
 =head2 C<< updateIssueLinkType >>
 
-  my $res = $client->updateIssueLinkType()->get;
+  my $res = $client->updateIssueLinkType(
+      'issueLinkTypeId' => '...',
+  )->get;
 
 Update issue link type
 
@@ -26201,7 +26831,9 @@ sub getIssueSecuritySchemes( $self, %options ) {
 
 =head2 C<< getIssueSecurityScheme >>
 
-  my $res = $client->getIssueSecurityScheme()->get;
+  my $res = $client->getIssueSecurityScheme(
+      'id' => '...',
+  )->get;
 
 Get issue security scheme
 
@@ -26301,7 +26933,13 @@ sub getIssueSecurityScheme( $self, %options ) {
 
 =head2 C<< getIssueSecurityLevelMembers >>
 
-  my $res = $client->getIssueSecurityLevelMembers()->get;
+  my $res = $client->getIssueSecurityLevelMembers(
+      'issueSecuritySchemeId' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+      'issueSecurityLevelId' => '...',
+      'expand' => '...',
+  )->get;
 
 Get issue security level members
 
@@ -26598,7 +27236,7 @@ Whether the issue type is C<subtype> or C<standard>. Defaults to C<standard>.
 
 =back
 
-Returns a L<< JIRA::API::IssueTypeDetails >> on success.
+Returns a L<< JIRA::API::IssueTypeDetails >> on HTTP code 201.
 
 =cut
 
@@ -26686,7 +27324,10 @@ sub createIssueType( $self, %options ) {
 
 =head2 C<< getIssueTypesForProject >>
 
-  my $res = $client->getIssueTypesForProject()->get;
+  my $res = $client->getIssueTypesForProject(
+      'projectId' => '...',
+      'level' => '...',
+  )->get;
 
 Get issue types for project
 
@@ -26815,7 +27456,10 @@ sub getIssueTypesForProject( $self, %options ) {
 
 =head2 C<< deleteIssueType >>
 
-  my $res = $client->deleteIssueType()->get;
+  my $res = $client->deleteIssueType(
+      'id' => '...',
+      'alternativeIssueTypeId' => '...',
+  )->get;
 
 Delete issue type
 
@@ -26919,7 +27563,9 @@ sub deleteIssueType( $self, %options ) {
 
 =head2 C<< getIssueType >>
 
-  my $res = $client->getIssueType()->get;
+  my $res = $client->getIssueType(
+      'id' => '...',
+  )->get;
 
 Get issue type
 
@@ -27022,7 +27668,9 @@ sub getIssueType( $self, %options ) {
 
 =head2 C<< updateIssueType >>
 
-  my $res = $client->updateIssueType()->get;
+  my $res = $client->updateIssueType(
+      'id' => '...',
+  )->get;
 
 Update issue type
 
@@ -27152,7 +27800,9 @@ sub updateIssueType( $self, %options ) {
 
 =head2 C<< getAlternativeIssueTypes >>
 
-  my $res = $client->getAlternativeIssueTypes()->get;
+  my $res = $client->getAlternativeIssueTypes(
+      'id' => '...',
+  )->get;
 
 Get alternative issue types
 
@@ -27253,7 +27903,12 @@ sub getAlternativeIssueTypes( $self, %options ) {
 
 =head2 C<< createIssueTypeAvatar >>
 
-  my $res = $client->createIssueTypeAvatar()->get;
+  my $res = $client->createIssueTypeAvatar(
+      'id' => '...',
+      'x' => '...',
+      'y' => '...',
+      'size' => '...',
+  )->get;
 
 Load issue type avatar
 
@@ -27280,7 +27935,7 @@ The length of each side of the crop region.
 =back
 
 
-Returns a L<< JIRA::API::Avatar >> on success.
+Returns a L<< JIRA::API::Avatar >> on HTTP code 201.
 
 =cut
 
@@ -27383,7 +28038,9 @@ sub createIssueTypeAvatar( $self, %options ) {
 
 =head2 C<< getIssueTypePropertyKeys >>
 
-  my $res = $client->getIssueTypePropertyKeys()->get;
+  my $res = $client->getIssueTypePropertyKeys(
+      'issueTypeId' => '...',
+  )->get;
 
 Get issue type property keys
 
@@ -27483,7 +28140,10 @@ sub getIssueTypePropertyKeys( $self, %options ) {
 
 =head2 C<< deleteIssueTypeProperty >>
 
-  my $res = $client->deleteIssueTypeProperty()->get;
+  my $res = $client->deleteIssueTypeProperty(
+      'issueTypeId' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Delete issue type property
 
@@ -27583,7 +28243,10 @@ sub deleteIssueTypeProperty( $self, %options ) {
 
 =head2 C<< getIssueTypeProperty >>
 
-  my $res = $client->getIssueTypeProperty()->get;
+  my $res = $client->getIssueTypeProperty(
+      'issueTypeId' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Get issue type property
 
@@ -27693,7 +28356,10 @@ sub getIssueTypeProperty( $self, %options ) {
 
 =head2 C<< setIssueTypeProperty >>
 
-  my $res = $client->setIssueTypeProperty()->get;
+  my $res = $client->setIssueTypeProperty(
+      'issueTypeId' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Set issue type property
 
@@ -27713,6 +28379,7 @@ The key of the issue type property. The maximum length is 255 characters.
 
 
 Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -27823,7 +28490,14 @@ sub setIssueTypeProperty( $self, %options ) {
 
 =head2 C<< getAllIssueTypeSchemes >>
 
-  my $res = $client->getAllIssueTypeSchemes()->get;
+  my $res = $client->getAllIssueTypeSchemes(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'id' => '...',
+      'orderBy' => '...',
+      'expand' => '...',
+      'queryString' => '...',
+  )->get;
 
 Get all issue type schemes
 
@@ -28010,7 +28684,7 @@ The name of the issue type scheme. The name must be unique. The maximum length i
 
 =back
 
-Returns a L<< JIRA::API::IssueTypeSchemeID >> on success.
+Returns a L<< JIRA::API::IssueTypeSchemeID >> on HTTP code 201.
 
 =cut
 
@@ -28131,7 +28805,11 @@ sub createIssueTypeScheme( $self, %options ) {
 
 =head2 C<< getIssueTypeSchemesMapping >>
 
-  my $res = $client->getIssueTypeSchemesMapping()->get;
+  my $res = $client->getIssueTypeSchemesMapping(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'issueTypeSchemeId' => '...',
+  )->get;
 
 Get issue type scheme items
 
@@ -28242,7 +28920,11 @@ sub getIssueTypeSchemesMapping( $self, %options ) {
 
 =head2 C<< getIssueTypeSchemeForProjects >>
 
-  my $res = $client->getIssueTypeSchemeForProjects()->get;
+  my $res = $client->getIssueTypeSchemeForProjects(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'projectId' => '...',
+  )->get;
 
 Get issue type schemes for projects
 
@@ -28381,7 +29063,7 @@ The ID of the project.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -28502,7 +29184,9 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
 
 =head2 C<< deleteIssueTypeScheme >>
 
-  my $res = $client->deleteIssueTypeScheme()->get;
+  my $res = $client->deleteIssueTypeScheme(
+      'issueTypeSchemeId' => '...',
+  )->get;
 
 Delete issue type scheme
 
@@ -28517,7 +29201,7 @@ The ID of the issue type scheme.
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -28641,7 +29325,9 @@ sub deleteIssueTypeScheme( $self, %options ) {
 
 =head2 C<< updateIssueTypeScheme >>
 
-  my $res = $client->updateIssueTypeScheme()->get;
+  my $res = $client->updateIssueTypeScheme(
+      'issueTypeSchemeId' => '...',
+  )->get;
 
 Update issue type scheme
 
@@ -28674,7 +29360,7 @@ The name of the issue type scheme. The name must be unique. The maximum length i
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -28801,7 +29487,9 @@ sub updateIssueTypeScheme( $self, %options ) {
 
 =head2 C<< addIssueTypesToIssueTypeScheme >>
 
-  my $res = $client->addIssueTypesToIssueTypeScheme()->get;
+  my $res = $client->addIssueTypesToIssueTypeScheme(
+      'issueTypeSchemeId' => '...',
+  )->get;
 
 Add issue types to issue type scheme
 
@@ -28826,7 +29514,7 @@ The list of issue type IDs.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -28953,7 +29641,9 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
 
 =head2 C<< reorderIssueTypesInIssueTypeScheme >>
 
-  my $res = $client->reorderIssueTypesInIssueTypeScheme()->get;
+  my $res = $client->reorderIssueTypesInIssueTypeScheme(
+      'issueTypeSchemeId' => '...',
+  )->get;
 
 Change order of issue types
 
@@ -28986,7 +29676,7 @@ The position the issue types should be moved to. Required if C<after> isn't prov
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -29113,7 +29803,10 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
 
 =head2 C<< removeIssueTypeFromIssueTypeScheme >>
 
-  my $res = $client->removeIssueTypeFromIssueTypeScheme()->get;
+  my $res = $client->removeIssueTypeFromIssueTypeScheme(
+      'issueTypeSchemeId' => '...',
+      'issueTypeId' => '...',
+  )->get;
 
 Remove issue type from issue type scheme
 
@@ -29132,7 +29825,7 @@ The ID of the issue type.
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -29259,7 +29952,14 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
 
 =head2 C<< getIssueTypeScreenSchemes >>
 
-  my $res = $client->getIssueTypeScreenSchemes()->get;
+  my $res = $client->getIssueTypeScreenSchemes(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'id' => '...',
+      'queryString' => '...',
+      'orderBy' => '...',
+      'expand' => '...',
+  )->get;
 
 Get issue type screen schemes
 
@@ -29428,7 +30128,7 @@ The name of the issue type screen scheme. The name must be unique. The maximum l
 
 =back
 
-Returns a L<< JIRA::API::IssueTypeScreenSchemeId >> on success.
+Returns a L<< JIRA::API::IssueTypeScreenSchemeId >> on HTTP code 201.
 
 =cut
 
@@ -29563,7 +30263,11 @@ sub createIssueTypeScreenScheme( $self, %options ) {
 
 =head2 C<< getIssueTypeScreenSchemeMappings >>
 
-  my $res = $client->getIssueTypeScreenSchemeMappings()->get;
+  my $res = $client->getIssueTypeScreenSchemeMappings(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'issueTypeScreenSchemeId' => '...',
+  )->get;
 
 Get issue type screen scheme items
 
@@ -29674,7 +30378,11 @@ sub getIssueTypeScreenSchemeMappings( $self, %options ) {
 
 =head2 C<< getIssueTypeScreenSchemeProjectAssociations >>
 
-  my $res = $client->getIssueTypeScreenSchemeProjectAssociations()->get;
+  my $res = $client->getIssueTypeScreenSchemeProjectAssociations(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'projectId' => '...',
+  )->get;
 
 Get issue type screen schemes for projects
 
@@ -29813,7 +30521,7 @@ The ID of the project.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -29934,7 +30642,9 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
 
 =head2 C<< deleteIssueTypeScreenScheme >>
 
-  my $res = $client->deleteIssueTypeScreenScheme()->get;
+  my $res = $client->deleteIssueTypeScreenScheme(
+      'issueTypeScreenSchemeId' => '...',
+  )->get;
 
 Delete issue type screen scheme
 
@@ -29949,7 +30659,7 @@ The ID of the issue type screen scheme.
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -30062,7 +30772,9 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
 
 =head2 C<< updateIssueTypeScreenScheme >>
 
-  my $res = $client->updateIssueTypeScreenScheme()->get;
+  my $res = $client->updateIssueTypeScreenScheme(
+      'issueTypeScreenSchemeId' => '...',
+  )->get;
 
 Update issue type screen scheme
 
@@ -30091,7 +30803,7 @@ The name of the issue type screen scheme. The name must be unique. The maximum l
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -30218,7 +30930,9 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
 
 =head2 C<< appendMappingsForIssueTypeScreenScheme >>
 
-  my $res = $client->appendMappingsForIssueTypeScreenScheme()->get;
+  my $res = $client->appendMappingsForIssueTypeScreenScheme(
+      'issueTypeScreenSchemeId' => '...',
+  )->get;
 
 Append mappings to issue type screen scheme
 
@@ -30243,7 +30957,7 @@ The list of issue type to screen scheme mappings. A I<default> entry cannot be s
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -30373,7 +31087,9 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
 
 =head2 C<< updateDefaultScreenScheme >>
 
-  my $res = $client->updateDefaultScreenScheme()->get;
+  my $res = $client->updateDefaultScreenScheme(
+      'issueTypeScreenSchemeId' => '...',
+  )->get;
 
 Update issue type screen scheme default screen scheme
 
@@ -30398,7 +31114,7 @@ The ID of the screen scheme.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -30525,7 +31241,9 @@ sub updateDefaultScreenScheme( $self, %options ) {
 
 =head2 C<< removeMappingsFromIssueTypeScreenScheme >>
 
-  my $res = $client->removeMappingsFromIssueTypeScreenScheme()->get;
+  my $res = $client->removeMappingsFromIssueTypeScreenScheme(
+      'issueTypeScreenSchemeId' => '...',
+  )->get;
 
 Remove mappings from issue type screen scheme
 
@@ -30550,7 +31268,7 @@ The list of issue type IDs.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -30677,7 +31395,12 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
 
 =head2 C<< getProjectsForIssueTypeScreenScheme >>
 
-  my $res = $client->getProjectsForIssueTypeScreenScheme()->get;
+  my $res = $client->getProjectsForIssueTypeScreenScheme(
+      'issueTypeScreenSchemeId' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+      'query' => '...',
+  )->get;
 
 Get issue type screen scheme projects
 
@@ -30990,7 +31713,12 @@ sub getAutoCompletePost( $self, %options ) {
 
 =head2 C<< getFieldAutoCompleteForQueryString >>
 
-  my $res = $client->getFieldAutoCompleteForQueryString()->get;
+  my $res = $client->getFieldAutoCompleteForQueryString(
+      'fieldName' => '...',
+      'fieldValue' => '...',
+      'predicateName' => '...',
+      'predicateValue' => '...',
+  )->get;
 
 Get field auto complete suggestions
 
@@ -31103,7 +31831,13 @@ sub getFieldAutoCompleteForQueryString( $self, %options ) {
 
 =head2 C<< getPrecomputations >>
 
-  my $res = $client->getPrecomputations()->get;
+  my $res = $client->getPrecomputations(
+      'functionKey' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+      'orderBy' => '...',
+      'filter' => '...',
+  )->get;
 
 Get precomputation
 
@@ -31404,7 +32138,9 @@ sub matchIssues( $self, %options ) {
 
 =head2 C<< parseJqlQueries >>
 
-  my $res = $client->parseJqlQueries()->get;
+  my $res = $client->parseJqlQueries(
+      'validation' => '...',
+  )->get;
 
 Parse JQL query
 
@@ -31672,6 +32408,8 @@ The list of JQL queries to sanitize. Must contain unique values. Maximum of 20 q
 
 Returns a L<< JIRA::API::SanitizedJqlQueries >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -31789,7 +32527,10 @@ sub sanitiseJqlQueries( $self, %options ) {
 
 =head2 C<< getAllLabels >>
 
-  my $res = $client->getAllLabels()->get;
+  my $res = $client->getAllLabels(
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get all labels
 
@@ -31976,7 +32717,9 @@ sub getApproximateLicenseCount( $self, %options ) {
 
 =head2 C<< getApproximateApplicationLicenseCount >>
 
-  my $res = $client->getApproximateApplicationLicenseCount()->get;
+  my $res = $client->getApproximateApplicationLicenseCount(
+      'applicationKey' => '...',
+  )->get;
 
 Get approximate application license count
 
@@ -32074,7 +32817,16 @@ sub getApproximateApplicationLicenseCount( $self, %options ) {
 
 =head2 C<< getMyPermissions >>
 
-  my $res = $client->getMyPermissions()->get;
+  my $res = $client->getMyPermissions(
+      'projectKey' => '...',
+      'projectId' => '...',
+      'issueKey' => '...',
+      'issueId' => '...',
+      'permissions' => '...',
+      'projectUuid' => '...',
+      'projectConfigurationUuid' => '...',
+      'commentId' => '...',
+  )->get;
 
 Get my permissions
 
@@ -32115,6 +32867,8 @@ The ID of the comment.
 
 Returns a L<< JIRA::API::Permissions >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -32240,7 +32994,9 @@ sub getMyPermissions( $self, %options ) {
 
 =head2 C<< removePreference >>
 
-  my $res = $client->removePreference()->get;
+  my $res = $client->removePreference(
+      'key' => '...',
+  )->get;
 
 Delete preference
 
@@ -32328,7 +33084,9 @@ sub removePreference( $self, %options ) {
 
 =head2 C<< getPreference >>
 
-  my $res = $client->getPreference()->get;
+  my $res = $client->getPreference(
+      'key' => '...',
+  )->get;
 
 Get preference
 
@@ -32429,7 +33187,9 @@ sub getPreference( $self, %options ) {
 
 =head2 C<< setPreference >>
 
-  my $res = $client->setPreference()->get;
+  my $res = $client->setPreference(
+      'key' => '...',
+  )->get;
 
 Set preference
 
@@ -32444,7 +33204,7 @@ The key of the preference. The maximum length is 255 characters.
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -32545,7 +33305,7 @@ Delete locale
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -32729,7 +33489,7 @@ The locale code. The Java the locale format is used: a two character language co
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -32811,7 +33571,9 @@ sub setLocale( $self, %options ) {
 
 =head2 C<< getCurrentUser >>
 
-  my $res = $client->getCurrentUser()->get;
+  my $res = $client->getCurrentUser(
+      'expand' => '...',
+  )->get;
 
 Get current user
 
@@ -32920,7 +33682,14 @@ sub getCurrentUser( $self, %options ) {
 
 =head2 C<< getNotificationSchemes >>
 
-  my $res = $client->getNotificationSchemes()->get;
+  my $res = $client->getNotificationSchemes(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'id' => '...',
+      'projectId' => '...',
+      'onlyDefault' => '...',
+      'expand' => '...',
+  )->get;
 
 Get notification schemes paginated
 
@@ -33117,8 +33886,10 @@ The list of notifications which should be added to the notification scheme.
 
 =back
 
-Returns a L<< JIRA::API::NotificationSchemeId >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::NotificationSchemeId >> on HTTP code 201.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -33236,7 +34007,12 @@ sub createNotificationScheme( $self, %options ) {
 
 =head2 C<< getNotificationSchemeToProjectMappings >>
 
-  my $res = $client->getNotificationSchemeToProjectMappings()->get;
+  my $res = $client->getNotificationSchemeToProjectMappings(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'notificationSchemeId' => '...',
+      'projectId' => '...',
+  )->get;
 
 Get projects using notification schemes paginated
 
@@ -33265,6 +34041,7 @@ The list of project IDs to be filtered out
 
 Returns a L<< JIRA::API::PageBeanNotificationSchemeAndProjectMappingJsonBean >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -33372,7 +34149,10 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
 
 =head2 C<< getNotificationScheme >>
 
-  my $res = $client->getNotificationScheme()->get;
+  my $res = $client->getNotificationScheme(
+      'id' => '...',
+      'expand' => '...',
+  )->get;
 
 Get notification scheme
 
@@ -33517,7 +34297,9 @@ sub getNotificationScheme( $self, %options ) {
 
 =head2 C<< updateNotificationScheme >>
 
-  my $res = $client->updateNotificationScheme()->get;
+  my $res = $client->updateNotificationScheme(
+      'id' => '...',
+  )->get;
 
 Update notification scheme
 
@@ -33546,8 +34328,11 @@ The name of the notification scheme. Must be unique.
 
 =back
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -33685,7 +34470,9 @@ sub updateNotificationScheme( $self, %options ) {
 
 =head2 C<< addNotifications >>
 
-  my $res = $client->addNotifications()->get;
+  my $res = $client->addNotifications(
+      'id' => '...',
+  )->get;
 
 Add notifications to notification scheme
 
@@ -33710,8 +34497,11 @@ The list of notifications which should be added to the notification scheme.
 
 =back
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -33849,7 +34639,9 @@ sub addNotifications( $self, %options ) {
 
 =head2 C<< deleteNotificationScheme >>
 
-  my $res = $client->deleteNotificationScheme()->get;
+  my $res = $client->deleteNotificationScheme(
+      'notificationSchemeId' => '...',
+  )->get;
 
 Delete notification scheme
 
@@ -33864,8 +34656,11 @@ The ID of the notification scheme.
 =back
 
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -34000,7 +34795,10 @@ sub deleteNotificationScheme( $self, %options ) {
 
 =head2 C<< removeNotificationFromNotificationScheme >>
 
-  my $res = $client->removeNotificationFromNotificationScheme()->get;
+  my $res = $client->removeNotificationFromNotificationScheme(
+      'notificationSchemeId' => '...',
+      'notificationId' => '...',
+  )->get;
 
 Remove notification from notification scheme
 
@@ -34019,8 +34817,11 @@ The ID of the notification.
 =back
 
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -34279,6 +35080,7 @@ Project permissions with associated projects and issues to look up.
 
 Returns a L<< JIRA::API::BulkPermissionGrants >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -34496,7 +35298,9 @@ sub getPermittedProjects( $self, %options ) {
 
 =head2 C<< getAllPermissionSchemes >>
 
-  my $res = $client->getAllPermissionSchemes()->get;
+  my $res = $client->getAllPermissionSchemes(
+      'expand' => '...',
+  )->get;
 
 Get all permission schemes
 
@@ -34625,7 +35429,9 @@ sub getAllPermissionSchemes( $self, %options ) {
 
 =head2 C<< createPermissionScheme >>
 
-  my $res = $client->createPermissionScheme()->get;
+  my $res = $client->createPermissionScheme(
+      'expand' => '...',
+  )->get;
 
 Create permission scheme
 
@@ -34708,7 +35514,7 @@ The URL of the permission scheme.
 
 =back
 
-Returns a L<< JIRA::API::PermissionScheme >> on success.
+Returns a L<< JIRA::API::PermissionScheme >> on HTTP code 201.
 
 =cut
 
@@ -34797,7 +35603,9 @@ sub createPermissionScheme( $self, %options ) {
 
 =head2 C<< deletePermissionScheme >>
 
-  my $res = $client->deletePermissionScheme()->get;
+  my $res = $client->deletePermissionScheme(
+      'schemeId' => '...',
+  )->get;
 
 Delete permission scheme
 
@@ -34887,7 +35695,10 @@ sub deletePermissionScheme( $self, %options ) {
 
 =head2 C<< getPermissionScheme >>
 
-  my $res = $client->getPermissionScheme()->get;
+  my $res = $client->getPermissionScheme(
+      'schemeId' => '...',
+      'expand' => '...',
+  )->get;
 
 Get permission scheme
 
@@ -35029,7 +35840,10 @@ sub getPermissionScheme( $self, %options ) {
 
 =head2 C<< updatePermissionScheme >>
 
-  my $res = $client->updatePermissionScheme()->get;
+  my $res = $client->updatePermissionScheme(
+      'schemeId' => '...',
+      'expand' => '...',
+  )->get;
 
 Update permission scheme
 
@@ -35211,7 +36025,10 @@ sub updatePermissionScheme( $self, %options ) {
 
 =head2 C<< getPermissionSchemeGrants >>
 
-  my $res = $client->getPermissionSchemeGrants()->get;
+  my $res = $client->getPermissionSchemeGrants(
+      'schemeId' => '...',
+      'expand' => '...',
+  )->get;
 
 Get permission scheme grants
 
@@ -35353,7 +36170,10 @@ sub getPermissionSchemeGrants( $self, %options ) {
 
 =head2 C<< createPermissionGrant >>
 
-  my $res = $client->createPermissionGrant()->get;
+  my $res = $client->createPermissionGrant(
+      'schemeId' => '...',
+      'expand' => '...',
+  )->get;
 
 Create permission grant
 
@@ -35428,7 +36248,7 @@ The URL of the permission granted details.
 
 =back
 
-Returns a L<< JIRA::API::PermissionGrant >> on success.
+Returns a L<< JIRA::API::PermissionGrant >> on HTTP code 201.
 
 =cut
 
@@ -35523,7 +36343,10 @@ sub createPermissionGrant( $self, %options ) {
 
 =head2 C<< deletePermissionSchemeEntity >>
 
-  my $res = $client->deletePermissionSchemeEntity()->get;
+  my $res = $client->deletePermissionSchemeEntity(
+      'schemeId' => '...',
+      'permissionId' => '...',
+  )->get;
 
 Delete permission scheme grant
 
@@ -35620,7 +36443,11 @@ sub deletePermissionSchemeEntity( $self, %options ) {
 
 =head2 C<< getPermissionSchemeGrant >>
 
-  my $res = $client->getPermissionSchemeGrant()->get;
+  my $res = $client->getPermissionSchemeGrant(
+      'schemeId' => '...',
+      'permissionId' => '...',
+      'expand' => '...',
+  )->get;
 
 Get permission scheme grant
 
@@ -35890,8 +36717,10 @@ The status color of the priority in 3-digit or 6-digit hexadecimal format.
 
 =back
 
-Returns a L<< JIRA::API::PriorityId >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::PriorityId >> on HTTP code 201.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -36030,8 +36859,11 @@ The ID of the new default issue priority. Must be an existing ID or null. Settin
 
 =back
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -36192,8 +37024,11 @@ The position for issue priorities to be moved to. Required if C<after> isn't pro
 
 =back
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -36325,7 +37160,12 @@ sub movePriorities( $self, %options ) {
 
 =head2 C<< searchPriorities >>
 
-  my $res = $client->searchPriorities()->get;
+  my $res = $client->searchPriorities(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'id' => '...',
+      'onlyDefault' => '...',
+  )->get;
 
 Search priorities
 
@@ -36353,7 +37193,7 @@ Whether only the default priority is returned.
 
 
 Returns a L<< JIRA::API::PageBeanPriority >> on success.
-Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -36447,7 +37287,10 @@ sub searchPriorities( $self, %options ) {
 
 =head2 C<< deletePriority >>
 
-  my $res = $client->deletePriority()->get;
+  my $res = $client->deletePriority(
+      'id' => '...',
+      'replaceWith' => '...',
+  )->get;
 
 Delete priority
 
@@ -36467,7 +37310,11 @@ The ID of the issue priority that will replace the currently selected resolution
 
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on HTTP code 303.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 409.
 
 =cut
 
@@ -36622,7 +37469,9 @@ sub deletePriority( $self, %options ) {
 
 =head2 C<< getPriority >>
 
-  my $res = $client->getPriority()->get;
+  my $res = $client->getPriority(
+      'id' => '...',
+  )->get;
 
 Get priority
 
@@ -36722,7 +37571,9 @@ sub getPriority( $self, %options ) {
 
 =head2 C<< updatePriority >>
 
-  my $res = $client->updatePriority()->get;
+  my $res = $client->updatePriority(
+      'id' => '...',
+  )->get;
 
 Update priority
 
@@ -36759,8 +37610,11 @@ The status color of the priority in 3-digit or 6-digit hexadecimal format.
 
 =back
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -36898,7 +37752,11 @@ sub updatePriority( $self, %options ) {
 
 =head2 C<< getAllProjects >>
 
-  my $res = $client->getAllProjects()->get;
+  my $res = $client->getAllProjects(
+      'expand' => '...',
+      'recent' => '...',
+      'properties' => '...',
+  )->get;
 
 Get all projects
 
@@ -37117,7 +37975,7 @@ The ID of the workflow scheme for the project. Use the L<Get all workflow scheme
 
 =back
 
-Returns a L<< JIRA::API::ProjectIdentifiers >> on success.
+Returns a L<< JIRA::API::ProjectIdentifiers >> on HTTP code 201.
 
 =cut
 
@@ -37202,7 +38060,10 @@ sub createProject( $self, %options ) {
 
 =head2 C<< getRecent >>
 
-  my $res = $client->getRecent()->get;
+  my $res = $client->getRecent(
+      'expand' => '...',
+      'properties' => '...',
+  )->get;
 
 Get recent projects
 
@@ -37350,7 +38211,21 @@ sub getRecent( $self, %options ) {
 
 =head2 C<< searchProjects >>
 
-  my $res = $client->searchProjects()->get;
+  my $res = $client->searchProjects(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'orderBy' => '...',
+      'id' => '...',
+      'keys' => '...',
+      'query' => '...',
+      'typeKey' => '...',
+      'categoryId' => '...',
+      'action' => '...',
+      'expand' => '...',
+      'status' => '...',
+      'properties' => '...',
+      'propertyQuery' => '...',
+  )->get;
 
 Get projects paginated
 
@@ -37837,7 +38712,9 @@ sub getAllAccessibleProjectTypes( $self, %options ) {
 
 =head2 C<< getProjectTypeByKey >>
 
-  my $res = $client->getProjectTypeByKey()->get;
+  my $res = $client->getProjectTypeByKey(
+      'projectTypeKey' => '...',
+  )->get;
 
 Get project type by key
 
@@ -37937,7 +38814,9 @@ sub getProjectTypeByKey( $self, %options ) {
 
 =head2 C<< getAccessibleProjectTypeByKey >>
 
-  my $res = $client->getAccessibleProjectTypeByKey()->get;
+  my $res = $client->getAccessibleProjectTypeByKey(
+      'projectTypeKey' => '...',
+  )->get;
 
 Get accessible project type by key
 
@@ -38037,7 +38916,10 @@ sub getAccessibleProjectTypeByKey( $self, %options ) {
 
 =head2 C<< deleteProject >>
 
-  my $res = $client->deleteProject()->get;
+  my $res = $client->deleteProject(
+      'projectIdOrKey' => '...',
+      'enableUndo' => '...',
+  )->get;
 
 Delete project
 
@@ -38132,7 +39014,11 @@ sub deleteProject( $self, %options ) {
 
 =head2 C<< getProject >>
 
-  my $res = $client->getProject()->get;
+  my $res = $client->getProject(
+      'projectIdOrKey' => '...',
+      'expand' => '...',
+      'properties' => '...',
+  )->get;
 
 Get project
 
@@ -38274,7 +39160,10 @@ sub getProject( $self, %options ) {
 
 =head2 C<< updateProject >>
 
-  my $res = $client->updateProject()->get;
+  my $res = $client->updateProject(
+      'projectIdOrKey' => '...',
+      'expand' => '...',
+  )->get;
 
 Update project
 
@@ -38469,7 +39358,9 @@ sub updateProject( $self, %options ) {
 
 =head2 C<< archiveProject >>
 
-  my $res = $client->archiveProject()->get;
+  my $res = $client->archiveProject(
+      'projectIdOrKey' => '...',
+  )->get;
 
 Archive project
 
@@ -38484,7 +39375,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -38575,7 +39466,9 @@ sub archiveProject( $self, %options ) {
 
 =head2 C<< updateProjectAvatar >>
 
-  my $res = $client->updateProjectAvatar()->get;
+  my $res = $client->updateProjectAvatar(
+      'projectIdOrKey' => '...',
+  )->get;
 
 Set project avatar
 
@@ -38624,7 +39517,7 @@ The list of avatar icon URLs.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -38715,7 +39608,10 @@ sub updateProjectAvatar( $self, %options ) {
 
 =head2 C<< deleteProjectAvatar >>
 
-  my $res = $client->deleteProjectAvatar()->get;
+  my $res = $client->deleteProjectAvatar(
+      'projectIdOrKey' => '...',
+      'id' => '...',
+  )->get;
 
 Delete project avatar
 
@@ -38812,7 +39708,12 @@ sub deleteProjectAvatar( $self, %options ) {
 
 =head2 C<< createProjectAvatar >>
 
-  my $res = $client->createProjectAvatar()->get;
+  my $res = $client->createProjectAvatar(
+      'projectIdOrKey' => '...',
+      'x' => '...',
+      'y' => '...',
+      'size' => '...',
+  )->get;
 
 Load project avatar
 
@@ -38839,7 +39740,7 @@ The length of each side of the crop region.
 =back
 
 
-Returns a L<< JIRA::API::Avatar >> on success.
+Returns a L<< JIRA::API::Avatar >> on HTTP code 201.
 
 =cut
 
@@ -38940,7 +39841,9 @@ sub createProjectAvatar( $self, %options ) {
 
 =head2 C<< getAllProjectAvatars >>
 
-  my $res = $client->getAllProjectAvatars()->get;
+  my $res = $client->getAllProjectAvatars(
+      'projectIdOrKey' => '...',
+  )->get;
 
 Get all project avatars
 
@@ -39040,7 +39943,13 @@ sub getAllProjectAvatars( $self, %options ) {
 
 =head2 C<< getProjectComponentsPaginated >>
 
-  my $res = $client->getProjectComponentsPaginated()->get;
+  my $res = $client->getProjectComponentsPaginated(
+      'projectIdOrKey' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+      'orderBy' => '...',
+      'query' => '...',
+  )->get;
 
 Get project components paginated
 
@@ -39187,7 +40096,9 @@ sub getProjectComponentsPaginated( $self, %options ) {
 
 =head2 C<< getProjectComponents >>
 
-  my $res = $client->getProjectComponents()->get;
+  my $res = $client->getProjectComponents(
+      'projectIdOrKey' => '...',
+  )->get;
 
 Get project components
 
@@ -39288,7 +40199,9 @@ sub getProjectComponents( $self, %options ) {
 
 =head2 C<< deleteProjectAsynchronously >>
 
-  my $res = $client->deleteProjectAsynchronously()->get;
+  my $res = $client->deleteProjectAsynchronously(
+      'projectIdOrKey' => '...',
+  )->get;
 
 Delete project asynchronously
 
@@ -39303,7 +40216,7 @@ The project ID or project key (case sensitive).
 =back
 
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on HTTP code 303.
 
 =cut
 
@@ -39391,7 +40304,9 @@ sub deleteProjectAsynchronously( $self, %options ) {
 
 =head2 C<< getFeaturesForProject >>
 
-  my $res = $client->getFeaturesForProject()->get;
+  my $res = $client->getFeaturesForProject(
+      'projectIdOrKey' => '...',
+  )->get;
 
 Get project features
 
@@ -39497,7 +40412,10 @@ sub getFeaturesForProject( $self, %options ) {
 
 =head2 C<< toggleFeatureForProject >>
 
-  my $res = $client->toggleFeatureForProject()->get;
+  my $res = $client->toggleFeatureForProject(
+      'projectIdOrKey' => '...',
+      'featureKey' => '...',
+  )->get;
 
 Set project feature state
 
@@ -39623,7 +40541,9 @@ sub toggleFeatureForProject( $self, %options ) {
 
 =head2 C<< getProjectPropertyKeys >>
 
-  my $res = $client->getProjectPropertyKeys()->get;
+  my $res = $client->getProjectPropertyKeys(
+      'projectIdOrKey' => '...',
+  )->get;
 
 Get project property keys
 
@@ -39729,7 +40649,10 @@ sub getProjectPropertyKeys( $self, %options ) {
 
 =head2 C<< deleteProjectProperty >>
 
-  my $res = $client->deleteProjectProperty()->get;
+  my $res = $client->deleteProjectProperty(
+      'projectIdOrKey' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Delete project property
 
@@ -39829,7 +40752,10 @@ sub deleteProjectProperty( $self, %options ) {
 
 =head2 C<< getProjectProperty >>
 
-  my $res = $client->getProjectProperty()->get;
+  my $res = $client->getProjectProperty(
+      'projectIdOrKey' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Get project property
 
@@ -39942,7 +40868,10 @@ sub getProjectProperty( $self, %options ) {
 
 =head2 C<< setProjectProperty >>
 
-  my $res = $client->setProjectProperty()->get;
+  my $res = $client->setProjectProperty(
+      'projectIdOrKey' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Set project property
 
@@ -39962,6 +40891,7 @@ The key of the project property. The maximum length is 255 characters.
 
 
 Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -40072,7 +41002,9 @@ sub setProjectProperty( $self, %options ) {
 
 =head2 C<< restore >>
 
-  my $res = $client->restore()->get;
+  my $res = $client->restore(
+      'projectIdOrKey' => '...',
+  )->get;
 
 Restore deleted or archived project
 
@@ -40175,7 +41107,9 @@ sub restore( $self, %options ) {
 
 =head2 C<< getProjectRoles >>
 
-  my $res = $client->getProjectRoles()->get;
+  my $res = $client->getProjectRoles(
+      'projectIdOrKey' => '...',
+  )->get;
 
 Get project roles for project
 
@@ -40275,7 +41209,13 @@ sub getProjectRoles( $self, %options ) {
 
 =head2 C<< deleteActor >>
 
-  my $res = $client->deleteActor()->get;
+  my $res = $client->deleteActor(
+      'projectIdOrKey' => '...',
+      'id' => '...',
+      'user' => '...',
+      'group' => '...',
+      'groupId' => '...',
+  )->get;
 
 Delete actors from project role
 
@@ -40387,7 +41327,11 @@ sub deleteActor( $self, %options ) {
 
 =head2 C<< getProjectRole >>
 
-  my $res = $client->getProjectRole()->get;
+  my $res = $client->getProjectRole(
+      'projectIdOrKey' => '...',
+      'id' => '...',
+      'excludeInactiveUsers' => '...',
+  )->get;
 
 Get project role for project
 
@@ -40505,7 +41449,10 @@ sub getProjectRole( $self, %options ) {
 
 =head2 C<< addActorUsers >>
 
-  my $res = $client->addActorUsers()->get;
+  my $res = $client->addActorUsers(
+      'projectIdOrKey' => '...',
+      'id' => '...',
+  )->get;
 
 Add actors to project role
 
@@ -40636,7 +41583,10 @@ sub addActorUsers( $self, %options ) {
 
 =head2 C<< setActors >>
 
-  my $res = $client->setActors()->get;
+  my $res = $client->setActors(
+      'projectIdOrKey' => '...',
+      'id' => '...',
+  )->get;
 
 Set actors for project role
 
@@ -40783,7 +41733,11 @@ sub setActors( $self, %options ) {
 
 =head2 C<< getProjectRoleDetails >>
 
-  my $res = $client->getProjectRoleDetails()->get;
+  my $res = $client->getProjectRoleDetails(
+      'projectIdOrKey' => '...',
+      'currentMember' => '...',
+      'excludeConnectAddons' => '...',
+  )->get;
 
 Get project role details
 
@@ -40895,7 +41849,9 @@ sub getProjectRoleDetails( $self, %options ) {
 
 =head2 C<< getAllStatuses >>
 
-  my $res = $client->getAllStatuses()->get;
+  my $res = $client->getAllStatuses(
+      'projectIdOrKey' => '...',
+  )->get;
 
 Get all statuses for project
 
@@ -40996,7 +41952,10 @@ sub getAllStatuses( $self, %options ) {
 
 =head2 C<< updateProjectType >>
 
-  my $res = $client->updateProjectType()->get;
+  my $res = $client->updateProjectType(
+      'projectIdOrKey' => '...',
+      'newProjectTypeKey' => '...',
+  )->get;
 
 Update project type
 
@@ -41106,7 +42065,15 @@ sub updateProjectType( $self, %options ) {
 
 =head2 C<< getProjectVersionsPaginated >>
 
-  my $res = $client->getProjectVersionsPaginated()->get;
+  my $res = $client->getProjectVersionsPaginated(
+      'projectIdOrKey' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+      'orderBy' => '...',
+      'query' => '...',
+      'status' => '...',
+      'expand' => '...',
+  )->get;
 
 Get project versions paginated
 
@@ -41279,7 +42246,10 @@ sub getProjectVersionsPaginated( $self, %options ) {
 
 =head2 C<< getProjectVersions >>
 
-  my $res = $client->getProjectVersions()->get;
+  my $res = $client->getProjectVersions(
+      'projectIdOrKey' => '...',
+      'expand' => '...',
+  )->get;
 
 Get project versions
 
@@ -41385,7 +42355,9 @@ sub getProjectVersions( $self, %options ) {
 
 =head2 C<< getProjectEmail >>
 
-  my $res = $client->getProjectEmail()->get;
+  my $res = $client->getProjectEmail(
+      'projectId' => '...',
+  )->get;
 
 Get project's sender email
 
@@ -41488,7 +42460,9 @@ sub getProjectEmail( $self, %options ) {
 
 =head2 C<< updateProjectEmail >>
 
-  my $res = $client->updateProjectEmail()->get;
+  my $res = $client->updateProjectEmail(
+      'projectId' => '...',
+  )->get;
 
 Set project's sender email
 
@@ -41517,7 +42491,7 @@ When using a custom domain, the status of the email address.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -41611,7 +42585,9 @@ sub updateProjectEmail( $self, %options ) {
 
 =head2 C<< getHierarchy >>
 
-  my $res = $client->getHierarchy()->get;
+  my $res = $client->getHierarchy(
+      'projectId' => '...',
+  )->get;
 
 Get project issue type hierarchy
 
@@ -41714,7 +42690,9 @@ sub getHierarchy( $self, %options ) {
 
 =head2 C<< getProjectIssueSecurityScheme >>
 
-  my $res = $client->getProjectIssueSecurityScheme()->get;
+  my $res = $client->getProjectIssueSecurityScheme(
+      'projectKeyOrId' => '...',
+  )->get;
 
 Get project issue security scheme
 
@@ -41820,7 +42798,10 @@ sub getProjectIssueSecurityScheme( $self, %options ) {
 
 =head2 C<< getNotificationSchemeForProject >>
 
-  my $res = $client->getNotificationSchemeForProject()->get;
+  my $res = $client->getNotificationSchemeForProject(
+      'projectKeyOrId' => '...',
+      'expand' => '...',
+  )->get;
 
 Get project notification scheme
 
@@ -41965,7 +42946,10 @@ sub getNotificationSchemeForProject( $self, %options ) {
 
 =head2 C<< getAssignedPermissionScheme >>
 
-  my $res = $client->getAssignedPermissionScheme()->get;
+  my $res = $client->getAssignedPermissionScheme(
+      'projectKeyOrId' => '...',
+      'expand' => '...',
+  )->get;
 
 Get assigned permission scheme
 
@@ -42110,7 +43094,10 @@ sub getAssignedPermissionScheme( $self, %options ) {
 
 =head2 C<< assignPermissionScheme >>
 
-  my $res = $client->assignPermissionScheme()->get;
+  my $res = $client->assignPermissionScheme(
+      'projectKeyOrId' => '...',
+      'expand' => '...',
+  )->get;
 
 Assign permission scheme
 
@@ -42268,7 +43255,9 @@ sub assignPermissionScheme( $self, %options ) {
 
 =head2 C<< getSecurityLevelsForProject >>
 
-  my $res = $client->getSecurityLevelsForProject()->get;
+  my $res = $client->getSecurityLevelsForProject(
+      'projectKeyOrId' => '...',
+  )->get;
 
 Get project issue security levels
 
@@ -42486,7 +43475,7 @@ The URL of the project category.
 
 =back
 
-Returns a L<< JIRA::API::ProjectCategory >> on success.
+Returns a L<< JIRA::API::ProjectCategory >> on HTTP code 201.
 
 =cut
 
@@ -42574,7 +43563,9 @@ sub createProjectCategory( $self, %options ) {
 
 =head2 C<< removeProjectCategory >>
 
-  my $res = $client->removeProjectCategory()->get;
+  my $res = $client->removeProjectCategory(
+      'id' => '...',
+  )->get;
 
 Delete project category
 
@@ -42664,7 +43655,9 @@ sub removeProjectCategory( $self, %options ) {
 
 =head2 C<< getProjectCategoryById >>
 
-  my $res = $client->getProjectCategoryById()->get;
+  my $res = $client->getProjectCategoryById(
+      'id' => '...',
+  )->get;
 
 Get project category by ID
 
@@ -42764,7 +43757,9 @@ sub getProjectCategoryById( $self, %options ) {
 
 =head2 C<< updateProjectCategory >>
 
-  my $res = $client->updateProjectCategory()->get;
+  my $res = $client->updateProjectCategory(
+      'id' => '...',
+  )->get;
 
 Update project category
 
@@ -42893,7 +43888,9 @@ sub updateProjectCategory( $self, %options ) {
 
 =head2 C<< validateProjectKey >>
 
-  my $res = $client->validateProjectKey()->get;
+  my $res = $client->validateProjectKey(
+      'key' => '...',
+  )->get;
 
 Validate project key
 
@@ -42988,7 +43985,9 @@ sub validateProjectKey( $self, %options ) {
 
 =head2 C<< getValidProjectKey >>
 
-  my $res = $client->getValidProjectKey()->get;
+  my $res = $client->getValidProjectKey(
+      'key' => '...',
+  )->get;
 
 Get valid project key
 
@@ -43083,7 +44082,9 @@ sub getValidProjectKey( $self, %options ) {
 
 =head2 C<< getValidProjectName >>
 
-  my $res = $client->getValidProjectName()->get;
+  my $res = $client->getValidProjectName(
+      'name' => '...',
+  )->get;
 
 Get valid project name
 
@@ -43300,8 +44301,10 @@ The name of the resolution. Must be unique (case-insensitive).
 
 =back
 
-Returns a L<< JIRA::API::ResolutionId >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ResolutionId >> on HTTP code 201.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -43440,8 +44443,11 @@ The ID of the new default issue resolution. Must be an existing ID or null. Sett
 
 =back
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -43602,8 +44608,11 @@ The position for issue resolutions to be moved to. Required if C<after> isn't pr
 
 =back
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -43735,7 +44744,12 @@ sub moveResolutions( $self, %options ) {
 
 =head2 C<< searchResolutions >>
 
-  my $res = $client->searchResolutions()->get;
+  my $res = $client->searchResolutions(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'id' => '...',
+      'onlyDefault' => '...',
+  )->get;
 
 Search resolutions
 
@@ -43763,7 +44777,7 @@ When set to true, return default only, when IDs provided, if none of them is def
 
 
 Returns a L<< JIRA::API::PageBeanResolutionJsonBean >> on success.
-Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
 
 =cut
 
@@ -43857,7 +44871,10 @@ sub searchResolutions( $self, %options ) {
 
 =head2 C<< deleteResolution >>
 
-  my $res = $client->deleteResolution()->get;
+  my $res = $client->deleteResolution(
+      'id' => '...',
+      'replaceWith' => '...',
+  )->get;
 
 Delete resolution
 
@@ -43877,7 +44894,11 @@ The ID of the issue resolution that will replace the currently selected resoluti
 
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
-Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on HTTP code 303.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 409.
 
 =cut
 
@@ -44032,7 +45053,9 @@ sub deleteResolution( $self, %options ) {
 
 =head2 C<< getResolution >>
 
-  my $res = $client->getResolution()->get;
+  my $res = $client->getResolution(
+      'id' => '...',
+  )->get;
 
 Get resolution
 
@@ -44132,7 +45155,9 @@ sub getResolution( $self, %options ) {
 
 =head2 C<< updateResolution >>
 
-  my $res = $client->updateResolution()->get;
+  my $res = $client->updateResolution(
+      'id' => '...',
+  )->get;
 
 Update resolution
 
@@ -44161,8 +45186,11 @@ The name of the resolution. Must be unique.
 
 =back
 
-Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns Unknown on HTTP code 204.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -44504,7 +45532,10 @@ sub createProjectRole( $self, %options ) {
 
 =head2 C<< deleteProjectRole >>
 
-  my $res = $client->deleteProjectRole()->get;
+  my $res = $client->deleteProjectRole(
+      'id' => '...',
+      'swap' => '...',
+  )->get;
 
 Delete project role
 
@@ -44608,7 +45639,9 @@ sub deleteProjectRole( $self, %options ) {
 
 =head2 C<< getProjectRoleById >>
 
-  my $res = $client->getProjectRoleById()->get;
+  my $res = $client->getProjectRoleById(
+      'id' => '...',
+  )->get;
 
 Get project role by ID
 
@@ -44711,7 +45744,9 @@ sub getProjectRoleById( $self, %options ) {
 
 =head2 C<< partialUpdateProjectRole >>
 
-  my $res = $client->partialUpdateProjectRole()->get;
+  my $res = $client->partialUpdateProjectRole(
+      'id' => '...',
+  )->get;
 
 Partial update project role
 
@@ -44834,7 +45869,9 @@ sub partialUpdateProjectRole( $self, %options ) {
 
 =head2 C<< fullyUpdateProjectRole >>
 
-  my $res = $client->fullyUpdateProjectRole()->get;
+  my $res = $client->fullyUpdateProjectRole(
+      'id' => '...',
+  )->get;
 
 Fully update project role
 
@@ -44957,7 +45994,12 @@ sub fullyUpdateProjectRole( $self, %options ) {
 
 =head2 C<< deleteProjectRoleActorsFromRole >>
 
-  my $res = $client->deleteProjectRoleActorsFromRole()->get;
+  my $res = $client->deleteProjectRoleActorsFromRole(
+      'id' => '...',
+      'user' => '...',
+      'groupId' => '...',
+      'group' => '...',
+  )->get;
 
 Delete default actors from project role
 
@@ -45081,7 +46123,9 @@ sub deleteProjectRoleActorsFromRole( $self, %options ) {
 
 =head2 C<< getProjectRoleActorsForRole >>
 
-  my $res = $client->getProjectRoleActorsForRole()->get;
+  my $res = $client->getProjectRoleActorsForRole(
+      'id' => '...',
+  )->get;
 
 Get default actors for project role
 
@@ -45187,7 +46231,9 @@ sub getProjectRoleActorsForRole( $self, %options ) {
 
 =head2 C<< addProjectRoleActorsToRole >>
 
-  my $res = $client->addProjectRoleActorsToRole()->get;
+  my $res = $client->addProjectRoleActorsToRole(
+      'id' => '...',
+  )->get;
 
 Add default actors to project role
 
@@ -45314,7 +46360,14 @@ sub addProjectRoleActorsToRole( $self, %options ) {
 
 =head2 C<< getScreens >>
 
-  my $res = $client->getScreens()->get;
+  my $res = $client->getScreens(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'id' => '...',
+      'queryString' => '...',
+      'scope' => '...',
+      'orderBy' => '...',
+  )->get;
 
 Get screens
 
@@ -45476,7 +46529,7 @@ The name of the screen. The name must be unique. The maximum length is 255 chara
 
 =back
 
-Returns a L<< JIRA::API::Screen >> on success.
+Returns a L<< JIRA::API::Screen >> on HTTP code 201.
 
 =cut
 
@@ -45583,7 +46636,9 @@ sub createScreen( $self, %options ) {
 
 =head2 C<< addFieldToDefaultScreen >>
 
-  my $res = $client->addFieldToDefaultScreen()->get;
+  my $res = $client->addFieldToDefaultScreen(
+      'fieldId' => '...',
+  )->get;
 
 Add field to default screen
 
@@ -45686,7 +46741,9 @@ sub addFieldToDefaultScreen( $self, %options ) {
 
 =head2 C<< deleteScreen >>
 
-  my $res = $client->deleteScreen()->get;
+  my $res = $client->deleteScreen(
+      'screenId' => '...',
+  )->get;
 
 Delete screen
 
@@ -45813,7 +46870,9 @@ sub deleteScreen( $self, %options ) {
 
 =head2 C<< updateScreen >>
 
-  my $res = $client->updateScreen()->get;
+  my $res = $client->updateScreen(
+      'screenId' => '...',
+  )->get;
 
 Update screen
 
@@ -45969,7 +47028,9 @@ sub updateScreen( $self, %options ) {
 
 =head2 C<< getAvailableScreenFields >>
 
-  my $res = $client->getAvailableScreenFields()->get;
+  my $res = $client->getAvailableScreenFields(
+      'screenId' => '...',
+  )->get;
 
 Get available screen fields
 
@@ -46073,7 +47134,10 @@ sub getAvailableScreenFields( $self, %options ) {
 
 =head2 C<< getAllScreenTabs >>
 
-  my $res = $client->getAllScreenTabs()->get;
+  my $res = $client->getAllScreenTabs(
+      'screenId' => '...',
+      'projectKey' => '...',
+  )->get;
 
 Get all screen tabs
 
@@ -46188,7 +47252,9 @@ sub getAllScreenTabs( $self, %options ) {
 
 =head2 C<< addScreenTab >>
 
-  my $res = $client->addScreenTab()->get;
+  my $res = $client->addScreenTab(
+      'screenId' => '...',
+  )->get;
 
 Create screen tab
 
@@ -46311,7 +47377,10 @@ sub addScreenTab( $self, %options ) {
 
 =head2 C<< deleteScreenTab >>
 
-  my $res = $client->deleteScreenTab()->get;
+  my $res = $client->deleteScreenTab(
+      'screenId' => '...',
+      'tabId' => '...',
+  )->get;
 
 Delete screen tab
 
@@ -46408,7 +47477,10 @@ sub deleteScreenTab( $self, %options ) {
 
 =head2 C<< renameScreenTab >>
 
-  my $res = $client->renameScreenTab()->get;
+  my $res = $client->renameScreenTab(
+      'screenId' => '...',
+      'tabId' => '...',
+  )->get;
 
 Update screen tab
 
@@ -46538,7 +47610,11 @@ sub renameScreenTab( $self, %options ) {
 
 =head2 C<< getAllScreenTabFields >>
 
-  my $res = $client->getAllScreenTabFields()->get;
+  my $res = $client->getAllScreenTabFields(
+      'screenId' => '...',
+      'tabId' => '...',
+      'projectKey' => '...',
+  )->get;
 
 Get all screen tab fields
 
@@ -46657,7 +47733,10 @@ sub getAllScreenTabFields( $self, %options ) {
 
 =head2 C<< addScreenTabField >>
 
-  my $res = $client->addScreenTabField()->get;
+  my $res = $client->addScreenTabField(
+      'screenId' => '...',
+      'tabId' => '...',
+  )->get;
 
 Add screen tab field
 
@@ -46783,7 +47862,11 @@ sub addScreenTabField( $self, %options ) {
 
 =head2 C<< removeScreenTabField >>
 
-  my $res = $client->removeScreenTabField()->get;
+  my $res = $client->removeScreenTabField(
+      'screenId' => '...',
+      'tabId' => '...',
+      'id' => '...',
+  )->get;
 
 Remove screen tab field
 
@@ -46890,7 +47973,11 @@ sub removeScreenTabField( $self, %options ) {
 
 =head2 C<< moveScreenTabField >>
 
-  my $res = $client->moveScreenTabField()->get;
+  my $res = $client->moveScreenTabField(
+      'screenId' => '...',
+      'tabId' => '...',
+      'id' => '...',
+  )->get;
 
 Move screen tab field
 
@@ -46927,7 +48014,7 @@ The named position to which the screen tab field should be moved. Required if C<
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -47027,7 +48114,11 @@ sub moveScreenTabField( $self, %options ) {
 
 =head2 C<< moveScreenTab >>
 
-  my $res = $client->moveScreenTab()->get;
+  my $res = $client->moveScreenTab(
+      'screenId' => '...',
+      'tabId' => '...',
+      'pos' => '...',
+  )->get;
 
 Move screen tab
 
@@ -47050,7 +48141,7 @@ The position of tab. The base index is 0.
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -47147,7 +48238,14 @@ sub moveScreenTab( $self, %options ) {
 
 =head2 C<< getScreenSchemes >>
 
-  my $res = $client->getScreenSchemes()->get;
+  my $res = $client->getScreenSchemes(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'id' => '...',
+      'expand' => '...',
+      'queryString' => '...',
+      'orderBy' => '...',
+  )->get;
 
 Get screen schemes
 
@@ -47313,7 +48411,7 @@ The IDs of the screens for the screen types of the screen scheme. Only screens u
 
 =back
 
-Returns a L<< JIRA::API::ScreenSchemeId >> on success.
+Returns a L<< JIRA::API::ScreenSchemeId >> on HTTP code 201.
 
 =cut
 
@@ -47434,7 +48532,9 @@ sub createScreenScheme( $self, %options ) {
 
 =head2 C<< deleteScreenScheme >>
 
-  my $res = $client->deleteScreenScheme()->get;
+  my $res = $client->deleteScreenScheme(
+      'screenSchemeId' => '...',
+  )->get;
 
 Delete screen scheme
 
@@ -47561,7 +48661,9 @@ sub deleteScreenScheme( $self, %options ) {
 
 =head2 C<< updateScreenScheme >>
 
-  my $res = $client->updateScreenScheme()->get;
+  my $res = $client->updateScreenScheme(
+      'screenSchemeId' => '...',
+  )->get;
 
 Update screen scheme
 
@@ -47594,7 +48696,7 @@ The IDs of the screens for the screen types of the screen scheme. Only screens u
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -47721,7 +48823,16 @@ sub updateScreenScheme( $self, %options ) {
 
 =head2 C<< searchForIssuesUsingJql >>
 
-  my $res = $client->searchForIssuesUsingJql()->get;
+  my $res = $client->searchForIssuesUsingJql(
+      'jql' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+      'validateQuery' => '...',
+      'fields' => '...',
+      'expand' => '...',
+      'properties' => '...',
+      'fieldsByKeys' => '...',
+  )->get;
 
 Search for issues using JQL (GET)
 
@@ -48246,7 +49357,9 @@ sub searchForIssuesUsingJqlPost( $self, %options ) {
 
 =head2 C<< getIssueSecurityLevel >>
 
-  my $res = $client->getIssueSecurityLevel()->get;
+  my $res = $client->getIssueSecurityLevel(
+      'id' => '...',
+  )->get;
 
 Get issue security level
 
@@ -48713,7 +49826,9 @@ sub getStatuses( $self, %options ) {
 
 =head2 C<< getStatus >>
 
-  my $res = $client->getStatus()->get;
+  my $res = $client->getStatus(
+      'idOrName' => '...',
+  )->get;
 
 Get status
 
@@ -48901,7 +50016,9 @@ sub getStatusCategories( $self, %options ) {
 
 =head2 C<< getStatusCategory >>
 
-  my $res = $client->getStatusCategory()->get;
+  my $res = $client->getStatusCategory(
+      'idOrKey' => '...',
+  )->get;
 
 Get status category
 
@@ -49001,7 +50118,9 @@ sub getStatusCategory( $self, %options ) {
 
 =head2 C<< deleteStatusesById >>
 
-  my $res = $client->deleteStatusesById()->get;
+  my $res = $client->deleteStatusesById(
+      'id' => '...',
+  )->get;
 
 Bulk delete Statuses
 
@@ -49018,7 +50137,7 @@ Min items C<1>, Max items C<50>
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -49112,7 +50231,10 @@ sub deleteStatusesById( $self, %options ) {
 
 =head2 C<< getStatusesById >>
 
-  my $res = $client->getStatusesById()->get;
+  my $res = $client->getStatusesById(
+      'expand' => '...',
+      'id' => '...',
+  )->get;
 
 Bulk get statuses
 
@@ -49367,7 +50489,7 @@ The list of statuses that will be updated.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -49460,7 +50582,14 @@ sub updateStatuses( $self, %options ) {
 
 =head2 C<< search >>
 
-  my $res = $client->search()->get;
+  my $res = $client->search(
+      'expand' => '...',
+      'projectId' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+      'searchString' => '...',
+      'statusCategory' => '...',
+  )->get;
 
 Search statuses paginated
 
@@ -49592,7 +50721,9 @@ sub search( $self, %options ) {
 
 =head2 C<< getTask >>
 
-  my $res = $client->getTask()->get;
+  my $res = $client->getTask(
+      'taskId' => '...',
+  )->get;
 
 Get task
 
@@ -49695,7 +50826,9 @@ sub getTask( $self, %options ) {
 
 =head2 C<< cancelTask >>
 
-  my $res = $client->cancelTask()->get;
+  my $res = $client->cancelTask(
+      'taskId' => '...',
+  )->get;
 
 Cancel task
 
@@ -49710,8 +50843,11 @@ The ID of the task.
 =back
 
 
-Returns Unknown on success.
 Returns an array of L<< JIRA::API:: >> on error.
+Returns Unknown on HTTP code 202.
+Returns an array of L<< JIRA::API:: >> on HTTP code 401.
+Returns an array of L<< JIRA::API:: >> on HTTP code 403.
+Returns an array of L<< JIRA::API:: >> on HTTP code 404.
 
 =cut
 
@@ -49850,7 +50986,11 @@ sub cancelTask( $self, %options ) {
 
 =head2 C<< getUiModifications >>
 
-  my $res = $client->getUiModifications()->get;
+  my $res = $client->getUiModifications(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'expand' => '...',
+  )->get;
 
 Get UI modifications
 
@@ -50008,7 +51148,7 @@ The name of the UI modification. The maximum length is 255 characters.
 
 =back
 
-Returns a L<< JIRA::API::UiModificationIdentifiers >> on success.
+Returns a L<< JIRA::API::UiModificationIdentifiers >> on HTTP code 201.
 
 =cut
 
@@ -50096,7 +51236,9 @@ sub createUiModification( $self, %options ) {
 
 =head2 C<< deleteUiModification >>
 
-  my $res = $client->deleteUiModification()->get;
+  my $res = $client->deleteUiModification(
+      'uiModificationId' => '...',
+  )->get;
 
 Delete UI modification
 
@@ -50111,7 +51253,7 @@ The ID of the UI modification.
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -50199,7 +51341,9 @@ sub deleteUiModification( $self, %options ) {
 
 =head2 C<< updateUiModification >>
 
-  my $res = $client->updateUiModification()->get;
+  my $res = $client->updateUiModification(
+      'uiModificationId' => '...',
+  )->get;
 
 Update UI modification
 
@@ -50236,7 +51380,7 @@ The name of the UI modification. The maximum length is 255 characters.
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -50330,7 +51474,10 @@ sub updateUiModification( $self, %options ) {
 
 =head2 C<< getAvatars >>
 
-  my $res = $client->getAvatars()->get;
+  my $res = $client->getAvatars(
+      'type' => '...',
+      'entityId' => '...',
+  )->get;
 
 Get avatars
 
@@ -50437,7 +51584,13 @@ sub getAvatars( $self, %options ) {
 
 =head2 C<< storeAvatar >>
 
-  my $res = $client->storeAvatar()->get;
+  my $res = $client->storeAvatar(
+      'type' => '...',
+      'entityId' => '...',
+      'x' => '...',
+      'y' => '...',
+      'size' => '...',
+  )->get;
 
 Load avatar
 
@@ -50468,7 +51621,7 @@ The length of each side of the crop region.
 =back
 
 
-Returns a L<< JIRA::API::Avatar >> on success.
+Returns a L<< JIRA::API::Avatar >> on HTTP code 201.
 
 =cut
 
@@ -50574,7 +51727,11 @@ sub storeAvatar( $self, %options ) {
 
 =head2 C<< deleteAvatar >>
 
-  my $res = $client->deleteAvatar()->get;
+  my $res = $client->deleteAvatar(
+      'type' => '...',
+      'owningObjectId' => '...',
+      'id' => '...',
+  )->get;
 
 Delete avatar
 
@@ -50678,7 +51835,11 @@ sub deleteAvatar( $self, %options ) {
 
 =head2 C<< getAvatarImageByType >>
 
-  my $res = $client->getAvatarImageByType()->get;
+  my $res = $client->getAvatarImageByType(
+      'type' => '...',
+      'size' => '...',
+      'format' => '...',
+  )->get;
 
 Get avatar image by type
 
@@ -50702,7 +51863,9 @@ The format to return the avatar image in. If not provided the original content f
 
 
 Returns Unknown on success.
-Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -50948,7 +52111,12 @@ sub getAvatarImageByType( $self, %options ) {
 
 =head2 C<< getAvatarImageByID >>
 
-  my $res = $client->getAvatarImageByID()->get;
+  my $res = $client->getAvatarImageByID(
+      'type' => '...',
+      'id' => '...',
+      'size' => '...',
+      'format' => '...',
+  )->get;
 
 Get avatar image by ID
 
@@ -50977,6 +52145,9 @@ The format to return the avatar image in. If not provided the original content f
 
 Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -51269,7 +52440,12 @@ sub getAvatarImageByID( $self, %options ) {
 
 =head2 C<< getAvatarImageByOwner >>
 
-  my $res = $client->getAvatarImageByOwner()->get;
+  my $res = $client->getAvatarImageByOwner(
+      'type' => '...',
+      'entityId' => '...',
+      'size' => '...',
+      'format' => '...',
+  )->get;
 
 Get avatar image by owner
 
@@ -51298,6 +52474,9 @@ The format to return the avatar image in. If not provided the original content f
 
 Returns Unknown on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
 
 =cut
 
@@ -51590,7 +52769,11 @@ sub getAvatarImageByOwner( $self, %options ) {
 
 =head2 C<< removeUser >>
 
-  my $res = $client->removeUser()->get;
+  my $res = $client->removeUser(
+      'accountId' => '...',
+      'username' => '...',
+      'key' => '...',
+  )->get;
 
 Delete user
 
@@ -51694,7 +52877,12 @@ sub removeUser( $self, %options ) {
 
 =head2 C<< getUser >>
 
-  my $res = $client->getUser()->get;
+  my $res = $client->getUser(
+      'accountId' => '...',
+      'username' => '...',
+      'key' => '...',
+      'expand' => '...',
+  )->get;
 
 Get user
 
@@ -51869,7 +53057,7 @@ The URL of the user.
 
 =back
 
-Returns a L<< JIRA::API::User >> on success.
+Returns a L<< JIRA::API::User >> on HTTP code 201.
 
 =cut
 
@@ -51954,7 +53142,14 @@ sub createUser( $self, %options ) {
 
 =head2 C<< findBulkAssignableUsers >>
 
-  my $res = $client->findBulkAssignableUsers()->get;
+  my $res = $client->findBulkAssignableUsers(
+      'query' => '...',
+      'username' => '...',
+      'accountId' => '...',
+      'projectKeys' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Find users assignable to projects
 
@@ -52087,7 +53282,18 @@ sub findBulkAssignableUsers( $self, %options ) {
 
 =head2 C<< findAssignableUsers >>
 
-  my $res = $client->findAssignableUsers()->get;
+  my $res = $client->findAssignableUsers(
+      'query' => '...',
+      'sessionId' => '...',
+      'username' => '...',
+      'accountId' => '...',
+      'project' => '...',
+      'issueKey' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+      'actionDescriptorId' => '...',
+      'recommend' => '...',
+  )->get;
 
 Find users assignable to issues
 
@@ -52235,7 +53441,13 @@ sub findAssignableUsers( $self, %options ) {
 
 =head2 C<< bulkGetUsers >>
 
-  my $res = $client->bulkGetUsers()->get;
+  my $res = $client->bulkGetUsers(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'username' => '...',
+      'key' => '...',
+      'accountId' => '...',
+  )->get;
 
 Bulk get users
 
@@ -52356,7 +53568,12 @@ sub bulkGetUsers( $self, %options ) {
 
 =head2 C<< bulkGetUsersMigration >>
 
-  my $res = $client->bulkGetUsersMigration()->get;
+  my $res = $client->bulkGetUsersMigration(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'username' => '...',
+      'key' => '...',
+  )->get;
 
 Get account IDs for users
 
@@ -52470,7 +53687,10 @@ sub bulkGetUsersMigration( $self, %options ) {
 
 =head2 C<< resetUserColumns >>
 
-  my $res = $client->resetUserColumns()->get;
+  my $res = $client->resetUserColumns(
+      'accountId' => '...',
+      'username' => '...',
+  )->get;
 
 Reset user default columns
 
@@ -52560,7 +53780,10 @@ sub resetUserColumns( $self, %options ) {
 
 =head2 C<< getUserDefaultColumns >>
 
-  my $res = $client->getUserDefaultColumns()->get;
+  my $res = $client->getUserDefaultColumns(
+      'accountId' => '...',
+      'username' => '...',
+  )->get;
 
 Get user default columns
 
@@ -52667,7 +53890,9 @@ sub getUserDefaultColumns( $self, %options ) {
 
 =head2 C<< setUserColumns >>
 
-  my $res = $client->setUserColumns()->get;
+  my $res = $client->setUserColumns(
+      'accountId' => '...',
+  )->get;
 
 Set user default columns
 
@@ -52779,7 +54004,9 @@ sub setUserColumns( $self, %options ) {
 
 =head2 C<< getUserEmail >>
 
-  my $res = $client->getUserEmail()->get;
+  my $res = $client->getUserEmail(
+      'accountId' => '...',
+  )->get;
 
 Get user email
 
@@ -52886,7 +54113,9 @@ sub getUserEmail( $self, %options ) {
 
 =head2 C<< getUserEmailBulk >>
 
-  my $res = $client->getUserEmailBulk()->get;
+  my $res = $client->getUserEmailBulk(
+      'accountId' => '...',
+  )->get;
 
 Get user email bulk
 
@@ -52990,7 +54219,11 @@ sub getUserEmailBulk( $self, %options ) {
 
 =head2 C<< getUserGroups >>
 
-  my $res = $client->getUserGroups()->get;
+  my $res = $client->getUserGroups(
+      'accountId' => '...',
+      'username' => '...',
+      'key' => '...',
+  )->get;
 
 Get user groups
 
@@ -53105,7 +54338,16 @@ sub getUserGroups( $self, %options ) {
 
 =head2 C<< findUsersWithAllPermissions >>
 
-  my $res = $client->findUsersWithAllPermissions()->get;
+  my $res = $client->findUsersWithAllPermissions(
+      'query' => '...',
+      'username' => '...',
+      'accountId' => '...',
+      'permissions' => '...',
+      'issueKey' => '...',
+      'projectKey' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Find users with permissions
 
@@ -53436,7 +54678,15 @@ sub findUsersWithAllPermissions( $self, %options ) {
 
 =head2 C<< findUsersForPicker >>
 
-  my $res = $client->findUsersForPicker()->get;
+  my $res = $client->findUsersForPicker(
+      'query' => '...',
+      'maxResults' => '...',
+      'showAvatar' => '...',
+      'exclude' => '...',
+      'excludeAccountIds' => '...',
+      'avatarSize' => '...',
+      'excludeConnectUsers' => '...',
+  )->get;
 
 Find users for picker
 
@@ -53566,7 +54816,11 @@ sub findUsersForPicker( $self, %options ) {
 
 =head2 C<< getUserPropertyKeys >>
 
-  my $res = $client->getUserPropertyKeys()->get;
+  my $res = $client->getUserPropertyKeys(
+      'accountId' => '...',
+      'userKey' => '...',
+      'username' => '...',
+  )->get;
 
 Get user property keys
 
@@ -53680,7 +54934,12 @@ sub getUserPropertyKeys( $self, %options ) {
 
 =head2 C<< deleteUserProperty >>
 
-  my $res = $client->deleteUserProperty()->get;
+  my $res = $client->deleteUserProperty(
+      'accountId' => '...',
+      'userKey' => '...',
+      'username' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Delete user property
 
@@ -53791,7 +55050,12 @@ sub deleteUserProperty( $self, %options ) {
 
 =head2 C<< getUserProperty >>
 
-  my $res = $client->getUserProperty()->get;
+  my $res = $client->getUserProperty(
+      'accountId' => '...',
+      'userKey' => '...',
+      'username' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Get user property
 
@@ -53915,7 +55179,12 @@ sub getUserProperty( $self, %options ) {
 
 =head2 C<< setUserProperty >>
 
-  my $res = $client->setUserProperty()->get;
+  my $res = $client->setUserProperty(
+      'accountId' => '...',
+      'userKey' => '...',
+      'username' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Set user property
 
@@ -53943,6 +55212,7 @@ The key of the user's property. The maximum length is 255 characters.
 
 
 Returns Unknown on success.
+Returns Unknown on HTTP code 201.
 
 =cut
 
@@ -54059,7 +55329,14 @@ sub setUserProperty( $self, %options ) {
 
 =head2 C<< findUsers >>
 
-  my $res = $client->findUsers()->get;
+  my $res = $client->findUsers(
+      'query' => '...',
+      'username' => '...',
+      'accountId' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+      'property' => '...',
+  )->get;
 
 Find users
 
@@ -54184,7 +55461,11 @@ sub findUsers( $self, %options ) {
 
 =head2 C<< findUsersByQuery >>
 
-  my $res = $client->findUsersByQuery()->get;
+  my $res = $client->findUsersByQuery(
+      'query' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Find users by query
 
@@ -54301,7 +55582,11 @@ sub findUsersByQuery( $self, %options ) {
 
 =head2 C<< findUserKeysByQuery >>
 
-  my $res = $client->findUserKeysByQuery()->get;
+  my $res = $client->findUserKeysByQuery(
+      'query' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Find user keys by query
 
@@ -54418,7 +55703,15 @@ sub findUserKeysByQuery( $self, %options ) {
 
 =head2 C<< findUsersWithBrowsePermission >>
 
-  my $res = $client->findUsersWithBrowsePermission()->get;
+  my $res = $client->findUsersWithBrowsePermission(
+      'query' => '...',
+      'username' => '...',
+      'accountId' => '...',
+      'issueKey' => '...',
+      'projectKey' => '...',
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Find users with browse permission
 
@@ -54553,7 +55846,10 @@ sub findUsersWithBrowsePermission( $self, %options ) {
 
 =head2 C<< getAllUsersDefault >>
 
-  my $res = $client->getAllUsersDefault()->get;
+  my $res = $client->getAllUsersDefault(
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get all users default
 
@@ -54660,7 +55956,10 @@ sub getAllUsersDefault( $self, %options ) {
 
 =head2 C<< getAllUsers >>
 
-  my $res = $client->getAllUsers()->get;
+  my $res = $client->getAllUsers(
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get all users
 
@@ -54868,7 +56167,7 @@ The date on which work on this version is expected to start, expressed in the in
 
 =back
 
-Returns a L<< JIRA::API::Version >> on success.
+Returns a L<< JIRA::API::Version >> on HTTP code 201.
 
 =cut
 
@@ -54953,7 +56252,11 @@ sub createVersion( $self, %options ) {
 
 =head2 C<< deleteVersion >>
 
-  my $res = $client->deleteVersion()->get;
+  my $res = $client->deleteVersion(
+      'id' => '...',
+      'moveFixIssuesTo' => '...',
+      'moveAffectedIssuesTo' => '...',
+  )->get;
 
 Delete version
 
@@ -55056,7 +56359,10 @@ sub deleteVersion( $self, %options ) {
 
 =head2 C<< getVersion >>
 
-  my $res = $client->getVersion()->get;
+  my $res = $client->getVersion(
+      'id' => '...',
+      'expand' => '...',
+  )->get;
 
 Get version
 
@@ -55178,7 +56484,9 @@ sub getVersion( $self, %options ) {
 
 =head2 C<< updateVersion >>
 
-  my $res = $client->updateVersion()->get;
+  my $res = $client->updateVersion(
+      'id' => '...',
+  )->get;
 
 Update version
 
@@ -55374,7 +56682,10 @@ sub updateVersion( $self, %options ) {
 
 =head2 C<< mergeVersions >>
 
-  my $res = $client->mergeVersions()->get;
+  my $res = $client->mergeVersions(
+      'id' => '...',
+      'moveIssuesTo' => '...',
+  )->get;
 
 Merge versions
 
@@ -55393,7 +56704,7 @@ The ID of the version to merge into.
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -55484,7 +56795,9 @@ sub mergeVersions( $self, %options ) {
 
 =head2 C<< moveVersion >>
 
-  my $res = $client->moveVersion()->get;
+  my $res = $client->moveVersion(
+      'id' => '...',
+  )->get;
 
 Move version
 
@@ -55604,7 +56917,9 @@ sub moveVersion( $self, %options ) {
 
 =head2 C<< getVersionRelatedIssues >>
 
-  my $res = $client->getVersionRelatedIssues()->get;
+  my $res = $client->getVersionRelatedIssues(
+      'id' => '...',
+  )->get;
 
 Get version's related issues count
 
@@ -55704,7 +57019,9 @@ sub getVersionRelatedIssues( $self, %options ) {
 
 =head2 C<< deleteAndReplaceVersion >>
 
-  my $res = $client->deleteAndReplaceVersion()->get;
+  my $res = $client->deleteAndReplaceVersion(
+      'id' => '...',
+  )->get;
 
 Delete and replace version
 
@@ -55737,7 +57054,7 @@ The ID of the version to update C<fixVersion> to when the field contains the del
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -55828,7 +57145,9 @@ sub deleteAndReplaceVersion( $self, %options ) {
 
 =head2 C<< getVersionUnresolvedIssues >>
 
-  my $res = $client->getVersionUnresolvedIssues()->get;
+  my $res = $client->getVersionUnresolvedIssues(
+      'id' => '...',
+  )->get;
 
 Get version's unresolved issues count
 
@@ -55950,6 +57269,7 @@ A list of webhook IDs.
 =back
 
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -56042,7 +57362,10 @@ sub deleteWebhookById( $self, %options ) {
 
 =head2 C<< getDynamicWebhooksForApp >>
 
-  my $res = $client->getDynamicWebhooksForApp()->get;
+  my $res = $client->getDynamicWebhooksForApp(
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get dynamic webhooks for app
 
@@ -56063,6 +57386,7 @@ The maximum number of items to return per page.
 
 Returns a L<< JIRA::API::PageBeanWebhook >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -56195,6 +57519,7 @@ A list of webhooks.
 
 Returns a L<< JIRA::API::ContainerForRegisteredWebhooks >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -56298,7 +57623,10 @@ sub registerDynamicWebhooks( $self, %options ) {
 
 =head2 C<< getFailedWebhooks >>
 
-  my $res = $client->getFailedWebhooks()->get;
+  my $res = $client->getFailedWebhooks(
+      'maxResults' => '...',
+      'after' => '...',
+  )->get;
 
 Get failed webhooks
 
@@ -56319,6 +57647,7 @@ The time after which any webhook failure must have occurred for the record to be
 
 Returns a L<< JIRA::API::FailedWebhooks >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -56447,6 +57776,7 @@ A list of webhook IDs.
 
 Returns a L<< JIRA::API::WebhooksExpirationDate >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -56550,7 +57880,9 @@ sub refreshWebhooks( $self, %options ) {
 
 =head2 C<< getAllWorkflows >>
 
-  my $res = $client->getAllWorkflows()->get;
+  my $res = $client->getAllWorkflows(
+      'workflowName' => '...',
+  )->get;
 
 Get all workflows
 
@@ -56720,7 +58052,7 @@ All the transition statuses must be included in C<statuses>.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowIDs >> on success.
+Returns a L<< JIRA::API::WorkflowIDs >> on HTTP code 201.
 
 =cut
 
@@ -56841,7 +58173,16 @@ sub createWorkflow( $self, %options ) {
 
 =head2 C<< getWorkflowTransitionRuleConfigurations >>
 
-  my $res = $client->getWorkflowTransitionRuleConfigurations()->get;
+  my $res = $client->getWorkflowTransitionRuleConfigurations(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'types' => '...',
+      'keys' => '...',
+      'workflowNames' => '...',
+      'withTags' => '...',
+      'draft' => '...',
+      'expand' => '...',
+  )->get;
 
 Get workflow transition rule configurations
 
@@ -56886,6 +58227,7 @@ Use L<expand|#expansion> to include additional information in the response. This
 
 Returns a L<< JIRA::API::PageBeanWorkflowTransitionRules >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -57026,6 +58368,7 @@ The list of workflows with transition rules to update.
 
 Returns a L<< JIRA::API::WorkflowTransitionRulesUpdateErrors >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -57152,6 +58495,7 @@ The list of workflows with transition rules to delete.
 
 Returns a L<< JIRA::API::WorkflowTransitionRulesUpdateErrors >> on success.
 Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -57255,7 +58599,15 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
 
 =head2 C<< getWorkflowsPaginated >>
 
-  my $res = $client->getWorkflowsPaginated()->get;
+  my $res = $client->getWorkflowsPaginated(
+      'startAt' => '...',
+      'maxResults' => '...',
+      'workflowName' => '...',
+      'expand' => '...',
+      'queryString' => '...',
+      'orderBy' => '...',
+      'isActive' => '...',
+  )->get;
 
 Get workflows paginated
 
@@ -57368,7 +58720,7 @@ Filters active and inactive workflows.
 
 
 Returns a L<< JIRA::API::PageBeanWorkflow >> on success.
-Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
 
 =cut
 
@@ -57468,7 +58820,12 @@ sub getWorkflowsPaginated( $self, %options ) {
 
 =head2 C<< deleteWorkflowTransitionProperty >>
 
-  my $res = $client->deleteWorkflowTransitionProperty()->get;
+  my $res = $client->deleteWorkflowTransitionProperty(
+      'transitionId' => '...',
+      'key' => '...',
+      'workflowName' => '...',
+      'workflowMode' => '...',
+  )->get;
 
 Delete workflow transition property
 
@@ -57586,7 +58943,13 @@ sub deleteWorkflowTransitionProperty( $self, %options ) {
 
 =head2 C<< getWorkflowTransitionProperties >>
 
-  my $res = $client->getWorkflowTransitionProperties()->get;
+  my $res = $client->getWorkflowTransitionProperties(
+      'transitionId' => '...',
+      'includeReservedKeys' => '...',
+      'key' => '...',
+      'workflowName' => '...',
+      'workflowMode' => '...',
+  )->get;
 
 Get workflow transition properties
 
@@ -57717,7 +59080,12 @@ sub getWorkflowTransitionProperties( $self, %options ) {
 
 =head2 C<< createWorkflowTransitionProperty >>
 
-  my $res = $client->createWorkflowTransitionProperty()->get;
+  my $res = $client->createWorkflowTransitionProperty(
+      'transitionId' => '...',
+      'key' => '...',
+      'workflowName' => '...',
+      'workflowMode' => '...',
+  )->get;
 
 Create workflow transition property
 
@@ -57866,7 +59234,12 @@ sub createWorkflowTransitionProperty( $self, %options ) {
 
 =head2 C<< updateWorkflowTransitionProperty >>
 
-  my $res = $client->updateWorkflowTransitionProperty()->get;
+  my $res = $client->updateWorkflowTransitionProperty(
+      'transitionId' => '...',
+      'key' => '...',
+      'workflowName' => '...',
+      'workflowMode' => '...',
+  )->get;
 
 Update workflow transition property
 
@@ -58018,7 +59391,9 @@ sub updateWorkflowTransitionProperty( $self, %options ) {
 
 =head2 C<< deleteInactiveWorkflow >>
 
-  my $res = $client->deleteInactiveWorkflow()->get;
+  my $res = $client->deleteInactiveWorkflow(
+      'entityId' => '...',
+  )->get;
 
 Delete inactive workflow
 
@@ -58145,7 +59520,10 @@ sub deleteInactiveWorkflow( $self, %options ) {
 
 =head2 C<< getAllWorkflowSchemes >>
 
-  my $res = $client->getAllWorkflowSchemes()->get;
+  my $res = $client->getAllWorkflowSchemes(
+      'startAt' => '...',
+      'maxResults' => '...',
+  )->get;
 
 Get all workflow schemes
 
@@ -58336,7 +59714,7 @@ Defaults to C<false>.
 
 =back
 
-Returns a L<< JIRA::API::WorkflowScheme >> on success.
+Returns a L<< JIRA::API::WorkflowScheme >> on HTTP code 201.
 
 =cut
 
@@ -58421,7 +59799,9 @@ sub createWorkflowScheme( $self, %options ) {
 
 =head2 C<< getWorkflowSchemeProjectAssociations >>
 
-  my $res = $client->getWorkflowSchemeProjectAssociations()->get;
+  my $res = $client->getWorkflowSchemeProjectAssociations(
+      'projectId' => '...',
+  )->get;
 
 Get workflow scheme project associations
 
@@ -58572,7 +59952,7 @@ The ID of the workflow scheme. If the workflow scheme ID is C<null>, the operati
 
 =back
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -58693,7 +60073,9 @@ sub assignSchemeToProject( $self, %options ) {
 
 =head2 C<< deleteWorkflowScheme >>
 
-  my $res = $client->deleteWorkflowScheme()->get;
+  my $res = $client->deleteWorkflowScheme(
+      'id' => '...',
+  )->get;
 
 Delete workflow scheme
 
@@ -58708,7 +60090,7 @@ The ID of the workflow scheme. Find this ID by editing the desired workflow sche
 =back
 
 
-Returns Unknown on success.
+Returns Unknown on HTTP code 204.
 
 =cut
 
@@ -58799,7 +60181,10 @@ sub deleteWorkflowScheme( $self, %options ) {
 
 =head2 C<< getWorkflowScheme >>
 
-  my $res = $client->getWorkflowScheme()->get;
+  my $res = $client->getWorkflowScheme(
+      'id' => '...',
+      'returnDraftIfExists' => '...',
+  )->get;
 
 Get workflow scheme
 
@@ -58910,7 +60295,9 @@ sub getWorkflowScheme( $self, %options ) {
 
 =head2 C<< updateWorkflowScheme >>
 
-  my $res = $client->updateWorkflowScheme()->get;
+  my $res = $client->updateWorkflowScheme(
+      'id' => '...',
+  )->get;
 
 Update workflow scheme
 
@@ -59096,7 +60483,9 @@ sub updateWorkflowScheme( $self, %options ) {
 
 =head2 C<< createWorkflowSchemeDraftFromParent >>
 
-  my $res = $client->createWorkflowSchemeDraftFromParent()->get;
+  my $res = $client->createWorkflowSchemeDraftFromParent(
+      'id' => '...',
+  )->get;
 
 Create draft workflow scheme
 
@@ -59111,7 +60500,7 @@ The ID of the active workflow scheme that the draft is created from.
 =back
 
 
-Returns a L<< JIRA::API::WorkflowScheme >> on success.
+Returns a L<< JIRA::API::WorkflowScheme >> on HTTP code 201.
 
 =cut
 
@@ -59199,7 +60588,10 @@ sub createWorkflowSchemeDraftFromParent( $self, %options ) {
 
 =head2 C<< deleteDefaultWorkflow >>
 
-  my $res = $client->deleteDefaultWorkflow()->get;
+  my $res = $client->deleteDefaultWorkflow(
+      'id' => '...',
+      'updateDraftIfNeeded' => '...',
+  )->get;
 
 Delete default workflow
 
@@ -59313,7 +60705,10 @@ sub deleteDefaultWorkflow( $self, %options ) {
 
 =head2 C<< getDefaultWorkflow >>
 
-  my $res = $client->getDefaultWorkflow()->get;
+  my $res = $client->getDefaultWorkflow(
+      'id' => '...',
+      'returnDraftIfExists' => '...',
+  )->get;
 
 Get default workflow
 
@@ -59424,7 +60819,9 @@ sub getDefaultWorkflow( $self, %options ) {
 
 =head2 C<< updateDefaultWorkflow >>
 
-  my $res = $client->updateDefaultWorkflow()->get;
+  my $res = $client->updateDefaultWorkflow(
+      'id' => '...',
+  )->get;
 
 Update default workflow
 
@@ -59547,7 +60944,9 @@ sub updateDefaultWorkflow( $self, %options ) {
 
 =head2 C<< deleteWorkflowSchemeDraft >>
 
-  my $res = $client->deleteWorkflowSchemeDraft()->get;
+  my $res = $client->deleteWorkflowSchemeDraft(
+      'id' => '...',
+  )->get;
 
 Delete draft workflow scheme
 
@@ -59637,7 +61036,9 @@ sub deleteWorkflowSchemeDraft( $self, %options ) {
 
 =head2 C<< getWorkflowSchemeDraft >>
 
-  my $res = $client->getWorkflowSchemeDraft()->get;
+  my $res = $client->getWorkflowSchemeDraft(
+      'id' => '...',
+  )->get;
 
 Get draft workflow scheme
 
@@ -59740,7 +61141,9 @@ sub getWorkflowSchemeDraft( $self, %options ) {
 
 =head2 C<< updateWorkflowSchemeDraft >>
 
-  my $res = $client->updateWorkflowSchemeDraft()->get;
+  my $res = $client->updateWorkflowSchemeDraft(
+      'id' => '...',
+  )->get;
 
 Update draft workflow scheme
 
@@ -59926,7 +61329,9 @@ sub updateWorkflowSchemeDraft( $self, %options ) {
 
 =head2 C<< deleteDraftDefaultWorkflow >>
 
-  my $res = $client->deleteDraftDefaultWorkflow()->get;
+  my $res = $client->deleteDraftDefaultWorkflow(
+      'id' => '...',
+  )->get;
 
 Delete draft default workflow
 
@@ -60029,7 +61434,9 @@ sub deleteDraftDefaultWorkflow( $self, %options ) {
 
 =head2 C<< getDraftDefaultWorkflow >>
 
-  my $res = $client->getDraftDefaultWorkflow()->get;
+  my $res = $client->getDraftDefaultWorkflow(
+      'id' => '...',
+  )->get;
 
 Get draft default workflow
 
@@ -60132,7 +61539,9 @@ sub getDraftDefaultWorkflow( $self, %options ) {
 
 =head2 C<< updateDraftDefaultWorkflow >>
 
-  my $res = $client->updateDraftDefaultWorkflow()->get;
+  my $res = $client->updateDraftDefaultWorkflow(
+      'id' => '...',
+  )->get;
 
 Update draft default workflow
 
@@ -60255,7 +61664,10 @@ sub updateDraftDefaultWorkflow( $self, %options ) {
 
 =head2 C<< deleteWorkflowSchemeDraftIssueType >>
 
-  my $res = $client->deleteWorkflowSchemeDraftIssueType()->get;
+  my $res = $client->deleteWorkflowSchemeDraftIssueType(
+      'id' => '...',
+      'issueType' => '...',
+  )->get;
 
 Delete workflow for issue type in draft workflow scheme
 
@@ -60365,7 +61777,10 @@ sub deleteWorkflowSchemeDraftIssueType( $self, %options ) {
 
 =head2 C<< getWorkflowSchemeDraftIssueType >>
 
-  my $res = $client->getWorkflowSchemeDraftIssueType()->get;
+  my $res = $client->getWorkflowSchemeDraftIssueType(
+      'id' => '...',
+      'issueType' => '...',
+  )->get;
 
 Get workflow for issue type in draft workflow scheme
 
@@ -60475,7 +61890,10 @@ sub getWorkflowSchemeDraftIssueType( $self, %options ) {
 
 =head2 C<< setWorkflowSchemeDraftIssueType >>
 
-  my $res = $client->setWorkflowSchemeDraftIssueType()->get;
+  my $res = $client->setWorkflowSchemeDraftIssueType(
+      'id' => '...',
+      'issueType' => '...',
+  )->get;
 
 Set workflow for issue type in draft workflow scheme
 
@@ -60609,7 +62027,10 @@ sub setWorkflowSchemeDraftIssueType( $self, %options ) {
 
 =head2 C<< publishDraftWorkflowScheme >>
 
-  my $res = $client->publishDraftWorkflowScheme()->get;
+  my $res = $client->publishDraftWorkflowScheme(
+      'id' => '...',
+      'validateOnly' => '...',
+  )->get;
 
 Publish draft workflow scheme
 
@@ -60638,7 +62059,7 @@ Mappings of statuses to new statuses for issue types.
 
 =back
 
-Returns a L<< JIRA::API::TaskProgressBeanObject >> on redirect.
+Returns a L<< JIRA::API::TaskProgressBeanObject >> on HTTP code 303.
 
 =cut
 
@@ -60761,7 +62182,10 @@ sub publishDraftWorkflowScheme( $self, %options ) {
 
 =head2 C<< deleteDraftWorkflowMapping >>
 
-  my $res = $client->deleteDraftWorkflowMapping()->get;
+  my $res = $client->deleteDraftWorkflowMapping(
+      'id' => '...',
+      'workflowName' => '...',
+  )->get;
 
 Delete issue types for workflow in draft workflow scheme
 
@@ -60861,7 +62285,10 @@ sub deleteDraftWorkflowMapping( $self, %options ) {
 
 =head2 C<< getDraftWorkflow >>
 
-  my $res = $client->getDraftWorkflow()->get;
+  my $res = $client->getDraftWorkflow(
+      'id' => '...',
+      'workflowName' => '...',
+  )->get;
 
 Get issue types for workflows in draft workflow scheme
 
@@ -60972,7 +62399,10 @@ sub getDraftWorkflow( $self, %options ) {
 
 =head2 C<< updateDraftWorkflowMapping >>
 
-  my $res = $client->updateDraftWorkflowMapping()->get;
+  my $res = $client->updateDraftWorkflowMapping(
+      'id' => '...',
+      'workflowName' => '...',
+  )->get;
 
 Set issue types for workflow in workflow scheme
 
@@ -61113,7 +62543,11 @@ sub updateDraftWorkflowMapping( $self, %options ) {
 
 =head2 C<< deleteWorkflowSchemeIssueType >>
 
-  my $res = $client->deleteWorkflowSchemeIssueType()->get;
+  my $res = $client->deleteWorkflowSchemeIssueType(
+      'id' => '...',
+      'issueType' => '...',
+      'updateDraftIfNeeded' => '...',
+  )->get;
 
 Delete workflow for issue type in workflow scheme
 
@@ -61234,7 +62668,11 @@ sub deleteWorkflowSchemeIssueType( $self, %options ) {
 
 =head2 C<< getWorkflowSchemeIssueType >>
 
-  my $res = $client->getWorkflowSchemeIssueType()->get;
+  my $res = $client->getWorkflowSchemeIssueType(
+      'id' => '...',
+      'issueType' => '...',
+      'returnDraftIfExists' => '...',
+  )->get;
 
 Get workflow for issue type in workflow scheme
 
@@ -61352,7 +62790,10 @@ sub getWorkflowSchemeIssueType( $self, %options ) {
 
 =head2 C<< setWorkflowSchemeIssueType >>
 
-  my $res = $client->setWorkflowSchemeIssueType()->get;
+  my $res = $client->setWorkflowSchemeIssueType(
+      'id' => '...',
+      'issueType' => '...',
+  )->get;
 
 Set workflow for issue type in workflow scheme
 
@@ -61486,7 +62927,11 @@ sub setWorkflowSchemeIssueType( $self, %options ) {
 
 =head2 C<< deleteWorkflowMapping >>
 
-  my $res = $client->deleteWorkflowMapping()->get;
+  my $res = $client->deleteWorkflowMapping(
+      'id' => '...',
+      'workflowName' => '...',
+      'updateDraftIfNeeded' => '...',
+  )->get;
 
 Delete issue types for workflow in workflow scheme
 
@@ -61594,7 +63039,11 @@ sub deleteWorkflowMapping( $self, %options ) {
 
 =head2 C<< getWorkflow >>
 
-  my $res = $client->getWorkflow()->get;
+  my $res = $client->getWorkflow(
+      'id' => '...',
+      'workflowName' => '...',
+      'returnDraftIfExists' => '...',
+  )->get;
 
 Get issue types for workflows in workflow scheme
 
@@ -61710,7 +63159,10 @@ sub getWorkflow( $self, %options ) {
 
 =head2 C<< updateWorkflowMapping >>
 
-  my $res = $client->updateWorkflowMapping()->get;
+  my $res = $client->updateWorkflowMapping(
+      'id' => '...',
+      'workflowName' => '...',
+  )->get;
 
 Set issue types for workflow in workflow scheme
 
@@ -61851,7 +63303,9 @@ sub updateWorkflowMapping( $self, %options ) {
 
 =head2 C<< getIdsOfWorklogsDeletedSince >>
 
-  my $res = $client->getIdsOfWorklogsDeletedSince()->get;
+  my $res = $client->getIdsOfWorklogsDeletedSince(
+      'since' => '...',
+  )->get;
 
 Get IDs of deleted worklogs
 
@@ -61946,7 +63400,9 @@ sub getIdsOfWorklogsDeletedSince( $self, %options ) {
 
 =head2 C<< getWorklogsForIds >>
 
-  my $res = $client->getWorklogsForIds()->get;
+  my $res = $client->getWorklogsForIds(
+      'expand' => '...',
+  )->get;
 
 Get worklogs
 
@@ -62058,7 +63514,10 @@ sub getWorklogsForIds( $self, %options ) {
 
 =head2 C<< getIdsOfWorklogsModifiedSince >>
 
-  my $res = $client->getIdsOfWorklogsModifiedSince()->get;
+  my $res = $client->getIdsOfWorklogsModifiedSince(
+      'since' => '...',
+      'expand' => '...',
+  )->get;
 
 Get IDs of updated worklogs
 
@@ -62158,7 +63617,9 @@ sub getIdsOfWorklogsModifiedSince( $self, %options ) {
 
 =head2 C<< AddonPropertiesResource_getAddonProperties_get >>
 
-  my $res = $client->AddonPropertiesResource_getAddonProperties_get()->get;
+  my $res = $client->AddonPropertiesResource_getAddonProperties_get(
+      'addonKey' => '...',
+  )->get;
 
 Get app properties
 
@@ -62174,7 +63635,7 @@ The key of the app, as defined in its descriptor.
 
 
 Returns a L<< JIRA::API::PropertyKeys >> on success.
-Returns a L<< JIRA::API::OperationMessage >> on error.
+Returns a L<< JIRA::API::OperationMessage >> on HTTP code 401.
 
 =cut
 
@@ -62267,7 +63728,10 @@ sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
 
 =head2 C<< AddonPropertiesResource_deleteAddonProperty_delete >>
 
-  my $res = $client->AddonPropertiesResource_deleteAddonProperty_delete()->get;
+  my $res = $client->AddonPropertiesResource_deleteAddonProperty_delete(
+      'addonKey' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Delete app property
 
@@ -62287,6 +63751,8 @@ The key of the property.
 
 
 Returns a L<< JIRA::API::OperationMessage >> on error.
+Returns a L<< JIRA::API::OperationMessage >> on HTTP code 401.
+Returns a L<< JIRA::API::OperationMessage >> on HTTP code 404.
 
 =cut
 
@@ -62399,7 +63865,10 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
 
 =head2 C<< AddonPropertiesResource_getAddonProperty_get >>
 
-  my $res = $client->AddonPropertiesResource_getAddonProperty_get()->get;
+  my $res = $client->AddonPropertiesResource_getAddonProperty_get(
+      'addonKey' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Get app property
 
@@ -62420,6 +63889,8 @@ The key of the property.
 
 Returns a L<< JIRA::API::EntityProperty >> on success.
 Returns a L<< JIRA::API::OperationMessage >> on error.
+Returns a L<< JIRA::API::OperationMessage >> on HTTP code 401.
+Returns a L<< JIRA::API::OperationMessage >> on HTTP code 404.
 
 =cut
 
@@ -62543,7 +64014,10 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
 
 =head2 C<< AddonPropertiesResource_putAddonProperty_put >>
 
-  my $res = $client->AddonPropertiesResource_putAddonProperty_put()->get;
+  my $res = $client->AddonPropertiesResource_putAddonProperty_put(
+      'addonKey' => '...',
+      'propertyKey' => '...',
+  )->get;
 
 Set app property
 
@@ -62564,6 +64038,8 @@ The key of the property.
 
 Returns a L<< JIRA::API::OperationMessage >> on success.
 Returns a L<< JIRA::API::OperationMessage >> on error.
+Returns a L<< JIRA::API::OperationMessage >> on HTTP code 201.
+Returns a L<< JIRA::API::OperationMessage >> on HTTP code 401.
 
 =cut
 
@@ -62690,7 +64166,9 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
 
 =head2 C<< DynamicModulesResource_removeModules_delete >>
 
-  my $res = $client->DynamicModulesResource_removeModules_delete()->get;
+  my $res = $client->DynamicModulesResource_removeModules_delete(
+      'moduleKey' => '...',
+  )->get;
 
 Remove modules
 
@@ -62707,7 +64185,7 @@ Nonexistent keys are ignored.
 =back
 
 
-Returns a L<< JIRA::API::ErrorMessage >> on error.
+Returns a L<< JIRA::API::ErrorMessage >> on HTTP code 401.
 
 =cut
 
@@ -62799,7 +64277,7 @@ Get modules
 
 
 Returns a L<< JIRA::API::ConnectModules >> on success.
-Returns a L<< JIRA::API::ErrorMessage >> on error.
+Returns a L<< JIRA::API::ErrorMessage >> on HTTP code 401.
 
 =cut
 
@@ -62909,6 +64387,7 @@ L<app descriptor|https://developer.atlassian.com/cloud/jira/platform/app-descrip
 =back
 
 Returns a L<< JIRA::API::ErrorMessage >> on error.
+Returns a L<< JIRA::API::ErrorMessage >> on HTTP code 401.
 
 =cut
 
@@ -63001,7 +64480,9 @@ sub DynamicModulesResource_registerModules_post( $self, %options ) {
 
 =head2 C<< AppIssueFieldValueUpdateResource_updateIssueFields_put >>
 
-  my $res = $client->AppIssueFieldValueUpdateResource_updateIssueFields_put()->get;
+  my $res = $client->AppIssueFieldValueUpdateResource_updateIssueFields_put(
+      'Atlassian-Transfer-Id' => '...',
+  )->get;
 
 Bulk update custom field value
 
@@ -63112,7 +64593,10 @@ sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
 
 =head2 C<< MigrationResource_updateEntityPropertiesValue_put >>
 
-  my $res = $client->MigrationResource_updateEntityPropertiesValue_put()->get;
+  my $res = $client->MigrationResource_updateEntityPropertiesValue_put(
+      'Atlassian-Transfer-Id' => '...',
+      'entityType' => '...',
+  )->get;
 
 Bulk update entity properties
 
@@ -63209,7 +64693,9 @@ sub MigrationResource_updateEntityPropertiesValue_put( $self, %options ) {
 
 =head2 C<< MigrationResource_workflowRuleSearch_post >>
 
-  my $res = $client->MigrationResource_workflowRuleSearch_post()->get;
+  my $res = $client->MigrationResource_workflowRuleSearch_post(
+      'Atlassian-Transfer-Id' => '...',
+  )->get;
 
 Get workflow transition rule configurations
 

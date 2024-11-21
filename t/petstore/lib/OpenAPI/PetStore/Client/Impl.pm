@@ -78,7 +78,10 @@ has 'server' => (
 
 =head2 C<< findPets >>
 
-  my $res = $client->findPets()->get;
+  my $res = $client->findPets(
+      'tags' => '...',
+      'limit' => '...',
+  )->get;
 
 =head3 Parameters
 
@@ -96,7 +99,7 @@ maximum number of results to return
 
 
 Returns an array of L<< OpenAPI::PetStore::Pet >> on success.
-Returns a L<< OpenAPI::PetStore::Error >> on HTTP code default.
+Returns a L<< OpenAPI::PetStore::Error >> otherwise.
 
 =cut
 
@@ -203,7 +206,7 @@ sub findPets( $self, %options ) {
 =back
 
 Returns a L<< OpenAPI::PetStore::Pet >> on success.
-Returns a L<< OpenAPI::PetStore::Error >> on HTTP code default.
+Returns a L<< OpenAPI::PetStore::Error >> otherwise.
 
 =cut
 
@@ -293,7 +296,9 @@ sub addPet( $self, %options ) {
 
 =head2 C<< deletePet >>
 
-  my $res = $client->deletePet()->get;
+  my $res = $client->deletePet(
+      'id' => '...',
+  )->get;
 
 =head3 Parameters
 
@@ -306,7 +311,7 @@ ID of pet to delete
 =back
 
 
-Returns a L<< OpenAPI::PetStore::Error >> on HTTP code default.
+Returns a L<< OpenAPI::PetStore::Error >> otherwise.
 
 =cut
 
@@ -388,7 +393,9 @@ sub deletePet( $self, %options ) {
 
 =head2 C<< find_pet_by_id >>
 
-  my $res = $client->find_pet_by_id()->get;
+  my $res = $client->find_pet_by_id(
+      'id' => '...',
+  )->get;
 
 =head3 Parameters
 
@@ -402,7 +409,7 @@ ID of pet to fetch
 
 
 Returns a L<< OpenAPI::PetStore::Pet >> on success.
-Returns a L<< OpenAPI::PetStore::Error >> on HTTP code default.
+Returns a L<< OpenAPI::PetStore::Error >> otherwise.
 
 =cut
 
