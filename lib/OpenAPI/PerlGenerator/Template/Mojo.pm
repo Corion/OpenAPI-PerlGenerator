@@ -528,6 +528,15 @@ sub build_<%= $method->{name} %>_request( $self, %options ) {
 % }
     );
 
+    # validate our request while developing
+    if( my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
+    };
+
     return $tx
 }
 __BUILD_REQUEST__
@@ -735,15 +744,6 @@ Defaults to C<< <%= $p->{default} =%> >>
 
 sub <%= $method->{name} %>( $self, %options ) {
     my $tx = $self->_build_<%= $method->{name} %>_request(%options);
-
-    # validate our request while developing
-    if( my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
 
 %# We want to handle both here, streaming (ndjson) and plain responses
 %# Plain responses are easy, but for streamed, we want to register an ->on('progress')

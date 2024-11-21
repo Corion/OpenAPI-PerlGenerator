@@ -113,13 +113,6 @@ sub build_withCookie_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub withCookie( $self, %options ) {
-    my $tx = $self->_build_withCookie_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -128,6 +121,13 @@ sub withCookie( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub withCookie( $self, %options ) {
+    my $tx = $self->_build_withCookie_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -199,13 +199,6 @@ sub build_withHeader_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub withHeader( $self, %options ) {
-    my $tx = $self->_build_withHeader_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -214,6 +207,13 @@ sub withHeader( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub withHeader( $self, %options ) {
+    my $tx = $self->_build_withHeader_request(%options);
 
 
     my $res = Future::Mojo->new();

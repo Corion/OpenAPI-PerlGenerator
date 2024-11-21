@@ -124,13 +124,6 @@ sub build_findPets_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub findPets( $self, %options ) {
-    my $tx = $self->_build_findPets_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -139,6 +132,13 @@ sub findPets( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub findPets( $self, %options ) {
+    my $tx = $self->_build_findPets_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -233,13 +233,6 @@ sub build_addPet_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub addPet( $self, %options ) {
-    my $tx = $self->_build_addPet_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -248,6 +241,13 @@ sub addPet( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addPet( $self, %options ) {
+    my $tx = $self->_build_addPet_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -345,13 +345,6 @@ sub build_deletePet_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deletePet( $self, %options ) {
-    my $tx = $self->_build_deletePet_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -360,6 +353,13 @@ sub deletePet( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deletePet( $self, %options ) {
+    my $tx = $self->_build_deletePet_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -447,13 +447,6 @@ sub build_find_pet_by_id_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub find_pet_by_id( $self, %options ) {
-    my $tx = $self->_build_find_pet_by_id_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -462,6 +455,13 @@ sub find_pet_by_id( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub find_pet_by_id( $self, %options ) {
+    my $tx = $self->_build_find_pet_by_id_request(%options);
 
 
     my $res = Future::Mojo->new();

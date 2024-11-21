@@ -126,13 +126,6 @@ sub build_inference_request( $self, %options ) {
         => form => $request,
     );
 
-    return $tx
-}
-
-
-sub inference( $self, %options ) {
-    my $tx = $self->_build_inference_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -141,6 +134,13 @@ sub inference( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub inference( $self, %options ) {
+    my $tx = $self->_build_inference_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -246,13 +246,6 @@ sub build_load_request( $self, %options ) {
         => form => $request,
     );
 
-    return $tx
-}
-
-
-sub load( $self, %options ) {
-    my $tx = $self->_build_load_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -261,6 +254,13 @@ sub load( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub load( $self, %options ) {
+    my $tx = $self->_build_load_request(%options);
 
 
     my $res = Future::Mojo->new();

@@ -653,13 +653,6 @@ sub build_getBanner_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getBanner( $self, %options ) {
-    my $tx = $self->_build_getBanner_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -668,6 +661,13 @@ sub getBanner( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getBanner( $self, %options ) {
+    my $tx = $self->_build_getBanner_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -797,13 +797,6 @@ sub build_setBanner_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setBanner( $self, %options ) {
-    my $tx = $self->_build_setBanner_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -812,6 +805,13 @@ sub setBanner( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setBanner( $self, %options ) {
+    my $tx = $self->_build_setBanner_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -948,13 +948,6 @@ sub build_updateMultipleCustomFieldValues_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateMultipleCustomFieldValues( $self, %options ) {
-    my $tx = $self->_build_updateMultipleCustomFieldValues_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -963,6 +956,13 @@ sub updateMultipleCustomFieldValues( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateMultipleCustomFieldValues( $self, %options ) {
+    my $tx = $self->_build_updateMultipleCustomFieldValues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1102,13 +1102,6 @@ sub build_getCustomFieldConfiguration_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getCustomFieldConfiguration( $self, %options ) {
-    my $tx = $self->_build_getCustomFieldConfiguration_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1117,6 +1110,13 @@ sub getCustomFieldConfiguration( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getCustomFieldConfiguration( $self, %options ) {
+    my $tx = $self->_build_getCustomFieldConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1227,13 +1227,6 @@ sub build_updateCustomFieldConfiguration_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateCustomFieldConfiguration( $self, %options ) {
-    my $tx = $self->_build_updateCustomFieldConfiguration_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1242,6 +1235,13 @@ sub updateCustomFieldConfiguration( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateCustomFieldConfiguration( $self, %options ) {
+    my $tx = $self->_build_updateCustomFieldConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1361,13 +1361,6 @@ sub build_updateCustomFieldValue_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateCustomFieldValue( $self, %options ) {
-    my $tx = $self->_build_updateCustomFieldValue_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1376,6 +1369,13 @@ sub updateCustomFieldValue( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateCustomFieldValue( $self, %options ) {
+    my $tx = $self->_build_updateCustomFieldValue_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1480,13 +1480,6 @@ sub build_getApplicationProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getApplicationProperty( $self, %options ) {
-    my $tx = $self->_build_getApplicationProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1495,6 +1488,13 @@ sub getApplicationProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getApplicationProperty( $self, %options ) {
+    my $tx = $self->_build_getApplicationProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1575,13 +1575,6 @@ sub build_getAdvancedSettings_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAdvancedSettings( $self, %options ) {
-    my $tx = $self->_build_getAdvancedSettings_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1590,6 +1583,13 @@ sub getAdvancedSettings( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAdvancedSettings( $self, %options ) {
+    my $tx = $self->_build_getAdvancedSettings_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1699,13 +1699,6 @@ sub build_setApplicationProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setApplicationProperty( $self, %options ) {
-    my $tx = $self->_build_setApplicationProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1714,6 +1707,13 @@ sub setApplicationProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setApplicationProperty( $self, %options ) {
+    my $tx = $self->_build_setApplicationProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1799,13 +1799,6 @@ sub build_getAllApplicationRoles_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllApplicationRoles( $self, %options ) {
-    my $tx = $self->_build_getAllApplicationRoles_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1814,6 +1807,13 @@ sub getAllApplicationRoles( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllApplicationRoles( $self, %options ) {
+    my $tx = $self->_build_getAllApplicationRoles_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1906,13 +1906,6 @@ sub build_getApplicationRole_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getApplicationRole( $self, %options ) {
-    my $tx = $self->_build_getApplicationRole_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1921,6 +1914,13 @@ sub getApplicationRole( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getApplicationRole( $self, %options ) {
+    my $tx = $self->_build_getApplicationRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2024,13 +2024,6 @@ sub build_getAttachmentContent_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAttachmentContent( $self, %options ) {
-    my $tx = $self->_build_getAttachmentContent_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2039,6 +2032,13 @@ sub getAttachmentContent( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAttachmentContent( $self, %options ) {
+    my $tx = $self->_build_getAttachmentContent_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2133,13 +2133,6 @@ sub build_getAttachmentMeta_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAttachmentMeta( $self, %options ) {
-    my $tx = $self->_build_getAttachmentMeta_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2148,6 +2141,13 @@ sub getAttachmentMeta( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAttachmentMeta( $self, %options ) {
+    my $tx = $self->_build_getAttachmentMeta_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2263,13 +2263,6 @@ sub build_getAttachmentThumbnail_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAttachmentThumbnail( $self, %options ) {
-    my $tx = $self->_build_getAttachmentThumbnail_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2278,6 +2271,13 @@ sub getAttachmentThumbnail( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAttachmentThumbnail( $self, %options ) {
+    my $tx = $self->_build_getAttachmentThumbnail_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2376,13 +2376,6 @@ sub build_removeAttachment_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub removeAttachment( $self, %options ) {
-    my $tx = $self->_build_removeAttachment_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2391,6 +2384,13 @@ sub removeAttachment( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeAttachment( $self, %options ) {
+    my $tx = $self->_build_removeAttachment_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2471,13 +2471,6 @@ sub build_getAttachment_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAttachment( $self, %options ) {
-    my $tx = $self->_build_getAttachment_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2486,6 +2479,13 @@ sub getAttachment( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAttachment( $self, %options ) {
+    my $tx = $self->_build_getAttachment_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2580,13 +2580,6 @@ sub build_expandAttachmentForHumans_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub expandAttachmentForHumans( $self, %options ) {
-    my $tx = $self->_build_expandAttachmentForHumans_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2595,6 +2588,13 @@ sub expandAttachmentForHumans( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub expandAttachmentForHumans( $self, %options ) {
+    my $tx = $self->_build_expandAttachmentForHumans_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2692,13 +2692,6 @@ sub build_expandAttachmentForMachines_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub expandAttachmentForMachines( $self, %options ) {
-    my $tx = $self->_build_expandAttachmentForMachines_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2707,6 +2700,13 @@ sub expandAttachmentForMachines( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub expandAttachmentForMachines( $self, %options ) {
+    my $tx = $self->_build_expandAttachmentForMachines_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2826,13 +2826,6 @@ sub build_getAuditRecords_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAuditRecords( $self, %options ) {
-    my $tx = $self->_build_getAuditRecords_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2841,6 +2834,13 @@ sub getAuditRecords( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAuditRecords( $self, %options ) {
+    my $tx = $self->_build_getAuditRecords_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2932,13 +2932,6 @@ sub build_getAllSystemAvatars_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllSystemAvatars( $self, %options ) {
-    my $tx = $self->_build_getAllSystemAvatars_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2947,6 +2940,13 @@ sub getAllSystemAvatars( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllSystemAvatars( $self, %options ) {
+    my $tx = $self->_build_getAllSystemAvatars_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3063,13 +3063,6 @@ sub build_getCommentsByIds_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub getCommentsByIds( $self, %options ) {
-    my $tx = $self->_build_getCommentsByIds_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3078,6 +3071,13 @@ sub getCommentsByIds( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getCommentsByIds( $self, %options ) {
+    my $tx = $self->_build_getCommentsByIds_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3166,13 +3166,6 @@ sub build_getCommentPropertyKeys_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getCommentPropertyKeys( $self, %options ) {
-    my $tx = $self->_build_getCommentPropertyKeys_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3181,6 +3174,13 @@ sub getCommentPropertyKeys( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getCommentPropertyKeys( $self, %options ) {
+    my $tx = $self->_build_getCommentPropertyKeys_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3284,13 +3284,6 @@ sub build_deleteCommentProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteCommentProperty( $self, %options ) {
-    my $tx = $self->_build_deleteCommentProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3299,6 +3292,13 @@ sub deleteCommentProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteCommentProperty( $self, %options ) {
+    my $tx = $self->_build_deleteCommentProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3393,13 +3393,6 @@ sub build_getCommentProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getCommentProperty( $self, %options ) {
-    my $tx = $self->_build_getCommentProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3408,6 +3401,13 @@ sub getCommentProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getCommentProperty( $self, %options ) {
+    my $tx = $self->_build_getCommentProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3517,13 +3517,6 @@ sub build_setCommentProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setCommentProperty( $self, %options ) {
-    my $tx = $self->_build_setCommentProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3532,6 +3525,13 @@ sub setCommentProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setCommentProperty( $self, %options ) {
+    my $tx = $self->_build_setCommentProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3748,13 +3748,6 @@ sub build_createComponent_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createComponent( $self, %options ) {
-    my $tx = $self->_build_createComponent_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3763,6 +3756,13 @@ sub createComponent( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createComponent( $self, %options ) {
+    my $tx = $self->_build_createComponent_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3867,13 +3867,6 @@ sub build_deleteComponent_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteComponent( $self, %options ) {
-    my $tx = $self->_build_deleteComponent_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3882,6 +3875,13 @@ sub deleteComponent( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteComponent( $self, %options ) {
+    my $tx = $self->_build_deleteComponent_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3965,13 +3965,6 @@ sub build_getComponent_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getComponent( $self, %options ) {
-    my $tx = $self->_build_getComponent_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3980,6 +3973,13 @@ sub getComponent( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getComponent( $self, %options ) {
+    my $tx = $self->_build_getComponent_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4188,13 +4188,6 @@ sub build_updateComponent_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateComponent( $self, %options ) {
-    my $tx = $self->_build_updateComponent_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4203,6 +4196,13 @@ sub updateComponent( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateComponent( $self, %options ) {
+    my $tx = $self->_build_updateComponent_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4300,13 +4300,6 @@ sub build_getComponentRelatedIssues_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getComponentRelatedIssues( $self, %options ) {
-    my $tx = $self->_build_getComponentRelatedIssues_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4315,6 +4308,13 @@ sub getComponentRelatedIssues( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getComponentRelatedIssues( $self, %options ) {
+    my $tx = $self->_build_getComponentRelatedIssues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4394,13 +4394,6 @@ sub build_getConfiguration_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getConfiguration( $self, %options ) {
-    my $tx = $self->_build_getConfiguration_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4409,6 +4402,13 @@ sub getConfiguration( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getConfiguration( $self, %options ) {
+    my $tx = $self->_build_getConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4486,13 +4486,6 @@ sub build_getSelectedTimeTrackingImplementation_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getSelectedTimeTrackingImplementation( $self, %options ) {
-    my $tx = $self->_build_getSelectedTimeTrackingImplementation_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4501,6 +4494,13 @@ sub getSelectedTimeTrackingImplementation( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getSelectedTimeTrackingImplementation( $self, %options ) {
+    my $tx = $self->_build_getSelectedTimeTrackingImplementation_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4615,13 +4615,6 @@ sub build_selectTimeTrackingImplementation_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub selectTimeTrackingImplementation( $self, %options ) {
-    my $tx = $self->_build_selectTimeTrackingImplementation_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4630,6 +4623,13 @@ sub selectTimeTrackingImplementation( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub selectTimeTrackingImplementation( $self, %options ) {
+    my $tx = $self->_build_selectTimeTrackingImplementation_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4712,13 +4712,6 @@ sub build_getAvailableTimeTrackingImplementations_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAvailableTimeTrackingImplementations( $self, %options ) {
-    my $tx = $self->_build_getAvailableTimeTrackingImplementations_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4727,6 +4720,13 @@ sub getAvailableTimeTrackingImplementations( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAvailableTimeTrackingImplementations( $self, %options ) {
+    my $tx = $self->_build_getAvailableTimeTrackingImplementations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4807,13 +4807,6 @@ sub build_getSharedTimeTrackingConfiguration_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getSharedTimeTrackingConfiguration( $self, %options ) {
-    my $tx = $self->_build_getSharedTimeTrackingConfiguration_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4822,6 +4815,13 @@ sub getSharedTimeTrackingConfiguration( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getSharedTimeTrackingConfiguration( $self, %options ) {
+    my $tx = $self->_build_getSharedTimeTrackingConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4926,13 +4926,6 @@ sub build_setSharedTimeTrackingConfiguration_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setSharedTimeTrackingConfiguration( $self, %options ) {
-    my $tx = $self->_build_setSharedTimeTrackingConfiguration_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4941,6 +4934,13 @@ sub setSharedTimeTrackingConfiguration( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setSharedTimeTrackingConfiguration( $self, %options ) {
+    my $tx = $self->_build_setSharedTimeTrackingConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5035,13 +5035,6 @@ sub build_getCustomFieldOption_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getCustomFieldOption( $self, %options ) {
-    my $tx = $self->_build_getCustomFieldOption_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -5050,6 +5043,13 @@ sub getCustomFieldOption( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getCustomFieldOption( $self, %options ) {
+    my $tx = $self->_build_getCustomFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5167,13 +5167,6 @@ sub build_getAllDashboards_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllDashboards( $self, %options ) {
-    my $tx = $self->_build_getAllDashboards_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -5182,6 +5175,13 @@ sub getAllDashboards( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllDashboards( $self, %options ) {
+    my $tx = $self->_build_getAllDashboards_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5310,13 +5310,6 @@ sub build_createDashboard_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createDashboard( $self, %options ) {
-    my $tx = $self->_build_createDashboard_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -5325,6 +5318,13 @@ sub createDashboard( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createDashboard( $self, %options ) {
+    my $tx = $self->_build_createDashboard_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5428,13 +5428,6 @@ sub build_getAllAvailableDashboardGadgets_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllAvailableDashboardGadgets( $self, %options ) {
-    my $tx = $self->_build_getAllAvailableDashboardGadgets_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -5443,6 +5436,13 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllAvailableDashboardGadgets( $self, %options ) {
+    my $tx = $self->_build_getAllAvailableDashboardGadgets_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5694,13 +5694,6 @@ sub build_getDashboardsPaginated_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getDashboardsPaginated( $self, %options ) {
-    my $tx = $self->_build_getDashboardsPaginated_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -5709,6 +5702,13 @@ sub getDashboardsPaginated( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getDashboardsPaginated( $self, %options ) {
+    my $tx = $self->_build_getDashboardsPaginated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5844,13 +5844,6 @@ sub build_getAllGadgets_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllGadgets( $self, %options ) {
-    my $tx = $self->_build_getAllGadgets_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -5859,6 +5852,13 @@ sub getAllGadgets( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllGadgets( $self, %options ) {
+    my $tx = $self->_build_getAllGadgets_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5996,13 +5996,6 @@ sub build_addGadget_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub addGadget( $self, %options ) {
-    my $tx = $self->_build_addGadget_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6011,6 +6004,13 @@ sub addGadget( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addGadget( $self, %options ) {
+    my $tx = $self->_build_addGadget_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6136,13 +6136,6 @@ sub build_removeGadget_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub removeGadget( $self, %options ) {
-    my $tx = $self->_build_removeGadget_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6151,6 +6144,13 @@ sub removeGadget( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeGadget( $self, %options ) {
+    my $tx = $self->_build_removeGadget_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6284,13 +6284,6 @@ sub build_updateGadget_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateGadget( $self, %options ) {
-    my $tx = $self->_build_updateGadget_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6299,6 +6292,13 @@ sub updateGadget( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateGadget( $self, %options ) {
+    my $tx = $self->_build_updateGadget_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6423,13 +6423,6 @@ sub build_getDashboardItemPropertyKeys_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getDashboardItemPropertyKeys( $self, %options ) {
-    my $tx = $self->_build_getDashboardItemPropertyKeys_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6438,6 +6431,13 @@ sub getDashboardItemPropertyKeys( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getDashboardItemPropertyKeys( $self, %options ) {
+    my $tx = $self->_build_getDashboardItemPropertyKeys_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6543,13 +6543,6 @@ sub build_deleteDashboardItemProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteDashboardItemProperty( $self, %options ) {
-    my $tx = $self->_build_deleteDashboardItemProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6558,6 +6551,13 @@ sub deleteDashboardItemProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteDashboardItemProperty( $self, %options ) {
+    my $tx = $self->_build_deleteDashboardItemProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6660,13 +6660,6 @@ sub build_getDashboardItemProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getDashboardItemProperty( $self, %options ) {
-    my $tx = $self->_build_getDashboardItemProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6675,6 +6668,13 @@ sub getDashboardItemProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getDashboardItemProperty( $self, %options ) {
+    my $tx = $self->_build_getDashboardItemProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6786,13 +6786,6 @@ sub build_setDashboardItemProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setDashboardItemProperty( $self, %options ) {
-    my $tx = $self->_build_setDashboardItemProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6801,6 +6794,13 @@ sub setDashboardItemProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setDashboardItemProperty( $self, %options ) {
+    my $tx = $self->_build_setDashboardItemProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6924,13 +6924,6 @@ sub build_deleteDashboard_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteDashboard( $self, %options ) {
-    my $tx = $self->_build_deleteDashboard_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6939,6 +6932,13 @@ sub deleteDashboard( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteDashboard( $self, %options ) {
+    my $tx = $self->_build_deleteDashboard_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7043,13 +7043,6 @@ sub build_getDashboard_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getDashboard( $self, %options ) {
-    my $tx = $self->_build_getDashboard_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -7058,6 +7051,13 @@ sub getDashboard( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getDashboard( $self, %options ) {
+    my $tx = $self->_build_getDashboard_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7202,13 +7202,6 @@ sub build_updateDashboard_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateDashboard( $self, %options ) {
-    my $tx = $self->_build_updateDashboard_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -7217,6 +7210,13 @@ sub updateDashboard( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateDashboard( $self, %options ) {
+    my $tx = $self->_build_updateDashboard_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7370,13 +7370,6 @@ sub build_copyDashboard_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub copyDashboard( $self, %options ) {
-    my $tx = $self->_build_copyDashboard_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -7385,6 +7378,13 @@ sub copyDashboard( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub copyDashboard( $self, %options ) {
+    my $tx = $self->_build_copyDashboard_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7500,13 +7500,6 @@ sub build_getEvents_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getEvents( $self, %options ) {
-    my $tx = $self->_build_getEvents_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -7515,6 +7508,13 @@ sub getEvents( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getEvents( $self, %options ) {
+    my $tx = $self->_build_getEvents_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7643,13 +7643,6 @@ sub build_analyseExpression_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub analyseExpression( $self, %options ) {
-    my $tx = $self->_build_analyseExpression_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -7658,6 +7651,13 @@ sub analyseExpression( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub analyseExpression( $self, %options ) {
+    my $tx = $self->_build_analyseExpression_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7791,13 +7791,6 @@ sub build_evaluateJiraExpression_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub evaluateJiraExpression( $self, %options ) {
-    my $tx = $self->_build_evaluateJiraExpression_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -7806,6 +7799,13 @@ sub evaluateJiraExpression( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub evaluateJiraExpression( $self, %options ) {
+    my $tx = $self->_build_evaluateJiraExpression_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7910,13 +7910,6 @@ sub build_getFields_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getFields( $self, %options ) {
-    my $tx = $self->_build_getFields_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -7925,6 +7918,13 @@ sub getFields( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getFields( $self, %options ) {
+    my $tx = $self->_build_getFields_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -8251,13 +8251,6 @@ sub build_createCustomField_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createCustomField( $self, %options ) {
-    my $tx = $self->_build_createCustomField_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -8266,6 +8259,13 @@ sub createCustomField( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createCustomField( $self, %options ) {
+    my $tx = $self->_build_createCustomField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -8448,13 +8448,6 @@ sub build_getFieldsPaginated_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getFieldsPaginated( $self, %options ) {
-    my $tx = $self->_build_getFieldsPaginated_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -8463,6 +8456,13 @@ sub getFieldsPaginated( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getFieldsPaginated( $self, %options ) {
+    my $tx = $self->_build_getFieldsPaginated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -8624,13 +8624,6 @@ sub build_getTrashedFieldsPaginated_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getTrashedFieldsPaginated( $self, %options ) {
-    my $tx = $self->_build_getTrashedFieldsPaginated_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -8639,6 +8632,13 @@ sub getTrashedFieldsPaginated( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getTrashedFieldsPaginated( $self, %options ) {
+    my $tx = $self->_build_getTrashedFieldsPaginated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -8885,13 +8885,6 @@ sub build_updateCustomField_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateCustomField( $self, %options ) {
-    my $tx = $self->_build_updateCustomField_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -8900,6 +8893,13 @@ sub updateCustomField( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateCustomField( $self, %options ) {
+    my $tx = $self->_build_updateCustomField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -9063,13 +9063,6 @@ sub build_getContextsForField_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getContextsForField( $self, %options ) {
-    my $tx = $self->_build_getContextsForField_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -9078,6 +9071,13 @@ sub getContextsForField( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getContextsForField( $self, %options ) {
+    my $tx = $self->_build_getContextsForField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -9223,13 +9223,6 @@ sub build_createCustomFieldContext_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createCustomFieldContext( $self, %options ) {
-    my $tx = $self->_build_createCustomFieldContext_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -9238,6 +9231,13 @@ sub createCustomFieldContext( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createCustomFieldContext( $self, %options ) {
+    my $tx = $self->_build_createCustomFieldContext_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -9367,13 +9367,6 @@ sub build_getDefaultValues_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getDefaultValues( $self, %options ) {
-    my $tx = $self->_build_getDefaultValues_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -9382,6 +9375,13 @@ sub getDefaultValues( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getDefaultValues( $self, %options ) {
+    my $tx = $self->_build_getDefaultValues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -9509,13 +9509,6 @@ sub build_setDefaultValues_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setDefaultValues( $self, %options ) {
-    my $tx = $self->_build_setDefaultValues_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -9524,6 +9517,13 @@ sub setDefaultValues( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setDefaultValues( $self, %options ) {
+    my $tx = $self->_build_setDefaultValues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -9675,13 +9675,6 @@ sub build_getIssueTypeMappingsForContexts_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueTypeMappingsForContexts( $self, %options ) {
-    my $tx = $self->_build_getIssueTypeMappingsForContexts_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -9690,6 +9683,13 @@ sub getIssueTypeMappingsForContexts( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueTypeMappingsForContexts( $self, %options ) {
+    my $tx = $self->_build_getIssueTypeMappingsForContexts_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -9820,13 +9820,6 @@ sub build_getCustomFieldContextsForProjectsAndIssueTypes_request( $self, %option
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
-    my $tx = $self->_build_getCustomFieldContextsForProjectsAndIssueTypes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -9835,6 +9828,13 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
+    my $tx = $self->_build_getCustomFieldContextsForProjectsAndIssueTypes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -9986,13 +9986,6 @@ sub build_getProjectContextMapping_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectContextMapping( $self, %options ) {
-    my $tx = $self->_build_getProjectContextMapping_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -10001,6 +9994,13 @@ sub getProjectContextMapping( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectContextMapping( $self, %options ) {
+    my $tx = $self->_build_getProjectContextMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -10125,13 +10125,6 @@ sub build_deleteCustomFieldContext_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteCustomFieldContext( $self, %options ) {
-    my $tx = $self->_build_deleteCustomFieldContext_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -10140,6 +10133,13 @@ sub deleteCustomFieldContext( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteCustomFieldContext( $self, %options ) {
+    my $tx = $self->_build_deleteCustomFieldContext_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -10295,13 +10295,6 @@ sub build_updateCustomFieldContext_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateCustomFieldContext( $self, %options ) {
-    my $tx = $self->_build_updateCustomFieldContext_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -10310,6 +10303,13 @@ sub updateCustomFieldContext( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateCustomFieldContext( $self, %options ) {
+    my $tx = $self->_build_updateCustomFieldContext_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -10461,13 +10461,6 @@ sub build_addIssueTypesToContext_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub addIssueTypesToContext( $self, %options ) {
-    my $tx = $self->_build_addIssueTypesToContext_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -10476,6 +10469,13 @@ sub addIssueTypesToContext( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addIssueTypesToContext( $self, %options ) {
+    my $tx = $self->_build_addIssueTypesToContext_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -10641,13 +10641,6 @@ sub build_removeIssueTypesFromContext_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub removeIssueTypesFromContext( $self, %options ) {
-    my $tx = $self->_build_removeIssueTypesFromContext_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -10656,6 +10649,13 @@ sub removeIssueTypesFromContext( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeIssueTypesFromContext( $self, %options ) {
+    my $tx = $self->_build_removeIssueTypesFromContext_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -10821,13 +10821,6 @@ sub build_getOptionsForContext_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getOptionsForContext( $self, %options ) {
-    my $tx = $self->_build_getOptionsForContext_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -10836,6 +10829,13 @@ sub getOptionsForContext( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getOptionsForContext( $self, %options ) {
+    my $tx = $self->_build_getOptionsForContext_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -10987,13 +10987,6 @@ sub build_createCustomFieldOption_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createCustomFieldOption( $self, %options ) {
-    my $tx = $self->_build_createCustomFieldOption_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -11002,6 +10995,13 @@ sub createCustomFieldOption( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createCustomFieldOption( $self, %options ) {
+    my $tx = $self->_build_createCustomFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -11153,13 +11153,6 @@ sub build_updateCustomFieldOption_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateCustomFieldOption( $self, %options ) {
-    my $tx = $self->_build_updateCustomFieldOption_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -11168,6 +11161,13 @@ sub updateCustomFieldOption( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateCustomFieldOption( $self, %options ) {
+    my $tx = $self->_build_updateCustomFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -11327,13 +11327,6 @@ sub build_reorderCustomFieldOptions_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub reorderCustomFieldOptions( $self, %options ) {
-    my $tx = $self->_build_reorderCustomFieldOptions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -11342,6 +11335,13 @@ sub reorderCustomFieldOptions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub reorderCustomFieldOptions( $self, %options ) {
+    my $tx = $self->_build_reorderCustomFieldOptions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -11487,13 +11487,6 @@ sub build_deleteCustomFieldOption_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteCustomFieldOption( $self, %options ) {
-    my $tx = $self->_build_deleteCustomFieldOption_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -11502,6 +11495,13 @@ sub deleteCustomFieldOption( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteCustomFieldOption( $self, %options ) {
+    my $tx = $self->_build_deleteCustomFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -11642,13 +11642,6 @@ sub build_assignProjectsToCustomFieldContext_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub assignProjectsToCustomFieldContext( $self, %options ) {
-    my $tx = $self->_build_assignProjectsToCustomFieldContext_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -11657,6 +11650,13 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub assignProjectsToCustomFieldContext( $self, %options ) {
+    my $tx = $self->_build_assignProjectsToCustomFieldContext_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -11808,13 +11808,6 @@ sub build_removeCustomFieldContextFromProjects_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub removeCustomFieldContextFromProjects( $self, %options ) {
-    my $tx = $self->_build_removeCustomFieldContextFromProjects_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -11823,6 +11816,13 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeCustomFieldContextFromProjects( $self, %options ) {
+    my $tx = $self->_build_removeCustomFieldContextFromProjects_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -11968,13 +11968,6 @@ sub build_getContextsForFieldDeprecated_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getContextsForFieldDeprecated( $self, %options ) {
-    my $tx = $self->_build_getContextsForFieldDeprecated_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -11983,6 +11976,13 @@ sub getContextsForFieldDeprecated( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getContextsForFieldDeprecated( $self, %options ) {
+    my $tx = $self->_build_getContextsForFieldDeprecated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -12095,13 +12095,6 @@ sub build_getScreensForField_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getScreensForField( $self, %options ) {
-    my $tx = $self->_build_getScreensForField_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -12110,6 +12103,13 @@ sub getScreensForField( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getScreensForField( $self, %options ) {
+    my $tx = $self->_build_getScreensForField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -12230,13 +12230,6 @@ sub build_getAllIssueFieldOptions_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllIssueFieldOptions( $self, %options ) {
-    my $tx = $self->_build_getAllIssueFieldOptions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -12245,6 +12238,13 @@ sub getAllIssueFieldOptions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllIssueFieldOptions( $self, %options ) {
+    my $tx = $self->_build_getAllIssueFieldOptions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -12371,13 +12371,6 @@ sub build_createIssueFieldOption_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createIssueFieldOption( $self, %options ) {
-    my $tx = $self->_build_createIssueFieldOption_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -12386,6 +12379,13 @@ sub createIssueFieldOption( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createIssueFieldOption( $self, %options ) {
+    my $tx = $self->_build_createIssueFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -12515,13 +12515,6 @@ sub build_getSelectableIssueFieldOptions_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getSelectableIssueFieldOptions( $self, %options ) {
-    my $tx = $self->_build_getSelectableIssueFieldOptions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -12530,6 +12523,13 @@ sub getSelectableIssueFieldOptions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getSelectableIssueFieldOptions( $self, %options ) {
+    my $tx = $self->_build_getSelectableIssueFieldOptions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -12656,13 +12656,6 @@ sub build_getVisibleIssueFieldOptions_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getVisibleIssueFieldOptions( $self, %options ) {
-    my $tx = $self->_build_getVisibleIssueFieldOptions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -12671,6 +12664,13 @@ sub getVisibleIssueFieldOptions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getVisibleIssueFieldOptions( $self, %options ) {
+    my $tx = $self->_build_getVisibleIssueFieldOptions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -12784,13 +12784,6 @@ sub build_deleteIssueFieldOption_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteIssueFieldOption( $self, %options ) {
-    my $tx = $self->_build_deleteIssueFieldOption_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -12799,6 +12792,13 @@ sub deleteIssueFieldOption( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteIssueFieldOption( $self, %options ) {
+    my $tx = $self->_build_deleteIssueFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -12915,13 +12915,6 @@ sub build_getIssueFieldOption_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueFieldOption( $self, %options ) {
-    my $tx = $self->_build_getIssueFieldOption_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -12930,6 +12923,13 @@ sub getIssueFieldOption( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueFieldOption( $self, %options ) {
+    my $tx = $self->_build_getIssueFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -13071,13 +13071,6 @@ sub build_updateIssueFieldOption_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateIssueFieldOption( $self, %options ) {
-    my $tx = $self->_build_updateIssueFieldOption_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -13086,6 +13079,13 @@ sub updateIssueFieldOption( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateIssueFieldOption( $self, %options ) {
+    my $tx = $self->_build_updateIssueFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -13229,13 +13229,6 @@ sub build_replaceIssueFieldOption_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub replaceIssueFieldOption( $self, %options ) {
-    my $tx = $self->_build_replaceIssueFieldOption_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -13244,6 +13237,13 @@ sub replaceIssueFieldOption( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub replaceIssueFieldOption( $self, %options ) {
+    my $tx = $self->_build_replaceIssueFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -13354,13 +13354,6 @@ sub build_deleteCustomField_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteCustomField( $self, %options ) {
-    my $tx = $self->_build_deleteCustomField_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -13369,6 +13362,13 @@ sub deleteCustomField( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteCustomField( $self, %options ) {
+    my $tx = $self->_build_deleteCustomField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -13528,13 +13528,6 @@ sub build_restoreCustomField_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub restoreCustomField( $self, %options ) {
-    my $tx = $self->_build_restoreCustomField_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -13543,6 +13536,13 @@ sub restoreCustomField( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub restoreCustomField( $self, %options ) {
+    my $tx = $self->_build_restoreCustomField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -13688,13 +13688,6 @@ sub build_trashCustomField_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub trashCustomField( $self, %options ) {
-    my $tx = $self->_build_trashCustomField_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -13703,6 +13696,13 @@ sub trashCustomField( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub trashCustomField( $self, %options ) {
+    my $tx = $self->_build_trashCustomField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -13866,13 +13866,6 @@ sub build_getAllFieldConfigurations_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllFieldConfigurations( $self, %options ) {
-    my $tx = $self->_build_getAllFieldConfigurations_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -13881,6 +13874,13 @@ sub getAllFieldConfigurations( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllFieldConfigurations( $self, %options ) {
+    my $tx = $self->_build_getAllFieldConfigurations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -13977,13 +13977,6 @@ sub build_createFieldConfiguration_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createFieldConfiguration( $self, %options ) {
-    my $tx = $self->_build_createFieldConfiguration_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -13992,6 +13985,13 @@ sub createFieldConfiguration( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createFieldConfiguration( $self, %options ) {
+    my $tx = $self->_build_createFieldConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -14086,13 +14086,6 @@ sub build_deleteFieldConfiguration_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteFieldConfiguration( $self, %options ) {
-    my $tx = $self->_build_deleteFieldConfiguration_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -14101,6 +14094,13 @@ sub deleteFieldConfiguration( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteFieldConfiguration( $self, %options ) {
+    my $tx = $self->_build_deleteFieldConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -14215,13 +14215,6 @@ sub build_updateFieldConfiguration_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateFieldConfiguration( $self, %options ) {
-    my $tx = $self->_build_updateFieldConfiguration_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -14230,6 +14223,13 @@ sub updateFieldConfiguration( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateFieldConfiguration( $self, %options ) {
+    my $tx = $self->_build_updateFieldConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -14342,13 +14342,6 @@ sub build_getFieldConfigurationItems_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getFieldConfigurationItems( $self, %options ) {
-    my $tx = $self->_build_getFieldConfigurationItems_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -14357,6 +14350,13 @@ sub getFieldConfigurationItems( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getFieldConfigurationItems( $self, %options ) {
+    my $tx = $self->_build_getFieldConfigurationItems_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -14464,13 +14464,6 @@ sub build_updateFieldConfigurationItems_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateFieldConfigurationItems( $self, %options ) {
-    my $tx = $self->_build_updateFieldConfigurationItems_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -14479,6 +14472,13 @@ sub updateFieldConfigurationItems( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateFieldConfigurationItems( $self, %options ) {
+    my $tx = $self->_build_updateFieldConfigurationItems_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -14586,13 +14586,6 @@ sub build_getAllFieldConfigurationSchemes_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllFieldConfigurationSchemes( $self, %options ) {
-    my $tx = $self->_build_getAllFieldConfigurationSchemes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -14601,6 +14594,13 @@ sub getAllFieldConfigurationSchemes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllFieldConfigurationSchemes( $self, %options ) {
+    my $tx = $self->_build_getAllFieldConfigurationSchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -14700,13 +14700,6 @@ sub build_createFieldConfigurationScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createFieldConfigurationScheme( $self, %options ) {
-    my $tx = $self->_build_createFieldConfigurationScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -14715,6 +14708,13 @@ sub createFieldConfigurationScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createFieldConfigurationScheme( $self, %options ) {
+    my $tx = $self->_build_createFieldConfigurationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -14841,13 +14841,6 @@ sub build_getFieldConfigurationSchemeMappings_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getFieldConfigurationSchemeMappings( $self, %options ) {
-    my $tx = $self->_build_getFieldConfigurationSchemeMappings_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -14856,6 +14849,13 @@ sub getFieldConfigurationSchemeMappings( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getFieldConfigurationSchemeMappings( $self, %options ) {
+    my $tx = $self->_build_getFieldConfigurationSchemeMappings_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -14966,13 +14966,6 @@ sub build_getFieldConfigurationSchemeProjectMapping_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getFieldConfigurationSchemeProjectMapping( $self, %options ) {
-    my $tx = $self->_build_getFieldConfigurationSchemeProjectMapping_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -14981,6 +14974,13 @@ sub getFieldConfigurationSchemeProjectMapping( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getFieldConfigurationSchemeProjectMapping( $self, %options ) {
+    my $tx = $self->_build_getFieldConfigurationSchemeProjectMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -15080,13 +15080,6 @@ sub build_assignFieldConfigurationSchemeToProject_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub assignFieldConfigurationSchemeToProject( $self, %options ) {
-    my $tx = $self->_build_assignFieldConfigurationSchemeToProject_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -15095,6 +15088,13 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub assignFieldConfigurationSchemeToProject( $self, %options ) {
+    my $tx = $self->_build_assignFieldConfigurationSchemeToProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -15225,13 +15225,6 @@ sub build_deleteFieldConfigurationScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteFieldConfigurationScheme( $self, %options ) {
-    my $tx = $self->_build_deleteFieldConfigurationScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -15240,6 +15233,13 @@ sub deleteFieldConfigurationScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteFieldConfigurationScheme( $self, %options ) {
+    my $tx = $self->_build_deleteFieldConfigurationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -15354,13 +15354,6 @@ sub build_updateFieldConfigurationScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateFieldConfigurationScheme( $self, %options ) {
-    my $tx = $self->_build_updateFieldConfigurationScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -15369,6 +15362,13 @@ sub updateFieldConfigurationScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateFieldConfigurationScheme( $self, %options ) {
+    my $tx = $self->_build_updateFieldConfigurationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -15512,13 +15512,6 @@ sub build_setFieldConfigurationSchemeMapping_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setFieldConfigurationSchemeMapping( $self, %options ) {
-    my $tx = $self->_build_setFieldConfigurationSchemeMapping_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -15527,6 +15520,13 @@ sub setFieldConfigurationSchemeMapping( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setFieldConfigurationSchemeMapping( $self, %options ) {
+    my $tx = $self->_build_setFieldConfigurationSchemeMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -15641,13 +15641,6 @@ sub build_removeIssueTypesFromGlobalFieldConfigurationScheme_request( $self, %op
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
-    my $tx = $self->_build_removeIssueTypesFromGlobalFieldConfigurationScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -15656,6 +15649,13 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
+    my $tx = $self->_build_removeIssueTypesFromGlobalFieldConfigurationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -15809,13 +15809,6 @@ sub build_getFilters_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getFilters( $self, %options ) {
-    my $tx = $self->_build_getFilters_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -15824,6 +15817,13 @@ sub getFilters( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getFilters( $self, %options ) {
+    my $tx = $self->_build_getFilters_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -15993,13 +15993,6 @@ sub build_createFilter_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createFilter( $self, %options ) {
-    my $tx = $self->_build_createFilter_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -16008,6 +16001,13 @@ sub createFilter( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createFilter( $self, %options ) {
+    my $tx = $self->_build_createFilter_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -16087,13 +16087,6 @@ sub build_getDefaultShareScope_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getDefaultShareScope( $self, %options ) {
-    my $tx = $self->_build_getDefaultShareScope_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -16102,6 +16095,13 @@ sub getDefaultShareScope( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getDefaultShareScope( $self, %options ) {
+    my $tx = $self->_build_getDefaultShareScope_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -16210,13 +16210,6 @@ sub build_setDefaultShareScope_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setDefaultShareScope( $self, %options ) {
-    my $tx = $self->_build_setDefaultShareScope_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -16225,6 +16218,13 @@ sub setDefaultShareScope( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setDefaultShareScope( $self, %options ) {
+    my $tx = $self->_build_setDefaultShareScope_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -16328,13 +16328,6 @@ sub build_getFavouriteFilters_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getFavouriteFilters( $self, %options ) {
-    my $tx = $self->_build_getFavouriteFilters_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -16343,6 +16336,13 @@ sub getFavouriteFilters( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getFavouriteFilters( $self, %options ) {
+    my $tx = $self->_build_getFavouriteFilters_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -16450,13 +16450,6 @@ sub build_getMyFilters_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getMyFilters( $self, %options ) {
-    my $tx = $self->_build_getMyFilters_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -16465,6 +16458,13 @@ sub getMyFilters( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getMyFilters( $self, %options ) {
+    my $tx = $self->_build_getMyFilters_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -16717,13 +16717,6 @@ sub build_getFiltersPaginated_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getFiltersPaginated( $self, %options ) {
-    my $tx = $self->_build_getFiltersPaginated_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -16732,6 +16725,13 @@ sub getFiltersPaginated( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getFiltersPaginated( $self, %options ) {
+    my $tx = $self->_build_getFiltersPaginated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -16832,13 +16832,6 @@ sub build_deleteFilter_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteFilter( $self, %options ) {
-    my $tx = $self->_build_deleteFilter_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -16847,6 +16840,13 @@ sub deleteFilter( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteFilter( $self, %options ) {
+    my $tx = $self->_build_deleteFilter_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -16956,13 +16956,6 @@ sub build_getFilter_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getFilter( $self, %options ) {
-    my $tx = $self->_build_getFilter_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -16971,6 +16964,13 @@ sub getFilter( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getFilter( $self, %options ) {
+    my $tx = $self->_build_getFilter_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17156,13 +17156,6 @@ sub build_updateFilter_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateFilter( $self, %options ) {
-    my $tx = $self->_build_updateFilter_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -17171,6 +17164,13 @@ sub updateFilter( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateFilter( $self, %options ) {
+    my $tx = $self->_build_updateFilter_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17260,13 +17260,6 @@ sub build_resetColumns_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub resetColumns( $self, %options ) {
-    my $tx = $self->_build_resetColumns_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -17275,6 +17268,13 @@ sub resetColumns( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub resetColumns( $self, %options ) {
+    my $tx = $self->_build_resetColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17355,13 +17355,6 @@ sub build_getColumns_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getColumns( $self, %options ) {
-    my $tx = $self->_build_getColumns_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -17370,6 +17363,13 @@ sub getColumns( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getColumns( $self, %options ) {
+    my $tx = $self->_build_getColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17470,13 +17470,6 @@ sub build_setColumns_request( $self, %options ) {
         # => $body,
     );
 
-    return $tx
-}
-
-
-sub setColumns( $self, %options ) {
-    my $tx = $self->_build_setColumns_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -17485,6 +17478,13 @@ sub setColumns( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setColumns( $self, %options ) {
+    my $tx = $self->_build_setColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17599,13 +17599,6 @@ sub build_deleteFavouriteForFilter_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteFavouriteForFilter( $self, %options ) {
-    my $tx = $self->_build_deleteFavouriteForFilter_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -17614,6 +17607,13 @@ sub deleteFavouriteForFilter( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteFavouriteForFilter( $self, %options ) {
+    my $tx = $self->_build_deleteFavouriteForFilter_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17725,13 +17725,6 @@ sub build_setFavouriteForFilter_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub setFavouriteForFilter( $self, %options ) {
-    my $tx = $self->_build_setFavouriteForFilter_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -17740,6 +17733,13 @@ sub setFavouriteForFilter( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setFavouriteForFilter( $self, %options ) {
+    my $tx = $self->_build_setFavouriteForFilter_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17841,13 +17841,6 @@ sub build_changeFilterOwner_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub changeFilterOwner( $self, %options ) {
-    my $tx = $self->_build_changeFilterOwner_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -17856,6 +17849,13 @@ sub changeFilterOwner( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub changeFilterOwner( $self, %options ) {
+    my $tx = $self->_build_changeFilterOwner_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17950,13 +17950,6 @@ sub build_getSharePermissions_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getSharePermissions( $self, %options ) {
-    my $tx = $self->_build_getSharePermissions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -17965,6 +17958,13 @@ sub getSharePermissions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getSharePermissions( $self, %options ) {
+    my $tx = $self->_build_getSharePermissions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -18128,13 +18128,6 @@ sub build_addSharePermission_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub addSharePermission( $self, %options ) {
-    my $tx = $self->_build_addSharePermission_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -18143,6 +18136,13 @@ sub addSharePermission( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addSharePermission( $self, %options ) {
+    my $tx = $self->_build_addSharePermission_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -18244,13 +18244,6 @@ sub build_deleteSharePermission_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteSharePermission( $self, %options ) {
-    my $tx = $self->_build_deleteSharePermission_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -18259,6 +18252,13 @@ sub deleteSharePermission( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteSharePermission( $self, %options ) {
+    my $tx = $self->_build_deleteSharePermission_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -18347,13 +18347,6 @@ sub build_getSharePermission_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getSharePermission( $self, %options ) {
-    my $tx = $self->_build_getSharePermission_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -18362,6 +18355,13 @@ sub getSharePermission( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getSharePermission( $self, %options ) {
+    my $tx = $self->_build_getSharePermission_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -18467,13 +18467,6 @@ sub build_removeGroup_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub removeGroup( $self, %options ) {
-    my $tx = $self->_build_removeGroup_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -18482,6 +18475,13 @@ sub removeGroup( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeGroup( $self, %options ) {
+    my $tx = $self->_build_removeGroup_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -18580,13 +18580,6 @@ sub build_getGroup_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getGroup( $self, %options ) {
-    my $tx = $self->_build_getGroup_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -18595,6 +18588,13 @@ sub getGroup( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getGroup( $self, %options ) {
+    my $tx = $self->_build_getGroup_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -18693,13 +18693,6 @@ sub build_createGroup_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createGroup( $self, %options ) {
-    my $tx = $self->_build_createGroup_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -18708,6 +18701,13 @@ sub createGroup( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createGroup( $self, %options ) {
+    my $tx = $self->_build_createGroup_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -18830,13 +18830,6 @@ sub build_bulkGetGroups_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub bulkGetGroups( $self, %options ) {
-    my $tx = $self->_build_bulkGetGroups_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -18845,6 +18838,13 @@ sub bulkGetGroups( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub bulkGetGroups( $self, %options ) {
+    my $tx = $self->_build_bulkGetGroups_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -18988,13 +18988,6 @@ sub build_getUsersFromGroup_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getUsersFromGroup( $self, %options ) {
-    my $tx = $self->_build_getUsersFromGroup_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -19003,6 +18996,13 @@ sub getUsersFromGroup( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getUsersFromGroup( $self, %options ) {
+    my $tx = $self->_build_getUsersFromGroup_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -19119,13 +19119,6 @@ sub build_removeUserFromGroup_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub removeUserFromGroup( $self, %options ) {
-    my $tx = $self->_build_removeUserFromGroup_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -19134,6 +19127,13 @@ sub removeUserFromGroup( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeUserFromGroup( $self, %options ) {
+    my $tx = $self->_build_removeUserFromGroup_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -19243,13 +19243,6 @@ sub build_addUserToGroup_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub addUserToGroup( $self, %options ) {
-    my $tx = $self->_build_addUserToGroup_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -19258,6 +19251,13 @@ sub addUserToGroup( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addUserToGroup( $self, %options ) {
+    my $tx = $self->_build_addUserToGroup_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -19391,13 +19391,6 @@ sub build_findGroups_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub findGroups( $self, %options ) {
-    my $tx = $self->_build_findGroups_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -19406,6 +19399,13 @@ sub findGroups( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub findGroups( $self, %options ) {
+    my $tx = $self->_build_findGroups_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -19540,13 +19540,6 @@ sub build_findUsersAndGroups_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub findUsersAndGroups( $self, %options ) {
-    my $tx = $self->_build_findUsersAndGroups_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -19555,6 +19548,13 @@ sub findUsersAndGroups( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub findUsersAndGroups( $self, %options ) {
+    my $tx = $self->_build_findUsersAndGroups_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -19640,13 +19640,6 @@ sub build_getLicense_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getLicense( $self, %options ) {
-    my $tx = $self->_build_getLicense_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -19655,6 +19648,13 @@ sub getLicense( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getLicense( $self, %options ) {
+    my $tx = $self->_build_getLicense_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -19773,13 +19773,6 @@ sub build_createIssue_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createIssue( $self, %options ) {
-    my $tx = $self->_build_createIssue_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -19788,6 +19781,13 @@ sub createIssue( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createIssue( $self, %options ) {
+    my $tx = $self->_build_createIssue_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -19915,13 +19915,6 @@ sub build_createIssues_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createIssues( $self, %options ) {
-    my $tx = $self->_build_createIssues_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -19930,6 +19923,13 @@ sub createIssues( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createIssues( $self, %options ) {
+    my $tx = $self->_build_createIssues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -20054,13 +20054,6 @@ sub build_getCreateIssueMeta_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getCreateIssueMeta( $self, %options ) {
-    my $tx = $self->_build_getCreateIssueMeta_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -20069,6 +20062,13 @@ sub getCreateIssueMeta( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getCreateIssueMeta( $self, %options ) {
+    my $tx = $self->_build_getCreateIssueMeta_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -20185,13 +20185,6 @@ sub build_getIssuePickerResource_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssuePickerResource( $self, %options ) {
-    my $tx = $self->_build_getIssuePickerResource_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -20200,6 +20193,13 @@ sub getIssuePickerResource( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssuePickerResource( $self, %options ) {
+    my $tx = $self->_build_getIssuePickerResource_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -20294,13 +20294,6 @@ sub build_bulkSetIssuesPropertiesList_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub bulkSetIssuesPropertiesList( $self, %options ) {
-    my $tx = $self->_build_bulkSetIssuesPropertiesList_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -20309,6 +20302,13 @@ sub bulkSetIssuesPropertiesList( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub bulkSetIssuesPropertiesList( $self, %options ) {
+    my $tx = $self->_build_bulkSetIssuesPropertiesList_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -20414,13 +20414,6 @@ sub build_bulkSetIssuePropertiesByIssue_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub bulkSetIssuePropertiesByIssue( $self, %options ) {
-    my $tx = $self->_build_bulkSetIssuePropertiesByIssue_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -20429,6 +20422,13 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub bulkSetIssuePropertiesByIssue( $self, %options ) {
+    my $tx = $self->_build_bulkSetIssuePropertiesByIssue_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -20563,13 +20563,6 @@ sub build_bulkDeleteIssueProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub bulkDeleteIssueProperty( $self, %options ) {
-    my $tx = $self->_build_bulkDeleteIssueProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -20578,6 +20571,13 @@ sub bulkDeleteIssueProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub bulkDeleteIssueProperty( $self, %options ) {
+    my $tx = $self->_build_bulkDeleteIssueProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -20702,13 +20702,6 @@ sub build_bulkSetIssueProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub bulkSetIssueProperty( $self, %options ) {
-    my $tx = $self->_build_bulkSetIssueProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -20717,6 +20710,13 @@ sub bulkSetIssueProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub bulkSetIssueProperty( $self, %options ) {
+    my $tx = $self->_build_bulkSetIssueProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -20820,13 +20820,6 @@ sub build_getIsWatchingIssueBulk_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub getIsWatchingIssueBulk( $self, %options ) {
-    my $tx = $self->_build_getIsWatchingIssueBulk_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -20835,6 +20828,13 @@ sub getIsWatchingIssueBulk( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIsWatchingIssueBulk( $self, %options ) {
+    my $tx = $self->_build_getIsWatchingIssueBulk_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -20930,13 +20930,6 @@ sub build_deleteIssue_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteIssue( $self, %options ) {
-    my $tx = $self->_build_deleteIssue_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -20945,6 +20938,13 @@ sub deleteIssue( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteIssue( $self, %options ) {
+    my $tx = $self->_build_deleteIssue_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -21184,13 +21184,6 @@ sub build_getIssue_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssue( $self, %options ) {
-    my $tx = $self->_build_getIssue_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -21199,6 +21192,13 @@ sub getIssue( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssue( $self, %options ) {
+    my $tx = $self->_build_getIssue_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -21340,13 +21340,6 @@ sub build_editIssue_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub editIssue( $self, %options ) {
-    my $tx = $self->_build_editIssue_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -21355,6 +21348,13 @@ sub editIssue( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub editIssue( $self, %options ) {
+    my $tx = $self->_build_editIssue_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -21536,13 +21536,6 @@ sub build_assignIssue_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub assignIssue( $self, %options ) {
-    my $tx = $self->_build_assignIssue_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -21551,6 +21544,13 @@ sub assignIssue( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub assignIssue( $self, %options ) {
+    my $tx = $self->_build_assignIssue_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -21648,13 +21648,6 @@ sub build_addAttachment_request( $self, %options ) {
         => form => $request,
     );
 
-    return $tx
-}
-
-
-sub addAttachment( $self, %options ) {
-    my $tx = $self->_build_addAttachment_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -21663,6 +21656,13 @@ sub addAttachment( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addAttachment( $self, %options ) {
+    my $tx = $self->_build_addAttachment_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -21773,13 +21773,6 @@ sub build_getChangeLogs_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getChangeLogs( $self, %options ) {
-    my $tx = $self->_build_getChangeLogs_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -21788,6 +21781,13 @@ sub getChangeLogs( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getChangeLogs( $self, %options ) {
+    my $tx = $self->_build_getChangeLogs_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -21889,13 +21889,6 @@ sub build_getChangeLogsByIds_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub getChangeLogsByIds( $self, %options ) {
-    my $tx = $self->_build_getChangeLogsByIds_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -21904,6 +21897,13 @@ sub getChangeLogsByIds( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getChangeLogsByIds( $self, %options ) {
+    my $tx = $self->_build_getChangeLogsByIds_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -22022,13 +22022,6 @@ sub build_getComments_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getComments( $self, %options ) {
-    my $tx = $self->_build_getComments_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -22037,6 +22030,13 @@ sub getComments( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getComments( $self, %options ) {
+    my $tx = $self->_build_getComments_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -22197,13 +22197,6 @@ sub build_addComment_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub addComment( $self, %options ) {
-    my $tx = $self->_build_addComment_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -22212,6 +22205,13 @@ sub addComment( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addComment( $self, %options ) {
+    my $tx = $self->_build_addComment_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -22312,13 +22312,6 @@ sub build_deleteComment_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteComment( $self, %options ) {
-    my $tx = $self->_build_deleteComment_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -22327,6 +22320,13 @@ sub deleteComment( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteComment( $self, %options ) {
+    my $tx = $self->_build_deleteComment_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -22430,13 +22430,6 @@ sub build_getComment_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getComment( $self, %options ) {
-    my $tx = $self->_build_getComment_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -22445,6 +22438,13 @@ sub getComment( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getComment( $self, %options ) {
+    my $tx = $self->_build_getComment_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -22622,13 +22622,6 @@ sub build_updateComment_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateComment( $self, %options ) {
-    my $tx = $self->_build_updateComment_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -22637,6 +22630,13 @@ sub updateComment( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateComment( $self, %options ) {
+    my $tx = $self->_build_updateComment_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -22746,13 +22746,6 @@ sub build_getEditIssueMeta_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getEditIssueMeta( $self, %options ) {
-    my $tx = $self->_build_getEditIssueMeta_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -22761,6 +22754,13 @@ sub getEditIssueMeta( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getEditIssueMeta( $self, %options ) {
+    my $tx = $self->_build_getEditIssueMeta_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -22884,13 +22884,6 @@ sub build_notify_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub notify( $self, %options ) {
-    my $tx = $self->_build_notify_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -22899,6 +22892,13 @@ sub notify( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub notify( $self, %options ) {
+    my $tx = $self->_build_notify_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -22993,13 +22993,6 @@ sub build_getIssuePropertyKeys_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssuePropertyKeys( $self, %options ) {
-    my $tx = $self->_build_getIssuePropertyKeys_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -23008,6 +23001,13 @@ sub getIssuePropertyKeys( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssuePropertyKeys( $self, %options ) {
+    my $tx = $self->_build_getIssuePropertyKeys_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23102,13 +23102,6 @@ sub build_deleteIssueProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteIssueProperty( $self, %options ) {
-    my $tx = $self->_build_deleteIssueProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -23117,6 +23110,13 @@ sub deleteIssueProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteIssueProperty( $self, %options ) {
+    my $tx = $self->_build_deleteIssueProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23205,13 +23205,6 @@ sub build_getIssueProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueProperty( $self, %options ) {
-    my $tx = $self->_build_getIssueProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -23220,6 +23213,13 @@ sub getIssueProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueProperty( $self, %options ) {
+    my $tx = $self->_build_getIssueProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23323,13 +23323,6 @@ sub build_setIssueProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setIssueProperty( $self, %options ) {
-    my $tx = $self->_build_setIssueProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -23338,6 +23331,13 @@ sub setIssueProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setIssueProperty( $self, %options ) {
+    my $tx = $self->_build_setIssueProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23458,13 +23458,6 @@ sub build_deleteRemoteIssueLinkByGlobalId_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteRemoteIssueLinkByGlobalId( $self, %options ) {
-    my $tx = $self->_build_deleteRemoteIssueLinkByGlobalId_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -23473,6 +23466,13 @@ sub deleteRemoteIssueLinkByGlobalId( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteRemoteIssueLinkByGlobalId( $self, %options ) {
+    my $tx = $self->_build_deleteRemoteIssueLinkByGlobalId_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23568,13 +23568,6 @@ sub build_getRemoteIssueLinks_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getRemoteIssueLinks( $self, %options ) {
-    my $tx = $self->_build_getRemoteIssueLinks_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -23583,6 +23576,13 @@ sub getRemoteIssueLinks( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getRemoteIssueLinks( $self, %options ) {
+    my $tx = $self->_build_getRemoteIssueLinks_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23710,13 +23710,6 @@ sub build_createOrUpdateRemoteIssueLink_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createOrUpdateRemoteIssueLink( $self, %options ) {
-    my $tx = $self->_build_createOrUpdateRemoteIssueLink_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -23725,6 +23718,13 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createOrUpdateRemoteIssueLink( $self, %options ) {
+    my $tx = $self->_build_createOrUpdateRemoteIssueLink_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23853,13 +23853,6 @@ sub build_deleteRemoteIssueLinkById_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteRemoteIssueLinkById( $self, %options ) {
-    my $tx = $self->_build_deleteRemoteIssueLinkById_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -23868,6 +23861,13 @@ sub deleteRemoteIssueLinkById( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteRemoteIssueLinkById( $self, %options ) {
+    my $tx = $self->_build_deleteRemoteIssueLinkById_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23962,13 +23962,6 @@ sub build_getRemoteIssueLinkById_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getRemoteIssueLinkById( $self, %options ) {
-    my $tx = $self->_build_getRemoteIssueLinkById_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -23977,6 +23970,13 @@ sub getRemoteIssueLinkById( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getRemoteIssueLinkById( $self, %options ) {
+    my $tx = $self->_build_getRemoteIssueLinkById_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -24111,13 +24111,6 @@ sub build_updateRemoteIssueLink_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateRemoteIssueLink( $self, %options ) {
-    my $tx = $self->_build_updateRemoteIssueLink_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -24126,6 +24119,13 @@ sub updateRemoteIssueLink( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateRemoteIssueLink( $self, %options ) {
+    my $tx = $self->_build_updateRemoteIssueLink_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -24267,13 +24267,6 @@ sub build_getTransitions_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getTransitions( $self, %options ) {
-    my $tx = $self->_build_getTransitions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -24282,6 +24275,13 @@ sub getTransitions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getTransitions( $self, %options ) {
+    my $tx = $self->_build_getTransitions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -24402,13 +24402,6 @@ sub build_doTransition_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub doTransition( $self, %options ) {
-    my $tx = $self->_build_doTransition_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -24417,6 +24410,13 @@ sub doTransition( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub doTransition( $self, %options ) {
+    my $tx = $self->_build_doTransition_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -24509,13 +24509,6 @@ sub build_removeVote_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub removeVote( $self, %options ) {
-    my $tx = $self->_build_removeVote_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -24524,6 +24517,13 @@ sub removeVote( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeVote( $self, %options ) {
+    my $tx = $self->_build_removeVote_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -24604,13 +24604,6 @@ sub build_getVotes_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getVotes( $self, %options ) {
-    my $tx = $self->_build_getVotes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -24619,6 +24612,13 @@ sub getVotes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getVotes( $self, %options ) {
+    my $tx = $self->_build_getVotes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -24710,13 +24710,6 @@ sub build_addVote_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub addVote( $self, %options ) {
-    my $tx = $self->_build_addVote_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -24725,6 +24718,13 @@ sub addVote( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addVote( $self, %options ) {
+    my $tx = $self->_build_addVote_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -24832,13 +24832,6 @@ sub build_removeWatcher_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub removeWatcher( $self, %options ) {
-    my $tx = $self->_build_removeWatcher_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -24847,6 +24840,13 @@ sub removeWatcher( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeWatcher( $self, %options ) {
+    my $tx = $self->_build_removeWatcher_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -24933,13 +24933,6 @@ sub build_getIssueWatchers_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueWatchers( $self, %options ) {
-    my $tx = $self->_build_getIssueWatchers_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -24948,6 +24941,13 @@ sub getIssueWatchers( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueWatchers( $self, %options ) {
+    my $tx = $self->_build_getIssueWatchers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -25042,13 +25042,6 @@ sub build_addWatcher_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub addWatcher( $self, %options ) {
-    my $tx = $self->_build_addWatcher_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -25057,6 +25050,13 @@ sub addWatcher( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addWatcher( $self, %options ) {
+    my $tx = $self->_build_addWatcher_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -25187,13 +25187,6 @@ sub build_getIssueWorklog_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueWorklog( $self, %options ) {
-    my $tx = $self->_build_getIssueWorklog_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -25202,6 +25195,13 @@ sub getIssueWorklog( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueWorklog( $self, %options ) {
+    my $tx = $self->_build_getIssueWorklog_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -25417,13 +25417,6 @@ sub build_addWorklog_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub addWorklog( $self, %options ) {
-    my $tx = $self->_build_addWorklog_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -25432,6 +25425,13 @@ sub addWorklog( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addWorklog( $self, %options ) {
+    my $tx = $self->_build_addWorklog_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -25589,13 +25589,6 @@ sub build_deleteWorklog_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteWorklog( $self, %options ) {
-    my $tx = $self->_build_deleteWorklog_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -25604,6 +25597,13 @@ sub deleteWorklog( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteWorklog( $self, %options ) {
+    my $tx = $self->_build_deleteWorklog_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -25706,13 +25706,6 @@ sub build_getWorklog_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getWorklog( $self, %options ) {
-    my $tx = $self->_build_getWorklog_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -25721,6 +25714,13 @@ sub getWorklog( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getWorklog( $self, %options ) {
+    my $tx = $self->_build_getWorklog_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -25933,13 +25933,6 @@ sub build_updateWorklog_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateWorklog( $self, %options ) {
-    my $tx = $self->_build_updateWorklog_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -25948,6 +25941,13 @@ sub updateWorklog( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateWorklog( $self, %options ) {
+    my $tx = $self->_build_updateWorklog_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -26050,13 +26050,6 @@ sub build_getWorklogPropertyKeys_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getWorklogPropertyKeys( $self, %options ) {
-    my $tx = $self->_build_getWorklogPropertyKeys_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -26065,6 +26058,13 @@ sub getWorklogPropertyKeys( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getWorklogPropertyKeys( $self, %options ) {
+    my $tx = $self->_build_getWorklogPropertyKeys_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -26173,13 +26173,6 @@ sub build_deleteWorklogProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteWorklogProperty( $self, %options ) {
-    my $tx = $self->_build_deleteWorklogProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -26188,6 +26181,13 @@ sub deleteWorklogProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteWorklogProperty( $self, %options ) {
+    my $tx = $self->_build_deleteWorklogProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -26290,13 +26290,6 @@ sub build_getWorklogProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getWorklogProperty( $self, %options ) {
-    my $tx = $self->_build_getWorklogProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -26305,6 +26298,13 @@ sub getWorklogProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getWorklogProperty( $self, %options ) {
+    my $tx = $self->_build_getWorklogProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -26419,13 +26419,6 @@ sub build_setWorklogProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setWorklogProperty( $self, %options ) {
-    my $tx = $self->_build_setWorklogProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -26434,6 +26427,13 @@ sub setWorklogProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setWorklogProperty( $self, %options ) {
+    my $tx = $self->_build_setWorklogProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -26572,13 +26572,6 @@ sub build_linkIssues_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub linkIssues( $self, %options ) {
-    my $tx = $self->_build_linkIssues_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -26587,6 +26580,13 @@ sub linkIssues( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub linkIssues( $self, %options ) {
+    my $tx = $self->_build_linkIssues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -26679,13 +26679,6 @@ sub build_deleteIssueLink_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteIssueLink( $self, %options ) {
-    my $tx = $self->_build_deleteIssueLink_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -26694,6 +26687,13 @@ sub deleteIssueLink( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteIssueLink( $self, %options ) {
+    my $tx = $self->_build_deleteIssueLink_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -26780,13 +26780,6 @@ sub build_getIssueLink_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueLink( $self, %options ) {
-    my $tx = $self->_build_getIssueLink_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -26795,6 +26788,13 @@ sub getIssueLink( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueLink( $self, %options ) {
+    my $tx = $self->_build_getIssueLink_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -26877,13 +26877,6 @@ sub build_getIssueLinkTypes_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueLinkTypes( $self, %options ) {
-    my $tx = $self->_build_getIssueLinkTypes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -26892,6 +26885,13 @@ sub getIssueLinkTypes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueLinkTypes( $self, %options ) {
+    my $tx = $self->_build_getIssueLinkTypes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -27056,13 +27056,6 @@ sub build_createIssueLinkType_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createIssueLinkType( $self, %options ) {
-    my $tx = $self->_build_createIssueLinkType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -27071,6 +27064,13 @@ sub createIssueLinkType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createIssueLinkType( $self, %options ) {
+    my $tx = $self->_build_createIssueLinkType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -27163,13 +27163,6 @@ sub build_deleteIssueLinkType_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteIssueLinkType( $self, %options ) {
-    my $tx = $self->_build_deleteIssueLinkType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -27178,6 +27171,13 @@ sub deleteIssueLinkType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteIssueLinkType( $self, %options ) {
+    my $tx = $self->_build_deleteIssueLinkType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -27261,13 +27261,6 @@ sub build_getIssueLinkType_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueLinkType( $self, %options ) {
-    my $tx = $self->_build_getIssueLinkType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -27276,6 +27269,13 @@ sub getIssueLinkType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueLinkType( $self, %options ) {
+    my $tx = $self->_build_getIssueLinkType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -27455,13 +27455,6 @@ sub build_updateIssueLinkType_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateIssueLinkType( $self, %options ) {
-    my $tx = $self->_build_updateIssueLinkType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -27470,6 +27463,13 @@ sub updateIssueLinkType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateIssueLinkType( $self, %options ) {
+    my $tx = $self->_build_updateIssueLinkType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -27552,13 +27552,6 @@ sub build_getIssueSecuritySchemes_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueSecuritySchemes( $self, %options ) {
-    my $tx = $self->_build_getIssueSecuritySchemes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -27567,6 +27560,13 @@ sub getIssueSecuritySchemes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueSecuritySchemes( $self, %options ) {
+    my $tx = $self->_build_getIssueSecuritySchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -27658,13 +27658,6 @@ sub build_getIssueSecurityScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueSecurityScheme( $self, %options ) {
-    my $tx = $self->_build_getIssueSecurityScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -27673,6 +27666,13 @@ sub getIssueSecurityScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueSecurityScheme( $self, %options ) {
+    my $tx = $self->_build_getIssueSecurityScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -27820,13 +27820,6 @@ sub build_getIssueSecurityLevelMembers_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueSecurityLevelMembers( $self, %options ) {
-    my $tx = $self->_build_getIssueSecurityLevelMembers_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -27835,6 +27828,13 @@ sub getIssueSecurityLevelMembers( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueSecurityLevelMembers( $self, %options ) {
+    my $tx = $self->_build_getIssueSecurityLevelMembers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -27920,13 +27920,6 @@ sub build_getIssueAllTypes_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueAllTypes( $self, %options ) {
-    my $tx = $self->_build_getIssueAllTypes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -27935,6 +27928,13 @@ sub getIssueAllTypes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueAllTypes( $self, %options ) {
+    my $tx = $self->_build_getIssueAllTypes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -28055,13 +28055,6 @@ sub build_createIssueType_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createIssueType( $self, %options ) {
-    my $tx = $self->_build_createIssueType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -28070,6 +28063,13 @@ sub createIssueType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createIssueType( $self, %options ) {
+    my $tx = $self->_build_createIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -28193,13 +28193,6 @@ sub build_getIssueTypesForProject_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueTypesForProject( $self, %options ) {
-    my $tx = $self->_build_getIssueTypesForProject_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -28208,6 +28201,13 @@ sub getIssueTypesForProject( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueTypesForProject( $self, %options ) {
+    my $tx = $self->_build_getIssueTypesForProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -28310,13 +28310,6 @@ sub build_deleteIssueType_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteIssueType( $self, %options ) {
-    my $tx = $self->_build_deleteIssueType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -28325,6 +28318,13 @@ sub deleteIssueType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteIssueType( $self, %options ) {
+    my $tx = $self->_build_deleteIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -28414,13 +28414,6 @@ sub build_getIssueType_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueType( $self, %options ) {
-    my $tx = $self->_build_getIssueType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -28429,6 +28422,13 @@ sub getIssueType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueType( $self, %options ) {
+    my $tx = $self->_build_getIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -28544,13 +28544,6 @@ sub build_updateIssueType_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateIssueType( $self, %options ) {
-    my $tx = $self->_build_updateIssueType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -28559,6 +28552,13 @@ sub updateIssueType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateIssueType( $self, %options ) {
+    my $tx = $self->_build_updateIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -28659,13 +28659,6 @@ sub build_getAlternativeIssueTypes_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAlternativeIssueTypes( $self, %options ) {
-    my $tx = $self->_build_getAlternativeIssueTypes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -28674,6 +28667,13 @@ sub getAlternativeIssueTypes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAlternativeIssueTypes( $self, %options ) {
+    my $tx = $self->_build_getAlternativeIssueTypes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -28793,13 +28793,6 @@ sub build_createIssueTypeAvatar_request( $self, %options ) {
         # => $body,
     );
 
-    return $tx
-}
-
-
-sub createIssueTypeAvatar( $self, %options ) {
-    my $tx = $self->_build_createIssueTypeAvatar_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -28808,6 +28801,13 @@ sub createIssueTypeAvatar( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createIssueTypeAvatar( $self, %options ) {
+    my $tx = $self->_build_createIssueTypeAvatar_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -28905,13 +28905,6 @@ sub build_getIssueTypePropertyKeys_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueTypePropertyKeys( $self, %options ) {
-    my $tx = $self->_build_getIssueTypePropertyKeys_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -28920,6 +28913,13 @@ sub getIssueTypePropertyKeys( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueTypePropertyKeys( $self, %options ) {
+    my $tx = $self->_build_getIssueTypePropertyKeys_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29017,13 +29017,6 @@ sub build_deleteIssueTypeProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteIssueTypeProperty( $self, %options ) {
-    my $tx = $self->_build_deleteIssueTypeProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -29032,6 +29025,13 @@ sub deleteIssueTypeProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteIssueTypeProperty( $self, %options ) {
+    my $tx = $self->_build_deleteIssueTypeProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29126,13 +29126,6 @@ sub build_getIssueTypeProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueTypeProperty( $self, %options ) {
-    my $tx = $self->_build_getIssueTypeProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -29141,6 +29134,13 @@ sub getIssueTypeProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueTypeProperty( $self, %options ) {
+    my $tx = $self->_build_getIssueTypeProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29247,13 +29247,6 @@ sub build_setIssueTypeProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setIssueTypeProperty( $self, %options ) {
-    my $tx = $self->_build_setIssueTypeProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -29262,6 +29255,13 @@ sub setIssueTypeProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setIssueTypeProperty( $self, %options ) {
+    my $tx = $self->_build_setIssueTypeProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29429,13 +29429,6 @@ sub build_getAllIssueTypeSchemes_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllIssueTypeSchemes( $self, %options ) {
-    my $tx = $self->_build_getAllIssueTypeSchemes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -29444,6 +29437,13 @@ sub getAllIssueTypeSchemes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllIssueTypeSchemes( $self, %options ) {
+    my $tx = $self->_build_getAllIssueTypeSchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29551,13 +29551,6 @@ sub build_createIssueTypeScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createIssueTypeScheme( $self, %options ) {
-    my $tx = $self->_build_createIssueTypeScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -29566,6 +29559,13 @@ sub createIssueTypeScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createIssueTypeScheme( $self, %options ) {
+    my $tx = $self->_build_createIssueTypeScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29706,13 +29706,6 @@ sub build_getIssueTypeSchemesMapping_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueTypeSchemesMapping( $self, %options ) {
-    my $tx = $self->_build_getIssueTypeSchemesMapping_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -29721,6 +29714,13 @@ sub getIssueTypeSchemesMapping( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueTypeSchemesMapping( $self, %options ) {
+    my $tx = $self->_build_getIssueTypeSchemesMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29828,13 +29828,6 @@ sub build_getIssueTypeSchemeForProjects_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueTypeSchemeForProjects( $self, %options ) {
-    my $tx = $self->_build_getIssueTypeSchemeForProjects_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -29843,6 +29836,13 @@ sub getIssueTypeSchemeForProjects( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueTypeSchemeForProjects( $self, %options ) {
+    my $tx = $self->_build_getIssueTypeSchemeForProjects_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29942,13 +29942,6 @@ sub build_assignIssueTypeSchemeToProject_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub assignIssueTypeSchemeToProject( $self, %options ) {
-    my $tx = $self->_build_assignIssueTypeSchemeToProject_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -29957,6 +29950,13 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub assignIssueTypeSchemeToProject( $self, %options ) {
+    my $tx = $self->_build_assignIssueTypeSchemeToProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -30087,13 +30087,6 @@ sub build_deleteIssueTypeScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteIssueTypeScheme( $self, %options ) {
-    my $tx = $self->_build_deleteIssueTypeScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -30102,6 +30095,13 @@ sub deleteIssueTypeScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteIssueTypeScheme( $self, %options ) {
+    my $tx = $self->_build_deleteIssueTypeScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -30253,13 +30253,6 @@ sub build_updateIssueTypeScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateIssueTypeScheme( $self, %options ) {
-    my $tx = $self->_build_updateIssueTypeScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -30268,6 +30261,13 @@ sub updateIssueTypeScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateIssueTypeScheme( $self, %options ) {
+    my $tx = $self->_build_updateIssueTypeScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -30411,13 +30411,6 @@ sub build_addIssueTypesToIssueTypeScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub addIssueTypesToIssueTypeScheme( $self, %options ) {
-    my $tx = $self->_build_addIssueTypesToIssueTypeScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -30426,6 +30419,13 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addIssueTypesToIssueTypeScheme( $self, %options ) {
+    my $tx = $self->_build_addIssueTypesToIssueTypeScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -30577,13 +30577,6 @@ sub build_reorderIssueTypesInIssueTypeScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
-    my $tx = $self->_build_reorderIssueTypesInIssueTypeScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -30592,6 +30585,13 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
+    my $tx = $self->_build_reorderIssueTypesInIssueTypeScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -30730,13 +30730,6 @@ sub build_removeIssueTypeFromIssueTypeScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
-    my $tx = $self->_build_removeIssueTypeFromIssueTypeScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -30745,6 +30738,13 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
+    my $tx = $self->_build_removeIssueTypeFromIssueTypeScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -30917,13 +30917,6 @@ sub build_getIssueTypeScreenSchemes_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueTypeScreenSchemes( $self, %options ) {
-    my $tx = $self->_build_getIssueTypeScreenSchemes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -30932,6 +30925,13 @@ sub getIssueTypeScreenSchemes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueTypeScreenSchemes( $self, %options ) {
+    my $tx = $self->_build_getIssueTypeScreenSchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31035,13 +31035,6 @@ sub build_createIssueTypeScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createIssueTypeScreenScheme( $self, %options ) {
-    my $tx = $self->_build_createIssueTypeScreenScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -31050,6 +31043,13 @@ sub createIssueTypeScreenScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createIssueTypeScreenScheme( $self, %options ) {
+    my $tx = $self->_build_createIssueTypeScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31204,13 +31204,6 @@ sub build_getIssueTypeScreenSchemeMappings_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueTypeScreenSchemeMappings( $self, %options ) {
-    my $tx = $self->_build_getIssueTypeScreenSchemeMappings_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -31219,6 +31212,13 @@ sub getIssueTypeScreenSchemeMappings( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueTypeScreenSchemeMappings( $self, %options ) {
+    my $tx = $self->_build_getIssueTypeScreenSchemeMappings_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31326,13 +31326,6 @@ sub build_getIssueTypeScreenSchemeProjectAssociations_request( $self, %options )
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueTypeScreenSchemeProjectAssociations( $self, %options ) {
-    my $tx = $self->_build_getIssueTypeScreenSchemeProjectAssociations_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -31341,6 +31334,13 @@ sub getIssueTypeScreenSchemeProjectAssociations( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueTypeScreenSchemeProjectAssociations( $self, %options ) {
+    my $tx = $self->_build_getIssueTypeScreenSchemeProjectAssociations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31440,13 +31440,6 @@ sub build_assignIssueTypeScreenSchemeToProject_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
-    my $tx = $self->_build_assignIssueTypeScreenSchemeToProject_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -31455,6 +31448,13 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
+    my $tx = $self->_build_assignIssueTypeScreenSchemeToProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31585,13 +31585,6 @@ sub build_deleteIssueTypeScreenScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteIssueTypeScreenScheme( $self, %options ) {
-    my $tx = $self->_build_deleteIssueTypeScreenScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -31600,6 +31593,13 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteIssueTypeScreenScheme( $self, %options ) {
+    my $tx = $self->_build_deleteIssueTypeScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31736,13 +31736,6 @@ sub build_updateIssueTypeScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateIssueTypeScreenScheme( $self, %options ) {
-    my $tx = $self->_build_updateIssueTypeScreenScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -31751,6 +31744,13 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateIssueTypeScreenScheme( $self, %options ) {
+    my $tx = $self->_build_updateIssueTypeScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31894,13 +31894,6 @@ sub build_appendMappingsForIssueTypeScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
-    my $tx = $self->_build_appendMappingsForIssueTypeScreenScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -31909,6 +31902,13 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
+    my $tx = $self->_build_appendMappingsForIssueTypeScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -32055,13 +32055,6 @@ sub build_updateDefaultScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateDefaultScreenScheme( $self, %options ) {
-    my $tx = $self->_build_updateDefaultScreenScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -32070,6 +32063,13 @@ sub updateDefaultScreenScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateDefaultScreenScheme( $self, %options ) {
+    my $tx = $self->_build_updateDefaultScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -32213,13 +32213,6 @@ sub build_removeMappingsFromIssueTypeScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
-    my $tx = $self->_build_removeMappingsFromIssueTypeScreenScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -32228,6 +32221,13 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
+    my $tx = $self->_build_removeMappingsFromIssueTypeScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -32377,13 +32377,6 @@ sub build_getProjectsForIssueTypeScreenScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectsForIssueTypeScreenScheme( $self, %options ) {
-    my $tx = $self->_build_getProjectsForIssueTypeScreenScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -32392,6 +32385,13 @@ sub getProjectsForIssueTypeScreenScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectsForIssueTypeScreenScheme( $self, %options ) {
+    my $tx = $self->_build_getProjectsForIssueTypeScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -32474,13 +32474,6 @@ sub build_getAutoComplete_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAutoComplete( $self, %options ) {
-    my $tx = $self->_build_getAutoComplete_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -32489,6 +32482,13 @@ sub getAutoComplete( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAutoComplete( $self, %options ) {
+    my $tx = $self->_build_getAutoComplete_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -32582,13 +32582,6 @@ sub build_getAutoCompletePost_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub getAutoCompletePost( $self, %options ) {
-    my $tx = $self->_build_getAutoCompletePost_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -32597,6 +32590,13 @@ sub getAutoCompletePost( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAutoCompletePost( $self, %options ) {
+    my $tx = $self->_build_getAutoCompletePost_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -32704,13 +32704,6 @@ sub build_getFieldAutoCompleteForQueryString_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getFieldAutoCompleteForQueryString( $self, %options ) {
-    my $tx = $self->_build_getFieldAutoCompleteForQueryString_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -32719,6 +32712,13 @@ sub getFieldAutoCompleteForQueryString( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getFieldAutoCompleteForQueryString( $self, %options ) {
+    my $tx = $self->_build_getFieldAutoCompleteForQueryString_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -32822,13 +32822,6 @@ sub build_getPrecomputations_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getPrecomputations( $self, %options ) {
-    my $tx = $self->_build_getPrecomputations_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -32837,6 +32830,13 @@ sub getPrecomputations( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getPrecomputations( $self, %options ) {
+    my $tx = $self->_build_getPrecomputations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -32921,13 +32921,6 @@ sub build_updatePrecomputations_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updatePrecomputations( $self, %options ) {
-    my $tx = $self->_build_updatePrecomputations_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -32936,6 +32929,13 @@ sub updatePrecomputations( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updatePrecomputations( $self, %options ) {
+    my $tx = $self->_build_updatePrecomputations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33026,13 +33026,6 @@ sub build_matchIssues_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub matchIssues( $self, %options ) {
-    my $tx = $self->_build_matchIssues_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -33041,6 +33034,13 @@ sub matchIssues( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub matchIssues( $self, %options ) {
+    my $tx = $self->_build_matchIssues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33160,13 +33160,6 @@ sub build_parseJqlQueries_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub parseJqlQueries( $self, %options ) {
-    my $tx = $self->_build_parseJqlQueries_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -33175,6 +33168,13 @@ sub parseJqlQueries( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub parseJqlQueries( $self, %options ) {
+    my $tx = $self->_build_parseJqlQueries_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33278,13 +33278,6 @@ sub build_migrateQueries_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub migrateQueries( $self, %options ) {
-    my $tx = $self->_build_migrateQueries_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -33293,6 +33286,13 @@ sub migrateQueries( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub migrateQueries( $self, %options ) {
+    my $tx = $self->_build_migrateQueries_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33388,13 +33388,6 @@ sub build_sanitiseJqlQueries_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub sanitiseJqlQueries( $self, %options ) {
-    my $tx = $self->_build_sanitiseJqlQueries_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -33403,6 +33396,13 @@ sub sanitiseJqlQueries( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub sanitiseJqlQueries( $self, %options ) {
+    my $tx = $self->_build_sanitiseJqlQueries_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33534,13 +33534,6 @@ sub build_getAllLabels_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllLabels( $self, %options ) {
-    my $tx = $self->_build_getAllLabels_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -33549,6 +33542,13 @@ sub getAllLabels( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllLabels( $self, %options ) {
+    my $tx = $self->_build_getAllLabels_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33622,13 +33622,6 @@ sub build_getApproximateLicenseCount_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getApproximateLicenseCount( $self, %options ) {
-    my $tx = $self->_build_getApproximateLicenseCount_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -33637,6 +33630,13 @@ sub getApproximateLicenseCount( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getApproximateLicenseCount( $self, %options ) {
+    my $tx = $self->_build_getApproximateLicenseCount_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33726,13 +33726,6 @@ sub build_getApproximateApplicationLicenseCount_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getApproximateApplicationLicenseCount( $self, %options ) {
-    my $tx = $self->_build_getApproximateApplicationLicenseCount_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -33741,6 +33734,13 @@ sub getApproximateApplicationLicenseCount( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getApproximateApplicationLicenseCount( $self, %options ) {
+    my $tx = $self->_build_getApproximateApplicationLicenseCount_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33871,13 +33871,6 @@ sub build_getMyPermissions_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getMyPermissions( $self, %options ) {
-    my $tx = $self->_build_getMyPermissions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -33886,6 +33879,13 @@ sub getMyPermissions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getMyPermissions( $self, %options ) {
+    my $tx = $self->_build_getMyPermissions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34012,13 +34012,6 @@ sub build_removePreference_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub removePreference( $self, %options ) {
-    my $tx = $self->_build_removePreference_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -34027,6 +34020,13 @@ sub removePreference( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removePreference( $self, %options ) {
+    my $tx = $self->_build_removePreference_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34108,13 +34108,6 @@ sub build_getPreference_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getPreference( $self, %options ) {
-    my $tx = $self->_build_getPreference_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -34123,6 +34116,13 @@ sub getPreference( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getPreference( $self, %options ) {
+    my $tx = $self->_build_getPreference_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34216,15 +34216,9 @@ sub build_setPreference_request( $self, %options ) {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request,
+        # XXX Need to fill the body
+        # => $body,
     );
-
-    return $tx
-}
-
-
-sub setPreference( $self, %options ) {
-    my $tx = $self->_build_setPreference_request(%options);
 
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
@@ -34234,6 +34228,13 @@ sub setPreference( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setPreference( $self, %options ) {
+    my $tx = $self->_build_setPreference_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34313,13 +34314,6 @@ sub build_deleteLocale_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteLocale( $self, %options ) {
-    my $tx = $self->_build_deleteLocale_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -34328,6 +34322,13 @@ sub deleteLocale( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteLocale( $self, %options ) {
+    my $tx = $self->_build_deleteLocale_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34404,13 +34405,6 @@ sub build_getLocale_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getLocale( $self, %options ) {
-    my $tx = $self->_build_getLocale_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -34419,6 +34413,13 @@ sub getLocale( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getLocale( $self, %options ) {
+    my $tx = $self->_build_getLocale_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34508,13 +34509,6 @@ sub build_setLocale_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setLocale( $self, %options ) {
-    my $tx = $self->_build_setLocale_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -34523,6 +34517,13 @@ sub setLocale( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setLocale( $self, %options ) {
+    my $tx = $self->_build_setLocale_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34626,13 +34627,6 @@ sub build_getCurrentUser_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getCurrentUser( $self, %options ) {
-    my $tx = $self->_build_getCurrentUser_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -34641,6 +34635,13 @@ sub getCurrentUser( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getCurrentUser( $self, %options ) {
+    my $tx = $self->_build_getCurrentUser_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34791,13 +34792,6 @@ sub build_getNotificationSchemes_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getNotificationSchemes( $self, %options ) {
-    my $tx = $self->_build_getNotificationSchemes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -34806,6 +34800,13 @@ sub getNotificationSchemes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getNotificationSchemes( $self, %options ) {
+    my $tx = $self->_build_getNotificationSchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34920,13 +34921,6 @@ sub build_createNotificationScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createNotificationScheme( $self, %options ) {
-    my $tx = $self->_build_createNotificationScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -34935,6 +34929,13 @@ sub createNotificationScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createNotificationScheme( $self, %options ) {
+    my $tx = $self->_build_createNotificationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -35080,13 +35081,6 @@ sub build_getNotificationSchemeToProjectMappings_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getNotificationSchemeToProjectMappings( $self, %options ) {
-    my $tx = $self->_build_getNotificationSchemeToProjectMappings_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -35095,6 +35089,13 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getNotificationSchemeToProjectMappings( $self, %options ) {
+    my $tx = $self->_build_getNotificationSchemeToProjectMappings_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -35251,13 +35252,6 @@ sub build_getNotificationScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getNotificationScheme( $self, %options ) {
-    my $tx = $self->_build_getNotificationScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -35266,6 +35260,13 @@ sub getNotificationScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getNotificationScheme( $self, %options ) {
+    my $tx = $self->_build_getNotificationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -35381,13 +35382,6 @@ sub build_updateNotificationScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateNotificationScheme( $self, %options ) {
-    my $tx = $self->_build_updateNotificationScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -35396,6 +35390,13 @@ sub updateNotificationScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateNotificationScheme( $self, %options ) {
+    my $tx = $self->_build_updateNotificationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -35554,13 +35555,6 @@ sub build_addNotifications_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub addNotifications( $self, %options ) {
-    my $tx = $self->_build_addNotifications_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -35569,6 +35563,13 @@ sub addNotifications( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addNotifications( $self, %options ) {
+    my $tx = $self->_build_addNotifications_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -35714,13 +35715,6 @@ sub build_deleteNotificationScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteNotificationScheme( $self, %options ) {
-    my $tx = $self->_build_deleteNotificationScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -35729,6 +35723,13 @@ sub deleteNotificationScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteNotificationScheme( $self, %options ) {
+    my $tx = $self->_build_deleteNotificationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -35882,13 +35883,6 @@ sub build_removeNotificationFromNotificationScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub removeNotificationFromNotificationScheme( $self, %options ) {
-    my $tx = $self->_build_removeNotificationFromNotificationScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -35897,6 +35891,13 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeNotificationFromNotificationScheme( $self, %options ) {
+    my $tx = $self->_build_removeNotificationFromNotificationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -36026,13 +36027,6 @@ sub build_getAllPermissions_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllPermissions( $self, %options ) {
-    my $tx = $self->_build_getAllPermissions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -36041,6 +36035,13 @@ sub getAllPermissions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllPermissions( $self, %options ) {
+    my $tx = $self->_build_getAllPermissions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -36143,13 +36144,6 @@ sub build_getBulkPermissions_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub getBulkPermissions( $self, %options ) {
-    my $tx = $self->_build_getBulkPermissions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -36158,6 +36152,13 @@ sub getBulkPermissions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getBulkPermissions( $self, %options ) {
+    my $tx = $self->_build_getBulkPermissions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -36272,13 +36273,6 @@ sub build_getPermittedProjects_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub getPermittedProjects( $self, %options ) {
-    my $tx = $self->_build_getPermittedProjects_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -36287,6 +36281,13 @@ sub getPermittedProjects( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getPermittedProjects( $self, %options ) {
+    my $tx = $self->_build_getPermittedProjects_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -36421,13 +36422,6 @@ sub build_getAllPermissionSchemes_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllPermissionSchemes( $self, %options ) {
-    my $tx = $self->_build_getAllPermissionSchemes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -36436,6 +36430,13 @@ sub getAllPermissionSchemes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllPermissionSchemes( $self, %options ) {
+    my $tx = $self->_build_getAllPermissionSchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -36593,13 +36594,6 @@ sub build_createPermissionScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createPermissionScheme( $self, %options ) {
-    my $tx = $self->_build_createPermissionScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -36608,6 +36602,13 @@ sub createPermissionScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createPermissionScheme( $self, %options ) {
+    my $tx = $self->_build_createPermissionScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -36700,13 +36701,6 @@ sub build_deletePermissionScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deletePermissionScheme( $self, %options ) {
-    my $tx = $self->_build_deletePermissionScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -36715,6 +36709,13 @@ sub deletePermissionScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deletePermissionScheme( $self, %options ) {
+    my $tx = $self->_build_deletePermissionScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -36841,13 +36842,6 @@ sub build_getPermissionScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getPermissionScheme( $self, %options ) {
-    my $tx = $self->_build_getPermissionScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -36856,6 +36850,13 @@ sub getPermissionScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getPermissionScheme( $self, %options ) {
+    my $tx = $self->_build_getPermissionScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -37027,13 +37028,6 @@ sub build_updatePermissionScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updatePermissionScheme( $self, %options ) {
-    my $tx = $self->_build_updatePermissionScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -37042,6 +37036,13 @@ sub updatePermissionScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updatePermissionScheme( $self, %options ) {
+    my $tx = $self->_build_updatePermissionScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -37179,13 +37180,6 @@ sub build_getPermissionSchemeGrants_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getPermissionSchemeGrants( $self, %options ) {
-    my $tx = $self->_build_getPermissionSchemeGrants_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -37194,6 +37188,13 @@ sub getPermissionSchemeGrants( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getPermissionSchemeGrants( $self, %options ) {
+    my $tx = $self->_build_getPermissionSchemeGrants_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -37353,13 +37354,6 @@ sub build_createPermissionGrant_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createPermissionGrant( $self, %options ) {
-    my $tx = $self->_build_createPermissionGrant_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -37368,6 +37362,13 @@ sub createPermissionGrant( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createPermissionGrant( $self, %options ) {
+    my $tx = $self->_build_createPermissionGrant_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -37468,13 +37469,6 @@ sub build_deletePermissionSchemeEntity_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deletePermissionSchemeEntity( $self, %options ) {
-    my $tx = $self->_build_deletePermissionSchemeEntity_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -37483,6 +37477,13 @@ sub deletePermissionSchemeEntity( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deletePermissionSchemeEntity( $self, %options ) {
+    my $tx = $self->_build_deletePermissionSchemeEntity_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -37617,13 +37618,6 @@ sub build_getPermissionSchemeGrant_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getPermissionSchemeGrant( $self, %options ) {
-    my $tx = $self->_build_getPermissionSchemeGrant_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -37632,6 +37626,13 @@ sub getPermissionSchemeGrant( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getPermissionSchemeGrant( $self, %options ) {
+    my $tx = $self->_build_getPermissionSchemeGrant_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -37711,13 +37712,6 @@ sub build_getPriorities_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getPriorities( $self, %options ) {
-    my $tx = $self->_build_getPriorities_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -37726,6 +37720,13 @@ sub getPriorities( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getPriorities( $self, %options ) {
+    my $tx = $self->_build_getPriorities_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -37831,13 +37832,6 @@ sub build_createPriority_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createPriority( $self, %options ) {
-    my $tx = $self->_build_createPriority_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -37846,6 +37840,13 @@ sub createPriority( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createPriority( $self, %options ) {
+    my $tx = $self->_build_createPriority_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -37978,13 +37979,6 @@ sub build_setDefaultPriority_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setDefaultPriority( $self, %options ) {
-    my $tx = $self->_build_setDefaultPriority_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -37993,6 +37987,13 @@ sub setDefaultPriority( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setDefaultPriority( $self, %options ) {
+    my $tx = $self->_build_setDefaultPriority_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -38147,13 +38148,6 @@ sub build_movePriorities_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub movePriorities( $self, %options ) {
-    my $tx = $self->_build_movePriorities_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -38162,6 +38156,13 @@ sub movePriorities( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub movePriorities( $self, %options ) {
+    my $tx = $self->_build_movePriorities_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -38320,13 +38321,6 @@ sub build_searchPriorities_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub searchPriorities( $self, %options ) {
-    my $tx = $self->_build_searchPriorities_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -38335,6 +38329,13 @@ sub searchPriorities( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub searchPriorities( $self, %options ) {
+    my $tx = $self->_build_searchPriorities_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -38450,13 +38451,6 @@ sub build_deletePriority_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deletePriority( $self, %options ) {
-    my $tx = $self->_build_deletePriority_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -38465,6 +38459,13 @@ sub deletePriority( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deletePriority( $self, %options ) {
+    my $tx = $self->_build_deletePriority_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -38620,13 +38621,6 @@ sub build_getPriority_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getPriority( $self, %options ) {
-    my $tx = $self->_build_getPriority_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -38635,6 +38629,13 @@ sub getPriority( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getPriority( $self, %options ) {
+    my $tx = $self->_build_getPriority_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -38755,13 +38756,6 @@ sub build_updatePriority_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updatePriority( $self, %options ) {
-    my $tx = $self->_build_updatePriority_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -38770,6 +38764,13 @@ sub updatePriority( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updatePriority( $self, %options ) {
+    my $tx = $self->_build_updatePriority_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -38945,13 +38946,6 @@ sub build_getAllProjects_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllProjects( $self, %options ) {
-    my $tx = $self->_build_getAllProjects_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -38960,6 +38954,13 @@ sub getAllProjects( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllProjects( $self, %options ) {
+    my $tx = $self->_build_getAllProjects_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -39118,13 +39119,6 @@ sub build_createProject_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createProject( $self, %options ) {
-    my $tx = $self->_build_createProject_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -39133,6 +39127,13 @@ sub createProject( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createProject( $self, %options ) {
+    my $tx = $self->_build_createProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -39275,13 +39276,6 @@ sub build_getRecent_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getRecent( $self, %options ) {
-    my $tx = $self->_build_getRecent_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -39290,6 +39284,13 @@ sub getRecent( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getRecent( $self, %options ) {
+    my $tx = $self->_build_getRecent_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -39605,13 +39606,6 @@ sub build_searchProjects_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub searchProjects( $self, %options ) {
-    my $tx = $self->_build_searchProjects_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -39620,6 +39614,13 @@ sub searchProjects( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub searchProjects( $self, %options ) {
+    my $tx = $self->_build_searchProjects_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -39702,13 +39703,6 @@ sub build_getAllProjectTypes_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllProjectTypes( $self, %options ) {
-    my $tx = $self->_build_getAllProjectTypes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -39717,6 +39711,13 @@ sub getAllProjectTypes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllProjectTypes( $self, %options ) {
+    my $tx = $self->_build_getAllProjectTypes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -39794,13 +39795,6 @@ sub build_getAllAccessibleProjectTypes_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllAccessibleProjectTypes( $self, %options ) {
-    my $tx = $self->_build_getAllAccessibleProjectTypes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -39809,6 +39803,13 @@ sub getAllAccessibleProjectTypes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllAccessibleProjectTypes( $self, %options ) {
+    my $tx = $self->_build_getAllAccessibleProjectTypes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -39895,13 +39896,6 @@ sub build_getProjectTypeByKey_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectTypeByKey( $self, %options ) {
-    my $tx = $self->_build_getProjectTypeByKey_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -39910,6 +39904,13 @@ sub getProjectTypeByKey( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectTypeByKey( $self, %options ) {
+    my $tx = $self->_build_getProjectTypeByKey_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -40001,13 +40002,6 @@ sub build_getAccessibleProjectTypeByKey_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAccessibleProjectTypeByKey( $self, %options ) {
-    my $tx = $self->_build_getAccessibleProjectTypeByKey_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -40016,6 +40010,13 @@ sub getAccessibleProjectTypeByKey( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAccessibleProjectTypeByKey( $self, %options ) {
+    my $tx = $self->_build_getAccessibleProjectTypeByKey_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -40114,13 +40115,6 @@ sub build_deleteProject_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteProject( $self, %options ) {
-    my $tx = $self->_build_deleteProject_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -40129,6 +40123,13 @@ sub deleteProject( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteProject( $self, %options ) {
+    my $tx = $self->_build_deleteProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -40253,13 +40254,6 @@ sub build_getProject_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProject( $self, %options ) {
-    my $tx = $self->_build_getProject_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -40268,6 +40262,13 @@ sub getProject( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProject( $self, %options ) {
+    my $tx = $self->_build_getProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -40449,13 +40450,6 @@ sub build_updateProject_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateProject( $self, %options ) {
-    my $tx = $self->_build_updateProject_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -40464,6 +40458,13 @@ sub updateProject( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateProject( $self, %options ) {
+    my $tx = $self->_build_updateProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -40561,13 +40562,6 @@ sub build_archiveProject_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub archiveProject( $self, %options ) {
-    my $tx = $self->_build_archiveProject_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -40576,6 +40570,13 @@ sub archiveProject( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub archiveProject( $self, %options ) {
+    my $tx = $self->_build_archiveProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -40710,13 +40711,6 @@ sub build_updateProjectAvatar_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateProjectAvatar( $self, %options ) {
-    my $tx = $self->_build_updateProjectAvatar_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -40725,6 +40719,13 @@ sub updateProjectAvatar( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateProjectAvatar( $self, %options ) {
+    my $tx = $self->_build_updateProjectAvatar_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -40825,13 +40826,6 @@ sub build_deleteProjectAvatar_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteProjectAvatar( $self, %options ) {
-    my $tx = $self->_build_deleteProjectAvatar_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -40840,6 +40834,13 @@ sub deleteProjectAvatar( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteProjectAvatar( $self, %options ) {
+    my $tx = $self->_build_deleteProjectAvatar_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -40948,13 +40949,6 @@ sub build_createProjectAvatar_request( $self, %options ) {
         # => $body,
     );
 
-    return $tx
-}
-
-
-sub createProjectAvatar( $self, %options ) {
-    my $tx = $self->_build_createProjectAvatar_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -40963,6 +40957,13 @@ sub createProjectAvatar( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createProjectAvatar( $self, %options ) {
+    my $tx = $self->_build_createProjectAvatar_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -41060,13 +41061,6 @@ sub build_getAllProjectAvatars_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllProjectAvatars( $self, %options ) {
-    my $tx = $self->_build_getAllProjectAvatars_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -41075,6 +41069,13 @@ sub getAllProjectAvatars( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllProjectAvatars( $self, %options ) {
+    my $tx = $self->_build_getAllProjectAvatars_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -41217,13 +41218,6 @@ sub build_getProjectComponentsPaginated_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectComponentsPaginated( $self, %options ) {
-    my $tx = $self->_build_getProjectComponentsPaginated_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -41232,6 +41226,13 @@ sub getProjectComponentsPaginated( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectComponentsPaginated( $self, %options ) {
+    my $tx = $self->_build_getProjectComponentsPaginated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -41323,13 +41324,6 @@ sub build_getProjectComponents_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectComponents( $self, %options ) {
-    my $tx = $self->_build_getProjectComponents_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -41338,6 +41332,13 @@ sub getProjectComponents( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectComponents( $self, %options ) {
+    my $tx = $self->_build_getProjectComponents_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -41430,13 +41431,6 @@ sub build_deleteProjectAsynchronously_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteProjectAsynchronously( $self, %options ) {
-    my $tx = $self->_build_deleteProjectAsynchronously_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -41445,6 +41439,13 @@ sub deleteProjectAsynchronously( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteProjectAsynchronously( $self, %options ) {
+    my $tx = $self->_build_deleteProjectAsynchronously_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -41539,13 +41540,6 @@ sub build_getFeaturesForProject_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getFeaturesForProject( $self, %options ) {
-    my $tx = $self->_build_getFeaturesForProject_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -41554,6 +41548,13 @@ sub getFeaturesForProject( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getFeaturesForProject( $self, %options ) {
+    my $tx = $self->_build_getFeaturesForProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -41672,13 +41673,6 @@ sub build_toggleFeatureForProject_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub toggleFeatureForProject( $self, %options ) {
-    my $tx = $self->_build_toggleFeatureForProject_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -41687,6 +41681,13 @@ sub toggleFeatureForProject( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub toggleFeatureForProject( $self, %options ) {
+    my $tx = $self->_build_toggleFeatureForProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -41784,13 +41785,6 @@ sub build_getProjectPropertyKeys_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectPropertyKeys( $self, %options ) {
-    my $tx = $self->_build_getProjectPropertyKeys_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -41799,6 +41793,13 @@ sub getProjectPropertyKeys( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectPropertyKeys( $self, %options ) {
+    my $tx = $self->_build_getProjectPropertyKeys_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -41902,13 +41903,6 @@ sub build_deleteProjectProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteProjectProperty( $self, %options ) {
-    my $tx = $self->_build_deleteProjectProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -41917,6 +41911,13 @@ sub deleteProjectProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteProjectProperty( $self, %options ) {
+    my $tx = $self->_build_deleteProjectProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42011,13 +42012,6 @@ sub build_getProjectProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectProperty( $self, %options ) {
-    my $tx = $self->_build_getProjectProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -42026,6 +42020,13 @@ sub getProjectProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectProperty( $self, %options ) {
+    my $tx = $self->_build_getProjectProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42135,13 +42136,6 @@ sub build_setProjectProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setProjectProperty( $self, %options ) {
-    my $tx = $self->_build_setProjectProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -42150,6 +42144,13 @@ sub setProjectProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setProjectProperty( $self, %options ) {
+    my $tx = $self->_build_setProjectProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42261,13 +42262,6 @@ sub build_restore_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub restore( $self, %options ) {
-    my $tx = $self->_build_restore_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -42276,6 +42270,13 @@ sub restore( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub restore( $self, %options ) {
+    my $tx = $self->_build_restore_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42370,13 +42371,6 @@ sub build_getProjectRoles_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectRoles( $self, %options ) {
-    my $tx = $self->_build_getProjectRoles_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -42385,6 +42379,13 @@ sub getProjectRoles( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectRoles( $self, %options ) {
+    my $tx = $self->_build_getProjectRoles_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42503,13 +42504,6 @@ sub build_deleteActor_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteActor( $self, %options ) {
-    my $tx = $self->_build_deleteActor_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -42518,6 +42512,13 @@ sub deleteActor( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteActor( $self, %options ) {
+    my $tx = $self->_build_deleteActor_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42615,13 +42616,6 @@ sub build_getProjectRole_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectRole( $self, %options ) {
-    my $tx = $self->_build_getProjectRole_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -42630,6 +42624,13 @@ sub getProjectRole( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectRole( $self, %options ) {
+    my $tx = $self->_build_getProjectRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42753,13 +42754,6 @@ sub build_addActorUsers_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub addActorUsers( $self, %options ) {
-    my $tx = $self->_build_addActorUsers_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -42768,6 +42762,13 @@ sub addActorUsers( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addActorUsers( $self, %options ) {
+    my $tx = $self->_build_addActorUsers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42907,13 +42908,6 @@ sub build_setActors_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setActors( $self, %options ) {
-    my $tx = $self->_build_setActors_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -42922,6 +42916,13 @@ sub setActors( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setActors( $self, %options ) {
+    my $tx = $self->_build_setActors_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -43029,13 +43030,6 @@ sub build_getProjectRoleDetails_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectRoleDetails( $self, %options ) {
-    my $tx = $self->_build_getProjectRoleDetails_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -43044,6 +43038,13 @@ sub getProjectRoleDetails( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectRoleDetails( $self, %options ) {
+    my $tx = $self->_build_getProjectRoleDetails_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -43136,13 +43137,6 @@ sub build_getAllStatuses_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllStatuses( $self, %options ) {
-    my $tx = $self->_build_getAllStatuses_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -43151,6 +43145,13 @@ sub getAllStatuses( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllStatuses( $self, %options ) {
+    my $tx = $self->_build_getAllStatuses_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -43251,13 +43252,6 @@ sub build_updateProjectType_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub updateProjectType( $self, %options ) {
-    my $tx = $self->_build_updateProjectType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -43266,6 +43260,13 @@ sub updateProjectType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateProjectType( $self, %options ) {
+    my $tx = $self->_build_updateProjectType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -43442,13 +43443,6 @@ sub build_getProjectVersionsPaginated_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectVersionsPaginated( $self, %options ) {
-    my $tx = $self->_build_getProjectVersionsPaginated_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -43457,6 +43451,13 @@ sub getProjectVersionsPaginated( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectVersionsPaginated( $self, %options ) {
+    my $tx = $self->_build_getProjectVersionsPaginated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -43554,13 +43555,6 @@ sub build_getProjectVersions_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectVersions( $self, %options ) {
-    my $tx = $self->_build_getProjectVersions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -43569,6 +43563,13 @@ sub getProjectVersions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectVersions( $self, %options ) {
+    my $tx = $self->_build_getProjectVersions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -43658,13 +43659,6 @@ sub build_getProjectEmail_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectEmail( $self, %options ) {
-    my $tx = $self->_build_getProjectEmail_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -43673,6 +43667,13 @@ sub getProjectEmail( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectEmail( $self, %options ) {
+    my $tx = $self->_build_getProjectEmail_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -43784,13 +43785,6 @@ sub build_updateProjectEmail_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateProjectEmail( $self, %options ) {
-    my $tx = $self->_build_updateProjectEmail_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -43799,6 +43793,13 @@ sub updateProjectEmail( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateProjectEmail( $self, %options ) {
+    my $tx = $self->_build_updateProjectEmail_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -43896,13 +43897,6 @@ sub build_getHierarchy_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getHierarchy( $self, %options ) {
-    my $tx = $self->_build_getHierarchy_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -43911,6 +43905,13 @@ sub getHierarchy( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getHierarchy( $self, %options ) {
+    my $tx = $self->_build_getHierarchy_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -44005,13 +44006,6 @@ sub build_getProjectIssueSecurityScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectIssueSecurityScheme( $self, %options ) {
-    my $tx = $self->_build_getProjectIssueSecurityScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -44020,6 +44014,13 @@ sub getProjectIssueSecurityScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectIssueSecurityScheme( $self, %options ) {
+    my $tx = $self->_build_getProjectIssueSecurityScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -44160,13 +44161,6 @@ sub build_getNotificationSchemeForProject_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getNotificationSchemeForProject( $self, %options ) {
-    my $tx = $self->_build_getNotificationSchemeForProject_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -44175,6 +44169,13 @@ sub getNotificationSchemeForProject( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getNotificationSchemeForProject( $self, %options ) {
+    my $tx = $self->_build_getNotificationSchemeForProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -44312,13 +44313,6 @@ sub build_getAssignedPermissionScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAssignedPermissionScheme( $self, %options ) {
-    my $tx = $self->_build_getAssignedPermissionScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -44327,6 +44321,13 @@ sub getAssignedPermissionScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAssignedPermissionScheme( $self, %options ) {
+    my $tx = $self->_build_getAssignedPermissionScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -44477,13 +44478,6 @@ sub build_assignPermissionScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub assignPermissionScheme( $self, %options ) {
-    my $tx = $self->_build_assignPermissionScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -44492,6 +44486,13 @@ sub assignPermissionScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub assignPermissionScheme( $self, %options ) {
+    my $tx = $self->_build_assignPermissionScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -44586,13 +44587,6 @@ sub build_getSecurityLevelsForProject_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getSecurityLevelsForProject( $self, %options ) {
-    my $tx = $self->_build_getSecurityLevelsForProject_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -44601,6 +44595,13 @@ sub getSecurityLevelsForProject( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getSecurityLevelsForProject( $self, %options ) {
+    my $tx = $self->_build_getSecurityLevelsForProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -44677,13 +44678,6 @@ sub build_getAllProjectCategories_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllProjectCategories( $self, %options ) {
-    my $tx = $self->_build_getAllProjectCategories_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -44692,6 +44686,13 @@ sub getAllProjectCategories( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllProjectCategories( $self, %options ) {
+    my $tx = $self->_build_getAllProjectCategories_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -44794,13 +44795,6 @@ sub build_createProjectCategory_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createProjectCategory( $self, %options ) {
-    my $tx = $self->_build_createProjectCategory_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -44809,6 +44803,13 @@ sub createProjectCategory( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createProjectCategory( $self, %options ) {
+    my $tx = $self->_build_createProjectCategory_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -44904,13 +44905,6 @@ sub build_removeProjectCategory_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub removeProjectCategory( $self, %options ) {
-    my $tx = $self->_build_removeProjectCategory_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -44919,6 +44913,13 @@ sub removeProjectCategory( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeProjectCategory( $self, %options ) {
+    my $tx = $self->_build_removeProjectCategory_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -45002,13 +45003,6 @@ sub build_getProjectCategoryById_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectCategoryById( $self, %options ) {
-    my $tx = $self->_build_getProjectCategoryById_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -45017,6 +45011,13 @@ sub getProjectCategoryById( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectCategoryById( $self, %options ) {
+    my $tx = $self->_build_getProjectCategoryById_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -45131,13 +45132,6 @@ sub build_updateProjectCategory_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateProjectCategory( $self, %options ) {
-    my $tx = $self->_build_updateProjectCategory_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -45146,6 +45140,13 @@ sub updateProjectCategory( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateProjectCategory( $self, %options ) {
+    my $tx = $self->_build_updateProjectCategory_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -45241,13 +45242,6 @@ sub build_validateProjectKey_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub validateProjectKey( $self, %options ) {
-    my $tx = $self->_build_validateProjectKey_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -45256,6 +45250,13 @@ sub validateProjectKey( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub validateProjectKey( $self, %options ) {
+    my $tx = $self->_build_validateProjectKey_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -45342,13 +45343,6 @@ sub build_getValidProjectKey_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getValidProjectKey( $self, %options ) {
-    my $tx = $self->_build_getValidProjectKey_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -45357,6 +45351,13 @@ sub getValidProjectKey( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getValidProjectKey( $self, %options ) {
+    my $tx = $self->_build_getValidProjectKey_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -45446,13 +45447,6 @@ sub build_getValidProjectName_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getValidProjectName( $self, %options ) {
-    my $tx = $self->_build_getValidProjectName_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -45461,6 +45455,13 @@ sub getValidProjectName( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getValidProjectName( $self, %options ) {
+    my $tx = $self->_build_getValidProjectName_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -45543,13 +45544,6 @@ sub build_getResolutions_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getResolutions( $self, %options ) {
-    my $tx = $self->_build_getResolutions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -45558,6 +45552,13 @@ sub getResolutions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getResolutions( $self, %options ) {
+    my $tx = $self->_build_getResolutions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -45655,13 +45656,6 @@ sub build_createResolution_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createResolution( $self, %options ) {
-    my $tx = $self->_build_createResolution_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -45670,6 +45664,13 @@ sub createResolution( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createResolution( $self, %options ) {
+    my $tx = $self->_build_createResolution_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -45802,13 +45803,6 @@ sub build_setDefaultResolution_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setDefaultResolution( $self, %options ) {
-    my $tx = $self->_build_setDefaultResolution_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -45817,6 +45811,13 @@ sub setDefaultResolution( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setDefaultResolution( $self, %options ) {
+    my $tx = $self->_build_setDefaultResolution_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -45971,13 +45972,6 @@ sub build_moveResolutions_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub moveResolutions( $self, %options ) {
-    my $tx = $self->_build_moveResolutions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -45986,6 +45980,13 @@ sub moveResolutions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub moveResolutions( $self, %options ) {
+    my $tx = $self->_build_moveResolutions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -46144,13 +46145,6 @@ sub build_searchResolutions_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub searchResolutions( $self, %options ) {
-    my $tx = $self->_build_searchResolutions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -46159,6 +46153,13 @@ sub searchResolutions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub searchResolutions( $self, %options ) {
+    my $tx = $self->_build_searchResolutions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -46274,13 +46275,6 @@ sub build_deleteResolution_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteResolution( $self, %options ) {
-    my $tx = $self->_build_deleteResolution_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -46289,6 +46283,13 @@ sub deleteResolution( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteResolution( $self, %options ) {
+    my $tx = $self->_build_deleteResolution_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -46444,13 +46445,6 @@ sub build_getResolution_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getResolution( $self, %options ) {
-    my $tx = $self->_build_getResolution_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -46459,6 +46453,13 @@ sub getResolution( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getResolution( $self, %options ) {
+    my $tx = $self->_build_getResolution_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -46571,13 +46572,6 @@ sub build_updateResolution_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateResolution( $self, %options ) {
-    my $tx = $self->_build_updateResolution_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -46586,6 +46580,13 @@ sub updateResolution( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateResolution( $self, %options ) {
+    my $tx = $self->_build_updateResolution_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -46715,13 +46716,6 @@ sub build_getAllProjectRoles_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllProjectRoles( $self, %options ) {
-    my $tx = $self->_build_getAllProjectRoles_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -46730,6 +46724,13 @@ sub getAllProjectRoles( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllProjectRoles( $self, %options ) {
+    my $tx = $self->_build_getAllProjectRoles_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -46827,13 +46828,6 @@ sub build_createProjectRole_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createProjectRole( $self, %options ) {
-    my $tx = $self->_build_createProjectRole_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -46842,6 +46836,13 @@ sub createProjectRole( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createProjectRole( $self, %options ) {
+    my $tx = $self->_build_createProjectRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -46946,13 +46947,6 @@ sub build_deleteProjectRole_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteProjectRole( $self, %options ) {
-    my $tx = $self->_build_deleteProjectRole_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -46961,6 +46955,13 @@ sub deleteProjectRole( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteProjectRole( $self, %options ) {
+    my $tx = $self->_build_deleteProjectRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -47050,13 +47051,6 @@ sub build_getProjectRoleById_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectRoleById( $self, %options ) {
-    my $tx = $self->_build_getProjectRoleById_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -47065,6 +47059,13 @@ sub getProjectRoleById( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectRoleById( $self, %options ) {
+    my $tx = $self->_build_getProjectRoleById_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -47176,13 +47177,6 @@ sub build_partialUpdateProjectRole_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub partialUpdateProjectRole( $self, %options ) {
-    my $tx = $self->_build_partialUpdateProjectRole_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -47191,6 +47185,13 @@ sub partialUpdateProjectRole( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub partialUpdateProjectRole( $self, %options ) {
+    my $tx = $self->_build_partialUpdateProjectRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -47305,13 +47306,6 @@ sub build_fullyUpdateProjectRole_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub fullyUpdateProjectRole( $self, %options ) {
-    my $tx = $self->_build_fullyUpdateProjectRole_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -47320,6 +47314,13 @@ sub fullyUpdateProjectRole( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub fullyUpdateProjectRole( $self, %options ) {
+    my $tx = $self->_build_fullyUpdateProjectRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -47438,13 +47439,6 @@ sub build_deleteProjectRoleActorsFromRole_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteProjectRoleActorsFromRole( $self, %options ) {
-    my $tx = $self->_build_deleteProjectRoleActorsFromRole_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -47453,6 +47447,13 @@ sub deleteProjectRoleActorsFromRole( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteProjectRoleActorsFromRole( $self, %options ) {
+    my $tx = $self->_build_deleteProjectRoleActorsFromRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -47550,13 +47551,6 @@ sub build_getProjectRoleActorsForRole_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getProjectRoleActorsForRole( $self, %options ) {
-    my $tx = $self->_build_getProjectRoleActorsForRole_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -47565,6 +47559,13 @@ sub getProjectRoleActorsForRole( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getProjectRoleActorsForRole( $self, %options ) {
+    my $tx = $self->_build_getProjectRoleActorsForRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -47683,13 +47684,6 @@ sub build_addProjectRoleActorsToRole_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub addProjectRoleActorsToRole( $self, %options ) {
-    my $tx = $self->_build_addProjectRoleActorsToRole_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -47698,6 +47692,13 @@ sub addProjectRoleActorsToRole( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addProjectRoleActorsToRole( $self, %options ) {
+    my $tx = $self->_build_addProjectRoleActorsToRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -47837,13 +47838,6 @@ sub build_getScreens_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getScreens( $self, %options ) {
-    my $tx = $self->_build_getScreens_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -47852,6 +47846,13 @@ sub getScreens( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getScreens( $self, %options ) {
+    my $tx = $self->_build_getScreens_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -47948,13 +47949,6 @@ sub build_createScreen_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createScreen( $self, %options ) {
-    my $tx = $self->_build_createScreen_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -47963,6 +47957,13 @@ sub createScreen( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createScreen( $self, %options ) {
+    my $tx = $self->_build_createScreen_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -48079,13 +48080,6 @@ sub build_addFieldToDefaultScreen_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub addFieldToDefaultScreen( $self, %options ) {
-    my $tx = $self->_build_addFieldToDefaultScreen_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -48094,6 +48088,13 @@ sub addFieldToDefaultScreen( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addFieldToDefaultScreen( $self, %options ) {
+    my $tx = $self->_build_addFieldToDefaultScreen_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -48187,13 +48188,6 @@ sub build_deleteScreen_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteScreen( $self, %options ) {
-    my $tx = $self->_build_deleteScreen_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -48202,6 +48196,13 @@ sub deleteScreen( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteScreen( $self, %options ) {
+    my $tx = $self->_build_deleteScreen_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -48338,13 +48339,6 @@ sub build_updateScreen_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateScreen( $self, %options ) {
-    my $tx = $self->_build_updateScreen_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -48353,6 +48347,13 @@ sub updateScreen( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateScreen( $self, %options ) {
+    my $tx = $self->_build_updateScreen_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -48483,13 +48484,6 @@ sub build_getAvailableScreenFields_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAvailableScreenFields( $self, %options ) {
-    my $tx = $self->_build_getAvailableScreenFields_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -48498,6 +48492,13 @@ sub getAvailableScreenFields( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAvailableScreenFields( $self, %options ) {
+    my $tx = $self->_build_getAvailableScreenFields_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -48602,13 +48603,6 @@ sub build_getAllScreenTabs_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllScreenTabs( $self, %options ) {
-    my $tx = $self->_build_getAllScreenTabs_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -48617,6 +48611,13 @@ sub getAllScreenTabs( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllScreenTabs( $self, %options ) {
+    my $tx = $self->_build_getAllScreenTabs_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -48732,13 +48733,6 @@ sub build_addScreenTab_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub addScreenTab( $self, %options ) {
-    my $tx = $self->_build_addScreenTab_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -48747,6 +48741,13 @@ sub addScreenTab( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addScreenTab( $self, %options ) {
+    my $tx = $self->_build_addScreenTab_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -48850,13 +48851,6 @@ sub build_deleteScreenTab_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteScreenTab( $self, %options ) {
-    my $tx = $self->_build_deleteScreenTab_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -48865,6 +48859,13 @@ sub deleteScreenTab( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteScreenTab( $self, %options ) {
+    my $tx = $self->_build_deleteScreenTab_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -48973,13 +48974,6 @@ sub build_renameScreenTab_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub renameScreenTab( $self, %options ) {
-    my $tx = $self->_build_renameScreenTab_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -48988,6 +48982,13 @@ sub renameScreenTab( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub renameScreenTab( $self, %options ) {
+    my $tx = $self->_build_renameScreenTab_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -49102,13 +49103,6 @@ sub build_getAllScreenTabFields_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllScreenTabFields( $self, %options ) {
-    my $tx = $self->_build_getAllScreenTabFields_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -49117,6 +49111,13 @@ sub getAllScreenTabFields( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllScreenTabFields( $self, %options ) {
+    my $tx = $self->_build_getAllScreenTabFields_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -49233,13 +49234,6 @@ sub build_addScreenTabField_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub addScreenTabField( $self, %options ) {
-    my $tx = $self->_build_addScreenTabField_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -49248,6 +49242,13 @@ sub addScreenTabField( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub addScreenTabField( $self, %options ) {
+    my $tx = $self->_build_addScreenTabField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -49359,13 +49360,6 @@ sub build_removeScreenTabField_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub removeScreenTabField( $self, %options ) {
-    my $tx = $self->_build_removeScreenTabField_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -49374,6 +49368,13 @@ sub removeScreenTabField( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeScreenTabField( $self, %options ) {
+    my $tx = $self->_build_removeScreenTabField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -49493,13 +49494,6 @@ sub build_moveScreenTabField_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub moveScreenTabField( $self, %options ) {
-    my $tx = $self->_build_moveScreenTabField_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -49508,6 +49502,13 @@ sub moveScreenTabField( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub moveScreenTabField( $self, %options ) {
+    my $tx = $self->_build_moveScreenTabField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -49621,13 +49622,6 @@ sub build_moveScreenTab_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub moveScreenTab( $self, %options ) {
-    my $tx = $self->_build_moveScreenTab_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -49636,6 +49630,13 @@ sub moveScreenTab( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub moveScreenTab( $self, %options ) {
+    my $tx = $self->_build_moveScreenTab_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -49775,13 +49776,6 @@ sub build_getScreenSchemes_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getScreenSchemes( $self, %options ) {
-    my $tx = $self->_build_getScreenSchemes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -49790,6 +49784,13 @@ sub getScreenSchemes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getScreenSchemes( $self, %options ) {
+    my $tx = $self->_build_getScreenSchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -49890,13 +49891,6 @@ sub build_createScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createScreenScheme( $self, %options ) {
-    my $tx = $self->_build_createScreenScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -49905,6 +49899,13 @@ sub createScreenScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createScreenScheme( $self, %options ) {
+    my $tx = $self->_build_createScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -50034,13 +50035,6 @@ sub build_deleteScreenScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteScreenScheme( $self, %options ) {
-    my $tx = $self->_build_deleteScreenScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -50049,6 +50043,13 @@ sub deleteScreenScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteScreenScheme( $self, %options ) {
+    my $tx = $self->_build_deleteScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -50189,13 +50190,6 @@ sub build_updateScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateScreenScheme( $self, %options ) {
-    my $tx = $self->_build_updateScreenScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -50204,6 +50198,13 @@ sub updateScreenScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateScreenScheme( $self, %options ) {
+    my $tx = $self->_build_updateScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -50512,13 +50513,6 @@ sub build_searchForIssuesUsingJql_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub searchForIssuesUsingJql( $self, %options ) {
-    my $tx = $self->_build_searchForIssuesUsingJql_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -50527,6 +50521,13 @@ sub searchForIssuesUsingJql( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub searchForIssuesUsingJql( $self, %options ) {
+    my $tx = $self->_build_searchForIssuesUsingJql_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -50770,13 +50771,6 @@ sub build_searchForIssuesUsingJqlPost_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub searchForIssuesUsingJqlPost( $self, %options ) {
-    my $tx = $self->_build_searchForIssuesUsingJqlPost_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -50785,6 +50779,13 @@ sub searchForIssuesUsingJqlPost( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub searchForIssuesUsingJqlPost( $self, %options ) {
+    my $tx = $self->_build_searchForIssuesUsingJqlPost_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -50876,13 +50877,6 @@ sub build_getIssueSecurityLevel_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueSecurityLevel( $self, %options ) {
-    my $tx = $self->_build_getIssueSecurityLevel_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -50891,6 +50885,13 @@ sub getIssueSecurityLevel( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueSecurityLevel( $self, %options ) {
+    my $tx = $self->_build_getIssueSecurityLevel_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -50970,13 +50971,6 @@ sub build_getServerInfo_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getServerInfo( $self, %options ) {
-    my $tx = $self->_build_getServerInfo_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -50985,6 +50979,13 @@ sub getServerInfo( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getServerInfo( $self, %options ) {
+    my $tx = $self->_build_getServerInfo_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51061,13 +51062,6 @@ sub build_getIssueNavigatorDefaultColumns_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIssueNavigatorDefaultColumns( $self, %options ) {
-    my $tx = $self->_build_getIssueNavigatorDefaultColumns_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -51076,6 +51070,13 @@ sub getIssueNavigatorDefaultColumns( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIssueNavigatorDefaultColumns( $self, %options ) {
+    my $tx = $self->_build_getIssueNavigatorDefaultColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51161,13 +51162,6 @@ sub build_setIssueNavigatorDefaultColumns_request( $self, %options ) {
         # => $body,
     );
 
-    return $tx
-}
-
-
-sub setIssueNavigatorDefaultColumns( $self, %options ) {
-    my $tx = $self->_build_setIssueNavigatorDefaultColumns_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -51176,6 +51170,13 @@ sub setIssueNavigatorDefaultColumns( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setIssueNavigatorDefaultColumns( $self, %options ) {
+    my $tx = $self->_build_setIssueNavigatorDefaultColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51261,13 +51262,6 @@ sub build_getStatuses_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getStatuses( $self, %options ) {
-    my $tx = $self->_build_getStatuses_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -51276,6 +51270,13 @@ sub getStatuses( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getStatuses( $self, %options ) {
+    my $tx = $self->_build_getStatuses_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51365,13 +51366,6 @@ sub build_getStatus_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getStatus( $self, %options ) {
-    my $tx = $self->_build_getStatus_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -51380,6 +51374,13 @@ sub getStatus( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getStatus( $self, %options ) {
+    my $tx = $self->_build_getStatus_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51459,13 +51460,6 @@ sub build_getStatusCategories_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getStatusCategories( $self, %options ) {
-    my $tx = $self->_build_getStatusCategories_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -51474,6 +51468,13 @@ sub getStatusCategories( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getStatusCategories( $self, %options ) {
+    my $tx = $self->_build_getStatusCategories_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51563,13 +51564,6 @@ sub build_getStatusCategory_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getStatusCategory( $self, %options ) {
-    my $tx = $self->_build_getStatusCategory_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -51578,6 +51572,13 @@ sub getStatusCategory( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getStatusCategory( $self, %options ) {
+    my $tx = $self->_build_getStatusCategory_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51669,13 +51670,6 @@ sub build_deleteStatusesById_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteStatusesById( $self, %options ) {
-    my $tx = $self->_build_deleteStatusesById_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -51684,6 +51678,13 @@ sub deleteStatusesById( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteStatusesById( $self, %options ) {
+    my $tx = $self->_build_deleteStatusesById_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51801,13 +51802,6 @@ sub build_getStatusesById_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getStatusesById( $self, %options ) {
-    my $tx = $self->_build_getStatusesById_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -51816,6 +51810,13 @@ sub getStatusesById( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getStatusesById( $self, %options ) {
+    my $tx = $self->_build_getStatusesById_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51913,13 +51914,6 @@ sub build_createStatuses_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createStatuses( $self, %options ) {
-    my $tx = $self->_build_createStatuses_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -51928,6 +51922,13 @@ sub createStatuses( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createStatuses( $self, %options ) {
+    my $tx = $self->_build_createStatuses_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -52032,13 +52033,6 @@ sub build_updateStatuses_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateStatuses( $self, %options ) {
-    my $tx = $self->_build_updateStatuses_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -52047,6 +52041,13 @@ sub updateStatuses( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateStatuses( $self, %options ) {
+    my $tx = $self->_build_updateStatuses_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -52186,13 +52187,6 @@ sub build_search_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub search( $self, %options ) {
-    my $tx = $self->_build_search_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -52201,6 +52195,13 @@ sub search( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub search( $self, %options ) {
+    my $tx = $self->_build_search_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -52292,13 +52293,6 @@ sub build_getTask_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getTask( $self, %options ) {
-    my $tx = $self->_build_getTask_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -52307,6 +52301,13 @@ sub getTask( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getTask( $self, %options ) {
+    my $tx = $self->_build_getTask_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -52405,13 +52406,6 @@ sub build_cancelTask_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub cancelTask( $self, %options ) {
-    my $tx = $self->_build_cancelTask_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -52420,6 +52414,13 @@ sub cancelTask( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub cancelTask( $self, %options ) {
+    my $tx = $self->_build_cancelTask_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -52589,13 +52590,6 @@ sub build_getUiModifications_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getUiModifications( $self, %options ) {
-    my $tx = $self->_build_getUiModifications_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -52604,6 +52598,13 @@ sub getUiModifications( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getUiModifications( $self, %options ) {
+    my $tx = $self->_build_getUiModifications_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -52711,13 +52712,6 @@ sub build_createUiModification_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createUiModification( $self, %options ) {
-    my $tx = $self->_build_createUiModification_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -52726,6 +52720,13 @@ sub createUiModification( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createUiModification( $self, %options ) {
+    my $tx = $self->_build_createUiModification_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -52823,13 +52824,6 @@ sub build_deleteUiModification_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteUiModification( $self, %options ) {
-    my $tx = $self->_build_deleteUiModification_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -52838,6 +52832,13 @@ sub deleteUiModification( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteUiModification( $self, %options ) {
+    my $tx = $self->_build_deleteUiModification_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -52957,13 +52958,6 @@ sub build_updateUiModification_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateUiModification( $self, %options ) {
-    my $tx = $self->_build_updateUiModification_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -52972,6 +52966,13 @@ sub updateUiModification( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateUiModification( $self, %options ) {
+    my $tx = $self->_build_updateUiModification_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -53077,13 +53078,6 @@ sub build_getAvatars_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAvatars( $self, %options ) {
-    my $tx = $self->_build_getAvatars_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -53092,6 +53086,13 @@ sub getAvatars( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAvatars( $self, %options ) {
+    my $tx = $self->_build_getAvatars_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -53218,13 +53219,6 @@ sub build_storeAvatar_request( $self, %options ) {
         # => $body,
     );
 
-    return $tx
-}
-
-
-sub storeAvatar( $self, %options ) {
-    my $tx = $self->_build_storeAvatar_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -53233,6 +53227,13 @@ sub storeAvatar( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub storeAvatar( $self, %options ) {
+    my $tx = $self->_build_storeAvatar_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -53344,13 +53345,6 @@ sub build_deleteAvatar_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteAvatar( $self, %options ) {
-    my $tx = $self->_build_deleteAvatar_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -53359,6 +53353,13 @@ sub deleteAvatar( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteAvatar( $self, %options ) {
+    my $tx = $self->_build_deleteAvatar_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -53460,13 +53461,6 @@ sub build_getAvatarImageByType_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAvatarImageByType( $self, %options ) {
-    my $tx = $self->_build_getAvatarImageByType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -53475,6 +53469,13 @@ sub getAvatarImageByType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAvatarImageByType( $self, %options ) {
+    my $tx = $self->_build_getAvatarImageByType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -53749,13 +53750,6 @@ sub build_getAvatarImageByID_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAvatarImageByID( $self, %options ) {
-    my $tx = $self->_build_getAvatarImageByID_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -53764,6 +53758,13 @@ sub getAvatarImageByID( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAvatarImageByID( $self, %options ) {
+    my $tx = $self->_build_getAvatarImageByID_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -54082,13 +54083,6 @@ sub build_getAvatarImageByOwner_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAvatarImageByOwner( $self, %options ) {
-    my $tx = $self->_build_getAvatarImageByOwner_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -54097,6 +54091,13 @@ sub getAvatarImageByOwner( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAvatarImageByOwner( $self, %options ) {
+    my $tx = $self->_build_getAvatarImageByOwner_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -54399,13 +54400,6 @@ sub build_removeUser_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub removeUser( $self, %options ) {
-    my $tx = $self->_build_removeUser_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -54414,6 +54408,13 @@ sub removeUser( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub removeUser( $self, %options ) {
+    my $tx = $self->_build_removeUser_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -54530,13 +54531,6 @@ sub build_getUser_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getUser( $self, %options ) {
-    my $tx = $self->_build_getUser_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -54545,6 +54539,13 @@ sub getUser( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getUser( $self, %options ) {
+    my $tx = $self->_build_getUser_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -54664,13 +54665,6 @@ sub build_createUser_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createUser( $self, %options ) {
-    my $tx = $self->_build_createUser_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -54679,6 +54673,13 @@ sub createUser( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createUser( $self, %options ) {
+    my $tx = $self->_build_createUser_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -54804,13 +54805,6 @@ sub build_findBulkAssignableUsers_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub findBulkAssignableUsers( $self, %options ) {
-    my $tx = $self->_build_findBulkAssignableUsers_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -54819,6 +54813,13 @@ sub findBulkAssignableUsers( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub findBulkAssignableUsers( $self, %options ) {
+    my $tx = $self->_build_findBulkAssignableUsers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -54967,13 +54968,6 @@ sub build_findAssignableUsers_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub findAssignableUsers( $self, %options ) {
-    my $tx = $self->_build_findAssignableUsers_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -54982,6 +54976,13 @@ sub findAssignableUsers( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub findAssignableUsers( $self, %options ) {
+    my $tx = $self->_build_findAssignableUsers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -55105,13 +55106,6 @@ sub build_bulkGetUsers_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub bulkGetUsers( $self, %options ) {
-    my $tx = $self->_build_bulkGetUsers_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -55120,6 +55114,13 @@ sub bulkGetUsers( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub bulkGetUsers( $self, %options ) {
+    my $tx = $self->_build_bulkGetUsers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -55227,13 +55228,6 @@ sub build_bulkGetUsersMigration_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub bulkGetUsersMigration( $self, %options ) {
-    my $tx = $self->_build_bulkGetUsersMigration_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -55242,6 +55236,13 @@ sub bulkGetUsersMigration( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub bulkGetUsersMigration( $self, %options ) {
+    my $tx = $self->_build_bulkGetUsersMigration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -55336,13 +55337,6 @@ sub build_resetUserColumns_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub resetUserColumns( $self, %options ) {
-    my $tx = $self->_build_resetUserColumns_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -55351,6 +55345,13 @@ sub resetUserColumns( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub resetUserColumns( $self, %options ) {
+    my $tx = $self->_build_resetUserColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -55435,13 +55436,6 @@ sub build_getUserDefaultColumns_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getUserDefaultColumns( $self, %options ) {
-    my $tx = $self->_build_getUserDefaultColumns_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -55450,6 +55444,13 @@ sub getUserDefaultColumns( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getUserDefaultColumns( $self, %options ) {
+    my $tx = $self->_build_getUserDefaultColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -55548,13 +55549,6 @@ sub build_setUserColumns_request( $self, %options ) {
         # => $body,
     );
 
-    return $tx
-}
-
-
-sub setUserColumns( $self, %options ) {
-    my $tx = $self->_build_setUserColumns_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -55563,6 +55557,13 @@ sub setUserColumns( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setUserColumns( $self, %options ) {
+    my $tx = $self->_build_setUserColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -55664,13 +55665,6 @@ sub build_getUserEmail_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getUserEmail( $self, %options ) {
-    my $tx = $self->_build_getUserEmail_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -55679,6 +55673,13 @@ sub getUserEmail( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getUserEmail( $self, %options ) {
+    my $tx = $self->_build_getUserEmail_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -55777,13 +55778,6 @@ sub build_getUserEmailBulk_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getUserEmailBulk( $self, %options ) {
-    my $tx = $self->_build_getUserEmailBulk_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -55792,6 +55786,13 @@ sub getUserEmailBulk( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getUserEmailBulk( $self, %options ) {
+    my $tx = $self->_build_getUserEmailBulk_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -55899,13 +55900,6 @@ sub build_getUserGroups_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getUserGroups( $self, %options ) {
-    my $tx = $self->_build_getUserGroups_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -55914,6 +55908,13 @@ sub getUserGroups( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getUserGroups( $self, %options ) {
+    my $tx = $self->_build_getUserGroups_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -56237,13 +56238,6 @@ sub build_findUsersWithAllPermissions_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub findUsersWithAllPermissions( $self, %options ) {
-    my $tx = $self->_build_findUsersWithAllPermissions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -56252,6 +56246,13 @@ sub findUsersWithAllPermissions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub findUsersWithAllPermissions( $self, %options ) {
+    my $tx = $self->_build_findUsersWithAllPermissions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -56386,13 +56387,6 @@ sub build_findUsersForPicker_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub findUsersForPicker( $self, %options ) {
-    my $tx = $self->_build_findUsersForPicker_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -56401,6 +56395,13 @@ sub findUsersForPicker( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub findUsersForPicker( $self, %options ) {
+    my $tx = $self->_build_findUsersForPicker_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -56505,13 +56506,6 @@ sub build_getUserPropertyKeys_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getUserPropertyKeys( $self, %options ) {
-    my $tx = $self->_build_getUserPropertyKeys_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -56520,6 +56514,13 @@ sub getUserPropertyKeys( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getUserPropertyKeys( $self, %options ) {
+    my $tx = $self->_build_getUserPropertyKeys_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -56636,13 +56637,6 @@ sub build_deleteUserProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteUserProperty( $self, %options ) {
-    my $tx = $self->_build_deleteUserProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -56651,6 +56645,13 @@ sub deleteUserProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteUserProperty( $self, %options ) {
+    my $tx = $self->_build_deleteUserProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -56758,13 +56759,6 @@ sub build_getUserProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getUserProperty( $self, %options ) {
-    my $tx = $self->_build_getUserProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -56773,6 +56767,13 @@ sub getUserProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getUserProperty( $self, %options ) {
+    my $tx = $self->_build_getUserProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -56895,13 +56896,6 @@ sub build_setUserProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setUserProperty( $self, %options ) {
-    my $tx = $self->_build_setUserProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -56910,6 +56904,13 @@ sub setUserProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setUserProperty( $self, %options ) {
+    my $tx = $self->_build_setUserProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57050,13 +57051,6 @@ sub build_findUsers_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub findUsers( $self, %options ) {
-    my $tx = $self->_build_findUsers_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -57065,6 +57059,13 @@ sub findUsers( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub findUsers( $self, %options ) {
+    my $tx = $self->_build_findUsers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57173,13 +57174,6 @@ sub build_findUsersByQuery_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub findUsersByQuery( $self, %options ) {
-    my $tx = $self->_build_findUsersByQuery_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -57188,6 +57182,13 @@ sub findUsersByQuery( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub findUsersByQuery( $self, %options ) {
+    my $tx = $self->_build_findUsersByQuery_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57298,13 +57299,6 @@ sub build_findUserKeysByQuery_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub findUserKeysByQuery( $self, %options ) {
-    my $tx = $self->_build_findUserKeysByQuery_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -57313,6 +57307,13 @@ sub findUserKeysByQuery( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub findUserKeysByQuery( $self, %options ) {
+    my $tx = $self->_build_findUserKeysByQuery_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57444,13 +57445,6 @@ sub build_findUsersWithBrowsePermission_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub findUsersWithBrowsePermission( $self, %options ) {
-    my $tx = $self->_build_findUsersWithBrowsePermission_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -57459,6 +57453,13 @@ sub findUsersWithBrowsePermission( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub findUsersWithBrowsePermission( $self, %options ) {
+    my $tx = $self->_build_findUsersWithBrowsePermission_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57561,13 +57562,6 @@ sub build_getAllUsersDefault_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllUsersDefault( $self, %options ) {
-    my $tx = $self->_build_getAllUsersDefault_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -57576,6 +57570,13 @@ sub getAllUsersDefault( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllUsersDefault( $self, %options ) {
+    my $tx = $self->_build_getAllUsersDefault_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57675,13 +57676,6 @@ sub build_getAllUsers_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllUsers( $self, %options ) {
-    my $tx = $self->_build_getAllUsers_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -57690,6 +57684,13 @@ sub getAllUsers( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllUsers( $self, %options ) {
+    my $tx = $self->_build_getAllUsers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57866,13 +57867,6 @@ sub build_createVersion_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createVersion( $self, %options ) {
-    my $tx = $self->_build_createVersion_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -57881,6 +57875,13 @@ sub createVersion( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createVersion( $self, %options ) {
+    my $tx = $self->_build_createVersion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57988,13 +57989,6 @@ sub build_deleteVersion_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteVersion( $self, %options ) {
-    my $tx = $self->_build_deleteVersion_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -58003,6 +57997,13 @@ sub deleteVersion( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteVersion( $self, %options ) {
+    my $tx = $self->_build_deleteVersion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -58109,13 +58110,6 @@ sub build_getVersion_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getVersion( $self, %options ) {
-    my $tx = $self->_build_getVersion_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -58124,6 +58118,13 @@ sub getVersion( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getVersion( $self, %options ) {
+    my $tx = $self->_build_getVersion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -58308,13 +58309,6 @@ sub build_updateVersion_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateVersion( $self, %options ) {
-    my $tx = $self->_build_updateVersion_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -58323,6 +58317,13 @@ sub updateVersion( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateVersion( $self, %options ) {
+    my $tx = $self->_build_updateVersion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -58425,13 +58426,6 @@ sub build_mergeVersions_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub mergeVersions( $self, %options ) {
-    my $tx = $self->_build_mergeVersions_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -58440,6 +58434,13 @@ sub mergeVersions( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub mergeVersions( $self, %options ) {
+    my $tx = $self->_build_mergeVersions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -58551,13 +58552,6 @@ sub build_moveVersion_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub moveVersion( $self, %options ) {
-    my $tx = $self->_build_moveVersion_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -58566,6 +58560,13 @@ sub moveVersion( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub moveVersion( $self, %options ) {
+    my $tx = $self->_build_moveVersion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -58660,13 +58661,6 @@ sub build_getVersionRelatedIssues_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getVersionRelatedIssues( $self, %options ) {
-    my $tx = $self->_build_getVersionRelatedIssues_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -58675,6 +58669,13 @@ sub getVersionRelatedIssues( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getVersionRelatedIssues( $self, %options ) {
+    my $tx = $self->_build_getVersionRelatedIssues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -58787,13 +58788,6 @@ sub build_deleteAndReplaceVersion_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub deleteAndReplaceVersion( $self, %options ) {
-    my $tx = $self->_build_deleteAndReplaceVersion_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -58802,6 +58796,13 @@ sub deleteAndReplaceVersion( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteAndReplaceVersion( $self, %options ) {
+    my $tx = $self->_build_deleteAndReplaceVersion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -58896,13 +58897,6 @@ sub build_getVersionUnresolvedIssues_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getVersionUnresolvedIssues( $self, %options ) {
-    my $tx = $self->_build_getVersionUnresolvedIssues_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -58911,6 +58905,13 @@ sub getVersionUnresolvedIssues( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getVersionUnresolvedIssues( $self, %options ) {
+    my $tx = $self->_build_getVersionUnresolvedIssues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -59004,13 +59005,6 @@ sub build_deleteWebhookById_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub deleteWebhookById( $self, %options ) {
-    my $tx = $self->_build_deleteWebhookById_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -59019,6 +59013,13 @@ sub deleteWebhookById( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteWebhookById( $self, %options ) {
+    my $tx = $self->_build_deleteWebhookById_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -59127,13 +59128,6 @@ sub build_getDynamicWebhooksForApp_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getDynamicWebhooksForApp( $self, %options ) {
-    my $tx = $self->_build_getDynamicWebhooksForApp_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -59142,6 +59136,13 @@ sub getDynamicWebhooksForApp( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getDynamicWebhooksForApp( $self, %options ) {
+    my $tx = $self->_build_getDynamicWebhooksForApp_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -59262,13 +59263,6 @@ sub build_registerDynamicWebhooks_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub registerDynamicWebhooks( $self, %options ) {
-    my $tx = $self->_build_registerDynamicWebhooks_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -59277,6 +59271,13 @@ sub registerDynamicWebhooks( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub registerDynamicWebhooks( $self, %options ) {
+    my $tx = $self->_build_registerDynamicWebhooks_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -59396,13 +59397,6 @@ sub build_getFailedWebhooks_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getFailedWebhooks( $self, %options ) {
-    my $tx = $self->_build_getFailedWebhooks_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -59411,6 +59405,13 @@ sub getFailedWebhooks( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getFailedWebhooks( $self, %options ) {
+    my $tx = $self->_build_getFailedWebhooks_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -59527,13 +59528,6 @@ sub build_refreshWebhooks_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub refreshWebhooks( $self, %options ) {
-    my $tx = $self->_build_refreshWebhooks_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -59542,6 +59536,13 @@ sub refreshWebhooks( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub refreshWebhooks( $self, %options ) {
+    my $tx = $self->_build_refreshWebhooks_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -59653,13 +59654,6 @@ sub build_getAllWorkflows_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllWorkflows( $self, %options ) {
-    my $tx = $self->_build_getAllWorkflows_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -59668,6 +59662,13 @@ sub getAllWorkflows( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllWorkflows( $self, %options ) {
+    my $tx = $self->_build_getAllWorkflows_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -59811,13 +59812,6 @@ sub build_createWorkflow_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createWorkflow( $self, %options ) {
-    my $tx = $self->_build_createWorkflow_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -59826,6 +59820,13 @@ sub createWorkflow( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createWorkflow( $self, %options ) {
+    my $tx = $self->_build_createWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -60001,13 +60002,6 @@ sub build_getWorkflowTransitionRuleConfigurations_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
-    my $tx = $self->_build_getWorkflowTransitionRuleConfigurations_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -60016,6 +60010,13 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
+    my $tx = $self->_build_getWorkflowTransitionRuleConfigurations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -60135,13 +60136,6 @@ sub build_updateWorkflowTransitionRuleConfigurations_request( $self, %options ) 
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
-    my $tx = $self->_build_updateWorkflowTransitionRuleConfigurations_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -60150,6 +60144,13 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
+    my $tx = $self->_build_updateWorkflowTransitionRuleConfigurations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -60266,13 +60267,6 @@ sub build_deleteWorkflowTransitionRuleConfigurations_request( $self, %options ) 
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
-    my $tx = $self->_build_deleteWorkflowTransitionRuleConfigurations_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -60281,6 +60275,13 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
+    my $tx = $self->_build_deleteWorkflowTransitionRuleConfigurations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -60502,13 +60503,6 @@ sub build_getWorkflowsPaginated_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getWorkflowsPaginated( $self, %options ) {
-    my $tx = $self->_build_getWorkflowsPaginated_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -60517,6 +60511,13 @@ sub getWorkflowsPaginated( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getWorkflowsPaginated( $self, %options ) {
+    my $tx = $self->_build_getWorkflowsPaginated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -60642,13 +60643,6 @@ sub build_deleteWorkflowTransitionProperty_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteWorkflowTransitionProperty( $self, %options ) {
-    my $tx = $self->_build_deleteWorkflowTransitionProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -60657,6 +60651,13 @@ sub deleteWorkflowTransitionProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteWorkflowTransitionProperty( $self, %options ) {
+    my $tx = $self->_build_deleteWorkflowTransitionProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -60775,13 +60776,6 @@ sub build_getWorkflowTransitionProperties_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getWorkflowTransitionProperties( $self, %options ) {
-    my $tx = $self->_build_getWorkflowTransitionProperties_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -60790,6 +60784,13 @@ sub getWorkflowTransitionProperties( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getWorkflowTransitionProperties( $self, %options ) {
+    my $tx = $self->_build_getWorkflowTransitionProperties_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -60933,13 +60934,6 @@ sub build_createWorkflowTransitionProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createWorkflowTransitionProperty( $self, %options ) {
-    my $tx = $self->_build_createWorkflowTransitionProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -60948,6 +60942,13 @@ sub createWorkflowTransitionProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createWorkflowTransitionProperty( $self, %options ) {
+    my $tx = $self->_build_createWorkflowTransitionProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61091,13 +61092,6 @@ sub build_updateWorkflowTransitionProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateWorkflowTransitionProperty( $self, %options ) {
-    my $tx = $self->_build_updateWorkflowTransitionProperty_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -61106,6 +61100,13 @@ sub updateWorkflowTransitionProperty( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateWorkflowTransitionProperty( $self, %options ) {
+    my $tx = $self->_build_updateWorkflowTransitionProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61205,13 +61206,6 @@ sub build_deleteInactiveWorkflow_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteInactiveWorkflow( $self, %options ) {
-    my $tx = $self->_build_deleteInactiveWorkflow_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -61220,6 +61214,13 @@ sub deleteInactiveWorkflow( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteInactiveWorkflow( $self, %options ) {
+    my $tx = $self->_build_deleteInactiveWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61343,13 +61344,6 @@ sub build_getAllWorkflowSchemes_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAllWorkflowSchemes( $self, %options ) {
-    my $tx = $self->_build_getAllWorkflowSchemes_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -61358,6 +61352,13 @@ sub getAllWorkflowSchemes( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAllWorkflowSchemes( $self, %options ) {
+    my $tx = $self->_build_getAllWorkflowSchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61517,13 +61518,6 @@ sub build_createWorkflowScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createWorkflowScheme( $self, %options ) {
-    my $tx = $self->_build_createWorkflowScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -61532,6 +61526,13 @@ sub createWorkflowScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createWorkflowScheme( $self, %options ) {
+    my $tx = $self->_build_createWorkflowScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61627,13 +61628,6 @@ sub build_getWorkflowSchemeProjectAssociations_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getWorkflowSchemeProjectAssociations( $self, %options ) {
-    my $tx = $self->_build_getWorkflowSchemeProjectAssociations_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -61642,6 +61636,13 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getWorkflowSchemeProjectAssociations( $self, %options ) {
+    my $tx = $self->_build_getWorkflowSchemeProjectAssociations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61763,13 +61764,6 @@ sub build_assignSchemeToProject_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub assignSchemeToProject( $self, %options ) {
-    my $tx = $self->_build_assignSchemeToProject_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -61778,6 +61772,13 @@ sub assignSchemeToProject( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub assignSchemeToProject( $self, %options ) {
+    my $tx = $self->_build_assignSchemeToProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61908,13 +61909,6 @@ sub build_deleteWorkflowScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteWorkflowScheme( $self, %options ) {
-    my $tx = $self->_build_deleteWorkflowScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -61923,6 +61917,13 @@ sub deleteWorkflowScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteWorkflowScheme( $self, %options ) {
+    my $tx = $self->_build_deleteWorkflowScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -62029,13 +62030,6 @@ sub build_getWorkflowScheme_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getWorkflowScheme( $self, %options ) {
-    my $tx = $self->_build_getWorkflowScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -62044,6 +62038,13 @@ sub getWorkflowScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getWorkflowScheme( $self, %options ) {
+    my $tx = $self->_build_getWorkflowScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -62218,13 +62219,6 @@ sub build_updateWorkflowScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateWorkflowScheme( $self, %options ) {
-    my $tx = $self->_build_updateWorkflowScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -62233,6 +62227,13 @@ sub updateWorkflowScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateWorkflowScheme( $self, %options ) {
+    my $tx = $self->_build_updateWorkflowScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -62330,13 +62331,6 @@ sub build_createWorkflowSchemeDraftFromParent_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub createWorkflowSchemeDraftFromParent( $self, %options ) {
-    my $tx = $self->_build_createWorkflowSchemeDraftFromParent_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -62345,6 +62339,13 @@ sub createWorkflowSchemeDraftFromParent( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createWorkflowSchemeDraftFromParent( $self, %options ) {
+    my $tx = $self->_build_createWorkflowSchemeDraftFromParent_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -62448,13 +62449,6 @@ sub build_deleteDefaultWorkflow_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteDefaultWorkflow( $self, %options ) {
-    my $tx = $self->_build_deleteDefaultWorkflow_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -62463,6 +62457,13 @@ sub deleteDefaultWorkflow( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteDefaultWorkflow( $self, %options ) {
+    my $tx = $self->_build_deleteDefaultWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -62569,13 +62570,6 @@ sub build_getDefaultWorkflow_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getDefaultWorkflow( $self, %options ) {
-    my $tx = $self->_build_getDefaultWorkflow_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -62584,6 +62578,13 @@ sub getDefaultWorkflow( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getDefaultWorkflow( $self, %options ) {
+    my $tx = $self->_build_getDefaultWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -62695,13 +62696,6 @@ sub build_updateDefaultWorkflow_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateDefaultWorkflow( $self, %options ) {
-    my $tx = $self->_build_updateDefaultWorkflow_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -62710,6 +62704,13 @@ sub updateDefaultWorkflow( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateDefaultWorkflow( $self, %options ) {
+    my $tx = $self->_build_updateDefaultWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -62805,13 +62806,6 @@ sub build_deleteWorkflowSchemeDraft_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteWorkflowSchemeDraft( $self, %options ) {
-    my $tx = $self->_build_deleteWorkflowSchemeDraft_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -62820,6 +62814,13 @@ sub deleteWorkflowSchemeDraft( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteWorkflowSchemeDraft( $self, %options ) {
+    my $tx = $self->_build_deleteWorkflowSchemeDraft_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -62903,13 +62904,6 @@ sub build_getWorkflowSchemeDraft_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getWorkflowSchemeDraft( $self, %options ) {
-    my $tx = $self->_build_getWorkflowSchemeDraft_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -62918,6 +62912,13 @@ sub getWorkflowSchemeDraft( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getWorkflowSchemeDraft( $self, %options ) {
+    my $tx = $self->_build_getWorkflowSchemeDraft_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -63092,13 +63093,6 @@ sub build_updateWorkflowSchemeDraft_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateWorkflowSchemeDraft( $self, %options ) {
-    my $tx = $self->_build_updateWorkflowSchemeDraft_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -63107,6 +63101,13 @@ sub updateWorkflowSchemeDraft( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateWorkflowSchemeDraft( $self, %options ) {
+    my $tx = $self->_build_updateWorkflowSchemeDraft_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -63204,13 +63205,6 @@ sub build_deleteDraftDefaultWorkflow_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteDraftDefaultWorkflow( $self, %options ) {
-    my $tx = $self->_build_deleteDraftDefaultWorkflow_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -63219,6 +63213,13 @@ sub deleteDraftDefaultWorkflow( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteDraftDefaultWorkflow( $self, %options ) {
+    my $tx = $self->_build_deleteDraftDefaultWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -63313,13 +63314,6 @@ sub build_getDraftDefaultWorkflow_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getDraftDefaultWorkflow( $self, %options ) {
-    my $tx = $self->_build_getDraftDefaultWorkflow_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -63328,6 +63322,13 @@ sub getDraftDefaultWorkflow( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getDraftDefaultWorkflow( $self, %options ) {
+    my $tx = $self->_build_getDraftDefaultWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -63439,13 +63440,6 @@ sub build_updateDraftDefaultWorkflow_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateDraftDefaultWorkflow( $self, %options ) {
-    my $tx = $self->_build_updateDraftDefaultWorkflow_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -63454,6 +63448,13 @@ sub updateDraftDefaultWorkflow( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateDraftDefaultWorkflow( $self, %options ) {
+    my $tx = $self->_build_updateDraftDefaultWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -63559,13 +63560,6 @@ sub build_deleteWorkflowSchemeDraftIssueType_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteWorkflowSchemeDraftIssueType( $self, %options ) {
-    my $tx = $self->_build_deleteWorkflowSchemeDraftIssueType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -63574,6 +63568,13 @@ sub deleteWorkflowSchemeDraftIssueType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteWorkflowSchemeDraftIssueType( $self, %options ) {
+    my $tx = $self->_build_deleteWorkflowSchemeDraftIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -63676,13 +63677,6 @@ sub build_getWorkflowSchemeDraftIssueType_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getWorkflowSchemeDraftIssueType( $self, %options ) {
-    my $tx = $self->_build_getWorkflowSchemeDraftIssueType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -63691,6 +63685,13 @@ sub getWorkflowSchemeDraftIssueType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getWorkflowSchemeDraftIssueType( $self, %options ) {
+    my $tx = $self->_build_getWorkflowSchemeDraftIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -63814,13 +63815,6 @@ sub build_setWorkflowSchemeDraftIssueType_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setWorkflowSchemeDraftIssueType( $self, %options ) {
-    my $tx = $self->_build_setWorkflowSchemeDraftIssueType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -63829,6 +63823,13 @@ sub setWorkflowSchemeDraftIssueType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setWorkflowSchemeDraftIssueType( $self, %options ) {
+    my $tx = $self->_build_setWorkflowSchemeDraftIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -63948,13 +63949,6 @@ sub build_publishDraftWorkflowScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub publishDraftWorkflowScheme( $self, %options ) {
-    my $tx = $self->_build_publishDraftWorkflowScheme_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -63963,6 +63957,13 @@ sub publishDraftWorkflowScheme( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub publishDraftWorkflowScheme( $self, %options ) {
+    my $tx = $self->_build_publishDraftWorkflowScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -64094,13 +64095,6 @@ sub build_deleteDraftWorkflowMapping_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteDraftWorkflowMapping( $self, %options ) {
-    my $tx = $self->_build_deleteDraftWorkflowMapping_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -64109,6 +64103,13 @@ sub deleteDraftWorkflowMapping( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteDraftWorkflowMapping( $self, %options ) {
+    my $tx = $self->_build_deleteDraftWorkflowMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -64201,13 +64202,6 @@ sub build_getDraftWorkflow_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getDraftWorkflow( $self, %options ) {
-    my $tx = $self->_build_getDraftWorkflow_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -64216,6 +64210,13 @@ sub getDraftWorkflow( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getDraftWorkflow( $self, %options ) {
+    my $tx = $self->_build_getDraftWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -64346,13 +64347,6 @@ sub build_updateDraftWorkflowMapping_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateDraftWorkflowMapping( $self, %options ) {
-    my $tx = $self->_build_updateDraftWorkflowMapping_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -64361,6 +64355,13 @@ sub updateDraftWorkflowMapping( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateDraftWorkflowMapping( $self, %options ) {
+    my $tx = $self->_build_updateDraftWorkflowMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -64475,13 +64476,6 @@ sub build_deleteWorkflowSchemeIssueType_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteWorkflowSchemeIssueType( $self, %options ) {
-    my $tx = $self->_build_deleteWorkflowSchemeIssueType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -64490,6 +64484,13 @@ sub deleteWorkflowSchemeIssueType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteWorkflowSchemeIssueType( $self, %options ) {
+    my $tx = $self->_build_deleteWorkflowSchemeIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -64604,13 +64605,6 @@ sub build_getWorkflowSchemeIssueType_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getWorkflowSchemeIssueType( $self, %options ) {
-    my $tx = $self->_build_getWorkflowSchemeIssueType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -64619,6 +64613,13 @@ sub getWorkflowSchemeIssueType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getWorkflowSchemeIssueType( $self, %options ) {
+    my $tx = $self->_build_getWorkflowSchemeIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -64742,13 +64743,6 @@ sub build_setWorkflowSchemeIssueType_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub setWorkflowSchemeIssueType( $self, %options ) {
-    my $tx = $self->_build_setWorkflowSchemeIssueType_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -64757,6 +64751,13 @@ sub setWorkflowSchemeIssueType( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub setWorkflowSchemeIssueType( $self, %options ) {
+    my $tx = $self->_build_setWorkflowSchemeIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -64869,13 +64870,6 @@ sub build_deleteWorkflowMapping_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteWorkflowMapping( $self, %options ) {
-    my $tx = $self->_build_deleteWorkflowMapping_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -64884,6 +64878,13 @@ sub deleteWorkflowMapping( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteWorkflowMapping( $self, %options ) {
+    my $tx = $self->_build_deleteWorkflowMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -64985,13 +64986,6 @@ sub build_getWorkflow_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getWorkflow( $self, %options ) {
-    my $tx = $self->_build_getWorkflow_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -65000,6 +64994,13 @@ sub getWorkflow( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getWorkflow( $self, %options ) {
+    my $tx = $self->_build_getWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65130,13 +65131,6 @@ sub build_updateWorkflowMapping_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub updateWorkflowMapping( $self, %options ) {
-    my $tx = $self->_build_updateWorkflowMapping_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -65145,6 +65139,13 @@ sub updateWorkflowMapping( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub updateWorkflowMapping( $self, %options ) {
+    my $tx = $self->_build_updateWorkflowMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65240,13 +65241,6 @@ sub build_getIdsOfWorklogsDeletedSince_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIdsOfWorklogsDeletedSince( $self, %options ) {
-    my $tx = $self->_build_getIdsOfWorklogsDeletedSince_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -65255,6 +65249,13 @@ sub getIdsOfWorklogsDeletedSince( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIdsOfWorklogsDeletedSince( $self, %options ) {
+    my $tx = $self->_build_getIdsOfWorklogsDeletedSince_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65354,13 +65355,6 @@ sub build_getWorklogsForIds_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub getWorklogsForIds( $self, %options ) {
-    my $tx = $self->_build_getWorklogsForIds_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -65369,6 +65363,13 @@ sub getWorklogsForIds( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getWorklogsForIds( $self, %options ) {
+    my $tx = $self->_build_getWorklogsForIds_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65465,13 +65466,6 @@ sub build_getIdsOfWorklogsModifiedSince_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getIdsOfWorklogsModifiedSince( $self, %options ) {
-    my $tx = $self->_build_getIdsOfWorklogsModifiedSince_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -65480,6 +65474,13 @@ sub getIdsOfWorklogsModifiedSince( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getIdsOfWorklogsModifiedSince( $self, %options ) {
+    my $tx = $self->_build_getIdsOfWorklogsModifiedSince_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65569,13 +65570,6 @@ sub build_AddonPropertiesResource_getAddonProperties_get_request( $self, %option
         }
     );
 
-    return $tx
-}
-
-
-sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
-    my $tx = $self->_build_AddonPropertiesResource_getAddonProperties_get_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -65584,6 +65578,13 @@ sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
+    my $tx = $self->_build_AddonPropertiesResource_getAddonProperties_get_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65693,13 +65694,6 @@ sub build_AddonPropertiesResource_deleteAddonProperty_delete_request( $self, %op
         }
     );
 
-    return $tx
-}
-
-
-sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
-    my $tx = $self->_build_AddonPropertiesResource_deleteAddonProperty_delete_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -65708,6 +65702,13 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
+    my $tx = $self->_build_AddonPropertiesResource_deleteAddonProperty_delete_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65835,13 +65836,6 @@ sub build_AddonPropertiesResource_getAddonProperty_get_request( $self, %options 
         }
     );
 
-    return $tx
-}
-
-
-sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
-    my $tx = $self->_build_AddonPropertiesResource_getAddonProperty_get_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -65850,6 +65844,13 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
+    my $tx = $self->_build_AddonPropertiesResource_getAddonProperty_get_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65991,13 +65992,6 @@ sub build_AddonPropertiesResource_putAddonProperty_put_request( $self, %options 
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
-    my $tx = $self->_build_AddonPropertiesResource_putAddonProperty_put_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -66006,6 +66000,13 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
+    my $tx = $self->_build_AddonPropertiesResource_putAddonProperty_put_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -66133,13 +66134,6 @@ sub build_DynamicModulesResource_removeModules_delete_request( $self, %options )
         }
     );
 
-    return $tx
-}
-
-
-sub DynamicModulesResource_removeModules_delete( $self, %options ) {
-    my $tx = $self->_build_DynamicModulesResource_removeModules_delete_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -66148,6 +66142,13 @@ sub DynamicModulesResource_removeModules_delete( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub DynamicModulesResource_removeModules_delete( $self, %options ) {
+    my $tx = $self->_build_DynamicModulesResource_removeModules_delete_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -66225,13 +66226,6 @@ sub build_DynamicModulesResource_getModules_get_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub DynamicModulesResource_getModules_get( $self, %options ) {
-    my $tx = $self->_build_DynamicModulesResource_getModules_get_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -66240,6 +66234,13 @@ sub DynamicModulesResource_getModules_get( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub DynamicModulesResource_getModules_get( $self, %options ) {
+    my $tx = $self->_build_DynamicModulesResource_getModules_get_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -66342,13 +66343,6 @@ sub build_DynamicModulesResource_registerModules_post_request( $self, %options )
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub DynamicModulesResource_registerModules_post( $self, %options ) {
-    my $tx = $self->_build_DynamicModulesResource_registerModules_post_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -66357,6 +66351,13 @@ sub DynamicModulesResource_registerModules_post( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub DynamicModulesResource_registerModules_post( $self, %options ) {
+    my $tx = $self->_build_DynamicModulesResource_registerModules_post_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -66470,13 +66471,6 @@ sub build_AppIssueFieldValueUpdateResource_updateIssueFields_put_request( $self,
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
-    my $tx = $self->_build_AppIssueFieldValueUpdateResource_updateIssueFields_put_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -66485,6 +66479,13 @@ sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
+    my $tx = $self->_build_AppIssueFieldValueUpdateResource_updateIssueFields_put_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -66585,13 +66586,6 @@ sub build_MigrationResource_updateEntityPropertiesValue_put_request( $self, %opt
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub MigrationResource_updateEntityPropertiesValue_put( $self, %options ) {
-    my $tx = $self->_build_MigrationResource_updateEntityPropertiesValue_put_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -66600,6 +66594,13 @@ sub MigrationResource_updateEntityPropertiesValue_put( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub MigrationResource_updateEntityPropertiesValue_put( $self, %options ) {
+    my $tx = $self->_build_MigrationResource_updateEntityPropertiesValue_put_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -66699,13 +66700,6 @@ sub build_MigrationResource_workflowRuleSearch_post_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub MigrationResource_workflowRuleSearch_post( $self, %options ) {
-    my $tx = $self->_build_MigrationResource_workflowRuleSearch_post_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -66714,6 +66708,13 @@ sub MigrationResource_workflowRuleSearch_post( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub MigrationResource_workflowRuleSearch_post( $self, %options ) {
+    my $tx = $self->_build_MigrationResource_workflowRuleSearch_post_request(%options);
 
 
     my $res = Future::Mojo->new();

@@ -267,13 +267,6 @@ sub build_listAssistants_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub listAssistants( $self, %options ) {
-    my $tx = $self->_build_listAssistants_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -282,6 +275,13 @@ sub listAssistants( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub listAssistants( $self, %options ) {
+    my $tx = $self->_build_listAssistants_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -404,13 +404,6 @@ sub build_createAssistant_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createAssistant( $self, %options ) {
-    my $tx = $self->_build_createAssistant_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -419,6 +412,13 @@ sub createAssistant( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createAssistant( $self, %options ) {
+    my $tx = $self->_build_createAssistant_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -504,13 +504,6 @@ sub build_deleteAssistant_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteAssistant( $self, %options ) {
-    my $tx = $self->_build_deleteAssistant_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -519,6 +512,13 @@ sub deleteAssistant( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteAssistant( $self, %options ) {
+    my $tx = $self->_build_deleteAssistant_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -604,13 +604,6 @@ sub build_getAssistant_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getAssistant( $self, %options ) {
-    my $tx = $self->_build_getAssistant_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -619,6 +612,13 @@ sub getAssistant( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getAssistant( $self, %options ) {
+    my $tx = $self->_build_getAssistant_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -759,13 +759,6 @@ sub build_modifyAssistant_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub modifyAssistant( $self, %options ) {
-    my $tx = $self->_build_modifyAssistant_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -774,6 +767,13 @@ sub modifyAssistant( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub modifyAssistant( $self, %options ) {
+    my $tx = $self->_build_modifyAssistant_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -870,13 +870,6 @@ sub build_createSpeech_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createSpeech( $self, %options ) {
-    my $tx = $self->_build_createSpeech_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -885,6 +878,13 @@ sub createSpeech( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createSpeech( $self, %options ) {
+    my $tx = $self->_build_createSpeech_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -989,13 +989,6 @@ sub build_createTranscription_request( $self, %options ) {
         => form => $request,
     );
 
-    return $tx
-}
-
-
-sub createTranscription( $self, %options ) {
-    my $tx = $self->_build_createTranscription_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1004,6 +997,13 @@ sub createTranscription( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createTranscription( $self, %options ) {
+    my $tx = $self->_build_createTranscription_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1100,13 +1100,6 @@ sub build_createTranslation_request( $self, %options ) {
         => form => $request,
     );
 
-    return $tx
-}
-
-
-sub createTranslation( $self, %options ) {
-    my $tx = $self->_build_createTranslation_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1115,6 +1108,13 @@ sub createTranslation( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createTranslation( $self, %options ) {
+    my $tx = $self->_build_createTranslation_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1204,13 +1204,6 @@ sub build_listBatches_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub listBatches( $self, %options ) {
-    my $tx = $self->_build_listBatches_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1219,6 +1212,13 @@ sub listBatches( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub listBatches( $self, %options ) {
+    my $tx = $self->_build_listBatches_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1315,13 +1315,6 @@ sub build_createBatch_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createBatch( $self, %options ) {
-    my $tx = $self->_build_createBatch_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1330,6 +1323,13 @@ sub createBatch( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createBatch( $self, %options ) {
+    my $tx = $self->_build_createBatch_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1415,13 +1415,6 @@ sub build_retrieveBatch_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub retrieveBatch( $self, %options ) {
-    my $tx = $self->_build_retrieveBatch_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1430,6 +1423,13 @@ sub retrieveBatch( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub retrieveBatch( $self, %options ) {
+    my $tx = $self->_build_retrieveBatch_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1515,13 +1515,6 @@ sub build_cancelBatch_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub cancelBatch( $self, %options ) {
-    my $tx = $self->_build_cancelBatch_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1530,6 +1523,13 @@ sub cancelBatch( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub cancelBatch( $self, %options ) {
+    my $tx = $self->_build_cancelBatch_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1723,13 +1723,6 @@ sub build_createChatCompletion_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createChatCompletion( $self, %options ) {
-    my $tx = $self->_build_createChatCompletion_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1738,6 +1731,13 @@ sub createChatCompletion( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createChatCompletion( $self, %options ) {
+    my $tx = $self->_build_createChatCompletion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1914,13 +1914,6 @@ sub build_createCompletion_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createCompletion( $self, %options ) {
-    my $tx = $self->_build_createCompletion_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -1929,6 +1922,13 @@ sub createCompletion( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createCompletion( $self, %options ) {
+    my $tx = $self->_build_createCompletion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2025,13 +2025,6 @@ sub build_createEmbedding_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createEmbedding( $self, %options ) {
-    my $tx = $self->_build_createEmbedding_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2040,6 +2033,13 @@ sub createEmbedding( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createEmbedding( $self, %options ) {
+    my $tx = $self->_build_createEmbedding_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2123,13 +2123,6 @@ sub build_listFiles_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub listFiles( $self, %options ) {
-    my $tx = $self->_build_listFiles_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2138,6 +2131,13 @@ sub listFiles( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub listFiles( $self, %options ) {
+    my $tx = $self->_build_listFiles_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2232,13 +2232,6 @@ sub build_createFile_request( $self, %options ) {
         => form => $request,
     );
 
-    return $tx
-}
-
-
-sub createFile( $self, %options ) {
-    my $tx = $self->_build_createFile_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2247,6 +2240,13 @@ sub createFile( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createFile( $self, %options ) {
+    my $tx = $self->_build_createFile_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2332,13 +2332,6 @@ sub build_deleteFile_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteFile( $self, %options ) {
-    my $tx = $self->_build_deleteFile_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2347,6 +2340,13 @@ sub deleteFile( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteFile( $self, %options ) {
+    my $tx = $self->_build_deleteFile_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2432,13 +2432,6 @@ sub build_retrieveFile_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub retrieveFile( $self, %options ) {
-    my $tx = $self->_build_retrieveFile_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2447,6 +2440,13 @@ sub retrieveFile( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub retrieveFile( $self, %options ) {
+    my $tx = $self->_build_retrieveFile_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2532,13 +2532,6 @@ sub build_downloadFile_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub downloadFile( $self, %options ) {
-    my $tx = $self->_build_downloadFile_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2547,6 +2540,13 @@ sub downloadFile( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub downloadFile( $self, %options ) {
+    my $tx = $self->_build_downloadFile_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2636,13 +2636,6 @@ sub build_listPaginatedFineTuningJobs_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub listPaginatedFineTuningJobs( $self, %options ) {
-    my $tx = $self->_build_listPaginatedFineTuningJobs_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2651,6 +2644,13 @@ sub listPaginatedFineTuningJobs( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub listPaginatedFineTuningJobs( $self, %options ) {
+    my $tx = $self->_build_listPaginatedFineTuningJobs_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2778,13 +2778,6 @@ sub build_createFineTuningJob_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createFineTuningJob( $self, %options ) {
-    my $tx = $self->_build_createFineTuningJob_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2793,6 +2786,13 @@ sub createFineTuningJob( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createFineTuningJob( $self, %options ) {
+    my $tx = $self->_build_createFineTuningJob_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2880,13 +2880,6 @@ sub build_retrieveFineTuningJob_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub retrieveFineTuningJob( $self, %options ) {
-    my $tx = $self->_build_retrieveFineTuningJob_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2895,6 +2888,13 @@ sub retrieveFineTuningJob( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub retrieveFineTuningJob( $self, %options ) {
+    my $tx = $self->_build_retrieveFineTuningJob_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2980,13 +2980,6 @@ sub build_cancelFineTuningJob_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub cancelFineTuningJob( $self, %options ) {
-    my $tx = $self->_build_cancelFineTuningJob_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -2995,6 +2988,13 @@ sub cancelFineTuningJob( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub cancelFineTuningJob( $self, %options ) {
+    my $tx = $self->_build_cancelFineTuningJob_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3095,13 +3095,6 @@ sub build_listFineTuningJobCheckpoints_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub listFineTuningJobCheckpoints( $self, %options ) {
-    my $tx = $self->_build_listFineTuningJobCheckpoints_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3110,6 +3103,13 @@ sub listFineTuningJobCheckpoints( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub listFineTuningJobCheckpoints( $self, %options ) {
+    my $tx = $self->_build_listFineTuningJobCheckpoints_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3210,13 +3210,6 @@ sub build_listFineTuningEvents_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub listFineTuningEvents( $self, %options ) {
-    my $tx = $self->_build_listFineTuningEvents_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3225,6 +3218,13 @@ sub listFineTuningEvents( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub listFineTuningEvents( $self, %options ) {
+    my $tx = $self->_build_listFineTuningEvents_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3333,13 +3333,6 @@ sub build_createImageEdit_request( $self, %options ) {
         => form => $request,
     );
 
-    return $tx
-}
-
-
-sub createImageEdit( $self, %options ) {
-    my $tx = $self->_build_createImageEdit_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3348,6 +3341,13 @@ sub createImageEdit( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createImageEdit( $self, %options ) {
+    my $tx = $self->_build_createImageEdit_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3456,13 +3456,6 @@ sub build_createImage_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createImage( $self, %options ) {
-    my $tx = $self->_build_createImage_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3471,6 +3464,13 @@ sub createImage( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createImage( $self, %options ) {
+    my $tx = $self->_build_createImage_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3571,13 +3571,6 @@ sub build_createImageVariation_request( $self, %options ) {
         => form => $request,
     );
 
-    return $tx
-}
-
-
-sub createImageVariation( $self, %options ) {
-    my $tx = $self->_build_createImageVariation_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3586,6 +3579,13 @@ sub createImageVariation( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createImageVariation( $self, %options ) {
+    my $tx = $self->_build_createImageVariation_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3653,13 +3653,6 @@ sub build_listModels_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub listModels( $self, %options ) {
-    my $tx = $self->_build_listModels_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3668,6 +3661,13 @@ sub listModels( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub listModels( $self, %options ) {
+    my $tx = $self->_build_listModels_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3753,13 +3753,6 @@ sub build_deleteModel_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteModel( $self, %options ) {
-    my $tx = $self->_build_deleteModel_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3768,6 +3761,13 @@ sub deleteModel( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteModel( $self, %options ) {
+    my $tx = $self->_build_deleteModel_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3853,13 +3853,6 @@ sub build_retrieveModel_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub retrieveModel( $self, %options ) {
-    my $tx = $self->_build_retrieveModel_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3868,6 +3861,13 @@ sub retrieveModel( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub retrieveModel( $self, %options ) {
+    my $tx = $self->_build_retrieveModel_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3954,13 +3954,6 @@ sub build_createModeration_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createModeration( $self, %options ) {
-    my $tx = $self->_build_createModeration_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -3969,6 +3962,13 @@ sub createModeration( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createModeration( $self, %options ) {
+    my $tx = $self->_build_createModeration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4057,13 +4057,6 @@ sub build_createThread_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createThread( $self, %options ) {
-    my $tx = $self->_build_createThread_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4072,6 +4065,13 @@ sub createThread( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createThread( $self, %options ) {
+    my $tx = $self->_build_createThread_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4216,13 +4216,6 @@ sub build_createThreadAndRun_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createThreadAndRun( $self, %options ) {
-    my $tx = $self->_build_createThreadAndRun_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4231,6 +4224,13 @@ sub createThreadAndRun( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createThreadAndRun( $self, %options ) {
+    my $tx = $self->_build_createThreadAndRun_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4316,13 +4316,6 @@ sub build_deleteThread_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteThread( $self, %options ) {
-    my $tx = $self->_build_deleteThread_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4331,6 +4324,13 @@ sub deleteThread( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteThread( $self, %options ) {
+    my $tx = $self->_build_deleteThread_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4416,13 +4416,6 @@ sub build_getThread_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getThread( $self, %options ) {
-    my $tx = $self->_build_getThread_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4431,6 +4424,13 @@ sub getThread( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getThread( $self, %options ) {
+    my $tx = $self->_build_getThread_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4533,13 +4533,6 @@ sub build_modifyThread_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub modifyThread( $self, %options ) {
-    my $tx = $self->_build_modifyThread_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4548,6 +4541,13 @@ sub modifyThread( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub modifyThread( $self, %options ) {
+    my $tx = $self->_build_modifyThread_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4666,13 +4666,6 @@ sub build_listMessages_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub listMessages( $self, %options ) {
-    my $tx = $self->_build_listMessages_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4681,6 +4674,13 @@ sub listMessages( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub listMessages( $self, %options ) {
+    my $tx = $self->_build_listMessages_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4791,13 +4791,6 @@ sub build_createMessage_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createMessage( $self, %options ) {
-    my $tx = $self->_build_createMessage_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4806,6 +4799,13 @@ sub createMessage( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createMessage( $self, %options ) {
+    my $tx = $self->_build_createMessage_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4899,13 +4899,6 @@ sub build_deleteMessage_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteMessage( $self, %options ) {
-    my $tx = $self->_build_deleteMessage_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -4914,6 +4907,13 @@ sub deleteMessage( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteMessage( $self, %options ) {
+    my $tx = $self->_build_deleteMessage_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5007,13 +5007,6 @@ sub build_getMessage_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getMessage( $self, %options ) {
-    my $tx = $self->_build_getMessage_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -5022,6 +5015,13 @@ sub getMessage( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getMessage( $self, %options ) {
+    my $tx = $self->_build_getMessage_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5128,13 +5128,6 @@ sub build_modifyMessage_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub modifyMessage( $self, %options ) {
-    my $tx = $self->_build_modifyMessage_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -5143,6 +5136,13 @@ sub modifyMessage( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub modifyMessage( $self, %options ) {
+    my $tx = $self->_build_modifyMessage_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5255,13 +5255,6 @@ sub build_listRuns_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub listRuns( $self, %options ) {
-    my $tx = $self->_build_listRuns_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -5270,6 +5263,13 @@ sub listRuns( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub listRuns( $self, %options ) {
+    my $tx = $self->_build_listRuns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5434,13 +5434,6 @@ sub build_createRun_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createRun( $self, %options ) {
-    my $tx = $self->_build_createRun_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -5449,6 +5442,13 @@ sub createRun( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createRun( $self, %options ) {
+    my $tx = $self->_build_createRun_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5542,13 +5542,6 @@ sub build_getRun_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getRun( $self, %options ) {
-    my $tx = $self->_build_getRun_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -5557,6 +5550,13 @@ sub getRun( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getRun( $self, %options ) {
+    my $tx = $self->_build_getRun_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5663,13 +5663,6 @@ sub build_modifyRun_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub modifyRun( $self, %options ) {
-    my $tx = $self->_build_modifyRun_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -5678,6 +5671,13 @@ sub modifyRun( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub modifyRun( $self, %options ) {
+    my $tx = $self->_build_modifyRun_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5771,13 +5771,6 @@ sub build_cancelRun_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub cancelRun( $self, %options ) {
-    my $tx = $self->_build_cancelRun_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -5786,6 +5779,13 @@ sub cancelRun( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub cancelRun( $self, %options ) {
+    my $tx = $self->_build_cancelRun_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5906,13 +5906,6 @@ sub build_listRunSteps_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub listRunSteps( $self, %options ) {
-    my $tx = $self->_build_listRunSteps_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -5921,6 +5914,13 @@ sub listRunSteps( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub listRunSteps( $self, %options ) {
+    my $tx = $self->_build_listRunSteps_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6022,13 +6022,6 @@ sub build_getRunStep_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getRunStep( $self, %options ) {
-    my $tx = $self->_build_getRunStep_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6037,6 +6030,13 @@ sub getRunStep( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getRunStep( $self, %options ) {
+    my $tx = $self->_build_getRunStep_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6147,13 +6147,6 @@ sub build_submitToolOuputsToRun_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub submitToolOuputsToRun( $self, %options ) {
-    my $tx = $self->_build_submitToolOuputsToRun_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6162,6 +6155,13 @@ sub submitToolOuputsToRun( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub submitToolOuputsToRun( $self, %options ) {
+    my $tx = $self->_build_submitToolOuputsToRun_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6263,13 +6263,6 @@ sub build_listVectorStores_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub listVectorStores( $self, %options ) {
-    my $tx = $self->_build_listVectorStores_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6278,6 +6271,13 @@ sub listVectorStores( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub listVectorStores( $self, %options ) {
+    my $tx = $self->_build_listVectorStores_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6370,13 +6370,6 @@ sub build_createVectorStore_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createVectorStore( $self, %options ) {
-    my $tx = $self->_build_createVectorStore_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6385,6 +6378,13 @@ sub createVectorStore( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createVectorStore( $self, %options ) {
+    my $tx = $self->_build_createVectorStore_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6470,13 +6470,6 @@ sub build_deleteVectorStore_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteVectorStore( $self, %options ) {
-    my $tx = $self->_build_deleteVectorStore_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6485,6 +6478,13 @@ sub deleteVectorStore( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteVectorStore( $self, %options ) {
+    my $tx = $self->_build_deleteVectorStore_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6570,13 +6570,6 @@ sub build_getVectorStore_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getVectorStore( $self, %options ) {
-    my $tx = $self->_build_getVectorStore_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6585,6 +6578,13 @@ sub getVectorStore( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getVectorStore( $self, %options ) {
+    my $tx = $self->_build_getVectorStore_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6691,13 +6691,6 @@ sub build_modifyVectorStore_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub modifyVectorStore( $self, %options ) {
-    my $tx = $self->_build_modifyVectorStore_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6706,6 +6699,13 @@ sub modifyVectorStore( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub modifyVectorStore( $self, %options ) {
+    my $tx = $self->_build_modifyVectorStore_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6804,13 +6804,6 @@ sub build_createVectorStoreFileBatch_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createVectorStoreFileBatch( $self, %options ) {
-    my $tx = $self->_build_createVectorStoreFileBatch_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6819,6 +6812,13 @@ sub createVectorStoreFileBatch( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createVectorStoreFileBatch( $self, %options ) {
+    my $tx = $self->_build_createVectorStoreFileBatch_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6912,13 +6912,6 @@ sub build_getVectorStoreFileBatch_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getVectorStoreFileBatch( $self, %options ) {
-    my $tx = $self->_build_getVectorStoreFileBatch_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -6927,6 +6920,13 @@ sub getVectorStoreFileBatch( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getVectorStoreFileBatch( $self, %options ) {
+    my $tx = $self->_build_getVectorStoreFileBatch_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7020,13 +7020,6 @@ sub build_cancelVectorStoreFileBatch_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub cancelVectorStoreFileBatch( $self, %options ) {
-    my $tx = $self->_build_cancelVectorStoreFileBatch_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -7035,6 +7028,13 @@ sub cancelVectorStoreFileBatch( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub cancelVectorStoreFileBatch( $self, %options ) {
+    my $tx = $self->_build_cancelVectorStoreFileBatch_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7161,13 +7161,6 @@ sub build_listFilesInVectorStoreBatch_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub listFilesInVectorStoreBatch( $self, %options ) {
-    my $tx = $self->_build_listFilesInVectorStoreBatch_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -7176,6 +7169,13 @@ sub listFilesInVectorStoreBatch( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub listFilesInVectorStoreBatch( $self, %options ) {
+    my $tx = $self->_build_listFilesInVectorStoreBatch_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7294,13 +7294,6 @@ sub build_listVectorStoreFiles_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub listVectorStoreFiles( $self, %options ) {
-    my $tx = $self->_build_listVectorStoreFiles_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -7309,6 +7302,13 @@ sub listVectorStoreFiles( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub listVectorStoreFiles( $self, %options ) {
+    my $tx = $self->_build_listVectorStoreFiles_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7407,13 +7407,6 @@ sub build_createVectorStoreFile_request( $self, %options ) {
         => json => $request,
     );
 
-    return $tx
-}
-
-
-sub createVectorStoreFile( $self, %options ) {
-    my $tx = $self->_build_createVectorStoreFile_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -7422,6 +7415,13 @@ sub createVectorStoreFile( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub createVectorStoreFile( $self, %options ) {
+    my $tx = $self->_build_createVectorStoreFile_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7515,13 +7515,6 @@ sub build_deleteVectorStoreFile_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub deleteVectorStoreFile( $self, %options ) {
-    my $tx = $self->_build_deleteVectorStoreFile_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -7530,6 +7523,13 @@ sub deleteVectorStoreFile( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub deleteVectorStoreFile( $self, %options ) {
+    my $tx = $self->_build_deleteVectorStoreFile_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7623,13 +7623,6 @@ sub build_getVectorStoreFile_request( $self, %options ) {
         }
     );
 
-    return $tx
-}
-
-
-sub getVectorStoreFile( $self, %options ) {
-    my $tx = $self->_build_getVectorStoreFile_request(%options);
-
     # validate our request while developing
     if( my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
@@ -7638,6 +7631,13 @@ sub getVectorStoreFile( $self, %options ) {
             say $tx->req->to_string;
         };
     };
+
+    return $tx
+}
+
+
+sub getVectorStoreFile( $self, %options ) {
+    my $tx = $self->_build_getVectorStoreFile_request(%options);
 
 
     my $res = Future::Mojo->new();
