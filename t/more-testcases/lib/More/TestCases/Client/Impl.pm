@@ -56,6 +56,16 @@ has 'schema' => (
     },
 );
 
+has 'validate_requests' => (
+    is => 'rw',
+    default => 1,
+);
+
+has 'validate_responses' => (
+    is => 'rw',
+    default => 1,
+);
+
 has 'openapi' => (
     is => 'lazy',
     default => sub { OpenAPI::Modern->new( openapi_schema => $_[0]->schema, openapi_uri => '' )},
@@ -114,7 +124,8 @@ sub build_withCookie_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;
@@ -200,7 +211,8 @@ sub build_withHeader_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;

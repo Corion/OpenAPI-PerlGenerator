@@ -121,6 +121,14 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
                     my @lines = split /\n/, $fresh;
                     for (@lines) {
                         my $payload = decode_json( $_ );
+                        if(     $self->validate_responses
+                            and my $openapi = $self->openapi ) {
+                            my $results = $openapi->validate_response($payload, { request => $tx->req });
+                            if( $results->{error}) {
+                                say $results;
+                                say $tx->res->to_string;
+                            };
+                        };
                         $queue->push(
 % my $type = $info->{content}->{$ct}->{schema};
                             <%= include('inflated_response', { type => $type, prefix => $prefix, argname => '$payload' } ) %>
@@ -184,6 +192,14 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
 %               } else {
                 my $payload = $resp->body();
 %               }
+                if(     $self->validate_responses
+                    and my $openapi = $self->openapi ) {
+                    my $results = $openapi->validate_response($payload, { request => $tx->req });
+                    if( $results->{error}) {
+                        say $results;
+                        say $tx->res->to_string;
+                    };
+                };
                 $res->done(
 % my $type = $info->{content}->{$ct}->{schema};
                     <%= include('inflated_response', { type => $type, prefix => $prefix, argname => '$payload' } ) %>
@@ -529,7 +545,8 @@ sub build_<%= $method->{name} %>_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;
@@ -604,6 +621,16 @@ has 'schema' => (
             YAML::PP->new( boolean => 'JSON::PP' )->load_file( $fn );
         }
     },
+);
+
+has 'validate_requests' => (
+    is => 'rw',
+    default => 1,
+);
+
+has 'validate_responses' => (
+    is => 'rw',
+    default => 1,
 );
 
 has 'openapi' => (

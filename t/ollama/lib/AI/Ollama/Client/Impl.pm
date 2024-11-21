@@ -76,6 +76,16 @@ has 'schema' => (
     },
 );
 
+has 'validate_requests' => (
+    is => 'rw',
+    default => 1,
+);
+
+has 'validate_responses' => (
+    is => 'rw',
+    default => 1,
+);
+
 has 'openapi' => (
     is => 'lazy',
     default => sub { OpenAPI::Modern->new( openapi_schema => $_[0]->schema, openapi_uri => '' )},
@@ -137,7 +147,8 @@ sub build_checkBlob_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;
@@ -230,7 +241,8 @@ sub build_createBlob_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;
@@ -375,7 +387,8 @@ sub build_generateChatCompletion_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;
@@ -416,6 +429,14 @@ sub generateChatCompletion( $self, %options ) {
                     my @lines = split /\n/, $fresh;
                     for (@lines) {
                         my $payload = decode_json( $_ );
+                        if(     $self->validate_responses
+                            and my $openapi = $self->openapi ) {
+                            my $results = $openapi->validate_response($payload, { request => $tx->req });
+                            if( $results->{error}) {
+                                say $results;
+                                say $tx->res->to_string;
+                            };
+                        };
                         $queue->push(
                             AI::Ollama::GenerateChatCompletionResponse->new($payload),
 
@@ -489,7 +510,8 @@ sub build_copyModel_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;
@@ -594,7 +616,8 @@ sub build_createModel_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;
@@ -635,6 +658,14 @@ sub createModel( $self, %options ) {
                     my @lines = split /\n/, $fresh;
                     for (@lines) {
                         my $payload = decode_json( $_ );
+                        if(     $self->validate_responses
+                            and my $openapi = $self->openapi ) {
+                            my $results = $openapi->validate_response($payload, { request => $tx->req });
+                            if( $results->{error}) {
+                                say $results;
+                                say $tx->res->to_string;
+                            };
+                        };
                         $queue->push(
                             AI::Ollama::CreateModelResponse->new($payload),
 
@@ -706,7 +737,8 @@ sub build_deleteModel_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;
@@ -800,7 +832,8 @@ sub build_generateEmbedding_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;
@@ -828,6 +861,14 @@ sub generateEmbedding( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
+                if(     $self->validate_responses
+                    and my $openapi = $self->openapi ) {
+                    my $results = $openapi->validate_response($payload, { request => $tx->req });
+                    if( $results->{error}) {
+                        say $results;
+                        say $tx->res->to_string;
+                    };
+                };
                 $res->done(
                     AI::Ollama::GenerateEmbeddingResponse->new($payload),
 
@@ -978,7 +1019,8 @@ sub build_generateCompletion_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;
@@ -1019,6 +1061,14 @@ sub generateCompletion( $self, %options ) {
                     my @lines = split /\n/, $fresh;
                     for (@lines) {
                         my $payload = decode_json( $_ );
+                        if(     $self->validate_responses
+                            and my $openapi = $self->openapi ) {
+                            my $results = $openapi->validate_response($payload, { request => $tx->req });
+                            if( $results->{error}) {
+                                say $results;
+                                say $tx->res->to_string;
+                            };
+                        };
                         $queue->push(
                             AI::Ollama::GenerateCompletionResponse->new($payload),
 
@@ -1102,7 +1152,8 @@ sub build_pullModel_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;
@@ -1130,6 +1181,14 @@ sub pullModel( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
+                if(     $self->validate_responses
+                    and my $openapi = $self->openapi ) {
+                    my $results = $openapi->validate_response($payload, { request => $tx->req });
+                    if( $results->{error}) {
+                        say $results;
+                        say $tx->res->to_string;
+                    };
+                };
                 $res->done(
                     AI::Ollama::PullModelResponse->new($payload),
 
@@ -1207,7 +1266,8 @@ sub build_pushModel_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;
@@ -1235,6 +1295,14 @@ sub pushModel( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
+                if(     $self->validate_responses
+                    and my $openapi = $self->openapi ) {
+                    my $results = $openapi->validate_response($payload, { request => $tx->req });
+                    if( $results->{error}) {
+                        say $results;
+                        say $tx->res->to_string;
+                    };
+                };
                 $res->done(
                     AI::Ollama::PushModelResponse->new($payload),
 
@@ -1304,7 +1372,8 @@ sub build_showModelInfo_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;
@@ -1332,6 +1401,14 @@ sub showModelInfo( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
+                if(     $self->validate_responses
+                    and my $openapi = $self->openapi ) {
+                    my $results = $openapi->validate_response($payload, { request => $tx->req });
+                    if( $results->{error}) {
+                        say $results;
+                        say $tx->res->to_string;
+                    };
+                };
                 $res->done(
                     AI::Ollama::ModelInfo->new($payload),
 
@@ -1386,7 +1463,8 @@ sub build_listModels_request( $self, %options ) {
     );
 
     # validate our request while developing
-    if( my $openapi = $self->openapi ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
         my $results = $openapi->validate_request($tx->req);
         if( $results->{error}) {
             say $results;
@@ -1414,6 +1492,14 @@ sub listModels( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
+                if(     $self->validate_responses
+                    and my $openapi = $self->openapi ) {
+                    my $results = $openapi->validate_response($payload, { request => $tx->req });
+                    if( $results->{error}) {
+                        say $results;
+                        say $tx->res->to_string;
+                    };
+                };
                 $res->done(
                     AI::Ollama::ModelsResponse->new($payload),
 
