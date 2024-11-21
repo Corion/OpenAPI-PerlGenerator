@@ -379,13 +379,13 @@ $template{return_types} = <<'__RETURN_TYPES__';
 %     my $info = $elt->{responses}->{ $code };
 %        if( my $content = $info->{content} ) {
 %            for my $ct (sort keys $content->%*) {
-%                if( $content->{$ct}->{schema}) {
+%                if( my $schema = $content->{$ct}->{schema}) {
 %                    my $descriptor = 'a';
 %                    my $class;
-%                    my ($type,$class_info) = resolve_schema( $content->{$ct}->{schema}, $prefix );
+%                    my ($type,$class_info) = resolve_schema( $schema, $prefix );
 %                    if( $type eq 'array' ) {
 %                        $descriptor = 'an array of';
-%                        $class = [join "::", $prefix, $content->{$ct}->{schema}->{items}->{name}];
+%                        $class = [join "::", $prefix, $schema->{items}->{name}];
 %
 %                    } elsif( $type eq 'class' ) {
 %                        $class = [$class_info];
