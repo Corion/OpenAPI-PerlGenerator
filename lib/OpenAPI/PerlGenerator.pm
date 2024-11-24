@@ -175,6 +175,45 @@ sub markdown_to_pod( $self, $str ) {
     return $converter->markdown_to_pod( markdown => $str ) =~ s/\s+\z//r;
 }
 
+sub json_pretty( $self, $str, $indent = '   ' ) {
+    my $pad = '';
+    $str =~ s!\A\s+!!;
+    $str =~ s!\s+\z!!;
+    #use Regexp::Debugger;
+    $str =~ s{(?>\s*(
+                 (?<literal>"(?:[^"]*|\\.)"|[\d.]+)
+                |(?<colon>:)
+                |(?<comma>,)
+                |(?<empty>\{\s*\}|\[\s*\])
+                |(?<open>[\[\{])
+                |(?<close>\]|\})
+            )\s*
+            ) # we never give anything back
+    }{
+        my $res;
+        if   ( defined $+{literal} ) {
+            $res = $+{literal}
+        } elsif( defined $+{colon} ) {
+            $res = " : ";
+        } elsif( defined $+{comma} ) {
+            $res = ",\n$pad";
+        } elsif( defined $+{empty} ) {
+                my $e = $+{empty};
+                $e =~ s/\s+//;
+                $res = "$e";
+        } elsif( defined $+{open} ) {
+                $pad .= $indent;
+                $res = "$+{open}\n$pad";
+        } elsif( defined $+{close} ) {
+                substr( $pad, length($pad)-length($indent), length($indent) ) = '';
+                $res = "\n$pad$+{close}";
+        } else {
+          die "This should not happen, was left with '$&'"
+        }
+        $res
+    }grnsex;
+}
+
 sub map_type( $self, $elt ) {
 
     if( exists $elt->{anyOf}) {
@@ -211,7 +250,11 @@ sub single_line( $self, $str ) {
 }
 
 sub perl_comment( $self, $prefix, $str ) {
-    $str =~ s/(\A|\n)/\n$prefix# /gr;
+    if( $str and $str =~ /\S/ ) {
+        return $str =~ s/(\A|\n)/\n$prefix# /gr;
+    } else {
+        return ''
+    }
 }
 
 =head2 C<< ->find_discriminator >>

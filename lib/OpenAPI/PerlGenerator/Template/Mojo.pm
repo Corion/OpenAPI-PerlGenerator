@@ -727,15 +727,20 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 %     }
 % }
 
-% if(     $elt->{responses}->{200}
-%     and $elt->{responses}->{200}->{content}
-%     and $elt->{responses}->{200}->{content}->{"application/json"}
+% if(     $elt->{responses}
+%     and exists $elt->{responses}->{200}
+%     and exists $elt->{responses}->{200}->{content}
+%     and exists $elt->{responses}->{200}->{content}->{"application/json"}
 %     and $elt->{responses}->{200}->{content}->{"application/json"}->{example} ) {
-%         my $pretty = Cpanel::JSON::XS->new->ascii->pretty->allow_nonref;
 %         my $ex = $elt->{responses}->{200}->{content}->{"application/json"}->{example};
 %         use feature 'try';
 %         my $str;
-%         try { $str=$pretty->encode($pretty->decode( $ex )) } catch($e) { $str = $ex }
+%         if( ref $ex ) {
+%             # Jira has that somewhere in its documentation ?!
+%             # We'll lose the ordering here, but such is life
+%             $ex = Cpanel::JSON::XS->new->ascii->pretty->allow_nonref->encode($ex);
+%         };
+%         try { $str = json_pretty( $ex ) } catch($e) { warn $e; $str = $ex }
 <%= perl_comment( '  ', $str ) %>
 % }
 %

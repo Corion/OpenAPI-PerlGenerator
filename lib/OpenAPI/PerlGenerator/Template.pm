@@ -47,6 +47,14 @@ sub single_line {
     $info->single_line( @_ );
 }
 
+=head2 C<< json_pretty >>
+
+=cut
+
+sub json_pretty {
+    $info->json_pretty( @_ );
+}
+
 =head2 C<< perl_comment >>
 
 =cut
