@@ -175,7 +175,7 @@ sub markdown_to_pod( $self, $str ) {
     return $converter->markdown_to_pod( markdown => $str ) =~ s/\s+\z//r;
 }
 
-sub json_pretty( $self, $str, $indent = '   ' ) {
+sub json_pretty( $self, $str, $indent = '  ' ) {
     my $pad = '';
     $str =~ s!\A\s+!!;
     $str =~ s!\s+\z!!;
