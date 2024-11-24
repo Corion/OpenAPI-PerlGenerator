@@ -195,7 +195,7 @@ sub findPets( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code  ) {
             # unexpected error
@@ -217,11 +217,11 @@ sub findPets( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -320,7 +320,7 @@ sub addPet( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code  ) {
             # unexpected error
@@ -342,11 +342,11 @@ sub addPet( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -452,11 +452,11 @@ sub deletePet( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -560,7 +560,7 @@ sub find_pet_by_id( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code  ) {
             # unexpected error
@@ -582,11 +582,11 @@ sub find_pet_by_id( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 

@@ -337,11 +337,11 @@ sub listAssistants( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -483,11 +483,11 @@ sub createAssistant( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -592,11 +592,11 @@ sub deleteAssistant( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -701,11 +701,11 @@ sub getAssistant( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -865,11 +865,11 @@ sub modifyAssistant( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -985,11 +985,11 @@ sub createSpeech( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -1113,11 +1113,11 @@ sub createTranscription( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -1233,11 +1233,11 @@ sub createTranslation( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -1346,11 +1346,11 @@ sub listBatches( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -1466,11 +1466,11 @@ sub createBatch( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -1575,11 +1575,11 @@ sub retrieveBatch( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -1684,11 +1684,11 @@ sub cancelBatch( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -1901,11 +1901,11 @@ sub createChatCompletion( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2101,11 +2101,11 @@ sub createCompletion( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2221,11 +2221,11 @@ sub createEmbedding( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2328,11 +2328,11 @@ sub listFiles( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2446,11 +2446,11 @@ sub createFile( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2555,11 +2555,11 @@ sub deleteFile( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2664,11 +2664,11 @@ sub retrieveFile( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2773,11 +2773,11 @@ sub downloadFile( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2886,11 +2886,11 @@ sub listPaginatedFineTuningJobs( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3037,11 +3037,11 @@ sub createFineTuningJob( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3148,11 +3148,11 @@ sub retrieveFineTuningJob( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3257,11 +3257,11 @@ sub cancelFineTuningJob( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3381,11 +3381,11 @@ sub listFineTuningJobCheckpoints( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3505,11 +3505,11 @@ sub listFineTuningEvents( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3637,11 +3637,11 @@ sub createImageEdit( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3769,11 +3769,11 @@ sub createImage( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3893,11 +3893,11 @@ sub createImageVariation( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3984,11 +3984,11 @@ sub listModels( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -4093,11 +4093,11 @@ sub deleteModel( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -4202,11 +4202,11 @@ sub retrieveModel( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -4312,11 +4312,11 @@ sub createModeration( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -4424,11 +4424,11 @@ sub createThread( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -4592,11 +4592,11 @@ sub createThreadAndRun( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -4701,11 +4701,11 @@ sub deleteThread( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -4810,11 +4810,11 @@ sub getThread( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -4936,11 +4936,11 @@ sub modifyThread( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5078,11 +5078,11 @@ sub listMessages( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5212,11 +5212,11 @@ sub createMessage( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5329,11 +5329,11 @@ sub deleteMessage( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5446,11 +5446,11 @@ sub getMessage( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5576,11 +5576,11 @@ sub modifyMessage( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5712,11 +5712,11 @@ sub listRuns( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5900,11 +5900,11 @@ sub createRun( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -6017,11 +6017,11 @@ sub getRun( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -6147,11 +6147,11 @@ sub modifyRun( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -6264,11 +6264,11 @@ sub cancelRun( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -6408,11 +6408,11 @@ sub listRunSteps( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -6533,11 +6533,11 @@ sub getRunStep( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -6667,11 +6667,11 @@ sub submitToolOuputsToRun( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -6792,11 +6792,11 @@ sub listVectorStores( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -6908,11 +6908,11 @@ sub createVectorStore( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -7017,11 +7017,11 @@ sub deleteVectorStore( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -7126,11 +7126,11 @@ sub getVectorStore( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -7256,11 +7256,11 @@ sub modifyVectorStore( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -7378,11 +7378,11 @@ sub createVectorStoreFileBatch( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -7495,11 +7495,11 @@ sub getVectorStoreFileBatch( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -7612,11 +7612,11 @@ sub cancelVectorStoreFileBatch( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -7762,11 +7762,11 @@ sub listFilesInVectorStoreBatch( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -7904,11 +7904,11 @@ sub listVectorStoreFiles( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -8026,11 +8026,11 @@ sub createVectorStoreFile( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -8143,11 +8143,11 @@ sub deleteVectorStoreFile( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -8260,11 +8260,11 @@ sub getVectorStoreFile( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 

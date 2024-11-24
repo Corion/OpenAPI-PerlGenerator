@@ -732,7 +732,7 @@ sub getBanner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -754,7 +754,7 @@ sub getBanner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -776,11 +776,11 @@ sub getBanner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -901,7 +901,7 @@ sub setBanner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if an invalid parameter is passed.
@@ -923,7 +923,7 @@ sub setBanner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -945,7 +945,7 @@ sub setBanner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -967,11 +967,11 @@ sub setBanner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -1085,7 +1085,7 @@ sub updateMultipleCustomFieldValues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -1098,7 +1098,7 @@ sub updateMultipleCustomFieldValues( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -1284,7 +1284,7 @@ sub getCustomFieldConfiguration( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -1300,7 +1300,7 @@ sub getCustomFieldConfiguration( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -1418,7 +1418,7 @@ sub updateCustomFieldConfiguration( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -1434,7 +1434,7 @@ sub updateCustomFieldConfiguration( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -1561,7 +1561,7 @@ sub updateCustomFieldValue( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -1574,7 +1574,7 @@ sub updateCustomFieldValue( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -1711,7 +1711,7 @@ sub getApplicationProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -1721,7 +1721,7 @@ sub getApplicationProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -1836,7 +1836,7 @@ sub getAdvancedSettings( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -1846,7 +1846,7 @@ sub getAdvancedSettings( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -1968,7 +1968,7 @@ sub setApplicationProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the data type of the `value` does not match the application property's data type. For example, a string is provided instead of an integer.
@@ -1984,7 +1984,7 @@ sub setApplicationProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2152,7 +2152,7 @@ sub getAllApplicationRoles( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -2162,7 +2162,7 @@ sub getAllApplicationRoles( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2307,7 +2307,7 @@ sub getApplicationRole( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -2320,7 +2320,7 @@ sub getApplicationRole( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2434,7 +2434,7 @@ sub getAttachmentContent( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 206 ) {
             # Returned if the request is successful when a `Range` header is provided and `redirect` is set to `false`.
@@ -2459,7 +2459,7 @@ sub getAttachmentContent( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2558,14 +2558,14 @@ sub getAttachmentMeta( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2697,7 +2697,7 @@ sub getAttachmentThumbnail( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 303 ) {
             # Returned if the request is successful. See the `Location` header for the download URL.
@@ -2716,7 +2716,7 @@ sub getAttachmentThumbnail( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2810,7 +2810,7 @@ sub removeAttachment( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -2942,7 +2942,7 @@ sub getAttachment( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -2955,7 +2955,7 @@ sub getAttachment( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3091,7 +3091,7 @@ sub expandAttachmentForHumans( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -3107,7 +3107,7 @@ sub expandAttachmentForHumans( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3231,7 +3231,7 @@ sub expandAttachmentForMachines( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -3247,7 +3247,7 @@ sub expandAttachmentForMachines( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3417,7 +3417,7 @@ sub getAuditRecords( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -3427,7 +3427,7 @@ sub getAuditRecords( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3550,7 +3550,7 @@ sub getAllSystemAvatars( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -3560,7 +3560,7 @@ sub getAllSystemAvatars( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3738,14 +3738,14 @@ sub getCommentsByIds( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request contains more than 1000 IDs or is empty.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3860,7 +3860,7 @@ sub getCommentPropertyKeys( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the comment ID is invalid.
@@ -3876,7 +3876,7 @@ sub getCommentPropertyKeys( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -3984,7 +3984,7 @@ sub deleteCommentProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -4106,7 +4106,7 @@ sub getCommentProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -4122,7 +4122,7 @@ sub getCommentProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -4239,7 +4239,7 @@ sub setCommentProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the comment property is created.
@@ -4261,7 +4261,7 @@ sub setCommentProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -4277,7 +4277,7 @@ sub setCommentProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -4487,7 +4487,7 @@ sub createComponent( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the user is not found. * `name` is not provided. * `name` is over 255 characters in length. * `projectId` is not provided. * `assigneeType` is an invalid value.
@@ -4503,7 +4503,7 @@ sub createComponent( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -4609,7 +4609,7 @@ sub deleteComponent( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -4772,7 +4772,7 @@ sub getComponent( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -4782,7 +4782,7 @@ sub getComponent( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5062,7 +5062,7 @@ sub updateComponent( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the user is not found. * `assigneeType` is an invalid value. * `name` is over 255 characters in length.
@@ -5078,7 +5078,7 @@ sub updateComponent( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5189,7 +5189,7 @@ sub getComponentRelatedIssues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -5199,7 +5199,7 @@ sub getComponentRelatedIssues( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5309,14 +5309,14 @@ sub getConfiguration( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5417,7 +5417,7 @@ sub getSelectedTimeTrackingImplementation( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 204 ) {
             # Returned if the request is successful but time tracking is disabled.
@@ -5439,7 +5439,7 @@ sub getSelectedTimeTrackingImplementation( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -5449,7 +5449,7 @@ sub getSelectedTimeTrackingImplementation( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5563,7 +5563,7 @@ sub selectTimeTrackingImplementation( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the time tracking provider is not found.
@@ -5576,7 +5576,7 @@ sub selectTimeTrackingImplementation( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5679,7 +5679,7 @@ sub getAvailableTimeTrackingImplementations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -5689,7 +5689,7 @@ sub getAvailableTimeTrackingImplementations( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5790,7 +5790,7 @@ sub getSharedTimeTrackingConfiguration( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -5800,7 +5800,7 @@ sub getSharedTimeTrackingConfiguration( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -5926,7 +5926,7 @@ sub setSharedTimeTrackingConfiguration( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request object is invalid.
@@ -5939,7 +5939,7 @@ sub setSharedTimeTrackingConfiguration( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -6050,7 +6050,7 @@ sub getCustomFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -6060,7 +6060,7 @@ sub getCustomFieldOption( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -6245,7 +6245,7 @@ sub getAllDashboards( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -6267,7 +6267,7 @@ sub getAllDashboards( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -6289,11 +6289,11 @@ sub getAllDashboards( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -6428,7 +6428,7 @@ sub createDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -6450,7 +6450,7 @@ sub createDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -6472,11 +6472,11 @@ sub createDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -6585,7 +6585,7 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # 400 response
@@ -6607,7 +6607,7 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -6629,11 +6629,11 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -6939,7 +6939,7 @@ sub getDashboardsPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `orderBy` is invalid. * `expand` includes an invalid value. * `accountId` and `owner` are provided. * `groupname` and `groupId` are provided.
@@ -6961,7 +6961,7 @@ sub getDashboardsPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # 401 response
@@ -6983,11 +6983,11 @@ sub getDashboardsPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -7150,7 +7150,7 @@ sub getAllGadgets( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -7175,11 +7175,11 @@ sub getAllGadgets( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -7331,7 +7331,7 @@ sub addGadget( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -7353,7 +7353,7 @@ sub addGadget( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -7378,11 +7378,11 @@ sub addGadget( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -7496,7 +7496,7 @@ sub removeGadget( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -7521,11 +7521,11 @@ sub removeGadget( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -7661,7 +7661,7 @@ sub updateGadget( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -7683,7 +7683,7 @@ sub updateGadget( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -7708,11 +7708,11 @@ sub updateGadget( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -7835,7 +7835,7 @@ sub getDashboardItemPropertyKeys( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -7845,7 +7845,7 @@ sub getDashboardItemPropertyKeys( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -7961,7 +7961,7 @@ sub deleteDashboardItemProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -8091,7 +8091,7 @@ sub getDashboardItemProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -8101,7 +8101,7 @@ sub getDashboardItemProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -8226,7 +8226,7 @@ sub setDashboardItemProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the dashboard item property is created.
@@ -8248,7 +8248,7 @@ sub setDashboardItemProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * Request is invalid * Or if all of these conditions are met in the request: * The dashboard item has a spec URI and no complete module key * The value of propertyKey is equal to "config" * The request body contains a JSON object whose keys and values are not strings.
@@ -8270,7 +8270,7 @@ sub setDashboardItemProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -8283,7 +8283,7 @@ sub setDashboardItemProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -8392,7 +8392,7 @@ sub deleteDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -8414,11 +8414,11 @@ sub deleteDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -8540,7 +8540,7 @@ sub getDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # 400 response
@@ -8562,7 +8562,7 @@ sub getDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -8584,14 +8584,14 @@ sub getDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the dashboard is not found or the dashboard is not owned by or shared with the user.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -8739,7 +8739,7 @@ sub updateDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -8761,7 +8761,7 @@ sub updateDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -8783,7 +8783,7 @@ sub updateDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the dashboard is not found or the dashboard is not owned by the user.
@@ -8805,11 +8805,11 @@ sub updateDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -8955,7 +8955,7 @@ sub copyDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -8977,7 +8977,7 @@ sub copyDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -8999,7 +8999,7 @@ sub copyDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the dashboard is not found or the dashboard is not owned by or shared with the user.
@@ -9021,11 +9021,11 @@ sub copyDashboard( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -9131,7 +9131,7 @@ sub getEvents( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -9141,7 +9141,7 @@ sub getEvents( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -9331,7 +9331,7 @@ sub analyseExpression( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # 400 response
@@ -9353,7 +9353,7 @@ sub analyseExpression( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -9378,11 +9378,11 @@ sub analyseExpression( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -9540,7 +9540,7 @@ sub evaluateJiraExpression( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the request is invalid, that is: * invalid data is provided, such as a request including issue ID and key. * the expression is invalid and can not be parsed. * evaluation fails at runtime. This may happen for various reasons. For example, accessing a property on a null object (such as the expression `issue.id` where `issue` is `null`). In this case an error message is provided.
@@ -9562,7 +9562,7 @@ sub evaluateJiraExpression( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -9587,11 +9587,11 @@ sub evaluateJiraExpression( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -9720,14 +9720,14 @@ sub getFields( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -10069,14 +10069,14 @@ sub createCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the user does not have permission to create custom fields. * any of the request object properties have invalid or missing values.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -10324,7 +10324,7 @@ sub getFieldsPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -10346,7 +10346,7 @@ sub getFieldsPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -10371,11 +10371,11 @@ sub getFieldsPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -10562,7 +10562,7 @@ sub getTrashedFieldsPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -10584,7 +10584,7 @@ sub getTrashedFieldsPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -10609,11 +10609,11 @@ sub getTrashedFieldsPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -10848,7 +10848,7 @@ sub updateCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -10870,7 +10870,7 @@ sub updateCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -10895,7 +10895,7 @@ sub updateCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found.
@@ -10917,11 +10917,11 @@ sub updateCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -11083,7 +11083,7 @@ sub getContextsForField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -11108,7 +11108,7 @@ sub getContextsForField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field was not found.
@@ -11130,11 +11130,11 @@ sub getContextsForField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -11268,7 +11268,7 @@ sub createCustomFieldContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -11299,11 +11299,11 @@ sub createCustomFieldContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -11453,7 +11453,7 @@ sub getDefaultValues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -11478,7 +11478,7 @@ sub getDefaultValues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found.
@@ -11500,11 +11500,11 @@ sub getDefaultValues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -11620,7 +11620,7 @@ sub setDefaultValues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -11642,7 +11642,7 @@ sub setDefaultValues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -11667,7 +11667,7 @@ sub setDefaultValues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field, a context, an option, or a cascading option is not found.
@@ -11689,11 +11689,11 @@ sub setDefaultValues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -11841,7 +11841,7 @@ sub getIssueTypeMappingsForContexts( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -11866,11 +11866,11 @@ sub getIssueTypeMappingsForContexts( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -12028,7 +12028,7 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -12050,7 +12050,7 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -12075,7 +12075,7 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field, project, or issue type is not found.
@@ -12097,11 +12097,11 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -12245,7 +12245,7 @@ sub getProjectContextMapping( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -12270,7 +12270,7 @@ sub getProjectContextMapping( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found.
@@ -12292,11 +12292,11 @@ sub getProjectContextMapping( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -12409,7 +12409,7 @@ sub deleteCustomFieldContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -12431,7 +12431,7 @@ sub deleteCustomFieldContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -12456,7 +12456,7 @@ sub deleteCustomFieldContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field or the context is not found.
@@ -12478,11 +12478,11 @@ sub deleteCustomFieldContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -12612,7 +12612,7 @@ sub updateCustomFieldContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -12634,7 +12634,7 @@ sub updateCustomFieldContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -12659,7 +12659,7 @@ sub updateCustomFieldContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field or the context is not found.
@@ -12681,11 +12681,11 @@ sub updateCustomFieldContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -12811,7 +12811,7 @@ sub addIssueTypesToContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -12833,7 +12833,7 @@ sub addIssueTypesToContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -12858,7 +12858,7 @@ sub addIssueTypesToContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field, context, or one or more issue types are not found.
@@ -12880,7 +12880,7 @@ sub addIssueTypesToContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 409 ) {
             # Returned if the issue type is a sub-task, but sub-tasks are disabled in Jira settings.
@@ -12902,11 +12902,11 @@ sub addIssueTypesToContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -13032,7 +13032,7 @@ sub removeIssueTypesFromContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -13054,7 +13054,7 @@ sub removeIssueTypesFromContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -13079,7 +13079,7 @@ sub removeIssueTypesFromContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field, context, or one or more issue types are not found.
@@ -13101,11 +13101,11 @@ sub removeIssueTypesFromContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -13273,7 +13273,7 @@ sub getOptionsForContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -13295,7 +13295,7 @@ sub getOptionsForContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -13320,7 +13320,7 @@ sub getOptionsForContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found or the context doesn't match the custom field.
@@ -13342,11 +13342,11 @@ sub getOptionsForContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -13494,7 +13494,7 @@ sub createCustomFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -13516,7 +13516,7 @@ sub createCustomFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -13541,7 +13541,7 @@ sub createCustomFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found or the context doesn't match the custom field.
@@ -13563,11 +13563,11 @@ sub createCustomFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -13714,7 +13714,7 @@ sub updateCustomFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -13736,7 +13736,7 @@ sub updateCustomFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -13761,7 +13761,7 @@ sub updateCustomFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the field, context, or one or more options is not found.
@@ -13783,11 +13783,11 @@ sub updateCustomFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -13921,7 +13921,7 @@ sub reorderCustomFieldOptions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -13943,7 +13943,7 @@ sub reorderCustomFieldOptions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -13968,7 +13968,7 @@ sub reorderCustomFieldOptions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the field, the context, or one or more of the options is not found..
@@ -13990,11 +13990,11 @@ sub reorderCustomFieldOptions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -14117,7 +14117,7 @@ sub deleteCustomFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -14142,7 +14142,7 @@ sub deleteCustomFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the field, the context, or the option is not found.
@@ -14164,11 +14164,11 @@ sub deleteCustomFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -14294,7 +14294,7 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -14316,7 +14316,7 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -14341,7 +14341,7 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field, context, or project is not found.
@@ -14363,11 +14363,11 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -14493,7 +14493,7 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -14515,7 +14515,7 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -14540,7 +14540,7 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field, context, or one or more projects are not found.
@@ -14562,11 +14562,11 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -14700,7 +14700,7 @@ sub getContextsForFieldDeprecated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -14710,7 +14710,7 @@ sub getContextsForFieldDeprecated( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -14855,7 +14855,7 @@ sub getScreensForField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -14865,7 +14865,7 @@ sub getScreensForField( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -15045,7 +15045,7 @@ sub getAllIssueFieldOptions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the field is not found or does not support options.
@@ -15055,7 +15055,7 @@ sub getAllIssueFieldOptions( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -15231,7 +15231,7 @@ sub createIssueFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the option is invalid.
@@ -15244,7 +15244,7 @@ sub createIssueFieldOption( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -15409,7 +15409,7 @@ sub getSelectableIssueFieldOptions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -15419,7 +15419,7 @@ sub getSelectableIssueFieldOptions( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -15584,7 +15584,7 @@ sub getVisibleIssueFieldOptions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -15594,7 +15594,7 @@ sub getVisibleIssueFieldOptions( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -15721,7 +15721,7 @@ sub deleteIssueFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the request is not authenticated as a Jira administrator or the app that provided the field.
@@ -15734,7 +15734,7 @@ sub deleteIssueFieldOption( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -15897,7 +15897,7 @@ sub getIssueFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the field is not found or does not support options.
@@ -15910,7 +15910,7 @@ sub getIssueFieldOption( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -16098,7 +16098,7 @@ sub updateIssueFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the option is invalid, or the *ID* in the request object does not match the *optionId* parameter.
@@ -16111,7 +16111,7 @@ sub updateIssueFieldOption( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -16265,7 +16265,7 @@ sub replaceIssueFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -16290,14 +16290,14 @@ sub replaceIssueFieldOption( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the field is not found or does not support options, or the options to be replaced are not found.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -16407,7 +16407,7 @@ sub deleteCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if any of these are true: * The custom field is locked. * The custom field is used in a issue security scheme or a permission scheme. * The custom field ID format is incorrect.
@@ -16429,7 +16429,7 @@ sub deleteCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -16451,7 +16451,7 @@ sub deleteCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -16473,7 +16473,7 @@ sub deleteCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found.
@@ -16495,7 +16495,7 @@ sub deleteCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 409 ) {
             # Returned if a task to delete the custom field is running.
@@ -16517,11 +16517,33 @@ sub deleteCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
+            }
+        } elsif( $resp->code == 409 ) {
+            # Returned if a task to delete the custom field is running.
+            my $ct = $resp->headers->content_type;
+            $ct =~ s/;\s+.*//;
+            if( $ct eq 'application/json' ) {
+                my $payload = $resp->json();
+                if(     $self->validate_responses
+                    and my $openapi = $self->openapi ) {
+                    my $results = $openapi->validate_response($payload, { request => $tx->req });
+                    if( $results->{error}) {
+                        say $results;
+                        say $tx->res->to_string;
+                    };
+                };
+                $res->done(
+                    JIRA::API::ErrorCollection->new($payload),
+
+                );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -16630,7 +16652,7 @@ sub restoreCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -16652,7 +16674,7 @@ sub restoreCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -16674,7 +16696,7 @@ sub restoreCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -16696,7 +16718,7 @@ sub restoreCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the custom field is not found.
@@ -16718,11 +16740,212 @@ sub restoreCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
+        }
+    })->retain;
+
+    # Start our transaction
+    $tx = $self->ua->start_p($tx)->then(sub($tx) {
+        $r1->resolve( $tx );
+        undef $r1;
+    })->catch(sub($err) {
+        $r1->fail( $err => $tx );
+        undef $r1;
+    });
+
+    return $res
+}
+
+=head2 C<< build_restoreCustomField_request >>
+
+Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
+
+=head2 C<< restoreCustomField >>
+
+  my $res = $client->restoreCustomField(
+      'id' => '...',
+  )->get;
+
+Restore custom field from trash
+
+=head3 Parameters
+
+=over 4
+
+=item B<< id >>
+
+The ID of a custom field.
+
+=back
+
+
+Returns Hashref on success.
+Returns a L<< JIRA::API::ErrorCollection >> on error.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 401.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 403.
+Returns a L<< JIRA::API::ErrorCollection >> on HTTP code 404.
+
+=cut
+
+sub build_restoreCustomField_request( $self, %options ) {
+    croak "Missing required parameter 'id'"
+        unless exists $options{ 'id' };
+
+    my $method = 'POST';
+    my $template = URI::Template->new( '/rest/api/3/field/{id}/restore' );
+    my $path = $template->process(
+              'id' => delete $options{'id'},
+    );
+    my $url = Mojo::URL->new( $self->server . $path );
+
+    my $tx = $self->ua->build_tx(
+        $method => $url,
+        {
+            'Accept' => 'application/json',
+        }
+    );
+
+    # validate our request while developing
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
+    };
+
+    return $tx
+}
+
+
+sub restoreCustomField( $self, %options ) {
+    my $tx = $self->_build_restoreCustomField_request(%options);
+
+
+    my $res = Future::Mojo->new();
+
+    my $r1 = Future::Mojo->new();
+    $r1->then( sub( $tx ) {
+        my $resp = $tx->res;
+        # Should we validate using OpenAPI::Modern here?!
+        if( $resp->code == 200 ) {
+            # Returned if the request is successful.
+            my $ct = $resp->headers->content_type;
+            $ct =~ s/;\s+.*//;
+            if( $ct eq 'application/json' ) {
+                my $payload = $resp->json();
+                if(     $self->validate_responses
+                    and my $openapi = $self->openapi ) {
+                    my $results = $openapi->validate_response($payload, { request => $tx->req });
+                    if( $results->{error}) {
+                        say $results;
+                        say $tx->res->to_string;
+                    };
+                };
+                $res->done(
+                    $payload
+
+                );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
+            }
+        } elsif( $resp->code == 400 ) {
+            # Returned if the request is invalid.
+            my $ct = $resp->headers->content_type;
+            $ct =~ s/;\s+.*//;
+            if( $ct eq 'application/json' ) {
+                my $payload = $resp->json();
+                if(     $self->validate_responses
+                    and my $openapi = $self->openapi ) {
+                    my $results = $openapi->validate_response($payload, { request => $tx->req });
+                    if( $results->{error}) {
+                        say $results;
+                        say $tx->res->to_string;
+                    };
+                };
+                $res->done(
+                    JIRA::API::ErrorCollection->new($payload),
+
+                );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
+            }
+        } elsif( $resp->code == 401 ) {
+            # Returned if the authentication credentials are incorrect or missing.
+            my $ct = $resp->headers->content_type;
+            $ct =~ s/;\s+.*//;
+            if( $ct eq 'application/json' ) {
+                my $payload = $resp->json();
+                if(     $self->validate_responses
+                    and my $openapi = $self->openapi ) {
+                    my $results = $openapi->validate_response($payload, { request => $tx->req });
+                    if( $results->{error}) {
+                        say $results;
+                        say $tx->res->to_string;
+                    };
+                };
+                $res->done(
+                    JIRA::API::ErrorCollection->new($payload),
+
+                );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
+            }
+        } elsif( $resp->code == 403 ) {
+            # Returned if the user does not have the necessary permission.
+            my $ct = $resp->headers->content_type;
+            $ct =~ s/;\s+.*//;
+            if( $ct eq 'application/json' ) {
+                my $payload = $resp->json();
+                if(     $self->validate_responses
+                    and my $openapi = $self->openapi ) {
+                    my $results = $openapi->validate_response($payload, { request => $tx->req });
+                    if( $results->{error}) {
+                        say $results;
+                        say $tx->res->to_string;
+                    };
+                };
+                $res->done(
+                    JIRA::API::ErrorCollection->new($payload),
+
+                );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
+            }
+        } elsif( $resp->code == 404 ) {
+            # Returned if the custom field is not found.
+            my $ct = $resp->headers->content_type;
+            $ct =~ s/;\s+.*//;
+            if( $ct eq 'application/json' ) {
+                my $payload = $resp->json();
+                if(     $self->validate_responses
+                    and my $openapi = $self->openapi ) {
+                    my $results = $openapi->validate_response($payload, { request => $tx->req });
+                    if( $results->{error}) {
+                        say $results;
+                        say $tx->res->to_string;
+                    };
+                };
+                $res->done(
+                    JIRA::API::ErrorCollection->new($payload),
+
+                );
+            } else {
+                # Unknown/unhandled content type
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
+            }
+        } else {
+            # An unknown/unhandled response, likely an error
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -16831,7 +17054,7 @@ sub trashCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -16853,7 +17076,6 @@ sub trashCustomField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -17071,7 +17293,7 @@ sub getAllFieldConfigurations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -17081,7 +17303,7 @@ sub getAllFieldConfigurations( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -17198,7 +17420,7 @@ sub createFieldConfiguration( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -17211,7 +17433,7 @@ sub createFieldConfiguration( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -17316,7 +17538,7 @@ sub deleteFieldConfiguration( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -17332,7 +17554,7 @@ sub deleteFieldConfiguration( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -17454,7 +17676,7 @@ sub updateFieldConfiguration( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -17470,7 +17692,7 @@ sub updateFieldConfiguration( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -17611,7 +17833,7 @@ sub getFieldConfigurationItems( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -17624,7 +17846,7 @@ sub getFieldConfigurationItems( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -17742,7 +17964,7 @@ sub updateFieldConfigurationItems( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -17758,7 +17980,7 @@ sub updateFieldConfigurationItems( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -17898,7 +18120,7 @@ sub getAllFieldConfigurationSchemes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -17911,7 +18133,7 @@ sub getAllFieldConfigurationSchemes( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -18021,7 +18243,7 @@ sub createFieldConfigurationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -18043,7 +18265,7 @@ sub createFieldConfigurationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -18068,11 +18290,11 @@ sub createFieldConfigurationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -18222,7 +18444,7 @@ sub getFieldConfigurationSchemeMappings( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -18238,7 +18460,7 @@ sub getFieldConfigurationSchemeMappings( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -18384,7 +18606,7 @@ sub getFieldConfigurationSchemeProjectMapping( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -18397,7 +18619,7 @@ sub getFieldConfigurationSchemeProjectMapping( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -18507,7 +18729,7 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the project is not a classic project.
@@ -18529,7 +18751,7 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -18554,7 +18776,7 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the project is missing.
@@ -18576,11 +18798,11 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -18685,7 +18907,7 @@ sub deleteFieldConfigurationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -18701,7 +18923,7 @@ sub deleteFieldConfigurationScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -18823,7 +19045,7 @@ sub updateFieldConfigurationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -18845,7 +19067,7 @@ sub updateFieldConfigurationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -18870,7 +19092,7 @@ sub updateFieldConfigurationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the field configuration scheme is not found.
@@ -18892,11 +19114,11 @@ sub updateFieldConfigurationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -19014,7 +19236,7 @@ sub setFieldConfigurationSchemeMapping( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -19030,7 +19252,7 @@ sub setFieldConfigurationSchemeMapping( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -19152,7 +19374,7 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -19174,7 +19396,7 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -19196,7 +19418,7 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -19218,7 +19440,7 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the field configuration scheme or the issue types are not found.
@@ -19240,11 +19462,11 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -19362,11 +19584,11 @@ sub getFilters( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -19591,7 +19813,7 @@ sub createFilter( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request object is invalid. For example, the `name` is not unique or the project ID is not specified for a project role share permission.
@@ -19601,7 +19823,7 @@ sub createFilter( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -19699,14 +19921,14 @@ sub getDefaultShareScope( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -19836,7 +20058,7 @@ sub setDefaultShareScope( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if an invalid scope is set.
@@ -19846,7 +20068,7 @@ sub setDefaultShareScope( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -20071,14 +20293,14 @@ sub getFavouriteFilters( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -20309,14 +20531,14 @@ sub getMyFilters( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -20808,7 +21030,7 @@ sub getFiltersPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `owner` and `accountId` are provided. * `expand` includes an invalid value. * `orderBy` is invalid. * `id` identifies more than 200 filter IDs.
@@ -20830,14 +21052,14 @@ sub getFiltersPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -20931,7 +21153,7 @@ sub deleteFilter( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -21102,7 +21324,7 @@ sub getFilter( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the filter is not found or the user does not have permission to view it.
@@ -21112,7 +21334,7 @@ sub getFilter( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -21348,7 +21570,7 @@ sub updateFilter( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request object is invalid. For example, the `name` is not unique or the project ID is not specified for a project role share permission.
@@ -21358,7 +21580,7 @@ sub updateFilter( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -21452,7 +21674,7 @@ sub resetColumns( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -21570,7 +21792,7 @@ sub getColumns( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the user does not have permission to view the filter.
@@ -21583,7 +21805,7 @@ sub getColumns( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -21693,7 +21915,7 @@ sub setColumns( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * a non-navigable field is set as a column. * the user does not have permission to view the filter.
@@ -21703,7 +21925,7 @@ sub setColumns( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -22040,14 +22262,14 @@ sub setFavouriteForFilter( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the filter is not found. * the user does not have permission to favorite the filter.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -22165,7 +22387,7 @@ sub changeFilterOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned when: * The new owner of the filter owns a filter with the same name. * An attempt is made to change owner of the default filter.
@@ -22178,7 +22400,7 @@ sub changeFilterOwner( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -22410,7 +22632,7 @@ sub getSharePermissions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -22420,7 +22642,7 @@ sub getSharePermissions( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -22597,7 +22819,7 @@ sub addSharePermission( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the request object is invalid. For example, it contains an invalid type, the ID does not match the type, or the project or group is not found. * the user does not own the filter. * the user does not have the required permissions.
@@ -22610,7 +22832,7 @@ sub addSharePermission( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -22712,7 +22934,7 @@ sub deleteSharePermission( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -22831,7 +23053,7 @@ sub getSharePermission( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -22841,7 +23063,7 @@ sub getSharePermission( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -22957,7 +23179,7 @@ sub removeGroup( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -23074,7 +23296,7 @@ sub getGroup( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the group name is not specified.
@@ -23090,7 +23312,7 @@ sub getGroup( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -23196,7 +23418,7 @@ sub createGroup( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if group name is not specified or the group name is in use.
@@ -23209,7 +23431,7 @@ sub createGroup( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -23360,7 +23582,7 @@ sub bulkGetGroups( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -23388,7 +23610,7 @@ sub bulkGetGroups( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 500 ) {
             # Returned if the group with the given access level can't be retrieved.
@@ -23410,11 +23632,11 @@ sub bulkGetGroups( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -23579,7 +23801,7 @@ sub getUsersFromGroup( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the group name is not specified.
@@ -23595,7 +23817,7 @@ sub getUsersFromGroup( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -23716,7 +23938,7 @@ sub removeUserFromGroup( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -23844,7 +24066,7 @@ sub addUserToGroup( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `groupname` is not provided. * `accountId` is missing.
@@ -23860,7 +24082,7 @@ sub addUserToGroup( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -24019,11 +24241,11 @@ sub findGroups( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -24212,7 +24434,7 @@ sub findUsersAndGroups( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the query parameter is not provided.
@@ -24228,7 +24450,7 @@ sub findUsersAndGroups( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -24343,14 +24565,14 @@ sub getLicense( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -24485,7 +24707,7 @@ sub createIssue( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request: * is missing required fields. * contains invalid field values. * contains fields that cannot be set for the issue type. * is by a user who does not have the necessary permission. * is to create a subtype in a project different that of the parent issue. * is for a subtask when the option to create subtasks is disabled. * is invalid for any other reason.
@@ -24507,7 +24729,7 @@ sub createIssue( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -24529,7 +24751,7 @@ sub createIssue( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -24551,11 +24773,11 @@ sub createIssue( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -24660,7 +24882,7 @@ sub createIssues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if all requests are invalid. Requests may be unsuccessful when they: * are missing required fields. * contain invalid field values. * contain fields that cannot be set for the issue type. * are by a user who does not have the necessary permission. * are to create a subtype in a project different that of the parent issue. * is for a subtask when the option to create subtasks is disabled. * are invalid for any other reason.
@@ -24682,14 +24904,14 @@ sub createIssues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -24855,14 +25077,14 @@ sub getCreateIssueMeta( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -24995,14 +25217,14 @@ sub getIssuePickerResource( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -25116,7 +25338,7 @@ sub bulkSetIssuesPropertiesList( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -25138,11 +25360,11 @@ sub bulkSetIssuesPropertiesList( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -25253,7 +25475,7 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -25275,7 +25497,7 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Return if the user does not have the necessary permission.
@@ -25297,11 +25519,11 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -25427,7 +25649,7 @@ sub bulkDeleteIssueProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -25449,11 +25671,11 @@ sub bulkDeleteIssueProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -25583,7 +25805,7 @@ sub bulkSetIssueProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -25605,11 +25827,11 @@ sub bulkSetIssueProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -25724,14 +25946,14 @@ sub getIsWatchingIssueBulk( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -25840,7 +26062,7 @@ sub deleteIssue( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -26342,7 +26564,7 @@ sub getIssue( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -26352,7 +26574,7 @@ sub getIssue( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -26507,7 +26729,7 @@ sub editIssue( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the request body is missing. * the user does not have the necessary permission to edit one or more fields. * the request includes one or more fields that are not found or are not associated with the issue's edit screen. * the request includes an invalid transition.
@@ -26523,7 +26745,7 @@ sub editIssue( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -26712,7 +26934,7 @@ sub assignIssue( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the user is not found. * `name`, `key`, or `accountId` is missing. * more than one of `name`, `key`, and `accountId` are provided.
@@ -26725,7 +26947,7 @@ sub assignIssue( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -26884,7 +27106,7 @@ sub addAttachment( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -26897,7 +27119,7 @@ sub addAttachment( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -27087,14 +27309,14 @@ sub getChangeLogs( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permission to view it.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -27279,7 +27501,7 @@ sub getChangeLogsByIds( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -27289,7 +27511,7 @@ sub getChangeLogsByIds( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -27468,7 +27690,7 @@ sub getComments( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `orderBy` is set to a value other than *created*.
@@ -27481,7 +27703,7 @@ sub getComments( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -27652,7 +27874,7 @@ sub addComment( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -27665,7 +27887,7 @@ sub addComment( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -27773,7 +27995,7 @@ sub deleteComment( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -27935,7 +28157,7 @@ sub getComment( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -27945,7 +28167,7 @@ sub getComment( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -28176,7 +28398,7 @@ sub updateComment( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the user does not have permission to edit the comment or the request is invalid.
@@ -28189,7 +28411,7 @@ sub updateComment( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -28336,7 +28558,7 @@ sub getEditIssueMeta( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -28349,7 +28571,7 @@ sub getEditIssueMeta( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -28483,7 +28705,7 @@ sub notify( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the recipient is the same as the calling user. * the recipient is invalid. For example, the recipient is set to the assignee, but the issue is unassigned. * the request is invalid. For example, required fields are missing or have invalid values.
@@ -28496,7 +28718,7 @@ sub notify( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -28611,14 +28833,14 @@ sub getIssuePropertyKeys( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue is not found or the user does not have permissions to view the issue.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -28720,7 +28942,7 @@ sub deleteIssueProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -28842,7 +29064,7 @@ sub getIssueProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -28852,7 +29074,7 @@ sub getIssueProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -28969,7 +29191,7 @@ sub setIssueProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the issue property is created.
@@ -28991,7 +29213,7 @@ sub setIssueProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -29007,7 +29229,7 @@ sub setIssueProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -29118,7 +29340,7 @@ sub deleteRemoteIssueLinkByGlobalId( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -29290,7 +29512,7 @@ sub getRemoteIssueLinks( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -29306,7 +29528,7 @@ sub getRemoteIssueLinks( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -29447,7 +29669,7 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the remote issue link is created.
@@ -29469,7 +29691,7 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -29491,7 +29713,7 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -29504,7 +29726,7 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -29612,7 +29834,7 @@ sub deleteRemoteIssueLinkById( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -29754,7 +29976,7 @@ sub getRemoteIssueLinkById( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the link ID is invalid or the remote issue link does not belong to the issue.
@@ -29770,7 +29992,7 @@ sub getRemoteIssueLinkById( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -29912,7 +30134,7 @@ sub updateRemoteIssueLink( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the link ID is invalid. * the remote issue link does not belong to the issue. * the request body is invalid.
@@ -29934,7 +30156,7 @@ sub updateRemoteIssueLink( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -29947,7 +30169,7 @@ sub updateRemoteIssueLink( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -30199,7 +30421,7 @@ sub getTransitions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -30209,7 +30431,7 @@ sub getTransitions( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -30343,7 +30565,7 @@ sub doTransition( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * no transition is specified. * the user does not have permission to transition the issue. * a field that isn't included on the transition screen is defined in `fields` or `update`. * a field is specified in both `fields` and `update`. * the request is invalid for any other reason.
@@ -30356,7 +30578,7 @@ sub doTransition( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -30450,7 +30672,7 @@ sub removeVote( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -30579,7 +30801,7 @@ sub getVotes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -30589,7 +30811,7 @@ sub getVotes( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -30694,7 +30916,7 @@ sub addVote( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -30707,7 +30929,7 @@ sub addVote( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -30822,7 +31044,7 @@ sub removeWatcher( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -30942,7 +31164,7 @@ sub getIssueWatchers( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -30952,7 +31174,7 @@ sub getIssueWatchers( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -31060,7 +31282,7 @@ sub addWatcher( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -31076,7 +31298,7 @@ sub addWatcher( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -31264,7 +31486,7 @@ sub getIssueWorklog( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -31274,7 +31496,7 @@ sub getIssueWorklog( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -31503,7 +31725,7 @@ sub addWorklog( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `adjustEstimate` is set to `new` but `newEstimate` is not provided or is invalid. * `adjustEstimate` is set to `manual` but `reduceBy` is not provided or is invalid. * the user does not have permission to add the worklog. * the request JSON is malformed.
@@ -31516,7 +31738,7 @@ sub addWorklog( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -31678,7 +31900,7 @@ sub deleteWorklog( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -31845,7 +32067,7 @@ sub getWorklog( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -31855,7 +32077,7 @@ sub getWorklog( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -32124,7 +32346,7 @@ sub updateWorklog( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `adjustEstimate` is set to `new` but `newEstimate` is not provided or is invalid. * the user does not have permission to update the worklog. * the request JSON is malformed.
@@ -32137,7 +32359,7 @@ sub updateWorklog( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -32260,7 +32482,7 @@ sub getWorklogPropertyKeys( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the worklog ID is invalid.
@@ -32273,7 +32495,7 @@ sub getWorklogPropertyKeys( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -32389,7 +32611,7 @@ sub deleteWorklogProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -32519,7 +32741,7 @@ sub getWorklogProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the worklog ID is invalid.
@@ -32532,7 +32754,7 @@ sub getWorklogProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -32657,7 +32879,7 @@ sub setWorklogProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the worklog property is created.
@@ -32679,7 +32901,7 @@ sub setWorklogProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the worklog ID is invalid.
@@ -32695,7 +32917,7 @@ sub setWorklogProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -32827,7 +33049,7 @@ sub linkIssues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the comment is not created. The response contains an error message indicating why the comment wasn't created. The issue link is also not created.
@@ -32840,7 +33062,7 @@ sub linkIssues( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -32940,7 +33162,7 @@ sub deleteIssueLink( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -33143,7 +33365,7 @@ sub getIssueLink( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue link ID is invalid.
@@ -33156,7 +33378,7 @@ sub getIssueLink( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -33269,7 +33491,7 @@ sub getIssueLinkTypes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -33279,7 +33501,7 @@ sub getIssueLinkTypes( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -33457,7 +33679,7 @@ sub createIssueLinkType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -33470,7 +33692,7 @@ sub createIssueLinkType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -33567,7 +33789,7 @@ sub deleteIssueLinkType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -33681,7 +33903,7 @@ sub getIssueLinkType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue link type ID is invalid.
@@ -33694,7 +33916,7 @@ sub getIssueLinkType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -33893,7 +34115,7 @@ sub updateIssueLinkType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue link type ID or the request body are invalid.
@@ -33906,7 +34128,7 @@ sub updateIssueLinkType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -34012,7 +34234,7 @@ sub getIssueSecuritySchemes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -34022,7 +34244,7 @@ sub getIssueSecuritySchemes( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -34144,7 +34366,7 @@ sub getIssueSecurityScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -34154,7 +34376,7 @@ sub getIssueSecurityScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -34364,7 +34586,7 @@ sub getIssueSecurityLevelMembers( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -34380,7 +34602,7 @@ sub getIssueSecurityLevelMembers( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -34507,14 +34729,14 @@ sub getIssueAllTypes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -34650,7 +34872,7 @@ sub createIssueType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid because: * no content is sent. * the issue type name exceeds 60 characters. * a subtask issue type is requested on an instance where subtasks are disabled.
@@ -34666,7 +34888,7 @@ sub createIssueType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -34839,7 +35061,7 @@ sub getIssueTypesForProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -34852,7 +35074,7 @@ sub getIssueTypesForProject( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -34964,7 +35186,7 @@ sub deleteIssueType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -35081,7 +35303,7 @@ sub getIssueType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue type ID is invalid.
@@ -35094,7 +35316,7 @@ sub getIssueType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -35220,7 +35442,7 @@ sub updateIssueType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid because: * no content is sent. * the issue type name exceeds 60 characters. * the avatar is not associated with this issue type.
@@ -35239,7 +35461,7 @@ sub updateIssueType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -35378,7 +35600,7 @@ sub getAlternativeIssueTypes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -35388,7 +35610,7 @@ sub getAlternativeIssueTypes( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -35520,7 +35742,7 @@ sub createIssueTypeAvatar( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * an image isn't included in the request. * the image type is unsupported. * the crop parameters extend the crop area beyond the edge of the image. * `cropSize` is missing. * the issue type ID is invalid.
@@ -35536,7 +35758,7 @@ sub createIssueTypeAvatar( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -35651,7 +35873,7 @@ sub getIssueTypePropertyKeys( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue type ID is invalid.
@@ -35661,7 +35883,7 @@ sub getIssueTypePropertyKeys( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -35769,7 +35991,7 @@ sub deleteIssueTypeProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -35891,7 +36113,7 @@ sub getIssueTypeProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the issue type ID is invalid.
@@ -35904,7 +36126,7 @@ sub getIssueTypeProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -36021,7 +36243,7 @@ sub setIssueTypeProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the issue type property is created.
@@ -36043,7 +36265,7 @@ sub setIssueTypeProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the issue type ID is invalid. * a property value is not provided. * the property value JSON content is invalid.
@@ -36059,7 +36281,7 @@ sub setIssueTypeProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -36291,7 +36513,7 @@ sub getAllIssueTypeSchemes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -36304,7 +36526,7 @@ sub getAllIssueTypeSchemes( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -36422,7 +36644,7 @@ sub createIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -36444,7 +36666,7 @@ sub createIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -36469,7 +36691,7 @@ sub createIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 409 ) {
             # Returned if the scheme name is used by another scheme.
@@ -36491,11 +36713,11 @@ sub createIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -36636,7 +36858,7 @@ sub getIssueTypeSchemesMapping( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -36649,7 +36871,7 @@ sub getIssueTypeSchemesMapping( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -36856,7 +37078,7 @@ sub getIssueTypeSchemeForProjects( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -36869,7 +37091,7 @@ sub getIssueTypeSchemeForProjects( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -36979,7 +37201,7 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -37001,7 +37223,7 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -37026,7 +37248,7 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type scheme or the project is not found.
@@ -37048,11 +37270,11 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -37157,7 +37379,7 @@ sub deleteIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is to delete the default issue type scheme.
@@ -37179,7 +37401,7 @@ sub deleteIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -37204,7 +37426,7 @@ sub deleteIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type scheme is not found.
@@ -37226,11 +37448,11 @@ sub deleteIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -37356,7 +37578,7 @@ sub updateIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -37378,7 +37600,7 @@ sub updateIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -37403,7 +37625,7 @@ sub updateIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type scheme is not found.
@@ -37425,11 +37647,11 @@ sub updateIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -37547,7 +37769,7 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -37569,7 +37791,7 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -37594,7 +37816,7 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type or the issue type scheme is not found.
@@ -37616,11 +37838,11 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -37746,7 +37968,7 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -37768,7 +37990,7 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -37793,7 +38015,7 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type scheme is not found.
@@ -37815,11 +38037,11 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -37932,7 +38154,7 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -37954,7 +38176,7 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -37979,7 +38201,7 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type scheme is missing or the issue type is not found in the issue type scheme.
@@ -38001,11 +38223,11 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -38199,7 +38421,7 @@ sub getIssueTypeScreenSchemes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -38212,7 +38434,7 @@ sub getIssueTypeScreenSchemes( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -38326,7 +38548,7 @@ sub createIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -38348,7 +38570,7 @@ sub createIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -38373,7 +38595,7 @@ sub createIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type or screen scheme is not found.
@@ -38395,7 +38617,7 @@ sub createIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 409 ) {
             # Returned if the issue type is a sub-task, but sub-tasks are disabled in Jira settings.
@@ -38417,11 +38639,11 @@ sub createIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -38566,7 +38788,7 @@ sub getIssueTypeScreenSchemeMappings( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -38579,7 +38801,7 @@ sub getIssueTypeScreenSchemeMappings( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -38718,7 +38940,7 @@ sub getIssueTypeScreenSchemeProjectAssociations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -38731,7 +38953,7 @@ sub getIssueTypeScreenSchemeProjectAssociations( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -38841,7 +39063,7 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * project is not found. * issue type screen scheme is not found. * the project is not a classic project.
@@ -38863,7 +39085,7 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -38888,7 +39110,7 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type screen scheme or the project are missing.
@@ -38910,11 +39132,11 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -39019,7 +39241,7 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -39041,7 +39263,7 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -39069,11 +39291,11 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -39195,7 +39417,7 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -39217,7 +39439,7 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -39242,7 +39464,7 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type screen scheme is not found.
@@ -39264,11 +39486,11 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -39386,7 +39608,7 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -39408,7 +39630,7 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -39436,7 +39658,7 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 409 ) {
             # Returned if the issue type is a sub-task, but sub-tasks are disabled in Jira settings.
@@ -39458,11 +39680,11 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -39580,7 +39802,7 @@ sub updateDefaultScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -39602,7 +39824,7 @@ sub updateDefaultScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -39627,7 +39849,7 @@ sub updateDefaultScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type screen scheme or the screen screen is not found, or the screen scheme isn't used in classic projects.
@@ -39649,11 +39871,11 @@ sub updateDefaultScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -39771,7 +39993,7 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -39793,7 +40015,7 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -39818,7 +40040,7 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue type screen scheme or one or more issue type mappings are not found.
@@ -39840,11 +40062,11 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -39997,7 +40219,7 @@ sub getProjectsForIssueTypeScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -40010,7 +40232,7 @@ sub getProjectsForIssueTypeScreenScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -40160,14 +40382,14 @@ sub getAutoComplete( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -40368,7 +40590,7 @@ sub getAutoCompletePost( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -40378,7 +40600,7 @@ sub getAutoCompletePost( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -40517,7 +40739,7 @@ sub getFieldAutoCompleteForQueryString( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if an invalid combination of parameters is passed.
@@ -40527,7 +40749,7 @@ sub getFieldAutoCompleteForQueryString( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -40644,11 +40866,11 @@ sub getPrecomputations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -40752,11 +40974,11 @@ sub updatePrecomputations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -40897,14 +41119,14 @@ sub matchIssues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `jqls` exceeds the maximum number of JQL queries or `issueIds` exceeds the maximum number of issue IDs.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -41204,7 +41426,7 @@ sub parseJqlQueries( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -41226,14 +41448,14 @@ sub parseJqlQueries( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -41352,7 +41574,7 @@ sub migrateQueries( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if at least one of the queries cannot be converted. For example, the JQL has invalid operators or invalid keywords, or the users in the query cannot be found.
@@ -41362,7 +41584,7 @@ sub migrateQueries( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -41501,7 +41723,7 @@ sub sanitiseJqlQueries( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -41523,7 +41745,7 @@ sub sanitiseJqlQueries( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -41545,7 +41767,7 @@ sub sanitiseJqlQueries( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -41567,11 +41789,11 @@ sub sanitiseJqlQueries( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -41692,11 +41914,11 @@ sub getAllLabels( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -41789,7 +42011,7 @@ sub getApproximateLicenseCount( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -41799,7 +42021,7 @@ sub getApproximateLicenseCount( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -41902,7 +42124,7 @@ sub getApproximateApplicationLicenseCount( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -41912,7 +42134,7 @@ sub getApproximateApplicationLicenseCount( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -42070,7 +42292,7 @@ sub getMyPermissions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `permissions` is empty, contains an invalid key, or does not equal BROWSE\_PROJECTS when commentId is provided.
@@ -42092,7 +42314,7 @@ sub getMyPermissions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -42114,7 +42336,7 @@ sub getMyPermissions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the project or issue is not found or the user does not have permission to view the project or issue.
@@ -42136,11 +42358,11 @@ sub getMyPermissions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -42235,7 +42457,7 @@ sub removePreference( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -42341,7 +42563,7 @@ sub getPreference( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -42351,7 +42573,7 @@ sub getPreference( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -42462,7 +42684,7 @@ sub setPreference( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -42472,7 +42694,7 @@ sub setPreference( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -42565,14 +42787,14 @@ sub deleteLocale( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -42670,14 +42892,14 @@ sub getLocale( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -42783,7 +43005,7 @@ sub setLocale( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if request is invalid.
@@ -42793,7 +43015,7 @@ sub setLocale( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -42937,14 +43159,14 @@ sub getCurrentUser( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -43365,7 +43587,7 @@ sub getNotificationSchemes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -43387,14 +43609,14 @@ sub getNotificationSchemes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -43511,7 +43733,7 @@ sub createNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -43533,7 +43755,7 @@ sub createNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -43555,7 +43777,7 @@ sub createNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -43577,11 +43799,11 @@ sub createNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -43718,7 +43940,7 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if search criteria are invalid, strings vs numbers for projectId, notificationSchemeId, startAt and maxResult
@@ -43740,7 +43962,7 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -43762,11 +43984,11 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -44160,7 +44382,7 @@ sub getNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -44173,7 +44395,7 @@ sub getNotificationScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -44299,7 +44521,7 @@ sub updateNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -44321,7 +44543,7 @@ sub updateNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -44343,7 +44565,7 @@ sub updateNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -44365,7 +44587,7 @@ sub updateNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the notification scheme isn't found.
@@ -44387,11 +44609,11 @@ sub updateNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -44513,7 +44735,7 @@ sub addNotifications( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -44535,7 +44757,7 @@ sub addNotifications( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -44557,7 +44779,7 @@ sub addNotifications( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -44579,7 +44801,7 @@ sub addNotifications( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the notification scheme isn't found.
@@ -44601,11 +44823,11 @@ sub addNotifications( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -44714,7 +44936,7 @@ sub deleteNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -44736,7 +44958,7 @@ sub deleteNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -44758,7 +44980,7 @@ sub deleteNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -44780,7 +45002,7 @@ sub deleteNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the notification scheme isn't found.
@@ -44802,11 +45024,11 @@ sub deleteNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -44923,7 +45145,7 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -44945,7 +45167,7 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -44967,7 +45189,7 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -44989,7 +45211,7 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if either the notification scheme or notification isn't found.
@@ -45011,11 +45233,11 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -45120,7 +45342,7 @@ sub getAllPermissions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -45130,7 +45352,7 @@ sub getAllPermissions( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -45266,7 +45488,7 @@ sub getBulkPermissions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `projectPermissions` is provided without at least one project permission being provided. * an invalid global permission is provided in the global permissions list. * an invalid project permission is provided in the project permissions list. * more than 1000 valid project IDs or more than 1000 valid issue IDs are provided. * an invalid account ID is provided.
@@ -45288,7 +45510,7 @@ sub getBulkPermissions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -45310,11 +45532,11 @@ sub getBulkPermissions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -45420,7 +45642,7 @@ sub getPermittedProjects( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if a project permission is not found.
@@ -45442,14 +45664,14 @@ sub getPermittedProjects( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -45598,14 +45820,14 @@ sub getAllPermissionSchemes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -45779,7 +46001,7 @@ sub createPermissionScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -45792,7 +46014,7 @@ sub createPermissionScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -45889,7 +46111,7 @@ sub deletePermissionScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -46058,7 +46280,7 @@ sub getPermissionScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -46068,7 +46290,7 @@ sub getPermissionScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -46274,7 +46496,7 @@ sub updatePermissionScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -46287,7 +46509,7 @@ sub updatePermissionScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -46453,7 +46675,7 @@ sub getPermissionSchemeGrants( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -46463,7 +46685,7 @@ sub getPermissionSchemeGrants( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -46636,7 +46858,7 @@ sub createPermissionGrant( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the value for expand is invalid or the same permission grant is present.
@@ -46649,7 +46871,7 @@ sub createPermissionGrant( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -46754,7 +46976,7 @@ sub deletePermissionSchemeEntity( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -46923,7 +47145,7 @@ sub getPermissionSchemeGrant( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -46933,7 +47155,7 @@ sub getPermissionSchemeGrant( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -47047,14 +47269,14 @@ sub getPriorities( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -47175,7 +47397,7 @@ sub createPriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -47197,7 +47419,7 @@ sub createPriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -47219,7 +47441,7 @@ sub createPriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -47241,11 +47463,11 @@ sub createPriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -47355,7 +47577,7 @@ sub setDefaultPriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -47377,7 +47599,7 @@ sub setDefaultPriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -47399,7 +47621,7 @@ sub setDefaultPriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -47421,7 +47643,7 @@ sub setDefaultPriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue priority isn't found.
@@ -47443,11 +47665,11 @@ sub setDefaultPriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -47565,7 +47787,7 @@ sub movePriorities( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -47587,7 +47809,7 @@ sub movePriorities( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -47609,7 +47831,7 @@ sub movePriorities( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -47631,7 +47853,7 @@ sub movePriorities( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue priority isn't found.
@@ -47653,11 +47875,11 @@ sub movePriorities( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -47807,7 +48029,7 @@ sub searchPriorities( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -47829,11 +48051,11 @@ sub searchPriorities( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -47954,7 +48176,7 @@ sub deletePriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -47976,7 +48198,7 @@ sub deletePriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -47998,7 +48220,7 @@ sub deletePriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -48020,7 +48242,7 @@ sub deletePriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue priority isn't found.
@@ -48042,7 +48264,7 @@ sub deletePriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 409 ) {
             # Returned if a task to delete the issue priority is already running.
@@ -48064,11 +48286,11 @@ sub deletePriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -48183,7 +48405,7 @@ sub getPriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -48193,7 +48415,7 @@ sub getPriority( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -48327,7 +48549,7 @@ sub updatePriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -48349,7 +48571,7 @@ sub updatePriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -48371,7 +48593,7 @@ sub updatePriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -48393,7 +48615,7 @@ sub updatePriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue priority isn't found.
@@ -48415,11 +48637,11 @@ sub updatePriority( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -48611,14 +48833,14 @@ sub getAllProjects( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -48792,7 +49014,7 @@ sub createProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid and the project could not be created.
@@ -48805,7 +49027,7 @@ sub createProject( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -49011,7 +49233,7 @@ sub getRecent( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -49021,7 +49243,7 @@ sub getRecent( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -49409,7 +49631,7 @@ sub searchProjects( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -49422,7 +49644,7 @@ sub searchProjects( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -49534,14 +49756,14 @@ sub getAllProjectTypes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -49653,11 +49875,11 @@ sub getAllAccessibleProjectTypes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -49771,7 +49993,7 @@ sub getProjectTypeByKey( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -49781,7 +50003,7 @@ sub getProjectTypeByKey( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -49895,7 +50117,7 @@ sub getAccessibleProjectTypeByKey( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -49905,7 +50127,7 @@ sub getAccessibleProjectTypeByKey( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -50008,7 +50230,7 @@ sub deleteProject( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -50298,7 +50520,7 @@ sub getProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -50308,7 +50530,7 @@ sub getProject( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -50644,7 +50866,7 @@ sub updateProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -50660,7 +50882,7 @@ sub updateProject( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -50765,7 +50987,7 @@ sub archiveProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -50781,7 +51003,7 @@ sub archiveProject( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -50923,7 +51145,7 @@ sub updateProjectAvatar( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -50936,7 +51158,7 @@ sub updateProjectAvatar( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -51041,7 +51263,7 @@ sub deleteProjectAvatar( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -51171,7 +51393,7 @@ sub createProjectAvatar( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * an image isn't included in the request. * the image type is unsupported. * the crop parameters extend the crop area beyond the edge of the image.
@@ -51187,7 +51409,7 @@ sub createProjectAvatar( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -51324,7 +51546,7 @@ sub getAllProjectAvatars( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -51334,7 +51556,7 @@ sub getAllProjectAvatars( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -51728,7 +51950,7 @@ sub getProjectComponentsPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -51738,7 +51960,7 @@ sub getProjectComponentsPaginated( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -51960,7 +52182,7 @@ sub getProjectComponents( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -51970,7 +52192,7 @@ sub getProjectComponents( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -52075,7 +52297,7 @@ sub deleteProjectAsynchronously( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -52088,7 +52310,7 @@ sub deleteProjectAsynchronously( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -52219,7 +52441,7 @@ sub getFeaturesForProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -52235,7 +52457,7 @@ sub getFeaturesForProject( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -52387,7 +52609,7 @@ sub toggleFeatureForProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -52403,7 +52625,7 @@ sub toggleFeatureForProject( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -52518,7 +52740,7 @@ sub getProjectPropertyKeys( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -52534,7 +52756,7 @@ sub getProjectPropertyKeys( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -52642,7 +52864,7 @@ sub deleteProjectProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -52764,7 +52986,7 @@ sub getProjectProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -52780,7 +53002,7 @@ sub getProjectProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -52897,7 +53119,7 @@ sub setProjectProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the project property is created.
@@ -52919,7 +53141,7 @@ sub setProjectProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the project key or id is invalid.
@@ -52935,7 +53157,7 @@ sub setProjectProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -53181,7 +53403,7 @@ sub restore( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -53194,7 +53416,7 @@ sub restore( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -53306,7 +53528,7 @@ sub getProjectRoles( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing or if the user lacks administrative permissions for the project.
@@ -53316,7 +53538,7 @@ sub getProjectRoles( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -53439,7 +53661,7 @@ sub deleteActor( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -53598,7 +53820,7 @@ sub getProjectRole( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -53611,7 +53833,7 @@ sub getProjectRole( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -53782,7 +54004,7 @@ sub addActorUsers( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -53795,7 +54017,7 @@ sub addActorUsers( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -53982,7 +54204,7 @@ sub setActors( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -53995,7 +54217,7 @@ sub setActors( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -54128,7 +54350,7 @@ sub getProjectRoleDetails( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -54138,7 +54360,7 @@ sub getProjectRoleDetails( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -54270,7 +54492,7 @@ sub getAllStatuses( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -54280,7 +54502,7 @@ sub getAllStatuses( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -54534,7 +54756,7 @@ sub updateProjectType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -54547,7 +54769,7 @@ sub updateProjectType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -54774,14 +54996,14 @@ sub getProjectVersionsPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -54928,14 +55150,14 @@ sub getProjectVersions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -55048,7 +55270,7 @@ sub getProjectEmail( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -55061,7 +55283,7 @@ sub getProjectEmail( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -55183,7 +55405,7 @@ sub updateProjectEmail( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid, if the email address is not valid.
@@ -55199,7 +55421,7 @@ sub updateProjectEmail( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -55356,7 +55578,7 @@ sub getHierarchy( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -55369,7 +55591,7 @@ sub getHierarchy( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -55491,7 +55713,7 @@ sub getProjectIssueSecurityScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -55507,7 +55729,7 @@ sub getProjectIssueSecurityScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -55901,7 +56123,7 @@ sub getNotificationSchemeForProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -55914,7 +56136,7 @@ sub getNotificationSchemeForProject( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -56070,7 +56292,7 @@ sub getAssignedPermissionScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -56083,7 +56305,7 @@ sub getAssignedPermissionScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -56252,7 +56474,7 @@ sub assignPermissionScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -56265,7 +56487,7 @@ sub assignPermissionScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -56388,14 +56610,14 @@ sub getSecurityLevelsForProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the project is not found or the user does not have permission to view it.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -56505,14 +56727,14 @@ sub getAllProjectCategories( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -56630,7 +56852,7 @@ sub createProjectCategory( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `name` is not provided or exceeds 255 characters. * `description` exceeds 1000 characters.
@@ -56646,7 +56868,7 @@ sub createProjectCategory( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -56743,7 +56965,7 @@ sub removeProjectCategory( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -56856,7 +57078,7 @@ sub getProjectCategoryById( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -56866,7 +57088,7 @@ sub getProjectCategoryById( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -57002,7 +57224,7 @@ sub updateProjectCategory( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `name` has been modified and exceeds 255 characters. * `description` has been modified and exceeds 1000 characters.
@@ -57018,7 +57240,7 @@ sub updateProjectCategory( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -57129,14 +57351,14 @@ sub validateProjectKey( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -57242,14 +57464,14 @@ sub getValidProjectKey( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -57358,7 +57580,7 @@ sub getValidProjectName( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -57371,7 +57593,7 @@ sub getValidProjectName( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -57481,14 +57703,14 @@ sub getResolutions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -57601,7 +57823,7 @@ sub createResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -57623,7 +57845,7 @@ sub createResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -57645,7 +57867,7 @@ sub createResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -57667,11 +57889,11 @@ sub createResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -57781,7 +58003,7 @@ sub setDefaultResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -57803,7 +58025,7 @@ sub setDefaultResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -57825,7 +58047,7 @@ sub setDefaultResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -57847,7 +58069,7 @@ sub setDefaultResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue resolution isn't found.
@@ -57869,11 +58091,11 @@ sub setDefaultResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -57991,7 +58213,7 @@ sub moveResolutions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -58013,7 +58235,7 @@ sub moveResolutions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -58035,7 +58257,7 @@ sub moveResolutions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -58057,7 +58279,7 @@ sub moveResolutions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue resolution isn't found.
@@ -58079,11 +58301,11 @@ sub moveResolutions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -58221,7 +58443,7 @@ sub searchResolutions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -58243,11 +58465,11 @@ sub searchResolutions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -58368,7 +58590,7 @@ sub deleteResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -58390,7 +58612,7 @@ sub deleteResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -58412,7 +58634,7 @@ sub deleteResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -58434,7 +58656,7 @@ sub deleteResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue resolution isn't found.
@@ -58456,7 +58678,7 @@ sub deleteResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 409 ) {
             # Returned if a task to delete the issue resolution is already running.
@@ -58478,11 +58700,11 @@ sub deleteResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -58595,7 +58817,7 @@ sub getResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -58605,7 +58827,7 @@ sub getResolution( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -58731,7 +58953,7 @@ sub updateResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request isn't valid.
@@ -58753,7 +58975,7 @@ sub updateResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -58775,7 +58997,7 @@ sub updateResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user doesn't have the necessary permission.
@@ -58797,7 +59019,7 @@ sub updateResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the issue resolution isn't found.
@@ -58819,11 +59041,11 @@ sub updateResolution( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -58956,7 +59178,7 @@ sub getAllProjectRoles( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -58966,7 +59188,7 @@ sub getAllProjectRoles( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -59084,7 +59306,7 @@ sub createProjectRole( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid. The `name` cannot be empty or start or end with whitespace.
@@ -59100,7 +59322,7 @@ sub createProjectRole( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -59212,7 +59434,7 @@ sub deleteProjectRole( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -59354,7 +59576,7 @@ sub getProjectRoleById( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -59367,7 +59589,7 @@ sub getProjectRoleById( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -59526,7 +59748,7 @@ sub partialUpdateProjectRole( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -59542,7 +59764,7 @@ sub partialUpdateProjectRole( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -59701,7 +59923,7 @@ sub fullyUpdateProjectRole( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid. The `name` cannot be empty or start or end with whitespace.
@@ -59717,7 +59939,7 @@ sub fullyUpdateProjectRole( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -59860,7 +60082,7 @@ sub deleteProjectRoleActorsFromRole( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -59876,7 +60098,7 @@ sub deleteProjectRoleActorsFromRole( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -59998,7 +60220,7 @@ sub getProjectRoleActorsForRole( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -60014,7 +60236,7 @@ sub getProjectRoleActorsForRole( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -60157,7 +60379,7 @@ sub addProjectRoleActorsToRole( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -60173,7 +60395,7 @@ sub addProjectRoleActorsToRole( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -60346,7 +60568,7 @@ sub getScreens( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -60356,7 +60578,7 @@ sub getScreens( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -60466,7 +60688,7 @@ sub createScreen( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -60488,7 +60710,7 @@ sub createScreen( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -60513,11 +60735,11 @@ sub createScreen( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -60622,7 +60844,7 @@ sub addFieldToDefaultScreen( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -60635,7 +60857,7 @@ sub addFieldToDefaultScreen( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -60742,7 +60964,7 @@ sub deleteScreen( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -60767,7 +60989,7 @@ sub deleteScreen( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the screen is not found.
@@ -60789,11 +61011,11 @@ sub deleteScreen( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -60922,7 +61144,7 @@ sub updateScreen( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -60944,7 +61166,7 @@ sub updateScreen( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -60969,7 +61191,7 @@ sub updateScreen( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the screen is not found.
@@ -60991,11 +61213,11 @@ sub updateScreen( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -61101,7 +61323,7 @@ sub getAvailableScreenFields( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -61114,7 +61336,7 @@ sub getAvailableScreenFields( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -61229,7 +61451,7 @@ sub getAllScreenTabs( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the screen ID is invalid.
@@ -61245,7 +61467,7 @@ sub getAllScreenTabs( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -61373,7 +61595,7 @@ sub addScreenTab( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -61494,7 +61716,7 @@ sub deleteScreenTab( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -61630,7 +61852,7 @@ sub renameScreenTab( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -61646,7 +61868,7 @@ sub renameScreenTab( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -61769,7 +61991,7 @@ sub getAllScreenTabFields( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -61782,7 +62004,7 @@ sub getAllScreenTabFields( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -61914,7 +62136,7 @@ sub addScreenTabField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -61930,7 +62152,7 @@ sub addScreenTabField( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -62046,7 +62268,7 @@ sub removeScreenTabField( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -62184,7 +62406,7 @@ sub moveScreenTabField( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -62200,7 +62422,7 @@ sub moveScreenTabField( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -62321,7 +62543,7 @@ sub moveScreenTab( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -62337,7 +62559,7 @@ sub moveScreenTab( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -62527,7 +62749,7 @@ sub getScreenSchemes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -62537,7 +62759,7 @@ sub getScreenSchemes( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -62651,7 +62873,7 @@ sub createScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -62673,7 +62895,7 @@ sub createScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -62698,7 +62920,7 @@ sub createScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if a screen used as one of the screen types in the screen scheme is not found.
@@ -62720,11 +62942,11 @@ sub createScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -62831,7 +63053,7 @@ sub deleteScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -62856,7 +63078,7 @@ sub deleteScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the screen scheme is not found.
@@ -62878,11 +63100,11 @@ sub deleteScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -63008,7 +63230,7 @@ sub updateScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -63030,7 +63252,7 @@ sub updateScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -63055,7 +63277,7 @@ sub updateScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the screen scheme or a screen used as one of the screen types is not found.
@@ -63077,11 +63299,11 @@ sub updateScreenScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -63620,7 +63842,7 @@ sub searchForIssuesUsingJql( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the JQL query is invalid.
@@ -63630,7 +63852,7 @@ sub searchForIssuesUsingJql( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -64143,7 +64365,7 @@ sub searchForIssuesUsingJqlPost( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the JQL query is invalid.
@@ -64153,7 +64375,7 @@ sub searchForIssuesUsingJqlPost( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -64266,7 +64488,7 @@ sub getIssueSecurityLevel( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -64276,7 +64498,7 @@ sub getIssueSecurityLevel( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -64501,7 +64723,7 @@ sub getIssueNavigatorDefaultColumns( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -64511,7 +64733,7 @@ sub getIssueNavigatorDefaultColumns( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -64609,7 +64831,7 @@ sub setIssueNavigatorDefaultColumns( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if invalid parameters are passed.
@@ -64625,7 +64847,7 @@ sub setIssueNavigatorDefaultColumns( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -64750,14 +64972,14 @@ sub getStatuses( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -64878,7 +65100,7 @@ sub getStatus( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -64888,7 +65110,7 @@ sub getStatus( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -64999,14 +65221,14 @@ sub getStatusCategories( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -65120,7 +65342,7 @@ sub getStatusCategory( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -65130,7 +65352,7 @@ sub getStatusCategory( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -65235,7 +65457,7 @@ sub deleteStatusesById( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -65257,14 +65479,14 @@ sub deleteStatusesById( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -65411,7 +65633,7 @@ sub getStatusesById( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -65421,7 +65643,7 @@ sub getStatusesById( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -65549,7 +65771,7 @@ sub createStatuses( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -65571,14 +65793,14 @@ sub createStatuses( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -65684,7 +65906,7 @@ sub updateStatuses( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -65706,14 +65928,14 @@ sub updateStatuses( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing, or the caller doesn't have permissions to perform the operation.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -65889,7 +66111,7 @@ sub search( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -65899,7 +66121,7 @@ sub search( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -66020,7 +66242,7 @@ sub getTask( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -66033,7 +66255,7 @@ sub getTask( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -66142,7 +66364,7 @@ sub cancelTask( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if cancellation of the task is not possible.
@@ -66165,7 +66387,7 @@ sub cancelTask( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -66188,7 +66410,7 @@ sub cancelTask( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -66211,7 +66433,7 @@ sub cancelTask( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the task is not found.
@@ -66234,11 +66456,11 @@ sub cancelTask( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -66422,7 +66644,7 @@ sub getUiModifications( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -66435,7 +66657,7 @@ sub getUiModifications( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -66553,7 +66775,7 @@ sub createUiModification( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -66569,7 +66791,7 @@ sub createUiModification( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -66674,7 +66896,7 @@ sub deleteUiModification( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -66687,7 +66909,7 @@ sub deleteUiModification( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -66817,7 +67039,7 @@ sub updateUiModification( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -66833,7 +67055,7 @@ sub updateUiModification( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -66978,7 +67200,7 @@ sub getAvatars( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -66988,7 +67210,7 @@ sub getAvatars( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -67128,7 +67350,7 @@ sub storeAvatar( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * an image isn't included in the request. * the image type is unsupported. * the crop parameters extend the crop area beyond the edge of the image.
@@ -67144,7 +67366,7 @@ sub storeAvatar( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -67257,7 +67479,7 @@ sub deleteAvatar( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -67380,7 +67602,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
@@ -67398,7 +67620,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
@@ -67416,7 +67638,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
@@ -67434,7 +67656,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -67456,7 +67678,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
@@ -67474,7 +67696,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
@@ -67492,7 +67714,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
@@ -67510,7 +67732,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -67532,7 +67754,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
@@ -67550,7 +67772,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
@@ -67568,7 +67790,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
@@ -67586,7 +67808,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if an avatar is not found or an avatar matching the requested size is not found.
@@ -67608,7 +67830,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
@@ -67626,7 +67848,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
@@ -67644,7 +67866,7 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
@@ -67662,11 +67884,11 @@ sub getAvatarImageByType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -67798,7 +68020,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
@@ -67816,7 +68038,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
@@ -67834,7 +68056,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
@@ -67852,7 +68074,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -67874,7 +68096,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
@@ -67892,7 +68114,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
@@ -67910,7 +68132,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
@@ -67928,7 +68150,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -67950,7 +68172,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
@@ -67968,7 +68190,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
@@ -67986,7 +68208,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
@@ -68004,7 +68226,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -68026,7 +68248,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
@@ -68044,7 +68266,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
@@ -68062,7 +68284,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
@@ -68080,7 +68302,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if an avatar is not found or an avatar matching the requested size is not found.
@@ -68102,7 +68324,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
@@ -68120,7 +68342,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
@@ -68138,7 +68360,7 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
@@ -68156,11 +68378,11 @@ sub getAvatarImageByID( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -68292,7 +68514,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
@@ -68310,7 +68532,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
@@ -68328,7 +68550,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
@@ -68346,7 +68568,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -68368,7 +68590,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
@@ -68386,7 +68608,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
@@ -68404,7 +68626,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
@@ -68422,7 +68644,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -68444,7 +68666,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
@@ -68462,7 +68684,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
@@ -68480,7 +68702,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
@@ -68498,7 +68720,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the user does not have the necessary permission.
@@ -68520,7 +68742,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
@@ -68538,7 +68760,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
@@ -68556,7 +68778,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
@@ -68574,7 +68796,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if an avatar is not found or an avatar matching the requested size is not found.
@@ -68596,7 +68818,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
@@ -68614,7 +68836,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
@@ -68632,7 +68854,7 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
@@ -68650,11 +68872,11 @@ sub getAvatarImageByOwner( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -68767,7 +68989,7 @@ sub removeUser( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -68929,7 +69151,7 @@ sub getUser( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -68942,7 +69164,7 @@ sub getUser( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -69072,7 +69294,7 @@ sub createUser( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid or the number of licensed users is exceeded.
@@ -69085,7 +69307,7 @@ sub createUser( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -69256,7 +69478,7 @@ sub findBulkAssignableUsers( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `projectKeys` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided.
@@ -69272,7 +69494,7 @@ sub findBulkAssignableUsers( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -69455,7 +69677,7 @@ sub findAssignableUsers( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `issueKey` or `project` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided.
@@ -69471,7 +69693,7 @@ sub findAssignableUsers( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -69626,7 +69848,7 @@ sub bulkGetUsers( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `accountID` is missing.
@@ -69636,7 +69858,7 @@ sub bulkGetUsers( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -69770,7 +69992,7 @@ sub bulkGetUsersMigration( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `key` or `username`
@@ -69780,7 +70002,7 @@ sub bulkGetUsersMigration( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -69878,7 +70100,7 @@ sub resetUserColumns( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -69988,7 +70210,7 @@ sub getUserDefaultColumns( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -70001,7 +70223,7 @@ sub getUserDefaultColumns( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -70109,7 +70331,7 @@ sub setUserColumns( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -70128,7 +70350,7 @@ sub setUserColumns( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -70236,7 +70458,7 @@ sub getUserEmail( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the calling app is not approved to use this API.
@@ -70252,7 +70474,7 @@ sub getUserEmail( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -70358,7 +70580,7 @@ sub getUserEmailBulk( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the calling app is not approved to use this API.
@@ -70371,7 +70593,7 @@ sub getUserEmailBulk( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -70497,7 +70719,7 @@ sub getUserGroups( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -70510,7 +70732,7 @@ sub getUserGroups( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -70878,7 +71100,7 @@ sub findUsersWithAllPermissions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `issueKey` or `projectKey` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided. * `permissions` is empty or contains an invalid entry.
@@ -70897,7 +71119,7 @@ sub findUsersWithAllPermissions( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -71052,7 +71274,7 @@ sub findUsersForPicker( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `exclude` and `excludeAccountIds` are provided.
@@ -71065,7 +71287,7 @@ sub findUsersForPicker( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -71190,7 +71412,7 @@ sub getUserPropertyKeys( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `accountId` is missing.
@@ -71206,7 +71428,7 @@ sub getUserPropertyKeys( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -71327,7 +71549,7 @@ sub deleteUserProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -71462,7 +71684,7 @@ sub getUserProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `accountId` is missing.
@@ -71478,7 +71700,7 @@ sub getUserProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -71608,7 +71830,7 @@ sub setUserProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned if the user property is created.
@@ -71630,7 +71852,7 @@ sub setUserProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if `accountId` is missing.
@@ -71649,7 +71871,7 @@ sub setUserProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -71815,7 +72037,7 @@ sub findUsers( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `accountId`, `query` or `property` is missing. * `query` and `accountId` are provided. * `property` parameter is not valid.
@@ -71828,7 +72050,7 @@ sub findUsers( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -71946,7 +72168,7 @@ sub findUsersByQuery( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the query is invalid.
@@ -71962,7 +72184,7 @@ sub findUsersByQuery( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -72080,7 +72302,7 @@ sub findUserKeysByQuery( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the query is invalid.
@@ -72096,7 +72318,7 @@ sub findUserKeysByQuery( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -72270,7 +72492,7 @@ sub findUsersWithBrowsePermission( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * `issueKey` or `projectKey` is missing. * `query` or `accountId` is missing. * `query` and `accountId` are provided.
@@ -72286,7 +72508,7 @@ sub findUsersWithBrowsePermission( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -72430,7 +72652,7 @@ sub getAllUsersDefault( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -72443,7 +72665,7 @@ sub getAllUsersDefault( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -72587,7 +72809,7 @@ sub getAllUsers( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -72600,7 +72822,7 @@ sub getAllUsers( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -72786,7 +73008,7 @@ sub createVersion( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -72799,7 +73021,7 @@ sub createVersion( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -72911,7 +73133,7 @@ sub deleteVersion( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -73053,7 +73275,7 @@ sub getVersion( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -73063,7 +73285,7 @@ sub getVersion( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -73275,7 +73497,7 @@ sub updateVersion( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the request is invalid. * the user does not have the required permissions.
@@ -73288,7 +73510,7 @@ sub updateVersion( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -73401,7 +73623,7 @@ sub mergeVersions( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -73414,7 +73636,7 @@ sub mergeVersions( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -73550,7 +73772,7 @@ sub moveVersion( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * no body parameters are provided. * `after` and `position` are provided. * `position` is invalid.
@@ -73563,7 +73785,7 @@ sub moveVersion( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -73688,7 +73910,7 @@ sub getVersionRelatedIssues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect.
@@ -73698,7 +73920,7 @@ sub getVersionRelatedIssues( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -73824,7 +74046,7 @@ sub deleteAndReplaceVersion( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -73837,7 +74059,7 @@ sub deleteAndReplaceVersion( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -73949,7 +74171,7 @@ sub getVersionUnresolvedIssues( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -73959,7 +74181,7 @@ sub getVersionUnresolvedIssues( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -74069,7 +74291,7 @@ sub deleteWebhookById( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller isn't an app.
@@ -74091,11 +74313,11 @@ sub deleteWebhookById( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -74248,7 +74470,7 @@ sub getDynamicWebhooksForApp( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -74270,7 +74492,7 @@ sub getDynamicWebhooksForApp( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller isn't an app.
@@ -74292,11 +74514,11 @@ sub getDynamicWebhooksForApp( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -74425,7 +74647,7 @@ sub registerDynamicWebhooks( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -74447,7 +74669,7 @@ sub registerDynamicWebhooks( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller isn't an app.
@@ -74469,11 +74691,11 @@ sub registerDynamicWebhooks( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -74603,7 +74825,7 @@ sub getFailedWebhooks( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # 400 response
@@ -74625,7 +74847,7 @@ sub getFailedWebhooks( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller is not a Connect app.
@@ -74647,11 +74869,11 @@ sub getFailedWebhooks( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -74764,7 +74986,7 @@ sub refreshWebhooks( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -74786,7 +75008,7 @@ sub refreshWebhooks( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller isn't an app.
@@ -74808,11 +75030,11 @@ sub refreshWebhooks( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -74929,14 +75151,14 @@ sub getAllWorkflows( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the user does not have the necessary permission.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -75095,7 +75317,7 @@ sub createWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -75117,7 +75339,7 @@ sub createWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -75142,7 +75364,7 @@ sub createWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if one or more statuses is not found.
@@ -75164,11 +75386,11 @@ sub createWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -75376,7 +75598,7 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -75398,7 +75620,7 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller is not a Connect app.
@@ -75420,14 +75642,14 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if any transition rule type is not supported.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -75571,7 +75793,7 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -75593,7 +75815,7 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller is not a Connect app.
@@ -75615,11 +75837,11 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -75763,7 +75985,7 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -75785,7 +76007,7 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 403 ) {
             # Returned if the caller is not a Connect app.
@@ -75807,11 +76029,11 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -76152,7 +76374,7 @@ sub getWorkflowsPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -76177,11 +76399,11 @@ sub getWorkflowsPaginated( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -76309,7 +76531,7 @@ sub deleteWorkflowTransitionProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -76457,7 +76679,7 @@ sub getWorkflowTransitionProperties( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -76473,7 +76695,7 @@ sub getWorkflowTransitionProperties( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -76631,7 +76853,7 @@ sub createWorkflowTransitionProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if a workflow property with the same key is present on the transition.
@@ -76647,7 +76869,7 @@ sub createWorkflowTransitionProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -76805,7 +77027,7 @@ sub updateWorkflowTransitionProperty( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 304 ) {
             # Returned if no changes were made by the request. For example, attempting to update a property with its current value.
@@ -76824,7 +77046,7 @@ sub updateWorkflowTransitionProperty( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -76931,7 +77153,7 @@ sub deleteInactiveWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -76956,7 +77178,7 @@ sub deleteInactiveWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow is not found.
@@ -76978,11 +77200,11 @@ sub deleteInactiveWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -77123,7 +77345,7 @@ sub getAllWorkflowSchemes( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -77133,7 +77355,7 @@ sub getAllWorkflowSchemes( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -77306,7 +77528,7 @@ sub createWorkflowScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -77319,7 +77541,7 @@ sub createWorkflowScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -77448,7 +77670,7 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -77470,7 +77692,7 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -77495,11 +77717,11 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -77609,7 +77831,7 @@ sub assignSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -77631,7 +77853,7 @@ sub assignSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -77656,7 +77878,7 @@ sub assignSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the workflow scheme or the project are not found.
@@ -77678,11 +77900,11 @@ sub assignSchemeToProject( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -77787,7 +78009,7 @@ sub deleteWorkflowScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the scheme is active.
@@ -77803,7 +78025,7 @@ sub deleteWorkflowScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -77931,7 +78153,7 @@ sub getWorkflowScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -77944,7 +78166,7 @@ sub getWorkflowScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -78143,7 +78365,7 @@ sub updateWorkflowScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -78159,7 +78381,7 @@ sub updateWorkflowScheme( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -78264,7 +78486,7 @@ sub createWorkflowSchemeDraftFromParent( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -78277,7 +78499,7 @@ sub createWorkflowSchemeDraftFromParent( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -78405,7 +78627,7 @@ sub deleteDefaultWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the workflow scheme cannot be edited and `updateDraftIfNeeded` is not `true`.
@@ -78421,7 +78643,7 @@ sub deleteDefaultWorkflow( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -78540,7 +78762,7 @@ sub getDefaultWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -78553,7 +78775,7 @@ sub getDefaultWorkflow( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -78689,7 +78911,7 @@ sub updateDefaultWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the workflow scheme cannot be edited and `updateDraftIfNeeded` is not `true`.
@@ -78705,7 +78927,7 @@ sub updateDefaultWorkflow( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -78802,7 +79024,7 @@ sub deleteWorkflowSchemeDraft( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -78951,7 +79173,7 @@ sub getWorkflowSchemeDraft( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -78964,7 +79186,7 @@ sub getWorkflowSchemeDraft( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -79193,7 +79415,7 @@ sub updateWorkflowSchemeDraft( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -79209,7 +79431,7 @@ sub updateWorkflowSchemeDraft( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -79358,7 +79580,7 @@ sub deleteDraftDefaultWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -79371,7 +79593,7 @@ sub deleteDraftDefaultWorkflow( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -79481,7 +79703,7 @@ sub getDraftDefaultWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -79494,7 +79716,7 @@ sub getDraftDefaultWorkflow( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -79660,7 +79882,7 @@ sub updateDraftDefaultWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -79676,7 +79898,7 @@ sub updateDraftDefaultWorkflow( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -79833,7 +80055,7 @@ sub deleteWorkflowSchemeDraftIssueType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -79846,7 +80068,7 @@ sub deleteWorkflowSchemeDraftIssueType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -79965,7 +80187,7 @@ sub getWorkflowSchemeDraftIssueType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -79978,7 +80200,7 @@ sub getWorkflowSchemeDraftIssueType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -80156,7 +80378,7 @@ sub setWorkflowSchemeDraftIssueType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -80172,7 +80394,7 @@ sub setWorkflowSchemeDraftIssueType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -80302,7 +80524,7 @@ sub publishDraftWorkflowScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -80324,7 +80546,7 @@ sub publishDraftWorkflowScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -80352,11 +80574,11 @@ sub publishDraftWorkflowScheme( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -80464,7 +80686,7 @@ sub deleteDraftWorkflowMapping( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -80588,7 +80810,7 @@ sub getDraftWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -80601,7 +80823,7 @@ sub getDraftWorkflow( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -80756,7 +80978,7 @@ sub updateDraftWorkflowMapping( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -80772,7 +80994,7 @@ sub updateDraftWorkflowMapping( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -80908,7 +81130,7 @@ sub deleteWorkflowSchemeIssueType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the workflow cannot be edited and `updateDraftIfNeeded` is false.
@@ -80924,7 +81146,7 @@ sub deleteWorkflowSchemeIssueType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -81052,7 +81274,7 @@ sub getWorkflowSchemeIssueType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -81065,7 +81287,7 @@ sub getWorkflowSchemeIssueType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -81213,7 +81435,7 @@ sub setWorkflowSchemeIssueType( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the workflow cannot be edited and `updateDraftIfNeeded` is false.
@@ -81229,7 +81451,7 @@ sub setWorkflowSchemeIssueType( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -81346,7 +81568,7 @@ sub deleteWorkflowMapping( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -81476,7 +81698,7 @@ sub getWorkflow( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -81489,7 +81711,7 @@ sub getWorkflow( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -81644,7 +81866,7 @@ sub updateWorkflowMapping( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -81660,7 +81882,7 @@ sub updateWorkflowMapping( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -81789,14 +82011,14 @@ sub getIdsOfWorklogsDeletedSince( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -81958,7 +82180,7 @@ sub getWorklogsForIds( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request contains more than 1000 worklog IDs or is empty.
@@ -81968,7 +82190,7 @@ sub getWorklogsForIds( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -82103,14 +82325,14 @@ sub getIdsOfWorklogsModifiedSince( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -82218,7 +82440,7 @@ sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -82240,11 +82462,11 @@ sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -82362,7 +82584,7 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -82384,7 +82606,7 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the property is not found or doesn't belong to the app.
@@ -82406,11 +82628,11 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -82528,7 +82750,7 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the property key is longer than 127 characters.
@@ -82550,7 +82772,7 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -82572,7 +82794,7 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 404 ) {
             # Returned if the property is not found or doesn't belong to the app.
@@ -82594,11 +82816,11 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -82719,7 +82941,7 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 201 ) {
             # Returned is the property is created.
@@ -82741,7 +82963,7 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if: * the property key is longer than 127 characters. * the value is not valid JSON. * the value is longer than 32768 characters.
@@ -82763,7 +82985,7 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the authentication credentials are incorrect or missing.
@@ -82785,11 +83007,11 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -82897,11 +83119,11 @@ sub DynamicModulesResource_removeModules_delete( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -82995,7 +83217,7 @@ sub DynamicModulesResource_getModules_get( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the call is not from a Connect app.
@@ -83017,11 +83239,11 @@ sub DynamicModulesResource_getModules_get( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -83132,7 +83354,7 @@ sub DynamicModulesResource_registerModules_post( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 401 ) {
             # Returned if the call is not from a Connect app.
@@ -83154,11 +83376,11 @@ sub DynamicModulesResource_registerModules_post( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -83274,7 +83496,7 @@ sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is invalid.
@@ -83284,7 +83506,7 @@ sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -83389,7 +83611,7 @@ sub MigrationResource_updateEntityPropertiesValue_put( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
@@ -83515,7 +83737,7 @@ sub MigrationResource_workflowRuleSearch_post( $self, %options ) {
                 );
             } else {
                 # Unknown/unhandled content type
-                $res->fail( $resp );
+                $res->fail( sprintf("unknown_unhandled content type '%s'", $resp->content_type), $resp );
             }
         } elsif( $resp->code == 400 ) {
             # Returned if the request is not valid.
@@ -83525,7 +83747,7 @@ sub MigrationResource_workflowRuleSearch_post( $self, %options ) {
             $res->done($resp);
         } else {
             # An unknown/unhandled response, likely an error
-            $res->fail($resp);
+            $res->fail( sprintf( "unknown_unhandled code %d: %s", $resp->code, $resp->body ), $resp);
         }
     })->retain;
 
