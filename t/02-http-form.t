@@ -65,7 +65,7 @@ for my $known (@testcases) {
     my $tx = Speech::Recognition::Whisper::Client->new(
         server => 'http://example.com:8080',
         schema => $schema,
-    )->_build_load_request( model => 'models/ggml-large-v3.bin' );
+    )->build_load_request( model => 'models/ggml-large-v3.bin' );
 
     my $form_params = <<'HTTP';
 POST /load HTTP/1.1
