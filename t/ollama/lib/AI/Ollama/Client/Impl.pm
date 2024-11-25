@@ -322,6 +322,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Generate the next message in a chat with a provided model.
 
+This is a streaming endpoint, so there will be a series of responses. The final response object will include statistics and additional data from the request.
+
 
 =head3 Options
 
@@ -590,6 +592,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   } until => sub($done) { $done->get };
 
 Create a model from a Modelfile.
+
+It is recommended to set C<modelfile> to the content of the Modelfile rather than just set C<path>. This is a requirement for remote create. Remote model creation should also create any file blobs, fields such as C<FROM> and C<ADAPTER>, explicitly with the server using Create a Blob and the value to the path indicated in the response.
 
 
 =head3 Options
@@ -932,6 +936,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Generate a response for a given prompt with a provided model.
 
+The final response object will include statistics and additional data from the request.
+
 
 =head3 Options
 
@@ -1125,6 +1131,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Download a model from the ollama library.
 
+Cancelled pulls are resumed from where they left off, and multiple calls will share the same download progress.
+
 
 =head3 Options
 
@@ -1240,6 +1248,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->pushModel()->get;
 
 Upload a model to a model library.
+
+Requires registering for ollama.ai and adding a public key first.
 
 
 =head3 Options

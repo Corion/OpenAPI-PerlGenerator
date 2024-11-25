@@ -727,26 +727,40 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 %     }
 % }
 
-% if(     $elt->{responses}
-%     and exists $elt->{responses}->{200}
-%     and exists $elt->{responses}->{200}->{content}
-%     and exists $elt->{responses}->{200}->{content}->{"application/json"}
-%     and $elt->{responses}->{200}->{content}->{"application/json"}->{example} ) {
-%         my $ex = $elt->{responses}->{200}->{content}->{"application/json"}->{example};
-%         use feature 'try';
-%         my $str;
-%         if( ref $ex ) {
-%             # Jira has that somewhere in its documentation ?!
-%             # We'll lose the ordering here, but such is life
-%             $ex = Cpanel::JSON::XS->new->ascii->pretty->allow_nonref->encode($ex);
+% use Data::Diver 'Dive';
+% my $examples = [];
+% if( my $r = $elt->{responses}) {
+%     for my $code (sort keys $r->%*) {
+%         if( my $ex = Dive($elt, 'responses',$code,'content','application/json','example')) {
+%             push $examples->@*, { title => "Return code '$code'", example => $ex };
 %         };
-%         try { $str = json_pretty( $ex ) } catch($e) { warn $e; $str = $ex }
-<%= perl_comment( '  ', $str ) %>
+%         if( my $ex = Dive($elt, 'responses',$code,'content','application/json','examples')) {
+%             push $examples->@*,
+%                 map { { title => $_, example => $ex->{$_} } } sort keys $ex->%*;
+%         };
+%     }
+% };
+% for my $ex ($examples->@*) {
+%     use feature 'try';
+%     my $str;
+%     my $title = $ex->{title};
+%     my $example = $ex->{example};
+%     if( ref $example ) {
+%         # Jira has that somewhere in its documentation ?!
+%         # We'll lose the ordering here, but such is life
+%         $example = Cpanel::JSON::XS->new->ascii->pretty->allow_nonref->encode($example);
+%     };
+%     try { $str = json_pretty( $example ) } catch($e) { warn $e; $str = $example }
+<%= perl_comment( '  ', $title . "\n" . $str ) %>
 % }
 %
 %# pretty-print the JSON response?
 % if( $elt->{summary}  and $elt->{summary} =~ /\S/ ) {
 <%= markdown_to_pod( $elt->{summary} =~ s/\s*$//r ) %>
+
+%}
+% if( $elt->{description}  and $elt->{description} =~ /\S/ ) {
+<%= markdown_to_pod( $elt->{description} =~ s/\s*$//r ) %>
 
 %}
 %# List/add the invocation parameters

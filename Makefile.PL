@@ -51,6 +51,7 @@ my %module = (
 
     PREREQ_PM => {
         'Carp'                => 0,
+        'Data::Diver'         => 0,
         'Encode'              => 0,
         'experimental'        => '0.031',
         'Exporter'            => 5, # for 'import'

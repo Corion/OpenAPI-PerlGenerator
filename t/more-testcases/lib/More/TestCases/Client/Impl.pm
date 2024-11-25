@@ -110,6 +110,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'session-id' => '...',
   )->get;
 
+Example request with a parameter passed in a cookie
+
 =head3 Parameters
 
 =over 4
@@ -196,6 +198,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->withHeader(
       'X-token' => '...',
   )->get;
+
+Example request with a parameter passed in a header
 
 =head3 Parameters
 

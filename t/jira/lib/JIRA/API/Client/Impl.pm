@@ -653,6 +653,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getBanner()->get;
 
 
+  # Return code '200'
   # {
   #   "message" : "This is a public, enabled, non-dismissible banner, set using the API",
   #   "isDismissible" : false,
@@ -660,7 +661,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "hashId" : "9HN2FJK9DM8BHRWERVW3RRTGDJ4G4D5C",
   #   "visibility" : "public"
   # }
+
+  # Return code '403'
+  # "Only admins can read banner configuration."
 Get announcement banner configuration
+
+Returns the current announcement banner configuration.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -803,7 +811,17 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->setBanner()->get;
 
+
+  # Return code '400'
+  # "Banner message cannot be null."
+
+  # Return code '403'
+  # "Only admins can update banner configuration."
 Update announcement banner configuration
+
+Updates the announcement banner configuration.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -998,6 +1016,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Update custom fields
 
+Updates the value of one or more custom fields on one or more issues. Combinations of custom field and issue should be unique within the request. Custom fields can only be updated by the Forge app that created them.
+
+B<L<Permissions|#permissions> required:> Only the app that created the custom field can update its values with this operation.
+
 =head3 Parameters
 
 =over 4
@@ -1131,6 +1153,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 1000,
   #   "startAt" : 0,
@@ -1166,6 +1189,38 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get custom field configurations
+
+Returns a L<paginated|#pagination> list of configurations for a custom field created by a L<Forge app|https://developer.atlassian.com/platform/forge/>.
+
+The result can be filtered by one of these criteria:
+
+=over
+
+=item *
+
+C<id>.
+
+
+=item *
+
+C<fieldContextId>.
+
+
+=item *
+
+C<issueId>.
+
+
+=item *
+
+C<projectKeyOrId> and C<issueTypeId>.
+
+
+=back
+
+Otherwise, all configurations are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>. Jira permissions are not required for the Forge app that created the custom field.
 
 =head3 Parameters
 
@@ -1326,6 +1381,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Update custom field configurations
 
+Update the configuration for contexts of a custom field created by a L<Forge app|https://developer.atlassian.com/platform/forge/>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>. Jira permissions are not required for the Forge app that created the custom field.
+
 =head3 Parameters
 
 =over 4
@@ -1460,6 +1519,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Update custom field value
+
+Updates the value of a custom field on one or more issues. Custom fields can only be updated by the Forge app that created them.
+
+B<L<Permissions|#permissions> required:> Only the app that created the custom field can update its values with this operation.
 
 =head3 Parameters
 
@@ -1601,6 +1664,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "id" : "jira.home",
@@ -1621,6 +1685,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get application property
+
+Returns all application properties or an application property.
+
+If you specify a value for the C<key> parameter, then an application property is returned as an object (not in an array). Otherwise, an array of all editable application properties is returned. See L<Set application property|#api-rest-api-3-application-properties-id-put> for descriptions of editable properties.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -1743,6 +1813,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getAdvancedSettings()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "id" : "jira.home",
@@ -1763,6 +1834,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get advanced settings
+
+Returns the application properties that are accessible on the I<Advanced Settings> page. To navigate to the I<Advanced Settings> page in Jira, choose the Jira icon > B<Jira settings> > B<System>, B<General Configuration> and then click B<Advanced Settings> (in the upper right).
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -1869,6 +1944,92 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Set application property
+
+Changes the value of an application property. For example, you can change the value of the C<jira.clone.prefix> from its default value of I<CLONE -> to I<Clone -> if you prefer sentence case capitalization. Editable properties are described below along with their default values.
+
+
+=head4 Advanced settings
+
+The advanced settings below are also accessible in L<Jira|https://confluence.atlassian.com/x/vYXKM>.
+
+| Key | Description | Default value |
+
+| -- | -- | -- |
+
+| C<jira.clone.prefix> | The string of text prefixed to the title of a cloned issue. | C<CLONE -> |
+
+| C<jira.date.picker.java.format> | The date format for the Java (server-side) generated dates. This must be the same as the C<jira.date.picker.javascript.format> format setting. | C<d/MMM/yy> |
+
+| C<jira.date.picker.javascript.format> | The date format for the JavaScript (client-side) generated dates. This must be the same as the C<jira.date.picker.java.format> format setting. | C<%e/%b/%y> |
+
+| C<jira.date.time.picker.java.format> | The date format for the Java (server-side) generated date times. This must be the same as the C<jira.date.time.picker.javascript.format> format setting. | C<dd/MMM/yy h:mm a> |
+
+| C<jira.date.time.picker.javascript.format> | The date format for the JavaScript (client-side) generated date times. This must be the same as the C<jira.date.time.picker.java.format> format setting. | C<%e/%b/%y %I:%M %p> |
+
+| C<jira.issue.actions.order> | The default order of actions (such as I<Comments> or I<Change history>) displayed on the issue view. | C<asc> |
+
+| C<jira.table.cols.subtasks> | The columns to show while viewing subtask issues in a table. For example, a list of subtasks on an issue. | C<issuetype, status, assignee, progress> |
+
+| C<jira.view.issue.links.sort.order> | The sort order of the list of issue links on the issue view. | C<type, status, priority> |
+
+| C<jira.comment.collapsing.minimum.hidden> | The minimum number of comments required for comment collapsing to occur. A value of C<0> disables comment collapsing. | C<4> |
+
+| C<jira.newsletter.tip.delay.days> | The number of days before a prompt to sign up to the Jira Insiders newsletter is shown. A value of C<-1> disables this feature. | C<7> |
+
+
+
+=head4 Look and feel
+
+The settings listed below adjust the L<look and feel|https://confluence.atlassian.com/x/VwCLLg>.
+
+| Key | Description | Default value |
+
+| -- | -- | -- |
+
+| C<jira.lf.date.time> | The L< time format|https://docs.oracle.com/javase/6/docs/api/index.html?java/text/SimpleDateFormat.html>. | C<h:mm a> |
+
+| C<jira.lf.date.day> | The L< day format|https://docs.oracle.com/javase/6/docs/api/index.html?java/text/SimpleDateFormat.html>. | C<EEEE h:mm a> |
+
+| C<jira.lf.date.complete> | The L< date and time format|https://docs.oracle.com/javase/6/docs/api/index.html?java/text/SimpleDateFormat.html>. | C<dd/MMM/yy h:mm a> |
+
+| C<jira.lf.date.dmy> | The L< date format|https://docs.oracle.com/javase/6/docs/api/index.html?java/text/SimpleDateFormat.html>. | C<dd/MMM/yy> |
+
+| C<jira.date.time.picker.use.iso8061> | When enabled, sets Monday as the first day of the week in the date picker, as specified by the ISO8601 standard. | C<false> |
+
+| C<jira.lf.logo.url> | The URL of the logo image file. | C</images/icon-jira-logo.png> |
+
+| C<jira.lf.logo.show.application.title> | Controls the visibility of the application title on the sidebar. | C<false> |
+
+| C<jira.lf.favicon.url> | The URL of the favicon. | C</favicon.ico> |
+
+| C<jira.lf.favicon.hires.url> | The URL of the high-resolution favicon. | C</images/64jira.png> |
+
+| C<jira.lf.navigation.bgcolour> | The background color of the sidebar. | C<#0747A6> |
+
+| C<jira.lf.navigation.highlightcolour> | The color of the text and logo of the sidebar. | C<#DEEBFF> |
+
+| C<jira.lf.hero.button.base.bg.colour> | The background color of the hero button. | C<#3b7fc4> |
+
+| C<jira.title> | The text for the application title. The application title can also be set in I<General settings>. | C<Jira> |
+
+| C<jira.option.globalsharing> | Whether filters and dashboards can be shared with anyone signed into Jira. | C<true> |
+
+| C<xflow.product.suggestions.enabled> | Whether to expose product suggestions for other Atlassian products within Jira. | C<true> |
+
+
+
+=head4 Other settings
+
+| Key | Description | Default value |
+
+| -- | -- | -- |
+
+| C<jira.issuenav.criteria.autoupdate> | Whether instant updates to search criteria is active. | C<true> |
+
+
+I<Note: Be careful when changing L<application properties and advanced settings|https://confluence.atlassian.com/x/vYXKM>.>
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -2005,6 +2166,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getAllApplicationRoles()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "key" : "jira-software",
@@ -2078,6 +2240,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get all application roles
+
+Returns all application roles. In Jira, application roles are managed using the L<Application access configuration|https://confluence.atlassian.com/x/3YxjL> page.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -2184,6 +2350,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "key" : "jira-software",
   #   "groups" : [
@@ -2223,6 +2390,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "platform" : false
   # }
 Get application role
+
+Returns an application role.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -2342,6 +2513,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Get attachment content
+
+Returns the contents of an attachment. A C<Range> header can be set to define a range of bytes within the attachment to download. See the L<HTTP Range header standard|https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range> for details.
+
+To return a thumbnail of the attachment, use L<Get attachment thumbnail|#api-rest-api-3-attachment-thumbnail-id-get>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> For the issue containing the attachment:
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -2478,11 +2671,20 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getAttachmentMeta()->get;
 
 
+  # Return code '200'
   # {
   #   "enabled" : true,
   #   "uploadLimit" : 1000000
   # }
 Get Jira attachment settings
+
+Returns the attachment settings, that is, whether attachments are enabled and the maximum attachment size allowed.
+
+Note that there are also L<project permissions|https://confluence.atlassian.com/x/yodKLg> that restrict whether users can create and delete attachments.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -2589,6 +2791,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Get attachment thumbnail
+
+Returns the thumbnail of an attachment.
+
+To return the attachment contents, use L<Get attachment content|#api-rest-api-3-attachment-content-id-get>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> For the issue containing the attachment:
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -2737,6 +2961,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete attachment
 
+Deletes an attachment from an issue.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> For the project holding the issue containing the attachment:
+
+=over
+
+=item *
+
+I<Delete own attachments> L<project permission|https://confluence.atlassian.com/x/yodKLg> to delete an attachment created by the calling user.
+
+
+=item *
+
+I<Delete all attachments> L<project permission|https://confluence.atlassian.com/x/yodKLg> to delete an attachment created by any user.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -2830,6 +3074,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 10000,
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/attachments/10000",
@@ -2856,6 +3101,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "thumbnail" : "https://your-domain.atlassian.net/jira/rest/api/3/attachment/thumbnail/10000"
   # }
 Get attachment metadata
+
+Returns the metadata for an attachment. Note that the attachment itself is not returned.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -2974,6 +3239,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 7237823,
   #   "name" : "images.zip",
@@ -3004,6 +3270,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "mediaType" : "application/zip"
   # }
 Get all metadata for an expanded attachment
+
+Returns the metadata for the contents of an attachment, if it is an archive, and metadata for the attachment itself. For example, if the attachment is a ZIP archive, then information about the files in the archive is returned and metadata for the ZIP archive. Currently, only the ZIP archive format is supported.
+
+Use this operation to retrieve data that is presented to the user, as this operation returns the metadata for the attachment itself, such as the attachment's ID and name. Otherwise, use L< Get contents metadata for an expanded attachment|#api-rest-api-3-attachment-id-expand-raw-get>, which only returns the metadata for the attachment's contents.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> For the issue containing the attachment:
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -3125,6 +3413,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "entries" : [
   #     {
@@ -3143,6 +3432,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "totalEntryCount" : 24
   # }
 Get contents metadata for an expanded attachment
+
+Returns the metadata for the contents of an attachment, if it is an archive. For example, if the attachment is a ZIP archive, then information about the files in the archive is returned. Currently, only the ZIP archive format is supported.
+
+Use this operation if you are processing the data without presenting it to the user, as this operation only returns the metadata for the contents of the attachment. Otherwise, to retrieve data to present to the user, use L< Get all metadata for an expanded attachment|#api-rest-api-3-attachment-id-expand-human-get> which also returns the metadata for the attachment itself, such as the attachment's ID and name.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> For the issue containing the attachment:
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -3268,6 +3579,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "offset" : 0,
   #   "limit" : 1000,
@@ -3310,6 +3622,82 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get audit records
+
+Returns a list of audit records. The list can be filtered to include items:
+
+=over
+
+=item *
+
+where each item in C<filter> has at least one match in any of these fields:
+
+
+=over
+
+=item *
+
+C<summary>
+
+
+=item *
+
+C<category>
+
+
+=item *
+
+C<eventSource>
+
+
+=item *
+
+C<objectItem.name> If the object is a user, account ID is available to filter.
+
+
+=item *
+
+C<objectItem.parentName>
+
+
+=item *
+
+C<objectItem.typeName>
+
+
+=item *
+
+C<changedValues.changedFrom>
+
+
+=item *
+
+C<changedValues.changedTo>
+
+
+=item *
+
+C<remoteAddress>
+
+
+=back
+
+For example, if C<filter> contains I<man ed>, an audit record containing C<summary": "User added to group"> and C<"category": "group management"> is returned.
+
+
+
+=item *
+
+created on or after a date and time.
+
+
+=item *
+
+created or or before a date and time.
+
+
+=back
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -3443,6 +3831,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "system" : [
   #     {
@@ -3460,6 +3849,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get system avatars by type
+
+Returns a list of system avatar details by owner type, where the owner types are issue type, project, or user.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -3575,6 +3970,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 1048576,
   #   "startAt" : 0,
@@ -3622,6 +4018,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get comments by IDs
+
+Returns a L<paginated|#pagination> list of comments specified by a list of comment IDs.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> Comments are returned where the user:
+
+=over
+
+=item *
+
+has I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project containing the comment.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+If the comment has visibility restrictions, belongs to the group or has the role visibility is restricted to.
+
+
+=back
 
 =head3 Parameters
 
@@ -3759,6 +4180,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "keys" : [
   #     {
@@ -3768,6 +4190,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get comment property keys
+
+Returns the keys of all the properties of a comment.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+If the comment has visibility restrictions, belongs to the group or has the role visibility is restricted to.
+
+
+=back
 
 =head3 Parameters
 
@@ -3891,6 +4338,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete comment property
 
+Deletes a comment property.
+
+B<L<Permissions|#permissions> required:> either of:
+
+=over
+
+=item *
+
+I<Edit All Comments> L<project permission|https://confluence.atlassian.com/x/yodKLg> to delete a property from any comment.
+
+
+=item *
+
+I<Edit Own Comments> L<project permission|https://confluence.atlassian.com/x/yodKLg> to delete a property from a comment created by the user.
+
+
+=back
+
+Also, when the visibility of a comment is restricted to a role or group the user must be a member of that role or group.
+
 =head3 Parameters
 
 =over 4
@@ -3998,6 +4465,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "key" : "issue.support",
   #   "value" : {
@@ -4006,6 +4474,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get comment property
+
+Returns the value of a comment property.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+If the comment has visibility restrictions, belongs to the group or has the role visibility is restricted to.
+
+
+=back
 
 =head3 Parameters
 
@@ -4135,6 +4628,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Set comment property
+
+Creates or updates the value of a property for a comment. Use this resource to store custom data against a comment.
+
+The value of the request body must be a L<valid|http://tools.ietf.org/html/rfc4627>, non-empty JSON blob. The maximum length is 32768 characters.
+
+B<L<Permissions|#permissions> required:> either of:
+
+=over
+
+=item *
+
+I<Edit All Comments> L<project permission|https://confluence.atlassian.com/x/yodKLg> to create or update the value of a property on any comment.
+
+
+=item *
+
+I<Edit Own Comments> L<project permission|https://confluence.atlassian.com/x/yodKLg> to create or update the value of a property on a comment created by the user.
+
+
+=back
+
+Also, when the visibility of a comment is restricted to a role or group the user must be a member of that role or group.
 
 =head3 Parameters
 
@@ -4286,7 +4801,71 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createComponent()->get;
 
+
+  # Return code '201'
+  # {
+  #   "self" : "https://your-domain.atlassian.net/rest/api/3/component/10000",
+  #   "id" : "10000",
+  #   "name" : "Component 1",
+  #   "description" : "This is a Jira component",
+  #   "lead" : {
+  #     "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
+  #     "key" : "",
+  #     "accountId" : "5b10a2844c20165700ede21g",
+  #     "accountType" : "atlassian",
+  #     "name" : "",
+  #     "avatarUrls" : {
+  #       "48x48" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48",
+  #       "24x24" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24",
+  #       "16x16" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16",
+  #       "32x32" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"
+  #     },
+  #     "displayName" : "Mia Krystof",
+  #     "active" : false
+  #   },
+  #   "assigneeType" : "PROJECT_LEAD",
+  #   "assignee" : {
+  #     "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
+  #     "key" : "",
+  #     "accountId" : "5b10a2844c20165700ede21g",
+  #     "accountType" : "atlassian",
+  #     "name" : "",
+  #     "avatarUrls" : {
+  #       "48x48" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48",
+  #       "24x24" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24",
+  #       "16x16" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16",
+  #       "32x32" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"
+  #     },
+  #     "displayName" : "Mia Krystof",
+  #     "active" : false
+  #   },
+  #   "realAssigneeType" : "PROJECT_LEAD",
+  #   "realAssignee" : {
+  #     "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
+  #     "key" : "",
+  #     "accountId" : "5b10a2844c20165700ede21g",
+  #     "accountType" : "atlassian",
+  #     "name" : "",
+  #     "avatarUrls" : {
+  #       "48x48" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48",
+  #       "24x24" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24",
+  #       "16x16" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16",
+  #       "32x32" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"
+  #     },
+  #     "displayName" : "Mia Krystof",
+  #     "active" : false
+  #   },
+  #   "isAssigneeTypeValid" : false,
+  #   "project" : "HSP",
+  #   "projectId" : 10000
+  # }
 Create component
+
+Creates a component. Use components to provide containers for issues within a project.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project in which the component is created or I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -4517,6 +5096,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete component
 
+Deletes a component.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project containing the component or I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -4621,6 +5206,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/component/10000",
   #   "id" : "10000",
@@ -4678,6 +5264,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "projectId" : 10000
   # }
 Get component
+
+Returns a component.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for project containing the component.
 
 =head3 Parameters
 
@@ -4793,6 +5385,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/component/10000",
   #   "id" : "10000",
@@ -4850,6 +5443,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "projectId" : 10000
   # }
 Update component
+
+Updates a component. Any fields included in the request are overwritten. If C<leadAccountId> is an empty string ("") the component lead is removed.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project containing the component or I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -5088,11 +5687,18 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/component/10000",
   #   "issueCount" : 23
   # }
 Get component issues count
+
+Returns the counts of issues assigned to the component.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -5206,6 +5812,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getConfiguration()->get;
 
 
+  # Return code '200'
   # {
   #   "votingEnabled" : true,
   #   "watchingEnabled" : true,
@@ -5222,6 +5829,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get global settings
+
+Returns the L<global settings|https://confluence.atlassian.com/x/qYXKM> in Jira. These settings determine whether optional features (for example, subtasks, time tracking, and others) are enabled. If time tracking is enabled, this operation also returns the time tracking configuration.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -5322,12 +5933,17 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getSelectedTimeTrackingImplementation()->get;
 
 
+  # Return code '200'
   # {
   #   "key" : "Jira",
   #   "name" : "JIRA provided time tracking",
   #   "url" : "/example/config/url"
   # }
 Get selected time tracking provider
+
+Returns the time tracking provider that is currently selected. Note that if time tracking is disabled, then a successful but empty response is returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -5455,6 +6071,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Select time tracking provider
 
+Selects a time tracking provider.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -5581,6 +6201,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getAvailableTimeTrackingImplementations()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "key" : "Jira",
@@ -5589,6 +6210,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get all time tracking providers
+
+Returns all time tracking providers. By default, Jira only has one time tracking provider: I<JIRA provided time tracking>. However, you can install other time tracking providers via apps from the Atlassian Marketplace. For more information on time tracking providers, see the documentation for the L< Time Tracking Provider|https://developer.atlassian.com/cloud/jira/platform/modules/time-tracking-provider/> module.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -5693,6 +6318,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getSharedTimeTrackingConfiguration()->get;
 
 
+  # Return code '200'
   # {
   #   "workingHoursPerDay" : 7.6,
   #   "workingDaysPerWeek" : 5.5,
@@ -5700,6 +6326,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "defaultUnit" : "hour"
   # }
 Get time tracking settings
+
+Returns the time tracking settings. This includes settings such as the time format, default time unit, and others. For more information, see L<Configuring time tracking|https://confluence.atlassian.com/x/qoXKM>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -5803,6 +6433,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->setSharedTimeTrackingConfiguration()->get;
 
 
+  # Return code '200'
   # {
   #   "workingHoursPerDay" : 7.6,
   #   "workingDaysPerWeek" : 5.5,
@@ -5810,6 +6441,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "defaultUnit" : "hour"
   # }
 Set time tracking settings
+
+Sets the time tracking settings.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -5943,11 +6578,34 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10000",
   #   "value" : "To Do"
   # }
 Get custom field option
+
+Returns a custom field option. For example, an option in a select list.
+
+Note that this operation B<only works for issue field select list options created in Jira or using operations from the L<Issue custom field options|#api-group-Issue-custom-field-options> resource>, it cannot be used with issue field select list options created by Connect apps.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> The custom field option is returned as follows:
+
+=over
+
+=item *
+
+if the user has the I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
+
+=item *
+
+if the user has the I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for at least one project the custom field is used in, and the field is visible in at least one layout the user has permission to view.
+
+
+=back
 
 =head3 Parameters
 
@@ -6065,6 +6723,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "startAt" : 10,
   #   "maxResults" : 10,
@@ -6118,6 +6777,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get all dashboards
+
+Returns a list of dashboards owned by or shared with the user. The list may be filtered to include only favorite or owned dashboards.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -6293,6 +6958,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->createDashboard()->get;
 
 
+  # Return code '200'
   # {
   #   "id" : "10000",
   #   "isFavourite" : false,
@@ -6307,6 +6973,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "view" : "https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=10000"
   # }
 Create dashboard
+
+Creates a dashboard.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -6475,6 +7145,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getAllAvailableDashboardGadgets()->get;
 
 
+  # Return code '200'
   # {
   #   "gadgets" : [
   #     {
@@ -6488,6 +7159,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get available gadgets
+
+Gets a list of all available gadgets that can be added to all dashboards.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -6643,6 +7318,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/dashboard/search?expand=owner&maxResults=50&startAt=0",
   #   "maxResults" : 100,
@@ -6705,6 +7381,41 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Search for dashboards
+
+Returns a L<paginated|#pagination> list of dashboards. This operation is similar to L<Get dashboards|#api-rest-api-3-dashboard-get> except that the results can be refined to include dashboards that have specific attributes. For example, dashboards with a particular name. When multiple attributes are specified only filters matching all attributes are returned.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> The following dashboards that match the query parameters are returned:
+
+=over
+
+=item *
+
+Dashboards owned by the user. Not returned for anonymous users.
+
+
+=item *
+
+Dashboards shared with a group that the user is a member of. Not returned for anonymous users.
+
+
+=item *
+
+Dashboards shared with a private project that the user can browse. Not returned for anonymous users.
+
+
+=item *
+
+Dashboards shared with a public project.
+
+
+=item *
+
+Dashboards shared with the public.
+
+
+=back
 
 =head3 Parameters
 
@@ -6989,6 +7700,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "gadgets" : [
   #     {
@@ -7023,7 +7735,47 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The dashboard you requested either does not exist or you don't have the required permissions to perform this action."
+  #   ],
+  #   "errors" : {}
+  # }
 Get gadgets
+
+Returns a list of dashboard gadgets on a dashboard.
+
+This operation returns:
+
+=over
+
+=item *
+
+Gadgets from a list of IDs, when C<id> is set.
+
+
+=item *
+
+Gadgets with a module key, when C<moduleKey> is set.
+
+
+=item *
+
+Gadgets from a list of URIs, when C<uri> is set.
+
+
+=item *
+
+All gadgets, when no other parameters are set.
+
+
+=back
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -7177,6 +7929,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 10001,
   #   "moduleKey" : "com.atlassian.plugins.atlassian-connect-plugin:com.atlassian.connect.node.sample-addon__sample-dashboard-item",
@@ -7187,7 +7940,27 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   },
   #   "title" : "Issue statistics"
   # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "Cannot add another gadget. The maximum number of gadgets the dashboard can hold has been reached."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The dashboard you requested either does not exist or you don't have the required permissions to perform this action."
+  #   ],
+  #   "errors" : {}
+  # }
 Add gadget to dashboard
+
+Adds a gadget to a dashboard.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -7379,7 +8152,21 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'gadgetId' => '...',
   )->get;
 
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The dashboard gadget was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Remove gadget from dashboard
+
+Removes a dashboard gadget from a dashboard.
+
+When a gadget is removed from a dashboard, other gadgets in the same column are moved up to fill the emptied position.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -7522,7 +8309,27 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'gadgetId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The gadget cannot be placed in the selected row. The selected row does not exist on the dashboard."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The dashboard you requested either does not exist or you don't have the required permissions to perform this action."
+  #   ],
+  #   "errors" : {}
+  # }
 Update gadget on dashboard
+
+Changes the title, position, and color of the gadget on a dashboard.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -7710,6 +8517,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "keys" : [
   #     {
@@ -7719,6 +8527,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get dashboard item property keys
+
+Returns the keys of all properties for a dashboard item.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> The user must be the owner of the dashboard or have the dashboard shared with them. Note, users with the I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> are considered owners of the System dashboard. The System dashboard is considered to be shared with all other users, and is accessible to anonymous users when Jira’s anonymous access is permitted.
 
 =head3 Parameters
 
@@ -7844,6 +8658,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete dashboard item property
 
+Deletes a dashboard item property.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> The user must be the owner of the dashboard. Note, users with the I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> are considered owners of the System dashboard.
+
 =head3 Parameters
 
 =over 4
@@ -7959,6 +8779,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "key" : "issue.support",
   #   "value" : {
@@ -7967,6 +8788,18 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get dashboard item property
+
+Returns the key and value of a dashboard item property.
+
+A dashboard item enables an app to add user-specific information to a user dashboard. Dashboard items are exposed to users as gadgets that users can add to their dashboards. For more information on how users do this, see L<Adding and customizing gadgets|https://confluence.atlassian.com/x/7AeiLQ>.
+
+When an app creates a dashboard item it registers a callback to receive the dashboard item ID. The callback fires whenever the item is rendered or, where the item is configurable, the user edits the item. The app then uses this resource to store the item's content or configuration details. For more information on working with dashboard items, see L< Building a dashboard item for a JIRA Connect add-on|https://developer.atlassian.com/server/jira/platform/guide-building-a-dashboard-item-for-a-jira-connect-add-on-33746254/> and the L<Dashboard Item|https://developer.atlassian.com/cloud/jira/platform/modules/dashboard-item/> documentation.
+
+There is no resource to set or get dashboard items.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> The user must be the owner of the dashboard or have the dashboard shared with them. Note, users with the I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> are considered owners of the System dashboard. The System dashboard is considered to be shared with all other users, and is accessible to anonymous users when Jira’s anonymous access is permitted.
 
 =head3 Parameters
 
@@ -8097,7 +8930,29 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'propertyKey' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The JSON data provided for the property has too many levels. It must be an object with all keys and values as strings."
+  #   ],
+  #   "errors" : {}
+  # }
 Set dashboard item property
+
+Sets the value of a dashboard item property. Use this resource in apps to store custom data against a dashboard item.
+
+A dashboard item enables an app to add user-specific information to a user dashboard. Dashboard items are exposed to users as gadgets that users can add to their dashboards. For more information on how users do this, see L<Adding and customizing gadgets|https://confluence.atlassian.com/x/7AeiLQ>.
+
+When an app creates a dashboard item it registers a callback to receive the dashboard item ID. The callback fires whenever the item is rendered or, where the item is configurable, the user edits the item. The app then uses this resource to store the item's content or configuration details. For more information on working with dashboard items, see L< Building a dashboard item for a JIRA Connect add-on|https://developer.atlassian.com/server/jira/platform/guide-building-a-dashboard-item-for-a-jira-connect-add-on-33746254/> and the L<Dashboard Item|https://developer.atlassian.com/cloud/jira/platform/modules/dashboard-item/> documentation.
+
+There is no resource to set or get dashboard items.
+
+The value of the request body must be a L<valid|http://tools.ietf.org/html/rfc4627>, non-empty JSON blob. The maximum length is 32768 characters.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> The user must be the owner of the dashboard. Note, users with the I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> are considered owners of the System dashboard.
 
 =head3 Parameters
 
@@ -8279,6 +9134,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete dashboard
 
+Deletes a dashboard.
+
+B<L<Permissions|#permissions> required:> None
+
+The dashboard to be deleted must be owned by the user.
+
 =head3 Parameters
 
 =over 4
@@ -8413,6 +9274,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : "10000",
   #   "isFavourite" : false,
@@ -8427,6 +9289,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "view" : "https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=10000"
   # }
 Get dashboard
+
+Returns a dashboard.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
+
+However, to get a dashboard, the dashboard must be shared with the user or the user must own it. Note, users with the I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> are considered owners of the System dashboard. The System dashboard is considered to be shared with all other users.
 
 =head3 Parameters
 
@@ -8585,6 +9455,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : "10000",
   #   "isFavourite" : false,
@@ -8599,6 +9470,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "view" : "https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=10000"
   # }
 Update dashboard
+
+Updates a dashboard, replacing all the dashboard details with those provided.
+
+B<L<Permissions|#permissions> required:> None
+
+The dashboard to be updated must be owned by the user.
 
 =head3 Parameters
 
@@ -8802,6 +9679,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : "10000",
   #   "isFavourite" : false,
@@ -8816,6 +9694,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "view" : "https://your-domain.atlassian.net/secure/Dashboard.jspa?selectPageId=10000"
   # }
 Copy dashboard
+
+Copies a dashboard. Any values provided in the C<dashboard> parameter replace those in the copied dashboard.
+
+B<L<Permissions|#permissions> required:> None
+
+The dashboard to be copied must be owned by or shared with the user.
 
 =head3 Parameters
 
@@ -9015,6 +9899,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getEvents()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "id" : 1,
@@ -9026,6 +9911,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get events
+
+Returns all issue events.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -9132,6 +10021,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "results" : [
   #     {
@@ -9180,6 +10070,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Analyse Jira expression
+
+Analyses and validates Jira expressions.
+
+As an experimental feature, this operation can also attempt to type-check the expressions.
+
+Learn more about Jira expressions in the L<documentation|https://developer.atlassian.com/cloud/jira/platform/jira-expressions/>.
+
+B<L<Permissions|#permissions> required>: None.
 
 =head3 Parameters
 
@@ -9372,6 +10270,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "value" : "The expression's result. This value can be any JSON, not necessarily a String",
   #   "meta" : {
@@ -9406,7 +10305,115 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   }
   # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "Evaluation failed: \"issue[
+  #       'a' + 'b'
+  #     ]\" - Unrecognized property of `issue`: \"ab\" ('a' + 'b'). Available properties of type 'Issue' are: 'assignee', 'comments', 'description', 'id', 'issueType', 'key', 'priority', 'project', 'properties', 'reporter', 'status', 'summary'"
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Issue does not exist or you do not have permission to see it."
+  #   ],
+  #   "errors" : {}
+  # }
 Evaluate Jira expression
+
+Evaluates a Jira expression and returns its value.
+
+This resource can be used to test Jira expressions that you plan to use elsewhere, or to fetch data in a flexible way. Consult the L<Jira expressions documentation|https://developer.atlassian.com/cloud/jira/platform/jira-expressions/> for more details.
+
+
+=head4 Context variables
+
+The following context variables are available to Jira expressions evaluated by this resource. Their presence depends on various factors; usually you need to manually request them in the context object sent in the payload, but some of them are added automatically under certain conditions.
+
+=over
+
+=item *
+
+C<user> (L<User|https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#user>): The current user. Always available and equal to C<null> if the request is anonymous.
+
+
+=item *
+
+C<app> (L<App|https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#app>): The L<Connect app|https://developer.atlassian.com/cloud/jira/platform/index/#connect-apps> that made the request. Available only for authenticated requests made by Connect Apps (read more here: L<Authentication for Connect apps|https://developer.atlassian.com/cloud/jira/platform/security-for-connect-apps/>).
+
+
+=item *
+
+C<issue> (L<Issue|https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#issue>): The current issue. Available only when the issue is provided in the request context object.
+
+
+=item *
+
+C<issues> (L<List|https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#list> of L<Issues|https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#issue>): A collection of issues matching a JQL query. Available only when JQL is provided in the request context object.
+
+
+=item *
+
+C<project> (L<Project|https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#project>): The current project. Available only when the project is provided in the request context object.
+
+
+=item *
+
+C<sprint> (L<Sprint|https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#sprint>): The current sprint. Available only when the sprint is provided in the request context object.
+
+
+=item *
+
+C<board> (L<Board|https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#board>): The current board. Available only when the board is provided in the request context object.
+
+
+=item *
+
+C<serviceDesk> (L<ServiceDesk|https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#servicedesk>): The current service desk. Available only when the service desk is provided in the request context object.
+
+
+=item *
+
+C<customerRequest> (L<CustomerRequest|https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#customerrequest>): The current customer request. Available only when the customer request is provided in the request context object.
+
+
+=back
+
+Also, custom context variables can be passed in the request with their types. Those variables can be accessed by key in the Jira expression. These variable types are available for use in a custom context:
+
+=over
+
+=item *
+
+C<user>: A L<user|https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#user> specified as an Atlassian account ID.
+
+
+=item *
+
+C<issue>: An L<issue|https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#issue> specified by ID or key. All the fields of the issue object are available in the Jira expression.
+
+
+=item *
+
+C<json>: A JSON object containing custom content.
+
+
+=item *
+
+C<list>: A JSON list of C<user>, C<issue>, or C<json> variable types.
+
+
+=back
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required>: None. However, an expression may return different results for different users depending on their permissions. For example, different users may see different comments on the same issue.
+
+Permission to access Jira Software is required to access Jira Software context variables (C<board> and C<sprint>) or fields (for example, C<issue.sprint>).
 
 =head3 Parameters
 
@@ -9578,6 +10585,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getFields()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "id" : "description",
@@ -9612,6 +10620,36 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get fields
+
+Returns system and custom issue fields according to the following rules:
+
+=over
+
+=item *
+
+Fields that cannot be added to the issue navigator are always returned.
+
+
+=item *
+
+Fields that cannot be placed on an issue screen are always returned.
+
+
+=item *
+
+Fields that depend on global Jira settings are only returned if the setting is enabled. That is, timetracking fields, subtasks, votes, and watches.
+
+
+=item *
+
+For all other fields, this operation only returns the fields that the user has permission to view (that is, the field is used in at least one project that the user has I<Browse Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for.)
+
+
+=back
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -9712,7 +10750,32 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createCustomField()->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : "customfield_10101",
+  #   "key" : "customfield_10101",
+  #   "name" : "New custom field",
+  #   "untranslatedName" : "New custom field",
+  #   "custom" : true,
+  #   "orderable" : true,
+  #   "navigable" : true,
+  #   "searchable" : true,
+  #   "clauseNames" : [
+  #     "cf[10101]",
+  #     "New custom field"
+  #   ],
+  #   "schema" : {
+  #     "type" : "project",
+  #     "custom" : "com.atlassian.jira.plugin.system.customfieldtypes:project",
+  #     "customId" : 10101
+  #   }
+  # }
 Create custom field
+
+Creates a custom field.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -10070,6 +11133,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 50,
   #   "startAt" : 0,
@@ -10117,7 +11181,53 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "Only custom fields can be queried."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access fields."
+  #   ],
+  #   "errors" : {}
+  # }
 Get fields paginated
+
+Returns a L<paginated|#pagination> list of fields for Classic Jira projects. The list can include:
+
+=over
+
+=item *
+
+all fields
+
+
+=item *
+
+specific fields, by defining C<id>
+
+
+=item *
+
+fields that contain a string in the field name or description, by defining C<query>
+
+
+=item *
+
+specific fields that contain a string in the field name or description, by defining C<id> and C<query>
+
+
+=back
+
+Only custom fields can be queried, C<type> must be set to C<custom>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -10367,6 +11477,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 50,
   #   "startAt" : 0,
@@ -10402,7 +11513,29 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "Only custom fields can be queried."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access fields."
+  #   ],
+  #   "errors" : {}
+  # }
 Get fields in trash paginated
+
+Returns a L<paginated|#pagination> list of fields in the trash. The list may be restricted to fields whose field name or description partially match a string.
+
+Only custom fields can be queried, C<type> must be set to C<custom>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -10598,7 +11731,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'fieldId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "searcherKey is invalid for the field type."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can edit custom fields."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The custom field was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Update custom field
+
+Updates a custom field.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -10912,6 +12073,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -10934,7 +12096,51 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access custom field contexts."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The custom field was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Get custom field contexts
+
+Returns a L<paginated|#pagination> list of L< contexts|https://confluence.atlassian.com/adminjiracloud/what-are-custom-field-contexts-991923859.html> for a custom field. Contexts can be returned as follows:
+
+=over
+
+=item *
+
+With no other parameters set, all contexts.
+
+
+=item *
+
+By defining C<id> only, all contexts from the list of IDs.
+
+
+=item *
+
+By defining C<isAnyIssueType>, limit the list of contexts returned to either those that apply to all issue types (true) or those that apply to only a subset of issue types (false)
+
+
+=item *
+
+By defining C<isGlobalContext>, limit the list of contexts return to either those that apply to all projects (global contexts) (true) or those that apply to only a subset of projects (false).
+
+
+=back
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -11118,7 +12324,32 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'fieldId' => '...',
   )->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : "10025",
+  #   "name" : "Bug fields context",
+  #   "description" : "A context used to define the custom field options for bugs.",
+  #   "projectIds" : [],
+  #   "issueTypeIds" : [
+  #     "10010"
+  #   ]
+  # }
+
+  # Return code '409'
+  # {
+  #   "errorMessages" : [
+  #     "Sub-tasks are disabled in Jira. At least one of the issue types is a sub-task."
+  #   ],
+  #   "errors" : {}
+  # }
 Create custom field context
+
+Creates a custom field context.
+
+If C<projectIds> is empty, a global context is created. A global context is one that applies to all project. If C<issueTypeIds> is empty, the context applies to all issue types.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -11291,6 +12522,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 50,
   #   "startAt" : 0,
@@ -11313,7 +12545,174 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access custom field contexts."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The custom field was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Get custom field contexts default values
+
+Returns a L<paginated|#pagination> list of defaults for a custom field. The results can be filtered by C<contextId>, otherwise all values are returned. If no defaults are set for a context, nothing is returned.
+
+The returned object depends on type of the custom field:
+
+=over
+
+=item *
+
+C<CustomFieldContextDefaultValueDate> (type C<datepicker>) for date fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueDateTime> (type C<datetimepicker>) for date-time fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueSingleOption> (type C<option.single>) for single choice select lists and radio buttons.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueMultipleOption> (type C<option.multiple>) for multiple choice select lists and checkboxes.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueCascadingOption> (type C<option.cascading>) for cascading select lists.
+
+
+=item *
+
+C<CustomFieldContextSingleUserPickerDefaults> (type C<single.user.select>) for single users.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueMultiUserPicker> (type C<multi.user.select>) for user lists.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueSingleGroupPicker> (type C<grouppicker.single>) for single choice group pickers.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueMultipleGroupPicker> (type C<grouppicker.multiple>) for multiple choice group pickers.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueURL> (type C<url>) for URLs.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueProject> (type C<project>) for project pickers.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueFloat> (type C<float>) for floats (floating-point numbers).
+
+
+=item *
+
+C<CustomFieldContextDefaultValueLabels> (type C<labels>) for labels.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueTextField> (type C<textfield>) for text fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueTextArea> (type C<textarea>) for text area fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueReadOnly> (type C<readonly>) for read only (text) fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueMultipleVersion> (type C<version.multiple>) for single choice version pickers.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueSingleVersion> (type C<version.single>) for multiple choice version pickers.
+
+
+=back
+
+Forge custom fields L<types|https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-custom-field-type/#data-types> are also supported, returning:
+
+=over
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeStringFieldBean> (type C<forge.string>) for Forge string fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeMultiStringFieldBean> (type C<forge.string.list>) for Forge string collection fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeObjectFieldBean> (type C<forge.object>) for Forge object fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeDateTimeFieldBean> (type C<forge.datetime>) for Forge date-time fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeGroupFieldBean> (type C<forge.group>) for Forge group fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeMultiGroupFieldBean> (type C<forge.group.list>) for Forge group collection fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeNumberFieldBean> (type C<forge.number>) for Forge number fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeUserFieldBean> (type C<forge.user>) for Forge user fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeMultiUserFieldBean> (type C<forge.user.list>) for Forge user collection fields.
+
+
+=back
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -11487,7 +12886,182 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'fieldId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "All default values in the request must have the same type."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access custom field contexts."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The context was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Set custom field contexts default values
+
+Sets default for contexts of a custom field. Default are defined using these objects:
+
+=over
+
+=item *
+
+C<CustomFieldContextDefaultValueDate> (type C<datepicker>) for date fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueDateTime> (type C<datetimepicker>) for date-time fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueSingleOption> (type C<option.single>) for single choice select lists and radio buttons.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueMultipleOption> (type C<option.multiple>) for multiple choice select lists and checkboxes.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueCascadingOption> (type C<option.cascading>) for cascading select lists.
+
+
+=item *
+
+C<CustomFieldContextSingleUserPickerDefaults> (type C<single.user.select>) for single users.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueMultiUserPicker> (type C<multi.user.select>) for user lists.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueSingleGroupPicker> (type C<grouppicker.single>) for single choice group pickers.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueMultipleGroupPicker> (type C<grouppicker.multiple>) for multiple choice group pickers.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueURL> (type C<url>) for URLs.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueProject> (type C<project>) for project pickers.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueFloat> (type C<float>) for floats (floating-point numbers).
+
+
+=item *
+
+C<CustomFieldContextDefaultValueLabels> (type C<labels>) for labels.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueTextField> (type C<textfield>) for text fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueTextArea> (type C<textarea>) for text area fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueReadOnly> (type C<readonly>) for read only (text) fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueMultipleVersion> (type C<version.multiple>) for single choice version pickers.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueSingleVersion> (type C<version.single>) for multiple choice version pickers.
+
+
+=back
+
+Forge custom fields L<types|https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-custom-field-type/#data-types> are also supported, returning:
+
+=over
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeStringFieldBean> (type C<forge.string>) for Forge string fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeMultiStringFieldBean> (type C<forge.string.list>) for Forge string collection fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeObjectFieldBean> (type C<forge.object>) for Forge object fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeDateTimeFieldBean> (type C<forge.datetime>) for Forge date-time fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeGroupFieldBean> (type C<forge.group>) for Forge group fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeMultiGroupFieldBean> (type C<forge.group.list>) for Forge group collection fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeNumberFieldBean> (type C<forge.number>) for Forge number fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeUserFieldBean> (type C<forge.user>) for Forge user fields.
+
+
+=item *
+
+C<CustomFieldContextDefaultValueForgeMultiUserFieldBean> (type C<forge.user.list>) for Forge user collection fields.
+
+
+=back
+
+Only one type of default object can be included in a request. To remove a default for a context, set the default parameter to C<null>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -11680,6 +13254,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -11700,7 +13275,19 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access custom field contexts."
+  #   ],
+  #   "errors" : {}
+  # }
 Get issue types for custom field context
+
+Returns a L<paginated|#pagination> list of context to issue type mappings for a custom field. Mappings are returned for all contexts or a list of contexts. Mappings are ordered first by context ID and then by issue type ID.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -11855,6 +13442,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 50,
   #   "startAt" : 0,
@@ -11878,7 +13466,41 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "Duplicate project and issue type mappings cannot be provided."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access custom field contexts."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "These projects were not found: 10005."
+  #   ],
+  #   "errors" : {}
+  # }
 Get custom field contexts for projects and issue types
+
+Returns a L<paginated|#pagination> list of project and issue type mappings and, for each mapping, the ID of a L<custom field context|https://confluence.atlassian.com/x/k44fOw> that applies to the project and issue type.
+
+If there is no custom field context assigned to the project then, if present, the custom field context that applies to all projects is returned if it also applies to the issue type or all issue types. If a custom field context is not found, the returned custom field context ID is C<null>.
+
+Duplicate project and issue type mappings cannot be provided in the request.
+
+The order of the returned values is the same as provided in the request.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -12086,6 +13708,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -12102,7 +13725,27 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access custom field contexts."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The custom field was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Get project mappings for custom field context
+
+Returns a L<paginated|#pagination> list of context to project mappings for a custom field. The result can be filtered by C<contextId>. Otherwise, all mappings are returned. Invalid IDs are ignored.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -12277,7 +13920,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'contextId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The contextId has to be provided."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access custom field contexts."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The context was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Delete custom field context
+
+Deletes a L< custom field context|https://confluence.atlassian.com/adminjiracloud/what-are-custom-field-contexts-991923859.html>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -12463,7 +14134,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'contextId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The contextId has to be provided."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access custom field contexts."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The context was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Update custom field context
+
+Updates a L< custom field context|https://confluence.atlassian.com/adminjiracloud/what-are-custom-field-contexts-991923859.html>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -12666,7 +14365,47 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'contextId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "These issue types are already associated with the context: 10001."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access custom field contexts."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The context was not found."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '409'
+  # {
+  #   "errorMessages" : [
+  #     "Sub-tasks are disabled in Jira. At least one of the issue types is a sub-task."
+  #   ],
+  #   "errors" : {}
+  # }
 Add issue types to context
+
+Adds issue types to a custom field context, appending the issue types to the issue types list.
+
+A custom field context without any issue types applies to all issue types. Adding issue types to such a custom field context would result in it applying to only the listed issue types.
+
+If any of the issue types exists in the custom field context, the operation fails and no issue types are added.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -12887,7 +14626,37 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'contextId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "These issue types are not associated with the context: 10002."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access custom field contexts."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The context was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Remove issue types from context
+
+Removes issue types from a custom field context.
+
+A custom field context without any issue types applies to all issue types.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -13091,6 +14860,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -13117,7 +14887,37 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The custom field doesn't support options."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can manage custom field options."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The custom field was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Get custom field options (context)
+
+Returns a L<paginated|#pagination> list of all custom field option for a context. Options are returned first then cascading options, in the order they display in Jira.
+
+This operation works for custom field options created in Jira or the operations from this resource. B<To work with issue field select list options created for Connect apps use the L<Issue custom field options (apps)|#api-group-issue-custom-field-options--apps-> operations.>
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -13327,6 +15127,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "options" : [
   #     {
@@ -13347,7 +15148,39 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The custom field doesn't support options."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can manage custom field options."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The custom field was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Create custom field options (context)
+
+Creates options and, where the custom select field is of the type Select List (cascading), cascading options for a custom select field. The options are added to a context of the field.
+
+The maximum number of options that can be created per request is 1000 and each field can have a maximum of 10000 options.
+
+This operation works for custom field options created in Jira or the operations from this resource. B<To work with issue field select list options created for Connect apps use the L<Issue custom field options (apps)|#api-group-issue-custom-field-options--apps-> operations.>
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -13547,6 +15380,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "options" : [
   #     {
@@ -13566,7 +15400,39 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The custom field doesn't support options."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can manage custom field options."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The custom field was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Update custom field options (context)
+
+Updates the options of a custom field.
+
+If any of the options are not found, no options are updated. Options where the values in the request match the current values aren't updated and aren't reported in the response.
+
+Note that this operation B<only works for issue field select list options created in Jira or using operations from the L<Issue custom field options|#api-group-Issue-custom-field-options> resource>, it cannot be used with issue field select list options created by Connect apps.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -13765,7 +15631,37 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'contextId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "'after' and 'position' were provided. Only 'after' or 'position' can be specified."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can manage custom field options."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The custom field was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Reorder custom field options (context)
+
+Changes the order of custom field options or cascading options in a context.
+
+This operation works for custom field options created in Jira or the operations from this resource. B<To work with issue field select list options created for Connect apps use the L<Issue custom field options (apps)|#api-group-issue-custom-field-options--apps-> operations.>
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -13973,7 +15869,39 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'optionId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The custom field doesn't support options."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can manage custom field options."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The custom field was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Delete custom field options (context)
+
+Deletes a custom field option.
+
+Options with cascading options cannot be deleted without deleting the cascading options first.
+
+This operation works for custom field options created in Jira or the operations from this resource. B<To work with issue field select list options created for Connect apps use the L<Issue custom field options (apps)|#api-group-issue-custom-field-options--apps-> operations.>
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -14146,7 +16074,37 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'contextId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The projectIds must not contain duplicates."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access custom field contexts."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The context was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Assign custom field context to projects
+
+Assigns a custom field context to projects.
+
+If any project in the request is assigned to any context of the custom field, the operation fails.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -14345,7 +16303,39 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'contextId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The projectIds must not contain duplicates."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access custom field contexts."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The context was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Remove custom field context from projects
+
+Removes a custom field context from projects.
+
+A custom field context without any projects applies to all projects. Removing all projects from a custom field context would result in it applying to all projects.
+
+If any project in the request is not assigned to the context, or the operation would result in two global contexts for the field, the operation fails.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -14546,6 +16536,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 1,
   #   "startAt" : 0,
@@ -14559,6 +16550,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get contexts for a field
+
+Returns a L<paginated|#pagination> list of the contexts a field is used in. Deprecated, use L< Get custom field contexts|#api-rest-api-3-field-fieldId-context-get>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -14690,6 +16685,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 1,
   #   "startAt" : 0,
@@ -14708,6 +16704,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get screens for a field
+
+Returns a L<paginated|#pagination> list of the screens a field is used in.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -14843,6 +16843,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/field/fieldKey/option?startAt=0&maxResults=1",
   #   "nextPage" : "https://your-domain.atlassian.net/rest/api/3/field/fieldKey/option?startAt=1&maxResults=1",
@@ -14888,6 +16889,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get all issue field options
+
+Returns a L<paginated|#pagination> list of all the options of a select list issue field. A select list issue field is a type of L<issue field|https://developer.atlassian.com/cloud/jira/platform/modules/issue-field/> that enables a user to select a value from a list of options.
+
+Note that this operation B<only works for issue field select list options added by Connect apps>, it cannot be used with issue field select list options created in Jira or using operations from the L<Issue custom field options|#api-group-Issue-custom-field-options> resource.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>. Jira permissions are not required for the app providing the field.
 
 =head3 Parameters
 
@@ -15030,6 +17037,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 1,
   #   "value" : "Team 1",
@@ -15065,6 +17073,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Create issue field option
+
+Creates an option for a select list issue field.
+
+Note that this operation B<only works for issue field select list options added by Connect apps>, it cannot be used with issue field select list options created in Jira or using operations from the L<Issue custom field options|#api-group-Issue-custom-field-options> resource.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>. Jira permissions are not required for the app providing the field.
 
 =head3 Parameters
 
@@ -15221,6 +17235,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/field/fieldKey/option/suggestions?startAt=0&maxResults=1",
   #   "nextPage" : "https://your-domain.atlassian.net/rest/api/3/field/fieldKey/option/suggestions?startAt=1&maxResults=1",
@@ -15245,6 +17260,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get selectable issue field options
+
+Returns a L<paginated|#pagination> list of options for a select list issue field that can be viewed and selected by the user.
+
+Note that this operation B<only works for issue field select list options added by Connect apps>, it cannot be used with issue field select list options created in Jira or using operations from the L<Issue custom field options|#api-group-Issue-custom-field-options> resource.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -15395,6 +17416,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/field/fieldKey/option/suggestions?startAt=0&maxResults=1",
   #   "nextPage" : "https://your-domain.atlassian.net/rest/api/3/field/fieldKey/option/suggestions?startAt=1&maxResults=1",
@@ -15419,6 +17441,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get visible issue field options
+
+Returns a L<paginated|#pagination> list of options for a select list issue field that can be viewed by the user.
+
+Note that this operation B<only works for issue field select list options added by Connect apps>, it cannot be used with issue field select list options created in Jira or using operations from the L<Issue custom field options|#api-group-Issue-custom-field-options> resource.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -15568,6 +17596,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete issue field option
 
+Deletes an option from a select list issue field.
+
+Note that this operation B<only works for issue field select list options added by Connect apps>, it cannot be used with issue field select list options created in Jira or using operations from the L<Issue custom field options|#api-group-Issue-custom-field-options> resource.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>. Jira permissions are not required for the app providing the field.
+
 =head3 Parameters
 
 =over 4
@@ -15707,6 +17741,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 1,
   #   "value" : "Team 1",
@@ -15742,6 +17777,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get issue field option
+
+Returns an option from a select list issue field.
+
+Note that this operation B<only works for issue field select list options added by Connect apps>, it cannot be used with issue field select list options created in Jira or using operations from the L<Issue custom field options|#api-group-Issue-custom-field-options> resource.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>. Jira permissions are not required for the app providing the field.
 
 =head3 Parameters
 
@@ -15882,6 +17923,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 1,
   #   "value" : "Team 1",
@@ -15917,6 +17959,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Update issue field option
+
+Updates or creates an option for a select list issue field. This operation requires that the option ID is provided when creating an option, therefore, the option ID needs to be specified as a path and body parameter. The option ID provided in the path and body must be identical.
+
+Note that this operation B<only works for issue field select list options added by Connect apps>, it cannot be used with issue field select list options created in Jira or using operations from the L<Issue custom field options|#api-group-Issue-custom-field-options> resource.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>. Jira permissions are not required for the app providing the field.
 
 =head3 Parameters
 
@@ -16085,7 +18133,53 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'optionId' => '...',
   )->get;
 
+
+  # Return code '303'
+  # {
+  #   "self" : "https://your-domain.atlassian.net/rest/api/3/task/1",
+  #   "id" : "1",
+  #   "description" : "Remove option 1 from issues matched by '*', and replace with option 3",
+  #   "status" : "COMPLETE",
+  #   "result" : {
+  #     "modifiedIssues" : [
+  #       10001,
+  #       10010
+  #     ],
+  #     "unmodifiedIssues" : [
+  #       10005
+  #     ],
+  #     "errors" : {
+  #       "errors" : {},
+  #       "errorMessages" : [
+  #         "Option 2 cannot be set on issue MKY-5 as it is not in the correct scope"
+  #       ],
+  #       "httpStatusCode" : {
+  #         "empty" : false,
+  #         "present" : true
+  #       }
+  #     }
+  #   },
+  #   "elapsedRuntime" : 42
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Connect and Forge app users with Administer Jira global permission can override screen security."
+  #   ],
+  #   "errors" : {}
+  # }
 Replace issue field option
+
+Deselects an issue-field select-list option from all issues where it is selected. A different option can be selected to replace the deselected option. The update can also be limited to a smaller set of issues by using a JQL query.
+
+Connect and Forge app users with I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> can override the screen security configuration using C<overrideScreenSecurity> and C<overrideEditableFlag>.
+
+This is an L<asynchronous operation|#async>. The response object contains a link to the long-running task.
+
+Note that this operation B<only works for issue field select list options added by Connect apps>, it cannot be used with issue field select list options created in Jira or using operations from the L<Issue custom field options|#api-group-Issue-custom-field-options> resource.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>. Jira permissions are not required for the app providing the field.
 
 =head3 Parameters
 
@@ -16267,6 +18361,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Delete custom field
+
+Deletes a custom field. The custom field is deleted whether it is in the trash or not. See L<Edit or delete a custom field|https://confluence.atlassian.com/x/Z44fOw> for more information on trashing and deleting custom fields.
+
+This operation is L<asynchronous|#async>. Follow the C<location> link in the response to determine the status of the task and use L<Get task|#api-rest-api-3-task-taskId-get> to obtain subsequent updates.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -16492,6 +18592,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Restore custom field from trash
 
+Restores a custom field from trash. See L<Edit or delete a custom field|https://confluence.atlassian.com/x/Z44fOw> for more information on trashing and deleting custom fields.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -16692,6 +18796,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Move custom field to trash
+
+Moves a custom field to trash. See L<Edit or delete a custom field|https://confluence.atlassian.com/x/Z44fOw> for more information on trashing and deleting custom fields.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -16897,6 +19005,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 50,
   #   "startAt" : 0,
@@ -16917,6 +19026,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get all field configurations
+
+Returns a L<paginated|#pagination> list of field configurations. The list can be for all field configurations or a subset determined by any combination of these criteria:
+
+=over
+
+=item *
+
+a list of field configuration item IDs.
+
+
+=item *
+
+whether the field configuration is a default.
+
+
+=item *
+
+whether the field configuration name or description contains a query string.
+
+
+=back
+
+Only field configurations used in company-managed (classic) projects are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -17048,12 +19182,19 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->createFieldConfiguration()->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 10001,
   #   "name" : "My Field Configuration",
   #   "description" : "My field configuration description"
   # }
 Create field configuration
+
+Creates a field configuration. The field configuration is created with the same field properties as the default configuration, with all the fields being optional.
+
+This operation can only create configurations for use in company-managed (classic) projects.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -17180,6 +19321,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete field configuration
 
+Deletes a field configuration.
+
+This operation can only delete configurations used in company-managed (classic) projects.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -17300,6 +19447,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Update field configuration
+
+Updates a field configuration. The name and the description provided in the request override the existing values.
+
+This operation can only update configurations used in company-managed (classic) projects.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -17440,6 +19593,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 50,
   #   "startAt" : 0,
@@ -17460,6 +19614,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get field configuration items
+
+Returns a L<paginated|#pagination> list of all fields for a configuration.
+
+Only the fields from configurations used in company-managed (classic) projects are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -17591,6 +19751,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Update field configuration items
+
+Updates fields in a field configuration. The properties of the field configuration fields provided override the existing values.
+
+This operation can only update field configurations used in company-managed (classic) projects.
+
+The operation can set the renderer for text fields to the default text renderer (C<text-renderer>) or wiki style renderer (C<wiki-renderer>). However, the renderer cannot be updated for fields using the autocomplete renderer (C<autocomplete-renderer>).
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -17727,6 +19895,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 10,
   #   "startAt" : 0,
@@ -17751,6 +19920,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get all field configuration schemes
+
+Returns a L<paginated|#pagination> list of field configuration schemes.
+
+Only field configuration schemes used in classic projects are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -17874,7 +20049,36 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createFieldConfigurationScheme()->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : "10002",
+  #   "name" : "Field Configuration Scheme for software related projects",
+  #   "description" : "We can use this one for software projects."
+  # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "A field configuration scheme is using this name."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access field configurations."
+  #   ],
+  #   "errors" : {}
+  # }
 Create field configuration scheme
+
+Creates a field configuration scheme.
+
+This operation can only create field configuration schemes used in company-managed (classic) projects.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -18040,6 +20244,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -18074,6 +20279,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get field configuration issue type items
+
+Returns a L<paginated|#pagination> list of field configuration issue type items.
+
+Only items used in classic projects are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -18205,6 +20416,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 50,
   #   "startAt" : 0,
@@ -18232,6 +20444,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get field configuration schemes for projects
+
+Returns a L<paginated|#pagination> list of field configuration schemes and, for each scheme, a list of the projects that use it.
+
+The list is sorted by field configuration scheme ID. The first item contains the list of project IDs assigned to the default field configuration scheme.
+
+Only field configuration schemes used in classic projects are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -18358,7 +20578,37 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->assignFieldConfigurationSchemeToProject()->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "Only classic projects can have field configuration schemes assigned."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access field configurations."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The project was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Assign field configuration scheme to project
+
+Assigns a field configuration scheme to a project. If the field configuration scheme ID is C<null>, the operation assigns the default field configuration scheme.
+
+Field configuration schemes can only be assigned to classic projects.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -18545,6 +20795,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete field configuration scheme
 
+Deletes a field configuration scheme.
+
+This operation can only delete field configuration schemes used in company-managed (classic) projects.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -18664,7 +20920,37 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "A field configuration scheme is using this name."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access field configurations."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The field configuration scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Update field configuration scheme
+
+Updates a field configuration scheme.
+
+This operation can only update field configuration schemes used in company-managed (classic) projects.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -18861,6 +21147,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Assign issue types to field configurations
 
+Assigns issue types to field configurations on field configuration scheme.
+
+This operation can only modify field configuration schemes used in company-managed (classic) projects.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -18993,7 +21285,37 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The issueTypeIds must not contain duplicates."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access field configurations."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The field configuration scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Remove issue types from field configuration scheme
+
+Removes issue types from the field configuration scheme.
+
+This operation can only modify field configuration schemes used in company-managed (classic) projects.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -19209,6 +21531,41 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Get filters
 
+Returns all filters. Deprecated, use L< Search for filters|#api-rest-api-3-filter-search-get> that supports search and pagination.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None, however, only the following filters are returned:
+
+=over
+
+=item *
+
+filters owned by the user.
+
+
+=item *
+
+filters shared with a group that the user is a member of.
+
+
+=item *
+
+filters shared with a private project that the user has I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for.
+
+
+=item *
+
+filters shared with a public project.
+
+
+=item *
+
+filters shared with the public.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -19331,6 +21688,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/filter/10000",
   #   "id" : "10000",
@@ -19367,6 +21725,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Create filter
+
+Creates a filter. The filter is shared according to the L<default share scope|#api-rest-api-3-filter-post>. The filter is not selected as a favorite.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -19562,10 +21924,15 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getDefaultShareScope()->get;
 
 
+  # Return code '200'
   # {
   #   "scope" : "GLOBAL"
   # }
 Get default share scope
+
+Returns the default sharing settings for new filters and dashboards for a user.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -19666,10 +22033,15 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->setDefaultShareScope()->get;
 
 
+  # Return code '200'
   # {
   #   "scope" : "GLOBAL"
   # }
 Set default share scope
+
+Sets the default sharing for new filters and dashboards for a user.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -19807,6 +22179,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/filter/10000",
@@ -19913,6 +22286,43 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get favorite filters
+
+Returns the visible favorite filters of the user.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> A favorite filter is only visible to the user where the filter is:
+
+=over
+
+=item *
+
+owned by the user.
+
+
+=item *
+
+shared with a group that the user is a member of.
+
+
+=item *
+
+shared with a private project that the user has I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for.
+
+
+=item *
+
+shared with a public project.
+
+
+=item *
+
+shared with the public.
+
+
+=back
+
+For example, if the user favorites a public filter that is subsequently made private that filter is not returned by this operation.
 
 =head3 Parameters
 
@@ -20039,6 +22449,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/filter/10000",
@@ -20145,6 +22556,41 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get my filters
+
+Returns the filters owned by the user. If C<includeFavourites> is C<true>, the user's visible favorite filters are also returned.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira, however, a favorite filters is only visible to the user where the filter is:
+
+=over
+
+=item *
+
+owned by the user.
+
+
+=item *
+
+shared with a group that the user is a member of.
+
+
+=item *
+
+shared with a private project that the user has I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for.
+
+
+=item *
+
+shared with a public project.
+
+
+=item *
+
+shared with the public.
+
+
+=back
+
+For example, if the user favorites a public filter that is subsequently made private that filter is not returned by this operation.
 
 =head3 Parameters
 
@@ -20286,6 +22732,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/filter/search?accountId=&maxResults=50&filterName=&orderBy=name&startAt=0&expand=description,owner,jql,searchUrl,viewUrl,favourite,favouritedCount,sharePermissions,editPermissions,isWritable,subscriptions",
   #   "maxResults" : 100,
@@ -20509,6 +22956,55 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Search for filters
+
+Returns a L<paginated|#pagination> list of filters. Use this operation to get:
+
+=over
+
+=item *
+
+specific filters, by defining C<id> only.
+
+
+=item *
+
+filters that match all of the specified attributes. For example, all filters for a user with a particular word in their name. When multiple attributes are specified only filters matching all attributes are returned.
+
+
+=back
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None, however, only the following filters that match the query parameters are returned:
+
+=over
+
+=item *
+
+filters owned by the user.
+
+
+=item *
+
+filters shared with a group that the user is a member of.
+
+
+=item *
+
+filters shared with a private project that the user has I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for.
+
+
+=item *
+
+filters shared with a public project.
+
+
+=item *
+
+filters shared with the public.
+
+
+=back
 
 =head3 Parameters
 
@@ -20796,6 +23292,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete filter
 
+Delete a filter.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira, however filters can only be deleted by the creator of the filter or a user with I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -20891,6 +23391,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/filter/10000",
   #   "id" : "10000",
@@ -20927,6 +23428,41 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get filter
+
+Returns a filter.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None, however, the filter is only returned where it is:
+
+=over
+
+=item *
+
+owned by the user.
+
+
+=item *
+
+shared with a group that the user is a member of.
+
+
+=item *
+
+shared with a private project that the user has I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for.
+
+
+=item *
+
+shared with a public project.
+
+
+=item *
+
+shared with the public.
+
+
+=back
 
 =head3 Parameters
 
@@ -21071,6 +23607,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/filter/10000",
   #   "id" : "10000",
@@ -21107,6 +23644,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Update filter
+
+Updates a filter. Use this operation to update a filter's name, description, JQL, or sharing.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira, however the user must own the filter.
 
 =head3 Parameters
 
@@ -21315,6 +23856,39 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Reset columns
 
+Reset the user's column configuration for the filter to the default.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira, however, columns are only reset for:
+
+=over
+
+=item *
+
+filters owned by the user.
+
+
+=item *
+
+filters shared with a group that the user is a member of.
+
+
+=item *
+
+filters shared with a private project that the user has I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for.
+
+
+=item *
+
+filters shared with a public project.
+
+
+=item *
+
+filters shared with the public.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -21408,6 +23982,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "label" : "Key",
@@ -21419,6 +23994,41 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get columns
+
+Returns the columns configured for a filter. The column configuration is used when the filter's results are viewed in I<List View> with the I<Columns> set to I<Filter>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None, however, column details are only returned for:
+
+=over
+
+=item *
+
+filters owned by the user.
+
+
+=item *
+
+filters shared with a group that the user is a member of.
+
+
+=item *
+
+filters shared with a private project that the user has I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for.
+
+
+=item *
+
+filters shared with a public project.
+
+
+=item *
+
+filters shared with the public.
+
+
+=back
 
 =head3 Parameters
 
@@ -21538,6 +24148,43 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Set columns
+
+Sets the columns for a filter. Only navigable fields can be set as columns. Use L<Get fields|#api-rest-api-3-field-get> to get the list fields in Jira. A navigable field has C<navigable> set to C<true>.
+
+The parameters for this resource are expressed as HTML form data. For example, in curl:
+
+C<curl -X PUT -d columns=summary -d columns=description https://your-domain.atlassian.net/rest/api/3/filter/10000/columns>
+
+B<L<Permissions|#permissions> required:> Permission to access Jira, however, columns are only set for:
+
+=over
+
+=item *
+
+filters owned by the user.
+
+
+=item *
+
+filters shared with a group that the user is a member of.
+
+
+=item *
+
+filters shared with a private project that the user has I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for.
+
+
+=item *
+
+filters shared with a public project.
+
+
+=item *
+
+filters shared with the public.
+
+
+=back
 
 =head3 Parameters
 
@@ -21659,6 +24306,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/filter/10000",
   #   "id" : "10000",
@@ -21695,6 +24343,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Remove filter as favorite
+
+Removes a filter as a favorite for the user. Note that this operation only removes filters visible to the user from the user's favorites list. For example, if the user favorites a public filter that is subsequently made private (and is therefore no longer visible on their favorites list) they cannot remove it from their favorites list.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -21830,6 +24482,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/filter/10000",
   #   "id" : "10000",
@@ -21866,6 +24519,39 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Add filter as favorite
+
+Add a filter as a favorite for the user.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira, however, the user can only favorite:
+
+=over
+
+=item *
+
+filters owned by the user.
+
+
+=item *
+
+filters shared with a group that the user is a member of.
+
+
+=item *
+
+filters shared with a private project that the user has I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for.
+
+
+=item *
+
+filters shared with a public project.
+
+
+=item *
+
+filters shared with the public.
+
+
+=back
 
 =head3 Parameters
 
@@ -22001,6 +24687,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Change filter owner
 
+Changes the owner of the filter.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira. However, the user must own the filter or have the I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -22131,6 +24821,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "id" : 10000,
@@ -22257,6 +24948,41 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   # ]
 Get share permissions
 
+Returns the share permissions for a filter. A filter can be shared with groups, projects, all logged-in users, or the public. Sharing with all logged-in users or the public is known as a global share permission.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None, however, share permissions are only returned for:
+
+=over
+
+=item *
+
+filters owned by the user.
+
+
+=item *
+
+filters shared with a group that the user is a member of.
+
+
+=item *
+
+filters shared with a private project that the user has I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for.
+
+
+=item *
+
+filters shared with a public project.
+
+
+=item *
+
+filters shared with the public.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -22371,7 +25097,139 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+
+  # Return code '201'
+  # [
+  #   {
+  #     "id" : 10000,
+  #     "type" : "global"
+  #   },
+  #   {
+  #     "id" : 10010,
+  #     "type" : "project",
+  #     "project" : {
+  #       "self" : "https://your-domain.atlassian.net/rest/api/3/project/EX",
+  #       "id" : "10000",
+  #       "key" : "EX",
+  #       "name" : "Example",
+  #       "avatarUrls" : {
+  #         "48x48" : "https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000",
+  #         "24x24" : "https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000",
+  #         "16x16" : "https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000",
+  #         "32x32" : "https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000"
+  #       },
+  #       "projectCategory" : {
+  #         "self" : "https://your-domain.atlassian.net/rest/api/3/projectCategory/10000",
+  #         "id" : "10000",
+  #         "name" : "FIRST",
+  #         "description" : "First Project Category"
+  #       },
+  #       "simplified" : false,
+  #       "style" : "classic",
+  #       "insight" : {
+  #         "totalIssueCount" : 100,
+  #         "lastIssueUpdateTime" : "2023-02-28T09:45:09.984+0000"
+  #       }
+  #     }
+  #   },
+  #   {
+  #     "id" : 10010,
+  #     "type" : "project",
+  #     "project" : {
+  #       "self" : "https://your-domain.atlassian.net/rest/api/3/project/MKY",
+  #       "id" : "10002",
+  #       "key" : "MKY",
+  #       "name" : "Example",
+  #       "avatarUrls" : {
+  #         "48x48" : "https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10002",
+  #         "24x24" : "https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10002",
+  #         "16x16" : "https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10002",
+  #         "32x32" : "https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10002"
+  #       },
+  #       "projectCategory" : {
+  #         "self" : "https://your-domain.atlassian.net/rest/api/3/projectCategory/10000",
+  #         "id" : "10000",
+  #         "name" : "FIRST",
+  #         "description" : "First Project Category"
+  #       },
+  #       "simplified" : false,
+  #       "style" : "classic",
+  #       "insight" : {
+  #         "totalIssueCount" : 100,
+  #         "lastIssueUpdateTime" : "2023-02-28T09:45:09.984+0000"
+  #       },
+  #       "deleted" : true,
+  #       "retentionTillDate" : "2023-04-29T09:45:09.985+0000",
+  #       "deletedDate" : "2023-02-28T09:45:09.985+0000",
+  #       "deletedBy" : {
+  #         "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
+  #         "key" : "",
+  #         "accountId" : "5b10a2844c20165700ede21g",
+  #         "accountType" : "atlassian",
+  #         "name" : "",
+  #         "avatarUrls" : {
+  #           "48x48" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48",
+  #           "24x24" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24",
+  #           "16x16" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16",
+  #           "32x32" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"
+  #         },
+  #         "displayName" : "Mia Krystof",
+  #         "active" : false
+  #       }
+  #     },
+  #     "role" : {
+  #       "self" : "https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360",
+  #       "name" : "Developers",
+  #       "id" : 10360,
+  #       "description" : "A project role that represents developers in a project",
+  #       "actors" : [
+  #         {
+  #           "id" : 10240,
+  #           "displayName" : "jira-developers",
+  #           "type" : "atlassian-group-role-actor",
+  #           "name" : "jira-developers",
+  #           "actorGroup" : {
+  #             "name" : "jira-developers",
+  #             "displayName" : "jira-developers",
+  #             "groupId" : "952d12c3-5b5b-4d04-bb32-44d383afc4b2"
+  #           }
+  #         },
+  #         {
+  #           "id" : 10241,
+  #           "displayName" : "Mia Krystof",
+  #           "type" : "atlassian-user-role-actor",
+  #           "actorUser" : {
+  #             "accountId" : "5b10a2844c20165700ede21g"
+  #           }
+  #         }
+  #       ],
+  #       "scope" : {
+  #         "type" : "PROJECT",
+  #         "project" : {
+  #           "id" : "10000",
+  #           "key" : "KEY",
+  #           "name" : "Next Gen Project"
+  #         }
+  #       }
+  #     }
+  #   },
+  #   {
+  #     "id" : 10010,
+  #     "type" : "group",
+  #     "group" : {
+  #       "name" : "jira-administrators",
+  #       "groupId" : "276f955c-63d7-42c8-9520-92d01dca0625",
+  #       "self" : "https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"
+  #     }
+  #   }
+  # ]
 Add share permission
+
+Add a share permissions to a filter. If you add a global share permission (one for all logged-in users or the public) it will overwrite all share permissions for the filter.
+
+Be aware that this operation uses different objects for updating share permissions compared to L<Update filter|#api-rest-api-3-filter-id-put>.
+
+B<L<Permissions|#permissions> required:> I<Share dashboards and filters> L<global permission|https://confluence.atlassian.com/x/x4dKLg> and the user must own the filter.
 
 =head3 Parameters
 
@@ -22564,6 +25422,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete share permission
 
+Deletes a share permission from a filter.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira and the user must own the filter.
+
 =head3 Parameters
 
 =over 4
@@ -22665,11 +25527,47 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 10000,
   #   "type" : "global"
   # }
 Get share permission
+
+Returns a share permission for a filter. A filter can be shared with groups, projects, all logged-in users, or the public. Sharing with all logged-in users or the public is known as a global share permission.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None, however, a share permission is only returned for:
+
+=over
+
+=item *
+
+filters owned by the user.
+
+
+=item *
+
+filters shared with a group that the user is a member of.
+
+
+=item *
+
+filters shared with a private project that the user has I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for.
+
+
+=item *
+
+filters shared with a public project.
+
+
+=item *
+
+filters shared with the public.
+
+
+=back
 
 =head3 Parameters
 
@@ -22796,6 +25694,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Remove group
 
+Deletes a group.
+
+B<L<Permissions|#permissions> required:> Site administration (that is, member of the I<site-admin> strategic L<group|https://confluence.atlassian.com/x/24xjL>).
+
 =head3 Parameters
 
 =over 4
@@ -22910,6 +25812,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Get group
+
+This operation is deprecated, use L<C<group/member>|#api-rest-api-3-group-member-get>.
+
+Returns all users in a group.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -23038,7 +25946,33 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createGroup()->get;
 
+
+  # Return code '201'
+  # {
+  #   "name" : "power-users",
+  #   "groupId" : "276f955c-63d7-42c8-9520-92d01dca0625",
+  #   "self" : "https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625",
+  #   "users" : {
+  #     "size" : 1,
+  #     "items" : [
+  #       {
+  #         "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
+  #         "accountId" : "5b10a2844c20165700ede21g",
+  #         "displayName" : "Mia Krystof",
+  #         "active" : false
+  #       }
+  #     ],
+  #     "max-results" : 50,
+  #     "start-index" : 0,
+  #     "end-index" : 0
+  #   },
+  #   "expand" : "users"
+  # }
 Create group
+
+Creates a group.
+
+B<L<Permissions|#permissions> required:> Site administration (that is, member of the I<site-admin> L<group|https://confluence.atlassian.com/x/24xjL>).
 
 =head3 Parameters
 
@@ -23165,6 +26099,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 10,
   #   "startAt" : 0,
@@ -23181,7 +26116,27 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Browse users and groups permission is required to view groups."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '500'
+  # {
+  #   "errorMessages" : [
+  #     "Couldn't retrieve groups with the site-admin accessType."
+  #   ],
+  #   "errors" : {}
+  # }
 Bulk get groups
+
+Returns a L<paginated|#pagination> list of groups.
+
+B<L<Permissions|#permissions> required:> I<Browse users and groups> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -23368,6 +26323,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/group/member?groupname=jira-administrators&includeInactiveUsers=false&startAt=2&maxResults=2",
   #   "nextPage" : "https://your-domain.atlassian.net/rest/api/3/group/member?groupname=jira-administrators&includeInactiveUsers=false&startAt=4&maxResults=2",
@@ -23403,6 +26359,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get users from group
+
+Returns a L<paginated|#pagination> list of all users in a group.
+
+Note that users are ordered by username, however the username is not returned in the results due to privacy reasons.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -23548,6 +26510,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Remove user from group
 
+Removes a user from a group.
+
+B<L<Permissions|#permissions> required:> Site administration (that is, member of the I<site-admin> L<group|https://confluence.atlassian.com/x/24xjL>).
+
 =head3 Parameters
 
 =over 4
@@ -23666,6 +26632,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Add user to group
+
+Adds a user to a group.
+
+B<L<Permissions|#permissions> required:> Site administration (that is, member of the I<site-admin> L<group|https://confluence.atlassian.com/x/24xjL>).
 
 =head3 Parameters
 
@@ -23815,6 +26785,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "header" : "Showing 20 of 25 matching groups",
   #   "total" : 25,
@@ -23832,6 +26803,18 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Find groups
+
+Returns a list of groups whose names contain a query string. A list of group names can be provided to exclude groups from the results.
+
+The primary use case for this resource is to populate a group picker suggestions list. To this end, the returned object includes the C<html> field where the matched query term is highlighted in the group name with the HTML strong tag. Also, the groups list is wrapped in a response object that contains a header for use in the picker, specifically I<Showing X of Y matching groups>.
+
+The list returns with the groups sorted. If no groups match the list criteria, an empty list is returned.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg>. Anonymous calls and calls by users without the required permission return an empty list.
+
+I<Browse users and groups> L<global permission|https://confluence.atlassian.com/x/x4dKLg>. Without this permission, calls where query is not an exact match to an existing group will return an empty list.
 
 =head3 Parameters
 
@@ -23979,6 +26962,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "users" : {
   #     "users" : [
@@ -24013,6 +26997,69 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Find users and groups
+
+Returns a list of users and groups matching a string. The string is used:
+
+=over
+
+=item *
+
+for users, to find a case-insensitive match with display name and e-mail address. Note that if a user has hidden their email address in their user profile, partial matches of the email address will not find the user. An exact match is required.
+
+
+=item *
+
+for groups, to find a case-sensitive match with group name.
+
+
+=back
+
+For example, if the string I<tin> is used, records with the display name I<Tina>, email address I<sarah@tinplatetraining.com>, and the group I<accounting> would be returned.
+
+Optionally, the search can be refined to:
+
+=over
+
+=item *
+
+the projects and issue types associated with a custom field, such as a user picker. The search can then be further refined to return only users and groups that have permission to view specific:
+
+
+=over
+
+=item *
+
+projects.
+
+
+=item *
+
+issue types.
+
+
+=back
+
+If multiple projects or issue types are specified, they must be a subset of those enabled for the custom field or no results are returned. For example, if a field is enabled for projects A, B, and C then the search could be limited to projects B and C. However, if the search is limited to projects B and D, nothing is returned.
+
+
+
+=item *
+
+not return Connect app users and groups.
+
+
+=item *
+
+return groups that have a case-insensitive match with the query.
+
+
+=back
+
+The primary use case for this resource is to populate a picker field suggestion list with users or groups. To this end, the returned object includes an C<html> field for each list. This field highlights the matched query term in the item name with the HTML strong tag. Also, each list is wrapped in a response object that contains a header for use in a picker, specifically I<Showing X of Y matching groups>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse users and groups> L<global permission|https://confluence.atlassian.com/x/yodKLg>.
 
 =head3 Parameters
 
@@ -24173,6 +27220,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getLicense()->get;
 
 
+  # Return code '200'
   # {
   #   "applications" : [
   #     {
@@ -24194,6 +27242,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get license
+
+Returns licensing information about the Jira instance.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -24295,7 +27347,53 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'updateHistory' => '...',
   )->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : "10000",
+  #   "key" : "ED-24",
+  #   "self" : "https://your-domain.atlassian.net/rest/api/3/issue/10000",
+  #   "transition" : {
+  #     "status" : 200,
+  #     "errorCollection" : {
+  #       "errorMessages" : [],
+  #       "errors" : {}
+  #     }
+  #   }
+  # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "Field 'priority' is required"
+  #   ],
+  #   "errors" : {}
+  # }
 Create issue
+
+Creates an issue or, where the option to create subtasks is enabled in Jira, a subtask. A transition may be applied, to move the issue or subtask to a workflow step other than the default start step, and issue properties set.
+
+The content of the issue or subtask is defined using C<update> and C<fields>. The fields that can be set in the issue or subtask are determined using the L< Get create issue metadata|#api-rest-api-3-issue-createmeta-get>. These are the same fields that appear on the issue's create screen. Note that the C<description>, C<environment>, and any C<textarea> type custom fields (multi-line text fields) take Atlassian Document Format content. Single line custom fields (C<textfield>) accept a string and don't handle Atlassian Document Format content.
+
+Creating a subtask differs from creating an issue as follows:
+
+=over
+
+=item *
+
+C<issueType> must be set to a subtask issue type (use L< Get create issue metadata|#api-rest-api-3-issue-createmeta-get> to find subtask issue types).
+
+
+=item *
+
+C<parent> must contain the ID or key of the parent issue.
+
+
+=back
+
+In a next-gen project any issue may be made a child providing that the parent and child are members of the same project.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> and I<Create issues> L<project permissions|https://confluence.atlassian.com/x/yodKLg> for the project in which the issue or subtask is created.
 
 =head3 Parameters
 
@@ -24498,7 +27596,82 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createIssues()->get;
 
+
+  # Return code '201'
+  # {
+  #   "issues" : [
+  #     {
+  #       "id" : "10000",
+  #       "key" : "ED-24",
+  #       "self" : "https://your-domain.atlassian.net/rest/api/3/issue/10000",
+  #       "transition" : {
+  #         "status" : 200,
+  #         "errorCollection" : {
+  #           "errorMessages" : [],
+  #           "errors" : {}
+  #         }
+  #       }
+  #     },
+  #     {
+  #       "id" : "10001",
+  #       "key" : "ED-25",
+  #       "self" : "https://your-domain.atlassian.net/rest/api/3/issue/10001"
+  #     }
+  #   ],
+  #   "errors" : []
+  # }
+
+  # Return code '400'
+  # {
+  #   "issues" : [],
+  #   "errors" : [
+  #     {
+  #       "status" : 400,
+  #       "elementErrors" : {
+  #         "errorMessages" : [],
+  #         "errors" : {
+  #           "issuetype" : "The issue type selected is invalid.",
+  #           "project" : "Sub-tasks must be created in the same project as the parent."
+  #         }
+  #       },
+  #       "failedElementNumber" : 0
+  #     },
+  #     {
+  #       "status" : 400,
+  #       "elementErrors" : {
+  #         "errorMessages" : [],
+  #         "errors" : {
+  #           "issuetype" : "The issue type selected is invalid.",
+  #           "project" : "Sub-tasks must be created in the same project as the parent."
+  #         }
+  #       },
+  #       "failedElementNumber" : 1
+  #     }
+  #   ]
+  # }
 Bulk create issue
+
+Creates upto B<50> issues and, where the option to create subtasks is enabled in Jira, subtasks. Transitions may be applied, to move the issues or subtasks to a workflow step other than the default start step, and issue properties set.
+
+The content of each issue or subtask is defined using C<update> and C<fields>. The fields that can be set in the issue or subtask are determined using the L< Get create issue metadata|#api-rest-api-3-issue-createmeta-get>. These are the same fields that appear on the issues' create screens. Note that the C<description>, C<environment>, and any C<textarea> type custom fields (multi-line text fields) take Atlassian Document Format content. Single line custom fields (C<textfield>) accept a string and don't handle Atlassian Document Format content.
+
+Creating a subtask differs from creating an issue as follows:
+
+=over
+
+=item *
+
+C<issueType> must be set to a subtask issue type (use L< Get create issue metadata|#api-rest-api-3-issue-createmeta-get> to find subtask issue types).
+
+
+=item *
+
+C<parent> the must contain the ID or key of the parent issue.
+
+
+=back
+
+B<L<Permissions|#permissions> required:> I<Browse projects> and I<Create issues> L<project permissions|https://confluence.atlassian.com/x/yodKLg> for the project in which each issue or subtask is created.
 
 =head3 Parameters
 
@@ -24639,6 +27812,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "projects" : [
   #     {
@@ -24677,6 +27851,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get create issue metadata
+
+Returns details of projects, issue types within projects, and, when requested, the create screen fields for each issue type for the user. Use the information to populate the requests in L< Create issue|#api-rest-api-3-issue-post> and L<Create issues|#api-rest-api-3-issue-bulk-post>.
+
+The request can be restricted to specific projects or issue types using the query parameters. The response will contain information for the valid projects, issue types, or project and issue type combinations requested. Note that invalid project, issue type, or project and issue type combinations do not generate errors.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Create issues> L<project permission|https://confluence.atlassian.com/x/yodKLg> in the requested projects.
 
 =head3 Parameters
 
@@ -24813,6 +27995,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Get issue picker suggestions
 
+Returns lists of issues matching a query string. Use this resource to provide auto-completion suggestions when the user is looking for an issue using a word or string.
+
+This operation returns two lists:
+
+=over
+
+=item *
+
+C<History Search> which includes issues from the user's history of created, edited, or viewed issues that contain the string in the C<query> parameter.
+
+
+=item *
+
+C<Current Search> which includes issues that match the JQL expression in C<currentJQL> and contain the string in the C<query> parameter.
+
+
+=back
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
+
 =head3 Parameters
 
 =over 4
@@ -24945,6 +28149,42 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->bulkSetIssuesPropertiesList()->get;
 
 Bulk set issues properties by list
+
+Sets or updates a list of entity property values on issues. A list of up to 10 entity properties can be specified along with up to 10,000 issues on which to set or update that list of entity properties.
+
+The value of the request body must be a L<valid|http://tools.ietf.org/html/rfc4627>, non-empty JSON. The maximum length of single issue property value is 32768 characters. This operation can be accessed anonymously.
+
+This operation is:
+
+=over
+
+=item *
+
+transactional, either all properties are updated in all eligible issues or, when errors occur, no properties are updated.
+
+
+=item *
+
+L<asynchronous|#async>. Follow the C<location> link in the response to determine the status of the task and use L<Get task|#api-rest-api-3-task-taskId-get> to obtain subsequent updates.
+
+
+=back
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> and I<Edit issues> L<project permissions|https://confluence.atlassian.com/x/yodKLg> for the project containing the issue.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -25085,6 +28325,42 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->bulkSetIssuePropertiesByIssue()->get;
 
 Bulk set issue properties by issue
+
+Sets or updates entity property values on issues. Up to 10 entity properties can be specified for each issue and up to 100 issues included in the request.
+
+The value of the request body must be a L<valid|http://tools.ietf.org/html/rfc4627>, non-empty JSON.
+
+This operation is:
+
+=over
+
+=item *
+
+L<asynchronous|#async>. Follow the C<location> link in the response to determine the status of the task and use L<Get task|#api-rest-api-3-task-taskId-get> to obtain subsequent updates.
+
+
+=item *
+
+non-transactional. Updating some entities may fail. Such information will available in the task result.
+
+
+=back
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> and I<Edit issues> L<project permissions|https://confluence.atlassian.com/x/yodKLg> for the project containing the issue.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -25247,6 +28523,65 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Bulk delete issue property
 
+Deletes a property value from multiple issues. The issues to be updated can be specified by filter criteria.
+
+The criteria the filter used to identify eligible issues are:
+
+=over
+
+=item *
+
+C<entityIds> Only issues from this list are eligible.
+
+
+=item *
+
+C<currentValue> Only issues with the property set to this value are eligible.
+
+
+=back
+
+If both criteria is specified, they are joined with the logical I<AND>: only issues that satisfy both criteria are considered eligible.
+
+If no filter criteria are specified, all the issues visible to the user and where the user has the EDIT_ISSUES permission for the issue are considered eligible.
+
+This operation is:
+
+=over
+
+=item *
+
+transactional, either the property is deleted from all eligible issues or, when errors occur, no properties are deleted.
+
+
+=item *
+
+L<asynchronous|#async>. Follow the C<location> link in the response to determine the status of the task and use L<Get task|#api-rest-api-3-task-taskId-get> to obtain subsequent updates.
+
+
+=back
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L< project permission|https://confluence.atlassian.com/x/yodKLg> for each project containing issues.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+I<Edit issues> L<project permission|https://confluence.atlassian.com/x/yodKLg> for each issue.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -25398,6 +28733,92 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Bulk set issue property
+
+Sets a property value on multiple issues.
+
+The value set can be a constant or determined by a L<Jira expression|https://developer.atlassian.com/cloud/jira/platform/jira-expressions/>. Expressions must be computable with constant complexity when applied to a set of issues. Expressions must also comply with the L<restrictions|https://developer.atlassian.com/cloud/jira/platform/jira-expressions/#restrictions> that apply to all Jira expressions.
+
+The issues to be updated can be specified by a filter.
+
+The filter identifies issues eligible for update using these criteria:
+
+=over
+
+=item *
+
+C<entityIds> Only issues from this list are eligible.
+
+
+=item *
+
+C<currentValue> Only issues with the property set to this value are eligible.
+
+
+=item *
+
+C<hasProperty>:
+
+
+=over
+
+=item *
+
+If I<true>, only issues with the property are eligible.
+
+
+=item *
+
+If I<false>, only issues without the property are eligible.
+
+
+=back
+
+
+
+=back
+
+If more than one criteria is specified, they are joined with the logical I<AND>: only issues that satisfy all criteria are eligible.
+
+If an invalid combination of criteria is provided, an error is returned. For example, specifying a C<currentValue> and C<hasProperty> as I<false> would not match any issues (because without the property the property cannot have a value).
+
+The filter is optional. Without the filter all the issues visible to the user and where the user has the EDIT_ISSUES permission for the issue are considered eligible.
+
+This operation is:
+
+=over
+
+=item *
+
+transactional, either all eligible issues are updated or, when errors occur, none are updated.
+
+
+=item *
+
+L<asynchronous|#async>. Follow the C<location> link in the response to determine the status of the task and use L<Get task|#api-rest-api-3-task-taskId-get> to obtain subsequent updates.
+
+
+=back
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for each project containing issues.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+I<Edit issues> L<project permission|https://confluence.atlassian.com/x/yodKLg> for each issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -25552,6 +28973,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getIsWatchingIssueBulk()->get;
 
 
+  # Return code '200'
   # {
   #   "issuesIsWatching" : {
   #     "10001" : true,
@@ -25560,6 +28982,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get is watching issue bulk
+
+Returns, for the user, details of the watched status of issues from a list. If an issue ID is invalid, the returned watched status is C<false>.
+
+This operation requires the B<Allow users to watch issues> option to be I<ON>. This option is set in General configuration for Jira. See L<Configuring Jira application options|https://confluence.atlassian.com/x/uYXKM> for details.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -25677,6 +29119,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete issue
 
+Deletes an issue.
+
+An issue cannot be deleted if it has one or more subtasks. To delete an issue with subtasks, set C<deleteSubtasks>. This causes the issue's subtasks to be deleted with the issue.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> and I<Delete issues> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project containing the issue.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -25789,6 +29253,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : "10002",
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/issue/10002",
@@ -26032,6 +29497,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get issue
+
+Returns the details for an issue.
+
+The issue is identified by its ID or key, however, if the identifier doesn't match an issue, a case-insensitive search and check for moved issues is performed. If a matching issue is found its details are returned, a 302 or other redirect is B<not> returned. The issue key returned in the response is the key of the issue found.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -26299,6 +29786,32 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Edit issue
 
+Edits an issue. A transition may be applied and issue properties updated as part of the edit.
+
+The edits to the issue's fields are defined using C<update> and C<fields>. The fields that can be edited are determined using L< Get edit issue metadata|#api-rest-api-3-issue-issueIdOrKey-editmeta-get>.
+
+The parent field may be set by key or ID. For standard issue types, the parent may be removed by setting C<update.parent.set.none> to I<true>. Note that the C<description>, C<environment>, and any C<textarea> type custom fields (multi-line text fields) take Atlassian Document Format content. Single line custom fields (C<textfield>) accept a string and don't handle Atlassian Document Format content.
+
+Connect apps having an app user with I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>, and Forge apps acting on behalf of users with I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>, can override the screen security configuration using C<overrideScreenSecurity> and C<overrideEditableFlag>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> and I<Edit issues> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -26466,6 +29979,42 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Assign issue
+
+Assigns an issue to a user. Use this operation when the calling user does not have the I<Edit Issues> permission but has the I<Assign issue> permission for the project that the issue is in.
+
+If C<name> or C<accountId> is set to:
+
+=over
+
+=item *
+
+C<"-1">, the issue is assigned to the default assignee for the project.
+
+
+=item *
+
+C<null>, the issue is set to unassigned.
+
+
+=back
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse Projects> and I<Assign Issues> L< project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -26668,6 +30217,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/attachments/10000",
@@ -26717,6 +30267,184 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Add attachment
+
+Adds one or more attachments to an issue. Attachments are posted as multipart/form-data (L<RFC 1867|https://www.ietf.org/rfc/rfc1867.txt>).
+
+Note that:
+
+=over
+
+=item *
+
+The request must have a C<X-Atlassian-Token: no-check> header, if not it is blocked. See L<Special headers|#special-request-headers> for more information.
+
+
+=item *
+
+The name of the multipart/form-data parameter that contains the attachments must be C<file>.
+
+
+=back
+
+The following examples upload a file called I<myfile.txt> to the issue I<TEST-123>:
+
+
+=head4 curl
+
+    curl --location --request POST 'https://your-domain.atlassian.net/rest/api/3/issue/TEST-123/attachments'
+     -u 'email@example.com:<api_token>'
+     -H 'X-Atlassian-Token: no-check'
+     --form 'file=@"myfile.txt"'
+
+
+=head4 Node.js
+
+    // This code sample uses the 'node-fetch' and 'form-data' libraries:
+     // https://www.npmjs.com/package/node-fetch
+     // https://www.npmjs.com/package/form-data
+     const fetch = require('node-fetch');
+     const FormData = require('form-data');
+     const fs = require('fs');
+    
+     const filePath = 'myfile.txt';
+     const form = new FormData();
+     const stats = fs.statSync(filePath);
+     const fileSizeInBytes = stats.size;
+     const fileStream = fs.createReadStream(filePath);
+    
+     form.append('file', fileStream, {knownLength: fileSizeInBytes});
+    
+     fetch('https://your-domain.atlassian.net/rest/api/3/issue/TEST-123/attachments', {
+         method: 'POST',
+         body: form,
+         headers: {
+             'Authorization': `Basic ${Buffer.from(
+                 'email@example.com:'
+             ).toString('base64')}`,
+             'Accept': 'application/json',
+             'X-Atlassian-Token': 'no-check'
+         }
+     })
+         .then(response => {
+             console.log(
+                 `Response: ${response.status} ${response.statusText}`
+             );
+             return response.text();
+         })
+         .then(text => console.log(text))
+         .catch(err => console.error(err));
+
+
+=head4 Java
+
+    // This code sample uses the  'Unirest' library:
+     // http://unirest.io/java.html
+     HttpResponse response = Unirest.post("https://your-domain.atlassian.net/rest/api/2/issue/{issueIdOrKey}/attachments")
+             .basicAuth("email@example.com", "")
+             .header("Accept", "application/json")
+             .header("X-Atlassian-Token", "no-check")
+             .field("file", new File("myfile.txt"))
+             .asJson();
+    
+             System.out.println(response.getBody());
+
+
+=head4 Python
+
+    # This code sample uses the 'requests' library:
+     # http://docs.python-requests.org
+     import requests
+     from requests.auth import HTTPBasicAuth
+     import json
+    
+     url = "https://your-domain.atlassian.net/rest/api/2/issue/{issueIdOrKey}/attachments"
+    
+     auth = HTTPBasicAuth("email@example.com", "")
+    
+     headers = {
+        "Accept": "application/json",
+        "X-Atlassian-Token": "no-check"
+     }
+    
+     response = requests.request(
+        "POST",
+        url,
+        headers = headers,
+        auth = auth,
+        files = {
+             "file": ("myfile.txt", open("myfile.txt","rb"), "application-type")
+        }
+     )
+    
+     print(json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": ")))
+
+
+=head4 PHP
+
+    // This code sample uses the 'Unirest' library:
+     // http://unirest.io/php.html
+     Unirest\Request::auth('email@example.com', '');
+    
+     $headers = array(
+       'Accept' => 'application/json',
+       'X-Atlassian-Token' => 'no-check'
+     );
+    
+     $parameters = array(
+       'file' => File::add('myfile.txt')
+     );
+    
+     $response = Unirest\Request::post(
+       'https://your-domain.atlassian.net/rest/api/2/issue/{issueIdOrKey}/attachments',
+       $headers,
+       $parameters
+     );
+    
+     var_dump($response)
+
+
+=head4 Forge
+
+    // This sample uses Atlassian Forge and the `form-data` library.
+     // https://developer.atlassian.com/platform/forge/
+     // https://www.npmjs.com/package/form-data
+     import api from "@forge/api";
+     import FormData from "form-data";
+    
+     const form = new FormData();
+     form.append('file', fileStream, {knownLength: fileSizeInBytes});
+    
+     const response = await api.asApp().requestJira('/rest/api/2/issue/{issueIdOrKey}/attachments', {
+         method: 'POST',
+         body: form,
+         headers: {
+             'Accept': 'application/json',
+             'X-Atlassian-Token': 'no-check'
+         }
+     });
+    
+     console.log(`Response: ${response.status} ${response.statusText}`);
+     console.log(await response.json());
+
+Tip: Use a client library. Many client libraries have classes for handling multipart POST operations. For example, in Java, the Apache HTTP Components library provides a L<MultiPartEntity|http://hc.apache.org/httpcomponents-client-ga/httpmime/apidocs/org/apache/http/entity/mime/MultipartEntity.html> class for multipart POST operations.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> 
+
+=over
+
+=item *
+
+I<Browse Projects> and I<Create attachments> L< project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -26841,6 +30569,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/issue/TT-1/changelog?startAt=2&maxResults=2",
   #   "nextPage" : "https://your-domain.atlassian.net/rest/api/3/issue/TT-1/changelog?&startAt=4&maxResults=2",
@@ -26910,6 +30639,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get changelogs
+
+Returns a L<paginated|#pagination> list of all changelogs for an issue sorted by date, starting from the oldest.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -27035,6 +30784,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "startAt" : 0,
   #   "maxResults" : 2,
@@ -27101,6 +30851,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get changelogs by IDs
+
+Returns changelogs for an issue specified by a list of changelog IDs.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -27233,6 +31003,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "startAt" : 0,
   #   "maxResults" : 1,
@@ -27279,6 +31050,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get comments
+
+Returns all comments for an issue.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> Comments are included in the response where the user has:
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project containing the comment.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+If the comment has visibility restrictions, belongs to the group or has the role visibility is role visibility is restricted to.
+
+
+=back
 
 =head3 Parameters
 
@@ -27420,7 +31216,67 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+
+  # Return code '201'
+  # {
+  #   "self" : "https://your-domain.atlassian.net/rest/api/3/issue/10010/comment/10000",
+  #   "id" : "10000",
+  #   "author" : {
+  #     "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
+  #     "accountId" : "5b10a2844c20165700ede21g",
+  #     "displayName" : "Mia Krystof",
+  #     "active" : false
+  #   },
+  #   "body" : {
+  #     "type" : "doc",
+  #     "version" : 1,
+  #     "content" : [
+  #       {
+  #         "type" : "paragraph",
+  #         "content" : [
+  #           {
+  #             "type" : "text",
+  #             "text" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper."
+  #           }
+  #         ]
+  #       }
+  #     ]
+  #   },
+  #   "updateAuthor" : {
+  #     "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
+  #     "accountId" : "5b10a2844c20165700ede21g",
+  #     "displayName" : "Mia Krystof",
+  #     "active" : false
+  #   },
+  #   "created" : "2021-01-17T12:34:00.000+0000",
+  #   "updated" : "2021-01-18T23:45:00.000+0000",
+  #   "visibility" : {
+  #     "type" : "role",
+  #     "value" : "Administrators",
+  #     "identifier" : "Administrators"
+  #   }
+  # }
 Add comment
+
+Adds a comment to an issue.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> and I<Add comments> L< project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue containing the comment is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -27606,6 +31462,34 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete comment
 
+Deletes a comment.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue containing the comment is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+I<Delete all comments>L< project permission|https://confluence.atlassian.com/x/yodKLg> to delete any comment or I<Delete own comments> to delete comment created by the user,
+
+
+=item *
+
+If the comment has visibility restrictions, the user belongs to the group or has the role visibility is restricted to.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -27714,6 +31598,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/issue/10010/comment/10000",
   #   "id" : "10000",
@@ -27753,6 +31638,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get comment
+
+Returns a comment.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project containing the comment.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+If the comment has visibility restrictions, the user belongs to the group or has the role visibility is restricted to.
+
+
+=back
 
 =head3 Parameters
 
@@ -27887,6 +31797,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/issue/10010/comment/10000",
   #   "id" : "10000",
@@ -27926,6 +31837,36 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Update comment
+
+Updates a comment.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue containing the comment is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+I<Edit all comments>L< project permission|https://confluence.atlassian.com/x/yodKLg> to update any comment or I<Edit own comments> to update comment created by the user.
+
+
+=item *
+
+If the comment has visibility restrictions, the user belongs to the group or has the role visibility is restricted to.
+
+
+=back
 
 =head3 Parameters
 
@@ -28128,6 +32069,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "fields" : {
   #     "summary" : {
@@ -28154,6 +32096,97 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get edit issue metadata
+
+Returns the edit screen fields for an issue that are visible to and editable by the user. Use the information to populate the requests in L<Edit issue|#api-rest-api-3-issue-issueIdOrKey-put>.
+
+This endpoint will check for these conditions:
+
+=over
+
+=item 1.
+
+Field is available on a field screen - through screen, screen scheme, issue type screen scheme, and issue type scheme configuration. C<overrideScreenSecurity=true> skips this condition.
+
+
+=item 2.
+
+Field is visible in the L<field configuration|https://support.atlassian.com/jira-cloud-administration/docs/change-a-field-configuration/>. C<overrideScreenSecurity=true> skips this condition.
+
+
+=item 3.
+
+Field is shown on the issue: each field has different conditions here. For example: Attachment field only shows if attachments are enabled. Assignee only shows if user has permissions to assign the issue.
+
+
+=item 4.
+
+If a field is custom then it must have valid custom field context, applicable for its project and issue type. All system fields are assumed to have context in all projects and all issue types.
+
+
+=item 5.
+
+Issue has a project, issue type, and status defined.
+
+
+=item 6.
+
+Issue is assigned to a valid workflow, and the current status has assigned a workflow step. C<overrideEditableFlag=true> skips this condition.
+
+
+=item 7.
+
+The current workflow step is editable. This is true by default, but L<can be disabled by setting|https://support.atlassian.com/jira-cloud-administration/docs/use-workflow-properties/> the C<jira.issue.editable> property to C<false>. C<overrideEditableFlag=true> skips this condition.
+
+
+=item 8.
+
+User has L<Edit issues permission|https://support.atlassian.com/jira-cloud-administration/docs/permissions-for-company-managed-projects/>.
+
+
+=item 9.
+
+Workflow permissions allow editing a field. This is true by default but L<can be modified|https://support.atlassian.com/jira-cloud-administration/docs/use-workflow-properties/> using C<jira.permission.*> workflow properties.
+
+
+=back
+
+Fields hidden using L<Issue layout settings page|https://support.atlassian.com/jira-software-cloud/docs/configure-field-layout-in-the-issue-view/> remain editable.
+
+Connect apps having an app user with I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>, and Forge apps acting on behalf of users with I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>, can return additional details using:
+
+=over
+
+=item *
+
+C<overrideScreenSecurity> When this flag is C<true>, then this endpoint skips checking if fields are available through screens, and field configuration (conditions 1. and 2. from the list above).
+
+
+=item *
+
+C<overrideEditableFlag> When this flag is C<true>, then this endpoint skips checking if workflow is present and if the current step is editable (conditions 6. and 7. from the list above).
+
+
+=back
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
+
+Note: For any fields to be editable the user must have the I<Edit issues> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the issue.
 
 =head3 Parameters
 
@@ -28285,6 +32318,24 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Send notification for issue
+
+Creates an email notification for an issue and adds it to the mail queue.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -28432,6 +32483,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "keys" : [
   #     {
@@ -28441,6 +32493,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get issue property keys
+
+Returns the URLs and keys of an issue's properties.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> Property details are only returned where the user has:
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project containing the issue.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -28555,6 +32627,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete issue property
 
+Deletes an issue's property.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> and I<Edit issues> L<project permissions|https://confluence.atlassian.com/x/yodKLg> for the project containing the issue.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -28656,6 +32748,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "key" : "issue.support",
   #   "value" : {
@@ -28664,6 +32757,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get issue property
+
+Returns the key and value of an issue's property.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project containing the issue.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -28787,6 +32900,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Set issue property
+
+Sets the value of an issue's property. Use this resource to store custom data against an issue.
+
+The value of the request body must be a L<valid|http://tools.ietf.org/html/rfc4627>, non-empty JSON blob. The maximum length is 32768 characters.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> and I<Edit issues> L<project permissions|https://confluence.atlassian.com/x/yodKLg> for the project containing the issue.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -28943,6 +33078,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete remote issue link by global ID
 
+Deletes the remote issue link from the issue using the link's global ID. Where the global ID includes reserved URL characters these must be escaped in the request. For example, pass C<system=http://www.mycompany.com/support&id=1> as C<system%3Dhttp%3A%2F%2Fwww.mycompany.com%2Fsupport%26id%3D1>.
+
+This operation requires L<issue linking to be active|https://confluence.atlassian.com/x/yoXKM>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> and I<Link issues> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is implemented, issue-level security permission to view the issue.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -29053,6 +33210,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "id" : 10000,
@@ -29110,6 +33268,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get remote issue links
+
+Returns the remote issue links for an issue. When a remote issue link global ID is provided the record with that global ID is returned, otherwise all remote issue links are returned. Where a global ID includes reserved URL characters these must be escaped in the request. For example, pass C<system=http://www.mycompany.com/support&id=1> as C<system%3Dhttp%3A%2F%2Fwww.mycompany.com%2Fsupport%26id%3D1>.
+
+This operation requires L<issue linking to be active|https://confluence.atlassian.com/x/yoXKM>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -29239,11 +33419,50 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 10000,
   #   "self" : "https://your-domain.atlassian.net/rest/api/issue/MKY-1/remotelink/10000"
   # }
+
+  # Return code '201'
+  # {
+  #   "id" : 10000,
+  #   "self" : "https://your-domain.atlassian.net/rest/api/issue/MKY-1/remotelink/10000"
+  # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [],
+  #   "errors" : {
+  #     "title" : "'title' is required."
+  #   }
+  # }
 Create or update remote issue link
+
+Creates or updates a remote issue link for an issue.
+
+If a C<globalId> is provided and a remote issue link with that global ID is found it is updated. Any fields without values in the request are set to null. Otherwise, the remote issue link is created.
+
+This operation requires L<issue linking to be active|https://confluence.atlassian.com/x/yoXKM>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> and I<Link issues> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -29438,6 +33657,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete remote issue link by ID
 
+Deletes a remote issue link from an issue.
+
+This operation requires L<issue linking to be active|https://confluence.atlassian.com/x/yoXKM>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects>, I<Edit issues>, and I<Link issues> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -29545,6 +33786,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 10000,
   #   "self" : "https://your-domain.atlassian.net/rest/api/issue/MKY-1/remotelink/10000",
@@ -29573,6 +33815,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get remote issue link by ID
+
+Returns a remote issue link for an issue.
+
+This operation requires L<issue linking to be active|https://confluence.atlassian.com/x/yoXKM>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -29701,7 +33965,39 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'linkId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [],
+  #   "errors" : {
+  #     "title" : "'title' is required."
+  #   }
+  # }
 Update remote issue link by ID
+
+Updates a remote issue link for an issue.
+
+Note: Fields without values in the request are set to null.
+
+This operation requires L<issue linking to be active|https://confluence.atlassian.com/x/yoXKM>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> and I<Link issues> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -29883,6 +34179,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "transitions" : [
   #     {
@@ -29996,6 +34293,30 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get transitions
+
+Returns either all transitions or a transition that can be performed by the user on an issue, based on the issue's status.
+
+Note, if a request is made for a transition that does not exist or cannot be performed on the issue, given its status, the response will return any empty transitions list.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required: A list or transition is returned only when the user has:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
+
+However, if the user does not have the I<Transition issues> L< project permission|https://confluence.atlassian.com/x/yodKLg> the response will not list any transitions.
 
 =head3 Parameters
 
@@ -30139,6 +34460,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Transition issue
+
+Performs an issue transition and, if the transition has a screen, updates the fields from the transition screen.
+
+sortByCategory To update the fields on the transition screen, specify the fields in the C<fields> or C<update> parameters in the request body. Get details about the fields using L< Get transitions|#api-rest-api-3-issue-issueIdOrKey-transitions-get> with the C<transitions.fields> expand.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> and I<Transition issues> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -30287,6 +34630,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete vote
 
+Deletes a user's vote from an issue. This is the equivalent of the user clicking I<Unvote> on an issue in Jira.
+
+This operation requires the B<Allow users to vote on issues> option to be I<ON>. This option is set in General configuration for Jira. See L<Configuring Jira application options|https://confluence.atlassian.com/x/uYXKM> for details.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -30380,6 +34743,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/issue/MKY-1/votes",
   #   "votes" : 24,
@@ -30403,6 +34767,30 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get votes
+
+Returns details about the votes on an issue.
+
+This operation requires the B<Allow users to vote on issues> option to be I<ON>. This option is set in General configuration for Jira. See L<Configuring Jira application options|https://confluence.atlassian.com/x/uYXKM> for details.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is ini
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
+
+Note that users with the necessary permissions for this operation but without the I<View voters and watchers> project permissions are not returned details in the C<voters> field.
 
 =head3 Parameters
 
@@ -30518,6 +34906,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Add vote
+
+Adds the user's vote to an issue. This is the equivalent of the user clicking I<Vote> on an issue in Jira.
+
+This operation requires the B<Allow users to vote on issues> option to be I<ON>. This option is set in General configuration for Jira. See L<Configuring Jira application options|https://confluence.atlassian.com/x/uYXKM> for details.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -30639,6 +35047,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete watcher
 
+Deletes a user as a watcher of an issue.
+
+This operation requires the B<Allow users to watch issues> option to be I<ON>. This option is set in General configuration for Jira. See L<Configuring Jira application options|https://confluence.atlassian.com/x/uYXKM> for details.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+To remove users other than themselves from the watchlist, I<Manage watcher list> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -30751,6 +35184,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/issue/EX-1/watchers",
   #   "isWatching" : false,
@@ -30765,6 +35199,33 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get issue watchers
+
+Returns the watchers for an issue.
+
+This operation requires the B<Allow users to watch issues> option to be I<ON>. This option is set in General configuration for Jira. See L<Configuring Jira application options|https://confluence.atlassian.com/x/uYXKM> for details.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is ini
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+To see details of users on the watchlist other than themselves, I<View voters and watchers> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=back
 
 =head3 Parameters
 
@@ -30880,6 +35341,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Add watcher
+
+Adds a user as a watcher of an issue by passing the account ID of the user. For example, C<"5b10ac8d82e05b22cc7d4ef5">. If no user is specified the calling user is added.
+
+This operation requires the B<Allow users to watch issues> option to be I<ON>. This option is set in General configuration for Jira. See L<Configuring Jira application options|https://confluence.atlassian.com/x/uYXKM> for details.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+To add users other than themselves to the watchlist, I<Manage watcher list> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=back
 
 =head3 Parameters
 
@@ -31009,6 +35495,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "startAt" : 0,
   #   "maxResults" : 1,
@@ -31058,6 +35545,33 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get issue worklogs
+
+Returns worklogs for an issue, starting from the oldest worklog or from the worklog started on or after a date and time.
+
+Time tracking must be enabled in Jira, otherwise this operation returns an error. For more information, see L<Configuring time tracking|https://confluence.atlassian.com/x/qoXKM>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> Workloads are only returned where the user has:
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+If the worklog has visibility restrictions, belongs to the group or has the role visibility is restricted to.
+
+
+=back
 
 =head3 Parameters
 
@@ -31207,6 +35721,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Add worklog
+
+Adds a worklog to an issue.
+
+Time tracking must be enabled in Jira, otherwise this operation returns an error. For more information, see L<Configuring time tracking|https://confluence.atlassian.com/x/qoXKM>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> and I<Work on issues> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -31450,6 +35986,38 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete worklog
 
+Deletes a worklog from an issue.
+
+Time tracking must be enabled in Jira, otherwise this operation returns an error. For more information, see L<Configuring time tracking|https://confluence.atlassian.com/x/qoXKM>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+I<Delete all worklogs>L< project permission|https://confluence.atlassian.com/x/yodKLg> to delete any worklog or I<Delete own worklogs> to delete worklogs created by the user,
+
+
+=item *
+
+If the worklog has visibility restrictions, belongs to the group or has the role visibility is restricted to.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -31607,6 +36175,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/issue/10010/worklog/10000",
   #   "author" : {
@@ -31649,6 +36218,33 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "issueId" : "10002"
   # }
 Get worklog
+
+Returns a worklog.
+
+Time tracking must be enabled in Jira, otherwise this operation returns an error. For more information, see L<Configuring time tracking|https://confluence.atlassian.com/x/qoXKM>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+If the worklog has visibility restrictions, belongs to the group or has the role visibility is restricted to.
+
+
+=back
 
 =head3 Parameters
 
@@ -31787,6 +36383,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/issue/10010/worklog/10000",
   #   "author" : {
@@ -31829,6 +36426,38 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "issueId" : "10002"
   # }
 Update worklog
+
+Updates a worklog.
+
+Time tracking must be enabled in Jira, otherwise this operation returns an error. For more information, see L<Configuring time tracking|https://confluence.atlassian.com/x/qoXKM>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+I<Edit all worklogs>L< project permission|https://confluence.atlassian.com/x/yodKLg> to update any worklog or I<Edit own worklogs> to update worklogs created by the user.
+
+
+=item *
+
+If the worklog has visibility restrictions, belongs to the group or has the role visibility is restricted to.
+
+
+=back
 
 =head3 Parameters
 
@@ -32063,6 +36692,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "keys" : [
   #     {
@@ -32072,6 +36702,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get worklog property keys
+
+Returns the keys of all properties for a worklog.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+If the worklog has visibility restrictions, belongs to the group or has the role visibility is restricted to.
+
+
+=back
 
 =head3 Parameters
 
@@ -32200,6 +36855,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete worklog property
 
+Deletes a worklog property.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+If the worklog has visibility restrictions, belongs to the group or has the role visibility is restricted to.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -32315,6 +36995,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "key" : "issue.support",
   #   "value" : {
@@ -32323,6 +37004,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get worklog property
+
+Returns the value of a worklog property.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+If the worklog has visibility restrictions, belongs to the group or has the role visibility is restricted to.
+
+
+=back
 
 =head3 Parameters
 
@@ -32457,6 +37163,38 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Set worklog property
+
+Sets the value of a worklog property. Use this operation to store custom data against the worklog.
+
+The value of the request body must be a L<valid|http://tools.ietf.org/html/rfc4627>, non-empty JSON blob. The maximum length is 32768 characters.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+I<Edit all worklogs>L< project permission|https://confluence.atlassian.com/x/yodKLg> to update any worklog or I<Edit own worklogs> to update worklogs created by the user.
+
+
+=item *
+
+If the worklog has visibility restrictions, belongs to the group or has the role visibility is restricted to.
+
+
+=back
 
 =head3 Parameters
 
@@ -32617,6 +37355,40 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Create issue link
 
+Creates a link between two issues. Use this operation to indicate a relationship between two issues and optionally add a comment to the from (outward) issue. To use this resource the site must have L<Issue Linking|https://confluence.atlassian.com/x/yoXKM> enabled.
+
+This resource returns nothing on the creation of an issue link. To obtain the ID of the issue link, use C<https://your-domain.atlassian.net/rest/api/3/issue/[linked issue key]?fields=issuelinks>.
+
+If the link request duplicates a link, the response indicates that the issue link was created. If the request included a comment, the comment is added.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse project> L<project permission|https://confluence.atlassian.com/x/yodKLg> for all the projects containing the issues to be linked,
+
+
+=item *
+
+I<Link issues> L<project permission|https://confluence.atlassian.com/x/yodKLg> on the project containing the from (outward) issue,
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=item *
+
+If the comment has visibility restrictions, belongs to the group or has the role visibility is restricted to.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -32764,6 +37536,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete issue link
 
+Deletes an issue link.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+Browse project L<project permission|https://confluence.atlassian.com/x/yodKLg> for all the projects containing the issues in the link.
+
+
+=item *
+
+I<Link issues> L<project permission|https://confluence.atlassian.com/x/yodKLg> for at least one of the projects containing issues in the link.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, permission to view both of the issues.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -32863,6 +37660,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : "10001",
   #   "type" : {
@@ -32913,6 +37711,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get issue link
+
+Returns an issue link.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Browse project> L<project permission|https://confluence.atlassian.com/x/yodKLg> for all the projects containing the linked issues.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, permission to view both of the issues.
+
+
+=back
 
 =head3 Parameters
 
@@ -33029,6 +37847,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getIssueLinkTypes()->get;
 
 
+  # Return code '200'
   # {
   #   "issueLinkTypes" : [
   #     {
@@ -33048,6 +37867,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get issue link types
+
+Returns a list of all issue link types.
+
+To use this operation, the site must have L<issue linking|https://confluence.atlassian.com/x/yoXKM> enabled.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for a project in the site.
 
 =head3 Parameters
 
@@ -33150,7 +37977,22 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createIssueLinkType()->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : "1000",
+  #   "name" : "Duplicate",
+  #   "inward" : "Duplicated by",
+  #   "outward" : "Duplicates",
+  #   "self" : "https://your-domain.atlassian.net/rest/api/3/issueLinkType/1000"
+  # }
 Create issue link type
+
+Creates an issue link type. Use this operation to create descriptions of the reasons why issues are linked. The issue link type consists of a name and descriptions for a link's inward and outward relationships.
+
+To use this operation, the site must have L<issue linking|https://confluence.atlassian.com/x/yoXKM> enabled.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -33345,6 +38187,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete issue link type
 
+Deletes an issue link type.
+
+To use this operation, the site must have L<issue linking|https://confluence.atlassian.com/x/yoXKM> enabled.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -33441,6 +38289,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : "1000",
   #   "name" : "Duplicate",
@@ -33449,6 +38298,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/issueLinkType/1000"
   # }
 Get issue link type
+
+Returns an issue link type.
+
+To use this operation, the site must have L<issue linking|https://confluence.atlassian.com/x/yoXKM> enabled.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for a project in the site.
 
 =head3 Parameters
 
@@ -33567,6 +38424,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : "1000",
   #   "name" : "Duplicate",
@@ -33575,6 +38433,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/issueLinkType/1000"
   # }
 Update issue link type
+
+Updates an issue link type.
+
+To use this operation, the site must have L<issue linking|https://confluence.atlassian.com/x/yoXKM> enabled.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -33776,6 +38640,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getIssueSecuritySchemes()->get;
 
 
+  # Return code '200'
   # {
   #   "issueSecuritySchemes" : [
   #     {
@@ -33788,6 +38653,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get issue security schemes
+
+Returns all L<issue security schemes|https://confluence.atlassian.com/x/J4lKLg>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -33893,6 +38762,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/issuesecurityschemes/10000",
   #   "id" : 10000,
@@ -33909,6 +38779,24 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get issue security scheme
+
+Returns an issue security scheme along with its security levels.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
+
+=item *
+
+I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for a project that uses the requested issue security scheme.
+
+
+=back
 
 =head3 Parameters
 
@@ -34028,6 +38916,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -34076,6 +38965,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get issue security level members
+
+Returns issue security level members.
+
+Only issue security level members in context of classic projects are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -34247,6 +39142,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getIssueAllTypes()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/issueType/3",
@@ -34270,6 +39166,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get all issue types for user
+
+Returns all issue types.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> Issue types are only returned as follows:
+
+=over
+
+=item *
+
+if the user has the I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>, all issue types are returned.
+
+
+=item *
+
+if the user has the I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for one or more projects, the issue types associated with the projects the user has permission to browse are returned.
+
+
+=back
 
 =head3 Parameters
 
@@ -34371,6 +39287,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->createIssueType()->get;
 
 Create issue type
+
+Creates an issue type and adds it to the default issue type scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -34526,6 +39446,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/issueType/1",
@@ -34548,6 +39469,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get issue types for project
+
+Returns issue types for a project.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> in the relevant project or I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -34694,6 +39621,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete issue type
 
+Deletes the issue type. If the issue type is in use, all uses are updated with the alternative issue type (C<alternativeIssueTypeId>). A list of alternative issue types are obtained from the L<Get alternative issue types|#api-rest-api-3-issuetype-id-alternatives-get> resource.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -34804,6 +39735,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/issueType/3",
   #   "id" : "3",
@@ -34812,6 +39744,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ","name":"Task","subtask":false,"avatarId":1,"hierarchyLevel" : 0
   # }
 Get issue type
+
+Returns an issue type.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> in a project the issue type is associated with or I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -34930,6 +39868,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Update issue type
+
+Updates the issue type.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -35075,6 +40017,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/issueType/3",
@@ -35098,6 +40041,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get alternative issue types
+
+Returns a list of issue types that can be used to replace the issue type. The alternative issue types are those assigned to the same workflow scheme, field configuration scheme, and screen scheme.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -35216,7 +40165,51 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'size' => '...',
   )->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : "1000",
+  #   "isSystemAvatar" : true,
+  #   "isSelected" : false,
+  #   "isDeletable" : false,
+  #   "urls" : {
+  #     "16x16" : "/secure/useravatar?size=xsmall&avatarId=10040&avatarType=project",
+  #     "24x24" : "/secure/useravatar?size=small&avatarId=10040&avatarType=project",
+  #     "32x32" : "/secure/useravatar?size=medium&avatarId=10040&avatarType=project",
+  #     "48x48" : "/secure/useravatar?avatarId=10040&avatarType=project"
+  #   }
+  # }
 Load issue type avatar
+
+Loads an avatar for the issue type.
+
+Specify the avatar's local file location in the body of the request. Also, include the following headers:
+
+=over
+
+=item *
+
+C<X-Atlassian-Token: no-check> To prevent XSRF protection blocking the request, for more information see L<Special Headers|#special-request-headers>.
+
+
+=item *
+
+C<Content-Type: image/image type> Valid image types are JPEG, GIF, or PNG.
+
+
+=back
+
+For example:
+
+C<<< curl --request POST \ --user email@example.com:<api_token> \ --header 'X-Atlassian-Token: no-check' \ --header 'Content-Type: image/< image_type>' \ --data-binary "<@/path/to/file/with/your/avatar>" \ --url 'https://your-domain.atlassian.net/rest/api/3/issuetype/{issueTypeId}'This >>>
+
+The avatar is cropped to a square. If no crop parameters are specified, the square originates at the top left of the image. The length of the square's sides is set to the smaller of the height or width of the image.
+
+The cropped image is then used to create avatars of 16x16, 24x24, 32x32, and 48x48 in size.
+
+After creating the avatar, use L< Update issue type|#api-rest-api-3-issuetype-id-put> to set it as the issue type's displayed avatar.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -35362,6 +40355,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "keys" : [
   #     {
@@ -35371,6 +40365,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get issue type property keys
+
+Returns all the L<issue type property|https://developer.atlassian.com/cloud/jira/platform/storing-data-without-a-database/#a-id-jira-entity-properties-a-jira-entity-properties> keys of the issue type.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> to get the property keys of any issue type.
+
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> to get the property keys of any issue types associated with the projects the user has permission to browse.
+
+
+=back
 
 =head3 Parameters
 
@@ -35488,6 +40502,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete issue type property
 
+Deletes the L<issue type property|https://developer.atlassian.com/cloud/jira/platform/storing-data-without-a-database/#a-id-jira-entity-properties-a-jira-entity-properties>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -35595,6 +40613,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "key" : "issue.support",
   #   "value" : {
@@ -35603,6 +40622,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get issue type property
+
+Returns the key and value of the L<issue type property|https://developer.atlassian.com/cloud/jira/platform/storing-data-without-a-database/#a-id-jira-entity-properties-a-jira-entity-properties>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> to get the details of any issue type.
+
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> to get the details of any issue types associated with the projects the user has permission to browse.
+
+
+=back
 
 =head3 Parameters
 
@@ -35729,6 +40768,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Set issue type property
+
+Creates or updates the value of the L<issue type property|https://developer.atlassian.com/cloud/jira/platform/storing-data-without-a-database/#a-id-jira-entity-properties-a-jira-entity-properties>. Use this resource to store and update data against an issue type.
+
+The value of the request body must be a L<valid|http://tools.ietf.org/html/rfc4627>, non-empty JSON blob. The maximum length is 32768 characters.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -35888,6 +40933,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -35958,6 +41004,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get all issue type schemes
+
+Returns a L<paginated|#pagination> list of issue type schemes.
+
+Only issue type schemes used in classic projects are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -36124,7 +41176,40 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createIssueTypeScheme()->get;
 
+
+  # Return code '201'
+  # {
+  #   "issueTypeSchemeId" : "10010"
+  # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The default issue type ID has to be present in issue type IDs list."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access issue type schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '409'
+  # {
+  #   "errorMessages" : [
+  #     "The name is used by another scheme."
+  #   ],
+  #   "errors" : {}
+  # }
 Create issue type scheme
+
+Creates an issue type scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -36320,6 +41405,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -36345,6 +41431,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get issue type scheme items
+
+Returns a L<paginated|#pagination> list of issue type scheme items.
+
+Only issue type scheme items used in classic projects are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -36473,6 +41565,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -36561,6 +41654,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get issue type schemes for projects
+
+Returns a L<paginated|#pagination> list of issue type schemes and, for each issue type scheme, a list of the projects that use it.
+
+Only issue type schemes used in classic projects are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -36687,7 +41786,39 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->assignIssueTypeSchemeToProject()->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "This issue type scheme can't be assigned to the project. This is because some issues in this project use issue types not present in the scheme. Before assigning the scheme to the project, update the issue types on these issues: 7"
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access issue type schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The issue type scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Assign issue type scheme to project
+
+Assigns an issue type scheme to a project.
+
+If any issues in the project are assigned issue types not present in the new scheme, the operation will fail. To complete the assignment those issues must be updated to use issue types in the new scheme.
+
+Issue type schemes can only be assigned to classic projects.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -36872,7 +42003,39 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueTypeSchemeId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The default issue type scheme can't be removed."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access issue type schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The issue type scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Delete issue type scheme
+
+Deletes an issue type scheme.
+
+Only issue type schemes used in classic projects can be deleted.
+
+Any projects assigned to the scheme are reassigned to the default issue type scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -37050,7 +42213,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueTypeSchemeId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The default issue type has to be one of the issue types of the scheme."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access issue type schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The issue type scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Update issue type scheme
+
+Updates an issue type scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -37249,7 +42440,39 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueTypeSchemeId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "These issue types were not added because they are already present in the issue type scheme: 10002, 10003"
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access issue type schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "These issue types were not found: 10000, 10002"
+  #   ],
+  #   "errors" : {}
+  # }
 Add issue types to issue type scheme
+
+Adds issue types to an issue type scheme.
+
+The added issue types are appended to the issue types list.
+
+If any of the issue types exist in the issue type scheme, the operation fails and no issue types are added.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -37440,7 +42663,56 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueTypeSchemeId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The issue type scheme does not include some of the specified issue types. Issue type IDs missing from the scheme are:  10007, 10008"
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access issue type schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The issue type scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Change order of issue types
+
+Changes the order of issue types in an issue type scheme.
+
+The request body parameters must meet the following requirements:
+
+=over
+
+=item *
+
+all of the issue types must belong to the issue type scheme.
+
+
+=item *
+
+either C<after> or C<position> must be provided.
+
+
+=item *
+
+the issue type in C<after> must not be in the issue type list.
+
+
+=back
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -37640,7 +42912,56 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueTypeId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "Can't remove the last standard issue type from the issue type scheme."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access issue type schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The issue type was not found in the issue type scheme."
+  #   ],
+  #   "errors" : {}
+  # }
 Remove issue type from issue type scheme
+
+Removes an issue type from an issue type scheme.
+
+This operation cannot remove:
+
+=over
+
+=item *
+
+any issue type used by issues.
+
+
+=item *
+
+any issue types from the default issue type scheme.
+
+
+=item *
+
+the last standard issue type from an issue type scheme.
+
+
+=back
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -37831,6 +43152,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -37877,6 +43199,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get issue type screen schemes
+
+Returns a L<paginated|#pagination> list of issue type screen schemes.
+
+Only issue type screen schemes used in classic projects are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -38029,7 +43357,48 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createIssueTypeScreenScheme()->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : "10001"
+  # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "One or more issue type IDs are repeated, an issue type ID can only be specified once."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access issue type screen schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "One or more issue type IDs were not found."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '409'
+  # {
+  #   "errorMessages" : [
+  #     "Sub-tasks are disabled in Jira. At least one of the issue types is a sub-task."
+  #   ],
+  #   "errors" : {}
+  # }
 Create issue type screen scheme
+
+Creates an issue type screen scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -38243,6 +43612,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -38272,6 +43642,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get issue type screen scheme items
+
+Returns a L<paginated|#pagination> list of issue type screen scheme items.
+
+Only issue type screen schemes used in classic projects are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -38400,6 +43776,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -38420,6 +43797,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get issue type screen schemes for projects
+
+Returns a L<paginated|#pagination> list of issue type screen schemes and, for each issue type screen scheme, a list of the projects that use it.
+
+Only issue type screen schemes used in classic projects are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -38546,7 +43929,37 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->assignIssueTypeScreenSchemeToProject()->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "Only classic projects can have issue type screen schemes assigned."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access issue type screen schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The issue type screen scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Assign issue type screen scheme to project
+
+Assigns an issue type screen scheme to a project.
+
+Issue type screen schemes can only be assigned to classic projects.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -38731,7 +44144,27 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueTypeScreenSchemeId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The issue type screen scheme cannot be deleted because it is assigned to one or more projects."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The issue type screen scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Delete issue type screen scheme
+
+Deletes an issue type screen scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -38890,7 +44323,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueTypeScreenSchemeId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The issue type screen scheme name is in use."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access issue type screen schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The issue type screen scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Update issue type screen scheme
+
+Updates an issue type screen scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -39085,7 +44546,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueTypeScreenSchemeId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "A default mapping cannot be added."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The issue type screen scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '409'
+  # {
+  #   "errorMessages" : [
+  #     "Sub-tasks are disabled in Jira. At least one of the issue types is a sub-task."
+  #   ],
+  #   "errors" : {}
+  # }
 Append mappings to issue type screen scheme
+
+Appends issue type to screen scheme mappings to an issue type screen scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -39279,7 +44768,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueTypeScreenSchemeId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The screenSchemeId has to be provided."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access issue type screen schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The issue type screen scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Update issue type screen scheme default screen scheme
+
+Updates the default screen scheme of an issue type screen scheme. The default screen scheme is used for all unmapped issue types.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -39470,7 +44987,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'issueTypeScreenSchemeId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The issueTypeIds must not contain duplicates."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access issue type screen schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The issue type screen scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Remove mappings from issue type screen scheme
+
+Removes issue type to screen scheme mappings from an issue type screen scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -39665,6 +45210,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -39693,6 +45239,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get issue type screen scheme projects
+
+Returns a L<paginated|#pagination> list of projects associated with an issue type screen scheme.
+
+Only company-managed projects associated with an issue type screen scheme are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -39825,6 +45377,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getAutoComplete()->get;
 
 
+  # Return code '200'
   # {
   #   "visibleFieldNames" : [
   #     {
@@ -39881,6 +45434,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get field reference data (GET)
+
+Returns reference data for JQL searches. This is a downloadable version of the documentation provided in L<Advanced searching - fields reference|https://confluence.atlassian.com/x/gwORLQ> and L<Advanced searching - functions reference|https://confluence.atlassian.com/x/hgORLQ>, along with a list of JQL-reserved words. Use this information to assist with the programmatic creation of JQL queries or the validation of queries built in a custom query builder.
+
+To filter visible field details by project or collapse non-unique fields by field type then L<Get field reference data (POST)|#api-rest-api-3-jql-autocompletedata-post> can be used.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -39981,6 +45542,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getAutoCompletePost()->get;
 
 
+  # Return code '200'
   # {
   #   "visibleFieldNames" : [
   #     {
@@ -40073,6 +45635,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get field reference data (POST)
+
+Returns reference data for JQL searches. This is a downloadable version of the documentation provided in L<Advanced searching - fields reference|https://confluence.atlassian.com/x/gwORLQ> and L<Advanced searching - functions reference|https://confluence.atlassian.com/x/hgORLQ>, along with a list of JQL-reserved words. Use this information to assist with the programmatic creation of JQL queries or the validation of queries built in a custom query builder.
+
+This operation can filter the custom fields returned by project. Invalid project IDs in C<projectIds> are ignored. System fields are always returned.
+
+It can also return the collapsed field for custom fields. Collapsed fields enable searches to be performed across all fields with the same name and of the same field type. For example, the collapsed field C<Component - Component[Dropdown]> enables dropdown fields C<Component - cf[10061]> and C<Component - cf[10062]> to be searched simultaneously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -40198,6 +45768,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "results" : [
   #     {
@@ -40215,6 +45786,38 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get field auto complete suggestions
+
+Returns the JQL search auto complete suggestions for a field.
+
+Suggestions can be obtained by providing:
+
+=over
+
+=item *
+
+C<fieldName> to get a list of all values for the field.
+
+
+=item *
+
+C<fieldName> and C<fieldValue> to get a list of values containing the text in C<fieldValue>.
+
+
+=item *
+
+C<fieldName> and C<predicateName> to get a list of all predicate values for the field.
+
+
+=item *
+
+C<fieldName>, C<predicateName>, and C<predicateValue> to get a list of predicate values containing the text in C<predicateValue>.
+
+
+=back
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -40570,6 +46173,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->matchIssues()->get;
 
 
+  # Return code '200'
   # {
   #   "matches" : [
   #     {
@@ -40600,6 +46204,24 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Check issues against JQL
+
+Checks whether one or more issues would be returned by one or more JQL queries.
+
+B<L<Permissions|#permissions> required:> None, however, issues are only matched against JQL queries where the user has:
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that the issue is in.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -40719,6 +46341,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "queries" : [
   #     {
@@ -40883,6 +46506,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   # }
 Parse JQL query
 
+Parses and validates JQL queries.
+
+Validation is performed in context of the current user.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
+
 =head3 Parameters
 
 =over 4
@@ -41045,6 +46676,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->migrateQueries()->get;
 
 
+  # Return code '200'
   # {
   #   "queryStrings" : [
   #     "issuetype = Bug AND assignee in (abcde-12345) AND reporter in (abc551-c4e99) order by lastViewed DESC"
@@ -41057,6 +46689,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Convert user identifiers to account IDs in JQL queries
+
+Converts one or more JQL queries with user identifiers (username or user key) to equivalent JQL queries with account IDs.
+
+You may wish to use this operation if your system stores JQL queries and you want to make them GDPR-compliant. For more information about GDPR-related changes, see the L<migration guide|https://developer.atlassian.com/cloud/jira/platform/deprecation-notice-user-privacy-api-migration-guide/>.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -41173,6 +46811,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->sanitiseJqlQueries()->get;
 
 
+  # Return code '200'
   # {
   #   "queries" : [
   #     {
@@ -41201,7 +46840,33 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The queries has to be provided."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
 Sanitize JQL queries
+
+Sanitizes one or more JQL queries by converting readable details into IDs where a user doesn't have permission to view the entity.
+
+For example, if the query contains the clause I<project = 'Secret project'>, and a user does not have browse permission for the project "Secret project", the sanitized query replaces the clause with I<project = 12345"> (where 12345 is the ID of the project). If a user has the required permission, the clause is not sanitized. If the account ID is null, sanitizing is performed for an anonymous user.
+
+Note that sanitization doesn't make the queries GDPR-compliant, because it doesn't remove user identifiers (username or user key). If you need to make queries GDPR-compliant, use L<Convert user identifiers to account IDs in JQL queries|https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-jql/#api-rest-api-3-jql-sanitize-post>.
+
+Before sanitization each JQL query is parsed. The queries are returned in the same order that they were passed.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -41384,6 +47049,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 2,
   #   "startAt" : 0,
@@ -41395,6 +47061,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get all labels
+
+Returns a L<paginated|#pagination> list of labels.
 
 =head3 Parameters
 
@@ -41506,6 +47174,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Get approximate license count
 
+Returns the total approximate user account across all jira licenced application keys. Please note this information is cached with a 7-day lifecycle and could be stale at the time of call.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -41610,6 +47282,15 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Get approximate application license count
+
+Returns the total approximate user account for a specific C<jira licence application key>. Please note this information is cached with a 7-day lifecycle and could be stale at the time of call.
+
+
+=head4 Application Key
+
+An application key represents a specific version of Jira. See {@link ApplicationKey} for details
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -41730,6 +47411,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "permissions" : {
   #     "EDIT_ISSUES" : {
@@ -41743,6 +47425,42 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get my permissions
+
+Returns a list of permissions indicating which permissions the user has. Details of the user's permissions can be obtained in a global, project, issue or comment context.
+
+The user is reported as having a project permission:
+
+=over
+
+=item *
+
+in the global context, if the user has the project permission in any project.
+
+
+=item *
+
+for a project, where the project permission is determined using issue data, if the user meets the permission's criteria for any issue in the project. Otherwise, if the user has the project permission in the project.
+
+
+=item *
+
+for an issue, where a project permission is determined using issue data, if the user has the permission in the issue. Otherwise, if the user has the project permission in the project containing the issue.
+
+
+=item *
+
+for a comment, where the user has both the permission to browse the comment and the project permission for the comment's parent issue. Only the BROWSE_PROJECTS permission is supported. If a C<commentId> is provided whose C<permissions> does not equal BROWSE_PROJECTS, a 400 error will be returned.
+
+
+=back
+
+This means that users may be shown as having an issue permission (such as EDIT_ISSUES) in the global context or a project context but may not have the permission for any or all issues. For example, if Reporters have the EDIT_ISSUES permission a user would be shown as having this permission in the global context or the context of a project, because any user can be a reporter. However, if they are not the user who reported the issue queried they would not have EDIT_ISSUES permission for that issue.
+
+Global permissions are unaffected by context.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -41951,6 +47669,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete preference
 
+Deletes a preference of the user, which restores the default value of system defined settings.
+
+Note that these keys are deprecated:
+
+=over
+
+=item *
+
+I<jira.user.locale> The locale of the user. By default, not set. The user takes the instance locale.
+
+
+=item *
+
+I<jira.user.timezone> The time zone of the user. By default, not set. The user takes the instance timezone.
+
+
+=back
+
+Use L< Update a user profile|https://developer.atlassian.com/cloud/admin/user-management/rest/#api-users-account-id-manage-profile-patch> from the user management REST API to manage timezone and locale instead.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
+
 =head3 Parameters
 
 =over 4
@@ -42045,6 +47785,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Get preference
+
+Returns the value of a preference of the current user.
+
+Note that these keys are deprecated:
+
+=over
+
+=item *
+
+I<jira.user.locale> The locale of the user. By default this is not set and the user takes the locale of the instance.
+
+
+=item *
+
+I<jira.user.timezone> The time zone of the user. By default this is not set and the user takes the timezone of the instance.
+
+
+=back
+
+Use L< Update a user profile|https://developer.atlassian.com/cloud/admin/user-management/rest/#api-users-account-id-manage-profile-patch> from the user management REST API to manage timezone and locale instead.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -42162,6 +47924,57 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Set preference
 
+Creates a preference for the user or updates a preference's value by sending a plain text string. For example, C<false>. An arbitrary preference can be created with the value containing up to 255 characters. In addition, the following keys define system preferences that can be set or created:
+
+=over
+
+=item *
+
+I<user.notifications.mimetype> The mime type used in notifications sent to the user. Defaults to C<html>.
+
+
+=item *
+
+I<user.notify.own.changes> Whether the user gets notified of their own changes. Defaults to C<false>.
+
+
+=item *
+
+I<user.default.share.private> Whether new L< filters|https://confluence.atlassian.com/x/eQiiLQ> are set to private. Defaults to C<true>.
+
+
+=item *
+
+I<user.keyboard.shortcuts.disabled> Whether keyboard shortcuts are disabled. Defaults to C<false>.
+
+
+=item *
+
+I<user.autowatch.disabled> Whether the user automatically watches issues they create or add a comment to. By default, not set: the user takes the instance autowatch setting.
+
+
+=back
+
+Note that these keys are deprecated:
+
+=over
+
+=item *
+
+I<jira.user.locale> The locale of the user. By default, not set. The user takes the instance locale.
+
+
+=item *
+
+I<jira.user.timezone> The time zone of the user. By default, not set. The user takes the instance timezone.
+
+
+=back
+
+Use L< Update a user profile|https://developer.atlassian.com/cloud/admin/user-management/rest/#api-users-account-id-manage-profile-patch> from the user management REST API to manage timezone and locale instead.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
+
 =head3 Parameters
 
 =over 4
@@ -42197,7 +48010,8 @@ sub build_setPreference_request( $self, %options ) {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        => json => $request,
+        # XXX Need to fill the body
+        # => $body,
     );
 
     # validate our request while developing
@@ -42279,6 +48093,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->deleteLocale()->get;
 
 Delete locale
+
+Deprecated, use L< Update a user profile|https://developer.atlassian.com/cloud/admin/user-management/rest/#api-users-account-id-manage-profile-patch> from the user management REST API instead.
+
+Deletes the locale of the user, which restores the default setting.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -42379,10 +48199,19 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getLocale()->get;
 
 
+  # Return code '200'
   # {
   #   "locale" : "en_US"
   # }
 Get locale
+
+Returns the locale for the user.
+
+If the user has no language preference set (which is the default setting) or this resource is accessed anonymous, the browser locale detected by Jira is returned. Jira detects the browser locale using the I<Accept-Language> header in the request. However, if this doesn't match a locale available Jira, the site default locale is returned.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -42483,6 +48312,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->setLocale()->get;
 
 Set locale
+
+Deprecated, use L< Update a user profile|https://developer.atlassian.com/cloud/admin/user-management/rest/#api-users-account-id-manage-profile-patch> from the user management REST API instead.
+
+Sets the locale of the user. The locale must be one supported by the instance of Jira.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -42601,6 +48436,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
   #   "key" : "",
@@ -42627,6 +48463,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get current user
+
+Returns details for the current user.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -42756,6 +48596,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 6,
   #   "startAt" : 1,
@@ -43008,7 +48849,21 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "%20. is not a valid value. id must be zero or a positive integer."
+  #   ],
+  #   "errors" : {}
+  # }
 Get notification schemes paginated
+
+Returns a L<paginated|#pagination> list of L<notification schemes|https://confluence.atlassian.com/x/8YdKLg> ordered by the display name.
+
+I<Note that you should allow for events without recipients to appear in responses.>
+
+B<L<Permissions|#permissions> required:> Permission to access Jira, however, the user must have permission to administer at least one project associated with a notification scheme for it to be returned.
 
 =head3 Parameters
 
@@ -43197,7 +49052,32 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createNotificationScheme()->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : "10001"
+  # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The length of the description must not exceed 4000 characters."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
 Create notification scheme
+
+Creates a notification scheme with notifications. You can create up to 1000 notifications per request.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -43390,6 +49270,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 50,
   #   "startAt" : 0,
@@ -43403,6 +49284,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get projects using notification schemes paginated
+
+Returns a L<paginated|#pagination> mapping of project that have notification scheme assigned. You can provide either one or multiple notification scheme IDs or project IDs to filter by. If you don't provide any, this will return a list of all mappings. Note that only company-managed (classic) projects are supported. This is because team-managed projects don't have a concept of a default notification scheme. The mappings are ordered by projectId.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -43572,6 +49457,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "expand" : "notificationSchemeEvents,user,group,projectRole,field,all",
   #   "id" : 10100,
@@ -43818,6 +49704,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   # }
 Get notification scheme
 
+Returns a L<notification scheme|https://confluence.atlassian.com/x/8YdKLg>, including the list of events and the recipients who will receive notifications for those events.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira, however, the user must have permission to administer at least one project associated with the notification scheme.
+
 =head3 Parameters
 
 =over 4
@@ -43976,7 +49866,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The length of the description must not exceed 4000 characters."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Notification scheme with ID 10000 not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Update notification scheme
+
+Updates a notification scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -44194,7 +50112,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "Event type with ID 2 not found."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Notification scheme with ID 10001 not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Add notifications to notification scheme
+
+Adds notifications to a notification scheme. You can add up to 1000 notifications per request.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -44408,7 +50354,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'notificationSchemeId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "You can’t delete the default notification scheme."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Notification scheme with ID 10000 not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Delete notification scheme
+
+Deletes a notification scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -44610,7 +50584,27 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'notificationId' => '...',
   )->get;
 
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Notification scheme with ID 10000 not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Remove notification from notification scheme
+
+Removes a notification from a notification scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -44817,6 +50811,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getAllPermissions()->get;
 
 
+  # Return code '200'
   # {
   #   "permissions" : {
   #     "BULK_CHANGE" : {
@@ -44828,6 +50823,29 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get all permissions
+
+Returns all permissions, including:
+
+=over
+
+=item *
+
+global permissions.
+
+
+=item *
+
+project permissions.
+
+
+=item *
+
+global permissions added by plugins.
+
+
+=back
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -44931,6 +50949,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getBulkPermissions()->get;
 
 
+  # Return code '200'
   # {
   #   "projectPermissions" : [
   #     {
@@ -44949,7 +50968,71 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     "ADMINISTER"
   #   ]
   # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [],
+  #   "errors" : {
+  #     "PERMISSION_123" : "Unrecognized permission"
+  #   }
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can perform this operation."
+  #   ],
+  #   "errors" : {}
+  # }
 Get bulk permissions
+
+Returns:
+
+=over
+
+=item *
+
+for a list of global permissions, the global permissions granted to a user.
+
+
+=item *
+
+for a list of project permissions and lists of projects and issues, for each project permission a list of the projects and issues a user can access or manipulate.
+
+
+=back
+
+If no account ID is provided, the operation returns details for the logged in user.
+
+Note that:
+
+=over
+
+=item *
+
+Invalid project and issue IDs are ignored.
+
+
+=item *
+
+A maximum of 1000 projects and 1000 issues can be checked.
+
+
+=item *
+
+Null values in C<globalPermissions>, C<projectPermissions>, C<projectPermissions.projects>, and C<projectPermissions.issues> are ignored.
+
+
+=item *
+
+Empty strings in C<projectPermissions.permissions> are ignored.
+
+
+=back
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> to check the permissions for other users, otherwise none. However, Connect apps can make a call from the app server to the product to obtain permission details for any user, without admin permission. This Connect app ability doesn't apply to calls made using AP.request() in a browser.
 
 =head3 Parameters
 
@@ -45115,6 +51198,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Get permitted projects
 
+Returns all the projects where the user is granted a list of project permissions.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
+
 =head3 Parameters
 
 =over 4
@@ -45251,6 +51340,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "permissionSchemes" : [
   #     {
@@ -45262,6 +51352,311 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get all permission schemes
+
+Returns all permission schemes.
+
+
+=head3 About permission schemes and grants
+
+A permission scheme is a collection of permission grants. A permission grant consists of a C<holder> and a C<permission>.
+
+
+=head4 Holder object
+
+The C<holder> object contains information about the user or group being granted the permission. For example, the I<Administer projects> permission is granted to a group named I<Teams in space administrators>. In this case, the type is C<"type": "group">, and the parameter is the group name, C<"parameter": "Teams in space administrators"> and the value is group ID, C<"value": "ca85fac0-d974-40ca-a615-7af99c48d24f">. The C<holder> object is defined by the following properties:
+
+=over
+
+=item *
+
+C<type> Identifies the user or group (see the list of types below).
+
+
+=item *
+
+C<parameter> As a group's name can change, use of C<value> is recommended. The value of this property depends on the C<type>. For example, if the C<type> is a group, then you need to specify the group name.
+
+
+=item *
+
+C<value> The value of this property depends on the C<type>. If the C<type> is a group, then you need to specify the group ID. For other C<type> it has the same value as C<parameter>
+
+
+=back
+
+The following C<types> are available. The expected values for C<parameter> and C<value> are given in parentheses (some types may not have a C<parameter> or C<value>):
+
+=over
+
+=item *
+
+C<anyone> Grant for anonymous users.
+
+
+=item *
+
+C<applicationRole> Grant for users with access to the specified application (application name, application name). See L<Update product access settings|https://confluence.atlassian.com/x/3YxjL> for more information.
+
+
+=item *
+
+C<assignee> Grant for the user currently assigned to an issue.
+
+
+=item *
+
+C<group> Grant for the specified group (C<parameter> : group name, C<value> : group ID).
+
+
+=item *
+
+C<groupCustomField> Grant for a user in the group selected in the specified custom field (C<parameter> : custom field ID, C<value> : custom field ID).
+
+
+=item *
+
+C<projectLead> Grant for a project lead.
+
+
+=item *
+
+C<projectRole> Grant for the specified project role (C<parameter> :project role ID, C<value> : project role ID).
+
+
+=item *
+
+C<reporter> Grant for the user who reported the issue.
+
+
+=item *
+
+C<sd.customer.portal.only> Jira Service Desk only. Grants customers permission to access the customer portal but not Jira. See L<Customizing Jira Service Desk permissions|https://confluence.atlassian.com/x/24dKLg> for more information.
+
+
+=item *
+
+C<user> Grant for the specified user (C<parameter> : user ID - historically this was the userkey but that is deprecated and the account ID should be used, C<value> : user ID).
+
+
+=item *
+
+C<userCustomField> Grant for a user selected in the specified custom field (C<parameter> : custom field ID, C<value> : custom field ID).
+
+
+=back
+
+
+=head4 Built-in permissions
+
+The L<built-in Jira permissions|https://confluence.atlassian.com/x/yodKLg> are listed below. Apps can also define custom permissions. See the L<project permission|https://developer.atlassian.com/cloud/jira/platform/modules/project-permission/> and L<global permission|https://developer.atlassian.com/cloud/jira/platform/modules/global-permission/> module documentation for more information.
+
+B<Project permissions>
+
+=over
+
+=item *
+
+C<ADMINISTER_PROJECTS>
+
+
+=item *
+
+C<BROWSE_PROJECTS>
+
+
+=item *
+
+C<MANAGE_SPRINTS_PERMISSION> (Jira Software only)
+
+
+=item *
+
+C<SERVICEDESK_AGENT> (Jira Service Desk only)
+
+
+=item *
+
+C<VIEW_DEV_TOOLS> (Jira Software only)
+
+
+=item *
+
+C<VIEW_READONLY_WORKFLOW>
+
+
+=back
+
+B<Issue permissions>
+
+=over
+
+=item *
+
+C<ASSIGNABLE_USER>
+
+
+=item *
+
+C<ASSIGN_ISSUES>
+
+
+=item *
+
+C<CLOSE_ISSUES>
+
+
+=item *
+
+C<CREATE_ISSUES>
+
+
+=item *
+
+C<DELETE_ISSUES>
+
+
+=item *
+
+C<EDIT_ISSUES>
+
+
+=item *
+
+C<LINK_ISSUES>
+
+
+=item *
+
+C<MODIFY_REPORTER>
+
+
+=item *
+
+C<MOVE_ISSUES>
+
+
+=item *
+
+C<RESOLVE_ISSUES>
+
+
+=item *
+
+C<SCHEDULE_ISSUES>
+
+
+=item *
+
+C<SET_ISSUE_SECURITY>
+
+
+=item *
+
+C<TRANSITION_ISSUES>
+
+
+=back
+
+B<Voters and watchers permissions>
+
+=over
+
+=item *
+
+C<MANAGE_WATCHERS>
+
+
+=item *
+
+C<VIEW_VOTERS_AND_WATCHERS>
+
+
+=back
+
+B<Comments permissions>
+
+=over
+
+=item *
+
+C<ADD_COMMENTS>
+
+
+=item *
+
+C<DELETE_ALL_COMMENTS>
+
+
+=item *
+
+C<DELETE_OWN_COMMENTS>
+
+
+=item *
+
+C<EDIT_ALL_COMMENTS>
+
+
+=item *
+
+C<EDIT_OWN_COMMENTS>
+
+
+=back
+
+B<Attachments permissions>
+
+=over
+
+=item *
+
+C<CREATE_ATTACHMENTS>
+
+
+=item *
+
+C<DELETE_ALL_ATTACHMENTS>
+
+
+=item *
+
+C<DELETE_OWN_ATTACHMENTS>
+
+
+=back
+
+B<Time tracking permissions>
+
+=over
+
+=item *
+
+C<DELETE_ALL_WORKLOGS>
+
+
+=item *
+
+C<DELETE_OWN_WORKLOGS>
+
+
+=item *
+
+C<EDIT_ALL_WORKLOGS>
+
+
+=item *
+
+C<EDIT_OWN_WORKLOGS>
+
+
+=item *
+
+C<WORK_ON_ISSUES>
+
+
+=back
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -45405,7 +51800,32 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : 10000,
+  #   "self" : "https://your-domain.atlassian.net/rest/api/3/permissionscheme/10000",
+  #   "name" : "Example permission scheme",
+  #   "description" : "description",
+  #   "permissions" : [
+  #     {
+  #       "id" : 10000,
+  #       "self" : "https://your-domain.atlassian.net/rest/api/3/permissionscheme/permission/10000",
+  #       "holder" : {
+  #         "type" : "group",
+  #         "parameter" : "jira-core-users",
+  #         "value" : "ca85fac0-d974-40ca-a615-7af99c48d24f",
+  #         "expand" : "group"
+  #       },
+  #       "permission" : "ADMINISTER_PROJECTS"
+  #     }
+  #   ]
+  # }
 Create permission scheme
+
+Creates a new permission scheme. You can create a permission scheme with or without defining a set of permission grants.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -45594,6 +52014,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete permission scheme
 
+Deletes a permission scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -45691,6 +52115,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 10000,
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/permissionscheme/10000",
@@ -45711,6 +52136,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get permission scheme
+
+Returns a permission scheme.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -45869,6 +52298,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 10000,
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/permissionscheme/10000",
@@ -45889,6 +52319,33 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Update permission scheme
+
+Updates a permission scheme. Below are some important things to note when using this resource:
+
+=over
+
+=item *
+
+If a permissions list is present in the request, then it is set in the permission scheme, overwriting I<all existing> grants.
+
+
+=item *
+
+If you want to update only the name and description, then do not send a permissions list in the request.
+
+
+=item *
+
+Sending an empty list will remove all permission grants from the permission scheme.
+
+
+=back
+
+If you want to add or delete a permission grant instead of updating the whole list, see L<Create permission grant|#api-rest-api-3-permissionscheme-schemeId-permission-post> or L<Delete permission scheme entity|#api-rest-api-3-permissionscheme-schemeId-permission-permissionId-delete>.
+
+See L<About permission schemes and grants|../api-group-permission-schemes/#about-permission-schemes-and-grants> for more details.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -46087,6 +52544,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "permissions" : [
   #     {
@@ -46104,6 +52562,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "expand" : "user,group,projectRole,field,all"
   # }
 Get permission scheme grants
+
+Returns all permission grants for a permission scheme.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -46261,7 +52723,24 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'expand' => '...',
   )->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : 10000,
+  #   "self" : "https://your-domain.atlassian.net/rest/api/3/permissionscheme/permission/10000",
+  #   "holder" : {
+  #     "type" : "group",
+  #     "parameter" : "jira-core-users",
+  #     "value" : "ca85fac0-d974-40ca-a615-7af99c48d24f",
+  #     "expand" : "group"
+  #   },
+  #   "permission" : "ADMINISTER_PROJECTS"
+  # }
 Create permission grant
+
+Creates a permission grant in a permission scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -46449,6 +52928,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete permission scheme grant
 
+Deletes a permission grant from a permission scheme. See L<About permission schemes and grants|../api-group-permission-schemes/#about-permission-schemes-and-grants> for more details.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -46554,6 +53037,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 10000,
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/permissionscheme/permission/10000",
@@ -46566,6 +53050,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "permission" : "ADMINISTER_PROJECTS"
   # }
 Get permission scheme grant
+
+Returns a permission grant.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -46728,6 +53216,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getPriorities()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/priority/3",
@@ -46747,6 +53236,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get priorities
+
+Returns the list of all issue priorities.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -46847,7 +53340,32 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createPriority()->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : "10001"
+  # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The length of the description must not exceed 255 characters."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access issue type screen schemes."
+  #   ],
+  #   "errors" : {}
+  # }
 Create priority
+
+Creates an issue priority.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -47038,7 +53556,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->setDefaultPriority()->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The id has to be provided."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Priority with ID 10000 not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Set default priority
+
+Sets default issue priority.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -47240,7 +53786,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->movePriorities()->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The ids must contain no more than 1,000 items."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Priority with ID 10000 not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Move priorities
+
+Changes the order of issue priorities.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -47456,6 +54030,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 50,
   #   "startAt" : 0,
@@ -47483,6 +54058,24 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Search priorities
+
+Returns a L<paginated|#pagination> list of priorities. The list can contain all priorities or a subset determined by any combination of these criteria:
+
+=over
+
+=item *
+
+a list of priority IDs. Any invalid priority IDs are ignored.
+
+
+=item *
+
+whether the field configuration is a default. This returns priorities from company-managed (classic) projects only, as there is no concept of default priorities in team-managed projects.
+
+
+=back
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -47628,7 +54221,37 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'replaceWith' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The newPriority has to be provided."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Priority with ID 10000 not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Delete priority
+
+Deletes an issue priority.
+
+This operation is L<asynchronous|#async>. Follow the C<location> link in the response to determine the status of the task and use L<Get task|#api-rest-api-3-task-taskId-get> to obtain subsequent updates.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -47863,6 +54486,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/priority/3",
   #   "statusColor" : "#009900",
@@ -47872,6 +54496,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "id" : "1"
   # }
 Get priority
+
+Returns an issue priority.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -47986,7 +54614,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The length of the description must not exceed 255 characters."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Priority with ID 10000 not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Update priority
+
+Updates an issue priority.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -48215,6 +54871,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/project/EX",
@@ -48266,6 +54923,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get all projects
+
+Returns all projects visible to the user. Deprecated, use L< Get projects paginated|#api-rest-api-3-project-search-get> that supports search and pagination.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> Projects are returned only where the user has I<Browse Projects> or I<Administer projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
 
 =head3 Parameters
 
@@ -48408,7 +55071,51 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createProject()->get;
 
+
+  # Return code '201'
+  # {
+  #   "self" : "https://your-domain.atlassian.net/jira/rest/api/3/project/10042",
+  #   "id" : 10010,
+  #   "key" : "EX"
+  # }
 Create project
+
+Creates a project based on a project type template, as shown in the following table:
+
+| Project Type Key | Project Template Key |
+
+|--|--|
+
+| C<business> | C<com.atlassian.jira-core-project-templates:jira-core-simplified-content-management>, C<com.atlassian.jira-core-project-templates:jira-core-simplified-document-approval>, C<com.atlassian.jira-core-project-templates:jira-core-simplified-lead-tracking>, C<com.atlassian.jira-core-project-templates:jira-core-simplified-process-control>, C<com.atlassian.jira-core-project-templates:jira-core-simplified-procurement>, C<com.atlassian.jira-core-project-templates:jira-core-simplified-project-management>, C<com.atlassian.jira-core-project-templates:jira-core-simplified-recruitment>, C<com.atlassian.jira-core-project-templates:jira-core-simplified-task-tracking> |
+
+| C<service_desk> | C<com.atlassian.servicedesk:simplified-it-service-management>, C<com.atlassian.servicedesk:simplified-general-service-desk-it>, C<com.atlassian.servicedesk:simplified-general-service-desk-business>, C<com.atlassian.servicedesk:simplified-internal-service-desk>, C<com.atlassian.servicedesk:simplified-external-service-desk>, C<com.atlassian.servicedesk:simplified-hr-service-desk>, C<com.atlassian.servicedesk:simplified-facilities-service-desk>, C<com.atlassian.servicedesk:simplified-legal-service-desk>, C<com.atlassian.servicedesk:simplified-analytics-service-desk>, C<com.atlassian.servicedesk:simplified-marketing-service-desk>, C<com.atlassian.servicedesk:simplified-finance-service-desk> |
+
+| C<software> | C<com.pyxis.greenhopper.jira:gh-simplified-agility-kanban>, C<com.pyxis.greenhopper.jira:gh-simplified-agility-scrum>, C<com.pyxis.greenhopper.jira:gh-simplified-basic>, C<com.pyxis.greenhopper.jira:gh-simplified-kanban-classic>, C<com.pyxis.greenhopper.jira:gh-simplified-scrum-classic> |
+
+The project types are available according to the installed Jira features as follows:
+
+=over
+
+=item *
+
+Jira Core, the default, enables C<business> projects.
+
+
+=item *
+
+Jira Service Management enables C<service_desk> projects.
+
+
+=item *
+
+Jira Software enables C<software> projects.
+
+
+=back
+
+To determine which features are installed, go to B<Jira settings> > B<Apps> > B<Manage apps> and review the System Apps list. To add Jira Software or Jira Service Management into a JIRA instance, use B<Jira settings> > B<Apps> > B<Finding new apps>. For more information, see L< Managing add-ons|https://confluence.atlassian.com/x/S31NLg>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -48599,6 +55306,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/project/EX",
@@ -48650,6 +55358,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get recent projects
+
+Returns a list of up to 20 projects recently viewed by the user that are still visible to the user.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> Projects are returned only where the user has one of:
+
+=over
+
+=item *
+
+I<Browse Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
+
+
+=item *
+
+I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
+
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
+
+=back
 
 =head3 Parameters
 
@@ -48825,6 +55558,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/project/search?startAt=0&maxResults=2",
   #   "nextPage" : "https://your-domain.atlassian.net/rest/api/3/project/search?startAt=2&maxResults=2",
@@ -48884,6 +55618,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get projects paginated
+
+Returns a L<paginated|#pagination> list of projects visible to the user.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> Projects are returned only where the user has one of:
+
+=over
+
+=item *
+
+I<Browse Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
+
+
+=item *
+
+I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
+
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
+
+=back
 
 =head3 Parameters
 
@@ -49211,6 +55970,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getAllProjectTypes()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "key" : "business",
@@ -49228,6 +55988,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get all project types
+
+Returns all L<project types|https://confluence.atlassian.com/x/Var1Nw>, whether or not the instance has a valid license for each type.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -49329,6 +56095,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getAllAccessibleProjectTypes()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "key" : "business",
@@ -49346,6 +56113,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get licensed project types
+
+Returns all L<project types|https://confluence.atlassian.com/x/Var1Nw> with a valid license.
 
 =head3 Parameters
 
@@ -49446,6 +56215,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "key" : "business",
   #   "formattedKey" : "Business",
@@ -49454,6 +56224,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "color" : "#FFFFFF"
   # }
 Get project type by key
+
+Returns a L<project type|https://confluence.atlassian.com/x/Var1Nw>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -49569,6 +56345,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "key" : "business",
   #   "formattedKey" : "Business",
@@ -49577,6 +56354,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "color" : "#FFFFFF"
   # }
 Get accessible project type by key
+
+Returns a L<project type|https://confluence.atlassian.com/x/Var1Nw> if it is accessible to the user.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -49694,6 +56475,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete project
 
+Deletes a project.
+
+You can't delete a project if it's archived. To delete an archived project, restore the project and then delete it. To restore a project, use the Jira UI.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -49797,6 +56584,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/project/EX",
   #   "id" : "10000",
@@ -49928,6 +56716,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get project
+
+Returns the L<project details|https://confluence.atlassian.com/x/ahLpNw> for a project.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
 
 =head3 Parameters
 
@@ -50086,6 +56880,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/project/EX",
   #   "id" : "10000",
@@ -50217,6 +57012,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Update project
+
+Updates the L<project details|https://confluence.atlassian.com/x/ahLpNw> of a project.
+
+All parameters are optional in the body of the request.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -50428,6 +57229,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Archive project
 
+Archives a project. You can't delete a project if it's archived. To delete an archived project, restore the project and then delete it. To restore a project, use the Jira UI.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -50548,6 +57353,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Set project avatar
+
+Sets the avatar displayed for a project.
+
+Use L<Load project avatar|#api-rest-api-3-project-projectIdOrKey-avatar2-post> to store avatars against the project, before using this operation to set the displayed avatar.
+
+B<L<Permissions|#permissions> required:> I<Administer projects> L<project permission|https://confluence.atlassian.com/x/yodKLg>.
 
 =head3 Parameters
 
@@ -50705,6 +57516,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete project avatar
 
+Deletes a custom avatar from a project. Note that system avatars cannot be deleted.
+
+B<L<Permissions|#permissions> required:> I<Administer projects> L<project permission|https://confluence.atlassian.com/x/yodKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -50810,7 +57625,55 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'size' => '...',
   )->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : "1010",
+  #   "isSystemAvatar" : false,
+  #   "isSelected" : false,
+  #   "isDeletable" : true
+  # }
 Load project avatar
+
+Loads an avatar for a project.
+
+Specify the avatar's local file location in the body of the request. Also, include the following headers:
+
+=over
+
+=item *
+
+C<X-Atlassian-Token: no-check> To prevent XSRF protection blocking the request, for more information see L<Special Headers|#special-request-headers>.
+
+
+=item *
+
+C<Content-Type: image/image type> Valid image types are JPEG, GIF, or PNG.
+
+
+=back
+
+For example:
+
+C<curl --request POST>
+
+C<<< --user email@example.com:<api_token> >>>
+
+C<--header 'X-Atlassian-Token: no-check'>
+
+C<<< --header 'Content-Type: image/< image_type>' >>>
+
+C<<< --data-binary "<@/path/to/file/with/your/avatar>" >>>
+
+C<--url 'https://your-domain.atlassian.net/rest/api/3/project/{projectIdOrKey}/avatar2'>
+
+The avatar is cropped to a square. If no crop parameters are specified, the square originates at the top left of the image. The length of the square's sides is set to the smaller of the height or width of the image.
+
+The cropped image is then used to create avatars of 16x16, 24x24, 32x32, and 48x48 in size.
+
+After creating the avatar use L<Set project avatar|#api-rest-api-3-project-projectIdOrKey-avatar-put> to set it as the project's displayed avatar.
+
+B<L<Permissions|#permissions> required:> I<Administer projects> L<project permission|https://confluence.atlassian.com/x/yodKLg>.
 
 =head3 Parameters
 
@@ -50954,6 +57817,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "system" : [
   #     {
@@ -50985,6 +57849,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get all project avatars
+
+Returns all project avatars, grouped by system and custom avatars.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
 
 =head3 Parameters
 
@@ -51104,6 +57974,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/project/PR/component?startAt=0&maxResults=2",
   #   "nextPage" : "https://your-domain.atlassian.net/rest/api/3/project/PR/component?startAt=2&maxResults=2",
@@ -51342,6 +58213,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   # }
 Get project components paginated
 
+Returns a L<paginated|#pagination> list of all components in a project. See the L<Get project components|#api-rest-api-3-project-projectIdOrKey-components-get> resource if you want to get a full list of versions without pagination.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
+
 =head3 Parameters
 
 =over 4
@@ -51503,6 +58380,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/component/10000",
@@ -51619,6 +58497,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   # ]
 Get project components
 
+Returns all components in a project. See the L<Get project components paginated|#api-rest-api-3-project-projectIdOrKey-component-get> resource if you want to get a full list of components with pagination.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
+
 =head3 Parameters
 
 =over 4
@@ -51734,6 +58618,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Delete project asynchronously
+
+Deletes a project asynchronously.
+
+This operation is:
+
+=over
+
+=item *
+
+transactional, that is, if part of the delete fails the project is not deleted.
+
+
+=item *
+
+L<asynchronous|#async>. Follow the C<location> link in the response to determine the status of the task and use L<Get task|#api-rest-api-3-task-taskId-get> to obtain subsequent updates.
+
+
+=back
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -51852,6 +58756,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "features" : [
   #     {
@@ -51877,6 +58782,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get project features
+
+Returns the list of features for a project.
 
 =head3 Parameters
 
@@ -51999,6 +58906,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "features" : [
   #     {
@@ -52024,6 +58932,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Set project feature state
+
+Sets the state of a project feature.
 
 =head3 Parameters
 
@@ -52165,6 +59075,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "keys" : [
   #     {
@@ -52174,6 +59085,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get project property keys
+
+Returns all L<project property|https://developer.atlassian.com/cloud/jira/platform/storing-data-without-a-database/#a-id-jira-entity-properties-a-jira-entity-properties> keys for the project.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
 
 =head3 Parameters
 
@@ -52297,6 +59214,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete project property
 
+Deletes the L<property|https://developer.atlassian.com/cloud/jira/platform/storing-data-without-a-database/#a-id-jira-entity-properties-a-jira-entity-properties> from a project.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> or I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project containing the property.
+
 =head3 Parameters
 
 =over 4
@@ -52404,6 +59327,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "key" : "issue.support",
   #   "value" : {
@@ -52412,6 +59336,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get project property
+
+Returns the value of a L<project property|https://developer.atlassian.com/cloud/jira/platform/storing-data-without-a-database/#a-id-jira-entity-properties-a-jira-entity-properties>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project containing the property.
 
 =head3 Parameters
 
@@ -52541,6 +59471,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Set project property
+
+Sets the value of the L<project property|https://developer.atlassian.com/cloud/jira/platform/storing-data-without-a-database/#a-id-jira-entity-properties-a-jira-entity-properties>. You can use project properties to store custom data against the project.
+
+The value of the request body must be a L<valid|http://tools.ietf.org/html/rfc4627>, non-empty JSON blob. The maximum length is 32768 characters.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> or I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project in which the property is created.
 
 =head3 Parameters
 
@@ -52695,6 +59633,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/project/EX",
   #   "id" : "10000",
@@ -52827,6 +59766,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   # }
 Restore deleted or archived project
 
+Restores a project that has been archived or placed in the Jira recycle bin.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -52944,12 +59887,21 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "Administrators" : "https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10002",
   #   "Users" : "https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10001",
   #   "Developers" : "https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10000"
   # }
 Get project roles for project
+
+Returns a list of L<project roles|https://confluence.atlassian.com/x/3odKLg> for the project returning the name and self URL for each role.
+
+Note that all project roles are shared with all projects in Jira Cloud. See L<Get all project roles|#api-rest-api-3-role-get> for more information.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for any project on the site or I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -53069,6 +60021,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Delete actors from project role
+
+Deletes actors from a project role for the project.
+
+To remove default actors from the project role, use L<Delete default actors from project role|#api-rest-api-3-role-id-actors-delete>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project or I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -53190,6 +60150,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360",
   #   "name" : "Developers",
@@ -53226,6 +60187,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get project role for project
+
+Returns a project role's details and actors associated with the project. The list of actors is sorted by display name.
+
+To check whether a user belongs to a role based on their group memberships, use L<Get user|#api-rest-api-3-user-get> with the C<groups> expand parameter selected. Then check whether the user keys and groups match with the actors returned for the project.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project or I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -53360,6 +60329,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360",
   #   "name" : "Developers",
@@ -53396,6 +60366,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Add actors to project role
+
+Adds actors to a project role for the project.
+
+To replace all actors for the project, use L<Set actors for project role|#api-rest-api-3-project-projectIdOrKey-role-id-put>.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project or I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -53543,6 +60521,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360",
   #   "name" : "Developers",
@@ -53579,6 +60558,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Set actors for project role
+
+Sets the actors for a project role for a project, replacing all existing actors.
+
+To add actors to the project without overwriting the existing list, use L<Add actors to project role|#api-rest-api-3-project-projectIdOrKey-role-id-post>.
+
+B<L<Permissions|#permissions> required:> I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project or I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -53743,6 +60728,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360",
@@ -53756,6 +60742,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get project role details
+
+Returns all L<project roles|https://confluence.atlassian.com/x/3odKLg> and the details for each role. Note that the list of project roles is common to all projects.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> or I<Administer projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
 
 =head3 Parameters
 
@@ -53883,6 +60875,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/issueType/3",
@@ -53908,6 +60901,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get all statuses for project
+
+Returns the valid statuses for a project. The statuses are grouped by issue type, as each project has a set of valid issue types and each issue type has a set of valid statuses.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
 
 =head3 Parameters
 
@@ -54025,6 +61024,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/project/EX",
   #   "id" : "10000",
@@ -54157,6 +61157,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   # }
 Update project type
 
+Deprecated, this feature is no longer supported and no alternatives are available, see L<Convert project to a different template or type|https://confluence.atlassian.com/x/yEKeOQ>. Updates a L<project type|https://confluence.atlassian.com/x/GwiiLQ>. The project type can be updated for classic projects only, project type cannot be updated for next-gen projects.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -54287,6 +61291,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/project/PR/version?startAt=0&maxResults=2",
   #   "nextPage" : "https://your-domain.atlassian.net/rest/api/3/project/PR/version?startAt=2&maxResults=2",
@@ -54326,6 +61331,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get project versions paginated
+
+Returns a L<paginated|#pagination> list of all versions in a project. See the L<Get project versions|#api-rest-api-3-project-projectIdOrKey-versions-get> resource if you want to get a full list of versions without pagination.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
 
 =head3 Parameters
 
@@ -54515,6 +61526,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/version/10000",
@@ -54546,6 +61558,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get project versions
+
+Returns all versions in a project. The response is not paginated. Use L<Get project versions paginated|#api-rest-api-3-project-projectIdOrKey-version-get> if you want to get the versions in a project with pagination.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
 
 =head3 Parameters
 
@@ -54667,6 +61685,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "emailAddress" : "jira@example.customdomain.com",
   #   "emailAddressStatus" : [
@@ -54674,6 +61693,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get project's sender email
+
+Returns the L<project's sender email address|https://confluence.atlassian.com/x/dolKLg>.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
 
 =head3 Parameters
 
@@ -54792,6 +61815,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Set project's sender email
+
+Sets the L<project's sender email address|https://confluence.atlassian.com/x/dolKLg>.
+
+If C<emailAddress> is an empty string, the default email address is restored.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
 
 =head3 Parameters
 
@@ -54930,6 +61959,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "projectId" : 10030,
   #   "hierarchy" : [
@@ -54981,6 +62011,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get project issue type hierarchy
+
+Get the issue type hierarchy for a next-gen project.
+
+The issue type hierarchy for a project consists of:
+
+=over
+
+=item *
+
+I<Epic> at level 1 (optional).
+
+
+=item *
+
+One or more issue types at level 0 such as I<Story>, I<Task>, or I<Bug>. Where the issue type I<Epic> is defined, these issue types are used to break down the content of an epic.
+
+
+=item *
+
+I<Subtask> at level -1 (optional). This issue type enables level 0 issue types to be broken down into components. Issues based on a level -1 issue type must have a parent issue.
+
+
+=back
+
+B<L<Permissions|#permissions> required:> I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project.
 
 =head3 Parameters
 
@@ -55099,6 +62154,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/issuesecurityschemes/10000",
   #   "id" : 10000,
@@ -55115,6 +62171,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get project issue security scheme
+
+Returns the L<issue security scheme|https://confluence.atlassian.com/x/J4lKLg> associated with the project.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> or the I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg>.
 
 =head3 Parameters
 
@@ -55237,6 +62297,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "expand" : "notificationSchemeEvents,user,group,projectRole,field,all",
   #   "id" : 10100,
@@ -55483,6 +62544,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   # }
 Get project notification scheme
 
+Gets a L<notification scheme|https://confluence.atlassian.com/x/8YdKLg> associated with the project. Deprecated, use L<Get notification schemes paginated|#api-rest-api-3-notificationscheme-get> supporting search and pagination.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> or I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -55643,6 +62708,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 10000,
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/permissionscheme/10000",
@@ -55650,6 +62716,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "description" : "description"
   # }
 Get assigned permission scheme
+
+Gets the L<permission scheme|https://confluence.atlassian.com/x/yodKLg> associated with the project.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> or I<Administer projects> L<project permission|https://confluence.atlassian.com/x/yodKLg>.
 
 =head3 Parameters
 
@@ -55811,6 +62881,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 10000,
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/permissionscheme/10000",
@@ -55818,6 +62889,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "description" : "description"
   # }
 Assign permission scheme
+
+Assigns a permission scheme with a project. See L<Managing project permissions|https://confluence.atlassian.com/x/yodKLg> for more information about permission schemes.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>
 
 =head3 Parameters
 
@@ -55991,6 +63066,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "levels" : [
   #     {
@@ -56008,6 +63084,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get project issue security levels
+
+Returns all L<issue security|https://confluence.atlassian.com/x/J4lKLg> levels for the project that the user has access to.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> L<global permission|https://confluence.atlassian.com/x/x4dKLg> for the project, however, issue security levels are only returned for authenticated user with I<Set Issue Security> L<global permission|https://confluence.atlassian.com/x/x4dKLg> for the project.
 
 =head3 Parameters
 
@@ -56118,6 +63200,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getAllProjectCategories()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/projectCategory/10000",
@@ -56133,6 +63216,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get all project categories
+
+Returns all project categories.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -56233,7 +63320,19 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createProjectCategory()->get;
 
+
+  # Return code '201'
+  # {
+  #   "self" : "https://your-domain.atlassian.net/rest/api/3/projectCategory/10100",
+  #   "id" : "10100",
+  #   "name" : "CREATED",
+  #   "description" : "Created Project Category"
+  # }
 Create project category
+
+Creates a project category.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -56371,6 +63470,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete project category
 
+Deletes a project category.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -56467,6 +63570,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/projectCategory/10000",
   #   "id" : "10000",
@@ -56474,6 +63578,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "description" : "First Project Category"
   # }
 Get project category by ID
+
+Returns a project category.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -56589,6 +63697,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/projectCategory/10100",
   #   "id" : "10100",
@@ -56596,6 +63705,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "description" : "Updated Project Category"
   # }
 Update project category
+
+Updates a project category.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -56740,6 +63853,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "errorMessages" : [],
   #   "errors" : {
@@ -56747,6 +63861,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Validate project key
+
+Validates a project key by confirming the key is a valid string and not in use.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -56857,8 +63975,13 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # "VPNE"
 Get valid project key
+
+Validates a project key and, if the key is invalid or in use, generates a valid random string for the project key.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -56969,8 +64092,13 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # "Valid Project Name Example"
 Get valid project name
+
+Checks that a project name isn't in use. If the name isn't in use, the passed string is returned. If the name is in use, this operation attempts to generate a valid project name based on the one supplied, usually by adding a sequence number. If a valid project name cannot be generated, a 404 response is returned.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -57088,6 +64216,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getResolutions()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/resolution/1",
@@ -57103,6 +64232,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get resolutions
+
+Returns a list of all issue resolution values.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -57203,7 +64336,32 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createResolution()->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : "10001"
+  # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The length of the description must not exceed 255 characters."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
 Create resolution
+
+Creates an issue resolution.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -57386,7 +64544,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->setDefaultResolution()->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The id has to be provided."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Priority with ID 10000 not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Set default resolution
+
+Sets default issue resolution.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -57588,7 +64774,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->moveResolutions()->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The IDs must contain no more than 1,000 items."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Resolution with ID 10000 not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Move resolutions
+
+Changes the order of issue resolutions.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -57804,6 +65018,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 50,
   #   "startAt" : 0,
@@ -57819,6 +65034,24 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Search resolutions
+
+Returns a L<paginated|#pagination> list of resolutions. The list can contain all resolutions or a subset determined by any combination of these criteria:
+
+=over
+
+=item *
+
+a list of resolutions IDs.
+
+
+=item *
+
+whether the field configuration is a default. This returns resolutions from company-managed (classic) projects only, as there is no concept of default resolutions in team-managed projects.
+
+
+=back
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -57964,7 +65197,37 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'replaceWith' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The id has to be provided."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Priority with ID 10000 not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Delete resolution
+
+Deletes an issue resolution.
+
+This operation is L<asynchronous|#async>. Follow the C<location> link in the response to determine the status of the task and use L<Get task|#api-rest-api-3-task-taskId-get> to obtain subsequent updates.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -58199,6 +65462,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/resolution/1",
   #   "id" : "10000",
@@ -58206,6 +65470,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "name" : "Fixed"
   # }
 Get resolution
+
+Returns an issue resolution value.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -58320,7 +65588,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The length of the description must not exceed 255 characters."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "You are not authorized to perform this action. Administrator privileges are required."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Resolution with ID 10000 not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Update resolution
+
+Updates an issue resolution.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -58537,6 +65833,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getAllProjectRoles()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360",
@@ -58575,6 +65872,38 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get all project roles
+
+Gets a list of all project roles, complete with project role details and default actors.
+
+
+=head3 About project roles
+
+L<Project roles|https://confluence.atlassian.com/x/3odKLg> are a flexible way to to associate users and groups with projects. In Jira Cloud, the list of project roles is shared globally with all projects, but each project can have a different set of actors associated with it (unlike groups, which have the same membership throughout all Jira applications).
+
+Project roles are used in L<permission schemes|#api-rest-api-3-permissionscheme-get>, L<email notification schemes|#api-rest-api-3-notificationscheme-get>, L<issue security levels|#api-rest-api-3-issuesecurityschemes-get>, L<comment visibility|#api-rest-api-3-comment-list-post>, and workflow conditions.
+
+
+=head4 Members and actors
+
+In the Jira REST API, a member of a project role is called an I<actor>. An I<actor> is a group or user associated with a project role.
+
+Actors may be set as L<default members|https://confluence.atlassian.com/x/3odKLg#Managingprojectroles-Specifying'defaultmembers'foraprojectrole> of the project role or set at the project level:
+
+=over
+
+=item *
+
+Default actors: Users and groups that are assigned to the project role for all newly created projects. The default actors can be removed at the project level later if desired.
+
+
+=item *
+
+Actors: Users and groups that are associated with a project role for a project, which may differ from the default actors. This enables you to assign a user to different roles in different projects.
+
+
+=back
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -58679,6 +66008,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->createProjectRole()->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360",
   #   "name" : "Developers",
@@ -58686,6 +66016,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "description" : "A project role that represents developers in a project"
   # }
 Create project role
+
+Creates a new project role with no L<default actors|#api-rest-api-3-resolution-get>. You can use the L<Add default actors to project role|#api-rest-api-3-role-id-actors-post> operation to add default actors to the project role after creating it.
+
+I<Note that although a new project role is available to all projects upon creation, any default actors that are associated with the project role are not added to projects that existed prior to the role being created.><
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -58816,6 +66152,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete project role
 
+Deletes a project role. You must specify a replacement project role if you wish to delete a project role that is in use.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -58926,6 +66266,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360",
   #   "name" : "Developers",
@@ -58962,6 +66303,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get project role by ID
+
+Gets the project role details and the default actors associated with the role. The list of default actors is sorted by display name.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -59080,6 +66425,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360",
   #   "name" : "Developers",
@@ -59116,6 +66462,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Partial update project role
+
+Updates either the project role's name or its description.
+
+You cannot update both the name and description at the same time using this operation. If you send a request with a name and a description only the name is updated.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -59254,6 +66606,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/project/MKY/role/10360",
   #   "name" : "Developers",
@@ -59290,6 +66643,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Fully update project role
+
+Updates the project role's name and description. You must include both a name and a description in the request.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -59431,6 +66788,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "actors" : [
   #     {
@@ -59447,6 +66805,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Delete default actors from project role
+
+Deletes the L<default actors|#api-rest-api-3-resolution-get> from a project role. You may delete a group or user, but you cannot delete a group and a user in the same request.
+
+Changing a project role's default actors does not affect project role members for projects already created.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -59586,6 +66950,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "actors" : [
   #     {
@@ -59602,6 +66967,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get default actors for project role
+
+Returns the L<default actors|#api-rest-api-3-resolution-get> for the project role.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -59723,6 +67092,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "actors" : [
   #     {
@@ -59739,6 +67109,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Add default actors to project role
+
+Adds L<default actors|#api-rest-api-3-resolution-get> to a role. You may add groups or users, but you cannot add groups and users in the same request.
+
+Changing a project role's default actors does not affect project role members for projects already created.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -59886,6 +67262,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/screens",
   #   "maxResults" : 100,
@@ -59911,6 +67288,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get screens
+
+Returns a L<paginated|#pagination> list of all screens or those specified by one or more screen IDs.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -60060,7 +67441,34 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createScreen()->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : 10005,
+  #   "name" : "Resolve Security Issue Screen",
+  #   "description" : "Enables changes to resolution and linked issues."
+  # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The name is used by another screen."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can manage screens."
+  #   ],
+  #   "errors" : {}
+  # }
 Create screen
+
+Creates a screen with a default field tab.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -60225,6 +67633,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Add field to default screen
 
+Adds a field to the default tab of the default screen.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -60341,7 +67753,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'screenId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The screen is used in a screen scheme."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can manage screens."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The screen was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Delete screen
+
+Deletes a screen. A screen cannot be deleted if it is used in a screen scheme, workflow, or workflow draft.
+
+Only screens used in classic projects can be deleted.
 
 =head3 Parameters
 
@@ -60500,12 +67940,41 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 10005,
   #   "name" : "Resolve Security Issue Screen",
   #   "description" : "Enables changes to resolution and linked issues."
   # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The name is used by another screen."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can manage screens."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The screen was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Update screen
+
+Updates a screen. Only screens used in classic projects can be updated.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -60702,6 +68171,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Get available screen fields
 
+Returns the fields that can be added to a tab on a screen.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -60821,6 +68294,24 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Get all screen tabs
+
+Returns the list of tabs for a screen.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
+
+=item *
+
+I<Administer projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> when the project key is specified, providing that the screen is associated with the project through a Screen Scheme and Issue Type Screen Scheme.
+
+
+=back
 
 =head3 Parameters
 
@@ -60951,11 +68442,16 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 10000,
   #   "name" : "Fields Tab"
   # }
 Create screen tab
+
+Creates a tab for a screen.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -61096,6 +68592,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete screen tab
 
+Deletes a screen tab.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -61200,11 +68700,16 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 10000,
   #   "name" : "Fields Tab"
   # }
 Update screen tab
+
+Updates the name of a screen tab.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -61353,6 +68858,24 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Get all screen tab fields
 
+Returns all fields for a screen tab.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
+
+=item *
+
+I<Administer projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> when the project key is specified, providing that the screen is associated with the project through a Screen Scheme and Issue Type Screen Scheme.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -61487,11 +69010,16 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : "summary",
   #   "name" : "Summary"
   # }
 Add screen tab field
+
+Adds a field to a screen tab.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -61636,6 +69164,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Remove screen tab field
 
+Removes a field from a screen tab.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -61751,6 +69283,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Move screen tab field
+
+Moves a screen tab field.
+
+If C<after> and C<position> are provided in the request, C<position> is ignored.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -61906,6 +69444,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Move screen tab
 
+Moves a screen tab.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -62045,6 +69587,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/screenscheme?maxResults=25&startAt=0",
   #   "maxResults" : 100,
@@ -62087,6 +69630,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get screen schemes
+
+Returns a L<paginated|#pagination> list of screen schemes.
+
+Only screen schemes used in classic projects are returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -62236,7 +69785,40 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createScreenScheme()->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : 10001
+  # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The name is used by another scheme."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access screen schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "One or more screens assigned to screen types was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Create screen scheme
+
+Creates a screen scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -62425,7 +70007,37 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'screenSchemeId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The screen scheme cannot be deleted as it is in use in an issue type screen scheme."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access screen schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The screen scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Delete screen scheme
+
+Deletes a screen scheme. A screen scheme cannot be deleted if it is used in an issue type screen scheme.
+
+Only screens schemes used in classic projects can be deleted.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -62583,7 +70195,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'screenSchemeId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The name is used by another scheme."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access screen schemes."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The screen scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Update screen scheme
+
+Updates a screen scheme. Only screen schemes used in classic projects can be updated.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -62790,6 +70430,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "expand" : "names,schema",
   #   "startAt" : 0,
@@ -63045,6 +70686,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Search for issues using JQL (GET)
+
+Searches for issues using L<JQL|https://confluence.atlassian.com/x/egORLQ>.
+
+If the JQL query expression is too large to be encoded as a query parameter, use the L<POST|#api-rest-api-3-search-post> version of this resource.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> Issues are included in the response where the user has:
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project containing the issue.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -63329,6 +70992,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->searchForIssuesUsingJqlPost()->get;
 
 
+  # Return code '200'
   # {
   #   "expand" : "names,schema",
   #   "startAt" : 0,
@@ -63584,6 +71248,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Search for issues using JQL (POST)
+
+Searches for issues using L<JQL|https://confluence.atlassian.com/x/egORLQ>.
+
+There is a L<GET|#api-rest-api-3-search-get> version of this resource that can be used for smaller JQL query expressions.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> Issues are included in the response where the user has:
+
+=over
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project containing the issue.
+
+
+=item *
+
+If L<issue-level security|https://confluence.atlassian.com/x/J4lKLg> is configured, issue-level security permission to view the issue.
+
+
+=back
 
 =head3 Parameters
 
@@ -63853,6 +71539,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/securitylevel/10021",
   #   "id" : "10021",
@@ -63860,6 +71547,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "name" : "Reporter Only"
   # }
 Get issue security level
+
+Returns details of an issue security level.
+
+Use L<Get issue security scheme|#api-rest-api-3-issuesecurityschemes-id-get> to obtain the IDs of issue security levels associated with the issue security scheme.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -63973,6 +71668,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getServerInfo()->get;
 
 
+  # Return code '200'
   # {
   #   "baseUrl" : "https://your-domain.atlassian.net/jira",
   #   "version" : "1001.0.0-SNAPSHOT",
@@ -63991,6 +71687,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get Jira instance info
+
+Returns information about the Jira instance.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -64091,6 +71793,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getIssueNavigatorDefaultColumns()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "label" : "Key",
@@ -64102,6 +71805,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get issue navigator default columns
+
+Returns the default issue navigator columns.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -64206,6 +71913,18 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->setIssueNavigatorDefaultColumns()->get;
 
 Set issue navigator default columns
+
+Sets the default issue navigator columns.
+
+The C<columns> parameter accepts a navigable field value and is expressed as HTML form data. To specify multiple columns, pass multiple C<columns> parameters. For example, in curl:
+
+C<curl -X PUT -d columns=summary -d columns=description https://your-domain.atlassian.net/rest/api/3/settings/columns>
+
+If no column details are sent, then all default columns are removed.
+
+A navigable field is one that can be used as a column on the issue navigator. Find details of navigable issue columns using L<Get fields|#api-rest-api-3-field-get>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -64320,6 +72039,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getStatuses()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/status/10000",
@@ -64350,6 +72070,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get all statuses
+
+Returns a list of all statuses associated with active workflows.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -64453,6 +72179,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/status/10000",
   #   "description" : "The issue is currently being worked on.",
@@ -64468,6 +72195,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get status
+
+Returns a status. The status must be associated with an active workflow to be returned.
+
+If a name is used on more than one status, only the status found first is returned. Therefore, identifying the status by its ID may be preferable.
+
+This operation can be accessed anonymously.
+
+L<Permissions|#permissions> required: None.
 
 =head3 Parameters
 
@@ -64581,6 +72316,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->getStatusCategories()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/statuscategory/1",
@@ -64597,6 +72333,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get all status categories
+
+Returns a list of all status categories.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -64700,6 +72440,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/statuscategory/1",
   #   "id" : 1,
@@ -64708,6 +72449,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "name" : "In Progress"
   # }
 Get status category
+
+Returns a status category. Status categories provided a mechanism for categorizing L<statuses|#api-rest-api-3-status-idOrName-get>.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -64822,7 +72567,33 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The name is too long, maxSize=255"
+  #   ],
+  #   "errors" : {}
+  # }
 Bulk delete Statuses
+
+Deletes statuses by ID.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer projects> L<project permission.|https://confluence.atlassian.com/x/yodKLg>
+
+
+=item *
+
+I<Administer Jira> L<project permission.|https://confluence.atlassian.com/x/yodKLg>
+
+
+=back
 
 =head3 Parameters
 
@@ -64958,6 +72729,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "id" : "1000",
@@ -64983,6 +72755,24 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Bulk get statuses
+
+Returns a list of the statuses specified by one or more status IDs.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer projects> L<project permission.|https://confluence.atlassian.com/x/yodKLg>
+
+
+=item *
+
+I<Administer Jira> L<project permission.|https://confluence.atlassian.com/x/yodKLg>
+
+
+=back
 
 =head3 Parameters
 
@@ -65111,6 +72901,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->createStatuses()->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "id" : "1000",
@@ -65126,7 +72917,33 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     "usages" : []
   #   }
   # ]
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The name is too long, maxSize=255"
+  #   ],
+  #   "errors" : {}
+  # }
 Bulk create statuses
+
+Creates statuses for a global or project scope.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer projects> L<project permission.|https://confluence.atlassian.com/x/yodKLg>
+
+
+=item *
+
+I<Administer Jira> L<project permission.|https://confluence.atlassian.com/x/yodKLg>
+
+
+=back
 
 =head3 Parameters
 
@@ -65266,7 +73083,33 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->updateStatuses()->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The name is too long, maxSize=255"
+  #   ],
+  #   "errors" : {}
+  # }
 Bulk update statuses
+
+Updates statuses by ID.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer projects> L<project permission.|https://confluence.atlassian.com/x/yodKLg>
+
+
+=item *
+
+I<Administer Jira> L<project permission.|https://confluence.atlassian.com/x/yodKLg>
+
+
+=back
 
 =head3 Parameters
 
@@ -65409,6 +73252,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/statuses/search?startAt=0&maxResults=2",
   #   "nextPage" : "https://your-domain.atlassian.net/rest/api/3/statuses/search?startAt=2&maxResults=2",
@@ -65442,6 +73286,24 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Search statuses paginated
+
+Returns a L<paginated|https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/#pagination> list of statuses that match a search on name or project.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer projects> L<project permission.|https://confluence.atlassian.com/x/yodKLg>
+
+
+=item *
+
+I<Administer Jira> L<project permission.|https://confluence.atlassian.com/x/yodKLg>
+
+
+=back
 
 =head3 Parameters
 
@@ -65589,6 +73451,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/task/1",
   #   "id" : "1",
@@ -65604,6 +73467,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "lastUpdate" : 1677577515006
   # }
 Get task
+
+Returns the status of a L<long-running asynchronous task|#async>.
+
+When a task has finished, this operation returns the JSON blob applicable to the task. See the documentation of the operation that created the task for details. Task details are not permanently retained. As of September 2019, details are retained for 14 days although this period may change without notice.
+
+B<L<Permissions|#permissions> required:> either of:
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
+
+=item *
+
+Creator of the task.
+
+
+=back
 
 =head3 Parameters
 
@@ -65722,6 +73605,24 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Cancel task
+
+Cancels a task.
+
+B<L<Permissions|#permissions> required:> either of:
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
+
+=item *
+
+Creator of the task.
+
+
+=back
 
 =head3 Parameters
 
@@ -65929,6 +73830,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -65983,6 +73885,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get UI modifications
+
+Gets UI modifications. UI modifications can only be retrieved by Forge apps.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -66120,7 +74026,33 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createUiModification()->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : "d7dbda8a-6239-4b63-8e13-a5ef975c8e61",
+  #   "self" : "https://api.atlassian.com/ex/jira/{cloudid}/rest/api/2/uiModifications/d7dbda8a-6239-4b63-8e13-a5ef975c8e61"
+  # }
 Create UI modification
+
+Creates a UI modification. UI modification can only be created by Forge apps.
+
+Each app can define up to 100 UI modifications. Each UI modification can define up to 1000 contexts.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<None> if the UI modification is created without contexts.
+
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for one or more projects, if the UI modification is created with contexts.
+
+
+=back
 
 =head3 Parameters
 
@@ -66258,6 +74190,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete UI modification
 
+Deletes a UI modification. All the contexts that belong to the UI modification are deleted too. UI modification can only be deleted by Forge apps.
+
+B<L<Permissions|#permissions> required:> None.
+
 =head3 Parameters
 
 =over 4
@@ -66375,6 +74311,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Update UI modification
+
+Updates a UI modification. UI modification can only be updated by Forge apps.
+
+Each UI modification can define up to 1000 contexts.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<None> if the UI modification is created without contexts.
+
+
+=item *
+
+I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for one or more projects, if the UI modification is created with contexts.
+
+
+=back
 
 =head3 Parameters
 
@@ -66522,6 +74478,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "system" : [
   #     {
@@ -66553,6 +74510,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get avatars
+
+Returns the system and custom avatars for a project or issue type.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+for custom project avatars, I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project the avatar belongs to.
+
+
+=item *
+
+for custom issue type avatars, I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for at least one project the issue type is used in.
+
+
+=item *
+
+for system avatars, none.
+
+
+=back
 
 =head3 Parameters
 
@@ -66678,7 +74660,75 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'size' => '...',
   )->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : "1000",
+  #   "isSystemAvatar" : true,
+  #   "isSelected" : false,
+  #   "isDeletable" : false,
+  #   "urls" : {
+  #     "16x16" : "/secure/useravatar?size=xsmall&avatarId=10040&avatarType=project",
+  #     "24x24" : "/secure/useravatar?size=small&avatarId=10040&avatarType=project",
+  #     "32x32" : "/secure/useravatar?size=medium&avatarId=10040&avatarType=project",
+  #     "48x48" : "/secure/useravatar?avatarId=10040&avatarType=project"
+  #   }
+  # }
 Load avatar
+
+Loads a custom avatar for a project or issue type.
+
+Specify the avatar's local file location in the body of the request. Also, include the following headers:
+
+=over
+
+=item *
+
+C<X-Atlassian-Token: no-check> To prevent XSRF protection blocking the request, for more information see L<Special Headers|#special-request-headers>.
+
+
+=item *
+
+C<Content-Type: image/image type> Valid image types are JPEG, GIF, or PNG.
+
+
+=back
+
+For example:
+
+C<curl --request POST>
+
+C<<< --user email@example.com:<api_token> >>>
+
+C<--header 'X-Atlassian-Token: no-check'>
+
+C<<< --header 'Content-Type: image/< image_type>' >>>
+
+C<<< --data-binary "<@/path/to/file/with/your/avatar>" >>>
+
+C<--url 'https://your-domain.atlassian.net/rest/api/3/universal_avatar/type/{type}/owner/{entityId}'>
+
+The avatar is cropped to a square. If no crop parameters are specified, the square originates at the top left of the image. The length of the square's sides is set to the smaller of the height or width of the image.
+
+The cropped image is then used to create avatars of 16x16, 24x24, 32x32, and 48x48 in size.
+
+After creating the avatar use:
+
+=over
+
+=item *
+
+L<Update issue type|#api-rest-api-3-issuetype-id-put> to set it as the issue type's displayed avatar.
+
+
+=item *
+
+L<Set project avatar|#api-rest-api-3-project-projectIdOrKey-avatar-put> to set it as the project's displayed avatar.
+
+
+=back
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -66834,6 +74884,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete avatar
 
+Deletes an avatar from a project or issue type.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -66946,6 +75000,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Get avatar image by type
+
+Returns the default project or issue type avatar image.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -67356,6 +75416,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Get avatar image by ID
+
+Returns a project or issue type avatar image by ID.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+For system avatars, none.
+
+
+=item *
+
+For custom project avatars, I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project the avatar belongs to.
+
+
+=item *
+
+For custom issue type avatars, I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for at least one project the issue type is used in.
+
+
+=back
 
 =head3 Parameters
 
@@ -67851,6 +75936,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Get avatar image by owner
 
+Returns the avatar image for a project or issue type.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+For system avatars, none.
+
+
+=item *
+
+For custom project avatars, I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project the avatar belongs to.
+
+
+=item *
+
+For custom issue type avatars, I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for at least one project the issue type is used in.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -68344,6 +76454,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete user
 
+Deletes a user. If the operation completes successfully then the user is removed from Jira's user base. This operation does not delete the user's Atlassian account.
+
+B<L<Permissions|#permissions> required:> Site administration (that is, membership of the I<site-admin> L<group|https://confluence.atlassian.com/x/24xjL>).
+
 =head3 Parameters
 
 =over 4
@@ -68457,6 +76571,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
   #   "key" : "",
@@ -68483,6 +76598,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get user
+
+Returns a user.
+
+Privacy controls are applied to the response based on the user's preferences. This could mean, for example, that the user's email address is hidden. See the L<Profile visibility overview|https://developer.atlassian.com/cloud/jira/platform/profile-visibility/> for more details.
+
+B<L<Permissions|#permissions> required:> I<Browse users and groups> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -68625,7 +76746,40 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createUser()->get;
 
+
+  # Return code '201'
+  # {
+  #   "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
+  #   "key" : "",
+  #   "accountId" : "5b10a2844c20165700ede21g",
+  #   "accountType" : "atlassian",
+  #   "name" : "",
+  #   "emailAddress" : "mia@example.com",
+  #   "avatarUrls" : {
+  #     "48x48" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48",
+  #     "24x24" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24",
+  #     "16x16" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16",
+  #     "32x32" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"
+  #   },
+  #   "displayName" : "Mia Krystof",
+  #   "active" : true,
+  #   "timeZone" : "Australia/Sydney",
+  #   "groups" : {
+  #     "size" : 3,
+  #     "items" : []
+  #   },
+  #   "applicationRoles" : {
+  #     "size" : 1,
+  #     "items" : []
+  #   }
+  # }
 Create user
+
+Creates a user. This resource is retained for legacy compatibility. As soon as a more suitable alternative is available this resource will be deprecated.
+
+If the user exists and has access to Jira, the operation returns a 201 status. If the user exists but does not have access to Jira, the operation returns a 400 status.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -68776,6 +76930,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
@@ -68809,6 +76964,16 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Find users assignable to projects
+
+Returns a list of users who can be assigned issues in one or more projects. The list may be restricted to users whose attributes match a string.
+
+This operation takes the users in the range defined by C<startAt> and C<maxResults>, up to the thousandth user, and then returns only the users from that range that can be assigned issues in the projects. This means the operation usually returns fewer users than specified in C<maxResults>. To get all the users who can be assigned issues in the projects, use L<Get all users|#api-rest-api-3-users-search-get> and filter the records in your code.
+
+Privacy controls are applied to the response based on the users' preferences. This could mean, for example, that the user's email address is hidden. See the L<Profile visibility overview|https://developer.atlassian.com/cloud/jira/platform/profile-visibility/> for more details.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> None.
 
 =head3 Parameters
 
@@ -68966,6 +77131,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
   #   "key" : "",
@@ -68992,6 +77158,35 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Find users assignable to issues
+
+Returns a list of users that can be assigned to an issue. Use this operation to find the list of users who can be assigned to:
+
+=over
+
+=item *
+
+a new issue, by providing the C<projectKeyOrId>.
+
+
+=item *
+
+an updated issue, by providing the C<issueKey>.
+
+
+=item *
+
+to an issue during a transition (workflow action), by providing the C<issueKey> and the transition id in C<actionDescriptorId>. You can obtain the IDs of an issue's valid transitions using the C<transitions> option in the C<expand> parameter of L< Get issue|#api-rest-api-3-issue-issueIdOrKey-get>.
+
+
+=back
+
+In all these cases, you can pass an account ID to determine if a user can be assigned to an issue. The user is returned in the response if they can be assigned to the issue or issue transition.
+
+This operation takes the users in the range defined by C<startAt> and C<maxResults>, up to the thousandth user, and then returns only the users from that range that can be assigned the issue. This means the operation usually returns fewer users than specified in C<maxResults>. To get all the users who can be assigned the issue, use L<Get all users|#api-rest-api-3-users-search-get> and filter the records in your code.
+
+Privacy controls are applied to the response based on the users' preferences. This could mean, for example, that the user's email address is hidden. See the L<Profile visibility overview|https://developer.atlassian.com/cloud/jira/platform/profile-visibility/> for more details.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -69159,6 +77354,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 100,
   #   "startAt" : 0,
@@ -69183,6 +77379,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Bulk get users
+
+Returns a L<paginated|#pagination> list of the users specified by one or more account IDs.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -69322,6 +77522,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "username" : "mia",
@@ -69333,6 +77534,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get account IDs for users
+
+Returns the account IDs for the users specified in the C<key> or C<username> parameters. Note that multiple C<key> or C<username> parameters can be specified.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -69464,6 +77669,24 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Reset user default columns
 
+Resets the default L< issue table columns|https://confluence.atlassian.com/x/XYdKLg> for the user to the system default. If C<accountId> is not passed, the calling user's default columns are reset.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>, to set the columns on any user.
+
+
+=item *
+
+Permission to access Jira, to set the calling user's columns.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -69561,6 +77784,24 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Get user default columns
+
+Returns the default L<issue table columns|https://confluence.atlassian.com/x/XYdKLg> for the user. If C<accountId> is not passed in the request, the calling user's details are returned.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLgl>, to get the column details for any user.
+
+
+=item *
+
+Permission to access Jira, to get the calling user's column details.
+
+
+=back
 
 =head3 Parameters
 
@@ -69683,6 +77924,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Set user default columns
+
+Sets the default L< issue table columns|https://confluence.atlassian.com/x/XYdKLg> for the user. If an account ID is not passed, the calling user's default columns are set. If no column details are sent, then all default columns are removed.
+
+The parameters for this resource are expressed as HTML form data. For example, in curl:
+
+C<curl -X PUT -d columns=summary -d columns=description https://your-domain.atlassian.net/rest/api/3/user/columns?accountId=5b10ac8d82e05b22cc7d4ef5'>
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>, to set the columns on any user.
+
+
+=item *
+
+Permission to access Jira, to set the calling user's columns.
+
+
+=back
 
 =head3 Parameters
 
@@ -69810,8 +78073,11 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # name@example.com
 Get user email
+
+Returns a user's email address. This API is only available to apps approved by Atlassian, according to these L<guidelines|https://community.developer.atlassian.com/t/guidelines-for-requesting-access-to-email-address/27603>.
 
 =head3 Parameters
 
@@ -69935,6 +78201,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Get user email bulk
 
+Returns a user's email address. This API is only available to apps approved by Atlassian, according to these L<guidelines|https://community.developer.atlassian.com/t/guidelines-for-requesting-access-to-email-address/27603>.
+
 =head3 Parameters
 
 =over 4
@@ -70055,12 +78323,17 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "name" : "jira-administrators",
   #   "groupId" : "276f955c-63d7-42c8-9520-92d01dca0625",
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/group?groupId=276f955c-63d7-42c8-9520-92d01dca0625"
   # }
 Get user groups
+
+Returns the groups to which a user belongs.
+
+B<L<Permissions|#permissions> required:> I<Browse users and groups> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -70198,6 +78471,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
@@ -70231,6 +78505,46 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Find users with permissions
+
+Returns a list of users who fulfill these criteria:
+
+=over
+
+=item *
+
+their user attributes match a search string.
+
+
+=item *
+
+they have a set of permissions for a project or issue.
+
+
+=back
+
+If no search string is provided, a list of all users with the permissions is returned.
+
+This operation takes the users in the range defined by C<startAt> and C<maxResults>, up to the thousandth user, and then returns only the users from that range that match the search string and have permission for the project or issue. This means the operation usually returns fewer users than specified in C<maxResults>. To get all the users who match the search string and have permission for the project or issue, use L<Get all users|#api-rest-api-3-users-search-get> and filter the records in your code.
+
+Privacy controls are applied to the response based on the users' preferences. This could mean, for example, that the user's email address is hidden. See the L<Profile visibility overview|https://developer.atlassian.com/cloud/jira/platform/profile-visibility/> for more details.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>, to get users for any project.
+
+
+=item *
+
+I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for a project, to get users for that project.
+
+
+=back
 
 =head3 Parameters
 
@@ -70583,6 +78897,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "users" : [
   #     {
@@ -70599,6 +78914,16 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "header" : "Showing 20 of 25 matching groups"
   # }
 Find users for picker
+
+Returns a list of users whose attributes match the query term. The returned object includes the C<html> field where the matched query term is highlighted with the HTML strong tag. A list of account IDs can be provided to exclude users from the results.
+
+This operation takes the users in the range defined by C<maxResults>, up to the thousandth user, and then returns only the users from that range that match the query term. This means the operation usually returns fewer users than specified in C<maxResults>. To get all the users who match the query term, use L<Get all users|#api-rest-api-3-users-search-get> and filter the records in your code.
+
+Privacy controls are applied to the response based on the users' preferences. This could mean, for example, that the user's email address is hidden. See the L<Profile visibility overview|https://developer.atlassian.com/cloud/jira/platform/profile-visibility/> for more details.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse users and groups> L<global permission|https://confluence.atlassian.com/x/x4dKLg>. Anonymous calls and calls by users without the required permission return search results for an exact name match only.
 
 =head3 Parameters
 
@@ -70746,6 +79071,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "keys" : [
   #     {
@@ -70755,6 +79081,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get user property keys
+
+Returns the keys of all properties for a user.
+
+Note: This operation does not access the L<user properties|https://confluence.atlassian.com/x/8YxjL> created and maintained in Jira.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>, to access the property keys on any user.
+
+
+=item *
+
+Access to Jira, to access the calling user's property keys.
+
+
+=back
 
 =head3 Parameters
 
@@ -70888,6 +79234,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete user property
 
+Deletes a property from a user.
+
+Note: This operation does not access the L<user properties|https://confluence.atlassian.com/x/8YxjL> created and maintained in Jira.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>, to delete a property from any user.
+
+
+=item *
+
+Access to Jira, to delete a property from the calling user's record.
+
+
+=back
+
 =head3 Parameters
 
 =over 4
@@ -71008,6 +79374,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "key" : "issue.support",
   #   "value" : {
@@ -71016,6 +79383,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # }
 Get user property
+
+Returns the value of a user's property. If no property key is provided L<Get user property keys|#api-rest-api-3-user-properties-get> is called.
+
+Note: This operation does not access the L<user properties|https://confluence.atlassian.com/x/8YxjL> created and maintained in Jira.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>, to get a property from any user.
+
+
+=item *
+
+Access to Jira, to get a property from the calling user's record.
+
+
+=back
 
 =head3 Parameters
 
@@ -71158,6 +79545,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Set user property
+
+Sets the value of a user's property. Use this resource to store custom data against a user.
+
+Note: This operation does not access the L<user properties|https://confluence.atlassian.com/x/8YxjL> created and maintained in Jira.
+
+B<L<Permissions|#permissions> required:>
+
+=over
+
+=item *
+
+I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>, to set a property on any user.
+
+
+=item *
+
+Access to Jira, to set a property on the calling user's record.
+
+
+=back
 
 =head3 Parameters
 
@@ -71331,6 +79738,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
@@ -71364,6 +79772,16 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Find users
+
+Returns a list of users that match the search string and property.
+
+This operation first applies a filter to match the search string and property, and then takes the filtered users in the range defined by C<startAt> and C<maxResults>, up to the thousandth user. To get all the users who match the search string and property, use L<Get all users|#api-rest-api-3-users-search-get> and filter the records in your code.
+
+This operation can be accessed anonymously.
+
+Privacy controls are applied to the response based on the users' preferences. This could mean, for example, that the user's email address is hidden. See the L<Profile visibility overview|https://developer.atlassian.com/cloud/jira/platform/profile-visibility/> for more details.
+
+B<L<Permissions|#permissions> required:> I<Browse users and groups> L<global permission|https://confluence.atlassian.com/x/x4dKLg>. Anonymous calls or calls by users without the required permission return empty search results.
 
 =head3 Parameters
 
@@ -71507,6 +79925,62 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Find users by query
 
+Finds users with a structured query and returns a L<paginated|#pagination> list of user details.
+
+This operation takes the users in the range defined by C<startAt> and C<maxResults>, up to the thousandth user, and then returns only the users from that range that match the structured query. This means the operation usually returns fewer users than specified in C<maxResults>. To get all the users who match the structured query, use L<Get all users|#api-rest-api-3-users-search-get> and filter the records in your code.
+
+B<L<Permissions|#permissions> required:> I<Browse users and groups> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
+The query statements are:
+
+=over
+
+=item *
+
+C<is assignee of PROJ> Returns the users that are assignees of at least one issue in project I<PROJ>.
+
+
+=item *
+
+C<is assignee of (PROJ-1, PROJ-2)> Returns users that are assignees on the issues I<PROJ-1> or I<PROJ-2>.
+
+
+=item *
+
+C<is reporter of (PROJ-1, PROJ-2)> Returns users that are reporters on the issues I<PROJ-1> or I<PROJ-2>.
+
+
+=item *
+
+C<is watcher of (PROJ-1, PROJ-2)> Returns users that are watchers on the issues I<PROJ-1> or I<PROJ-2>.
+
+
+=item *
+
+C<is voter of (PROJ-1, PROJ-2)> Returns users that are voters on the issues I<PROJ-1> or I<PROJ-2>.
+
+
+=item *
+
+C<is commenter of (PROJ-1, PROJ-2)> Returns users that have posted a comment on the issues I<PROJ-1> or I<PROJ-2>.
+
+
+=item *
+
+C<is transitioner of (PROJ-1, PROJ-2)> Returns users that have performed a transition on issues I<PROJ-1> or I<PROJ-2>.
+
+
+=item *
+
+C<[propertyKey].entity.property.path is "property value"> Returns users with the entity property value.
+
+
+=back
+
+The list of issues can be extended as needed, as in I<(PROJ-1, PROJ-2, ... PROJ-n)>. Statements can be combined using the C<AND> and C<OR> operators to form more complex queries. For example:
+
+C<is assignee of PROJ AND [propertyKey].entity.property.path is "property value">
+
 =head3 Parameters
 
 =over 4
@@ -71640,6 +80114,62 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Find user keys by query
+
+Finds users with a structured query and returns a L<paginated|#pagination> list of user keys.
+
+This operation takes the users in the range defined by C<startAt> and C<maxResults>, up to the thousandth user, and then returns only the users from that range that match the structured query. This means the operation usually returns fewer users than specified in C<maxResults>. To get all the users who match the structured query, use L<Get all users|#api-rest-api-3-users-search-get> and filter the records in your code.
+
+B<L<Permissions|#permissions> required:> I<Browse users and groups> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
+The query statements are:
+
+=over
+
+=item *
+
+C<is assignee of PROJ> Returns the users that are assignees of at least one issue in project I<PROJ>.
+
+
+=item *
+
+C<is assignee of (PROJ-1, PROJ-2)> Returns users that are assignees on the issues I<PROJ-1> or I<PROJ-2>.
+
+
+=item *
+
+C<is reporter of (PROJ-1, PROJ-2)> Returns users that are reporters on the issues I<PROJ-1> or I<PROJ-2>.
+
+
+=item *
+
+C<is watcher of (PROJ-1, PROJ-2)> Returns users that are watchers on the issues I<PROJ-1> or I<PROJ-2>.
+
+
+=item *
+
+C<is voter of (PROJ-1, PROJ-2)> Returns users that are voters on the issues I<PROJ-1> or I<PROJ-2>.
+
+
+=item *
+
+C<is commenter of (PROJ-1, PROJ-2)> Returns users that have posted a comment on the issues I<PROJ-1> or I<PROJ-2>.
+
+
+=item *
+
+C<is transitioner of (PROJ-1, PROJ-2)> Returns users that have performed a transition on issues I<PROJ-1> or I<PROJ-2>.
+
+
+=item *
+
+C<[propertyKey].entity.property.path is "property value"> Returns users with the entity property value.
+
+
+=back
+
+The list of issues can be extended as needed, as in I<(PROJ-1, PROJ-2, ... PROJ-n)>. Statements can be combined using the C<AND> and C<OR> operators to form more complex queries. For example:
+
+C<is assignee of PROJ AND [propertyKey].entity.property.path is "property value">
 
 =head3 Parameters
 
@@ -71778,6 +80308,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
@@ -71811,6 +80342,46 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Find users with browse permission
+
+Returns a list of users who fulfill these criteria:
+
+=over
+
+=item *
+
+their user attributes match a search string.
+
+
+=item *
+
+they have permission to browse issues.
+
+
+=back
+
+Use this resource to find users who can browse:
+
+=over
+
+=item *
+
+an issue, by providing the C<issueKey>.
+
+
+=item *
+
+any issue in a project, by providing the C<projectKey>.
+
+
+=back
+
+This operation takes the users in the range defined by C<startAt> and C<maxResults>, up to the thousandth user, and then returns only the users from that range that match the search string and have permission to browse issues. This means the operation usually returns fewer users than specified in C<maxResults>. To get all the users who match the search string and have permission to browse issues, use L<Get all users|#api-rest-api-3-users-search-get> and filter the records in your code.
+
+Privacy controls are applied to the response based on the users' preferences. This could mean, for example, that the user's email address is hidden. See the L<Profile visibility overview|https://developer.atlassian.com/cloud/jira/platform/profile-visibility/> for more details.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse users and groups> L<global permission|https://confluence.atlassian.com/x/x4dKLg>. Anonymous calls and calls by users without the required permission return empty search results.
 
 =head3 Parameters
 
@@ -71962,6 +80533,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
@@ -71995,6 +80567,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get all users default
+
+Returns a list of all users, including active users, inactive users and previously deleted users that have an Atlassian account.
+
+Privacy controls are applied to the response based on the users' preferences. This could mean, for example, that the user's email address is hidden. See the L<Profile visibility overview|https://developer.atlassian.com/cloud/jira/platform/profile-visibility/> for more details.
+
+B<L<Permissions|#permissions> required:> I<Browse users and groups> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -72118,6 +80696,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
@@ -72151,6 +80730,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get all users
+
+Returns a list of all users, including active users, inactive users and previously deleted users that have an Atlassian account.
+
+Privacy controls are applied to the response based on the users' preferences. This could mean, for example, that the user's email address is hidden. See the L<Profile visibility overview|https://developer.atlassian.com/cloud/jira/platform/profile-visibility/> for more details.
+
+B<L<Permissions|#permissions> required:> I<Browse users and groups> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -72270,7 +80855,27 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createVersion()->get;
 
+
+  # Return code '201'
+  # {
+  #   "self" : "https://your-domain.atlassian.net/rest/api/3/version/10000",
+  #   "id" : "10000",
+  #   "description" : "An excellent version",
+  #   "name" : "New Version 1",
+  #   "archived" : false,
+  #   "released" : true,
+  #   "releaseDate" : "2010-07-06",
+  #   "userReleaseDate" : "6/Jul/2010",
+  #   "project" : "PXA",
+  #   "projectId" : 10000
+  # }
 Create version
+
+Creates a project version.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> or I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project the version is added to.
 
 =head3 Parameters
 
@@ -72475,6 +81080,16 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete version
 
+Deletes a project version.
+
+Deprecated, use L< Delete and replace version|#api-rest-api-3-version-id-removeAndSwap-post> that supports swapping version values in custom fields, in addition to the swapping for C<fixVersion> and C<affectedVersion> provided in this resource.
+
+Alternative versions can be provided to update issues that use the deleted version in C<fixVersion> or C<affectedVersion>. If alternatives are not provided, occurrences of C<fixVersion> and C<affectedVersion> that contain the deleted version are cleared.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> or I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that contains the version.
+
 =head3 Parameters
 
 =over 4
@@ -72585,6 +81200,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/version/10000",
   #   "id" : "10000",
@@ -72598,6 +81214,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "projectId" : 10000
   # }
 Get version
+
+Returns a project version.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project containing the version.
 
 =head3 Parameters
 
@@ -72735,6 +81357,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/version/10000",
   #   "id" : "10000",
@@ -72748,6 +81371,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "projectId" : 10000
   # }
 Update version
+
+Updates a project version.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> or I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that contains the version.
 
 =head3 Parameters
 
@@ -72961,6 +81590,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Merge versions
 
+Merges two project versions. The merge is completed by deleting the version specified in C<id> and replacing any occurrences of its ID in C<fixVersion> with the version ID specified in C<moveIssuesTo>.
+
+Consider using L< Delete and replace version|#api-rest-api-3-version-id-removeAndSwap-post> instead. This resource supports swapping version values in C<fixVersion>, C<affectedVersion>, and custom fields.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> or I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that contains the version.
+
 =head3 Parameters
 
 =over 4
@@ -73085,6 +81722,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/version/10000",
   #   "id" : "10000",
@@ -73098,6 +81736,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "projectId" : 10000
   # }
 Move version
+
+Modifies the version's sequence within the project, which affects the display order of the versions in Jira.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> project permission for the project that contains the version.
 
 =head3 Parameters
 
@@ -73233,6 +81877,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/version/10000",
   #   "issuesFixedCount" : 23,
@@ -73252,6 +81897,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get version's related issues count
+
+Returns the following counts for a version:
+
+=over
+
+=item *
+
+Number of issues where the C<fixVersion> is set to the version.
+
+
+=item *
+
+Number of issues where the C<affectedVersion> is set to the version.
+
+
+=item *
+
+Number of issues where a version custom field is set to the version.
+
+
+=back
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> project permission for the project that contains the version.
 
 =head3 Parameters
 
@@ -73367,6 +82037,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 Delete and replace version
+
+Deletes a project version.
+
+Alternative versions can be provided to update issues that use the deleted version in C<fixVersion>, C<affectedVersion>, or any version picker custom fields. If alternatives are not provided, occurrences of C<fixVersion>, C<affectedVersion>, and any version picker custom field, that contain the deleted version, are cleared. Any replacement version must be in the same project as the version being deleted and cannot be the version being deleted.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg> or I<Administer Projects> L<project permission|https://confluence.atlassian.com/x/yodKLg> for the project that contains the version.
 
 =head3 Parameters
 
@@ -73506,12 +82184,19 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/version/10000",
   #   "issuesUnresolvedCount" : 23,
   #   "issuesCount" : 30
   # }
 Get version's unresolved issues count
+
+Returns counts of the issues and unresolved issues for the project version.
+
+This operation can be accessed anonymously.
+
+B<L<Permissions|#permissions> required:> I<Browse projects> project permission for the project that contains the version.
 
 =head3 Parameters
 
@@ -73625,6 +82310,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->deleteWebhookById()->get;
 
 Delete webhooks by ID
+
+Removes webhooks by ID. Only webhooks registered by the calling app are removed. If webhooks created by other apps are specified, they are ignored.
+
+B<L<Permissions|#permissions> required:> Only L<Connect|https://developer.atlassian.com/cloud/jira/platform/#connect-apps> and L<OAuth 2.0|https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps> apps can use this operation.
 
 =head3 Parameters
 
@@ -73764,6 +82453,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 3,
   #   "startAt" : 0,
@@ -73805,6 +82495,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get dynamic webhooks for app
+
+Returns a L<paginated|#pagination> list of the webhooks registered by the calling app.
+
+B<L<Permissions|#permissions> required:> Only L<Connect|https://developer.atlassian.com/cloud/jira/platform/#connect-apps> and L<OAuth 2.0|https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps> apps can use this operation.
 
 =head3 Parameters
 
@@ -73961,6 +82655,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->registerDynamicWebhooks()->get;
 
 
+  # Return code '200'
   # {
   #   "webhookRegistrationResult" : [
   #     {
@@ -73977,6 +82672,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Register dynamic webhooks
+
+Registers webhooks.
+
+B<NOTE:> for non-public OAuth apps, webhooks are delivered only if there is a match between the app owner and the user who registered a dynamic webhook.
+
+B<L<Permissions|#permissions> required:> Only L<Connect|https://developer.atlassian.com/cloud/jira/platform/#connect-apps> and L<OAuth 2.0|https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps> apps can use this operation.
 
 =head3 Parameters
 
@@ -74140,6 +82841,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "values" : [
   #     {
@@ -74158,6 +82860,16 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "next" : "https://your-domain.atlassian.net/rest/api/3/webhook/failed?failedAfter=1573540473480&maxResults=100"
   # }
 Get failed webhooks
+
+Returns webhooks that have recently failed to be delivered to the requesting app after the maximum number of retries.
+
+After 72 hours the failure may no longer be returned by this operation.
+
+The oldest failure is returned first.
+
+This method uses a cursor-based pagination. To request the next page use the failure time of the last webhook on the list as the C<failedAfter> value or use the URL provided in C<next>.
+
+B<L<Permissions|#permissions> required:> Only L<Connect apps|https://developer.atlassian.com/cloud/jira/platform/index/#connect-apps> can use this operation.
 
 =head3 Parameters
 
@@ -74314,10 +83026,17 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->refreshWebhooks()->get;
 
 
+  # Return code '200'
   # {
   #   "expirationDate" : "2019-06-01T12:42:30.000+0000"
   # }
 Extend webhook life
+
+Extends the life of webhook. Webhooks registered through the REST API expire after 30 days. Call this operation to keep them alive.
+
+Unrecognized webhook IDs (those that are not found or belong to other apps) are ignored.
+
+B<L<Permissions|#permissions> required:> Only L<Connect|https://developer.atlassian.com/cloud/jira/platform/#connect-apps> and L<OAuth 2.0|https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps> apps can use this operation.
 
 =head3 Parameters
 
@@ -74476,6 +83195,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "name" : "classic workflow",
@@ -74488,6 +83208,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get all workflows
+
+Returns all workflows in Jira or a workflow. Deprecated, use L<Get workflows paginated|#api-rest-api-3-workflow-search-get>.
+
+If the C<workflowName> parameter is specified, the workflow is returned as an object (not in an array). Otherwise, an array of workflow objects is returned.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -74596,7 +83322,1478 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createWorkflow()->get;
 
+
+  # Return code '201'
+  # {
+  #   "name" : "Workflow 1",
+  #   "entityId" : "9e0f6a56-bc34-4e4d-9660-5c1a768779d5"
+  # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "The request body parameters are missing."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access the workflow configuration."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Status with ID 10000 was not found"
+  #   ],
+  #   "errors" : {}
+  # }
 Create workflow
+
+Creates a workflow. You can define transition rules using the shapes detailed in the following sections. If no transitional rules are specified the default system transition rules are used.
+
+
+=head4 Conditions
+
+Conditions enable workflow rules that govern whether a transition can execute.
+
+
+=head5 Always false condition
+
+A condition that always fails.
+
+    {
+       "type": "AlwaysFalseCondition"
+     }
+
+
+=head5 Block transition until approval
+
+A condition that blocks issue transition if there is a pending approval.
+
+    {
+       "type": "BlockInProgressApprovalCondition"
+     }
+
+
+=head5 Compare number custom field condition
+
+A condition that allows transition if a comparison between a number custom field and a value is true.
+
+    {
+       "type": "CompareNumberCFCondition",
+       "configuration": {
+         "comparator": "=",
+         "fieldId": "customfield_10029",
+         "fieldValue": 2
+       }
+     }
+
+=over
+
+=item *
+
+C<comparator> One of the supported comparator: C<=>, C<<< > >>>, and C<<< < >>>.
+
+
+=item *
+
+C<fieldId> The custom numeric field ID. Allowed field types:
+
+
+=over
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:float>
+
+
+=item *
+
+C<com.pyxis.greenhopper.jira:jsw-story-points>
+
+
+=back
+
+
+
+=item *
+
+C<fieldValue> The value for comparison.
+
+
+=back
+
+
+=head5 Hide from user condition
+
+A condition that hides a transition from users. The transition can only be triggered from a workflow function or REST API operation.
+
+    {
+       "type": "RemoteOnlyCondition"
+     }
+
+
+=head5 Only assignee condition
+
+A condition that allows only the assignee to execute a transition.
+
+    {
+       "type": "AllowOnlyAssignee"
+     }
+
+
+=head5 Only Bamboo notifications workflow condition
+
+A condition that makes the transition available only to Bamboo build notifications.
+
+    {
+       "type": "OnlyBambooNotificationsCondition"
+     }
+
+
+=head5 Only reporter condition
+
+A condition that allows only the reporter to execute a transition.
+
+    {
+       "type": "AllowOnlyReporter"
+     }
+
+
+=head5 Permission condition
+
+A condition that allows only users with a permission to execute a transition.
+
+    {
+       "type": "PermissionCondition",
+       "configuration": {
+           "permissionKey": "BROWSE_PROJECTS"
+       }
+     }
+
+=over
+
+=item *
+
+C<permissionKey> The permission required to perform the transition. Allowed values: L<built-in|https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-permission-schemes/#built-in-permissions> or app defined permissions.
+
+
+=back
+
+
+=head5 Previous status condition
+
+A condition that allows a transition based on whether an issue has or has not transitioned through a status.
+
+    {
+       "type": "PreviousStatusCondition",
+       "configuration": {
+         "ignoreLoopTransitions": true,
+         "includeCurrentStatus": true,
+         "mostRecentStatusOnly": true,
+         "reverseCondition": true,
+         "previousStatus": {
+           "id": "5"
+         }
+       }
+     }
+
+By default this condition allows the transition if the status, as defined by its ID in the C<previousStatus> object, matches any previous issue status, unless:
+
+=over
+
+=item *
+
+C<ignoreLoopTransitions> is C<true>, then loop transitions (from and to the same status) are ignored.
+
+
+=item *
+
+C<includeCurrentStatus> is C<true>, then the current issue status is also checked.
+
+
+=item *
+
+C<mostRecentStatusOnly> is C<true>, then only the issue's preceding status (the one immediately before the current status) is checked.
+
+
+=item *
+
+C<reverseCondition> is C<true>, then the status must not be present.
+
+
+=back
+
+
+=head5 Separation of duties condition
+
+A condition that prevents a user to perform the transition, if the user has already performed a transition on the issue.
+
+    {
+       "type": "SeparationOfDutiesCondition",
+       "configuration": {
+         "fromStatus": {
+           "id": "5"
+         },
+         "toStatus": {
+           "id": "6"
+         }
+       }
+     }
+
+=over
+
+=item *
+
+C<fromStatus> OPTIONAL. An object containing the ID of the source status of the transition that is blocked. If omitted any transition to C<toStatus> is blocked.
+
+
+=item *
+
+C<toStatus> An object containing the ID of the target status of the transition that is blocked.
+
+
+=back
+
+
+=head5 Subtask blocking condition
+
+A condition that blocks transition on a parent issue if any of its subtasks are in any of one or more statuses.
+
+    {
+       "type": "SubTaskBlockingCondition",
+       "configuration": {
+         "statuses": [
+           {
+             "id": "1"
+           },
+           {
+             "id": "3"
+           }
+         ]
+       }
+     }
+
+=over
+
+=item *
+
+C<statuses> A list of objects containing status IDs.
+
+
+=back
+
+
+=head5 User is in any group condition
+
+A condition that allows users belonging to any group from a list of groups to execute a transition.
+
+    {
+       "type": "UserInAnyGroupCondition",
+       "configuration": {
+         "groups": [
+           "administrators",
+           "atlassian-addons-admin"
+         ]
+       }
+     }
+
+=over
+
+=item *
+
+C<groups> A list of group names.
+
+
+=back
+
+
+=head5 User is in any project role condition
+
+A condition that allows only users with at least one project roles from a list of project roles to execute a transition.
+
+    {
+       "type": "InAnyProjectRoleCondition",
+       "configuration": {
+         "projectRoles": [
+           {
+             "id": "10002"
+           },
+           {
+             "id": "10003"
+           },
+           {
+             "id": "10012"
+           },
+           {
+             "id": "10013"
+           }
+         ]
+       }
+     }
+
+=over
+
+=item *
+
+C<projectRoles> A list of objects containing project role IDs.
+
+
+=back
+
+
+=head5 User is in custom field condition
+
+A condition that allows only users listed in a given custom field to execute the transition.
+
+    {
+       "type": "UserIsInCustomFieldCondition",
+       "configuration": {
+         "allowUserInField": false,
+         "fieldId": "customfield_10010"
+       }
+     }
+
+=over
+
+=item *
+
+C<allowUserInField> If C<true> only a user who is listed in C<fieldId> can perform the transition, otherwise, only a user who is not listed in C<fieldId> can perform the transition.
+
+
+=item *
+
+C<fieldId> The ID of the field containing the list of users.
+
+
+=back
+
+
+=head5 User is in group condition
+
+A condition that allows users belonging to a group to execute a transition.
+
+    {
+       "type": "UserInGroupCondition",
+       "configuration": {
+         "group": "administrators"
+       }
+     }
+
+=over
+
+=item *
+
+C<group> The name of the group.
+
+
+=back
+
+
+=head5 User is in group custom field condition
+
+A condition that allows users belonging to a group specified in a custom field to execute a transition.
+
+    {
+       "type": "InGroupCFCondition",
+       "configuration": {
+         "fieldId": "customfield_10012"
+       }
+     }
+
+=over
+
+=item *
+
+C<fieldId> The ID of the field. Allowed field types:
+
+
+=over
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:multigrouppicker>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:grouppicker>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:select>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:multiselect>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:radiobuttons>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:multicheckboxes>
+
+
+=item *
+
+C<com.pyxis.greenhopper.jira:gh-epic-status>
+
+
+=back
+
+
+
+=back
+
+
+=head5 User is in project role condition
+
+A condition that allows users with a project role to execute a transition.
+
+    {
+       "type": "InProjectRoleCondition",
+       "configuration": {
+         "projectRole": {
+           "id": "10002"
+         }
+       }
+     }
+
+=over
+
+=item *
+
+C<projectRole> An object containing the ID of a project role.
+
+
+=back
+
+
+=head5 Value field condition
+
+A conditions that allows a transition to execute if the value of a field is equal to a constant value or simply set.
+
+    {
+       "type": "ValueFieldCondition",
+       "configuration": {
+         "fieldId": "assignee",
+         "fieldValue": "qm:6e1ecee6-8e64-4db6-8c85-916bb3275f51:54b56885-2bd2-4381-8239-78263442520f",
+         "comparisonType": "NUMBER",
+         "comparator": "="
+       }
+     }
+
+=over
+
+=item *
+
+C<fieldId> The ID of a field used in the comparison.
+
+
+=item *
+
+C<fieldValue> The expected value of the field.
+
+
+=item *
+
+C<comparisonType> The type of the comparison. Allowed values: C<STRING>, C<NUMBER>, C<DATE>, C<DATE_WITHOUT_TIME>, or C<OPTIONID>.
+
+
+=item *
+
+C<comparator> One of the supported comparator: C<<< > >>>, C<<< >= >>>, C<=>, C<<< <= >>>, C<<< < >>>, C<!=>.
+
+
+=back
+
+B<Notes:>
+
+=over
+
+=item *
+
+If you choose the comparison type C<STRING>, only C<=> and C<!=> are valid options.
+
+
+=item *
+
+You may leave C<fieldValue> empty when comparison type is C<!=> to indicate that a value is required in the field.
+
+
+=item *
+
+For date fields without time format values as C<yyyy-MM-dd>, and for those with time as C<yyyy-MM-dd HH:mm>. For example, for July 16 2021 use C<2021-07-16>, for 8:05 AM use C<2021-07-16 08:05>, and for 4 PM: C<2021-07-16 16:00>.
+
+
+=back
+
+
+=head4 Validators
+
+Validators check that any input made to the transition is valid before the transition is performed.
+
+
+=head5 Date field validator
+
+A validator that compares two dates.
+
+    {
+       "type": "DateFieldValidator",
+       "configuration": {
+           "comparator": ">",
+           "date1": "updated",
+           "date2": "created",
+           "expression": "1d",
+           "includeTime": true
+         }
+     }
+
+=over
+
+=item *
+
+C<comparator> One of the supported comparator: C<<< > >>>, C<<< >= >>>, C<=>, C<<< <= >>>, C<<< < >>>, or C<!=>.
+
+
+=item *
+
+C<date1> The date field to validate. Allowed field types:
+
+
+=over
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:datepicker>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:datetime>
+
+
+=item *
+
+C<com.atlassian.jpo:jpo-custom-field-baseline-end>
+
+
+=item *
+
+C<com.atlassian.jpo:jpo-custom-field-baseline-start>
+
+
+=item *
+
+C<duedate>
+
+
+=item *
+
+C<created>
+
+
+=item *
+
+C<updated>
+
+
+=item *
+
+C<resolutiondate>
+
+
+=back
+
+
+
+=item *
+
+C<date2> The second date field. Required, if C<expression> is not passed. Allowed field types:
+
+
+=over
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:datepicker>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:datetime>
+
+
+=item *
+
+C<com.atlassian.jpo:jpo-custom-field-baseline-end>
+
+
+=item *
+
+C<com.atlassian.jpo:jpo-custom-field-baseline-start>
+
+
+=item *
+
+C<duedate>
+
+
+=item *
+
+C<created>
+
+
+=item *
+
+C<updated>
+
+
+=item *
+
+C<resolutiondate>
+
+
+=back
+
+
+
+=item *
+
+C<expression> An expression specifying an offset. Required, if C<date2> is not passed. Offsets are built with a number, with C<-> as prefix for the past, and one of these time units: C<d> for day, C<w> for week, C<m> for month, or C<y> for year. For example, -2d means two days into the past and 1w means one week into the future. The C<now> keyword enables a comparison with the current date.
+
+
+=item *
+
+C<includeTime> If C<true>, then the time part of the data is included for the comparison. If the field doesn't have a time part, 00:00:00 is used.
+
+
+=back
+
+
+=head5 Windows date validator
+
+A validator that checks that a date falls on or after a reference date and before or on the reference date plus a number of days.
+
+    {
+       "type": "WindowsDateValidator",
+       "configuration": {
+           "date1": "customfield_10009",
+           "date2": "created",
+           "windowsDays": 5
+         }
+     }
+
+=over
+
+=item *
+
+C<date1> The date field to validate. Allowed field types:
+
+
+=over
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:datepicker>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:datetime>
+
+
+=item *
+
+C<com.atlassian.jpo:jpo-custom-field-baseline-end>
+
+
+=item *
+
+C<com.atlassian.jpo:jpo-custom-field-baseline-start>
+
+
+=item *
+
+C<duedate>
+
+
+=item *
+
+C<created>
+
+
+=item *
+
+C<updated>
+
+
+=item *
+
+C<resolutiondate>
+
+
+=back
+
+
+
+=item *
+
+C<date2> The reference date. Allowed field types:
+
+
+=over
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:datepicker>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:datetime>
+
+
+=item *
+
+C<com.atlassian.jpo:jpo-custom-field-baseline-end>
+
+
+=item *
+
+C<com.atlassian.jpo:jpo-custom-field-baseline-start>
+
+
+=item *
+
+C<duedate>
+
+
+=item *
+
+C<created>
+
+
+=item *
+
+C<updated>
+
+
+=item *
+
+C<resolutiondate>
+
+
+=back
+
+
+
+=item *
+
+C<windowsDays> A positive integer indicating a number of days.
+
+
+=back
+
+
+=head5 Field required validator
+
+A validator that checks fields are not empty. By default, if a field is not included in the current context it's ignored and not validated.
+
+    {
+         "type": "FieldRequiredValidator",
+         "configuration": {
+             "ignoreContext": true,
+             "errorMessage": "Hey",
+             "fieldIds": [
+                 "versions",
+                 "customfield_10037",
+                 "customfield_10003"
+             ]
+         }
+     }
+
+=over
+
+=item *
+
+C<ignoreContext> If C<true>, then the context is ignored and all the fields are validated.
+
+
+=item *
+
+C<errorMessage> OPTIONAL. The error message displayed when one or more fields are empty. A default error message is shown if an error message is not provided.
+
+
+=item *
+
+C<fieldIds> The list of fields to validate.
+
+
+=back
+
+
+=head5 Field changed validator
+
+A validator that checks that a field value is changed. However, this validation can be ignored for users from a list of groups.
+
+    {
+         "type": "FieldChangedValidator",
+         "configuration": {
+             "fieldId": "comment",
+             "errorMessage": "Hey",
+             "exemptedGroups": [
+                 "administrators",
+                 "atlassian-addons-admin"
+             ]
+         }
+     }
+
+=over
+
+=item *
+
+C<fieldId> The ID of a field.
+
+
+=item *
+
+C<errorMessage> OPTIONAL. The error message displayed if the field is not changed. A default error message is shown if the error message is not provided.
+
+
+=item *
+
+C<exemptedGroups> OPTIONAL. The list of groups.
+
+
+=back
+
+
+=head5 Field has single value validator
+
+A validator that checks that a multi-select field has only one value. Optionally, the validation can ignore values copied from subtasks.
+
+    {
+         "type": "FieldHasSingleValueValidator",
+         "configuration": {
+             "fieldId": "attachment,
+             "excludeSubtasks": true
+         }
+     }
+
+=over
+
+=item *
+
+C<fieldId> The ID of a field.
+
+
+=item *
+
+C<excludeSubtasks> If C<true>, then values copied from subtasks are ignored.
+
+
+=back
+
+
+=head5 Parent status validator
+
+A validator that checks the status of the parent issue of a subtask. Ìf the issue is not a subtask, no validation is performed.
+
+    {
+         "type": "ParentStatusValidator",
+         "configuration": {
+             "parentStatuses": [
+                 {
+                   "id":"1"
+                 },
+                 {
+                   "id":"2"
+                 }
+             ]
+         }
+     }
+
+=over
+
+=item *
+
+C<parentStatus> The list of required parent issue statuses.
+
+
+=back
+
+
+=head5 Permission validator
+
+A validator that checks the user has a permission.
+
+    {
+       "type": "PermissionValidator",
+       "configuration": {
+           "permissionKey": "ADMINISTER_PROJECTS"
+       }
+     }
+
+=over
+
+=item *
+
+C<permissionKey> The permission required to perform the transition. Allowed values: L<built-in|https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-permission-schemes/#built-in-permissions> or app defined permissions.
+
+
+=back
+
+
+=head5 Previous status validator
+
+A validator that checks if the issue has held a status.
+
+    {
+       "type": "PreviousStatusValidator",
+       "configuration": {
+           "mostRecentStatusOnly": false,
+           "previousStatus": {
+               "id": "15"
+           }
+       }
+     }
+
+=over
+
+=item *
+
+C<mostRecentStatusOnly> If C<true>, then only the issue's preceding status (the one immediately before the current status) is checked.
+
+
+=item *
+
+C<previousStatus> An object containing the ID of an issue status.
+
+
+=back
+
+
+=head5 Regular expression validator
+
+A validator that checks the content of a field against a regular expression.
+
+    {
+       "type": "RegexpFieldValidator",
+       "configuration": {
+           "regExp": "[0-9]",
+           "fieldId": "customfield_10029"
+       }
+     }
+
+=over
+
+=item *
+
+C<regExp>A regular expression.
+
+
+=item *
+
+C<fieldId> The ID of a field. Allowed field types:
+
+
+=over
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:select>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:multiselect>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:radiobuttons>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:multicheckboxes>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:textarea>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:textfield>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:url>
+
+
+=item *
+
+C<com.atlassian.jira.plugin.system.customfieldtypes:float>
+
+
+=item *
+
+C<com.pyxis.greenhopper.jira:jsw-story-points>
+
+
+=item *
+
+C<com.pyxis.greenhopper.jira:gh-epic-status>
+
+
+=item *
+
+C<description>
+
+
+=item *
+
+C<summary>
+
+
+=back
+
+
+
+=back
+
+
+=head5 User permission validator
+
+A validator that checks if a user has a permission. Obsolete. You may encounter this validator when getting transition rules and can pass it when updating or creating rules, for example, when you want to duplicate the rules from a workflow on a new workflow.
+
+    {
+         "type": "UserPermissionValidator",
+         "configuration": {
+             "permissionKey": "BROWSE_PROJECTS",
+             "nullAllowed": false,
+             "username": "TestUser"
+         }
+     }
+
+=over
+
+=item *
+
+C<permissionKey> The permission to be validated. Allowed values: L<built-in|https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-permission-schemes/#built-in-permissions> or app defined permissions.
+
+
+=item *
+
+C<nullAllowed> If C<true>, allows the transition when C<username> is empty.
+
+
+=item *
+
+C<username> The username to validate against the C<permissionKey>.
+
+
+=back
+
+
+=head4 Post functions
+
+Post functions carry out any additional processing required after a Jira workflow transition is executed.
+
+
+=head5 Fire issue event function
+
+A post function that fires an event that is processed by the listeners.
+
+    {
+       "type": "FireIssueEventFunction",
+       "configuration": {
+         "event": {
+           "id":"1"
+         }
+       }
+     }
+
+B<Note:> If provided, this post function overrides the default C<FireIssueEventFunction>. Can be included once in a transition.
+
+=over
+
+=item *
+
+C<event> An object containing the ID of the issue event.
+
+
+=back
+
+
+=head5 Update issue status
+
+A post function that sets issue status to the linked status of the destination workflow status.
+
+    {
+       "type": "UpdateIssueStatusFunction"
+     }
+
+B<Note:> This post function is a default function in global and directed transitions. It can only be added to the initial transition and can only be added once.
+
+
+=head5 Create comment
+
+A post function that adds a comment entered during the transition to an issue.
+
+    {
+       "type": "CreateCommentFunction"
+     }
+
+B<Note:> This post function is a default function in global and directed transitions. It can only be added to the initial transition and can only be added once.
+
+
+=head5 Store issue
+
+A post function that stores updates to an issue.
+
+    {
+       "type": "IssueStoreFunction"
+     }
+
+B<Note:> This post function can only be added to the initial transition and can only be added once.
+
+
+=head5 Assign to current user function
+
+A post function that assigns the issue to the current user if the current user has the C<ASSIGNABLE_USER> permission.
+
+    {
+         "type": "AssignToCurrentUserFunction"
+     }
+
+B<Note:> This post function can be included once in a transition.
+
+
+=head5 Assign to lead function
+
+A post function that assigns the issue to the project or component lead developer.
+
+    {
+         "type": "AssignToLeadFunction"
+     }
+
+B<Note:> This post function can be included once in a transition.
+
+
+=head5 Assign to reporter function
+
+A post function that assigns the issue to the reporter.
+
+    {
+         "type": "AssignToReporterFunction"
+     }
+
+B<Note:> This post function can be included once in a transition.
+
+
+=head5 Clear field value function
+
+A post function that clears the value from a field.
+
+    {
+       "type": "ClearFieldValuePostFunction",
+       "configuration": {
+         "fieldId": "assignee"
+       }
+     }
+
+=over
+
+=item *
+
+C<fieldId> The ID of the field.
+
+
+=back
+
+
+=head5 Copy value from other field function
+
+A post function that copies the value of one field to another, either within an issue or from parent to subtask.
+
+    {
+       "type": "CopyValueFromOtherFieldPostFunction",
+       "configuration": {
+         "sourceFieldId": "assignee",
+         "destinationFieldId": "creator",
+         "copyType": "same"
+       }
+     }
+
+=over
+
+=item *
+
+C<sourceFieldId> The ID of the source field.
+
+
+=item *
+
+C<destinationFieldId> The ID of the destination field.
+
+
+=item *
+
+C<copyType> Use C<same> to copy the value from a field inside the issue, or C<parent> to copy the value from the parent issue.
+
+
+=back
+
+
+=head5 Create Crucible review workflow function
+
+A post function that creates a Crucible review for all unreviewed code for the issue.
+
+    {
+         "type": "CreateCrucibleReviewWorkflowFunction"
+     }
+
+B<Note:> This post function can be included once in a transition.
+
+
+=head5 Set issue security level based on user's project role function
+
+A post function that sets the issue's security level if the current user has a project role.
+
+    {
+       "type": "SetIssueSecurityFromRoleFunction",
+       "configuration": {
+         "projectRole": {
+             "id":"10002"
+         },
+         "issueSecurityLevel": {
+             "id":"10000"
+         }
+       }
+     }
+
+=over
+
+=item *
+
+C<projectRole> An object containing the ID of the project role.
+
+
+=item *
+
+C<issueSecurityLevel> OPTIONAL. The object containing the ID of the security level. If not passed, then the security level is set to C<none>.
+
+
+=back
+
+
+=head5 Trigger a webhook function
+
+A post function that triggers a webhook.
+
+    {
+       "type": "TriggerWebhookFunction",
+       "configuration": {
+         "webhook": {
+           "id": "1"
+         }
+       }
+     }
+
+=over
+
+=item *
+
+C<webhook> An object containing the ID of the webhook listener to trigger.
+
+
+=back
+
+
+=head5 Update issue custom field function
+
+A post function that updates the content of an issue custom field.
+
+    {
+       "type": "UpdateIssueCustomFieldPostFunction",
+       "configuration": {
+         "mode": "append",
+         "fieldId": "customfield_10003",
+         "fieldValue": "yikes"
+       }
+     }
+
+=over
+
+=item *
+
+C<mode> Use C<replace> to override the field content with C<fieldValue> or C<append> to add C<fieldValue> to the end of the field content.
+
+
+=item *
+
+C<fieldId> The ID of the field.
+
+
+=item *
+
+C<fieldValue> The update content.
+
+
+=back
+
+
+=head5 Update issue field function
+
+A post function that updates a simple issue field.
+
+    {
+       "type": "UpdateIssueFieldFunction",
+       "configuration": {
+         "fieldId": "assignee",
+         "fieldValue": "5f0c277e70b8a90025a00776"
+       }
+     }
+
+=over
+
+=item *
+
+C<fieldId> The ID of the field. Allowed field types:
+
+
+=over
+
+=item *
+
+C<assignee>
+
+
+=item *
+
+C<description>
+
+
+=item *
+
+C<environment>
+
+
+=item *
+
+C<priority>
+
+
+=item *
+
+C<resolution>
+
+
+=item *
+
+C<summary>
+
+
+=item *
+
+C<timeoriginalestimate>
+
+
+=item *
+
+C<timeestimate>
+
+
+=item *
+
+C<timespent>
+
+
+=back
+
+
+
+=item *
+
+C<fieldValue> The update value.
+
+
+=item *
+
+If the C<fieldId> is C<assignee>, the C<fieldValue> should be one of these values:
+
+
+=over
+
+=item *
+
+an account ID.
+
+
+=item *
+
+C<automatic>.
+
+
+=item *
+
+a blank string, which sets the value to C<unassigned>.
+
+
+=back
+
+
+
+=back
+
+
+=head4 Connect rules
+
+Connect rules are conditions, validators, and post functions of a transition that are registered by Connect apps. To create a rule registered by the app, the app must be enabled and the rule's module must exist.
+
+    {
+       "type": "appKey__moduleKey",
+       "configuration": {
+         "value":"{\"isValid\":\"true\"}"
+       }
+     }
+
+=over
+
+=item *
+
+C<type> A Connect rule key in a form of C<appKey__moduleKey>.
+
+
+=item *
+
+C<value> The stringified JSON configuration of a Connect rule.
+
+
+=back
+
+
+=head4 Forge rules
+
+Forge transition rules are not yet supported.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -74838,6 +85035,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 10,
   #   "startAt" : 0,
@@ -74897,6 +85095,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get workflow transition rule configurations
+
+Returns a L<paginated|#pagination> list of workflows with transition rules. The workflows can be filtered to return only those containing workflow transition rules:
+
+=over
+
+=item *
+
+of one or more transition rule types, such as L<workflow post functions|https://developer.atlassian.com/cloud/jira/platform/modules/workflow-post-function/>.
+
+
+=item *
+
+matching one or more transition rule keys.
+
+
+=back
+
+Only workflows containing transition rules created by the calling Connect app are returned.
+
+Due to server-side optimizations, workflows with an empty list of rules may be returned; these workflows can be ignored.
+
+B<L<Permissions|#permissions> required:> Only Connect apps can use this operation.
 
 =head3 Parameters
 
@@ -75089,6 +85309,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->updateWorkflowTransitionRuleConfigurations()->get;
 
 
+  # Return code '200'
   # {
   #   "updateResults" : [
   #     {
@@ -75124,6 +85345,49 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Update workflow transition rule configurations
+
+Updates configuration of workflow transition rules. The following rule types are supported:
+
+=over
+
+=item *
+
+L<post functions|https://developer.atlassian.com/cloud/jira/platform/modules/workflow-post-function/>
+
+
+=item *
+
+L<conditions|https://developer.atlassian.com/cloud/jira/platform/modules/workflow-condition/>
+
+
+=item *
+
+L<validators|https://developer.atlassian.com/cloud/jira/platform/modules/workflow-validator/>
+
+
+=back
+
+Only rules created by the calling Connect app can be updated.
+
+To assist with app migration, this operation can be used to:
+
+=over
+
+=item *
+
+Disable a rule.
+
+
+=item *
+
+Add a C<tag>. Use this to filter rules in the L<Get workflow transition rule configurations|https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-workflow-transition-rules/#api-rest-api-3-workflow-rule-config-get>.
+
+
+=back
+
+Rules are enabled if the C<disabled> parameter is not provided.
+
+B<L<Permissions|#permissions> required:> Only Connect apps can use this operation.
 
 =head3 Parameters
 
@@ -75280,6 +85544,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   my $res = $client->deleteWorkflowTransitionRuleConfigurations()->get;
 
 
+  # Return code '200'
   # {
   #   "updateResults" : [
   #     {
@@ -75314,7 +85579,44 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '400'
+  # {
+  #   "errors" : {},
+  #   "errorMessages" : [
+  #     "Jira Administration permission is required to access workflow configuration."
+  #   ],
+  #   "httpStatusCode" : {
+  #     "empty" : false,
+  #     "present" : true
+  #   }
+  # }
 Delete workflow transition rule configurations
+
+Deletes workflow transition rules from one or more workflows. These rule types are supported:
+
+=over
+
+=item *
+
+L<post functions|https://developer.atlassian.com/cloud/jira/platform/modules/workflow-post-function/>
+
+
+=item *
+
+L<conditions|https://developer.atlassian.com/cloud/jira/platform/modules/workflow-condition/>
+
+
+=item *
+
+L<validators|https://developer.atlassian.com/cloud/jira/platform/modules/workflow-validator/>
+
+
+=back
+
+Only rules created by the calling Connect app can be deleted.
+
+B<L<Permissions|#permissions> required:> Only Connect apps can use this operation.
 
 =head3 Parameters
 
@@ -75479,6 +85781,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 1,
   #   "startAt" : 0,
@@ -75605,7 +85908,21 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access workflows."
+  #   ],
+  #   "errors" : {}
+  # }
 Get workflows paginated
+
+Returns a L<paginated|#pagination> list of published classic workflows. When workflow names are specified, details of those workflows are returned. Otherwise, all published classic workflows are returned.
+
+This operation does not return next-gen workflows.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -75846,6 +86163,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete workflow transition property
 
+Deletes a property from a workflow transition. Transition properties are used to change the behavior of a transition. For more information, see L<Transition properties|https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties> and L<Workflow properties|https://confluence.atlassian.com/x/JYlKLg>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -75974,6 +86295,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "key" : "jira.i18n.title",
@@ -75987,6 +86309,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get workflow transition properties
+
+Returns the properties on a workflow transition. Transition properties are used to change the behavior of a transition. For more information, see L<Transition properties|https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties> and L<Workflow properties|https://confluence.atlassian.com/x/JYlKLg>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -76136,12 +86462,17 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "key" : "jira.i18n.title",
   #   "value" : "some.title",
   #   "id" : "jira.i18n.title"
   # }
 Create workflow transition property
+
+Adds a property to a workflow transition. Transition properties are used to change the behavior of a transition. For more information, see L<Transition properties|https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties> and L<Workflow properties|https://confluence.atlassian.com/x/JYlKLg>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -76309,12 +86640,17 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "key" : "jira.i18n.title",
   #   "value" : "some.title",
   #   "id" : "jira.i18n.title"
   # }
 Update workflow transition property
+
+Updates a workflow transition by changing the property value. Trying to update a property that does not exist results in a new property being added to the transition. Transition properties are used to change the behavior of a transition. For more information, see L<Transition properties|https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties> and L<Workflow properties|https://confluence.atlassian.com/x/JYlKLg>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -76481,7 +86817,61 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'entityId' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "Cannot delete an active workflow."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access the workflow configuration."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The workflow was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Delete inactive workflow
+
+Deletes a workflow.
+
+The workflow cannot be deleted if it is:
+
+=over
+
+=item *
+
+an active workflow.
+
+
+=item *
+
+a system workflow.
+
+
+=item *
+
+associated with any workflow scheme.
+
+
+=item *
+
+associated with any draft workflow scheme.
+
+
+=back
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -76641,6 +87031,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "maxResults" : 50,
   #   "startAt" : 0,
@@ -76672,6 +87063,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   ]
   # }
 Get all workflow schemes
+
+Returns a L<paginated|#pagination> list of all workflow schemes, not including draft workflow schemes.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -76787,7 +87182,25 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->createWorkflowScheme()->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : 101010,
+  #   "name" : "Example workflow scheme",
+  #   "description" : "The description of the example workflow scheme.",
+  #   "defaultWorkflow" : "jira",
+  #   "issueTypeMappings" : {
+  #     "10000" : "scrum workflow",
+  #     "10001" : "builds workflow"
+  #   },
+  #   "draft" : false,
+  #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"
+  # }
 Create workflow scheme
+
+Creates a workflow scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -76976,6 +87389,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "values" : [
   #     {
@@ -76997,7 +87411,29 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [],
+  #   "errors" : {
+  #     "projectId" : "The ID of a project has to be provided."
+  #   }
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access workflow scheme associations."
+  #   ],
+  #   "errors" : {}
+  # }
 Get workflow scheme project associations
+
+Returns a list of the workflow schemes associated with a list of projects. Each returned workflow scheme includes a list of the requested projects associated with it. Any team-managed or non-existent projects in the request are ignored and no errors are returned.
+
+If the project is associated with the C<Default Workflow Scheme> no ID is returned. This is because the way the C<Default Workflow Scheme> is stored means it has no ID.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -77152,7 +87588,37 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->assignSchemeToProject()->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "Only classic projects can have workflow schemes assigned."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '403'
+  # {
+  #   "errorMessages" : [
+  #     "Only Jira administrators can access workflow scheme associations."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "The workflow scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Assign workflow scheme to project
+
+Assigns a workflow scheme to a project. This operation is performed only when there are no issues in the project.
+
+Workflow schemes can only be assigned to classic projects.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -77339,6 +87805,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete workflow scheme
 
+Deletes a workflow scheme. Note that a workflow scheme cannot be deleted if it is active (that is, being used by at least one project).
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -77460,6 +87930,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 101010,
   #   "name" : "Example workflow scheme",
@@ -77473,6 +87944,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"
   # }
 Get workflow scheme
+
+Returns a workflow scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -77599,6 +88074,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 101010,
   #   "name" : "Example workflow scheme",
@@ -77612,6 +88088,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"
   # }
 Update workflow scheme
+
+Updates a workflow scheme, including the name, default workflow, issue type to project mappings, and more. If the workflow scheme is active (that is, being used by at least one project), then a draft workflow scheme is created or updated instead, provided that C<updateDraftIfNeeded> is set to C<true>.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -77812,7 +88292,55 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'id' => '...',
   )->get;
 
+
+  # Return code '201'
+  # {
+  #   "id" : 17218781,
+  #   "name" : "Example workflow scheme",
+  #   "description" : "The description of the example workflow scheme.",
+  #   "defaultWorkflow" : "scrum workflow",
+  #   "issueTypeMappings" : {
+  #     "10000" : "jira",
+  #     "10001" : "jira"
+  #   },
+  #   "originalDefaultWorkflow" : "jira",
+  #   "originalIssueTypeMappings" : {
+  #     "10001" : "builds workflow"
+  #   },
+  #   "draft" : true,
+  #   "lastModifiedUser" : {
+  #     "self" : "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
+  #     "key" : "",
+  #     "accountId" : "5b10a2844c20165700ede21g",
+  #     "accountType" : "atlassian",
+  #     "name" : "",
+  #     "emailAddress" : "mia@example.com",
+  #     "avatarUrls" : {
+  #       "48x48" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=48&s=48",
+  #       "24x24" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=24&s=24",
+  #       "16x16" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=16&s=16",
+  #       "32x32" : "https://avatar-management--avatars.server-location.prod.public.atl-paas.net/initials/MK-5.png?size=32&s=32"
+  #     },
+  #     "displayName" : "Mia Krystof",
+  #     "active" : true,
+  #     "timeZone" : "Australia/Sydney",
+  #     "groups" : {
+  #       "size" : 3,
+  #       "items" : []
+  #     },
+  #     "applicationRoles" : {
+  #       "size" : 1,
+  #       "items" : []
+  #     }
+  #   },
+  #   "lastModified" : "Today 6:38 PM",
+  #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/17218781/draft"
+  # }
 Create draft workflow scheme
+
+Create a draft workflow scheme from an active workflow scheme, by copying the active workflow scheme. Note that an active workflow scheme can only have one draft workflow scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -77932,6 +88460,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 101010,
   #   "name" : "Example workflow scheme",
@@ -77945,6 +88474,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"
   # }
 Delete default workflow
+
+Resets the default workflow for a workflow scheme. That is, the default workflow is set to Jira's system workflow (the I<jira> workflow).
+
+Note that active workflow schemes cannot be edited. If the workflow scheme is active, set C<updateDraftIfNeeded> to C<true> and a draft workflow scheme is created or updated with the default workflow reset. The draft workflow scheme can be published in Jira.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -78075,10 +88610,15 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "workflow" : "jira"
   # }
 Get default workflow
+
+Returns the default workflow for a workflow scheme. The default workflow is the workflow that is assigned any issue types that have not been mapped to any other workflow. The default workflow has I<All Unassigned Issue Types> listed in its issue types for the workflow scheme in Jira.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -78205,6 +88745,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 101010,
   #   "name" : "Example workflow scheme",
@@ -78218,6 +88759,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"
   # }
 Update default workflow
+
+Sets the default workflow for a workflow scheme.
+
+Note that active workflow schemes cannot be edited. If the workflow scheme is active, set C<updateDraftIfNeeded> to C<true> in the request object and a draft workflow scheme is created or updated with the new default workflow. The draft workflow scheme can be published in Jira.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -78357,6 +88904,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete draft workflow scheme
 
+Deletes a draft workflow scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -78453,6 +89004,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 17218781,
   #   "name" : "Example workflow scheme",
@@ -78496,6 +89048,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/17218781/draft"
   # }
 Get draft workflow scheme
+
+Returns the draft workflow scheme for an active workflow scheme. Draft workflow schemes allow changes to be made to the active workflow schemes: When an active workflow scheme is updated, a draft copy is created. The draft is modified, then the changes in the draft are copied back to the active workflow scheme. See L<Configuring workflow schemes|https://confluence.atlassian.com/x/tohKLg> for more information.
+
+Note that:
+
+=over
+
+=item *
+
+Only active workflow schemes can have draft workflow schemes.
+
+
+=item *
+
+An active workflow scheme can only have one draft workflow scheme.
+
+
+=back
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -78614,6 +89186,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 17218781,
   #   "name" : "Example workflow scheme",
@@ -78657,6 +89230,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/17218781/draft"
   # }
 Update draft workflow scheme
+
+Updates a draft workflow scheme. If a draft workflow scheme does not exist for the active workflow scheme, then a draft is created. Note that an active workflow scheme can only have one draft workflow scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -78858,6 +89435,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 17218781,
   #   "name" : "Example workflow scheme",
@@ -78901,6 +89479,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/17218781/draft"
   # }
 Delete draft default workflow
+
+Resets the default workflow for a workflow scheme's draft. That is, the default workflow is set to Jira's system workflow (the I<jira> workflow).
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -79019,10 +89601,15 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "workflow" : "jira"
   # }
 Get draft default workflow
+
+Returns the default workflow for a workflow scheme's draft. The default workflow is the workflow that is assigned any issue types that have not been mapped to any other workflow. The default workflow has I<All Unassigned Issue Types> listed in its issue types for the workflow scheme in Jira.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -79141,6 +89728,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 17218781,
   #   "name" : "Example workflow scheme",
@@ -79184,6 +89772,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/17218781/draft"
   # }
 Update draft default workflow
+
+Sets the default workflow for a workflow scheme's draft.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -79323,6 +89915,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 17218781,
   #   "name" : "Example workflow scheme",
@@ -79366,6 +89959,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/17218781/draft"
   # }
 Delete workflow for issue type in draft workflow scheme
+
+Deletes the issue type-workflow mapping for an issue type in a workflow scheme's draft.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -79492,11 +90089,16 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "issueType" : "10000",
   #   "workflow" : "jira"
   # }
 Get workflow for issue type in draft workflow scheme
+
+Returns the issue type-workflow mapping for an issue type in a workflow scheme's draft.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -79623,6 +90225,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 17218781,
   #   "name" : "Example workflow scheme",
@@ -79666,6 +90269,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/17218781/draft"
   # }
 Set workflow for issue type in draft workflow scheme
+
+Sets the workflow for an issue type in a workflow scheme's draft.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -79815,7 +90422,31 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'validateOnly' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "errorMessages" : [
+  #     "Issue type with ID '2','4' is missing the mappings required for statuses with IDs 10004."
+  #   ],
+  #   "errors" : {}
+  # }
+
+  # Return code '404'
+  # {
+  #   "errorMessages" : [
+  #     "Draft workflow scheme was not found."
+  #   ],
+  #   "errors" : {}
+  # }
 Publish draft workflow scheme
+
+Publishes a draft workflow scheme.
+
+Where the draft workflow includes new workflow statuses for an issue type, mappings are provided to update issues with the original workflow status to the new workflow status.
+
+This operation is L<asynchronous|#async>. Follow the C<location> link in the response to determine the status of the task and use L<Get task|#api-rest-api-3-task-taskId-get> to obtain updates.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -80001,6 +90632,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete issue types for workflow in draft workflow scheme
 
+Deletes the workflow-issue type mapping for a workflow in a workflow scheme's draft.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -80108,6 +90743,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "workflow" : "jira",
   #   "issueTypes" : [
@@ -80117,6 +90753,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "defaultMapping" : false
   # }
 Get issue types for workflows in draft workflow scheme
+
+Returns the workflow-issue type mappings for a workflow scheme's draft.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -80244,6 +90884,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 101010,
   #   "name" : "Example workflow scheme",
@@ -80257,6 +90898,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"
   # }
 Set issue types for workflow in workflow scheme
+
+Sets the issue types for a workflow in a workflow scheme's draft. The workflow can also be set as the default workflow for the draft workflow scheme. Unmapped issues types are mapped to the default workflow.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -80415,6 +91060,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 101010,
   #   "name" : "Example workflow scheme",
@@ -80428,6 +91074,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"
   # }
 Delete workflow for issue type in workflow scheme
+
+Deletes the issue type-workflow mapping for an issue type in a workflow scheme.
+
+Note that active workflow schemes cannot be edited. If the workflow scheme is active, set C<updateDraftIfNeeded> to C<true> and a draft workflow scheme is created or updated with the issue type-workflow mapping deleted. The draft workflow scheme can be published in Jira.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -80566,11 +91218,16 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "issueType" : "10000",
   #   "workflow" : "jira"
   # }
 Get workflow for issue type in workflow scheme
+
+Returns the issue type-workflow mapping for an issue type in a workflow scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -80705,6 +91362,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 101010,
   #   "name" : "Example workflow scheme",
@@ -80718,6 +91376,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"
   # }
 Set workflow for issue type in workflow scheme
+
+Sets the workflow for an issue type in a workflow scheme.
+
+Note that active workflow schemes cannot be edited. If the workflow scheme is active, set C<updateDraftIfNeeded> to C<true> in the request body and a draft workflow scheme is created or updated with the new issue type-workflow mapping. The draft workflow scheme can be published in Jira.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -80870,6 +91534,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Delete issue types for workflow in workflow scheme
 
+Deletes the workflow-issue type mapping for a workflow in a workflow scheme.
+
+Note that active workflow schemes cannot be edited. If the workflow scheme is active, set C<updateDraftIfNeeded> to C<true> and a draft workflow scheme is created or updated with the workflow-issue type mapping deleted. The draft workflow scheme can be published in Jira.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
+
 =head3 Parameters
 
 =over 4
@@ -80986,6 +91656,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "workflow" : "jira",
   #   "issueTypes" : [
@@ -80995,6 +91666,10 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "defaultMapping" : false
   # }
 Get issue types for workflows in workflow scheme
+
+Returns the workflow-issue type mappings for a workflow scheme.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -81127,6 +91802,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "id" : 101010,
   #   "name" : "Example workflow scheme",
@@ -81140,6 +91816,12 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "self" : "https://your-domain.atlassian.net/rest/api/3/workflowscheme/101010"
   # }
 Set issue types for workflow in workflow scheme
+
+Sets the issue types for a workflow in a workflow scheme. The workflow can also be set as the default workflow for the workflow scheme. Unmapped issues types are mapped to the default workflow.
+
+Note that active workflow schemes cannot be edited. If the workflow scheme is active, set C<updateDraftIfNeeded> to C<true> in the request body and a draft workflow scheme is created or updated with the new workflow-issue types mappings. The draft workflow scheme can be published in Jira.
+
+B<L<Permissions|#permissions> required:> I<Administer Jira> L<global permission|https://confluence.atlassian.com/x/x4dKLg>.
 
 =head3 Parameters
 
@@ -81296,6 +91978,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "values" : [
   #     {
@@ -81321,6 +92004,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "lastPage" : true
   # }
 Get IDs of deleted worklogs
+
+Returns a list of IDs and delete timestamps for worklogs deleted after a date and time.
+
+This resource is paginated, with a limit of 1000 worklogs per page. Each page lists worklogs from oldest to youngest. If the number of items in the date range exceeds 1000, C<until> indicates the timestamp of the youngest item on the page. Also, C<nextPage> provides the URL for the next page of worklogs. The C<lastPage> parameter is set to true on the last page of worklogs.
+
+This resource does not return worklogs deleted during the minute preceding the request.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira.
 
 =head3 Parameters
 
@@ -81431,6 +92122,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # [
   #   {
   #     "self" : "https://your-domain.atlassian.net/rest/api/3/issue/10010/worklog/10000",
@@ -81475,6 +92167,26 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   }
   # ]
 Get worklogs
+
+Returns worklog details for a list of worklog IDs.
+
+The returned list of worklogs is limited to 1000 items.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira, however, worklogs are only returned where either of the following is true:
+
+=over
+
+=item *
+
+the worklog is set as I<Viewable by All Users>.
+
+
+=item *
+
+the user is a member of a project role or group with permission to view the worklog.
+
+
+=back
 
 =head3 Parameters
 
@@ -81603,6 +92315,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "values" : [
   #     {
@@ -81628,6 +92341,28 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #   "lastPage" : true
   # }
 Get IDs of updated worklogs
+
+Returns a list of IDs and update timestamps for worklogs updated after a date and time.
+
+This resource is paginated, with a limit of 1000 worklogs per page. Each page lists worklogs from oldest to youngest. If the number of items in the date range exceeds 1000, C<until> indicates the timestamp of the youngest item on the page. Also, C<nextPage> provides the URL for the next page of worklogs. The C<lastPage> parameter is set to true on the last page of worklogs.
+
+This resource does not return worklogs updated during the minute preceding the request.
+
+B<L<Permissions|#permissions> required:> Permission to access Jira, however, worklogs are only returned where either of the following is true:
+
+=over
+
+=item *
+
+the worklog is set as I<Viewable by All Users>.
+
+
+=item *
+
+the user is a member of a project role or group with permission to view the worklog.
+
+
+=back
 
 =head3 Parameters
 
@@ -81743,6 +92478,7 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
   #   "keys" : [
   #     {
@@ -81751,7 +92487,18 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #     }
   #   ]
   # }
+
+  # Return code '401'
+  # {
+  #   "message" : "Access to this resource must be authenticated as an app.",
+  #   "statusCode" : 401
+  # }
 Get app properties
+
+Gets all the properties of an app.
+
+B<L<Permissions|#permissions> required:> Only a Connect app whose key matches C<addonKey> can make this request.
+Additionally, Forge apps published on the Marketplace can access properties of Connect apps they were L<migrated from|https://developer.atlassian.com/platform/forge/build-a-connect-on-forge-app/>.
 
 =head3 Parameters
 
@@ -81884,7 +92631,29 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'propertyKey' => '...',
   )->get;
 
+
+  # Return code '400'
+  # {
+  #   "message" : "The property key cannot be longer than 127 characters.",
+  #   "statusCode" : 400
+  # }
+
+  # Return code '401'
+  # {
+  #   "message" : "Access to this resource must be authenticated as an app.",
+  #   "statusCode" : 401
+  # }
+
+  # Return code '404'
+  # {
+  #   "message" : "Property with key not found.",
+  #   "statusCode" : 404
+  # }
 Delete app property
+
+Deletes an app's property.
+
+B<L<Permissions|#permissions> required:> Only a Connect app whose key matches C<addonKey> can make this request.
 
 =head3 Parameters
 
@@ -82051,12 +92820,36 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
+  #   "key" : "propertyKey",
   #   "value" : "propertyValue",
-  #   "self" : "https://your-domain.atlassian.net/jira/rest/atlassian-connect/1/addon/example.app.key/properties/propertyKey",
-  #   "key" : "propertyKey"
+  #   "self" : "https://your-domain.atlassian.net/jira/rest/atlassian-connect/1/addon/example.app.key/properties/propertyKey"
+  # }
+
+  # Return code '400'
+  # {
+  #   "statusCode" : 400,
+  #   "message" : "The property key cannot be longer than 127 characters."
+  # }
+
+  # Return code '401'
+  # {
+  #   "message" : "Access to this resource must be authenticated as an app.",
+  #   "statusCode" : 401
+  # }
+
+  # Return code '404'
+  # {
+  #   "message" : "Property with key not found.",
+  #   "statusCode" : 404
   # }
 Get app property
+
+Returns the key and value of an app's property.
+
+B<L<Permissions|#permissions> required:> Only a Connect app whose key matches C<addonKey> can make this request.
+Additionally, Forge apps published on the Marketplace can access properties of Connect apps they were L<migrated from|https://developer.atlassian.com/platform/forge/build-a-connect-on-forge-app/>.
 
 =head3 Parameters
 
@@ -82243,11 +93036,36 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
-  #   "message" : "Property updated.",
-  #   "statusCode" : 200
+  #   "statusCode" : 200,
+  #   "message" : "Property updated."
+  # }
+
+  # Return code '201'
+  # {
+  #   "statusCode" : 201,
+  #   "message" : "Property created."
+  # }
+
+  # Return code '400'
+  # {
+  #   "statusCode" : 400,
+  #   "message" : "The property key cannot be longer than 127 characters."
+  # }
+
+  # Return code '401'
+  # {
+  #   "message" : "Access to this resource must be authenticated as an app.",
+  #   "statusCode" : 401
   # }
 Set app property
+
+Sets the value of an app's property. Use this resource to store custom data for your app.
+
+The value of the request body must be a L<valid|http://tools.ietf.org/html/rfc4627>, non-empty JSON blob. The maximum length is 32768 characters.
+
+B<L<Permissions|#permissions> required:> Only a Connect app whose key matches C<addonKey> can make this request.
 
 =head3 Parameters
 
@@ -82435,7 +93253,16 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
       'moduleKey' => '...',
   )->get;
 
+
+  # Return code '401'
+  # {
+  #   "message" : "The request is not from a Connect app."
+  # }
 Remove modules
+
+Remove all or a list of modules registered by the calling app.
+
+B<L<Permissions|#permissions> required:> Only Connect apps can make this request.
 
 =head3 Parameters
 
@@ -82545,7 +93372,16 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->DynamicModulesResource_getModules_get()->get;
 
+
+  # Return code '401'
+  # {
+  #   "message" : "The request is not from a Connect app."
+  # }
 Get modules
+
+Returns all modules registered dynamically by the calling app.
+
+B<L<Permissions|#permissions> required:> Only Connect apps can make this request.
 
 =head3 Parameters
 
@@ -82665,7 +93501,21 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   my $res = $client->DynamicModulesResource_registerModules_post()->get;
 
+
+  # Return code '400'
+  # {
+  #   "message" : "Installation failed. The app com.example.app.key has duplicate module keys: [module-key]. Please contact the app vendor."
+  # }
+
+  # Return code '401'
+  # {
+  #   "message" : "The request is not from a Connect app."
+  # }
 Register modules
+
+Registers a list of modules.
+
+B<L<Permissions|#permissions> required:> Only Connect apps can make this request.
 
 =head3 Parameters
 
@@ -82806,6 +93656,11 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Bulk update custom field value
 
+Updates the value of a custom field added by Connect apps on one or more issues.
+The values of up to 200 custom fields can be updated.
+
+B<L<Permissions|#permissions> required:> Only Connect apps can make this request.
+
 =head3 Parameters
 
 =over 4
@@ -82933,6 +93788,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
 Bulk update entity properties
 
+Updates the values of multiple entity properties for an object, up to 50 updates per request. This operation is for use by Connect apps during app migration.
+
 =head3 Parameters
 
 =over 4
@@ -83036,60 +93893,63 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   )->get;
 
 
+  # Return code '200'
   # {
-  #   "workflowEntityId" : "a498d711-685d-428d-8c3e-bc03bb450ea7",
+  #   "invalidRules" : [
+  #     "55d44f1d-c859-42e5-9c27-2c5ec3f340b1"
+  #   ],
   #   "validRules" : [
   #     {
+  #       "postFunctions" : [
+  #         {
+  #           "configuration" : {
+  #             "value" : "WorkflowValidator"
+  #           },
+  #           "id" : "123",
+  #           "transition" : {
+  #             "name" : "transition",
+  #             "id" : 123
+  #           },
+  #           "key" : "WorkflowKey"
+  #         }
+  #       ],
   #       "validators" : [
   #         {
-  #           "id" : "123",
-  #           "key" : "WorkflowKey",
   #           "transition" : {
-  #             "id" : 123,
-  #             "name" : "transition"
+  #             "name" : "transition",
+  #             "id" : 123
   #           },
+  #           "key" : "WorkflowKey",
+  #           "id" : "123",
   #           "configuration" : {
   #             "value" : "WorkflowValidator"
   #           }
   #         }
   #       ],
   #       "workflowId" : {
-  #         "name" : "Workflow name",
-  #         "draft" : true
+  #         "draft" : true,
+  #         "name" : "Workflow name"
   #       },
   #       "conditions" : [
   #         {
-  #           "configuration" : {
-  #             "value" : "WorkflowValidator"
-  #           },
-  #           "transition" : {
-  #             "id" : 123,
-  #             "name" : "transition"
-  #           },
-  #           "id" : "123",
-  #           "key" : "WorkflowKey"
-  #         }
-  #       ],
-  #       "postFunctions" : [
-  #         {
-  #           "id" : "123",
-  #           "key" : "WorkflowKey",
-  #           "configuration" : {
-  #             "value" : "WorkflowValidator"
-  #           },
   #           "transition" : {
   #             "name" : "transition",
   #             "id" : 123
+  #           },
+  #           "key" : "WorkflowKey",
+  #           "id" : "123",
+  #           "configuration" : {
+  #             "value" : "WorkflowValidator"
   #           }
   #         }
   #       ]
   #     }
   #   ],
-  #   "invalidRules" : [
-  #     "55d44f1d-c859-42e5-9c27-2c5ec3f340b1"
-  #   ]
+  #   "workflowEntityId" : "a498d711-685d-428d-8c3e-bc03bb450ea7"
   # }
 Get workflow transition rule configurations
+
+Returns configurations for workflow transition rules migrated from server to cloud and owned by the calling Connect app.
 
 =head3 Parameters
 
