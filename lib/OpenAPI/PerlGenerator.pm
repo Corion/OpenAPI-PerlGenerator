@@ -1,5 +1,5 @@
 package OpenAPI::PerlGenerator 0.02;
-use 5.020;
+use 5.022;
 use Moo 2;
 use Carp 'croak';
 use experimental 'signatures'; # actually, they are stable but stable.pm doesn't know
@@ -98,8 +98,6 @@ our %default_typemap = (
 
 Hashref with the mapping of OpenAPI types to L<Type::Tiny> constraints.
 
-=back
-
 =cut
 
 has 'typemap' => (
@@ -110,6 +108,8 @@ has 'typemap' => (
 =item * B<version>
 
 The version number to give to all modules
+
+=back
 
 =cut
 
@@ -122,7 +122,6 @@ has 'locations' => (
     is => 'rw',
     default => sub { {} },
 );
-
 
 sub fetch_descriptor( $self, $path, $root = $self->schema ) {
     $path =~ s!^#!!;

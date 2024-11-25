@@ -137,15 +137,3 @@ Copyright 2024- by Max Maischein `corion@cpan.org`.
 # LICENSE
 
 This module is released under the Artistic License 2.0.
-
-# POD ERRORS
-
-Hey! **The above document had some coding errors, which are explained below:**
-
-- Around line 108:
-
-    '=item' outside of any '=over'
-
-- Around line 205:
-
-    You forgot a '=back' before '=head2'

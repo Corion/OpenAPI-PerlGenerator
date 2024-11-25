@@ -40,7 +40,7 @@ my %module = (
         x_static_install => 1, # we are pure Perl and don't do anything fancy
     },
 
-    MIN_PERL_VERSION => '5.020', # signatures
+    MIN_PERL_VERSION => '5.022', # signatures
 
     'LICENSE'=> 'artistic_2',
 
