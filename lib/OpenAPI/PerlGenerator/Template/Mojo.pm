@@ -530,7 +530,7 @@ sub build_<%= $method->{name} %>_request( $self, %options ) {
 % }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }

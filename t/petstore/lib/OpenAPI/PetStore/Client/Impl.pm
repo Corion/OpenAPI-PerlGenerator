@@ -155,7 +155,7 @@ sub build_findPets_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -261,7 +261,7 @@ sub build_addPet_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -370,7 +370,7 @@ sub build_deletePet_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -468,7 +468,7 @@ sub build_find_pet_by_id_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }

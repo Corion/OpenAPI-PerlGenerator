@@ -152,7 +152,7 @@ sub build_inference_request( $self, %options ) {
         => form => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -267,7 +267,7 @@ sub build_load_request( $self, %options ) {
         => form => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }

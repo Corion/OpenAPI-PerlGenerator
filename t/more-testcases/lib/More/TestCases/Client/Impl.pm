@@ -141,7 +141,7 @@ sub build_withCookie_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -222,7 +222,7 @@ sub build_withHeader_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }

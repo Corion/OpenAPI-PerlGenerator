@@ -695,7 +695,7 @@ sub build_getBanner_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -845,7 +845,7 @@ sub build_setBanner_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -997,7 +997,7 @@ sub build_updateMultipleCustomFieldValues_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1213,7 +1213,7 @@ sub build_getCustomFieldConfiguration_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1336,7 +1336,7 @@ sub build_updateCustomFieldConfiguration_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1468,7 +1468,7 @@ sub build_updateCustomFieldValue_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1608,7 +1608,7 @@ sub build_getApplicationProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1722,7 +1722,7 @@ sub build_getAdvancedSettings_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1926,7 +1926,7 @@ sub build_setApplicationProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2098,7 +2098,7 @@ sub build_getAllApplicationRoles_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2243,7 +2243,7 @@ sub build_getApplicationRole_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2377,7 +2377,7 @@ sub build_getAttachmentContent_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2494,7 +2494,7 @@ sub build_getAttachmentMeta_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2640,7 +2640,7 @@ sub build_getAttachmentThumbnail_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2767,7 +2767,7 @@ sub build_removeAttachment_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2902,7 +2902,7 @@ sub build_getAttachment_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3058,7 +3058,7 @@ sub build_expandAttachmentForHumans_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3205,7 +3205,7 @@ sub build_expandAttachmentForMachines_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3452,7 +3452,7 @@ sub build_getAuditRecords_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3576,7 +3576,7 @@ sub build_getAllSystemAvatars_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3774,7 +3774,7 @@ sub build_getCommentsByIds_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3906,7 +3906,7 @@ sub build_getCommentPropertyKeys_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4038,7 +4038,7 @@ sub build_deleteCommentProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4174,7 +4174,7 @@ sub build_getCommentProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4314,7 +4314,7 @@ sub build_setCommentProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4604,7 +4604,7 @@ sub build_createComponent_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4723,7 +4723,7 @@ sub build_deleteComponent_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4878,7 +4878,7 @@ sub build_getComponent_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5159,7 +5159,7 @@ sub build_updateComponent_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5277,7 +5277,7 @@ sub build_getComponentRelatedIssues_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5386,7 +5386,7 @@ sub build_getConfiguration_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5483,7 +5483,7 @@ sub build_getSelectedTimeTrackingImplementation_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5611,7 +5611,7 @@ sub build_selectTimeTrackingImplementation_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5715,7 +5715,7 @@ sub build_getAvailableTimeTrackingImplementations_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5816,7 +5816,7 @@ sub build_getSharedTimeTrackingConfiguration_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5941,7 +5941,7 @@ sub build_setSharedTimeTrackingConfiguration_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -6072,7 +6072,7 @@ sub build_getCustomFieldOption_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -6258,7 +6258,7 @@ sub build_getAllDashboards_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -6416,7 +6416,7 @@ sub build_createDashboard_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -6548,7 +6548,7 @@ sub build_getAllAvailableDashboardGadgets_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -6908,7 +6908,7 @@ sub build_getDashboardsPaginated_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -7130,7 +7130,7 @@ sub build_getAllGadgets_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -7309,7 +7309,7 @@ sub build_addGadget_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -7459,7 +7459,7 @@ sub build_removeGadget_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -7622,7 +7622,7 @@ sub build_updateGadget_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -7773,7 +7773,7 @@ sub build_getDashboardItemPropertyKeys_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -7893,7 +7893,7 @@ sub build_deleteDashboardItemProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -8024,7 +8024,7 @@ sub build_getDashboardItemProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -8166,7 +8166,7 @@ sub build_setDashboardItemProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -8306,7 +8306,7 @@ sub build_deleteDashboard_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -8443,7 +8443,7 @@ sub build_getDashboard_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -8619,7 +8619,7 @@ sub build_updateDashboard_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -8805,7 +8805,7 @@ sub build_copyDashboard_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -8948,7 +8948,7 @@ sub build_getEvents_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -9142,7 +9142,7 @@ sub build_analyseExpression_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -9430,7 +9430,7 @@ sub build_evaluateJiraExpression_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -9610,7 +9610,7 @@ sub build_getFields_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -9970,7 +9970,7 @@ sub build_createCustomField_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -10256,7 +10256,7 @@ sub build_getFieldsPaginated_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -10487,7 +10487,7 @@ sub build_getTrashedFieldsPaginated_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -10772,7 +10772,7 @@ sub build_updateCustomField_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -11015,7 +11015,7 @@ sub build_getContextsForField_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -11196,7 +11196,7 @@ sub build_createCustomFieldContext_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -11526,7 +11526,7 @@ sub build_getDefaultValues_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -11839,7 +11839,7 @@ sub build_setDefaultValues_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -12036,7 +12036,7 @@ sub build_getIssueTypeMappingsForContexts_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -12235,7 +12235,7 @@ sub build_getCustomFieldContextsForProjectsAndIssueTypes_request( $self, %option
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -12436,7 +12436,7 @@ sub build_getProjectContextMapping_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -12599,7 +12599,7 @@ sub build_deleteCustomFieldContext_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -12794,7 +12794,7 @@ sub build_updateCustomFieldContext_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -12997,7 +12997,7 @@ sub build_addIssueTypesToContext_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -13205,7 +13205,7 @@ sub build_removeIssueTypesFromContext_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -13440,7 +13440,7 @@ sub build_getOptionsForContext_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -13657,7 +13657,7 @@ sub build_createCustomFieldOption_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -13873,7 +13873,7 @@ sub build_updateCustomFieldOption_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -14074,7 +14074,7 @@ sub build_reorderCustomFieldOptions_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -14263,7 +14263,7 @@ sub build_deleteCustomFieldOption_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -14444,7 +14444,7 @@ sub build_assignProjectsToCustomFieldContext_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -14639,7 +14639,7 @@ sub build_removeCustomFieldContextFromProjects_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -14814,7 +14814,7 @@ sub build_getContextsForFieldDeprecated_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -14958,7 +14958,7 @@ sub build_getScreensForField_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -15139,7 +15139,7 @@ sub build_getAllIssueFieldOptions_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -15316,7 +15316,7 @@ sub build_createIssueFieldOption_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -15485,7 +15485,7 @@ sub build_getSelectableIssueFieldOptions_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -15651,7 +15651,7 @@ sub build_getVisibleIssueFieldOptions_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -15779,7 +15779,7 @@ sub build_deleteIssueFieldOption_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -15946,7 +15946,7 @@ sub build_getIssueFieldOption_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -16138,7 +16138,7 @@ sub build_updateIssueFieldOption_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -16336,7 +16336,7 @@ sub build_replaceIssueFieldOption_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -16462,7 +16462,7 @@ sub build_deleteCustomField_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -16639,7 +16639,7 @@ sub build_restoreCustomField_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -16801,7 +16801,7 @@ sub build_trashCustomField_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -17023,7 +17023,7 @@ sub build_getAllFieldConfigurations_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -17141,7 +17141,7 @@ sub build_createFieldConfiguration_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -17250,7 +17250,7 @@ sub build_deleteFieldConfiguration_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -17379,7 +17379,7 @@ sub build_updateFieldConfiguration_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -17527,7 +17527,7 @@ sub build_getFieldConfigurationItems_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -17651,7 +17651,7 @@ sub build_updateFieldConfigurationItems_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -17798,7 +17798,7 @@ sub build_getAllFieldConfigurationSchemes_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -17935,7 +17935,7 @@ sub build_createFieldConfigurationScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -18113,7 +18113,7 @@ sub build_getFieldConfigurationSchemeMappings_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -18268,7 +18268,7 @@ sub build_getFieldConfigurationSchemeProjectMapping_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -18406,7 +18406,7 @@ sub build_assignFieldConfigurationSchemeToProject_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -18554,7 +18554,7 @@ sub build_deleteFieldConfigurationScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -18707,7 +18707,7 @@ sub build_updateFieldConfigurationScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -18868,7 +18868,7 @@ sub build_setFieldConfigurationSchemeMapping_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -19021,7 +19021,7 @@ sub build_removeIssueTypesFromGlobalFieldConfigurationScheme_request( $self, %op
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -19222,7 +19222,7 @@ sub build_getFilters_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -19441,7 +19441,7 @@ sub build_createFilter_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -19538,7 +19538,7 @@ sub build_getDefaultShareScope_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -19664,7 +19664,7 @@ sub build_setDefaultShareScope_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -19920,7 +19920,7 @@ sub build_getFavouriteFilters_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -20178,7 +20178,7 @@ sub build_getMyFilters_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -20712,7 +20712,7 @@ sub build_getFiltersPaginated_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -20826,7 +20826,7 @@ sub build_deleteFilter_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -21015,7 +21015,7 @@ sub build_getFilter_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -21250,7 +21250,7 @@ sub build_updateFilter_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -21381,7 +21381,7 @@ sub build_resetColumns_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -21516,7 +21516,7 @@ sub build_getColumns_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -21662,7 +21662,7 @@ sub build_setColumns_request( $self, %options ) {
         # => $body,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -21826,7 +21826,7 @@ sub build_deleteFavouriteForFilter_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -22016,7 +22016,7 @@ sub build_setFavouriteForFilter_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -22130,7 +22130,7 @@ sub build_changeFilterOwner_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -22394,7 +22394,7 @@ sub build_getSharePermissions_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -22698,7 +22698,7 @@ sub build_addSharePermission_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -22812,7 +22812,7 @@ sub build_deleteSharePermission_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -22949,7 +22949,7 @@ sub build_getSharePermission_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -23067,7 +23067,7 @@ sub build_removeGroup_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -23179,7 +23179,7 @@ sub build_getGroup_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -23312,7 +23312,7 @@ sub build_createGroup_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -23481,7 +23481,7 @@ sub build_bulkGetGroups_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -23677,7 +23677,7 @@ sub build_getUsersFromGroup_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -23806,7 +23806,7 @@ sub build_removeUserFromGroup_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -23927,7 +23927,7 @@ sub build_addUserToGroup_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -24099,7 +24099,7 @@ sub build_findGroups_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -24340,7 +24340,7 @@ sub build_findUsersAndGroups_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -24460,7 +24460,7 @@ sub build_getLicense_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -24633,7 +24633,7 @@ sub build_createIssue_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -24847,7 +24847,7 @@ sub build_createIssues_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -25028,7 +25028,7 @@ sub build_getCreateIssueMeta_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -25175,7 +25175,7 @@ sub build_getIssuePickerResource_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -25314,7 +25314,7 @@ sub build_bulkSetIssuesPropertiesList_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -25465,7 +25465,7 @@ sub build_bulkSetIssuePropertiesByIssue_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -25669,7 +25669,7 @@ sub build_bulkDeleteIssueProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -25889,7 +25889,7 @@ sub build_bulkSetIssueProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -26031,7 +26031,7 @@ sub build_getIsWatchingIssueBulk_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -26157,7 +26157,7 @@ sub build_deleteIssue_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -26670,7 +26670,7 @@ sub build_getIssue_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -26846,7 +26846,7 @@ sub build_editIssue_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -27072,7 +27072,7 @@ sub build_assignIssue_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -27406,7 +27406,7 @@ sub build_addAttachment_request( $self, %options ) {
         => form => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -27615,7 +27615,7 @@ sub build_getChangeLogs_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -27812,7 +27812,7 @@ sub build_getChangeLogsByIds_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -28011,7 +28011,7 @@ sub build_getComments_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -28240,7 +28240,7 @@ sub build_addComment_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -28377,7 +28377,7 @@ sub build_deleteComment_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -28553,7 +28553,7 @@ sub build_getComment_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -28809,7 +28809,7 @@ sub build_updateComment_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -29045,7 +29045,7 @@ sub build_getEditIssueMeta_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -29195,7 +29195,7 @@ sub build_notify_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -29328,7 +29328,7 @@ sub build_getIssuePropertyKeys_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -29451,7 +29451,7 @@ sub build_deleteIssueProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -29576,7 +29576,7 @@ sub build_getIssueProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -29710,7 +29710,7 @@ sub build_setIssueProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -29862,7 +29862,7 @@ sub build_deleteRemoteIssueLinkByGlobalId_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -30045,7 +30045,7 @@ sub build_getRemoteIssueLinks_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -30225,7 +30225,7 @@ sub build_createOrUpdateRemoteIssueLink_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -30386,7 +30386,7 @@ sub build_deleteRemoteIssueLinkById_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -30539,7 +30539,7 @@ sub build_getRemoteIssueLinkById_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -30714,7 +30714,7 @@ sub build_updateRemoteIssueLink_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -31003,7 +31003,7 @@ sub build_getTransitions_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -31154,7 +31154,7 @@ sub build_doTransition_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -31275,7 +31275,7 @@ sub build_removeVote_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -31411,7 +31411,7 @@ sub build_getVotes_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -31531,7 +31531,7 @@ sub build_addVote_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -31672,7 +31672,7 @@ sub build_removeWatcher_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -31808,7 +31808,7 @@ sub build_getIssueWatchers_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -31936,7 +31936,7 @@ sub build_addWatcher_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -32152,7 +32152,7 @@ sub build_getIssueWorklog_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -32398,7 +32398,7 @@ sub build_addWorklog_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -32596,7 +32596,7 @@ sub build_deleteWorklog_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -32776,7 +32776,7 @@ sub build_getWorklog_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -33072,7 +33072,7 @@ sub build_updateWorklog_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -33218,7 +33218,7 @@ sub build_getWorklogPropertyKeys_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -33360,7 +33360,7 @@ sub build_deleteWorklogProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -33504,7 +33504,7 @@ sub build_getWorklogProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -33659,7 +33659,7 @@ sub build_setWorklogProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -33841,7 +33841,7 @@ sub build_linkIssues_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -33967,7 +33967,7 @@ sub build_deleteIssueLink_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -34132,7 +34132,7 @@ sub build_getIssueLink_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -34251,7 +34251,7 @@ sub build_getIssueLinkTypes_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -34439,7 +34439,7 @@ sub build_createIssueLinkType_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -34546,7 +34546,7 @@ sub build_deleteIssueLinkType_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -34654,7 +34654,7 @@ sub build_getIssueLinkType_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -34857,7 +34857,7 @@ sub build_updateIssueLinkType_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -34965,7 +34965,7 @@ sub build_getIssueSecuritySchemes_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -35100,7 +35100,7 @@ sub build_getIssueSecurityScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -35311,7 +35311,7 @@ sub build_getIssueSecurityLevelMembers_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -35449,7 +35449,7 @@ sub build_getIssueAllTypes_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -35582,7 +35582,7 @@ sub build_createIssueType_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -35743,7 +35743,7 @@ sub build_getIssueTypesForProject_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -35858,7 +35858,7 @@ sub build_deleteIssueType_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -35970,7 +35970,7 @@ sub build_getIssueType_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -36098,7 +36098,7 @@ sub build_updateIssueType_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -36237,7 +36237,7 @@ sub build_getAlternativeIssueTypes_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -36409,7 +36409,7 @@ sub build_createIssueTypeAvatar_request( $self, %options ) {
         # => $body,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -36545,7 +36545,7 @@ sub build_getIssueTypePropertyKeys_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -36655,7 +36655,7 @@ sub build_deleteIssueTypeProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -36786,7 +36786,7 @@ sub build_getIssueTypeProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -36907,7 +36907,7 @@ sub build_setIssueTypeProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -37161,7 +37161,7 @@ sub build_getAllIssueTypeSchemes_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -37310,7 +37310,7 @@ sub build_createIssueTypeScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -37494,7 +37494,7 @@ sub build_getIssueTypeSchemesMapping_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -37705,7 +37705,7 @@ sub build_getIssueTypeSchemeForProjects_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -37845,7 +37845,7 @@ sub build_assignIssueTypeSchemeToProject_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -38019,7 +38019,7 @@ sub build_deleteIssueTypeScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -38210,7 +38210,7 @@ sub build_updateIssueTypeScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -38397,7 +38397,7 @@ sub build_addIssueTypesToIssueTypeScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -38609,7 +38609,7 @@ sub build_reorderIssueTypesInIssueTypeScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -38808,7 +38808,7 @@ sub build_removeIssueTypeFromIssueTypeScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -39045,7 +39045,7 @@ sub build_getIssueTypeScreenSchemes_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -39198,7 +39198,7 @@ sub build_createIssueTypeScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -39401,7 +39401,7 @@ sub build_getIssueTypeScreenSchemeMappings_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -39544,7 +39544,7 @@ sub build_getIssueTypeScreenSchemeProjectAssociations_request( $self, %options )
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -39682,7 +39682,7 @@ sub build_assignIssueTypeScreenSchemeToProject_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -39844,7 +39844,7 @@ sub build_deleteIssueTypeScreenScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -40019,7 +40019,7 @@ sub build_updateIssueTypeScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -40202,7 +40202,7 @@ sub build_appendMappingsForIssueTypeScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -40388,7 +40388,7 @@ sub build_updateDefaultScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -40571,7 +40571,7 @@ sub build_removeMappingsFromIssueTypeScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -40767,7 +40767,7 @@ sub build_getProjectsForIssueTypeScreenScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -40923,7 +40923,7 @@ sub build_getAutoComplete_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -41126,7 +41126,7 @@ sub build_getAutoCompletePost_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -41292,7 +41292,7 @@ sub build_getFieldAutoCompleteForQueryString_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -41404,7 +41404,7 @@ sub build_getPrecomputations_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -41497,7 +41497,7 @@ sub build_updatePrecomputations_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -41645,7 +41645,7 @@ sub build_matchIssues_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -41945,7 +41945,7 @@ sub build_parseJqlQueries_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -42077,7 +42077,7 @@ sub build_migrateQueries_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -42237,7 +42237,7 @@ sub build_sanitiseJqlQueries_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -42394,7 +42394,7 @@ sub build_getAllLabels_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -42480,7 +42480,7 @@ sub build_getApproximateLicenseCount_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -42587,7 +42587,7 @@ sub build_getApproximateApplicationLicenseCount_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -42776,7 +42776,7 @@ sub build_getMyPermissions_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -42936,7 +42936,7 @@ sub build_removePreference_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -43047,7 +43047,7 @@ sub build_getPreference_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -43203,7 +43203,7 @@ sub build_setPreference_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -43297,7 +43297,7 @@ sub build_deleteLocale_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -43395,7 +43395,7 @@ sub build_getLocale_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -43499,7 +43499,7 @@ sub build_setLocale_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -43642,7 +43642,7 @@ sub build_getCurrentUser_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -44069,7 +44069,7 @@ sub build_getNotificationSchemes_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -44218,7 +44218,7 @@ sub build_createNotificationScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -44393,7 +44393,7 @@ sub build_getNotificationSchemeToProjectMappings_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -44810,7 +44810,7 @@ sub build_getNotificationScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -44962,7 +44962,7 @@ sub build_updateNotificationScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -45161,7 +45161,7 @@ sub build_addNotifications_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -45347,7 +45347,7 @@ sub build_deleteNotificationScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -45533,7 +45533,7 @@ sub build_removeNotificationFromNotificationScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -45710,7 +45710,7 @@ sub build_getAllPermissions_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -45905,7 +45905,7 @@ sub build_getBulkPermissions_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -46036,7 +46036,7 @@ sub build_getPermittedProjects_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -46497,7 +46497,7 @@ sub build_getAllPermissionSchemes_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -46688,7 +46688,7 @@ sub build_createPermissionScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -46793,7 +46793,7 @@ sub build_deletePermissionScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -46952,7 +46952,7 @@ sub build_getPermissionScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -47180,7 +47180,7 @@ sub build_updatePermissionScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -47348,7 +47348,7 @@ sub build_getPermissionSchemeGrants_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -47533,7 +47533,7 @@ sub build_createPermissionGrant_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -47646,7 +47646,7 @@ sub build_deletePermissionSchemeEntity_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -47805,7 +47805,7 @@ sub build_getPermissionSchemeGrant_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -47917,7 +47917,7 @@ sub build_getPriorities_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -48056,7 +48056,7 @@ sub build_createPriority_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -48228,7 +48228,7 @@ sub build_setDefaultPriority_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -48423,7 +48423,7 @@ sub build_movePriorities_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -48640,7 +48640,7 @@ sub build_searchPriorities_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -48795,7 +48795,7 @@ sub build_deletePriority_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -48978,7 +48978,7 @@ sub build_getPriority_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -49135,7 +49135,7 @@ sub build_updatePriority_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -49381,7 +49381,7 @@ sub build_getAllProjects_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -49592,7 +49592,7 @@ sub build_createProject_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -49820,7 +49820,7 @@ sub build_getRecent_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -50229,7 +50229,7 @@ sub build_searchProjects_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -50344,7 +50344,7 @@ sub build_getAllProjectTypes_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -50450,7 +50450,7 @@ sub build_getAllAccessibleProjectTypes_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -50560,7 +50560,7 @@ sub build_getProjectTypeByKey_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -50673,7 +50673,7 @@ sub build_getAccessibleProjectTypeByKey_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -50786,7 +50786,7 @@ sub build_deleteProject_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -51056,7 +51056,7 @@ sub build_getProject_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -51384,7 +51384,7 @@ sub build_updateProject_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -51494,7 +51494,7 @@ sub build_archiveProject_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -51643,7 +51643,7 @@ sub build_updateProjectAvatar_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -51756,7 +51756,7 @@ sub build_deleteProjectAvatar_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -51920,7 +51920,7 @@ sub build_createProjectAvatar_request( $self, %options ) {
         # => $body,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -52064,7 +52064,7 @@ sub build_getAllProjectAvatars_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -52459,7 +52459,7 @@ sub build_getProjectComponentsPaginated_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -52681,7 +52681,7 @@ sub build_getProjectComponents_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -52802,7 +52802,7 @@ sub build_deleteProjectAsynchronously_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -52933,7 +52933,7 @@ sub build_getFeaturesForProject_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -53088,7 +53088,7 @@ sub build_toggleFeatureForProject_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -53210,7 +53210,7 @@ sub build_getProjectPropertyKeys_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -53328,7 +53328,7 @@ sub build_deleteProjectProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -53445,7 +53445,7 @@ sub build_getProjectProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -53571,7 +53571,7 @@ sub build_setProjectProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -53828,7 +53828,7 @@ sub build_restore_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -53946,7 +53946,7 @@ sub build_getProjectRoles_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -54081,7 +54081,7 @@ sub build_deleteActor_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -54231,7 +54231,7 @@ sub build_getProjectRole_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -54408,7 +54408,7 @@ sub build_addActorUsers_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -54599,7 +54599,7 @@ sub build_setActors_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -54735,7 +54735,7 @@ sub build_getProjectRoleDetails_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -54868,7 +54868,7 @@ sub build_getAllStatuses_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -55113,7 +55113,7 @@ sub build_updateProjectType_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -55344,7 +55344,7 @@ sub build_getProjectVersionsPaginated_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -55488,7 +55488,7 @@ sub build_getProjectVersions_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -55598,7 +55598,7 @@ sub build_getProjectEmail_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -55724,7 +55724,7 @@ sub build_updateProjectEmail_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -55907,7 +55907,7 @@ sub build_getHierarchy_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -56031,7 +56031,7 @@ sub build_getProjectIssueSecurityScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -56430,7 +56430,7 @@ sub build_getNotificationSchemeForProject_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -56588,7 +56588,7 @@ sub build_getAssignedPermissionScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -56759,7 +56759,7 @@ sub build_assignPermissionScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -56886,7 +56886,7 @@ sub build_getSecurityLevelsForProject_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -56991,7 +56991,7 @@ sub build_getAllProjectCategories_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -57114,7 +57114,7 @@ sub build_createProjectCategory_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -57222,7 +57222,7 @@ sub build_removeProjectCategory_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -57325,7 +57325,7 @@ sub build_getProjectCategoryById_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -57460,7 +57460,7 @@ sub build_updateProjectCategory_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -57576,7 +57576,7 @@ sub build_validateProjectKey_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -57678,7 +57678,7 @@ sub build_getValidProjectKey_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -57783,7 +57783,7 @@ sub build_getValidProjectName_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -57894,7 +57894,7 @@ sub build_getResolutions_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -58025,7 +58025,7 @@ sub build_createResolution_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -58197,7 +58197,7 @@ sub build_setDefaultResolution_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -58392,7 +58392,7 @@ sub build_moveResolutions_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -58597,7 +58597,7 @@ sub build_searchResolutions_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -58752,7 +58752,7 @@ sub build_deleteResolution_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -58933,7 +58933,7 @@ sub build_getResolution_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -59082,7 +59082,7 @@ sub build_updateResolution_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -59295,7 +59295,7 @@ sub build_getAllProjectRoles_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -59415,7 +59415,7 @@ sub build_createProjectRole_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -59532,7 +59532,7 @@ sub build_deleteProjectRole_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -59670,7 +59670,7 @@ sub build_getProjectRoleById_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -59833,7 +59833,7 @@ sub build_partialUpdateProjectRole_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -59997,7 +59997,7 @@ sub build_fullyUpdateProjectRole_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -60147,7 +60147,7 @@ sub build_deleteProjectRoleActorsFromRole_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -60274,7 +60274,7 @@ sub build_getProjectRoleActorsForRole_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -60424,7 +60424,7 @@ sub build_addProjectRoleActorsToRole_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -60602,7 +60602,7 @@ sub build_getScreens_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -60734,7 +60734,7 @@ sub build_createScreen_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -60865,7 +60865,7 @@ sub build_addFieldToDefaultScreen_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -60995,7 +60995,7 @@ sub build_deleteScreen_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -61177,7 +61177,7 @@ sub build_updateScreen_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -61323,7 +61323,7 @@ sub build_getAvailableScreenFields_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -61454,7 +61454,7 @@ sub build_getAllScreenTabs_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -61588,7 +61588,7 @@ sub build_addScreenTab_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -61704,7 +61704,7 @@ sub build_deleteScreenTab_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -61830,7 +61830,7 @@ sub build_renameScreenTab_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -61971,7 +61971,7 @@ sub build_getAllScreenTabFields_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -62106,7 +62106,7 @@ sub build_addScreenTabField_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -62230,7 +62230,7 @@ sub build_removeScreenTabField_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -62363,7 +62363,7 @@ sub build_moveScreenTabField_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -62489,7 +62489,7 @@ sub build_moveScreenTab_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -62686,7 +62686,7 @@ sub build_getScreenSchemes_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -62828,7 +62828,7 @@ sub build_createScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -62999,7 +62999,7 @@ sub build_deleteScreenScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -63178,7 +63178,7 @@ sub build_updateScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -63776,7 +63776,7 @@ sub build_searchForIssuesUsingJql_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -64306,7 +64306,7 @@ sub build_searchForIssuesUsingJqlPost_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -64422,7 +64422,7 @@ sub build_getIssueSecurityLevel_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -64535,7 +64535,7 @@ sub build_getServerInfo_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -64636,7 +64636,7 @@ sub build_getIssueNavigatorDefaultColumns_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -64742,7 +64742,7 @@ sub build_setIssueNavigatorDefaultColumns_request( $self, %options ) {
         # => $body,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -64873,7 +64873,7 @@ sub build_getStatuses_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -64995,7 +64995,7 @@ sub build_getStatus_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -65104,7 +65104,7 @@ sub build_getStatusCategories_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -65215,7 +65215,7 @@ sub build_getStatusCategory_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -65341,7 +65341,7 @@ sub build_deleteStatusesById_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -65512,7 +65512,7 @@ sub build_getStatusesById_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -65661,7 +65661,7 @@ sub build_createStatuses_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -65801,7 +65801,7 @@ sub build_updateStatuses_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -66002,7 +66002,7 @@ sub build_search_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -66138,7 +66138,7 @@ sub build_getTask_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -66263,7 +66263,7 @@ sub build_cancelTask_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -66504,7 +66504,7 @@ sub build_getUiModifications_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -66646,7 +66646,7 @@ sub build_createUiModification_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -66756,7 +66756,7 @@ sub build_deleteUiModification_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -66904,7 +66904,7 @@ sub build_updateUiModification_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -67075,7 +67075,7 @@ sub build_getAvatars_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -67278,7 +67278,7 @@ sub build_storeAvatar_request( $self, %options ) {
         # => $body,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -67402,7 +67402,7 @@ sub build_deleteAvatar_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -67517,7 +67517,7 @@ sub build_getAvatarImageByType_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -67840,7 +67840,7 @@ sub build_getAvatarImageByID_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -68211,7 +68211,7 @@ sub build_getAvatarImageByOwner_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -68545,7 +68545,7 @@ sub build_removeUser_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -68702,7 +68702,7 @@ sub build_getUser_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -68863,7 +68863,7 @@ sub build_createUser_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -69041,7 +69041,7 @@ sub build_findBulkAssignableUsers_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -69254,7 +69254,7 @@ sub build_findAssignableUsers_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -69415,7 +69415,7 @@ sub build_bulkGetUsers_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -69547,7 +69547,7 @@ sub build_bulkGetUsersMigration_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -69668,7 +69668,7 @@ sub build_resetUserColumns_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -69778,7 +69778,7 @@ sub build_getUserDefaultColumns_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -69907,7 +69907,7 @@ sub build_setUserColumns_request( $self, %options ) {
         # => $body,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -70022,7 +70022,7 @@ sub build_getUserEmail_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -70131,7 +70131,7 @@ sub build_getUserEmailBulk_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -70258,7 +70258,7 @@ sub build_getUserGroups_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -70664,7 +70664,7 @@ sub build_findUsersWithAllPermissions_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -70834,7 +70834,7 @@ sub build_findUsersForPicker_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -70977,7 +70977,7 @@ sub build_getUserPropertyKeys_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -71122,7 +71122,7 @@ sub build_deleteUserProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -71266,7 +71266,7 @@ sub build_getUserProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -71417,7 +71417,7 @@ sub build_setUserProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -71611,7 +71611,7 @@ sub build_findUsers_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -71784,7 +71784,7 @@ sub build_findUsersByQuery_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -71959,7 +71959,7 @@ sub build_findUserKeysByQuery_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -72173,7 +72173,7 @@ sub build_findUsersWithBrowsePermission_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -72324,7 +72324,7 @@ sub build_getAllUsersDefault_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -72472,7 +72472,7 @@ sub build_getAllUsers_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -72677,7 +72677,7 @@ sub build_createVersion_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -72803,7 +72803,7 @@ sub build_deleteVersion_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -72937,7 +72937,7 @@ sub build_getVersion_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -73150,7 +73150,7 @@ sub build_updateVersion_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -73269,7 +73269,7 @@ sub build_mergeVersions_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -73409,7 +73409,7 @@ sub build_moveVersion_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -73557,7 +73557,7 @@ sub build_getVersionRelatedIssues_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -73686,7 +73686,7 @@ sub build_deleteAndReplaceVersion_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -73802,7 +73802,7 @@ sub build_getVersionUnresolvedIssues_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -73908,7 +73908,7 @@ sub build_deleteWebhookById_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -74072,7 +74072,7 @@ sub build_getDynamicWebhooksForApp_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -74226,7 +74226,7 @@ sub build_registerDynamicWebhooks_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -74385,7 +74385,7 @@ sub build_getFailedWebhooks_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -74523,7 +74523,7 @@ sub build_refreshWebhooks_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -74664,7 +74664,7 @@ sub build_getAllWorkflows_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -76287,7 +76287,7 @@ sub build_createWorkflow_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -76556,7 +76556,7 @@ sub build_getWorkflowTransitionRuleConfigurations_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -76765,7 +76765,7 @@ sub build_updateWorkflowTransitionRuleConfigurations_request( $self, %options ) 
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -76965,7 +76965,7 @@ sub build_deleteWorkflowTransitionRuleConfigurations_request( $self, %options ) 
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -77339,7 +77339,7 @@ sub build_getWorkflowsPaginated_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -77478,7 +77478,7 @@ sub build_deleteWorkflowTransitionProperty_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -77622,7 +77622,7 @@ sub build_getWorkflowTransitionProperties_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -77785,7 +77785,7 @@ sub build_createWorkflowTransitionProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -77948,7 +77948,7 @@ sub build_updateWorkflowTransitionProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -78110,7 +78110,7 @@ sub build_deleteInactiveWorkflow_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -78280,7 +78280,7 @@ sub build_getAllWorkflowSchemes_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -78466,7 +78466,7 @@ sub build_createWorkflowScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -78615,7 +78615,7 @@ sub build_getWorkflowSchemeProjectAssociations_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -78777,7 +78777,7 @@ sub build_assignSchemeToProject_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -78923,7 +78923,7 @@ sub build_deleteWorkflowScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -79056,7 +79056,7 @@ sub build_getWorkflowScheme_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -79257,7 +79257,7 @@ sub build_updateWorkflowScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -79411,7 +79411,7 @@ sub build_createWorkflowSchemeDraftFromParent_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -79543,7 +79543,7 @@ sub build_deleteDefaultWorkflow_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -79667,7 +79667,7 @@ sub build_getDefaultWorkflow_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -79807,7 +79807,7 @@ sub build_updateDefaultWorkflow_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -79915,7 +79915,7 @@ sub build_deleteWorkflowSchemeDraft_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -80070,7 +80070,7 @@ sub build_getWorkflowSchemeDraft_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -80301,7 +80301,7 @@ sub build_updateWorkflowSchemeDraft_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -80455,7 +80455,7 @@ sub build_deleteDraftDefaultWorkflow_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -80567,7 +80567,7 @@ sub build_getDraftDefaultWorkflow_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -80735,7 +80735,7 @@ sub build_updateDraftDefaultWorkflow_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -80897,7 +80897,7 @@ sub build_deleteWorkflowSchemeDraftIssueType_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -81018,7 +81018,7 @@ sub build_getWorkflowSchemeDraftIssueType_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -81198,7 +81198,7 @@ sub build_setWorkflowSchemeDraftIssueType_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -81350,7 +81350,7 @@ sub build_publishDraftWorkflowScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -81496,7 +81496,7 @@ sub build_deleteDraftWorkflowMapping_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -81610,7 +81610,7 @@ sub build_getDraftWorkflow_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -81767,7 +81767,7 @@ sub build_updateDraftWorkflowMapping_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -81910,7 +81910,7 @@ sub build_deleteWorkflowSchemeIssueType_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -82043,7 +82043,7 @@ sub build_getWorkflowSchemeIssueType_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -82195,7 +82195,7 @@ sub build_setWorkflowSchemeIssueType_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -82322,7 +82322,7 @@ sub build_deleteWorkflowMapping_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -82445,7 +82445,7 @@ sub build_getWorkflow_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -82604,7 +82604,7 @@ sub build_updateWorkflowMapping_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -82742,7 +82742,7 @@ sub build_getIdsOfWorklogsDeletedSince_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -82915,7 +82915,7 @@ sub build_getWorklogsForIds_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -83068,7 +83068,7 @@ sub build_getIdsOfWorklogsModifiedSince_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -83135,8 +83135,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   # {
   #   "keys" : [
   #     {
-  #       "key" : "propertyKey",
-  #       "self" : "https://your-domain.atlassian.net/jira/rest/atlassian-connect/1/addon/example.app.key/properties/propertyKey"
+  #       "self" : "https://your-domain.atlassian.net/jira/rest/atlassian-connect/1/addon/example.app.key/properties/propertyKey",
+  #       "key" : "propertyKey"
   #     }
   #   ]
   # }
@@ -83187,7 +83187,7 @@ sub build_AddonPropertiesResource_getAddonProperties_get_request( $self, %option
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -83265,14 +83265,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '400'
   # {
-  #   "statusCode" : 400,
-  #   "message" : "The property key cannot be longer than 127 characters."
+  #   "message" : "The property key cannot be longer than 127 characters.",
+  #   "statusCode" : 400
   # }
 
   # Return code '401'
   # {
-  #   "statusCode" : 401,
-  #   "message" : "Access to this resource must be authenticated as an app."
+  #   "message" : "Access to this resource must be authenticated as an app.",
+  #   "statusCode" : 401
   # }
 
   # Return code '404'
@@ -83328,7 +83328,7 @@ sub build_AddonPropertiesResource_deleteAddonProperty_delete_request( $self, %op
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -83424,15 +83424,15 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '200'
   # {
+  #   "value" : "propertyValue",
   #   "key" : "propertyKey",
-  #   "self" : "https://your-domain.atlassian.net/jira/rest/atlassian-connect/1/addon/example.app.key/properties/propertyKey",
-  #   "value" : "propertyValue"
+  #   "self" : "https://your-domain.atlassian.net/jira/rest/atlassian-connect/1/addon/example.app.key/properties/propertyKey"
   # }
 
   # Return code '400'
   # {
-  #   "message" : "The property key cannot be longer than 127 characters.",
-  #   "statusCode" : 400
+  #   "statusCode" : 400,
+  #   "message" : "The property key cannot be longer than 127 characters."
   # }
 
   # Return code '401'
@@ -83443,8 +83443,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '404'
   # {
-  #   "message" : "Property with key not found.",
-  #   "statusCode" : 404
+  #   "statusCode" : 404,
+  #   "message" : "Property with key not found."
   # }
 Get app property
 
@@ -83496,7 +83496,7 @@ sub build_AddonPropertiesResource_getAddonProperty_get_request( $self, %options 
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -83604,8 +83604,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '200'
   # {
-  #   "message" : "Property updated.",
-  #   "statusCode" : 200
+  #   "statusCode" : 200,
+  #   "message" : "Property updated."
   # }
 
   # Return code '201'
@@ -83622,8 +83622,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '401'
   # {
-  #   "statusCode" : 401,
-  #   "message" : "Access to this resource must be authenticated as an app."
+  #   "message" : "Access to this resource must be authenticated as an app.",
+  #   "statusCode" : 401
   # }
 Set app property
 
@@ -83679,7 +83679,7 @@ sub build_AddonPropertiesResource_putAddonProperty_put_request( $self, %options 
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -83827,7 +83827,7 @@ sub build_DynamicModulesResource_removeModules_delete_request( $self, %options )
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -83922,7 +83922,7 @@ sub build_DynamicModulesResource_getModules_get_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -84048,7 +84048,7 @@ sub build_DynamicModulesResource_registerModules_post_request( $self, %options )
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -84176,7 +84176,7 @@ sub build_AppIssueFieldValueUpdateResource_updateIssueFields_put_request( $self,
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -84287,7 +84287,7 @@ sub build_MigrationResource_updateEntityPropertiesValue_put_request( $self, %opt
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -84344,55 +84344,55 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   # Return code '200'
   # {
   #   "workflowEntityId" : "a498d711-685d-428d-8c3e-bc03bb450ea7",
-  #   "invalidRules" : [
-  #     "55d44f1d-c859-42e5-9c27-2c5ec3f340b1"
-  #   ],
   #   "validRules" : [
   #     {
-  #       "validators" : [
-  #         {
-  #           "transition" : {
-  #             "id" : 123,
-  #             "name" : "transition"
-  #           },
-  #           "configuration" : {
-  #             "value" : "WorkflowValidator"
-  #           },
-  #           "key" : "WorkflowKey",
-  #           "id" : "123"
-  #         }
-  #       ],
-  #       "postFunctions" : [
-  #         {
-  #           "configuration" : {
-  #             "value" : "WorkflowValidator"
-  #           },
-  #           "key" : "WorkflowKey",
-  #           "transition" : {
-  #             "id" : 123,
-  #             "name" : "transition"
-  #           },
-  #           "id" : "123"
-  #         }
-  #       ],
   #       "conditions" : [
   #         {
-  #           "id" : "123",
-  #           "transition" : {
-  #             "id" : 123,
-  #             "name" : "transition"
-  #           },
-  #           "key" : "WorkflowKey",
   #           "configuration" : {
   #             "value" : "WorkflowValidator"
-  #           }
+  #           },
+  #           "key" : "WorkflowKey",
+  #           "transition" : {
+  #             "name" : "transition",
+  #             "id" : 123
+  #           },
+  #           "id" : "123"
   #         }
   #       ],
   #       "workflowId" : {
-  #         "draft" : true,
-  #         "name" : "Workflow name"
-  #       }
+  #         "name" : "Workflow name",
+  #         "draft" : true
+  #       },
+  #       "postFunctions" : [
+  #         {
+  #           "transition" : {
+  #             "id" : 123,
+  #             "name" : "transition"
+  #           },
+  #           "id" : "123",
+  #           "configuration" : {
+  #             "value" : "WorkflowValidator"
+  #           },
+  #           "key" : "WorkflowKey"
+  #         }
+  #       ],
+  #       "validators" : [
+  #         {
+  #           "key" : "WorkflowKey",
+  #           "configuration" : {
+  #             "value" : "WorkflowValidator"
+  #           },
+  #           "id" : "123",
+  #           "transition" : {
+  #             "name" : "transition",
+  #             "id" : 123
+  #           }
+  #         }
+  #       ]
   #     }
+  #   ],
+  #   "invalidRules" : [
+  #     "55d44f1d-c859-42e5-9c27-2c5ec3f340b1"
   #   ]
   # }
 Get workflow transition rule configurations
@@ -84451,7 +84451,7 @@ sub build_MigrationResource_workflowRuleSearch_post_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }

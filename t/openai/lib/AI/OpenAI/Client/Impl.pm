@@ -293,7 +293,7 @@ sub build_listAssistants_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -424,7 +424,7 @@ sub build_createAssistant_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -518,7 +518,7 @@ sub build_deleteAssistant_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -612,7 +612,7 @@ sub build_getAssistant_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -761,7 +761,7 @@ sub build_modifyAssistant_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -866,7 +866,7 @@ sub build_createSpeech_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -979,7 +979,7 @@ sub build_createTranscription_request( $self, %options ) {
         => form => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1084,7 +1084,7 @@ sub build_createTranslation_request( $self, %options ) {
         => form => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1182,7 +1182,7 @@ sub build_listBatches_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1287,7 +1287,7 @@ sub build_createBatch_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1381,7 +1381,7 @@ sub build_retrieveBatch_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1475,7 +1475,7 @@ sub build_cancelBatch_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1677,7 +1677,7 @@ sub build_createChatCompletion_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1862,7 +1862,7 @@ sub build_createCompletion_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1967,7 +1967,7 @@ sub build_createEmbedding_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2059,7 +2059,7 @@ sub build_listFiles_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2162,7 +2162,7 @@ sub build_createFile_request( $self, %options ) {
         => form => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2256,7 +2256,7 @@ sub build_deleteFile_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2350,7 +2350,7 @@ sub build_retrieveFile_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2444,7 +2444,7 @@ sub build_downloadFile_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2542,7 +2542,7 @@ sub build_listPaginatedFineTuningJobs_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2678,7 +2678,7 @@ sub build_createFineTuningJob_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2774,7 +2774,7 @@ sub build_retrieveFineTuningJob_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2868,7 +2868,7 @@ sub build_cancelFineTuningJob_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -2977,7 +2977,7 @@ sub build_listFineTuningJobCheckpoints_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3086,7 +3086,7 @@ sub build_listFineTuningEvents_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3203,7 +3203,7 @@ sub build_createImageEdit_request( $self, %options ) {
         => form => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3320,7 +3320,7 @@ sub build_createImage_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3429,7 +3429,7 @@ sub build_createImageVariation_request( $self, %options ) {
         => form => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3505,7 +3505,7 @@ sub build_listModels_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3599,7 +3599,7 @@ sub build_deleteModel_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3693,7 +3693,7 @@ sub build_retrieveModel_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3788,7 +3788,7 @@ sub build_createModeration_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -3885,7 +3885,7 @@ sub build_createThread_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4038,7 +4038,7 @@ sub build_createThreadAndRun_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4132,7 +4132,7 @@ sub build_deleteThread_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4226,7 +4226,7 @@ sub build_getThread_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4337,7 +4337,7 @@ sub build_modifyThread_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4464,7 +4464,7 @@ sub build_listMessages_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4583,7 +4583,7 @@ sub build_createMessage_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4685,7 +4685,7 @@ sub build_deleteMessage_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4787,7 +4787,7 @@ sub build_getMessage_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -4902,7 +4902,7 @@ sub build_modifyMessage_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5023,7 +5023,7 @@ sub build_listRuns_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5196,7 +5196,7 @@ sub build_createRun_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5298,7 +5298,7 @@ sub build_getRun_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5413,7 +5413,7 @@ sub build_modifyRun_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5515,7 +5515,7 @@ sub build_cancelRun_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5644,7 +5644,7 @@ sub build_listRunSteps_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5754,7 +5754,7 @@ sub build_getRunStep_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5873,7 +5873,7 @@ sub build_submitToolOuputsToRun_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -5983,7 +5983,7 @@ sub build_listVectorStores_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -6084,7 +6084,7 @@ sub build_createVectorStore_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -6178,7 +6178,7 @@ sub build_deleteVectorStore_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -6272,7 +6272,7 @@ sub build_getVectorStore_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -6387,7 +6387,7 @@ sub build_modifyVectorStore_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -6494,7 +6494,7 @@ sub build_createVectorStoreFileBatch_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -6596,7 +6596,7 @@ sub build_getVectorStoreFileBatch_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -6698,7 +6698,7 @@ sub build_cancelVectorStoreFileBatch_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -6833,7 +6833,7 @@ sub build_listFilesInVectorStoreBatch_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -6960,7 +6960,7 @@ sub build_listVectorStoreFiles_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -7067,7 +7067,7 @@ sub build_createVectorStoreFile_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -7169,7 +7169,7 @@ sub build_deleteVectorStoreFile_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -7271,7 +7271,7 @@ sub build_getVectorStoreFile_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }

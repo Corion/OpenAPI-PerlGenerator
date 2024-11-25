@@ -162,7 +162,7 @@ sub build_checkBlob_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -248,7 +248,7 @@ sub build_createBlob_request( $self, %options ) {
         => $body,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -388,7 +388,7 @@ sub build_generateChatCompletion_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -496,7 +496,7 @@ sub build_copyModel_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -596,7 +596,7 @@ sub build_createModel_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -702,7 +702,7 @@ sub build_deleteModel_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -789,7 +789,7 @@ sub build_generateEmbedding_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -963,7 +963,7 @@ sub build_generateCompletion_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1083,7 +1083,7 @@ sub build_pullModel_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1184,7 +1184,7 @@ sub build_pushModel_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1275,7 +1275,7 @@ sub build_showModelInfo_request( $self, %options ) {
         => json => $request,
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
@@ -1351,7 +1351,7 @@ sub build_listModels_request( $self, %options ) {
         }
     );
 
-    $self->validate_request( $payload, $tx );
+    $self->validate_request( $tx );
 
     return $tx
 }
