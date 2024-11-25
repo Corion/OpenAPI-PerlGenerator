@@ -83143,8 +83143,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '401'
   # {
-  #   "statusCode" : 401,
-  #   "message" : "Access to this resource must be authenticated as an app."
+  #   "message" : "Access to this resource must be authenticated as an app.",
+  #   "statusCode" : 401
   # }
 Get app properties
 
@@ -83277,8 +83277,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '404'
   # {
-  #   "statusCode" : 404,
-  #   "message" : "Property with key not found."
+  #   "message" : "Property with key not found.",
+  #   "statusCode" : 404
   # }
 Delete app property
 
@@ -83431,20 +83431,20 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '400'
   # {
-  #   "statusCode" : 400,
-  #   "message" : "The property key cannot be longer than 127 characters."
+  #   "message" : "The property key cannot be longer than 127 characters.",
+  #   "statusCode" : 400
   # }
 
   # Return code '401'
   # {
-  #   "statusCode" : 401,
-  #   "message" : "Access to this resource must be authenticated as an app."
+  #   "message" : "Access to this resource must be authenticated as an app.",
+  #   "statusCode" : 401
   # }
 
   # Return code '404'
   # {
-  #   "statusCode" : 404,
-  #   "message" : "Property with key not found."
+  #   "message" : "Property with key not found.",
+  #   "statusCode" : 404
   # }
 Get app property
 
@@ -84343,46 +84343,49 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '200'
   # {
+  #   "invalidRules" : [
+  #     "55d44f1d-c859-42e5-9c27-2c5ec3f340b1"
+  #   ],
   #   "workflowEntityId" : "a498d711-685d-428d-8c3e-bc03bb450ea7",
   #   "validRules" : [
   #     {
-  #       "conditions" : [
-  #         {
-  #           "configuration" : {
-  #             "value" : "WorkflowValidator"
-  #           },
-  #           "key" : "WorkflowKey",
-  #           "transition" : {
-  #             "name" : "transition",
-  #             "id" : 123
-  #           },
-  #           "id" : "123"
-  #         }
-  #       ],
   #       "workflowId" : {
   #         "name" : "Workflow name",
   #         "draft" : true
   #       },
-  #       "postFunctions" : [
+  #       "conditions" : [
   #         {
-  #           "transition" : {
-  #             "id" : 123,
-  #             "name" : "transition"
-  #           },
+  #           "key" : "WorkflowKey",
   #           "id" : "123",
   #           "configuration" : {
   #             "value" : "WorkflowValidator"
   #           },
-  #           "key" : "WorkflowKey"
+  #           "transition" : {
+  #             "id" : 123,
+  #             "name" : "transition"
+  #           }
   #         }
   #       ],
   #       "validators" : [
   #         {
-  #           "key" : "WorkflowKey",
+  #           "transition" : {
+  #             "name" : "transition",
+  #             "id" : 123
+  #           },
   #           "configuration" : {
   #             "value" : "WorkflowValidator"
   #           },
+  #           "key" : "WorkflowKey",
+  #           "id" : "123"
+  #         }
+  #       ],
+  #       "postFunctions" : [
+  #         {
+  #           "key" : "WorkflowKey",
   #           "id" : "123",
+  #           "configuration" : {
+  #             "value" : "WorkflowValidator"
+  #           },
   #           "transition" : {
   #             "name" : "transition",
   #             "id" : 123
@@ -84390,9 +84393,6 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #         }
   #       ]
   #     }
-  #   ],
-  #   "invalidRules" : [
-  #     "55d44f1d-c859-42e5-9c27-2c5ec3f340b1"
   #   ]
   # }
 Get workflow transition rule configurations
