@@ -155,15 +155,7 @@ sub build_findPets_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -185,14 +177,7 @@ sub findPets( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { OpenAPI::PetStore::Pet->new($_),
  } $payload->@* ],
@@ -208,14 +193,7 @@ sub findPets( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     OpenAPI::PetStore::Error->new($payload),
 
@@ -283,15 +261,7 @@ sub build_addPet_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -313,14 +283,7 @@ sub addPet( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     OpenAPI::PetStore::Pet->new($payload),
 
@@ -335,14 +298,7 @@ sub addPet( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     OpenAPI::PetStore::Error->new($payload),
 
@@ -414,15 +370,7 @@ sub build_deletePet_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -447,14 +395,7 @@ sub deletePet( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     OpenAPI::PetStore::Error->new($payload),
 
@@ -527,15 +468,7 @@ sub build_find_pet_by_id_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -557,14 +490,7 @@ sub find_pet_by_id( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     OpenAPI::PetStore::Pet->new($payload),
 
@@ -579,14 +505,7 @@ sub find_pet_by_id( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     OpenAPI::PetStore::Error->new($payload),
 
@@ -613,5 +532,27 @@ sub find_pet_by_id( $self, %options ) {
     return $res
 }
 
+
+sub validate_response( $self, $payload, $tx ) {
+    if(     $self->validate_responses
+        and my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_response($payload, { request => $tx->req });
+        if( $results->{error}) {
+            say $results;
+            say $tx->res->to_string;
+        };
+    };
+}
+
+sub validate_request( $self, $tx ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
+    };
+}
 
 1;

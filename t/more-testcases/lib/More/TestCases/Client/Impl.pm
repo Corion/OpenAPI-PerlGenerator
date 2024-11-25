@@ -141,15 +141,7 @@ sub build_withCookie_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -230,15 +222,7 @@ sub build_withHeader_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -281,5 +265,27 @@ sub withHeader( $self, %options ) {
     return $res
 }
 
+
+sub validate_response( $self, $payload, $tx ) {
+    if(     $self->validate_responses
+        and my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_response($payload, { request => $tx->req });
+        if( $results->{error}) {
+            say $results;
+            say $tx->res->to_string;
+        };
+    };
+}
+
+sub validate_request( $self, $tx ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
+    };
+}
 
 1;

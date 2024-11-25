@@ -152,15 +152,7 @@ sub build_inference_request( $self, %options ) {
         => form => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -182,14 +174,7 @@ sub inference( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     Speech::Recognition::Whisper::Transcription->new($payload),
 
@@ -204,14 +189,7 @@ sub inference( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     Speech::Recognition::Whisper::Error->new($payload),
 
@@ -289,15 +267,7 @@ sub build_load_request( $self, %options ) {
         => form => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -319,14 +289,7 @@ sub load( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/text' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     Speech::Recognition::Whisper::SuccessfulLoad->new($payload),
 
@@ -341,14 +304,7 @@ sub load( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     Speech::Recognition::Whisper::Error->new($payload),
 
@@ -375,5 +331,27 @@ sub load( $self, %options ) {
     return $res
 }
 
+
+sub validate_response( $self, $payload, $tx ) {
+    if(     $self->validate_responses
+        and my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_response($payload, { request => $tx->req });
+        if( $results->{error}) {
+            say $results;
+            say $tx->res->to_string;
+        };
+    };
+}
+
+sub validate_request( $self, $tx ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
+    };
+}
 
 1;

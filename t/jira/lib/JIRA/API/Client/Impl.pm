@@ -695,15 +695,7 @@ sub build_getBanner_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -725,14 +717,7 @@ sub getBanner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::AnnouncementBannerConfiguration->new($payload),
 
@@ -747,14 +732,7 @@ sub getBanner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -769,14 +747,7 @@ sub getBanner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -874,15 +845,7 @@ sub build_setBanner_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -904,14 +867,7 @@ sub setBanner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -926,14 +882,7 @@ sub setBanner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -948,14 +897,7 @@ sub setBanner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -970,14 +912,7 @@ sub setBanner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -1062,15 +997,7 @@ sub build_updateMultipleCustomFieldValues_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -1092,14 +1019,7 @@ sub updateMultipleCustomFieldValues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -1293,15 +1213,7 @@ sub build_getCustomFieldConfiguration_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -1323,14 +1235,7 @@ sub getCustomFieldConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanContextualConfiguration->new($payload),
 
@@ -1431,15 +1336,7 @@ sub build_updateCustomFieldConfiguration_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -1461,14 +1358,7 @@ sub updateCustomFieldConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -1578,15 +1468,7 @@ sub build_updateCustomFieldValue_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -1608,14 +1490,7 @@ sub updateCustomFieldValue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -1733,15 +1608,7 @@ sub build_getApplicationProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -1763,14 +1630,7 @@ sub getApplicationProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ApplicationProperty->new($_),
  } $payload->@* ],
@@ -1862,15 +1722,7 @@ sub build_getAdvancedSettings_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -1892,14 +1744,7 @@ sub getAdvancedSettings( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ApplicationProperty->new($_),
  } $payload->@* ],
@@ -2081,15 +1926,7 @@ sub build_setApplicationProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -2111,14 +1948,7 @@ sub setApplicationProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ApplicationProperty->new($payload),
 
@@ -2268,15 +2098,7 @@ sub build_getAllApplicationRoles_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -2298,14 +2120,7 @@ sub getAllApplicationRoles( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ApplicationRole->new($_),
  } $payload->@* ],
@@ -2428,15 +2243,7 @@ sub build_getApplicationRole_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -2458,14 +2265,7 @@ sub getApplicationRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ApplicationRole->new($payload),
 
@@ -2577,15 +2377,7 @@ sub build_getAttachmentContent_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -2607,14 +2399,7 @@ sub getAttachmentContent( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -2709,15 +2494,7 @@ sub build_getAttachmentMeta_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -2739,14 +2516,7 @@ sub getAttachmentMeta( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::AttachmentSettings->new($payload),
 
@@ -2870,15 +2640,7 @@ sub build_getAttachmentThumbnail_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -2900,14 +2662,7 @@ sub getAttachmentThumbnail( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -3012,15 +2767,7 @@ sub build_removeAttachment_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3155,15 +2902,7 @@ sub build_getAttachment_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3185,14 +2924,7 @@ sub getAttachment( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::AttachmentMetadata->new($payload),
 
@@ -3326,15 +3058,7 @@ sub build_expandAttachmentForHumans_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3356,14 +3080,7 @@ sub expandAttachmentForHumans( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::AttachmentArchiveMetadataReadable->new($payload),
 
@@ -3488,15 +3205,7 @@ sub build_expandAttachmentForMachines_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3518,14 +3227,7 @@ sub expandAttachmentForMachines( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::AttachmentArchiveImpl->new($payload),
 
@@ -3750,15 +3452,7 @@ sub build_getAuditRecords_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3780,14 +3474,7 @@ sub getAuditRecords( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::AuditRecords->new($payload),
 
@@ -3889,15 +3576,7 @@ sub build_getAllSystemAvatars_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3919,14 +3598,7 @@ sub getAllSystemAvatars( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::SystemAvatars->new($payload),
 
@@ -4102,15 +3774,7 @@ sub build_getCommentsByIds_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -4132,14 +3796,7 @@ sub getCommentsByIds( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanComment->new($payload),
 
@@ -4249,15 +3906,7 @@ sub build_getCommentPropertyKeys_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -4279,14 +3928,7 @@ sub getCommentPropertyKeys( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
@@ -4396,15 +4038,7 @@ sub build_deleteCommentProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -4540,15 +4174,7 @@ sub build_getCommentProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -4570,14 +4196,7 @@ sub getCommentProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
@@ -4695,15 +4314,7 @@ sub build_setCommentProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -4725,14 +4336,7 @@ sub setCommentProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -4747,14 +4351,7 @@ sub setCommentProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -5007,15 +4604,7 @@ sub build_createComponent_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -5037,14 +4626,7 @@ sub createComponent( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectComponent->new($payload),
 
@@ -5141,15 +4723,7 @@ sub build_deleteComponent_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -5304,15 +4878,7 @@ sub build_getComponent_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -5334,14 +4900,7 @@ sub getComponent( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectComponent->new($payload),
 
@@ -5600,15 +5159,7 @@ sub build_updateComponent_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -5630,14 +5181,7 @@ sub updateComponent( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectComponent->new($payload),
 
@@ -5733,15 +5277,7 @@ sub build_getComponentRelatedIssues_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -5763,14 +5299,7 @@ sub getComponentRelatedIssues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ComponentIssuesCount->new($payload),
 
@@ -5857,15 +5386,7 @@ sub build_getConfiguration_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -5887,14 +5408,7 @@ sub getConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Configuration->new($payload),
 
@@ -5969,15 +5483,7 @@ sub build_getSelectedTimeTrackingImplementation_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -5999,14 +5505,7 @@ sub getSelectedTimeTrackingImplementation( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::TimeTrackingProvider->new($payload),
 
@@ -6021,14 +5520,7 @@ sub getSelectedTimeTrackingImplementation( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -6119,15 +5611,7 @@ sub build_selectTimeTrackingImplementation_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -6149,14 +5633,7 @@ sub selectTimeTrackingImplementation( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -6238,15 +5715,7 @@ sub build_getAvailableTimeTrackingImplementations_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -6268,14 +5737,7 @@ sub getAvailableTimeTrackingImplementations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::TimeTrackingProvider->new($_),
  } $payload->@* ],
@@ -6354,15 +5816,7 @@ sub build_getSharedTimeTrackingConfiguration_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -6384,14 +5838,7 @@ sub getSharedTimeTrackingConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::TimeTrackingConfiguration->new($payload),
 
@@ -6494,15 +5941,7 @@ sub build_setSharedTimeTrackingConfiguration_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -6524,14 +5963,7 @@ sub setSharedTimeTrackingConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::TimeTrackingConfiguration->new($payload),
 
@@ -6640,15 +6072,7 @@ sub build_getCustomFieldOption_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -6670,14 +6094,7 @@ sub getCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::CustomFieldOption->new($payload),
 
@@ -6841,15 +6258,7 @@ sub build_getAllDashboards_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -6871,14 +6280,7 @@ sub getAllDashboards( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageOfDashboards->new($payload),
 
@@ -6893,14 +6295,7 @@ sub getAllDashboards( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -6915,14 +6310,7 @@ sub getAllDashboards( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -7028,15 +6416,7 @@ sub build_createDashboard_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -7058,14 +6438,7 @@ sub createDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Dashboard->new($payload),
 
@@ -7080,14 +6453,7 @@ sub createDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -7102,14 +6468,7 @@ sub createDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -7189,15 +6548,7 @@ sub build_getAllAvailableDashboardGadgets_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -7219,14 +6570,7 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::AvailableDashboardGadgetsResponse->new($payload),
 
@@ -7241,14 +6585,7 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -7263,14 +6600,7 @@ sub getAllAvailableDashboardGadgets( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -7578,15 +6908,7 @@ sub build_getDashboardsPaginated_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -7608,14 +6930,7 @@ sub getDashboardsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanDashboard->new($payload),
 
@@ -7630,14 +6945,7 @@ sub getDashboardsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -7652,14 +6960,7 @@ sub getDashboardsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -7829,15 +7130,7 @@ sub build_getAllGadgets_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -7859,14 +7152,7 @@ sub getAllGadgets( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::DashboardGadgetResponse->new($payload),
 
@@ -7884,14 +7170,7 @@ sub getAllGadgets( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -8030,15 +7309,7 @@ sub build_addGadget_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -8060,14 +7331,7 @@ sub addGadget( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::DashboardGadget->new($payload),
 
@@ -8082,14 +7346,7 @@ sub addGadget( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -8107,14 +7364,7 @@ sub addGadget( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -8209,15 +7459,7 @@ sub build_removeGadget_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -8239,14 +7481,7 @@ sub removeGadget( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -8264,14 +7499,7 @@ sub removeGadget( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -8394,15 +7622,7 @@ sub build_updateGadget_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -8424,14 +7644,7 @@ sub updateGadget( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -8446,14 +7659,7 @@ sub updateGadget( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -8471,14 +7677,7 @@ sub updateGadget( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -8574,15 +7773,7 @@ sub build_getDashboardItemPropertyKeys_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -8604,14 +7795,7 @@ sub getDashboardItemPropertyKeys( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
@@ -8709,15 +7893,7 @@ sub build_deleteDashboardItemProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -8848,15 +8024,7 @@ sub build_getDashboardItemProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -8878,14 +8046,7 @@ sub getDashboardItemProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
@@ -9005,15 +8166,7 @@ sub build_setDashboardItemProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -9035,14 +8188,7 @@ sub setDashboardItemProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -9057,14 +8203,7 @@ sub setDashboardItemProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -9079,14 +8218,7 @@ sub setDashboardItemProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -9174,15 +8306,7 @@ sub build_deleteDashboard_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -9207,14 +8331,7 @@ sub deleteDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -9229,14 +8346,7 @@ sub deleteDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -9333,15 +8443,7 @@ sub build_getDashboard_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -9363,14 +8465,7 @@ sub getDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Dashboard->new($payload),
 
@@ -9385,14 +8480,7 @@ sub getDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -9407,14 +8495,7 @@ sub getDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -9538,15 +8619,7 @@ sub build_updateDashboard_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -9568,14 +8641,7 @@ sub updateDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Dashboard->new($payload),
 
@@ -9590,14 +8656,7 @@ sub updateDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -9612,14 +8671,7 @@ sub updateDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -9634,14 +8686,7 @@ sub updateDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -9760,15 +8805,7 @@ sub build_copyDashboard_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -9790,14 +8827,7 @@ sub copyDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Dashboard->new($payload),
 
@@ -9812,14 +8842,7 @@ sub copyDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -9834,14 +8857,7 @@ sub copyDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -9856,14 +8872,7 @@ sub copyDashboard( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -9939,15 +8948,7 @@ sub build_getEvents_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -9969,14 +8970,7 @@ sub getEvents( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::IssueEvent->new($_),
  } $payload->@* ],
@@ -10148,15 +9142,7 @@ sub build_analyseExpression_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -10178,14 +9164,7 @@ sub analyseExpression( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::JiraExpressionsAnalysis->new($payload),
 
@@ -10200,14 +9179,7 @@ sub analyseExpression( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -10225,14 +9197,7 @@ sub analyseExpression( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -10465,15 +9430,7 @@ sub build_evaluateJiraExpression_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -10495,14 +9452,7 @@ sub evaluateJiraExpression( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::JiraExpressionResult->new($payload),
 
@@ -10517,14 +9467,7 @@ sub evaluateJiraExpression( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -10542,14 +9485,7 @@ sub evaluateJiraExpression( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -10674,15 +9610,7 @@ sub build_getFields_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -10704,14 +9632,7 @@ sub getFields( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::FieldDetails->new($_),
  } $payload->@* ],
@@ -11049,15 +9970,7 @@ sub build_createCustomField_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -11079,14 +9992,7 @@ sub createCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::FieldDetails->new($payload),
 
@@ -11350,15 +10256,7 @@ sub build_getFieldsPaginated_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -11380,14 +10278,7 @@ sub getFieldsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanField->new($payload),
 
@@ -11402,14 +10293,7 @@ sub getFieldsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -11427,14 +10311,7 @@ sub getFieldsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -11610,15 +10487,7 @@ sub build_getTrashedFieldsPaginated_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -11640,14 +10509,7 @@ sub getTrashedFieldsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanField->new($payload),
 
@@ -11662,14 +10524,7 @@ sub getTrashedFieldsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -11687,14 +10542,7 @@ sub getTrashedFieldsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -11924,15 +10772,7 @@ sub build_updateCustomField_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -11954,14 +10794,7 @@ sub updateCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -11976,14 +10809,7 @@ sub updateCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -12001,14 +10827,7 @@ sub updateCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -12023,14 +10842,7 @@ sub updateCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -12203,15 +11015,7 @@ sub build_getContextsForField_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -12233,14 +11037,7 @@ sub getContextsForField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanCustomFieldContext->new($payload),
 
@@ -12258,14 +11055,7 @@ sub getContextsForField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -12280,14 +11070,7 @@ sub getContextsForField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -12413,15 +11196,7 @@ sub build_createCustomFieldContext_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -12443,14 +11218,7 @@ sub createCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::CreateCustomFieldContext->new($payload),
 
@@ -12474,14 +11242,7 @@ sub createCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -12765,15 +11526,7 @@ sub build_getDefaultValues_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -12795,14 +11548,7 @@ sub getDefaultValues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanCustomFieldContextDefaultValue->new($payload),
 
@@ -12820,14 +11566,7 @@ sub getDefaultValues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -12842,14 +11581,7 @@ sub getDefaultValues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -13107,15 +11839,7 @@ sub build_setDefaultValues_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -13137,14 +11861,7 @@ sub setDefaultValues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -13159,14 +11876,7 @@ sub setDefaultValues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -13184,14 +11894,7 @@ sub setDefaultValues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -13206,14 +11909,7 @@ sub setDefaultValues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -13340,15 +12036,7 @@ sub build_getIssueTypeMappingsForContexts_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -13370,14 +12058,7 @@ sub getIssueTypeMappingsForContexts( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanIssueTypeToContextMapping->new($payload),
 
@@ -13395,14 +12076,7 @@ sub getIssueTypeMappingsForContexts( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -13561,15 +12235,7 @@ sub build_getCustomFieldContextsForProjectsAndIssueTypes_request( $self, %option
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -13591,14 +12257,7 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanContextForProjectAndIssueType->new($payload),
 
@@ -13613,14 +12272,7 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -13638,14 +12290,7 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -13660,14 +12305,7 @@ sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -13798,15 +12436,7 @@ sub build_getProjectContextMapping_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -13828,14 +12458,7 @@ sub getProjectContextMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanCustomFieldContextProjectMapping->new($payload),
 
@@ -13853,14 +12476,7 @@ sub getProjectContextMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -13875,14 +12491,7 @@ sub getProjectContextMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -13990,15 +12599,7 @@ sub build_deleteCustomFieldContext_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -14020,14 +12621,7 @@ sub deleteCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14042,14 +12636,7 @@ sub deleteCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14067,14 +12654,7 @@ sub deleteCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14089,14 +12669,7 @@ sub deleteCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14221,15 +12794,7 @@ sub build_updateCustomFieldContext_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -14251,14 +12816,7 @@ sub updateCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14273,14 +12831,7 @@ sub updateCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14298,14 +12849,7 @@ sub updateCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14320,14 +12864,7 @@ sub updateCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14460,15 +12997,7 @@ sub build_addIssueTypesToContext_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -14490,14 +13019,7 @@ sub addIssueTypesToContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14512,14 +13034,7 @@ sub addIssueTypesToContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14537,14 +13052,7 @@ sub addIssueTypesToContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14559,14 +13067,7 @@ sub addIssueTypesToContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14581,14 +13082,7 @@ sub addIssueTypesToContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14711,15 +13205,7 @@ sub build_removeIssueTypesFromContext_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -14741,14 +13227,7 @@ sub removeIssueTypesFromContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14763,14 +13242,7 @@ sub removeIssueTypesFromContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14788,14 +13260,7 @@ sub removeIssueTypesFromContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14810,14 +13275,7 @@ sub removeIssueTypesFromContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -14982,15 +13440,7 @@ sub build_getOptionsForContext_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -15012,14 +13462,7 @@ sub getOptionsForContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanCustomFieldContextOption->new($payload),
 
@@ -15034,14 +13477,7 @@ sub getOptionsForContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -15059,14 +13495,7 @@ sub getOptionsForContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -15081,14 +13510,7 @@ sub getOptionsForContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -15235,15 +13657,7 @@ sub build_createCustomFieldOption_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -15265,14 +13679,7 @@ sub createCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::CustomFieldCreatedContextOptionsList->new($payload),
 
@@ -15287,14 +13694,7 @@ sub createCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -15312,14 +13712,7 @@ sub createCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -15334,14 +13727,7 @@ sub createCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -15487,15 +13873,7 @@ sub build_updateCustomFieldOption_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -15517,14 +13895,7 @@ sub updateCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::CustomFieldUpdatedContextOptionsList->new($payload),
 
@@ -15539,14 +13910,7 @@ sub updateCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -15564,14 +13928,7 @@ sub updateCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -15586,14 +13943,7 @@ sub updateCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -15724,15 +14074,7 @@ sub build_reorderCustomFieldOptions_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -15754,14 +14096,7 @@ sub reorderCustomFieldOptions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -15776,14 +14111,7 @@ sub reorderCustomFieldOptions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -15801,14 +14129,7 @@ sub reorderCustomFieldOptions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -15823,14 +14144,7 @@ sub reorderCustomFieldOptions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -15949,15 +14263,7 @@ sub build_deleteCustomFieldOption_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -15982,14 +14288,7 @@ sub deleteCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -16007,14 +14306,7 @@ sub deleteCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -16029,14 +14321,7 @@ sub deleteCustomFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -16159,15 +14444,7 @@ sub build_assignProjectsToCustomFieldContext_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -16189,14 +14466,7 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -16211,14 +14481,7 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -16236,14 +14499,7 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -16258,14 +14514,7 @@ sub assignProjectsToCustomFieldContext( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -16390,15 +14639,7 @@ sub build_removeCustomFieldContextFromProjects_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -16420,14 +14661,7 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -16442,14 +14676,7 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -16467,14 +14694,7 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -16489,14 +14709,7 @@ sub removeCustomFieldContextFromProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -16601,15 +14814,7 @@ sub build_getContextsForFieldDeprecated_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -16631,14 +14836,7 @@ sub getContextsForFieldDeprecated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanContext->new($payload),
 
@@ -16760,15 +14958,7 @@ sub build_getScreensForField_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -16790,14 +14980,7 @@ sub getScreensForField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanScreenWithTab->new($payload),
 
@@ -16956,15 +15139,7 @@ sub build_getAllIssueFieldOptions_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -16986,14 +15161,7 @@ sub getAllIssueFieldOptions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanIssueFieldOption->new($payload),
 
@@ -17148,15 +15316,7 @@ sub build_createIssueFieldOption_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -17178,14 +15338,7 @@ sub createIssueFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueFieldOption->new($payload),
 
@@ -17332,15 +15485,7 @@ sub build_getSelectableIssueFieldOptions_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -17362,14 +15507,7 @@ sub getSelectableIssueFieldOptions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanIssueFieldOption->new($payload),
 
@@ -17513,15 +15651,7 @@ sub build_getVisibleIssueFieldOptions_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -17543,14 +15673,7 @@ sub getVisibleIssueFieldOptions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanIssueFieldOption->new($payload),
 
@@ -17656,15 +15779,7 @@ sub build_deleteIssueFieldOption_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -17686,14 +15801,7 @@ sub deleteIssueFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -17838,15 +15946,7 @@ sub build_getIssueFieldOption_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -17868,14 +15968,7 @@ sub getIssueFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueFieldOption->new($payload),
 
@@ -18045,15 +16138,7 @@ sub build_updateIssueFieldOption_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -18075,14 +16160,7 @@ sub updateIssueFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueFieldOption->new($payload),
 
@@ -18258,15 +16336,7 @@ sub build_replaceIssueFieldOption_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -18288,14 +16358,7 @@ sub replaceIssueFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::TaskProgressBeanRemoveOptionFromIssuesResult->new($payload),
 
@@ -18313,14 +16376,7 @@ sub replaceIssueFieldOption( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -18406,15 +16462,7 @@ sub build_deleteCustomField_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -18436,14 +16484,7 @@ sub deleteCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
@@ -18458,14 +16499,7 @@ sub deleteCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -18480,14 +16514,7 @@ sub deleteCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -18502,14 +16529,7 @@ sub deleteCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -18524,14 +16544,7 @@ sub deleteCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -18546,14 +16559,7 @@ sub deleteCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -18633,15 +16639,7 @@ sub build_restoreCustomField_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -18663,14 +16661,7 @@ sub restoreCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -18685,14 +16676,7 @@ sub restoreCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -18707,14 +16691,7 @@ sub restoreCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -18729,14 +16706,7 @@ sub restoreCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -18751,14 +16721,7 @@ sub restoreCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -18838,15 +16801,7 @@ sub build_trashCustomField_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -18868,14 +16823,7 @@ sub trashCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -18890,14 +16838,7 @@ sub trashCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -18912,14 +16853,7 @@ sub trashCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -18934,14 +16868,7 @@ sub trashCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -18956,14 +16883,7 @@ sub trashCustomField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -19103,15 +17023,7 @@ sub build_getAllFieldConfigurations_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -19133,14 +17045,7 @@ sub getAllFieldConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanFieldConfigurationDetails->new($payload),
 
@@ -19236,15 +17141,7 @@ sub build_createFieldConfiguration_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -19266,14 +17163,7 @@ sub createFieldConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::FieldConfiguration->new($payload),
 
@@ -19360,15 +17250,7 @@ sub build_deleteFieldConfiguration_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -19390,14 +17272,7 @@ sub deleteFieldConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -19504,15 +17379,7 @@ sub build_updateFieldConfiguration_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -19534,14 +17401,7 @@ sub updateFieldConfiguration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -19667,15 +17527,7 @@ sub build_getFieldConfigurationItems_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -19697,14 +17549,7 @@ sub getFieldConfigurationItems( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanFieldConfigurationItem->new($payload),
 
@@ -19806,15 +17651,7 @@ sub build_updateFieldConfigurationItems_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -19836,14 +17673,7 @@ sub updateFieldConfigurationItems( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -19968,15 +17798,7 @@ sub build_getAllFieldConfigurationSchemes_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -19998,14 +17820,7 @@ sub getAllFieldConfigurationSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanFieldConfigurationScheme->new($payload),
 
@@ -20120,15 +17935,7 @@ sub build_createFieldConfigurationScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -20150,14 +17957,7 @@ sub createFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::FieldConfigurationScheme->new($payload),
 
@@ -20172,14 +17972,7 @@ sub createFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -20197,14 +17990,7 @@ sub createFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -20327,15 +18113,7 @@ sub build_getFieldConfigurationSchemeMappings_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -20357,14 +18135,7 @@ sub getFieldConfigurationSchemeMappings( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanFieldConfigurationIssueTypeItem->new($payload),
 
@@ -20497,15 +18268,7 @@ sub build_getFieldConfigurationSchemeProjectMapping_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -20527,14 +18290,7 @@ sub getFieldConfigurationSchemeProjectMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanFieldConfigurationSchemeProjects->new($payload),
 
@@ -20650,15 +18406,7 @@ sub build_assignFieldConfigurationSchemeToProject_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -20680,14 +18428,7 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -20702,14 +18443,7 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -20727,14 +18461,7 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -20749,14 +18476,7 @@ sub assignFieldConfigurationSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -20834,15 +18554,7 @@ sub build_deleteFieldConfigurationScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -20864,14 +18576,7 @@ sub deleteFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -21002,15 +18707,7 @@ sub build_updateFieldConfigurationScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -21032,14 +18729,7 @@ sub updateFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -21054,14 +18744,7 @@ sub updateFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -21079,14 +18762,7 @@ sub updateFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -21101,14 +18777,7 @@ sub updateFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -21199,15 +18868,7 @@ sub build_setFieldConfigurationSchemeMapping_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -21229,14 +18890,7 @@ sub setFieldConfigurationSchemeMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -21367,15 +19021,7 @@ sub build_removeIssueTypesFromGlobalFieldConfigurationScheme_request( $self, %op
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -21397,14 +19043,7 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -21419,14 +19058,7 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -21441,14 +19073,7 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -21463,14 +19088,7 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -21485,14 +19103,7 @@ sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -21611,15 +19222,7 @@ sub build_getFilters_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -21641,14 +19244,7 @@ sub getFilters( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::Filter->new($_),
  } $payload->@* ],
@@ -21845,15 +19441,7 @@ sub build_createFilter_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -21875,14 +19463,7 @@ sub createFilter( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Filter->new($payload),
 
@@ -21957,15 +19538,7 @@ sub build_getDefaultShareScope_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -21987,14 +19560,7 @@ sub getDefaultShareScope( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::DefaultShareScope->new($payload),
 
@@ -22098,15 +19664,7 @@ sub build_setDefaultShareScope_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -22128,14 +19686,7 @@ sub setDefaultShareScope( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::DefaultShareScope->new($payload),
 
@@ -22369,15 +19920,7 @@ sub build_getFavouriteFilters_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -22399,14 +19942,7 @@ sub getFavouriteFilters( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::Filter->new($_),
  } $payload->@* ],
@@ -22642,15 +20178,7 @@ sub build_getMyFilters_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -22672,14 +20200,7 @@ sub getMyFilters( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::Filter->new($_),
  } $payload->@* ],
@@ -23191,15 +20712,7 @@ sub build_getFiltersPaginated_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -23221,14 +20734,7 @@ sub getFiltersPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanFilterDetails->new($payload),
 
@@ -23243,14 +20749,7 @@ sub getFiltersPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -23327,15 +20826,7 @@ sub build_deleteFilter_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -23524,15 +21015,7 @@ sub build_getFilter_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -23554,14 +21037,7 @@ sub getFilter( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Filter->new($payload),
 
@@ -23774,15 +21250,7 @@ sub build_updateFilter_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -23804,14 +21272,7 @@ sub updateFilter( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Filter->new($payload),
 
@@ -23920,15 +21381,7 @@ sub build_resetColumns_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -24063,15 +21516,7 @@ sub build_getColumns_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -24093,14 +21538,7 @@ sub getColumns( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ColumnItem->new($_),
  } $payload->@* ],
@@ -24224,15 +21662,7 @@ sub build_setColumns_request( $self, %options ) {
         # => $body,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -24254,14 +21684,7 @@ sub setColumns( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -24403,15 +21826,7 @@ sub build_deleteFavouriteForFilter_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -24433,14 +21848,7 @@ sub deleteFavouriteForFilter( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Filter->new($payload),
 
@@ -24608,15 +22016,7 @@ sub build_setFavouriteForFilter_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -24638,14 +22038,7 @@ sub setFavouriteForFilter( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Filter->new($payload),
 
@@ -24737,15 +22130,7 @@ sub build_changeFilterOwner_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -24767,14 +22152,7 @@ sub changeFilterOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -25016,15 +22394,7 @@ sub build_getSharePermissions_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -25046,14 +22416,7 @@ sub getSharePermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::SharePermission->new($_),
  } $payload->@* ],
@@ -25335,15 +22698,7 @@ sub build_addSharePermission_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -25365,14 +22720,7 @@ sub addSharePermission( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::SharePermission->new($_),
  } $payload->@* ],
@@ -25464,15 +22812,7 @@ sub build_deleteSharePermission_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -25609,15 +22949,7 @@ sub build_getSharePermission_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -25639,14 +22971,7 @@ sub getSharePermission( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::SharePermission->new($payload),
 
@@ -25742,15 +23067,7 @@ sub build_removeGroup_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -25862,15 +23179,7 @@ sub build_getGroup_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -25892,14 +23201,7 @@ sub getGroup( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Group->new($payload),
 
@@ -26010,15 +23312,7 @@ sub build_createGroup_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -26040,14 +23334,7 @@ sub createGroup( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Group->new($payload),
 
@@ -26194,15 +23481,7 @@ sub build_bulkGetGroups_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -26224,14 +23503,7 @@ sub bulkGetGroups( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanGroupDetails->new($payload),
 
@@ -26252,14 +23524,7 @@ sub bulkGetGroups( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -26274,14 +23539,7 @@ sub bulkGetGroups( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -26419,15 +23677,7 @@ sub build_getUsersFromGroup_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -26449,14 +23699,7 @@ sub getUsersFromGroup( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanUserDetails->new($payload),
 
@@ -26563,15 +23806,7 @@ sub build_removeUserFromGroup_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -26692,15 +23927,7 @@ sub build_addUserToGroup_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -26722,14 +23949,7 @@ sub addUserToGroup( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Group->new($payload),
 
@@ -26879,15 +24099,7 @@ sub build_findGroups_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -26909,14 +24121,7 @@ sub findGroups( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::FoundGroups->new($payload),
 
@@ -27135,15 +24340,7 @@ sub build_findUsersAndGroups_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -27165,14 +24362,7 @@ sub findUsersAndGroups( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::FoundUsersAndGroups->new($payload),
 
@@ -27270,15 +24460,7 @@ sub build_getLicense_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -27300,14 +24482,7 @@ sub getLicense( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::License->new($payload),
 
@@ -27458,15 +24633,7 @@ sub build_createIssue_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -27488,14 +24655,7 @@ sub createIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::CreatedIssue->new($payload),
 
@@ -27510,14 +24670,7 @@ sub createIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -27532,14 +24685,7 @@ sub createIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -27554,14 +24700,7 @@ sub createIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -27708,15 +24847,7 @@ sub build_createIssues_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -27738,14 +24869,7 @@ sub createIssues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::CreatedIssues->new($payload),
 
@@ -27760,14 +24884,7 @@ sub createIssues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::CreatedIssues->new($payload),
 
@@ -27911,15 +25028,7 @@ sub build_getCreateIssueMeta_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -27941,14 +25050,7 @@ sub getCreateIssueMeta( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueCreateMetadata->new($payload),
 
@@ -28073,15 +25175,7 @@ sub build_getIssuePickerResource_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -28103,14 +25197,7 @@ sub getIssuePickerResource( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssuePickerSuggestions->new($payload),
 
@@ -28227,15 +25314,7 @@ sub build_bulkSetIssuesPropertiesList_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -28260,14 +25339,7 @@ sub bulkSetIssuesPropertiesList( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -28282,14 +25354,7 @@ sub bulkSetIssuesPropertiesList( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -28400,15 +25465,7 @@ sub build_bulkSetIssuePropertiesByIssue_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -28433,14 +25490,7 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -28455,14 +25505,7 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -28477,14 +25520,7 @@ sub bulkSetIssuePropertiesByIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -28633,15 +25669,7 @@ sub build_bulkDeleteIssueProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -28666,14 +25694,7 @@ sub bulkDeleteIssueProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -28688,14 +25709,7 @@ sub bulkDeleteIssueProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -28875,15 +25889,7 @@ sub build_bulkSetIssueProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -28908,14 +25914,7 @@ sub bulkSetIssueProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -28930,14 +25929,7 @@ sub bulkSetIssueProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -29039,15 +26031,7 @@ sub build_getIsWatchingIssueBulk_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -29069,14 +26053,7 @@ sub getIsWatchingIssueBulk( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::BulkIssueIsWatching->new($payload),
 
@@ -29180,15 +26157,7 @@ sub build_deleteIssue_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -29701,15 +26670,7 @@ sub build_getIssue_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -29731,14 +26692,7 @@ sub getIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueBean->new($payload),
 
@@ -29892,15 +26846,7 @@ sub build_editIssue_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -29922,14 +26868,7 @@ sub editIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -30133,15 +27072,7 @@ sub build_assignIssue_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -30163,14 +27094,7 @@ sub assignIssue( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -30482,15 +27406,7 @@ sub build_addAttachment_request( $self, %options ) {
         => form => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -30512,14 +27428,7 @@ sub addAttachment( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::Attachment->new($_),
  } $payload->@* ],
@@ -30706,15 +27615,7 @@ sub build_getChangeLogs_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -30736,14 +27637,7 @@ sub getChangeLogs( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanChangelog->new($payload),
 
@@ -30918,15 +27812,7 @@ sub build_getChangeLogsByIds_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -30948,14 +27834,7 @@ sub getChangeLogsByIds( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageOfChangelogs->new($payload),
 
@@ -31132,15 +28011,7 @@ sub build_getComments_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -31162,14 +28033,7 @@ sub getComments( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageOfComments->new($payload),
 
@@ -31376,15 +28240,7 @@ sub build_addComment_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -31406,14 +28262,7 @@ sub addComment( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Comment->new($payload),
 
@@ -31528,15 +28377,7 @@ sub build_deleteComment_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -31712,15 +28553,7 @@ sub build_getComment_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -31742,14 +28575,7 @@ sub getComment( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Comment->new($payload),
 
@@ -31983,15 +28809,7 @@ sub build_updateComment_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -32013,14 +28831,7 @@ sub updateComment( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Comment->new($payload),
 
@@ -32234,15 +29045,7 @@ sub build_getEditIssueMeta_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -32264,14 +29067,7 @@ sub getEditIssueMeta( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueUpdateMetadata->new($payload),
 
@@ -32399,15 +29195,7 @@ sub build_notify_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -32429,14 +29217,7 @@ sub notify( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -32547,15 +29328,7 @@ sub build_getIssuePropertyKeys_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -32577,14 +29350,7 @@ sub getIssuePropertyKeys( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
@@ -32685,15 +29451,7 @@ sub build_deleteIssueProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -32818,15 +29576,7 @@ sub build_getIssueProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -32848,14 +29598,7 @@ sub getIssueProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
@@ -32967,15 +29710,7 @@ sub build_setIssueProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -32997,14 +29732,7 @@ sub setIssueProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -33019,14 +29747,7 @@ sub setIssueProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -33141,15 +29862,7 @@ sub build_deleteRemoteIssueLinkByGlobalId_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -33332,15 +30045,7 @@ sub build_getRemoteIssueLinks_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -33362,14 +30067,7 @@ sub getRemoteIssueLinks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::RemoteIssueLink->new($payload),
 
@@ -33527,15 +30225,7 @@ sub build_createOrUpdateRemoteIssueLink_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -33557,14 +30247,7 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::RemoteIssueLinkIdentifies->new($payload),
 
@@ -33579,14 +30262,7 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::RemoteIssueLinkIdentifies->new($payload),
 
@@ -33601,14 +30277,7 @@ sub createOrUpdateRemoteIssueLink( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -33717,15 +30386,7 @@ sub build_deleteRemoteIssueLinkById_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -33878,15 +30539,7 @@ sub build_getRemoteIssueLinkById_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -33908,14 +30561,7 @@ sub getRemoteIssueLinkById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::RemoteIssueLink->new($payload),
 
@@ -34068,15 +30714,7 @@ sub build_updateRemoteIssueLink_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -34098,14 +30736,7 @@ sub updateRemoteIssueLink( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -34120,14 +30751,7 @@ sub updateRemoteIssueLink( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -34379,15 +31003,7 @@ sub build_getTransitions_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -34409,14 +31025,7 @@ sub getTransitions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Transitions->new($payload),
 
@@ -34545,15 +31154,7 @@ sub build_doTransition_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -34575,14 +31176,7 @@ sub doTransition( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -34681,15 +31275,7 @@ sub build_removeVote_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -34825,15 +31411,7 @@ sub build_getVotes_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -34855,14 +31433,7 @@ sub getVotes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Votes->new($payload),
 
@@ -34960,15 +31531,7 @@ sub build_addVote_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -34990,14 +31553,7 @@ sub addVote( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -35116,15 +31672,7 @@ sub build_removeWatcher_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -35260,15 +31808,7 @@ sub build_getIssueWatchers_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -35290,14 +31830,7 @@ sub getIssueWatchers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Watchers->new($payload),
 
@@ -35403,15 +31936,7 @@ sub build_addWatcher_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -35433,14 +31958,7 @@ sub addWatcher( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -35634,15 +32152,7 @@ sub build_getIssueWorklog_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -35664,14 +32174,7 @@ sub getIssueWorklog( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageOfWorklogs->new($payload),
 
@@ -35895,15 +32398,7 @@ sub build_addWorklog_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -35925,14 +32420,7 @@ sub addWorklog( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Worklog->new($payload),
 
@@ -36108,15 +32596,7 @@ sub build_deleteWorklog_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -36296,15 +32776,7 @@ sub build_getWorklog_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -36326,14 +32798,7 @@ sub getWorklog( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Worklog->new($payload),
 
@@ -36607,15 +33072,7 @@ sub build_updateWorklog_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -36637,14 +33094,7 @@ sub updateWorklog( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Worklog->new($payload),
 
@@ -36768,15 +33218,7 @@ sub build_getWorklogPropertyKeys_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -36798,14 +33240,7 @@ sub getWorklogPropertyKeys( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
@@ -36925,15 +33360,7 @@ sub build_deleteWorklogProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -37077,15 +33504,7 @@ sub build_getWorklogProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -37107,14 +33526,7 @@ sub getWorklogProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
@@ -37247,15 +33659,7 @@ sub build_setWorklogProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -37277,14 +33681,7 @@ sub setWorklogProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -37299,14 +33696,7 @@ sub setWorklogProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -37451,15 +33841,7 @@ sub build_linkIssues_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -37481,14 +33863,7 @@ sub linkIssues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -37592,15 +33967,7 @@ sub build_deleteIssueLink_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -37765,15 +34132,7 @@ sub build_getIssueLink_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -37795,14 +34154,7 @@ sub getIssueLink( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueLink->new($payload),
 
@@ -37899,15 +34251,7 @@ sub build_getIssueLinkTypes_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -37929,14 +34273,7 @@ sub getIssueLinkTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueLinkTypes->new($payload),
 
@@ -38102,15 +34439,7 @@ sub build_createIssueLinkType_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -38132,14 +34461,7 @@ sub createIssueLinkType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueLinkType->new($payload),
 
@@ -38224,15 +34546,7 @@ sub build_deleteIssueLinkType_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -38340,15 +34654,7 @@ sub build_getIssueLinkType_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -38370,14 +34676,7 @@ sub getIssueLinkType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueLinkType->new($payload),
 
@@ -38558,15 +34857,7 @@ sub build_updateIssueLinkType_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -38588,14 +34879,7 @@ sub updateIssueLinkType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueLinkType->new($payload),
 
@@ -38681,15 +34965,7 @@ sub build_getIssueSecuritySchemes_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -38711,14 +34987,7 @@ sub getIssueSecuritySchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::SecuritySchemes->new($payload),
 
@@ -38831,15 +35100,7 @@ sub build_getIssueSecurityScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -38861,14 +35122,7 @@ sub getIssueSecurityScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::SecurityScheme->new($payload),
 
@@ -39057,15 +35311,7 @@ sub build_getIssueSecurityLevelMembers_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -39087,14 +35333,7 @@ sub getIssueSecurityLevelMembers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanIssueSecurityLevelMember->new($payload),
 
@@ -39210,15 +35449,7 @@ sub build_getIssueAllTypes_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -39240,14 +35471,7 @@ sub getIssueAllTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::IssueTypeDetails->new($_),
  } $payload->@* ],
@@ -39358,15 +35582,7 @@ sub build_createIssueType_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -39388,14 +35604,7 @@ sub createIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueTypeDetails->new($payload),
 
@@ -39534,15 +35743,7 @@ sub build_getIssueTypesForProject_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -39564,14 +35765,7 @@ sub getIssueTypesForProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::IssueTypeDetails->new($_),
  } $payload->@* ],
@@ -39664,15 +35858,7 @@ sub build_deleteIssueType_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -39784,15 +35970,7 @@ sub build_getIssueType_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -39814,14 +35992,7 @@ sub getIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueTypeDetails->new($payload),
 
@@ -39927,15 +36098,7 @@ sub build_updateIssueType_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -39957,14 +36120,7 @@ sub updateIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueTypeDetails->new($payload),
 
@@ -40081,15 +36237,7 @@ sub build_getAlternativeIssueTypes_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -40111,14 +36259,7 @@ sub getAlternativeIssueTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::IssueTypeDetails->new($_),
  } $payload->@* ],
@@ -40268,15 +36409,7 @@ sub build_createIssueTypeAvatar_request( $self, %options ) {
         # => $body,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -40298,14 +36431,7 @@ sub createIssueTypeAvatar( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Avatar->new($payload),
 
@@ -40419,15 +36545,7 @@ sub build_getIssueTypePropertyKeys_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -40449,14 +36567,7 @@ sub getIssueTypePropertyKeys( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
@@ -40544,15 +36655,7 @@ sub build_deleteIssueTypeProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -40683,15 +36786,7 @@ sub build_getIssueTypeProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -40713,14 +36808,7 @@ sub getIssueTypeProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
@@ -40819,15 +36907,7 @@ sub build_setIssueTypeProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -40849,14 +36929,7 @@ sub setIssueTypeProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -40871,14 +36944,7 @@ sub setIssueTypeProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -41095,15 +37161,7 @@ sub build_getAllIssueTypeSchemes_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -41125,14 +37183,7 @@ sub getAllIssueTypeSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanIssueTypeScheme->new($payload),
 
@@ -41259,15 +37310,7 @@ sub build_createIssueTypeScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -41289,14 +37332,7 @@ sub createIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueTypeSchemeID->new($payload),
 
@@ -41311,14 +37347,7 @@ sub createIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -41336,14 +37365,7 @@ sub createIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -41358,14 +37380,7 @@ sub createIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -41479,15 +37494,7 @@ sub build_getIssueTypeSchemesMapping_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -41509,14 +37516,7 @@ sub getIssueTypeSchemesMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanIssueTypeSchemeMapping->new($payload),
 
@@ -41705,15 +37705,7 @@ sub build_getIssueTypeSchemeForProjects_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -41735,14 +37727,7 @@ sub getIssueTypeSchemeForProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanIssueTypeSchemeProjects->new($payload),
 
@@ -41860,15 +37845,7 @@ sub build_assignIssueTypeSchemeToProject_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -41890,14 +37867,7 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -41912,14 +37882,7 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -41937,14 +37900,7 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -41959,14 +37915,7 @@ sub assignIssueTypeSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42070,15 +38019,7 @@ sub build_deleteIssueTypeScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -42100,14 +38041,7 @@ sub deleteIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42122,14 +38056,7 @@ sub deleteIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42147,14 +38074,7 @@ sub deleteIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42169,14 +38089,7 @@ sub deleteIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42297,15 +38210,7 @@ sub build_updateIssueTypeScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -42327,14 +38232,7 @@ sub updateIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42349,14 +38247,7 @@ sub updateIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42374,14 +38265,7 @@ sub updateIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42396,14 +38280,7 @@ sub updateIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42520,15 +38397,7 @@ sub build_addIssueTypesToIssueTypeScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -42550,14 +38419,7 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42572,14 +38434,7 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42597,14 +38452,7 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42619,14 +38467,7 @@ sub addIssueTypesToIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42768,15 +38609,7 @@ sub build_reorderIssueTypesInIssueTypeScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -42798,14 +38631,7 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42820,14 +38646,7 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42845,14 +38664,7 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -42867,14 +38679,7 @@ sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -43003,15 +38808,7 @@ sub build_removeIssueTypeFromIssueTypeScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -43033,14 +38830,7 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -43055,14 +38845,7 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -43080,14 +38863,7 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -43102,14 +38878,7 @@ sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -43276,15 +39045,7 @@ sub build_getIssueTypeScreenSchemes_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -43306,14 +39067,7 @@ sub getIssueTypeScreenSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanIssueTypeScreenScheme->new($payload),
 
@@ -43444,15 +39198,7 @@ sub build_createIssueTypeScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -43474,14 +39220,7 @@ sub createIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueTypeScreenSchemeId->new($payload),
 
@@ -43496,14 +39235,7 @@ sub createIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -43521,14 +39253,7 @@ sub createIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -43543,14 +39268,7 @@ sub createIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -43565,14 +39283,7 @@ sub createIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -43690,15 +39401,7 @@ sub build_getIssueTypeScreenSchemeMappings_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -43720,14 +39423,7 @@ sub getIssueTypeScreenSchemeMappings( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanIssueTypeScreenSchemeItem->new($payload),
 
@@ -43848,15 +39544,7 @@ sub build_getIssueTypeScreenSchemeProjectAssociations_request( $self, %options )
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -43878,14 +39566,7 @@ sub getIssueTypeScreenSchemeProjectAssociations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanIssueTypeScreenSchemesProjects->new($payload),
 
@@ -44001,15 +39682,7 @@ sub build_assignIssueTypeScreenSchemeToProject_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -44031,14 +39704,7 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44053,14 +39719,7 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44078,14 +39737,7 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44100,14 +39752,7 @@ sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44199,15 +39844,7 @@ sub build_deleteIssueTypeScreenScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -44229,14 +39866,7 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44251,14 +39881,7 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44279,14 +39902,7 @@ sub deleteIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44403,15 +40019,7 @@ sub build_updateIssueTypeScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -44433,14 +40041,7 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44455,14 +40056,7 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44480,14 +40074,7 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44502,14 +40089,7 @@ sub updateIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44622,15 +40202,7 @@ sub build_appendMappingsForIssueTypeScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -44652,14 +40224,7 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44674,14 +40239,7 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44702,14 +40260,7 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44724,14 +40275,7 @@ sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44844,15 +40388,7 @@ sub build_updateDefaultScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -44874,14 +40410,7 @@ sub updateDefaultScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44896,14 +40425,7 @@ sub updateDefaultScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44921,14 +40443,7 @@ sub updateDefaultScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -44943,14 +40458,7 @@ sub updateDefaultScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -45063,15 +40571,7 @@ sub build_removeMappingsFromIssueTypeScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -45093,14 +40593,7 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -45115,14 +40608,7 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -45140,14 +40626,7 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -45162,14 +40641,7 @@ sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -45295,15 +40767,7 @@ sub build_getProjectsForIssueTypeScreenScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -45325,14 +40789,7 @@ sub getProjectsForIssueTypeScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanProjectDetails->new($payload),
 
@@ -45466,15 +40923,7 @@ sub build_getAutoComplete_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -45496,14 +40945,7 @@ sub getAutoComplete( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::JQLReferenceData->new($payload),
 
@@ -45684,15 +41126,7 @@ sub build_getAutoCompletePost_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -45714,14 +41148,7 @@ sub getAutoCompletePost( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::JQLReferenceData->new($payload),
 
@@ -45865,15 +41292,7 @@ sub build_getFieldAutoCompleteForQueryString_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -45895,14 +41314,7 @@ sub getFieldAutoCompleteForQueryString( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::AutoCompleteSuggestions->new($payload),
 
@@ -45992,15 +41404,7 @@ sub build_getPrecomputations_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -46022,14 +41426,7 @@ sub getPrecomputations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanJqlFunctionPrecomputationBean->new($payload),
 
@@ -46100,15 +41497,7 @@ sub build_updatePrecomputations_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -46130,14 +41519,7 @@ sub updatePrecomputations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -46263,15 +41645,7 @@ sub build_matchIssues_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -46293,14 +41667,7 @@ sub matchIssues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueMatches->new($payload),
 
@@ -46578,15 +41945,7 @@ sub build_parseJqlQueries_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -46608,14 +41967,7 @@ sub parseJqlQueries( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ParsedJqlQueries->new($payload),
 
@@ -46630,14 +41982,7 @@ sub parseJqlQueries( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -46732,15 +42077,7 @@ sub build_migrateQueries_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -46762,14 +42099,7 @@ sub migrateQueries( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ConvertedJQLQueries->new($payload),
 
@@ -46907,15 +42237,7 @@ sub build_sanitiseJqlQueries_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -46937,14 +42259,7 @@ sub sanitiseJqlQueries( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::SanitizedJqlQueries->new($payload),
 
@@ -46959,14 +42274,7 @@ sub sanitiseJqlQueries( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -46981,14 +42289,7 @@ sub sanitiseJqlQueries( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -47003,14 +42304,7 @@ sub sanitiseJqlQueries( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -47100,15 +42394,7 @@ sub build_getAllLabels_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -47130,14 +42416,7 @@ sub getAllLabels( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanString->new($payload),
 
@@ -47201,15 +42480,7 @@ sub build_getApproximateLicenseCount_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -47231,14 +42502,7 @@ sub getApproximateLicenseCount( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::LicenseMetric->new($payload),
 
@@ -47323,15 +42587,7 @@ sub build_getApproximateApplicationLicenseCount_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -47353,14 +42609,7 @@ sub getApproximateApplicationLicenseCount( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::LicenseMetric->new($payload),
 
@@ -47527,15 +42776,7 @@ sub build_getMyPermissions_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -47557,14 +42798,7 @@ sub getMyPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Permissions->new($payload),
 
@@ -47579,14 +42813,7 @@ sub getMyPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -47601,14 +42828,7 @@ sub getMyPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -47623,14 +42843,7 @@ sub getMyPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -47723,15 +42936,7 @@ sub build_removePreference_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -47842,15 +43047,7 @@ sub build_getPreference_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -47872,14 +43069,7 @@ sub getPreference( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -48010,19 +43200,10 @@ sub build_setPreference_request( $self, %options ) {
             'Accept' => 'application/json',
             "Content-Type" => 'application/json',
         }
-        # XXX Need to fill the body
-        # => $body,
+        => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -48044,14 +43225,7 @@ sub setPreference( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -48123,15 +43297,7 @@ sub build_deleteLocale_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -48153,14 +43319,7 @@ sub deleteLocale( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -48236,15 +43395,7 @@ sub build_getLocale_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -48266,14 +43417,7 @@ sub getLocale( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Locale->new($payload),
 
@@ -48355,15 +43499,7 @@ sub build_setLocale_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -48385,14 +43521,7 @@ sub setLocale( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -48513,15 +43642,7 @@ sub build_getCurrentUser_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -48543,14 +43664,7 @@ sub getCurrentUser( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::User->new($payload),
 
@@ -48955,15 +44069,7 @@ sub build_getNotificationSchemes_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -48985,14 +44091,7 @@ sub getNotificationSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanNotificationScheme->new($payload),
 
@@ -49007,14 +44106,7 @@ sub getNotificationSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -49126,15 +44218,7 @@ sub build_createNotificationScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -49156,14 +44240,7 @@ sub createNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::NotificationSchemeId->new($payload),
 
@@ -49178,14 +44255,7 @@ sub createNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -49200,14 +44270,7 @@ sub createNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -49222,14 +44285,7 @@ sub createNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -49337,15 +44393,7 @@ sub build_getNotificationSchemeToProjectMappings_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -49367,14 +44415,7 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanNotificationSchemeAndProjectMappingJsonBean->new($payload),
 
@@ -49389,14 +44430,7 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -49411,14 +44445,7 @@ sub getNotificationSchemeToProjectMappings( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -49783,15 +44810,7 @@ sub build_getNotificationScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -49813,14 +44832,7 @@ sub getNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::NotificationScheme->new($payload),
 
@@ -49950,15 +44962,7 @@ sub build_updateNotificationScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -49980,14 +44984,7 @@ sub updateNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -50002,14 +44999,7 @@ sub updateNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50024,14 +45014,7 @@ sub updateNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50046,14 +45029,7 @@ sub updateNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50068,14 +45044,7 @@ sub updateNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50192,15 +45161,7 @@ sub build_addNotifications_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -50222,14 +45183,7 @@ sub addNotifications( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -50244,14 +45198,7 @@ sub addNotifications( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50266,14 +45213,7 @@ sub addNotifications( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50288,14 +45228,7 @@ sub addNotifications( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50310,14 +45243,7 @@ sub addNotifications( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50421,15 +45347,7 @@ sub build_deleteNotificationScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -50451,14 +45369,7 @@ sub deleteNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -50473,14 +45384,7 @@ sub deleteNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50495,14 +45399,7 @@ sub deleteNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50517,14 +45414,7 @@ sub deleteNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50539,14 +45429,7 @@ sub deleteNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50650,15 +45533,7 @@ sub build_removeNotificationFromNotificationScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -50680,14 +45555,7 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -50702,14 +45570,7 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50724,14 +45585,7 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50746,14 +45600,7 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50768,14 +45615,7 @@ sub removeNotificationFromNotificationScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -50870,15 +45710,7 @@ sub build_getAllPermissions_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -50900,14 +45732,7 @@ sub getAllPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Permissions->new($payload),
 
@@ -51080,15 +45905,7 @@ sub build_getBulkPermissions_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -51110,14 +45927,7 @@ sub getBulkPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::BulkPermissionGrants->new($payload),
 
@@ -51132,14 +45942,7 @@ sub getBulkPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -51154,14 +45957,7 @@ sub getBulkPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -51240,15 +46036,7 @@ sub build_getPermittedProjects_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -51270,14 +46058,7 @@ sub getPermittedProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PermittedProjects->new($payload),
 
@@ -51292,14 +46073,7 @@ sub getPermittedProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -51723,15 +46497,7 @@ sub build_getAllPermissionSchemes_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -51753,14 +46519,7 @@ sub getAllPermissionSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PermissionSchemes->new($payload),
 
@@ -51929,15 +46688,7 @@ sub build_createPermissionScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -51959,14 +46710,7 @@ sub createPermissionScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PermissionScheme->new($payload),
 
@@ -52049,15 +46793,7 @@ sub build_deletePermissionScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -52216,15 +46952,7 @@ sub build_getPermissionScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -52246,14 +46974,7 @@ sub getPermissionScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PermissionScheme->new($payload),
 
@@ -52459,15 +47180,7 @@ sub build_updatePermissionScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -52489,14 +47202,7 @@ sub updatePermissionScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PermissionScheme->new($payload),
 
@@ -52642,15 +47348,7 @@ sub build_getPermissionSchemeGrants_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -52672,14 +47370,7 @@ sub getPermissionSchemeGrants( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PermissionGrants->new($payload),
 
@@ -52842,15 +47533,7 @@ sub build_createPermissionGrant_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -52872,14 +47555,7 @@ sub createPermissionGrant( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PermissionGrant->new($payload),
 
@@ -52970,15 +47646,7 @@ sub build_deletePermissionSchemeEntity_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -53137,15 +47805,7 @@ sub build_getPermissionSchemeGrant_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -53167,14 +47827,7 @@ sub getPermissionSchemeGrant( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PermissionGrant->new($payload),
 
@@ -53264,15 +47917,7 @@ sub build_getPriorities_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -53294,14 +47939,7 @@ sub getPriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::Priority->new($_),
  } $payload->@* ],
@@ -53418,15 +48056,7 @@ sub build_createPriority_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -53448,14 +48078,7 @@ sub createPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PriorityId->new($payload),
 
@@ -53470,14 +48093,7 @@ sub createPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -53492,14 +48108,7 @@ sub createPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -53514,14 +48123,7 @@ sub createPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -53626,15 +48228,7 @@ sub build_setDefaultPriority_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -53656,14 +48250,7 @@ sub setDefaultPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -53678,14 +48265,7 @@ sub setDefaultPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -53700,14 +48280,7 @@ sub setDefaultPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -53722,14 +48295,7 @@ sub setDefaultPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -53744,14 +48310,7 @@ sub setDefaultPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -53864,15 +48423,7 @@ sub build_movePriorities_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -53894,14 +48445,7 @@ sub movePriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -53916,14 +48460,7 @@ sub movePriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -53938,14 +48475,7 @@ sub movePriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -53960,14 +48490,7 @@ sub movePriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -53982,14 +48505,7 @@ sub movePriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -54124,15 +48640,7 @@ sub build_searchPriorities_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -54154,14 +48662,7 @@ sub searchPriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanPriority->new($payload),
 
@@ -54176,14 +48677,7 @@ sub searchPriorities( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -54301,15 +48795,7 @@ sub build_deletePriority_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -54331,14 +48817,7 @@ sub deletePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
@@ -54353,14 +48832,7 @@ sub deletePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -54375,14 +48847,7 @@ sub deletePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -54397,14 +48862,7 @@ sub deletePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -54419,14 +48877,7 @@ sub deletePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -54441,14 +48892,7 @@ sub deletePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -54534,15 +48978,7 @@ sub build_getPriority_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -54564,14 +49000,7 @@ sub getPriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Priority->new($payload),
 
@@ -54706,15 +49135,7 @@ sub build_updatePriority_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -54736,14 +49157,7 @@ sub updatePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -54758,14 +49172,7 @@ sub updatePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -54780,14 +49187,7 @@ sub updatePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -54802,14 +49202,7 @@ sub updatePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -54824,14 +49217,7 @@ sub updatePriority( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -54995,15 +49381,7 @@ sub build_getAllProjects_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -55025,14 +49403,7 @@ sub getAllProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::Project->new($_),
  } $payload->@* ],
@@ -55221,15 +49592,7 @@ sub build_createProject_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -55251,14 +49614,7 @@ sub createProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectIdentifiers->new($payload),
 
@@ -55464,15 +49820,7 @@ sub build_getRecent_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -55494,14 +49842,7 @@ sub getRecent( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::Project->new($_),
  } $payload->@* ],
@@ -55888,15 +50229,7 @@ sub build_searchProjects_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -55918,14 +50251,7 @@ sub searchProjects( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanProject->new($payload),
 
@@ -56018,15 +50344,7 @@ sub build_getAllProjectTypes_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -56048,14 +50366,7 @@ sub getAllProjectTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ProjectType->new($_),
  } $payload->@* ],
@@ -56139,15 +50450,7 @@ sub build_getAllAccessibleProjectTypes_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -56169,14 +50472,7 @@ sub getAllAccessibleProjectTypes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ProjectType->new($_),
  } $payload->@* ],
@@ -56264,15 +50560,7 @@ sub build_getProjectTypeByKey_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -56294,14 +50582,7 @@ sub getProjectTypeByKey( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectType->new($payload),
 
@@ -56392,15 +50673,7 @@ sub build_getAccessibleProjectTypeByKey_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -56422,14 +50695,7 @@ sub getAccessibleProjectTypeByKey( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectType->new($payload),
 
@@ -56520,15 +50786,7 @@ sub build_deleteProject_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -56798,15 +51056,7 @@ sub build_getProject_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -56828,14 +51078,7 @@ sub getProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Project->new($payload),
 
@@ -57141,15 +51384,7 @@ sub build_updateProject_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -57171,14 +51406,7 @@ sub updateProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Project->new($payload),
 
@@ -57266,15 +51494,7 @@ sub build_archiveProject_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -57296,14 +51516,7 @@ sub archiveProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -57430,15 +51643,7 @@ sub build_updateProjectAvatar_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -57460,14 +51665,7 @@ sub updateProjectAvatar( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -57558,15 +51756,7 @@ sub build_deleteProjectAvatar_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -57730,15 +51920,7 @@ sub build_createProjectAvatar_request( $self, %options ) {
         # => $body,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -57760,14 +51942,7 @@ sub createProjectAvatar( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Avatar->new($payload),
 
@@ -57889,15 +52064,7 @@ sub build_getAllProjectAvatars_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -57919,14 +52086,7 @@ sub getAllProjectAvatars( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectAvatars->new($payload),
 
@@ -58299,15 +52459,7 @@ sub build_getProjectComponentsPaginated_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -58329,14 +52481,7 @@ sub getProjectComponentsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanComponentWithIssueCount->new($payload),
 
@@ -58536,15 +52681,7 @@ sub build_getProjectComponents_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -58566,14 +52703,7 @@ sub getProjectComponents( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ProjectComponent->new($_),
  } $payload->@* ],
@@ -58672,15 +52802,7 @@ sub build_deleteProjectAsynchronously_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -58702,14 +52824,7 @@ sub deleteProjectAsynchronously( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
@@ -58818,15 +52933,7 @@ sub build_getFeaturesForProject_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -58848,14 +52955,7 @@ sub getFeaturesForProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ContainerForProjectFeatures->new($payload),
 
@@ -58988,15 +53088,7 @@ sub build_toggleFeatureForProject_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -59018,14 +53110,7 @@ sub toggleFeatureForProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ContainerForProjectFeatures->new($payload),
 
@@ -59125,15 +53210,7 @@ sub build_getProjectPropertyKeys_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -59155,14 +53232,7 @@ sub getProjectPropertyKeys( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
@@ -59258,15 +53328,7 @@ sub build_deleteProjectProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -59383,15 +53445,7 @@ sub build_getProjectProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -59413,14 +53467,7 @@ sub getProjectProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
@@ -59524,15 +53571,7 @@ sub build_setProjectProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -59554,14 +53593,7 @@ sub setProjectProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -59576,14 +53608,7 @@ sub setProjectProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -59803,15 +53828,7 @@ sub build_restore_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -59833,14 +53850,7 @@ sub restore( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Project->new($payload),
 
@@ -59936,15 +53946,7 @@ sub build_getProjectRoles_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -59966,14 +53968,7 @@ sub getProjectRoles( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -60086,15 +54081,7 @@ sub build_deleteActor_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -60244,15 +54231,7 @@ sub build_getProjectRole_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -60274,14 +54253,7 @@ sub getProjectRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
@@ -60436,15 +54408,7 @@ sub build_addActorUsers_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -60466,14 +54430,7 @@ sub addActorUsers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
@@ -60642,15 +54599,7 @@ sub build_setActors_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -60672,14 +54621,7 @@ sub setActors( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
@@ -60793,15 +54735,7 @@ sub build_getProjectRoleDetails_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -60823,14 +54757,7 @@ sub getProjectRoleDetails( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ProjectRoleDetails->new($_),
  } $payload->@* ],
@@ -60941,15 +54868,7 @@ sub build_getAllStatuses_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -60971,14 +54890,7 @@ sub getAllStatuses( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::IssueTypeWithStatus->new($_),
  } $payload->@* ],
@@ -61201,15 +55113,7 @@ sub build_updateProjectType_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -61231,14 +55135,7 @@ sub updateProjectType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Project->new($payload),
 
@@ -61447,15 +55344,7 @@ sub build_getProjectVersionsPaginated_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -61477,14 +55366,7 @@ sub getProjectVersionsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanVersion->new($payload),
 
@@ -61606,15 +55488,7 @@ sub build_getProjectVersions_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -61636,14 +55510,7 @@ sub getProjectVersions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::Version->new($_),
  } $payload->@* ],
@@ -61731,15 +55598,7 @@ sub build_getProjectEmail_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -61761,14 +55620,7 @@ sub getProjectEmail( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectEmailAddress->new($payload),
 
@@ -61872,15 +55724,7 @@ sub build_updateProjectEmail_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -61902,14 +55746,7 @@ sub updateProjectEmail( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -62070,15 +55907,7 @@ sub build_getHierarchy_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -62100,14 +55929,7 @@ sub getHierarchy( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectIssueTypeHierarchy->new($payload),
 
@@ -62209,15 +56031,7 @@ sub build_getProjectIssueSecurityScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -62239,14 +56053,7 @@ sub getProjectIssueSecurityScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::SecurityScheme->new($payload),
 
@@ -62623,15 +56430,7 @@ sub build_getNotificationSchemeForProject_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -62653,14 +56452,7 @@ sub getNotificationSchemeForProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::NotificationScheme->new($payload),
 
@@ -62796,15 +56588,7 @@ sub build_getAssignedPermissionScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -62826,14 +56610,7 @@ sub getAssignedPermissionScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PermissionScheme->new($payload),
 
@@ -62982,15 +56759,7 @@ sub build_assignPermissionScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -63012,14 +56781,7 @@ sub assignPermissionScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PermissionScheme->new($payload),
 
@@ -63124,15 +56886,7 @@ sub build_getSecurityLevelsForProject_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -63154,14 +56908,7 @@ sub getSecurityLevelsForProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectIssueSecurityLevels->new($payload),
 
@@ -63244,15 +56991,7 @@ sub build_getAllProjectCategories_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -63274,14 +57013,7 @@ sub getAllProjectCategories( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ProjectCategory->new($_),
  } $payload->@* ],
@@ -63382,15 +57114,7 @@ sub build_createProjectCategory_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -63412,14 +57136,7 @@ sub createProjectCategory( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectCategory->new($payload),
 
@@ -63505,15 +57222,7 @@ sub build_removeProjectCategory_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -63616,15 +57325,7 @@ sub build_getProjectCategoryById_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -63646,14 +57347,7 @@ sub getProjectCategoryById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectCategory->new($payload),
 
@@ -63766,15 +57460,7 @@ sub build_updateProjectCategory_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -63796,14 +57482,7 @@ sub updateProjectCategory( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::UpdatedProjectCategory->new($payload),
 
@@ -63897,15 +57576,7 @@ sub build_validateProjectKey_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -63927,14 +57598,7 @@ sub validateProjectKey( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -64014,15 +57678,7 @@ sub build_getValidProjectKey_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -64044,14 +57700,7 @@ sub getValidProjectKey( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -64134,15 +57783,7 @@ sub build_getValidProjectName_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -64164,14 +57805,7 @@ sub getValidProjectName( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -64260,15 +57894,7 @@ sub build_getResolutions_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -64290,14 +57916,7 @@ sub getResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::Resolution->new($_),
  } $payload->@* ],
@@ -64406,15 +58025,7 @@ sub build_createResolution_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -64436,14 +58047,7 @@ sub createResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ResolutionId->new($payload),
 
@@ -64458,14 +58062,7 @@ sub createResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -64480,14 +58077,7 @@ sub createResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -64502,14 +58092,7 @@ sub createResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -64614,15 +58197,7 @@ sub build_setDefaultResolution_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -64644,14 +58219,7 @@ sub setDefaultResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -64666,14 +58234,7 @@ sub setDefaultResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -64688,14 +58249,7 @@ sub setDefaultResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -64710,14 +58264,7 @@ sub setDefaultResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -64732,14 +58279,7 @@ sub setDefaultResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -64852,15 +58392,7 @@ sub build_moveResolutions_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -64882,14 +58414,7 @@ sub moveResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -64904,14 +58429,7 @@ sub moveResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -64926,14 +58444,7 @@ sub moveResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -64948,14 +58459,7 @@ sub moveResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -64970,14 +58474,7 @@ sub moveResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -65100,15 +58597,7 @@ sub build_searchResolutions_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -65130,14 +58619,7 @@ sub searchResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanResolutionJsonBean->new($payload),
 
@@ -65152,14 +58634,7 @@ sub searchResolutions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -65277,15 +58752,7 @@ sub build_deleteResolution_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -65307,14 +58774,7 @@ sub deleteResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
@@ -65329,14 +58789,7 @@ sub deleteResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -65351,14 +58804,7 @@ sub deleteResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -65373,14 +58819,7 @@ sub deleteResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -65395,14 +58834,7 @@ sub deleteResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -65417,14 +58849,7 @@ sub deleteResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -65508,15 +58933,7 @@ sub build_getResolution_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -65538,14 +58955,7 @@ sub getResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Resolution->new($payload),
 
@@ -65672,15 +59082,7 @@ sub build_updateResolution_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -65702,14 +59104,7 @@ sub updateResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -65724,14 +59119,7 @@ sub updateResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -65746,14 +59134,7 @@ sub updateResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -65768,14 +59149,7 @@ sub updateResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -65790,14 +59164,7 @@ sub updateResolution( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -65928,15 +59295,7 @@ sub build_getAllProjectRoles_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -65958,14 +59317,7 @@ sub getAllProjectRoles( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ProjectRole->new($_),
  } $payload->@* ],
@@ -66063,15 +59415,7 @@ sub build_createProjectRole_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -66093,14 +59437,7 @@ sub createProjectRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
@@ -66195,15 +59532,7 @@ sub build_deleteProjectRole_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -66341,15 +59670,7 @@ sub build_getProjectRoleById_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -66371,14 +59692,7 @@ sub getProjectRoleById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
@@ -66519,15 +59833,7 @@ sub build_partialUpdateProjectRole_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -66549,14 +59855,7 @@ sub partialUpdateProjectRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
@@ -66698,15 +59997,7 @@ sub build_fullyUpdateProjectRole_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -66728,14 +60019,7 @@ sub fullyUpdateProjectRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
@@ -66863,15 +60147,7 @@ sub build_deleteProjectRoleActorsFromRole_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -66893,14 +60169,7 @@ sub deleteProjectRoleActorsFromRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
@@ -67005,15 +60274,7 @@ sub build_getProjectRoleActorsForRole_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -67035,14 +60296,7 @@ sub getProjectRoleActorsForRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
@@ -67170,15 +60424,7 @@ sub build_addProjectRoleActorsToRole_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -67200,14 +60446,7 @@ sub addProjectRoleActorsToRole( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ProjectRole->new($payload),
 
@@ -67363,15 +60602,7 @@ sub build_getScreens_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -67393,14 +60624,7 @@ sub getScreens( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanScreen->new($payload),
 
@@ -67510,15 +60734,7 @@ sub build_createScreen_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -67540,14 +60756,7 @@ sub createScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Screen->new($payload),
 
@@ -67562,14 +60771,7 @@ sub createScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -67587,14 +60789,7 @@ sub createScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -67670,15 +60865,7 @@ sub build_addFieldToDefaultScreen_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -67700,14 +60887,7 @@ sub addFieldToDefaultScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -67815,15 +60995,7 @@ sub build_deleteScreen_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -67848,14 +61020,7 @@ sub deleteScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -67873,14 +61038,7 @@ sub deleteScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -67895,14 +61053,7 @@ sub deleteScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -68026,15 +61177,7 @@ sub build_updateScreen_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -68056,14 +61199,7 @@ sub updateScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Screen->new($payload),
 
@@ -68078,14 +61214,7 @@ sub updateScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -68103,14 +61232,7 @@ sub updateScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -68125,14 +61247,7 @@ sub updateScreen( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -68208,15 +61323,7 @@ sub build_getAvailableScreenFields_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -68238,14 +61345,7 @@ sub getAvailableScreenFields( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ScreenableField->new($_),
  } $payload->@* ],
@@ -68354,15 +61454,7 @@ sub build_getAllScreenTabs_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -68384,14 +61476,7 @@ sub getAllScreenTabs( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ScreenableTab->new($_),
  } $payload->@* ],
@@ -68503,15 +61588,7 @@ sub build_addScreenTab_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -68533,14 +61610,7 @@ sub addScreenTab( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ScreenableTab->new($payload),
 
@@ -68634,15 +61704,7 @@ sub build_deleteScreenTab_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -68768,15 +61830,7 @@ sub build_renameScreenTab_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -68798,14 +61852,7 @@ sub renameScreenTab( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ScreenableTab->new($payload),
 
@@ -68924,15 +61971,7 @@ sub build_getAllScreenTabFields_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -68954,14 +61993,7 @@ sub getAllScreenTabFields( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ScreenableField->new($_),
  } $payload->@* ],
@@ -69074,15 +62106,7 @@ sub build_addScreenTabField_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -69104,14 +62128,7 @@ sub addScreenTabField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ScreenableField->new($payload),
 
@@ -69213,15 +62230,7 @@ sub build_removeScreenTabField_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -69354,15 +62363,7 @@ sub build_moveScreenTabField_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -69384,14 +62385,7 @@ sub moveScreenTabField( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -69495,15 +62489,7 @@ sub build_moveScreenTab_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -69525,14 +62511,7 @@ sub moveScreenTab( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -69707,15 +62686,7 @@ sub build_getScreenSchemes_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -69737,14 +62708,7 @@ sub getScreenSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanScreenScheme->new($payload),
 
@@ -69864,15 +62828,7 @@ sub build_createScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -69894,14 +62850,7 @@ sub createScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ScreenSchemeId->new($payload),
 
@@ -69916,14 +62865,7 @@ sub createScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -69941,14 +62883,7 @@ sub createScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -69963,14 +62898,7 @@ sub createScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -70071,15 +62999,7 @@ sub build_deleteScreenScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -70104,14 +63024,7 @@ sub deleteScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -70129,14 +63042,7 @@ sub deleteScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -70151,14 +63057,7 @@ sub deleteScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -70279,15 +63178,7 @@ sub build_updateScreenScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -70309,14 +63200,7 @@ sub updateScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -70331,14 +63215,7 @@ sub updateScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -70356,14 +63233,7 @@ sub updateScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -70378,14 +63248,7 @@ sub updateScreenScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -70913,15 +63776,7 @@ sub build_searchForIssuesUsingJql_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -70943,14 +63798,7 @@ sub searchForIssuesUsingJql( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::SearchResults->new($payload),
 
@@ -71458,15 +64306,7 @@ sub build_searchForIssuesUsingJqlPost_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -71488,14 +64328,7 @@ sub searchForIssuesUsingJqlPost( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::SearchResults->new($payload),
 
@@ -71589,15 +64422,7 @@ sub build_getIssueSecurityLevel_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -71619,14 +64444,7 @@ sub getIssueSecurityLevel( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::SecurityLevel->new($payload),
 
@@ -71717,15 +64535,7 @@ sub build_getServerInfo_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -71747,14 +64557,7 @@ sub getServerInfo( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ServerInformation->new($payload),
 
@@ -71833,15 +64636,7 @@ sub build_getIssueNavigatorDefaultColumns_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -71863,14 +64658,7 @@ sub getIssueNavigatorDefaultColumns( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ColumnItem->new($_),
  } $payload->@* ],
@@ -71954,15 +64742,7 @@ sub build_setIssueNavigatorDefaultColumns_request( $self, %options ) {
         # => $body,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -71984,14 +64764,7 @@ sub setIssueNavigatorDefaultColumns( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -72100,15 +64873,7 @@ sub build_getStatuses_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -72130,14 +64895,7 @@ sub getStatuses( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::StatusDetails->new($_),
  } $payload->@* ],
@@ -72237,15 +64995,7 @@ sub build_getStatus_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -72267,14 +65017,7 @@ sub getStatus( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::StatusDetails->new($payload),
 
@@ -72361,15 +65104,7 @@ sub build_getStatusCategories_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -72391,14 +65126,7 @@ sub getStatusCategories( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::StatusCategory->new($_),
  } $payload->@* ],
@@ -72487,15 +65215,7 @@ sub build_getStatusCategory_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -72517,14 +65237,7 @@ sub getStatusCategory( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::StatusCategory->new($payload),
 
@@ -72628,15 +65341,7 @@ sub build_deleteStatusesById_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -72658,14 +65363,7 @@ sub deleteStatusesById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -72680,14 +65378,7 @@ sub deleteStatusesById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -72821,15 +65512,7 @@ sub build_getStatusesById_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -72851,14 +65534,7 @@ sub getStatusesById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::JiraStatus->new($_),
  } $payload->@* ],
@@ -72985,15 +65661,7 @@ sub build_createStatuses_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -73015,14 +65683,7 @@ sub createStatuses( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::JiraStatus->new($_),
  } $payload->@* ],
@@ -73038,14 +65699,7 @@ sub createStatuses( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -73147,15 +65801,7 @@ sub build_updateStatuses_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -73177,14 +65823,7 @@ sub updateStatuses( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -73199,14 +65838,7 @@ sub updateStatuses( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -73370,15 +66002,7 @@ sub build_search_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -73400,14 +66024,7 @@ sub search( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageOfStatuses->new($payload),
 
@@ -73521,15 +66138,7 @@ sub build_getTask_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -73551,14 +66160,7 @@ sub getTask( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
@@ -73661,15 +66263,7 @@ sub build_cancelTask_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -73691,14 +66285,7 @@ sub cancelTask( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -73713,14 +66300,7 @@ sub cancelTask( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { $_
  } $payload->@* ],
@@ -73736,14 +66316,7 @@ sub cancelTask( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { $_
  } $payload->@* ],
@@ -73759,14 +66332,7 @@ sub cancelTask( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { $_
  } $payload->@* ],
@@ -73782,14 +66348,7 @@ sub cancelTask( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { $_
  } $payload->@* ],
@@ -73945,15 +66504,7 @@ sub build_getUiModifications_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -73975,14 +66526,7 @@ sub getUiModifications( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanUiModificationDetails->new($payload),
 
@@ -74102,15 +66646,7 @@ sub build_createUiModification_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -74132,14 +66668,7 @@ sub createUiModification( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::UiModificationIdentifiers->new($payload),
 
@@ -74227,15 +66756,7 @@ sub build_deleteUiModification_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -74257,14 +66778,7 @@ sub deleteUiModification( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -74390,15 +66904,7 @@ sub build_updateUiModification_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -74420,14 +66926,7 @@ sub updateUiModification( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -74576,15 +67075,7 @@ sub build_getAvatars_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -74606,14 +67097,7 @@ sub getAvatars( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Avatars->new($payload),
 
@@ -74794,15 +67278,7 @@ sub build_storeAvatar_request( $self, %options ) {
         # => $body,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -74824,14 +67300,7 @@ sub storeAvatar( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Avatar->new($payload),
 
@@ -74933,15 +67402,7 @@ sub build_deleteAvatar_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -75056,15 +67517,7 @@ sub build_getAvatarImageByType_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -75086,14 +67539,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75104,14 +67550,7 @@ sub getAvatarImageByType( $self, %options ) {
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75122,14 +67561,7 @@ sub getAvatarImageByType( $self, %options ) {
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75140,14 +67572,7 @@ sub getAvatarImageByType( $self, %options ) {
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75162,14 +67587,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75180,14 +67598,7 @@ sub getAvatarImageByType( $self, %options ) {
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -75198,14 +67609,7 @@ sub getAvatarImageByType( $self, %options ) {
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75216,14 +67620,7 @@ sub getAvatarImageByType( $self, %options ) {
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75238,14 +67635,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75256,14 +67646,7 @@ sub getAvatarImageByType( $self, %options ) {
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -75274,14 +67657,7 @@ sub getAvatarImageByType( $self, %options ) {
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75292,14 +67668,7 @@ sub getAvatarImageByType( $self, %options ) {
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75314,14 +67683,7 @@ sub getAvatarImageByType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75332,14 +67694,7 @@ sub getAvatarImageByType( $self, %options ) {
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -75350,14 +67705,7 @@ sub getAvatarImageByType( $self, %options ) {
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75368,14 +67716,7 @@ sub getAvatarImageByType( $self, %options ) {
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75499,15 +67840,7 @@ sub build_getAvatarImageByID_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -75529,14 +67862,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75547,14 +67873,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75565,14 +67884,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75583,14 +67895,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75605,14 +67910,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75623,14 +67921,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -75641,14 +67932,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75659,14 +67943,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75681,14 +67958,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75699,14 +67969,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -75717,14 +67980,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75735,14 +67991,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75757,14 +68006,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75775,14 +68017,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -75793,14 +68028,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75811,14 +68039,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75833,14 +68054,7 @@ sub getAvatarImageByID( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75851,14 +68065,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -75869,14 +68076,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -75887,14 +68087,7 @@ sub getAvatarImageByID( $self, %options ) {
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76018,15 +68211,7 @@ sub build_getAvatarImageByOwner_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -76048,14 +68233,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76066,14 +68244,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76084,14 +68255,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76102,14 +68266,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76124,14 +68281,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76142,14 +68292,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -76160,14 +68303,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76178,14 +68314,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76200,14 +68329,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76218,14 +68340,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -76236,14 +68351,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76254,14 +68362,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76276,14 +68377,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76294,14 +68388,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -76312,14 +68399,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76330,14 +68410,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76352,14 +68425,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq '*/*' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76370,14 +68436,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -76388,14 +68447,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'image/png' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76406,14 +68458,7 @@ sub getAvatarImageByOwner( $self, %options ) {
             }
             } elsif( $ct eq 'image/svg+xml' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -76500,15 +68545,7 @@ sub build_removeUser_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -76665,15 +68702,7 @@ sub build_getUser_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -76695,14 +68724,7 @@ sub getUser( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::User->new($payload),
 
@@ -76841,15 +68863,7 @@ sub build_createUser_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -76871,14 +68885,7 @@ sub createUser( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::User->new($payload),
 
@@ -77034,15 +69041,7 @@ sub build_findBulkAssignableUsers_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -77064,14 +69063,7 @@ sub findBulkAssignableUsers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::User->new($_),
  } $payload->@* ],
@@ -77262,15 +69254,7 @@ sub build_findAssignableUsers_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -77292,14 +69276,7 @@ sub findAssignableUsers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::User->new($_),
  } $payload->@* ],
@@ -77438,15 +69415,7 @@ sub build_bulkGetUsers_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -77468,14 +69437,7 @@ sub bulkGetUsers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanUser->new($payload),
 
@@ -77585,15 +69547,7 @@ sub build_bulkGetUsersMigration_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -77615,14 +69569,7 @@ sub bulkGetUsersMigration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::UserMigrationBean->new($_),
  } $payload->@* ],
@@ -77721,15 +69668,7 @@ sub build_resetUserColumns_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -77839,15 +69778,7 @@ sub build_getUserDefaultColumns_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -77869,14 +69800,7 @@ sub getUserDefaultColumns( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::ColumnItem->new($_),
  } $payload->@* ],
@@ -77983,15 +69907,7 @@ sub build_setUserColumns_request( $self, %options ) {
         # => $body,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -78013,14 +69929,7 @@ sub setUserColumns( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -78113,15 +70022,7 @@ sub build_getUserEmail_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -78143,14 +70044,7 @@ sub getUserEmail( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::UnrestrictedUserEmail->new($payload),
 
@@ -78237,15 +70131,7 @@ sub build_getUserEmailBulk_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -78267,14 +70153,7 @@ sub getUserEmailBulk( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::UnrestrictedUserEmail->new($payload),
 
@@ -78379,15 +70258,7 @@ sub build_getUserGroups_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -78409,14 +70280,7 @@ sub getUserGroups( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::GroupName->new($_),
  } $payload->@* ],
@@ -78800,15 +70664,7 @@ sub build_findUsersWithAllPermissions_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -78830,14 +70686,7 @@ sub findUsersWithAllPermissions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::User->new($_),
  } $payload->@* ],
@@ -78985,15 +70834,7 @@ sub build_findUsersForPicker_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -79015,14 +70856,7 @@ sub findUsersForPicker( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::FoundUsers->new($payload),
 
@@ -79143,15 +70977,7 @@ sub build_getUserPropertyKeys_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -79173,14 +70999,7 @@ sub getUserPropertyKeys( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
@@ -79303,15 +71122,7 @@ sub build_deleteUserProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -79455,15 +71266,7 @@ sub build_getUserProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -79485,14 +71288,7 @@ sub getUserProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
@@ -79621,15 +71417,7 @@ sub build_setUserProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -79651,14 +71439,7 @@ sub setUserProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -79673,14 +71454,7 @@ sub setUserProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -79837,15 +71611,7 @@ sub build_findUsers_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -79867,14 +71633,7 @@ sub findUsers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::User->new($_),
  } $payload->@* ],
@@ -80025,15 +71784,7 @@ sub build_findUsersByQuery_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -80055,14 +71806,7 @@ sub findUsersByQuery( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanUser->new($payload),
 
@@ -80215,15 +71959,7 @@ sub build_findUserKeysByQuery_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -80245,14 +71981,7 @@ sub findUserKeysByQuery( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanUserKey->new($payload),
 
@@ -80444,15 +72173,7 @@ sub build_findUsersWithBrowsePermission_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -80474,14 +72195,7 @@ sub findUsersWithBrowsePermission( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::User->new($_),
  } $payload->@* ],
@@ -80610,15 +72324,7 @@ sub build_getAllUsersDefault_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -80640,14 +72346,7 @@ sub getAllUsersDefault( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::User->new($_),
  } $payload->@* ],
@@ -80773,15 +72472,7 @@ sub build_getAllUsers_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -80803,14 +72494,7 @@ sub getAllUsers( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::User->new($_),
  } $payload->@* ],
@@ -80993,15 +72677,7 @@ sub build_createVersion_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -81023,14 +72699,7 @@ sub createVersion( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Version->new($payload),
 
@@ -81134,15 +72803,7 @@ sub build_deleteVersion_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -81276,15 +72937,7 @@ sub build_getVersion_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -81306,14 +72959,7 @@ sub getVersion( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Version->new($payload),
 
@@ -81504,15 +73150,7 @@ sub build_updateVersion_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -81534,14 +73172,7 @@ sub updateVersion( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Version->new($payload),
 
@@ -81638,15 +73269,7 @@ sub build_mergeVersions_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -81668,14 +73291,7 @@ sub mergeVersions( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -81793,15 +73409,7 @@ sub build_moveVersion_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -81823,14 +73431,7 @@ sub moveVersion( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::Version->new($payload),
 
@@ -81956,15 +73557,7 @@ sub build_getVersionRelatedIssues_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -81986,14 +73579,7 @@ sub getVersionRelatedIssues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::VersionIssueCounts->new($payload),
 
@@ -82100,15 +73686,7 @@ sub build_deleteAndReplaceVersion_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -82130,14 +73708,7 @@ sub deleteAndReplaceVersion( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -82231,15 +73802,7 @@ sub build_getVersionUnresolvedIssues_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -82261,14 +73824,7 @@ sub getVersionUnresolvedIssues( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::VersionUnresolvedIssuesCount->new($payload),
 
@@ -82352,15 +73908,7 @@ sub build_deleteWebhookById_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -82385,14 +73933,7 @@ sub deleteWebhookById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -82407,14 +73948,7 @@ sub deleteWebhookById( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -82538,15 +74072,7 @@ sub build_getDynamicWebhooksForApp_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -82568,14 +74094,7 @@ sub getDynamicWebhooksForApp( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanWebhook->new($payload),
 
@@ -82590,14 +74109,7 @@ sub getDynamicWebhooksForApp( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -82612,14 +74124,7 @@ sub getDynamicWebhooksForApp( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -82721,15 +74226,7 @@ sub build_registerDynamicWebhooks_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -82751,14 +74248,7 @@ sub registerDynamicWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ContainerForRegisteredWebhooks->new($payload),
 
@@ -82773,14 +74263,7 @@ sub registerDynamicWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -82795,14 +74278,7 @@ sub registerDynamicWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -82909,15 +74385,7 @@ sub build_getFailedWebhooks_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -82939,14 +74407,7 @@ sub getFailedWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::FailedWebhooks->new($payload),
 
@@ -82961,14 +74422,7 @@ sub getFailedWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -82983,14 +74437,7 @@ sub getFailedWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -83076,15 +74523,7 @@ sub build_refreshWebhooks_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -83106,14 +74545,7 @@ sub refreshWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WebhooksExpirationDate->new($payload),
 
@@ -83128,14 +74560,7 @@ sub refreshWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -83150,14 +74575,7 @@ sub refreshWebhooks( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -83246,15 +74664,7 @@ sub build_getAllWorkflows_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -83276,14 +74686,7 @@ sub getAllWorkflows( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::DeprecatedWorkflow->new($_),
  } $payload->@* ],
@@ -84884,15 +76287,7 @@ sub build_createWorkflow_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -84914,14 +76309,7 @@ sub createWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowIDs->new($payload),
 
@@ -84936,14 +76324,7 @@ sub createWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -84961,14 +76342,7 @@ sub createWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -84983,14 +76357,7 @@ sub createWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -85189,15 +76556,7 @@ sub build_getWorkflowTransitionRuleConfigurations_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -85219,14 +76578,7 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanWorkflowTransitionRules->new($payload),
 
@@ -85241,14 +76593,7 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -85263,14 +76608,7 @@ sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -85427,15 +76765,7 @@ sub build_updateWorkflowTransitionRuleConfigurations_request( $self, %options ) 
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -85457,14 +76787,7 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowTransitionRulesUpdateErrors->new($payload),
 
@@ -85479,14 +76802,7 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -85501,14 +76817,7 @@ sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -85656,15 +76965,7 @@ sub build_deleteWorkflowTransitionRuleConfigurations_request( $self, %options ) 
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -85686,14 +76987,7 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowTransitionRulesUpdateErrors->new($payload),
 
@@ -85708,14 +77002,7 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -85730,14 +77017,7 @@ sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -86059,15 +77339,7 @@ sub build_getWorkflowsPaginated_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -86089,14 +77361,7 @@ sub getWorkflowsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanWorkflow->new($payload),
 
@@ -86114,14 +77379,7 @@ sub getWorkflowsPaginated( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorCollection->new($payload),
 
@@ -86220,15 +77478,7 @@ sub build_deleteWorkflowTransitionProperty_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -86372,15 +77622,7 @@ sub build_getWorkflowTransitionProperties_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -86402,14 +77644,7 @@ sub getWorkflowTransitionProperties( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowTransitionProperty->new($payload),
 
@@ -86550,15 +77785,7 @@ sub build_createWorkflowTransitionProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -86580,14 +77807,7 @@ sub createWorkflowTransitionProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowTransitionProperty->new($payload),
 
@@ -86728,15 +77948,7 @@ sub build_updateWorkflowTransitionProperty_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -86758,14 +77970,7 @@ sub updateWorkflowTransitionProperty( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowTransitionProperty->new($payload),
 
@@ -86905,15 +78110,7 @@ sub build_deleteInactiveWorkflow_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -86938,14 +78135,7 @@ sub deleteInactiveWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -86963,14 +78153,7 @@ sub deleteInactiveWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -86985,14 +78168,7 @@ sub deleteInactiveWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -87104,15 +78280,7 @@ sub build_getAllWorkflowSchemes_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -87134,14 +78302,7 @@ sub getAllWorkflowSchemes( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PageBeanWorkflowScheme->new($payload),
 
@@ -87305,15 +78466,7 @@ sub build_createWorkflowScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -87335,14 +78488,7 @@ sub createWorkflowScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -87469,15 +78615,7 @@ sub build_getWorkflowSchemeProjectAssociations_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -87499,14 +78637,7 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ContainerOfWorkflowSchemeAssociations->new($payload),
 
@@ -87521,14 +78652,7 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -87546,14 +78670,7 @@ sub getWorkflowSchemeProjectAssociations( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -87660,15 +78777,7 @@ sub build_assignSchemeToProject_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -87690,14 +78799,7 @@ sub assignSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -87712,14 +78814,7 @@ sub assignSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -87737,14 +78832,7 @@ sub assignSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -87759,14 +78847,7 @@ sub assignSchemeToProject( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -87842,15 +78923,7 @@ sub build_deleteWorkflowScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -87872,14 +78945,7 @@ sub deleteWorkflowScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -87990,15 +79056,7 @@ sub build_getWorkflowScheme_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -88020,14 +79078,7 @@ sub getWorkflowScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -88206,15 +79257,7 @@ sub build_updateWorkflowScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -88236,14 +79279,7 @@ sub updateWorkflowScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -88375,15 +79411,7 @@ sub build_createWorkflowSchemeDraftFromParent_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -88405,14 +79433,7 @@ sub createWorkflowSchemeDraftFromParent( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -88522,15 +79543,7 @@ sub build_deleteDefaultWorkflow_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -88552,14 +79565,7 @@ sub deleteDefaultWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -88661,15 +79667,7 @@ sub build_getDefaultWorkflow_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -88691,14 +79689,7 @@ sub getDefaultWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::DefaultWorkflow->new($payload),
 
@@ -88816,15 +79807,7 @@ sub build_updateDefaultWorkflow_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -88846,14 +79829,7 @@ sub updateDefaultWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -88939,15 +79915,7 @@ sub build_deleteWorkflowSchemeDraft_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -89102,15 +80070,7 @@ sub build_getWorkflowSchemeDraft_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -89132,14 +80092,7 @@ sub getWorkflowSchemeDraft( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -89348,15 +80301,7 @@ sub build_updateWorkflowSchemeDraft_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -89378,14 +80323,7 @@ sub updateWorkflowSchemeDraft( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -89517,15 +80455,7 @@ sub build_deleteDraftDefaultWorkflow_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -89547,14 +80477,7 @@ sub deleteDraftDefaultWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -89644,15 +80567,7 @@ sub build_getDraftDefaultWorkflow_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -89674,14 +80589,7 @@ sub getDraftDefaultWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::DefaultWorkflow->new($payload),
 
@@ -89827,15 +80735,7 @@ sub build_updateDraftDefaultWorkflow_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -89857,14 +80757,7 @@ sub updateDraftDefaultWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -90004,15 +80897,7 @@ sub build_deleteWorkflowSchemeDraftIssueType_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -90034,14 +80919,7 @@ sub deleteWorkflowSchemeDraftIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -90140,15 +81018,7 @@ sub build_getWorkflowSchemeDraftIssueType_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -90170,14 +81040,7 @@ sub getWorkflowSchemeDraftIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueTypeWorkflowMapping->new($payload),
 
@@ -90335,15 +81198,7 @@ sub build_setWorkflowSchemeDraftIssueType_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -90365,14 +81220,7 @@ sub setWorkflowSchemeDraftIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -90502,15 +81350,7 @@ sub build_publishDraftWorkflowScheme_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -90535,14 +81375,7 @@ sub publishDraftWorkflowScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::TaskProgressBeanObject->new($payload),
 
@@ -90557,14 +81390,7 @@ sub publishDraftWorkflowScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -90585,14 +81411,7 @@ sub publishDraftWorkflowScheme( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -90677,15 +81496,7 @@ sub build_deleteDraftWorkflowMapping_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -90799,15 +81610,7 @@ sub build_getDraftWorkflow_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -90829,14 +81632,7 @@ sub getDraftWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueTypesWorkflowMapping->new($payload),
 
@@ -90971,15 +81767,7 @@ sub build_updateDraftWorkflowMapping_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -91001,14 +81789,7 @@ sub updateDraftWorkflowMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -91129,15 +81910,7 @@ sub build_deleteWorkflowSchemeIssueType_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -91159,14 +81932,7 @@ sub deleteWorkflowSchemeIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -91277,15 +82043,7 @@ sub build_getWorkflowSchemeIssueType_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -91307,14 +82065,7 @@ sub getWorkflowSchemeIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueTypeWorkflowMapping->new($payload),
 
@@ -91444,15 +82195,7 @@ sub build_setWorkflowSchemeIssueType_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -91474,14 +82217,7 @@ sub setWorkflowSchemeIssueType( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -91586,15 +82322,7 @@ sub build_deleteWorkflowMapping_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -91717,15 +82445,7 @@ sub build_getWorkflow_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -91747,14 +82467,7 @@ sub getWorkflow( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::IssueTypesWorkflowMapping->new($payload),
 
@@ -91891,15 +82604,7 @@ sub build_updateWorkflowMapping_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -91921,14 +82626,7 @@ sub updateWorkflowMapping( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowScheme->new($payload),
 
@@ -92044,15 +82742,7 @@ sub build_getIdsOfWorklogsDeletedSince_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -92074,14 +82764,7 @@ sub getIdsOfWorklogsDeletedSince( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ChangedWorklogs->new($payload),
 
@@ -92232,15 +82915,7 @@ sub build_getWorklogsForIds_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -92262,14 +82937,7 @@ sub getWorklogsForIds( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     [ map { JIRA::API::Worklog->new($_),
  } $payload->@* ],
@@ -92400,15 +83068,7 @@ sub build_getIdsOfWorklogsModifiedSince_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -92430,14 +83090,7 @@ sub getIdsOfWorklogsModifiedSince( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ChangedWorklogs->new($payload),
 
@@ -92482,16 +83135,16 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   # {
   #   "keys" : [
   #     {
-  #       "self" : "https://your-domain.atlassian.net/jira/rest/atlassian-connect/1/addon/example.app.key/properties/propertyKey",
-  #       "key" : "propertyKey"
+  #       "key" : "propertyKey",
+  #       "self" : "https://your-domain.atlassian.net/jira/rest/atlassian-connect/1/addon/example.app.key/properties/propertyKey"
   #     }
   #   ]
   # }
 
   # Return code '401'
   # {
-  #   "message" : "Access to this resource must be authenticated as an app.",
-  #   "statusCode" : 401
+  #   "statusCode" : 401,
+  #   "message" : "Access to this resource must be authenticated as an app."
   # }
 Get app properties
 
@@ -92534,15 +83187,7 @@ sub build_AddonPropertiesResource_getAddonProperties_get_request( $self, %option
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -92564,14 +83209,7 @@ sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::PropertyKeys->new($payload),
 
@@ -92586,14 +83224,7 @@ sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
@@ -92634,20 +83265,20 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '400'
   # {
-  #   "message" : "The property key cannot be longer than 127 characters.",
-  #   "statusCode" : 400
+  #   "statusCode" : 400,
+  #   "message" : "The property key cannot be longer than 127 characters."
   # }
 
   # Return code '401'
   # {
-  #   "message" : "Access to this resource must be authenticated as an app.",
-  #   "statusCode" : 401
+  #   "statusCode" : 401,
+  #   "message" : "Access to this resource must be authenticated as an app."
   # }
 
   # Return code '404'
   # {
-  #   "message" : "Property with key not found.",
-  #   "statusCode" : 404
+  #   "statusCode" : 404,
+  #   "message" : "Property with key not found."
   # }
 Delete app property
 
@@ -92697,15 +83328,7 @@ sub build_AddonPropertiesResource_deleteAddonProperty_delete_request( $self, %op
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -92730,14 +83353,7 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
@@ -92752,14 +83368,7 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
@@ -92774,14 +83383,7 @@ sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
@@ -92823,20 +83425,20 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   # Return code '200'
   # {
   #   "key" : "propertyKey",
-  #   "value" : "propertyValue",
-  #   "self" : "https://your-domain.atlassian.net/jira/rest/atlassian-connect/1/addon/example.app.key/properties/propertyKey"
+  #   "self" : "https://your-domain.atlassian.net/jira/rest/atlassian-connect/1/addon/example.app.key/properties/propertyKey",
+  #   "value" : "propertyValue"
   # }
 
   # Return code '400'
   # {
-  #   "statusCode" : 400,
-  #   "message" : "The property key cannot be longer than 127 characters."
+  #   "message" : "The property key cannot be longer than 127 characters.",
+  #   "statusCode" : 400
   # }
 
   # Return code '401'
   # {
-  #   "message" : "Access to this resource must be authenticated as an app.",
-  #   "statusCode" : 401
+  #   "statusCode" : 401,
+  #   "message" : "Access to this resource must be authenticated as an app."
   # }
 
   # Return code '404'
@@ -92894,15 +83496,7 @@ sub build_AddonPropertiesResource_getAddonProperty_get_request( $self, %options 
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -92924,14 +83518,7 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::EntityProperty->new($payload),
 
@@ -92946,14 +83533,7 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
@@ -92968,14 +83548,7 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
@@ -92990,14 +83563,7 @@ sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
@@ -93038,14 +83604,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '200'
   # {
-  #   "statusCode" : 200,
-  #   "message" : "Property updated."
+  #   "message" : "Property updated.",
+  #   "statusCode" : 200
   # }
 
   # Return code '201'
   # {
-  #   "statusCode" : 201,
-  #   "message" : "Property created."
+  #   "message" : "Property created.",
+  #   "statusCode" : 201
   # }
 
   # Return code '400'
@@ -93056,8 +83622,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '401'
   # {
-  #   "message" : "Access to this resource must be authenticated as an app.",
-  #   "statusCode" : 401
+  #   "statusCode" : 401,
+  #   "message" : "Access to this resource must be authenticated as an app."
   # }
 Set app property
 
@@ -93113,15 +83679,7 @@ sub build_AddonPropertiesResource_putAddonProperty_put_request( $self, %options 
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -93143,14 +83701,7 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
@@ -93165,14 +83716,7 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
@@ -93187,14 +83731,7 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
@@ -93209,14 +83746,7 @@ sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::OperationMessage->new($payload),
 
@@ -93297,15 +83827,7 @@ sub build_DynamicModulesResource_removeModules_delete_request( $self, %options )
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -93330,14 +83852,7 @@ sub DynamicModulesResource_removeModules_delete( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorMessage->new($payload),
 
@@ -93407,15 +83922,7 @@ sub build_DynamicModulesResource_getModules_get_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -93437,14 +83944,7 @@ sub DynamicModulesResource_getModules_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ConnectModules->new($payload),
 
@@ -93459,14 +83959,7 @@ sub DynamicModulesResource_getModules_get( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorMessage->new($payload),
 
@@ -93555,15 +84048,7 @@ sub build_DynamicModulesResource_registerModules_post_request( $self, %options )
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -93588,14 +84073,7 @@ sub DynamicModulesResource_registerModules_post( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorMessage->new($payload),
 
@@ -93610,14 +84088,7 @@ sub DynamicModulesResource_registerModules_post( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::ErrorMessage->new($payload),
 
@@ -93705,15 +84176,7 @@ sub build_AppIssueFieldValueUpdateResource_updateIssueFields_put_request( $self,
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -93735,14 +84198,7 @@ sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -93831,15 +84287,7 @@ sub build_MigrationResource_updateEntityPropertiesValue_put_request( $self, %opt
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -93895,32 +84343,46 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '200'
   # {
+  #   "workflowEntityId" : "a498d711-685d-428d-8c3e-bc03bb450ea7",
   #   "invalidRules" : [
   #     "55d44f1d-c859-42e5-9c27-2c5ec3f340b1"
   #   ],
   #   "validRules" : [
   #     {
+  #       "validators" : [
+  #         {
+  #           "transition" : {
+  #             "id" : 123,
+  #             "name" : "transition"
+  #           },
+  #           "configuration" : {
+  #             "value" : "WorkflowValidator"
+  #           },
+  #           "key" : "WorkflowKey",
+  #           "id" : "123"
+  #         }
+  #       ],
   #       "postFunctions" : [
   #         {
   #           "configuration" : {
   #             "value" : "WorkflowValidator"
   #           },
-  #           "id" : "123",
+  #           "key" : "WorkflowKey",
   #           "transition" : {
-  #             "name" : "transition",
-  #             "id" : 123
+  #             "id" : 123,
+  #             "name" : "transition"
   #           },
-  #           "key" : "WorkflowKey"
+  #           "id" : "123"
   #         }
   #       ],
-  #       "validators" : [
+  #       "conditions" : [
   #         {
+  #           "id" : "123",
   #           "transition" : {
-  #             "name" : "transition",
-  #             "id" : 123
+  #             "id" : 123,
+  #             "name" : "transition"
   #           },
   #           "key" : "WorkflowKey",
-  #           "id" : "123",
   #           "configuration" : {
   #             "value" : "WorkflowValidator"
   #           }
@@ -93929,23 +84391,9 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #       "workflowId" : {
   #         "draft" : true,
   #         "name" : "Workflow name"
-  #       },
-  #       "conditions" : [
-  #         {
-  #           "transition" : {
-  #             "name" : "transition",
-  #             "id" : 123
-  #           },
-  #           "key" : "WorkflowKey",
-  #           "id" : "123",
-  #           "configuration" : {
-  #             "value" : "WorkflowValidator"
-  #           }
-  #         }
-  #       ]
+  #       }
   #     }
-  #   ],
-  #   "workflowEntityId" : "a498d711-685d-428d-8c3e-bc03bb450ea7"
+  #   ]
   # }
 Get workflow transition rule configurations
 
@@ -94003,15 +84451,7 @@ sub build_MigrationResource_workflowRuleSearch_post_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -94033,14 +84473,7 @@ sub MigrationResource_workflowRuleSearch_post( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     JIRA::API::WorkflowRulesSearchDetails->new($payload),
 
@@ -94073,5 +84506,27 @@ sub MigrationResource_workflowRuleSearch_post( $self, %options ) {
     return $res
 }
 
+
+sub validate_response( $self, $payload, $tx ) {
+    if(     $self->validate_responses
+        and my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_response($payload, { request => $tx->req });
+        if( $results->{error}) {
+            say $results;
+            say $tx->res->to_string;
+        };
+    };
+}
+
+sub validate_request( $self, $tx ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
+    };
+}
 
 1;

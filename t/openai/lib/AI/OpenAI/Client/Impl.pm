@@ -293,15 +293,7 @@ sub build_listAssistants_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -323,14 +315,7 @@ sub listAssistants( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ListAssistantsResponse->new($payload),
 
@@ -439,15 +424,7 @@ sub build_createAssistant_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -469,14 +446,7 @@ sub createAssistant( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::AssistantObject->new($payload),
 
@@ -548,15 +518,7 @@ sub build_deleteAssistant_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -578,14 +540,7 @@ sub deleteAssistant( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::DeleteAssistantResponse->new($payload),
 
@@ -657,15 +612,7 @@ sub build_getAssistant_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -687,14 +634,7 @@ sub getAssistant( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::AssistantObject->new($payload),
 
@@ -821,15 +761,7 @@ sub build_modifyAssistant_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -851,14 +783,7 @@ sub modifyAssistant( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::AssistantObject->new($payload),
 
@@ -941,15 +866,7 @@ sub build_createSpeech_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -971,14 +888,7 @@ sub createSpeech( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/octet-stream' ) {
                 my $payload = $resp->body();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -1069,15 +979,7 @@ sub build_createTranscription_request( $self, %options ) {
         => form => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -1099,14 +1001,7 @@ sub createTranscription( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -1189,15 +1084,7 @@ sub build_createTranslation_request( $self, %options ) {
         => form => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -1219,14 +1106,7 @@ sub createTranslation( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -1302,15 +1182,7 @@ sub build_listBatches_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -1332,14 +1204,7 @@ sub listBatches( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ListBatchesResponse->new($payload),
 
@@ -1422,15 +1287,7 @@ sub build_createBatch_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -1452,14 +1309,7 @@ sub createBatch( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::Batch->new($payload),
 
@@ -1531,15 +1381,7 @@ sub build_retrieveBatch_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -1561,14 +1403,7 @@ sub retrieveBatch( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::Batch->new($payload),
 
@@ -1640,15 +1475,7 @@ sub build_cancelBatch_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -1670,14 +1497,7 @@ sub cancelBatch( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::Batch->new($payload),
 
@@ -1857,15 +1677,7 @@ sub build_createChatCompletion_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -1887,14 +1699,7 @@ sub createChatCompletion( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::CreateChatCompletionResponse->new($payload),
 
@@ -2057,15 +1862,7 @@ sub build_createCompletion_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -2087,14 +1884,7 @@ sub createCompletion( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::CreateCompletionResponse->new($payload),
 
@@ -2177,15 +1967,7 @@ sub build_createEmbedding_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -2207,14 +1989,7 @@ sub createEmbedding( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::CreateEmbeddingResponse->new($payload),
 
@@ -2284,15 +2059,7 @@ sub build_listFiles_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -2314,14 +2081,7 @@ sub listFiles( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ListFilesResponse->new($payload),
 
@@ -2402,15 +2162,7 @@ sub build_createFile_request( $self, %options ) {
         => form => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -2432,14 +2184,7 @@ sub createFile( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::OpenAIFile->new($payload),
 
@@ -2511,15 +2256,7 @@ sub build_deleteFile_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -2541,14 +2278,7 @@ sub deleteFile( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::DeleteFileResponse->new($payload),
 
@@ -2620,15 +2350,7 @@ sub build_retrieveFile_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -2650,14 +2372,7 @@ sub retrieveFile( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::OpenAIFile->new($payload),
 
@@ -2729,15 +2444,7 @@ sub build_downloadFile_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -2759,14 +2466,7 @@ sub downloadFile( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     $payload
 
@@ -2842,15 +2542,7 @@ sub build_listPaginatedFineTuningJobs_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -2872,14 +2564,7 @@ sub listPaginatedFineTuningJobs( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ListPaginatedFineTuningJobsResponse->new($payload),
 
@@ -2993,15 +2678,7 @@ sub build_createFineTuningJob_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3023,14 +2700,7 @@ sub createFineTuningJob( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::FineTuningJob->new($payload),
 
@@ -3104,15 +2774,7 @@ sub build_retrieveFineTuningJob_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3134,14 +2796,7 @@ sub retrieveFineTuningJob( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::FineTuningJob->new($payload),
 
@@ -3213,15 +2868,7 @@ sub build_cancelFineTuningJob_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3243,14 +2890,7 @@ sub cancelFineTuningJob( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::FineTuningJob->new($payload),
 
@@ -3337,15 +2977,7 @@ sub build_listFineTuningJobCheckpoints_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3367,14 +2999,7 @@ sub listFineTuningJobCheckpoints( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ListFineTuningJobCheckpointsResponse->new($payload),
 
@@ -3461,15 +3086,7 @@ sub build_listFineTuningEvents_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3491,14 +3108,7 @@ sub listFineTuningEvents( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ListFineTuningJobEventsResponse->new($payload),
 
@@ -3593,15 +3203,7 @@ sub build_createImageEdit_request( $self, %options ) {
         => form => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3623,14 +3225,7 @@ sub createImageEdit( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ImagesResponse->new($payload),
 
@@ -3725,15 +3320,7 @@ sub build_createImage_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3755,14 +3342,7 @@ sub createImage( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ImagesResponse->new($payload),
 
@@ -3849,15 +3429,7 @@ sub build_createImageVariation_request( $self, %options ) {
         => form => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3879,14 +3451,7 @@ sub createImageVariation( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ImagesResponse->new($payload),
 
@@ -3940,15 +3505,7 @@ sub build_listModels_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -3970,14 +3527,7 @@ sub listModels( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ListModelsResponse->new($payload),
 
@@ -4049,15 +3599,7 @@ sub build_deleteModel_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -4079,14 +3621,7 @@ sub deleteModel( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::DeleteModelResponse->new($payload),
 
@@ -4158,15 +3693,7 @@ sub build_retrieveModel_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -4188,14 +3715,7 @@ sub retrieveModel( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::Model->new($payload),
 
@@ -4268,15 +3788,7 @@ sub build_createModeration_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -4298,14 +3810,7 @@ sub createModeration( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::CreateModerationResponse->new($payload),
 
@@ -4380,15 +3885,7 @@ sub build_createThread_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -4410,14 +3907,7 @@ sub createThread( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ThreadObject->new($payload),
 
@@ -4548,15 +4038,7 @@ sub build_createThreadAndRun_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -4578,14 +4060,7 @@ sub createThreadAndRun( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::RunObject->new($payload),
 
@@ -4657,15 +4132,7 @@ sub build_deleteThread_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -4687,14 +4154,7 @@ sub deleteThread( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::DeleteThreadResponse->new($payload),
 
@@ -4766,15 +4226,7 @@ sub build_getThread_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -4796,14 +4248,7 @@ sub getThread( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ThreadObject->new($payload),
 
@@ -4892,15 +4337,7 @@ sub build_modifyThread_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -4922,14 +4359,7 @@ sub modifyThread( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ThreadObject->new($payload),
 
@@ -5034,15 +4464,7 @@ sub build_listMessages_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -5064,14 +4486,7 @@ sub listMessages( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ListMessagesResponse->new($payload),
 
@@ -5168,15 +4583,7 @@ sub build_createMessage_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -5198,14 +4605,7 @@ sub createMessage( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::MessageObject->new($payload),
 
@@ -5285,15 +4685,7 @@ sub build_deleteMessage_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -5315,14 +4707,7 @@ sub deleteMessage( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::DeleteMessageResponse->new($payload),
 
@@ -5402,15 +4787,7 @@ sub build_getMessage_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -5432,14 +4809,7 @@ sub getMessage( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::MessageObject->new($payload),
 
@@ -5532,15 +4902,7 @@ sub build_modifyMessage_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -5562,14 +4924,7 @@ sub modifyMessage( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::MessageObject->new($payload),
 
@@ -5668,15 +5023,7 @@ sub build_listRuns_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -5698,14 +5045,7 @@ sub listRuns( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ListRunsResponse->new($payload),
 
@@ -5856,15 +5196,7 @@ sub build_createRun_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -5886,14 +5218,7 @@ sub createRun( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::RunObject->new($payload),
 
@@ -5973,15 +5298,7 @@ sub build_getRun_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -6003,14 +5320,7 @@ sub getRun( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::RunObject->new($payload),
 
@@ -6103,15 +5413,7 @@ sub build_modifyRun_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -6133,14 +5435,7 @@ sub modifyRun( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::RunObject->new($payload),
 
@@ -6220,15 +5515,7 @@ sub build_cancelRun_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -6250,14 +5537,7 @@ sub cancelRun( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::RunObject->new($payload),
 
@@ -6364,15 +5644,7 @@ sub build_listRunSteps_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -6394,14 +5666,7 @@ sub listRunSteps( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ListRunStepsResponse->new($payload),
 
@@ -6489,15 +5754,7 @@ sub build_getRunStep_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -6519,14 +5776,7 @@ sub getRunStep( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::RunStepObject->new($payload),
 
@@ -6623,15 +5873,7 @@ sub build_submitToolOuputsToRun_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -6653,14 +5895,7 @@ sub submitToolOuputsToRun( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::RunObject->new($payload),
 
@@ -6748,15 +5983,7 @@ sub build_listVectorStores_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -6778,14 +6005,7 @@ sub listVectorStores( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ListVectorStoresResponse->new($payload),
 
@@ -6864,15 +6084,7 @@ sub build_createVectorStore_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -6894,14 +6106,7 @@ sub createVectorStore( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::VectorStoreObject->new($payload),
 
@@ -6973,15 +6178,7 @@ sub build_deleteVectorStore_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -7003,14 +6200,7 @@ sub deleteVectorStore( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::DeleteVectorStoreResponse->new($payload),
 
@@ -7082,15 +6272,7 @@ sub build_getVectorStore_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -7112,14 +6294,7 @@ sub getVectorStore( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::VectorStoreObject->new($payload),
 
@@ -7212,15 +6387,7 @@ sub build_modifyVectorStore_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -7242,14 +6409,7 @@ sub modifyVectorStore( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::VectorStoreObject->new($payload),
 
@@ -7334,15 +6494,7 @@ sub build_createVectorStoreFileBatch_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -7364,14 +6516,7 @@ sub createVectorStoreFileBatch( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::VectorStoreFileBatchObject->new($payload),
 
@@ -7451,15 +6596,7 @@ sub build_getVectorStoreFileBatch_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -7481,14 +6618,7 @@ sub getVectorStoreFileBatch( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::VectorStoreFileBatchObject->new($payload),
 
@@ -7568,15 +6698,7 @@ sub build_cancelVectorStoreFileBatch_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -7598,14 +6720,7 @@ sub cancelVectorStoreFileBatch( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::VectorStoreFileBatchObject->new($payload),
 
@@ -7718,15 +6833,7 @@ sub build_listFilesInVectorStoreBatch_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -7748,14 +6855,7 @@ sub listFilesInVectorStoreBatch( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ListVectorStoreFilesResponse->new($payload),
 
@@ -7860,15 +6960,7 @@ sub build_listVectorStoreFiles_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -7890,14 +6982,7 @@ sub listVectorStoreFiles( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::ListVectorStoreFilesResponse->new($payload),
 
@@ -7982,15 +7067,7 @@ sub build_createVectorStoreFile_request( $self, %options ) {
         => json => $request,
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -8012,14 +7089,7 @@ sub createVectorStoreFile( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::VectorStoreFileObject->new($payload),
 
@@ -8099,15 +7169,7 @@ sub build_deleteVectorStoreFile_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -8129,14 +7191,7 @@ sub deleteVectorStoreFile( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::DeleteVectorStoreFileResponse->new($payload),
 
@@ -8216,15 +7271,7 @@ sub build_getVectorStoreFile_request( $self, %options ) {
         }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -8246,14 +7293,7 @@ sub getVectorStoreFile( $self, %options ) {
             $ct =~ s/;\s+.*//;
             if( $ct eq 'application/json' ) {
                 my $payload = $resp->json();
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
                     AI::OpenAI::VectorStoreFileObject->new($payload),
 
@@ -8280,5 +7320,27 @@ sub getVectorStoreFile( $self, %options ) {
     return $res
 }
 
+
+sub validate_response( $self, $payload, $tx ) {
+    if(     $self->validate_responses
+        and my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_response($payload, { request => $tx->req });
+        if( $results->{error}) {
+            say $results;
+            say $tx->res->to_string;
+        };
+    };
+}
+
+sub validate_request( $self, $tx ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
+    };
+}
 
 1;

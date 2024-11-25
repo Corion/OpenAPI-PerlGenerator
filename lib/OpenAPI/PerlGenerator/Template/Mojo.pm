@@ -121,14 +121,7 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
                     my @lines = split /\n/, $fresh;
                     for (@lines) {
                         my $payload = decode_json( $_ );
-                        if(     $self->validate_responses
-                            and my $openapi = $self->openapi ) {
-                            my $results = $openapi->validate_response($payload, { request => $tx->req });
-                            if( $results->{error}) {
-                                say $results;
-                                say $tx->res->to_string;
-                            };
-                        };
+                        $self->validate_response( $payload, $tx );
                         $queue->push(
 % my $type = $info->{content}->{$ct}->{schema};
                             <%= include('inflated_response', { type => $type, prefix => $prefix, argname => '$payload' } ) %>
@@ -192,14 +185,7 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
 %               } else {
                 my $payload = $resp->body();
 %               }
-                if(     $self->validate_responses
-                    and my $openapi = $self->openapi ) {
-                    my $results = $openapi->validate_response($payload, { request => $tx->req });
-                    if( $results->{error}) {
-                        say $results;
-                        say $tx->res->to_string;
-                    };
-                };
+                $self->validate_response( $payload, $tx );
                 $res->done(
 % my $type = $info->{content}->{$ct}->{schema};
                     <%= include('inflated_response', { type => $type, prefix => $prefix, argname => '$payload' } ) %>
@@ -544,15 +530,7 @@ sub build_<%= $method->{name} %>_request( $self, %options ) {
 % }
     );
 
-    # validate our request while developing
-    if(        $self->validate_requests
-        and my $openapi = $self->openapi ) {
-        my $results = $openapi->validate_request($tx->req);
-        if( $results->{error}) {
-            say $results;
-            say $tx->req->to_string;
-        };
-    };
+    $self->validate_request( $payload, $tx );
 
     return $tx
 }
@@ -847,6 +825,28 @@ sub <%= $method->{name} %>( $self, %options ) {
 }
 
 % }
+
+sub validate_response( $self, $payload, $tx ) {
+    if(     $self->validate_responses
+        and my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_response($payload, { request => $tx->req });
+        if( $results->{error}) {
+            say $results;
+            say $tx->res->to_string;
+        };
+    };
+}
+
+sub validate_request( $self, $tx ) {
+    if(        $self->validate_requests
+        and my $openapi = $self->openapi ) {
+        my $results = $openapi->validate_request($tx->req);
+        if( $results->{error}) {
+            say $results;
+            say $tx->req->to_string;
+        };
+    };
+}
 
 1;
 __CLIENT_IMPLEMENTATION__
