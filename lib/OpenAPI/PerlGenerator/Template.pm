@@ -116,6 +116,15 @@ sub openapi_dependencies {
     $info->openapi_dependencies( @_ );
 }
 
+=head2 C<< basename >>
+
+=cut
+
+sub basename {
+    require File::Basename;
+    return File::Basename::basename( @_ );
+}
+
 1;
 __END__
 
