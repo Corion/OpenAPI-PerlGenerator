@@ -23,6 +23,7 @@ OpenAPI::PerlGenerator - create Perl client SDKs from OpenAPI specs
   my $schema = JSON::PP->new()->decode( $api_file );
   my @files = $gen->generate(
       schema => $schema,
+      schema_file => $api_file,
       prefix => "My::API",
   );
 
@@ -46,7 +47,23 @@ A data structure for the OpenAPI schema
 
 =cut
 
+sub load_schema_file( $self, $schema_file ) {
+    croak "No schema filename given"
+        unless $schema_file;
+    my $f = Mojo::File->new( $schema_file );
+    $f =~ /\.json\z/i
+    ? JSON::PP->new()->decode( $f->slurp())
+    : YAML::PP->new( boolean => 'JSON::PP' )->load_file( $f )
+}
+
 has 'schema' => (
+    is => 'lazy',
+    default => sub( $self ) {
+        $self->load_schema_file( $self->schema_file )
+    }
+);
+
+has 'schema_file' => (
     is => 'ro',
 );
 
@@ -400,14 +417,14 @@ to allow for better downstream type checking.
 
 =cut
 
-sub resolve_schema( $self, $schema, $prefix = $self->prefix ) {
-    my $t = $schema->{type} // '';
-    if ( exists $schema->{oneOf} and $schema->{oneOf}->@* == 1) {
-        return $self->resolve_schema( $schema->{oneOf}->[0], $prefix );
+sub resolve_schema( $self, $schema_entry, $prefix, $schema, $schema_file ) {
+    my $t = $schema_entry->{type} // '';
+    if ( exists $schema_entry->{oneOf} and $schema_entry->{oneOf}->@* == 1) {
+        return $self->resolve_schema( $schema_entry->{oneOf}->[0], $prefix, $schema, $schema_file );
 
-    } elsif( exists $schema->{oneOf} and $schema->{oneOf}->@* > 1) {
-        if( my $d = $schema->{discriminator} ) {
-            my $s = $self->schema;
+    } elsif( exists $schema_entry->{oneOf} and $schema_entry->{oneOf}->@* > 1) {
+        if( my $d = $schema_entry->{discriminator} ) {
+            my $s = $schema;
             my $res = {
                 discriminator => $d->{propertyName},
                 mapping => {
@@ -423,22 +440,22 @@ sub resolve_schema( $self, $schema, $prefix = $self->prefix ) {
             #warn "Don't know how to resolve oneOf without a discriminator entry";
             #warn "Guessing the best class is still open";
 
-            return ('oneOf', $self->find_discriminator( $schema, $self->schema, $prefix ));
+            return ('oneOf', $self->find_discriminator( $schema_entry, $schema, $prefix ));
         }
 
-    } elsif( exists $schema->{name} ) {
-        return ('class', $prefix . "::" . $schema->{name})
+    } elsif( exists $schema_entry->{name} ) {
+        return ('class', $prefix . "::" . $schema_entry->{name})
 
     } elsif( $t ) {
         return( $t, undef );
 
-    } elsif( ! keys $schema->%* ) {
+    } elsif( ! keys $schema_entry->%* ) {
         # We'll just assume JSON here
         return ('object', undef);
 
     } else {
         use Data::Dumper;
-        warn "Don't know how to derive a type for schema " . Dumper $schema;
+        warn "Don't know how to derive a type for schema " . Dumper $schema_entry;
         return ('object', undef);
     }
 }
@@ -482,7 +499,6 @@ sub render( $self, $name, $args ) {
     if( ! exists $template->{ $name }) {
         die "Unknown template '$name'";
     }
-    #warn "<<$name>>";
     my $res = $mt->render( $template->{ $name }, $args );
 
     if( ref $res and $res->isa('Mojo::Exception') ) {
@@ -505,9 +521,22 @@ Generate the packages from the templates.
 
 =cut
 
-sub generate( $self, %options ) {
-    my $schema = delete $options{ schema } // $self->schema
+sub _schema_parameters( $self, $options ) {
+    my $schema_file = $options->{ schema_file } // $self->schema_file
+        or croak "Need a schema file here";
+    my $schema = $options->{schema} ? $options->{ schema }
+               : $schema_file     ? $self->load_schema_file( $schema_file )
+               : $self->schema
         or croak "Need a schema";
+    my $methods = $options->{ methods } // $self->openapi_method_list(
+        schema => $schema,
+        schema_file => $schema_file,
+    );
+    return ($schema, $schema_file, $methods);
+}
+
+sub generate( $self, %options ) {
+    my ($schema, $schema_file, $methods) = _schema_parameters( $self, \%options );
     my $templates = delete $options{ templates } // $self->templates;
     my $prefix = delete $options{ prefix } // $self->prefix;
     my $version = delete $options{ version } // $self->version;
@@ -521,23 +550,21 @@ sub generate( $self, %options ) {
 
     push @res, $self->generate_schema_classes(
         schema => $schema,
+        schema_file => $schema_file,
         templates => $templates,
         prefix => $prefix,
         version => $version,
     );
 
-    my $methods = $self->openapi_method_list(
-        schema => $schema,
-    );
-
     push @res, $self->generate_client_implementation(
+        %options,
         methods => $methods,
         prefix => $prefix,
         name => 'Client::Impl',
         schema => $schema,
+        schema_file => $schema_file,
         templates => $templates,
         version => $version,
-        %options
     );
 
     push @res, $self->generate_client(
@@ -545,6 +572,7 @@ sub generate( $self, %options ) {
         prefix => $prefix,
         name => 'Client',
         schema => $schema,
+        schema_file => $schema_file,
         templates => $templates,
         version => $version,
         %options
@@ -556,10 +584,10 @@ sub generate( $self, %options ) {
 sub openapi_dependencies( $self, %options ) {
     my $class  = delete $options{ type }
         or croak "Need a 'type' parameter";
-    my $schema = delete $options{ schema } // $self->schema;
+    my ($schema, $schema_file,$methods) = _schema_parameters( $self, \%options );
     my $prefix = delete $options{ prefix } // $self->prefix;
 
-    my ($type, $info) = $self->resolve_schema($class, $prefix);
+    my ($type, $info) = $self->resolve_schema($class, $prefix, $schema, $schema_file);
     if( ref $info ) {
         my @subclasses = uniq sort grep { $_ ne 'HashRef' }
                               map { $self->class_type_name( $prefix, $_) }
@@ -571,7 +599,7 @@ sub openapi_dependencies( $self, %options ) {
 }
 
 sub generate_schema_classes( $self, %options ) {
-    my $schema = delete $options{ schema } // $self->schema;
+    my ($schema, $schema_file, $methods) = _schema_parameters( $self, \%options );
     my $templates = delete $options{ templates } // $self->templates;
     my $run_perltidy = delete $options{ tidy } // $self->tidy;
 
@@ -596,6 +624,8 @@ sub generate_schema_classes( $self, %options ) {
 
         my %info = (
             %options,
+            schema => $schema,
+            schema_file => $schema_file,
             name => $name,
             type => $type,
             elt  => $elt,
@@ -612,7 +642,7 @@ sub generate_schema_classes( $self, %options ) {
                     filename => $filename,
                     package => $self->full_package($name, $options{ prefix }),
                     source   => $content,
-                    prerequisites => [ $self->openapi_dependencies( type => $elt, prefix => $options{ prefix }) ],
+                    prerequisites => [ $self->openapi_dependencies( schema => $schema, schema_file => $schema_file, type => $elt, prefix => $options{ prefix }) ],
                 };
             } else {
                 # There was an error in this template...
@@ -646,7 +676,8 @@ sub generate_schema_classes( $self, %options ) {
 }
 
 sub openapi_method_list( $self, %options ) {
-    my $schema = delete $options{ schema } // $self->schema;
+    my $schema = delete $options{ schema }
+        or croak 'Need a schema to build the method list';
 
     my @methods;
 
@@ -690,8 +721,7 @@ sub elsif_chain($self, $id) {
 }
 
 sub generate_client_implementation( $self, %options ) {
-    my $schema = delete $options{ schema } // $self->schema;
-    my $methods = delete $options{ methods } // $self->openapi_method_list( schema => $schema );
+    my ($schema, $schema_file, $methods) = _schema_parameters( $self, \%options );
     $options{ prefix } //= $self->prefix;
 
     $self->locations( {} );
@@ -700,6 +730,7 @@ sub generate_client_implementation( $self, %options ) {
         methods => $methods,
         name => 'Client::Impl',
         schema => $schema,
+        schema_file => $schema_file,
         %options
     });
     return {
@@ -710,8 +741,7 @@ sub generate_client_implementation( $self, %options ) {
 }
 
 sub generate_client( $self, %options ) {
-    my $schema = delete $options{ schema } // $self->schema;
-    my $methods = delete $options{ methods } // $self->openapi_method_list( schema => $schema );
+    my ($schema, $schema_file, $methods) = _schema_parameters( $self, \%options );
     $options{ prefix } //= $self->prefix;
 
     $self->locations( {} );
@@ -720,6 +750,7 @@ sub generate_client( $self, %options ) {
         methods => $methods,
         name => 'Client',
         schema => $schema,
+        schema_file => $schema_file,
         %options
     });
     return {

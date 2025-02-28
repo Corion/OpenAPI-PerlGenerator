@@ -47,7 +47,7 @@ for my $known (@testcases) {
                : $api_file_json ? JSON::PP->new()->decode( $api_file_json->slurp())
                : die "No YAML or JSON OpenAPI file found for $known";
     my @files = $gen->generate(
-        schema => $schema,
+        schema_file => ($api_file_yaml // $api_file_json),
         prefix => "$prefix",
     );
     {

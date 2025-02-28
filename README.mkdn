@@ -13,6 +13,7 @@ OpenAPI::PerlGenerator - create Perl client SDKs from OpenAPI specs
     my $schema = JSON::PP->new()->decode( $api_file );
     my @files = $gen->generate(
         schema => $schema,
+        schema_file => $api_file,
         prefix => "My::API",
     );
 
