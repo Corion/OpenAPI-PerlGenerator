@@ -15,6 +15,8 @@ use URI::Template;
 use Mojo::JSON 'encode_json', 'decode_json';
 use OpenAPI::Modern;
 
+use File::ShareDir 'module_file';
+
 use Future::Mojo;
 use Future::Queue;
 
@@ -600,14 +602,15 @@ The server to access
 =cut
 
 has 'schema_file' => (
-    is => 'ro',
+    is => 'lazy',
+    default => sub { require JIRA::API::Client::Impl; module_file('JIRA::API::Client::Impl', 'jira.json') },
 );
 
 has 'schema' => (
     is => 'lazy',
     default => sub {
         if( my $fn = $_[0]->schema_file ) {
-            YAML::PP->new( boolean => 'JSON::PP' )->load_file( $fn );
+            YAML::PP->new( boolean => 'JSON::PP' )->load_file($fn);
         }
     },
 );
@@ -702,7 +705,7 @@ sub build_getBanner_request( $self, %options ) {
 
 
 sub getBanner( $self, %options ) {
-    my $tx = $self->_build_getBanner_request(%options);
+    my $tx = $self->build_getBanner_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -852,7 +855,7 @@ sub build_setBanner_request( $self, %options ) {
 
 
 sub setBanner( $self, %options ) {
-    my $tx = $self->_build_setBanner_request(%options);
+    my $tx = $self->build_setBanner_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1004,7 +1007,7 @@ sub build_updateMultipleCustomFieldValues_request( $self, %options ) {
 
 
 sub updateMultipleCustomFieldValues( $self, %options ) {
-    my $tx = $self->_build_updateMultipleCustomFieldValues_request(%options);
+    my $tx = $self->build_updateMultipleCustomFieldValues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1220,7 +1223,7 @@ sub build_getCustomFieldConfiguration_request( $self, %options ) {
 
 
 sub getCustomFieldConfiguration( $self, %options ) {
-    my $tx = $self->_build_getCustomFieldConfiguration_request(%options);
+    my $tx = $self->build_getCustomFieldConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1343,7 +1346,7 @@ sub build_updateCustomFieldConfiguration_request( $self, %options ) {
 
 
 sub updateCustomFieldConfiguration( $self, %options ) {
-    my $tx = $self->_build_updateCustomFieldConfiguration_request(%options);
+    my $tx = $self->build_updateCustomFieldConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1475,7 +1478,7 @@ sub build_updateCustomFieldValue_request( $self, %options ) {
 
 
 sub updateCustomFieldValue( $self, %options ) {
-    my $tx = $self->_build_updateCustomFieldValue_request(%options);
+    my $tx = $self->build_updateCustomFieldValue_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1615,7 +1618,7 @@ sub build_getApplicationProperty_request( $self, %options ) {
 
 
 sub getApplicationProperty( $self, %options ) {
-    my $tx = $self->_build_getApplicationProperty_request(%options);
+    my $tx = $self->build_getApplicationProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1729,7 +1732,7 @@ sub build_getAdvancedSettings_request( $self, %options ) {
 
 
 sub getAdvancedSettings( $self, %options ) {
-    my $tx = $self->_build_getAdvancedSettings_request(%options);
+    my $tx = $self->build_getAdvancedSettings_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1933,7 +1936,7 @@ sub build_setApplicationProperty_request( $self, %options ) {
 
 
 sub setApplicationProperty( $self, %options ) {
-    my $tx = $self->_build_setApplicationProperty_request(%options);
+    my $tx = $self->build_setApplicationProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2105,7 +2108,7 @@ sub build_getAllApplicationRoles_request( $self, %options ) {
 
 
 sub getAllApplicationRoles( $self, %options ) {
-    my $tx = $self->_build_getAllApplicationRoles_request(%options);
+    my $tx = $self->build_getAllApplicationRoles_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2250,7 +2253,7 @@ sub build_getApplicationRole_request( $self, %options ) {
 
 
 sub getApplicationRole( $self, %options ) {
-    my $tx = $self->_build_getApplicationRole_request(%options);
+    my $tx = $self->build_getApplicationRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2384,7 +2387,7 @@ sub build_getAttachmentContent_request( $self, %options ) {
 
 
 sub getAttachmentContent( $self, %options ) {
-    my $tx = $self->_build_getAttachmentContent_request(%options);
+    my $tx = $self->build_getAttachmentContent_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2501,7 +2504,7 @@ sub build_getAttachmentMeta_request( $self, %options ) {
 
 
 sub getAttachmentMeta( $self, %options ) {
-    my $tx = $self->_build_getAttachmentMeta_request(%options);
+    my $tx = $self->build_getAttachmentMeta_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2647,7 +2650,7 @@ sub build_getAttachmentThumbnail_request( $self, %options ) {
 
 
 sub getAttachmentThumbnail( $self, %options ) {
-    my $tx = $self->_build_getAttachmentThumbnail_request(%options);
+    my $tx = $self->build_getAttachmentThumbnail_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2774,7 +2777,7 @@ sub build_removeAttachment_request( $self, %options ) {
 
 
 sub removeAttachment( $self, %options ) {
-    my $tx = $self->_build_removeAttachment_request(%options);
+    my $tx = $self->build_removeAttachment_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2909,7 +2912,7 @@ sub build_getAttachment_request( $self, %options ) {
 
 
 sub getAttachment( $self, %options ) {
-    my $tx = $self->_build_getAttachment_request(%options);
+    my $tx = $self->build_getAttachment_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3065,7 +3068,7 @@ sub build_expandAttachmentForHumans_request( $self, %options ) {
 
 
 sub expandAttachmentForHumans( $self, %options ) {
-    my $tx = $self->_build_expandAttachmentForHumans_request(%options);
+    my $tx = $self->build_expandAttachmentForHumans_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3212,7 +3215,7 @@ sub build_expandAttachmentForMachines_request( $self, %options ) {
 
 
 sub expandAttachmentForMachines( $self, %options ) {
-    my $tx = $self->_build_expandAttachmentForMachines_request(%options);
+    my $tx = $self->build_expandAttachmentForMachines_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3459,7 +3462,7 @@ sub build_getAuditRecords_request( $self, %options ) {
 
 
 sub getAuditRecords( $self, %options ) {
-    my $tx = $self->_build_getAuditRecords_request(%options);
+    my $tx = $self->build_getAuditRecords_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3583,7 +3586,7 @@ sub build_getAllSystemAvatars_request( $self, %options ) {
 
 
 sub getAllSystemAvatars( $self, %options ) {
-    my $tx = $self->_build_getAllSystemAvatars_request(%options);
+    my $tx = $self->build_getAllSystemAvatars_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3781,7 +3784,7 @@ sub build_getCommentsByIds_request( $self, %options ) {
 
 
 sub getCommentsByIds( $self, %options ) {
-    my $tx = $self->_build_getCommentsByIds_request(%options);
+    my $tx = $self->build_getCommentsByIds_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3913,7 +3916,7 @@ sub build_getCommentPropertyKeys_request( $self, %options ) {
 
 
 sub getCommentPropertyKeys( $self, %options ) {
-    my $tx = $self->_build_getCommentPropertyKeys_request(%options);
+    my $tx = $self->build_getCommentPropertyKeys_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4045,7 +4048,7 @@ sub build_deleteCommentProperty_request( $self, %options ) {
 
 
 sub deleteCommentProperty( $self, %options ) {
-    my $tx = $self->_build_deleteCommentProperty_request(%options);
+    my $tx = $self->build_deleteCommentProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4181,7 +4184,7 @@ sub build_getCommentProperty_request( $self, %options ) {
 
 
 sub getCommentProperty( $self, %options ) {
-    my $tx = $self->_build_getCommentProperty_request(%options);
+    my $tx = $self->build_getCommentProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4321,7 +4324,7 @@ sub build_setCommentProperty_request( $self, %options ) {
 
 
 sub setCommentProperty( $self, %options ) {
-    my $tx = $self->_build_setCommentProperty_request(%options);
+    my $tx = $self->build_setCommentProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4611,7 +4614,7 @@ sub build_createComponent_request( $self, %options ) {
 
 
 sub createComponent( $self, %options ) {
-    my $tx = $self->_build_createComponent_request(%options);
+    my $tx = $self->build_createComponent_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4730,7 +4733,7 @@ sub build_deleteComponent_request( $self, %options ) {
 
 
 sub deleteComponent( $self, %options ) {
-    my $tx = $self->_build_deleteComponent_request(%options);
+    my $tx = $self->build_deleteComponent_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4885,7 +4888,7 @@ sub build_getComponent_request( $self, %options ) {
 
 
 sub getComponent( $self, %options ) {
-    my $tx = $self->_build_getComponent_request(%options);
+    my $tx = $self->build_getComponent_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5166,7 +5169,7 @@ sub build_updateComponent_request( $self, %options ) {
 
 
 sub updateComponent( $self, %options ) {
-    my $tx = $self->_build_updateComponent_request(%options);
+    my $tx = $self->build_updateComponent_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5284,7 +5287,7 @@ sub build_getComponentRelatedIssues_request( $self, %options ) {
 
 
 sub getComponentRelatedIssues( $self, %options ) {
-    my $tx = $self->_build_getComponentRelatedIssues_request(%options);
+    my $tx = $self->build_getComponentRelatedIssues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5393,7 +5396,7 @@ sub build_getConfiguration_request( $self, %options ) {
 
 
 sub getConfiguration( $self, %options ) {
-    my $tx = $self->_build_getConfiguration_request(%options);
+    my $tx = $self->build_getConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5490,7 +5493,7 @@ sub build_getSelectedTimeTrackingImplementation_request( $self, %options ) {
 
 
 sub getSelectedTimeTrackingImplementation( $self, %options ) {
-    my $tx = $self->_build_getSelectedTimeTrackingImplementation_request(%options);
+    my $tx = $self->build_getSelectedTimeTrackingImplementation_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5618,7 +5621,7 @@ sub build_selectTimeTrackingImplementation_request( $self, %options ) {
 
 
 sub selectTimeTrackingImplementation( $self, %options ) {
-    my $tx = $self->_build_selectTimeTrackingImplementation_request(%options);
+    my $tx = $self->build_selectTimeTrackingImplementation_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5722,7 +5725,7 @@ sub build_getAvailableTimeTrackingImplementations_request( $self, %options ) {
 
 
 sub getAvailableTimeTrackingImplementations( $self, %options ) {
-    my $tx = $self->_build_getAvailableTimeTrackingImplementations_request(%options);
+    my $tx = $self->build_getAvailableTimeTrackingImplementations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5823,7 +5826,7 @@ sub build_getSharedTimeTrackingConfiguration_request( $self, %options ) {
 
 
 sub getSharedTimeTrackingConfiguration( $self, %options ) {
-    my $tx = $self->_build_getSharedTimeTrackingConfiguration_request(%options);
+    my $tx = $self->build_getSharedTimeTrackingConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5948,7 +5951,7 @@ sub build_setSharedTimeTrackingConfiguration_request( $self, %options ) {
 
 
 sub setSharedTimeTrackingConfiguration( $self, %options ) {
-    my $tx = $self->_build_setSharedTimeTrackingConfiguration_request(%options);
+    my $tx = $self->build_setSharedTimeTrackingConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6079,7 +6082,7 @@ sub build_getCustomFieldOption_request( $self, %options ) {
 
 
 sub getCustomFieldOption( $self, %options ) {
-    my $tx = $self->_build_getCustomFieldOption_request(%options);
+    my $tx = $self->build_getCustomFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6265,7 +6268,7 @@ sub build_getAllDashboards_request( $self, %options ) {
 
 
 sub getAllDashboards( $self, %options ) {
-    my $tx = $self->_build_getAllDashboards_request(%options);
+    my $tx = $self->build_getAllDashboards_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6423,7 +6426,7 @@ sub build_createDashboard_request( $self, %options ) {
 
 
 sub createDashboard( $self, %options ) {
-    my $tx = $self->_build_createDashboard_request(%options);
+    my $tx = $self->build_createDashboard_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6555,7 +6558,7 @@ sub build_getAllAvailableDashboardGadgets_request( $self, %options ) {
 
 
 sub getAllAvailableDashboardGadgets( $self, %options ) {
-    my $tx = $self->_build_getAllAvailableDashboardGadgets_request(%options);
+    my $tx = $self->build_getAllAvailableDashboardGadgets_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6915,7 +6918,7 @@ sub build_getDashboardsPaginated_request( $self, %options ) {
 
 
 sub getDashboardsPaginated( $self, %options ) {
-    my $tx = $self->_build_getDashboardsPaginated_request(%options);
+    my $tx = $self->build_getDashboardsPaginated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7137,7 +7140,7 @@ sub build_getAllGadgets_request( $self, %options ) {
 
 
 sub getAllGadgets( $self, %options ) {
-    my $tx = $self->_build_getAllGadgets_request(%options);
+    my $tx = $self->build_getAllGadgets_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7316,7 +7319,7 @@ sub build_addGadget_request( $self, %options ) {
 
 
 sub addGadget( $self, %options ) {
-    my $tx = $self->_build_addGadget_request(%options);
+    my $tx = $self->build_addGadget_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7466,7 +7469,7 @@ sub build_removeGadget_request( $self, %options ) {
 
 
 sub removeGadget( $self, %options ) {
-    my $tx = $self->_build_removeGadget_request(%options);
+    my $tx = $self->build_removeGadget_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7629,7 +7632,7 @@ sub build_updateGadget_request( $self, %options ) {
 
 
 sub updateGadget( $self, %options ) {
-    my $tx = $self->_build_updateGadget_request(%options);
+    my $tx = $self->build_updateGadget_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7780,7 +7783,7 @@ sub build_getDashboardItemPropertyKeys_request( $self, %options ) {
 
 
 sub getDashboardItemPropertyKeys( $self, %options ) {
-    my $tx = $self->_build_getDashboardItemPropertyKeys_request(%options);
+    my $tx = $self->build_getDashboardItemPropertyKeys_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7900,7 +7903,7 @@ sub build_deleteDashboardItemProperty_request( $self, %options ) {
 
 
 sub deleteDashboardItemProperty( $self, %options ) {
-    my $tx = $self->_build_deleteDashboardItemProperty_request(%options);
+    my $tx = $self->build_deleteDashboardItemProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -8031,7 +8034,7 @@ sub build_getDashboardItemProperty_request( $self, %options ) {
 
 
 sub getDashboardItemProperty( $self, %options ) {
-    my $tx = $self->_build_getDashboardItemProperty_request(%options);
+    my $tx = $self->build_getDashboardItemProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -8173,7 +8176,7 @@ sub build_setDashboardItemProperty_request( $self, %options ) {
 
 
 sub setDashboardItemProperty( $self, %options ) {
-    my $tx = $self->_build_setDashboardItemProperty_request(%options);
+    my $tx = $self->build_setDashboardItemProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -8313,7 +8316,7 @@ sub build_deleteDashboard_request( $self, %options ) {
 
 
 sub deleteDashboard( $self, %options ) {
-    my $tx = $self->_build_deleteDashboard_request(%options);
+    my $tx = $self->build_deleteDashboard_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -8450,7 +8453,7 @@ sub build_getDashboard_request( $self, %options ) {
 
 
 sub getDashboard( $self, %options ) {
-    my $tx = $self->_build_getDashboard_request(%options);
+    my $tx = $self->build_getDashboard_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -8626,7 +8629,7 @@ sub build_updateDashboard_request( $self, %options ) {
 
 
 sub updateDashboard( $self, %options ) {
-    my $tx = $self->_build_updateDashboard_request(%options);
+    my $tx = $self->build_updateDashboard_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -8812,7 +8815,7 @@ sub build_copyDashboard_request( $self, %options ) {
 
 
 sub copyDashboard( $self, %options ) {
-    my $tx = $self->_build_copyDashboard_request(%options);
+    my $tx = $self->build_copyDashboard_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -8955,7 +8958,7 @@ sub build_getEvents_request( $self, %options ) {
 
 
 sub getEvents( $self, %options ) {
-    my $tx = $self->_build_getEvents_request(%options);
+    my $tx = $self->build_getEvents_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -9149,7 +9152,7 @@ sub build_analyseExpression_request( $self, %options ) {
 
 
 sub analyseExpression( $self, %options ) {
-    my $tx = $self->_build_analyseExpression_request(%options);
+    my $tx = $self->build_analyseExpression_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -9437,7 +9440,7 @@ sub build_evaluateJiraExpression_request( $self, %options ) {
 
 
 sub evaluateJiraExpression( $self, %options ) {
-    my $tx = $self->_build_evaluateJiraExpression_request(%options);
+    my $tx = $self->build_evaluateJiraExpression_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -9617,7 +9620,7 @@ sub build_getFields_request( $self, %options ) {
 
 
 sub getFields( $self, %options ) {
-    my $tx = $self->_build_getFields_request(%options);
+    my $tx = $self->build_getFields_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -9977,7 +9980,7 @@ sub build_createCustomField_request( $self, %options ) {
 
 
 sub createCustomField( $self, %options ) {
-    my $tx = $self->_build_createCustomField_request(%options);
+    my $tx = $self->build_createCustomField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -10263,7 +10266,7 @@ sub build_getFieldsPaginated_request( $self, %options ) {
 
 
 sub getFieldsPaginated( $self, %options ) {
-    my $tx = $self->_build_getFieldsPaginated_request(%options);
+    my $tx = $self->build_getFieldsPaginated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -10494,7 +10497,7 @@ sub build_getTrashedFieldsPaginated_request( $self, %options ) {
 
 
 sub getTrashedFieldsPaginated( $self, %options ) {
-    my $tx = $self->_build_getTrashedFieldsPaginated_request(%options);
+    my $tx = $self->build_getTrashedFieldsPaginated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -10779,7 +10782,7 @@ sub build_updateCustomField_request( $self, %options ) {
 
 
 sub updateCustomField( $self, %options ) {
-    my $tx = $self->_build_updateCustomField_request(%options);
+    my $tx = $self->build_updateCustomField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -11022,7 +11025,7 @@ sub build_getContextsForField_request( $self, %options ) {
 
 
 sub getContextsForField( $self, %options ) {
-    my $tx = $self->_build_getContextsForField_request(%options);
+    my $tx = $self->build_getContextsForField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -11203,7 +11206,7 @@ sub build_createCustomFieldContext_request( $self, %options ) {
 
 
 sub createCustomFieldContext( $self, %options ) {
-    my $tx = $self->_build_createCustomFieldContext_request(%options);
+    my $tx = $self->build_createCustomFieldContext_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -11533,7 +11536,7 @@ sub build_getDefaultValues_request( $self, %options ) {
 
 
 sub getDefaultValues( $self, %options ) {
-    my $tx = $self->_build_getDefaultValues_request(%options);
+    my $tx = $self->build_getDefaultValues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -11846,7 +11849,7 @@ sub build_setDefaultValues_request( $self, %options ) {
 
 
 sub setDefaultValues( $self, %options ) {
-    my $tx = $self->_build_setDefaultValues_request(%options);
+    my $tx = $self->build_setDefaultValues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -12043,7 +12046,7 @@ sub build_getIssueTypeMappingsForContexts_request( $self, %options ) {
 
 
 sub getIssueTypeMappingsForContexts( $self, %options ) {
-    my $tx = $self->_build_getIssueTypeMappingsForContexts_request(%options);
+    my $tx = $self->build_getIssueTypeMappingsForContexts_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -12242,7 +12245,7 @@ sub build_getCustomFieldContextsForProjectsAndIssueTypes_request( $self, %option
 
 
 sub getCustomFieldContextsForProjectsAndIssueTypes( $self, %options ) {
-    my $tx = $self->_build_getCustomFieldContextsForProjectsAndIssueTypes_request(%options);
+    my $tx = $self->build_getCustomFieldContextsForProjectsAndIssueTypes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -12443,7 +12446,7 @@ sub build_getProjectContextMapping_request( $self, %options ) {
 
 
 sub getProjectContextMapping( $self, %options ) {
-    my $tx = $self->_build_getProjectContextMapping_request(%options);
+    my $tx = $self->build_getProjectContextMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -12606,7 +12609,7 @@ sub build_deleteCustomFieldContext_request( $self, %options ) {
 
 
 sub deleteCustomFieldContext( $self, %options ) {
-    my $tx = $self->_build_deleteCustomFieldContext_request(%options);
+    my $tx = $self->build_deleteCustomFieldContext_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -12801,7 +12804,7 @@ sub build_updateCustomFieldContext_request( $self, %options ) {
 
 
 sub updateCustomFieldContext( $self, %options ) {
-    my $tx = $self->_build_updateCustomFieldContext_request(%options);
+    my $tx = $self->build_updateCustomFieldContext_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -13004,7 +13007,7 @@ sub build_addIssueTypesToContext_request( $self, %options ) {
 
 
 sub addIssueTypesToContext( $self, %options ) {
-    my $tx = $self->_build_addIssueTypesToContext_request(%options);
+    my $tx = $self->build_addIssueTypesToContext_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -13212,7 +13215,7 @@ sub build_removeIssueTypesFromContext_request( $self, %options ) {
 
 
 sub removeIssueTypesFromContext( $self, %options ) {
-    my $tx = $self->_build_removeIssueTypesFromContext_request(%options);
+    my $tx = $self->build_removeIssueTypesFromContext_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -13447,7 +13450,7 @@ sub build_getOptionsForContext_request( $self, %options ) {
 
 
 sub getOptionsForContext( $self, %options ) {
-    my $tx = $self->_build_getOptionsForContext_request(%options);
+    my $tx = $self->build_getOptionsForContext_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -13664,7 +13667,7 @@ sub build_createCustomFieldOption_request( $self, %options ) {
 
 
 sub createCustomFieldOption( $self, %options ) {
-    my $tx = $self->_build_createCustomFieldOption_request(%options);
+    my $tx = $self->build_createCustomFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -13880,7 +13883,7 @@ sub build_updateCustomFieldOption_request( $self, %options ) {
 
 
 sub updateCustomFieldOption( $self, %options ) {
-    my $tx = $self->_build_updateCustomFieldOption_request(%options);
+    my $tx = $self->build_updateCustomFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -14081,7 +14084,7 @@ sub build_reorderCustomFieldOptions_request( $self, %options ) {
 
 
 sub reorderCustomFieldOptions( $self, %options ) {
-    my $tx = $self->_build_reorderCustomFieldOptions_request(%options);
+    my $tx = $self->build_reorderCustomFieldOptions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -14270,7 +14273,7 @@ sub build_deleteCustomFieldOption_request( $self, %options ) {
 
 
 sub deleteCustomFieldOption( $self, %options ) {
-    my $tx = $self->_build_deleteCustomFieldOption_request(%options);
+    my $tx = $self->build_deleteCustomFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -14451,7 +14454,7 @@ sub build_assignProjectsToCustomFieldContext_request( $self, %options ) {
 
 
 sub assignProjectsToCustomFieldContext( $self, %options ) {
-    my $tx = $self->_build_assignProjectsToCustomFieldContext_request(%options);
+    my $tx = $self->build_assignProjectsToCustomFieldContext_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -14646,7 +14649,7 @@ sub build_removeCustomFieldContextFromProjects_request( $self, %options ) {
 
 
 sub removeCustomFieldContextFromProjects( $self, %options ) {
-    my $tx = $self->_build_removeCustomFieldContextFromProjects_request(%options);
+    my $tx = $self->build_removeCustomFieldContextFromProjects_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -14821,7 +14824,7 @@ sub build_getContextsForFieldDeprecated_request( $self, %options ) {
 
 
 sub getContextsForFieldDeprecated( $self, %options ) {
-    my $tx = $self->_build_getContextsForFieldDeprecated_request(%options);
+    my $tx = $self->build_getContextsForFieldDeprecated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -14965,7 +14968,7 @@ sub build_getScreensForField_request( $self, %options ) {
 
 
 sub getScreensForField( $self, %options ) {
-    my $tx = $self->_build_getScreensForField_request(%options);
+    my $tx = $self->build_getScreensForField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -15146,7 +15149,7 @@ sub build_getAllIssueFieldOptions_request( $self, %options ) {
 
 
 sub getAllIssueFieldOptions( $self, %options ) {
-    my $tx = $self->_build_getAllIssueFieldOptions_request(%options);
+    my $tx = $self->build_getAllIssueFieldOptions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -15323,7 +15326,7 @@ sub build_createIssueFieldOption_request( $self, %options ) {
 
 
 sub createIssueFieldOption( $self, %options ) {
-    my $tx = $self->_build_createIssueFieldOption_request(%options);
+    my $tx = $self->build_createIssueFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -15492,7 +15495,7 @@ sub build_getSelectableIssueFieldOptions_request( $self, %options ) {
 
 
 sub getSelectableIssueFieldOptions( $self, %options ) {
-    my $tx = $self->_build_getSelectableIssueFieldOptions_request(%options);
+    my $tx = $self->build_getSelectableIssueFieldOptions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -15658,7 +15661,7 @@ sub build_getVisibleIssueFieldOptions_request( $self, %options ) {
 
 
 sub getVisibleIssueFieldOptions( $self, %options ) {
-    my $tx = $self->_build_getVisibleIssueFieldOptions_request(%options);
+    my $tx = $self->build_getVisibleIssueFieldOptions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -15786,7 +15789,7 @@ sub build_deleteIssueFieldOption_request( $self, %options ) {
 
 
 sub deleteIssueFieldOption( $self, %options ) {
-    my $tx = $self->_build_deleteIssueFieldOption_request(%options);
+    my $tx = $self->build_deleteIssueFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -15953,7 +15956,7 @@ sub build_getIssueFieldOption_request( $self, %options ) {
 
 
 sub getIssueFieldOption( $self, %options ) {
-    my $tx = $self->_build_getIssueFieldOption_request(%options);
+    my $tx = $self->build_getIssueFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -16145,7 +16148,7 @@ sub build_updateIssueFieldOption_request( $self, %options ) {
 
 
 sub updateIssueFieldOption( $self, %options ) {
-    my $tx = $self->_build_updateIssueFieldOption_request(%options);
+    my $tx = $self->build_updateIssueFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -16343,7 +16346,7 @@ sub build_replaceIssueFieldOption_request( $self, %options ) {
 
 
 sub replaceIssueFieldOption( $self, %options ) {
-    my $tx = $self->_build_replaceIssueFieldOption_request(%options);
+    my $tx = $self->build_replaceIssueFieldOption_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -16469,7 +16472,7 @@ sub build_deleteCustomField_request( $self, %options ) {
 
 
 sub deleteCustomField( $self, %options ) {
-    my $tx = $self->_build_deleteCustomField_request(%options);
+    my $tx = $self->build_deleteCustomField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -16646,7 +16649,7 @@ sub build_restoreCustomField_request( $self, %options ) {
 
 
 sub restoreCustomField( $self, %options ) {
-    my $tx = $self->_build_restoreCustomField_request(%options);
+    my $tx = $self->build_restoreCustomField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -16808,7 +16811,7 @@ sub build_trashCustomField_request( $self, %options ) {
 
 
 sub trashCustomField( $self, %options ) {
-    my $tx = $self->_build_trashCustomField_request(%options);
+    my $tx = $self->build_trashCustomField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17030,7 +17033,7 @@ sub build_getAllFieldConfigurations_request( $self, %options ) {
 
 
 sub getAllFieldConfigurations( $self, %options ) {
-    my $tx = $self->_build_getAllFieldConfigurations_request(%options);
+    my $tx = $self->build_getAllFieldConfigurations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17148,7 +17151,7 @@ sub build_createFieldConfiguration_request( $self, %options ) {
 
 
 sub createFieldConfiguration( $self, %options ) {
-    my $tx = $self->_build_createFieldConfiguration_request(%options);
+    my $tx = $self->build_createFieldConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17257,7 +17260,7 @@ sub build_deleteFieldConfiguration_request( $self, %options ) {
 
 
 sub deleteFieldConfiguration( $self, %options ) {
-    my $tx = $self->_build_deleteFieldConfiguration_request(%options);
+    my $tx = $self->build_deleteFieldConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17386,7 +17389,7 @@ sub build_updateFieldConfiguration_request( $self, %options ) {
 
 
 sub updateFieldConfiguration( $self, %options ) {
-    my $tx = $self->_build_updateFieldConfiguration_request(%options);
+    my $tx = $self->build_updateFieldConfiguration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17534,7 +17537,7 @@ sub build_getFieldConfigurationItems_request( $self, %options ) {
 
 
 sub getFieldConfigurationItems( $self, %options ) {
-    my $tx = $self->_build_getFieldConfigurationItems_request(%options);
+    my $tx = $self->build_getFieldConfigurationItems_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17658,7 +17661,7 @@ sub build_updateFieldConfigurationItems_request( $self, %options ) {
 
 
 sub updateFieldConfigurationItems( $self, %options ) {
-    my $tx = $self->_build_updateFieldConfigurationItems_request(%options);
+    my $tx = $self->build_updateFieldConfigurationItems_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17805,7 +17808,7 @@ sub build_getAllFieldConfigurationSchemes_request( $self, %options ) {
 
 
 sub getAllFieldConfigurationSchemes( $self, %options ) {
-    my $tx = $self->_build_getAllFieldConfigurationSchemes_request(%options);
+    my $tx = $self->build_getAllFieldConfigurationSchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -17942,7 +17945,7 @@ sub build_createFieldConfigurationScheme_request( $self, %options ) {
 
 
 sub createFieldConfigurationScheme( $self, %options ) {
-    my $tx = $self->_build_createFieldConfigurationScheme_request(%options);
+    my $tx = $self->build_createFieldConfigurationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -18120,7 +18123,7 @@ sub build_getFieldConfigurationSchemeMappings_request( $self, %options ) {
 
 
 sub getFieldConfigurationSchemeMappings( $self, %options ) {
-    my $tx = $self->_build_getFieldConfigurationSchemeMappings_request(%options);
+    my $tx = $self->build_getFieldConfigurationSchemeMappings_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -18275,7 +18278,7 @@ sub build_getFieldConfigurationSchemeProjectMapping_request( $self, %options ) {
 
 
 sub getFieldConfigurationSchemeProjectMapping( $self, %options ) {
-    my $tx = $self->_build_getFieldConfigurationSchemeProjectMapping_request(%options);
+    my $tx = $self->build_getFieldConfigurationSchemeProjectMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -18413,7 +18416,7 @@ sub build_assignFieldConfigurationSchemeToProject_request( $self, %options ) {
 
 
 sub assignFieldConfigurationSchemeToProject( $self, %options ) {
-    my $tx = $self->_build_assignFieldConfigurationSchemeToProject_request(%options);
+    my $tx = $self->build_assignFieldConfigurationSchemeToProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -18561,7 +18564,7 @@ sub build_deleteFieldConfigurationScheme_request( $self, %options ) {
 
 
 sub deleteFieldConfigurationScheme( $self, %options ) {
-    my $tx = $self->_build_deleteFieldConfigurationScheme_request(%options);
+    my $tx = $self->build_deleteFieldConfigurationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -18714,7 +18717,7 @@ sub build_updateFieldConfigurationScheme_request( $self, %options ) {
 
 
 sub updateFieldConfigurationScheme( $self, %options ) {
-    my $tx = $self->_build_updateFieldConfigurationScheme_request(%options);
+    my $tx = $self->build_updateFieldConfigurationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -18875,7 +18878,7 @@ sub build_setFieldConfigurationSchemeMapping_request( $self, %options ) {
 
 
 sub setFieldConfigurationSchemeMapping( $self, %options ) {
-    my $tx = $self->_build_setFieldConfigurationSchemeMapping_request(%options);
+    my $tx = $self->build_setFieldConfigurationSchemeMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -19028,7 +19031,7 @@ sub build_removeIssueTypesFromGlobalFieldConfigurationScheme_request( $self, %op
 
 
 sub removeIssueTypesFromGlobalFieldConfigurationScheme( $self, %options ) {
-    my $tx = $self->_build_removeIssueTypesFromGlobalFieldConfigurationScheme_request(%options);
+    my $tx = $self->build_removeIssueTypesFromGlobalFieldConfigurationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -19229,7 +19232,7 @@ sub build_getFilters_request( $self, %options ) {
 
 
 sub getFilters( $self, %options ) {
-    my $tx = $self->_build_getFilters_request(%options);
+    my $tx = $self->build_getFilters_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -19448,7 +19451,7 @@ sub build_createFilter_request( $self, %options ) {
 
 
 sub createFilter( $self, %options ) {
-    my $tx = $self->_build_createFilter_request(%options);
+    my $tx = $self->build_createFilter_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -19545,7 +19548,7 @@ sub build_getDefaultShareScope_request( $self, %options ) {
 
 
 sub getDefaultShareScope( $self, %options ) {
-    my $tx = $self->_build_getDefaultShareScope_request(%options);
+    my $tx = $self->build_getDefaultShareScope_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -19671,7 +19674,7 @@ sub build_setDefaultShareScope_request( $self, %options ) {
 
 
 sub setDefaultShareScope( $self, %options ) {
-    my $tx = $self->_build_setDefaultShareScope_request(%options);
+    my $tx = $self->build_setDefaultShareScope_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -19927,7 +19930,7 @@ sub build_getFavouriteFilters_request( $self, %options ) {
 
 
 sub getFavouriteFilters( $self, %options ) {
-    my $tx = $self->_build_getFavouriteFilters_request(%options);
+    my $tx = $self->build_getFavouriteFilters_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -20185,7 +20188,7 @@ sub build_getMyFilters_request( $self, %options ) {
 
 
 sub getMyFilters( $self, %options ) {
-    my $tx = $self->_build_getMyFilters_request(%options);
+    my $tx = $self->build_getMyFilters_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -20719,7 +20722,7 @@ sub build_getFiltersPaginated_request( $self, %options ) {
 
 
 sub getFiltersPaginated( $self, %options ) {
-    my $tx = $self->_build_getFiltersPaginated_request(%options);
+    my $tx = $self->build_getFiltersPaginated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -20833,7 +20836,7 @@ sub build_deleteFilter_request( $self, %options ) {
 
 
 sub deleteFilter( $self, %options ) {
-    my $tx = $self->_build_deleteFilter_request(%options);
+    my $tx = $self->build_deleteFilter_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -21022,7 +21025,7 @@ sub build_getFilter_request( $self, %options ) {
 
 
 sub getFilter( $self, %options ) {
-    my $tx = $self->_build_getFilter_request(%options);
+    my $tx = $self->build_getFilter_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -21257,7 +21260,7 @@ sub build_updateFilter_request( $self, %options ) {
 
 
 sub updateFilter( $self, %options ) {
-    my $tx = $self->_build_updateFilter_request(%options);
+    my $tx = $self->build_updateFilter_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -21388,7 +21391,7 @@ sub build_resetColumns_request( $self, %options ) {
 
 
 sub resetColumns( $self, %options ) {
-    my $tx = $self->_build_resetColumns_request(%options);
+    my $tx = $self->build_resetColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -21523,7 +21526,7 @@ sub build_getColumns_request( $self, %options ) {
 
 
 sub getColumns( $self, %options ) {
-    my $tx = $self->_build_getColumns_request(%options);
+    my $tx = $self->build_getColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -21669,7 +21672,7 @@ sub build_setColumns_request( $self, %options ) {
 
 
 sub setColumns( $self, %options ) {
-    my $tx = $self->_build_setColumns_request(%options);
+    my $tx = $self->build_setColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -21833,7 +21836,7 @@ sub build_deleteFavouriteForFilter_request( $self, %options ) {
 
 
 sub deleteFavouriteForFilter( $self, %options ) {
-    my $tx = $self->_build_deleteFavouriteForFilter_request(%options);
+    my $tx = $self->build_deleteFavouriteForFilter_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -22023,7 +22026,7 @@ sub build_setFavouriteForFilter_request( $self, %options ) {
 
 
 sub setFavouriteForFilter( $self, %options ) {
-    my $tx = $self->_build_setFavouriteForFilter_request(%options);
+    my $tx = $self->build_setFavouriteForFilter_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -22137,7 +22140,7 @@ sub build_changeFilterOwner_request( $self, %options ) {
 
 
 sub changeFilterOwner( $self, %options ) {
-    my $tx = $self->_build_changeFilterOwner_request(%options);
+    my $tx = $self->build_changeFilterOwner_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -22401,7 +22404,7 @@ sub build_getSharePermissions_request( $self, %options ) {
 
 
 sub getSharePermissions( $self, %options ) {
-    my $tx = $self->_build_getSharePermissions_request(%options);
+    my $tx = $self->build_getSharePermissions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -22705,7 +22708,7 @@ sub build_addSharePermission_request( $self, %options ) {
 
 
 sub addSharePermission( $self, %options ) {
-    my $tx = $self->_build_addSharePermission_request(%options);
+    my $tx = $self->build_addSharePermission_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -22819,7 +22822,7 @@ sub build_deleteSharePermission_request( $self, %options ) {
 
 
 sub deleteSharePermission( $self, %options ) {
-    my $tx = $self->_build_deleteSharePermission_request(%options);
+    my $tx = $self->build_deleteSharePermission_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -22956,7 +22959,7 @@ sub build_getSharePermission_request( $self, %options ) {
 
 
 sub getSharePermission( $self, %options ) {
-    my $tx = $self->_build_getSharePermission_request(%options);
+    my $tx = $self->build_getSharePermission_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23074,7 +23077,7 @@ sub build_removeGroup_request( $self, %options ) {
 
 
 sub removeGroup( $self, %options ) {
-    my $tx = $self->_build_removeGroup_request(%options);
+    my $tx = $self->build_removeGroup_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23186,7 +23189,7 @@ sub build_getGroup_request( $self, %options ) {
 
 
 sub getGroup( $self, %options ) {
-    my $tx = $self->_build_getGroup_request(%options);
+    my $tx = $self->build_getGroup_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23319,7 +23322,7 @@ sub build_createGroup_request( $self, %options ) {
 
 
 sub createGroup( $self, %options ) {
-    my $tx = $self->_build_createGroup_request(%options);
+    my $tx = $self->build_createGroup_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23488,7 +23491,7 @@ sub build_bulkGetGroups_request( $self, %options ) {
 
 
 sub bulkGetGroups( $self, %options ) {
-    my $tx = $self->_build_bulkGetGroups_request(%options);
+    my $tx = $self->build_bulkGetGroups_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23684,7 +23687,7 @@ sub build_getUsersFromGroup_request( $self, %options ) {
 
 
 sub getUsersFromGroup( $self, %options ) {
-    my $tx = $self->_build_getUsersFromGroup_request(%options);
+    my $tx = $self->build_getUsersFromGroup_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23813,7 +23816,7 @@ sub build_removeUserFromGroup_request( $self, %options ) {
 
 
 sub removeUserFromGroup( $self, %options ) {
-    my $tx = $self->_build_removeUserFromGroup_request(%options);
+    my $tx = $self->build_removeUserFromGroup_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -23934,7 +23937,7 @@ sub build_addUserToGroup_request( $self, %options ) {
 
 
 sub addUserToGroup( $self, %options ) {
-    my $tx = $self->_build_addUserToGroup_request(%options);
+    my $tx = $self->build_addUserToGroup_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -24106,7 +24109,7 @@ sub build_findGroups_request( $self, %options ) {
 
 
 sub findGroups( $self, %options ) {
-    my $tx = $self->_build_findGroups_request(%options);
+    my $tx = $self->build_findGroups_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -24347,7 +24350,7 @@ sub build_findUsersAndGroups_request( $self, %options ) {
 
 
 sub findUsersAndGroups( $self, %options ) {
-    my $tx = $self->_build_findUsersAndGroups_request(%options);
+    my $tx = $self->build_findUsersAndGroups_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -24467,7 +24470,7 @@ sub build_getLicense_request( $self, %options ) {
 
 
 sub getLicense( $self, %options ) {
-    my $tx = $self->_build_getLicense_request(%options);
+    my $tx = $self->build_getLicense_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -24640,7 +24643,7 @@ sub build_createIssue_request( $self, %options ) {
 
 
 sub createIssue( $self, %options ) {
-    my $tx = $self->_build_createIssue_request(%options);
+    my $tx = $self->build_createIssue_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -24854,7 +24857,7 @@ sub build_createIssues_request( $self, %options ) {
 
 
 sub createIssues( $self, %options ) {
-    my $tx = $self->_build_createIssues_request(%options);
+    my $tx = $self->build_createIssues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -25035,7 +25038,7 @@ sub build_getCreateIssueMeta_request( $self, %options ) {
 
 
 sub getCreateIssueMeta( $self, %options ) {
-    my $tx = $self->_build_getCreateIssueMeta_request(%options);
+    my $tx = $self->build_getCreateIssueMeta_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -25182,7 +25185,7 @@ sub build_getIssuePickerResource_request( $self, %options ) {
 
 
 sub getIssuePickerResource( $self, %options ) {
-    my $tx = $self->_build_getIssuePickerResource_request(%options);
+    my $tx = $self->build_getIssuePickerResource_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -25321,7 +25324,7 @@ sub build_bulkSetIssuesPropertiesList_request( $self, %options ) {
 
 
 sub bulkSetIssuesPropertiesList( $self, %options ) {
-    my $tx = $self->_build_bulkSetIssuesPropertiesList_request(%options);
+    my $tx = $self->build_bulkSetIssuesPropertiesList_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -25472,7 +25475,7 @@ sub build_bulkSetIssuePropertiesByIssue_request( $self, %options ) {
 
 
 sub bulkSetIssuePropertiesByIssue( $self, %options ) {
-    my $tx = $self->_build_bulkSetIssuePropertiesByIssue_request(%options);
+    my $tx = $self->build_bulkSetIssuePropertiesByIssue_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -25676,7 +25679,7 @@ sub build_bulkDeleteIssueProperty_request( $self, %options ) {
 
 
 sub bulkDeleteIssueProperty( $self, %options ) {
-    my $tx = $self->_build_bulkDeleteIssueProperty_request(%options);
+    my $tx = $self->build_bulkDeleteIssueProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -25896,7 +25899,7 @@ sub build_bulkSetIssueProperty_request( $self, %options ) {
 
 
 sub bulkSetIssueProperty( $self, %options ) {
-    my $tx = $self->_build_bulkSetIssueProperty_request(%options);
+    my $tx = $self->build_bulkSetIssueProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -26038,7 +26041,7 @@ sub build_getIsWatchingIssueBulk_request( $self, %options ) {
 
 
 sub getIsWatchingIssueBulk( $self, %options ) {
-    my $tx = $self->_build_getIsWatchingIssueBulk_request(%options);
+    my $tx = $self->build_getIsWatchingIssueBulk_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -26164,7 +26167,7 @@ sub build_deleteIssue_request( $self, %options ) {
 
 
 sub deleteIssue( $self, %options ) {
-    my $tx = $self->_build_deleteIssue_request(%options);
+    my $tx = $self->build_deleteIssue_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -26677,7 +26680,7 @@ sub build_getIssue_request( $self, %options ) {
 
 
 sub getIssue( $self, %options ) {
-    my $tx = $self->_build_getIssue_request(%options);
+    my $tx = $self->build_getIssue_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -26853,7 +26856,7 @@ sub build_editIssue_request( $self, %options ) {
 
 
 sub editIssue( $self, %options ) {
-    my $tx = $self->_build_editIssue_request(%options);
+    my $tx = $self->build_editIssue_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -27079,7 +27082,7 @@ sub build_assignIssue_request( $self, %options ) {
 
 
 sub assignIssue( $self, %options ) {
-    my $tx = $self->_build_assignIssue_request(%options);
+    my $tx = $self->build_assignIssue_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -27413,7 +27416,7 @@ sub build_addAttachment_request( $self, %options ) {
 
 
 sub addAttachment( $self, %options ) {
-    my $tx = $self->_build_addAttachment_request(%options);
+    my $tx = $self->build_addAttachment_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -27622,7 +27625,7 @@ sub build_getChangeLogs_request( $self, %options ) {
 
 
 sub getChangeLogs( $self, %options ) {
-    my $tx = $self->_build_getChangeLogs_request(%options);
+    my $tx = $self->build_getChangeLogs_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -27819,7 +27822,7 @@ sub build_getChangeLogsByIds_request( $self, %options ) {
 
 
 sub getChangeLogsByIds( $self, %options ) {
-    my $tx = $self->_build_getChangeLogsByIds_request(%options);
+    my $tx = $self->build_getChangeLogsByIds_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -28018,7 +28021,7 @@ sub build_getComments_request( $self, %options ) {
 
 
 sub getComments( $self, %options ) {
-    my $tx = $self->_build_getComments_request(%options);
+    my $tx = $self->build_getComments_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -28247,7 +28250,7 @@ sub build_addComment_request( $self, %options ) {
 
 
 sub addComment( $self, %options ) {
-    my $tx = $self->_build_addComment_request(%options);
+    my $tx = $self->build_addComment_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -28384,7 +28387,7 @@ sub build_deleteComment_request( $self, %options ) {
 
 
 sub deleteComment( $self, %options ) {
-    my $tx = $self->_build_deleteComment_request(%options);
+    my $tx = $self->build_deleteComment_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -28560,7 +28563,7 @@ sub build_getComment_request( $self, %options ) {
 
 
 sub getComment( $self, %options ) {
-    my $tx = $self->_build_getComment_request(%options);
+    my $tx = $self->build_getComment_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -28816,7 +28819,7 @@ sub build_updateComment_request( $self, %options ) {
 
 
 sub updateComment( $self, %options ) {
-    my $tx = $self->_build_updateComment_request(%options);
+    my $tx = $self->build_updateComment_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29052,7 +29055,7 @@ sub build_getEditIssueMeta_request( $self, %options ) {
 
 
 sub getEditIssueMeta( $self, %options ) {
-    my $tx = $self->_build_getEditIssueMeta_request(%options);
+    my $tx = $self->build_getEditIssueMeta_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29202,7 +29205,7 @@ sub build_notify_request( $self, %options ) {
 
 
 sub notify( $self, %options ) {
-    my $tx = $self->_build_notify_request(%options);
+    my $tx = $self->build_notify_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29335,7 +29338,7 @@ sub build_getIssuePropertyKeys_request( $self, %options ) {
 
 
 sub getIssuePropertyKeys( $self, %options ) {
-    my $tx = $self->_build_getIssuePropertyKeys_request(%options);
+    my $tx = $self->build_getIssuePropertyKeys_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29458,7 +29461,7 @@ sub build_deleteIssueProperty_request( $self, %options ) {
 
 
 sub deleteIssueProperty( $self, %options ) {
-    my $tx = $self->_build_deleteIssueProperty_request(%options);
+    my $tx = $self->build_deleteIssueProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29583,7 +29586,7 @@ sub build_getIssueProperty_request( $self, %options ) {
 
 
 sub getIssueProperty( $self, %options ) {
-    my $tx = $self->_build_getIssueProperty_request(%options);
+    my $tx = $self->build_getIssueProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29717,7 +29720,7 @@ sub build_setIssueProperty_request( $self, %options ) {
 
 
 sub setIssueProperty( $self, %options ) {
-    my $tx = $self->_build_setIssueProperty_request(%options);
+    my $tx = $self->build_setIssueProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -29869,7 +29872,7 @@ sub build_deleteRemoteIssueLinkByGlobalId_request( $self, %options ) {
 
 
 sub deleteRemoteIssueLinkByGlobalId( $self, %options ) {
-    my $tx = $self->_build_deleteRemoteIssueLinkByGlobalId_request(%options);
+    my $tx = $self->build_deleteRemoteIssueLinkByGlobalId_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -30052,7 +30055,7 @@ sub build_getRemoteIssueLinks_request( $self, %options ) {
 
 
 sub getRemoteIssueLinks( $self, %options ) {
-    my $tx = $self->_build_getRemoteIssueLinks_request(%options);
+    my $tx = $self->build_getRemoteIssueLinks_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -30232,7 +30235,7 @@ sub build_createOrUpdateRemoteIssueLink_request( $self, %options ) {
 
 
 sub createOrUpdateRemoteIssueLink( $self, %options ) {
-    my $tx = $self->_build_createOrUpdateRemoteIssueLink_request(%options);
+    my $tx = $self->build_createOrUpdateRemoteIssueLink_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -30393,7 +30396,7 @@ sub build_deleteRemoteIssueLinkById_request( $self, %options ) {
 
 
 sub deleteRemoteIssueLinkById( $self, %options ) {
-    my $tx = $self->_build_deleteRemoteIssueLinkById_request(%options);
+    my $tx = $self->build_deleteRemoteIssueLinkById_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -30546,7 +30549,7 @@ sub build_getRemoteIssueLinkById_request( $self, %options ) {
 
 
 sub getRemoteIssueLinkById( $self, %options ) {
-    my $tx = $self->_build_getRemoteIssueLinkById_request(%options);
+    my $tx = $self->build_getRemoteIssueLinkById_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -30721,7 +30724,7 @@ sub build_updateRemoteIssueLink_request( $self, %options ) {
 
 
 sub updateRemoteIssueLink( $self, %options ) {
-    my $tx = $self->_build_updateRemoteIssueLink_request(%options);
+    my $tx = $self->build_updateRemoteIssueLink_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31010,7 +31013,7 @@ sub build_getTransitions_request( $self, %options ) {
 
 
 sub getTransitions( $self, %options ) {
-    my $tx = $self->_build_getTransitions_request(%options);
+    my $tx = $self->build_getTransitions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31161,7 +31164,7 @@ sub build_doTransition_request( $self, %options ) {
 
 
 sub doTransition( $self, %options ) {
-    my $tx = $self->_build_doTransition_request(%options);
+    my $tx = $self->build_doTransition_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31282,7 +31285,7 @@ sub build_removeVote_request( $self, %options ) {
 
 
 sub removeVote( $self, %options ) {
-    my $tx = $self->_build_removeVote_request(%options);
+    my $tx = $self->build_removeVote_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31418,7 +31421,7 @@ sub build_getVotes_request( $self, %options ) {
 
 
 sub getVotes( $self, %options ) {
-    my $tx = $self->_build_getVotes_request(%options);
+    my $tx = $self->build_getVotes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31538,7 +31541,7 @@ sub build_addVote_request( $self, %options ) {
 
 
 sub addVote( $self, %options ) {
-    my $tx = $self->_build_addVote_request(%options);
+    my $tx = $self->build_addVote_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31679,7 +31682,7 @@ sub build_removeWatcher_request( $self, %options ) {
 
 
 sub removeWatcher( $self, %options ) {
-    my $tx = $self->_build_removeWatcher_request(%options);
+    my $tx = $self->build_removeWatcher_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31815,7 +31818,7 @@ sub build_getIssueWatchers_request( $self, %options ) {
 
 
 sub getIssueWatchers( $self, %options ) {
-    my $tx = $self->_build_getIssueWatchers_request(%options);
+    my $tx = $self->build_getIssueWatchers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -31943,7 +31946,7 @@ sub build_addWatcher_request( $self, %options ) {
 
 
 sub addWatcher( $self, %options ) {
-    my $tx = $self->_build_addWatcher_request(%options);
+    my $tx = $self->build_addWatcher_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -32159,7 +32162,7 @@ sub build_getIssueWorklog_request( $self, %options ) {
 
 
 sub getIssueWorklog( $self, %options ) {
-    my $tx = $self->_build_getIssueWorklog_request(%options);
+    my $tx = $self->build_getIssueWorklog_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -32405,7 +32408,7 @@ sub build_addWorklog_request( $self, %options ) {
 
 
 sub addWorklog( $self, %options ) {
-    my $tx = $self->_build_addWorklog_request(%options);
+    my $tx = $self->build_addWorklog_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -32603,7 +32606,7 @@ sub build_deleteWorklog_request( $self, %options ) {
 
 
 sub deleteWorklog( $self, %options ) {
-    my $tx = $self->_build_deleteWorklog_request(%options);
+    my $tx = $self->build_deleteWorklog_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -32783,7 +32786,7 @@ sub build_getWorklog_request( $self, %options ) {
 
 
 sub getWorklog( $self, %options ) {
-    my $tx = $self->_build_getWorklog_request(%options);
+    my $tx = $self->build_getWorklog_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33079,7 +33082,7 @@ sub build_updateWorklog_request( $self, %options ) {
 
 
 sub updateWorklog( $self, %options ) {
-    my $tx = $self->_build_updateWorklog_request(%options);
+    my $tx = $self->build_updateWorklog_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33225,7 +33228,7 @@ sub build_getWorklogPropertyKeys_request( $self, %options ) {
 
 
 sub getWorklogPropertyKeys( $self, %options ) {
-    my $tx = $self->_build_getWorklogPropertyKeys_request(%options);
+    my $tx = $self->build_getWorklogPropertyKeys_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33367,7 +33370,7 @@ sub build_deleteWorklogProperty_request( $self, %options ) {
 
 
 sub deleteWorklogProperty( $self, %options ) {
-    my $tx = $self->_build_deleteWorklogProperty_request(%options);
+    my $tx = $self->build_deleteWorklogProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33511,7 +33514,7 @@ sub build_getWorklogProperty_request( $self, %options ) {
 
 
 sub getWorklogProperty( $self, %options ) {
-    my $tx = $self->_build_getWorklogProperty_request(%options);
+    my $tx = $self->build_getWorklogProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33666,7 +33669,7 @@ sub build_setWorklogProperty_request( $self, %options ) {
 
 
 sub setWorklogProperty( $self, %options ) {
-    my $tx = $self->_build_setWorklogProperty_request(%options);
+    my $tx = $self->build_setWorklogProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33848,7 +33851,7 @@ sub build_linkIssues_request( $self, %options ) {
 
 
 sub linkIssues( $self, %options ) {
-    my $tx = $self->_build_linkIssues_request(%options);
+    my $tx = $self->build_linkIssues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -33974,7 +33977,7 @@ sub build_deleteIssueLink_request( $self, %options ) {
 
 
 sub deleteIssueLink( $self, %options ) {
-    my $tx = $self->_build_deleteIssueLink_request(%options);
+    my $tx = $self->build_deleteIssueLink_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34139,7 +34142,7 @@ sub build_getIssueLink_request( $self, %options ) {
 
 
 sub getIssueLink( $self, %options ) {
-    my $tx = $self->_build_getIssueLink_request(%options);
+    my $tx = $self->build_getIssueLink_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34258,7 +34261,7 @@ sub build_getIssueLinkTypes_request( $self, %options ) {
 
 
 sub getIssueLinkTypes( $self, %options ) {
-    my $tx = $self->_build_getIssueLinkTypes_request(%options);
+    my $tx = $self->build_getIssueLinkTypes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34446,7 +34449,7 @@ sub build_createIssueLinkType_request( $self, %options ) {
 
 
 sub createIssueLinkType( $self, %options ) {
-    my $tx = $self->_build_createIssueLinkType_request(%options);
+    my $tx = $self->build_createIssueLinkType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34553,7 +34556,7 @@ sub build_deleteIssueLinkType_request( $self, %options ) {
 
 
 sub deleteIssueLinkType( $self, %options ) {
-    my $tx = $self->_build_deleteIssueLinkType_request(%options);
+    my $tx = $self->build_deleteIssueLinkType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34661,7 +34664,7 @@ sub build_getIssueLinkType_request( $self, %options ) {
 
 
 sub getIssueLinkType( $self, %options ) {
-    my $tx = $self->_build_getIssueLinkType_request(%options);
+    my $tx = $self->build_getIssueLinkType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34864,7 +34867,7 @@ sub build_updateIssueLinkType_request( $self, %options ) {
 
 
 sub updateIssueLinkType( $self, %options ) {
-    my $tx = $self->_build_updateIssueLinkType_request(%options);
+    my $tx = $self->build_updateIssueLinkType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -34972,7 +34975,7 @@ sub build_getIssueSecuritySchemes_request( $self, %options ) {
 
 
 sub getIssueSecuritySchemes( $self, %options ) {
-    my $tx = $self->_build_getIssueSecuritySchemes_request(%options);
+    my $tx = $self->build_getIssueSecuritySchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -35107,7 +35110,7 @@ sub build_getIssueSecurityScheme_request( $self, %options ) {
 
 
 sub getIssueSecurityScheme( $self, %options ) {
-    my $tx = $self->_build_getIssueSecurityScheme_request(%options);
+    my $tx = $self->build_getIssueSecurityScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -35318,7 +35321,7 @@ sub build_getIssueSecurityLevelMembers_request( $self, %options ) {
 
 
 sub getIssueSecurityLevelMembers( $self, %options ) {
-    my $tx = $self->_build_getIssueSecurityLevelMembers_request(%options);
+    my $tx = $self->build_getIssueSecurityLevelMembers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -35456,7 +35459,7 @@ sub build_getIssueAllTypes_request( $self, %options ) {
 
 
 sub getIssueAllTypes( $self, %options ) {
-    my $tx = $self->_build_getIssueAllTypes_request(%options);
+    my $tx = $self->build_getIssueAllTypes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -35589,7 +35592,7 @@ sub build_createIssueType_request( $self, %options ) {
 
 
 sub createIssueType( $self, %options ) {
-    my $tx = $self->_build_createIssueType_request(%options);
+    my $tx = $self->build_createIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -35750,7 +35753,7 @@ sub build_getIssueTypesForProject_request( $self, %options ) {
 
 
 sub getIssueTypesForProject( $self, %options ) {
-    my $tx = $self->_build_getIssueTypesForProject_request(%options);
+    my $tx = $self->build_getIssueTypesForProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -35865,7 +35868,7 @@ sub build_deleteIssueType_request( $self, %options ) {
 
 
 sub deleteIssueType( $self, %options ) {
-    my $tx = $self->_build_deleteIssueType_request(%options);
+    my $tx = $self->build_deleteIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -35977,7 +35980,7 @@ sub build_getIssueType_request( $self, %options ) {
 
 
 sub getIssueType( $self, %options ) {
-    my $tx = $self->_build_getIssueType_request(%options);
+    my $tx = $self->build_getIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -36105,7 +36108,7 @@ sub build_updateIssueType_request( $self, %options ) {
 
 
 sub updateIssueType( $self, %options ) {
-    my $tx = $self->_build_updateIssueType_request(%options);
+    my $tx = $self->build_updateIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -36244,7 +36247,7 @@ sub build_getAlternativeIssueTypes_request( $self, %options ) {
 
 
 sub getAlternativeIssueTypes( $self, %options ) {
-    my $tx = $self->_build_getAlternativeIssueTypes_request(%options);
+    my $tx = $self->build_getAlternativeIssueTypes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -36416,7 +36419,7 @@ sub build_createIssueTypeAvatar_request( $self, %options ) {
 
 
 sub createIssueTypeAvatar( $self, %options ) {
-    my $tx = $self->_build_createIssueTypeAvatar_request(%options);
+    my $tx = $self->build_createIssueTypeAvatar_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -36552,7 +36555,7 @@ sub build_getIssueTypePropertyKeys_request( $self, %options ) {
 
 
 sub getIssueTypePropertyKeys( $self, %options ) {
-    my $tx = $self->_build_getIssueTypePropertyKeys_request(%options);
+    my $tx = $self->build_getIssueTypePropertyKeys_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -36662,7 +36665,7 @@ sub build_deleteIssueTypeProperty_request( $self, %options ) {
 
 
 sub deleteIssueTypeProperty( $self, %options ) {
-    my $tx = $self->_build_deleteIssueTypeProperty_request(%options);
+    my $tx = $self->build_deleteIssueTypeProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -36793,7 +36796,7 @@ sub build_getIssueTypeProperty_request( $self, %options ) {
 
 
 sub getIssueTypeProperty( $self, %options ) {
-    my $tx = $self->_build_getIssueTypeProperty_request(%options);
+    my $tx = $self->build_getIssueTypeProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -36914,7 +36917,7 @@ sub build_setIssueTypeProperty_request( $self, %options ) {
 
 
 sub setIssueTypeProperty( $self, %options ) {
-    my $tx = $self->_build_setIssueTypeProperty_request(%options);
+    my $tx = $self->build_setIssueTypeProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -37168,7 +37171,7 @@ sub build_getAllIssueTypeSchemes_request( $self, %options ) {
 
 
 sub getAllIssueTypeSchemes( $self, %options ) {
-    my $tx = $self->_build_getAllIssueTypeSchemes_request(%options);
+    my $tx = $self->build_getAllIssueTypeSchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -37317,7 +37320,7 @@ sub build_createIssueTypeScheme_request( $self, %options ) {
 
 
 sub createIssueTypeScheme( $self, %options ) {
-    my $tx = $self->_build_createIssueTypeScheme_request(%options);
+    my $tx = $self->build_createIssueTypeScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -37501,7 +37504,7 @@ sub build_getIssueTypeSchemesMapping_request( $self, %options ) {
 
 
 sub getIssueTypeSchemesMapping( $self, %options ) {
-    my $tx = $self->_build_getIssueTypeSchemesMapping_request(%options);
+    my $tx = $self->build_getIssueTypeSchemesMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -37712,7 +37715,7 @@ sub build_getIssueTypeSchemeForProjects_request( $self, %options ) {
 
 
 sub getIssueTypeSchemeForProjects( $self, %options ) {
-    my $tx = $self->_build_getIssueTypeSchemeForProjects_request(%options);
+    my $tx = $self->build_getIssueTypeSchemeForProjects_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -37852,7 +37855,7 @@ sub build_assignIssueTypeSchemeToProject_request( $self, %options ) {
 
 
 sub assignIssueTypeSchemeToProject( $self, %options ) {
-    my $tx = $self->_build_assignIssueTypeSchemeToProject_request(%options);
+    my $tx = $self->build_assignIssueTypeSchemeToProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -38026,7 +38029,7 @@ sub build_deleteIssueTypeScheme_request( $self, %options ) {
 
 
 sub deleteIssueTypeScheme( $self, %options ) {
-    my $tx = $self->_build_deleteIssueTypeScheme_request(%options);
+    my $tx = $self->build_deleteIssueTypeScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -38217,7 +38220,7 @@ sub build_updateIssueTypeScheme_request( $self, %options ) {
 
 
 sub updateIssueTypeScheme( $self, %options ) {
-    my $tx = $self->_build_updateIssueTypeScheme_request(%options);
+    my $tx = $self->build_updateIssueTypeScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -38404,7 +38407,7 @@ sub build_addIssueTypesToIssueTypeScheme_request( $self, %options ) {
 
 
 sub addIssueTypesToIssueTypeScheme( $self, %options ) {
-    my $tx = $self->_build_addIssueTypesToIssueTypeScheme_request(%options);
+    my $tx = $self->build_addIssueTypesToIssueTypeScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -38616,7 +38619,7 @@ sub build_reorderIssueTypesInIssueTypeScheme_request( $self, %options ) {
 
 
 sub reorderIssueTypesInIssueTypeScheme( $self, %options ) {
-    my $tx = $self->_build_reorderIssueTypesInIssueTypeScheme_request(%options);
+    my $tx = $self->build_reorderIssueTypesInIssueTypeScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -38815,7 +38818,7 @@ sub build_removeIssueTypeFromIssueTypeScheme_request( $self, %options ) {
 
 
 sub removeIssueTypeFromIssueTypeScheme( $self, %options ) {
-    my $tx = $self->_build_removeIssueTypeFromIssueTypeScheme_request(%options);
+    my $tx = $self->build_removeIssueTypeFromIssueTypeScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -39052,7 +39055,7 @@ sub build_getIssueTypeScreenSchemes_request( $self, %options ) {
 
 
 sub getIssueTypeScreenSchemes( $self, %options ) {
-    my $tx = $self->_build_getIssueTypeScreenSchemes_request(%options);
+    my $tx = $self->build_getIssueTypeScreenSchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -39205,7 +39208,7 @@ sub build_createIssueTypeScreenScheme_request( $self, %options ) {
 
 
 sub createIssueTypeScreenScheme( $self, %options ) {
-    my $tx = $self->_build_createIssueTypeScreenScheme_request(%options);
+    my $tx = $self->build_createIssueTypeScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -39408,7 +39411,7 @@ sub build_getIssueTypeScreenSchemeMappings_request( $self, %options ) {
 
 
 sub getIssueTypeScreenSchemeMappings( $self, %options ) {
-    my $tx = $self->_build_getIssueTypeScreenSchemeMappings_request(%options);
+    my $tx = $self->build_getIssueTypeScreenSchemeMappings_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -39551,7 +39554,7 @@ sub build_getIssueTypeScreenSchemeProjectAssociations_request( $self, %options )
 
 
 sub getIssueTypeScreenSchemeProjectAssociations( $self, %options ) {
-    my $tx = $self->_build_getIssueTypeScreenSchemeProjectAssociations_request(%options);
+    my $tx = $self->build_getIssueTypeScreenSchemeProjectAssociations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -39689,7 +39692,7 @@ sub build_assignIssueTypeScreenSchemeToProject_request( $self, %options ) {
 
 
 sub assignIssueTypeScreenSchemeToProject( $self, %options ) {
-    my $tx = $self->_build_assignIssueTypeScreenSchemeToProject_request(%options);
+    my $tx = $self->build_assignIssueTypeScreenSchemeToProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -39851,7 +39854,7 @@ sub build_deleteIssueTypeScreenScheme_request( $self, %options ) {
 
 
 sub deleteIssueTypeScreenScheme( $self, %options ) {
-    my $tx = $self->_build_deleteIssueTypeScreenScheme_request(%options);
+    my $tx = $self->build_deleteIssueTypeScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -40026,7 +40029,7 @@ sub build_updateIssueTypeScreenScheme_request( $self, %options ) {
 
 
 sub updateIssueTypeScreenScheme( $self, %options ) {
-    my $tx = $self->_build_updateIssueTypeScreenScheme_request(%options);
+    my $tx = $self->build_updateIssueTypeScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -40209,7 +40212,7 @@ sub build_appendMappingsForIssueTypeScreenScheme_request( $self, %options ) {
 
 
 sub appendMappingsForIssueTypeScreenScheme( $self, %options ) {
-    my $tx = $self->_build_appendMappingsForIssueTypeScreenScheme_request(%options);
+    my $tx = $self->build_appendMappingsForIssueTypeScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -40395,7 +40398,7 @@ sub build_updateDefaultScreenScheme_request( $self, %options ) {
 
 
 sub updateDefaultScreenScheme( $self, %options ) {
-    my $tx = $self->_build_updateDefaultScreenScheme_request(%options);
+    my $tx = $self->build_updateDefaultScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -40578,7 +40581,7 @@ sub build_removeMappingsFromIssueTypeScreenScheme_request( $self, %options ) {
 
 
 sub removeMappingsFromIssueTypeScreenScheme( $self, %options ) {
-    my $tx = $self->_build_removeMappingsFromIssueTypeScreenScheme_request(%options);
+    my $tx = $self->build_removeMappingsFromIssueTypeScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -40774,7 +40777,7 @@ sub build_getProjectsForIssueTypeScreenScheme_request( $self, %options ) {
 
 
 sub getProjectsForIssueTypeScreenScheme( $self, %options ) {
-    my $tx = $self->_build_getProjectsForIssueTypeScreenScheme_request(%options);
+    my $tx = $self->build_getProjectsForIssueTypeScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -40930,7 +40933,7 @@ sub build_getAutoComplete_request( $self, %options ) {
 
 
 sub getAutoComplete( $self, %options ) {
-    my $tx = $self->_build_getAutoComplete_request(%options);
+    my $tx = $self->build_getAutoComplete_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -41133,7 +41136,7 @@ sub build_getAutoCompletePost_request( $self, %options ) {
 
 
 sub getAutoCompletePost( $self, %options ) {
-    my $tx = $self->_build_getAutoCompletePost_request(%options);
+    my $tx = $self->build_getAutoCompletePost_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -41299,7 +41302,7 @@ sub build_getFieldAutoCompleteForQueryString_request( $self, %options ) {
 
 
 sub getFieldAutoCompleteForQueryString( $self, %options ) {
-    my $tx = $self->_build_getFieldAutoCompleteForQueryString_request(%options);
+    my $tx = $self->build_getFieldAutoCompleteForQueryString_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -41411,7 +41414,7 @@ sub build_getPrecomputations_request( $self, %options ) {
 
 
 sub getPrecomputations( $self, %options ) {
-    my $tx = $self->_build_getPrecomputations_request(%options);
+    my $tx = $self->build_getPrecomputations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -41504,7 +41507,7 @@ sub build_updatePrecomputations_request( $self, %options ) {
 
 
 sub updatePrecomputations( $self, %options ) {
-    my $tx = $self->_build_updatePrecomputations_request(%options);
+    my $tx = $self->build_updatePrecomputations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -41652,7 +41655,7 @@ sub build_matchIssues_request( $self, %options ) {
 
 
 sub matchIssues( $self, %options ) {
-    my $tx = $self->_build_matchIssues_request(%options);
+    my $tx = $self->build_matchIssues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -41952,7 +41955,7 @@ sub build_parseJqlQueries_request( $self, %options ) {
 
 
 sub parseJqlQueries( $self, %options ) {
-    my $tx = $self->_build_parseJqlQueries_request(%options);
+    my $tx = $self->build_parseJqlQueries_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42084,7 +42087,7 @@ sub build_migrateQueries_request( $self, %options ) {
 
 
 sub migrateQueries( $self, %options ) {
-    my $tx = $self->_build_migrateQueries_request(%options);
+    my $tx = $self->build_migrateQueries_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42244,7 +42247,7 @@ sub build_sanitiseJqlQueries_request( $self, %options ) {
 
 
 sub sanitiseJqlQueries( $self, %options ) {
-    my $tx = $self->_build_sanitiseJqlQueries_request(%options);
+    my $tx = $self->build_sanitiseJqlQueries_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42401,7 +42404,7 @@ sub build_getAllLabels_request( $self, %options ) {
 
 
 sub getAllLabels( $self, %options ) {
-    my $tx = $self->_build_getAllLabels_request(%options);
+    my $tx = $self->build_getAllLabels_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42487,7 +42490,7 @@ sub build_getApproximateLicenseCount_request( $self, %options ) {
 
 
 sub getApproximateLicenseCount( $self, %options ) {
-    my $tx = $self->_build_getApproximateLicenseCount_request(%options);
+    my $tx = $self->build_getApproximateLicenseCount_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42594,7 +42597,7 @@ sub build_getApproximateApplicationLicenseCount_request( $self, %options ) {
 
 
 sub getApproximateApplicationLicenseCount( $self, %options ) {
-    my $tx = $self->_build_getApproximateApplicationLicenseCount_request(%options);
+    my $tx = $self->build_getApproximateApplicationLicenseCount_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42783,7 +42786,7 @@ sub build_getMyPermissions_request( $self, %options ) {
 
 
 sub getMyPermissions( $self, %options ) {
-    my $tx = $self->_build_getMyPermissions_request(%options);
+    my $tx = $self->build_getMyPermissions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -42943,7 +42946,7 @@ sub build_removePreference_request( $self, %options ) {
 
 
 sub removePreference( $self, %options ) {
-    my $tx = $self->_build_removePreference_request(%options);
+    my $tx = $self->build_removePreference_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -43054,7 +43057,7 @@ sub build_getPreference_request( $self, %options ) {
 
 
 sub getPreference( $self, %options ) {
-    my $tx = $self->_build_getPreference_request(%options);
+    my $tx = $self->build_getPreference_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -43210,7 +43213,7 @@ sub build_setPreference_request( $self, %options ) {
 
 
 sub setPreference( $self, %options ) {
-    my $tx = $self->_build_setPreference_request(%options);
+    my $tx = $self->build_setPreference_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -43304,7 +43307,7 @@ sub build_deleteLocale_request( $self, %options ) {
 
 
 sub deleteLocale( $self, %options ) {
-    my $tx = $self->_build_deleteLocale_request(%options);
+    my $tx = $self->build_deleteLocale_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -43402,7 +43405,7 @@ sub build_getLocale_request( $self, %options ) {
 
 
 sub getLocale( $self, %options ) {
-    my $tx = $self->_build_getLocale_request(%options);
+    my $tx = $self->build_getLocale_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -43506,7 +43509,7 @@ sub build_setLocale_request( $self, %options ) {
 
 
 sub setLocale( $self, %options ) {
-    my $tx = $self->_build_setLocale_request(%options);
+    my $tx = $self->build_setLocale_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -43649,7 +43652,7 @@ sub build_getCurrentUser_request( $self, %options ) {
 
 
 sub getCurrentUser( $self, %options ) {
-    my $tx = $self->_build_getCurrentUser_request(%options);
+    my $tx = $self->build_getCurrentUser_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -44076,7 +44079,7 @@ sub build_getNotificationSchemes_request( $self, %options ) {
 
 
 sub getNotificationSchemes( $self, %options ) {
-    my $tx = $self->_build_getNotificationSchemes_request(%options);
+    my $tx = $self->build_getNotificationSchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -44225,7 +44228,7 @@ sub build_createNotificationScheme_request( $self, %options ) {
 
 
 sub createNotificationScheme( $self, %options ) {
-    my $tx = $self->_build_createNotificationScheme_request(%options);
+    my $tx = $self->build_createNotificationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -44400,7 +44403,7 @@ sub build_getNotificationSchemeToProjectMappings_request( $self, %options ) {
 
 
 sub getNotificationSchemeToProjectMappings( $self, %options ) {
-    my $tx = $self->_build_getNotificationSchemeToProjectMappings_request(%options);
+    my $tx = $self->build_getNotificationSchemeToProjectMappings_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -44817,7 +44820,7 @@ sub build_getNotificationScheme_request( $self, %options ) {
 
 
 sub getNotificationScheme( $self, %options ) {
-    my $tx = $self->_build_getNotificationScheme_request(%options);
+    my $tx = $self->build_getNotificationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -44969,7 +44972,7 @@ sub build_updateNotificationScheme_request( $self, %options ) {
 
 
 sub updateNotificationScheme( $self, %options ) {
-    my $tx = $self->_build_updateNotificationScheme_request(%options);
+    my $tx = $self->build_updateNotificationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -45168,7 +45171,7 @@ sub build_addNotifications_request( $self, %options ) {
 
 
 sub addNotifications( $self, %options ) {
-    my $tx = $self->_build_addNotifications_request(%options);
+    my $tx = $self->build_addNotifications_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -45354,7 +45357,7 @@ sub build_deleteNotificationScheme_request( $self, %options ) {
 
 
 sub deleteNotificationScheme( $self, %options ) {
-    my $tx = $self->_build_deleteNotificationScheme_request(%options);
+    my $tx = $self->build_deleteNotificationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -45540,7 +45543,7 @@ sub build_removeNotificationFromNotificationScheme_request( $self, %options ) {
 
 
 sub removeNotificationFromNotificationScheme( $self, %options ) {
-    my $tx = $self->_build_removeNotificationFromNotificationScheme_request(%options);
+    my $tx = $self->build_removeNotificationFromNotificationScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -45717,7 +45720,7 @@ sub build_getAllPermissions_request( $self, %options ) {
 
 
 sub getAllPermissions( $self, %options ) {
-    my $tx = $self->_build_getAllPermissions_request(%options);
+    my $tx = $self->build_getAllPermissions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -45912,7 +45915,7 @@ sub build_getBulkPermissions_request( $self, %options ) {
 
 
 sub getBulkPermissions( $self, %options ) {
-    my $tx = $self->_build_getBulkPermissions_request(%options);
+    my $tx = $self->build_getBulkPermissions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -46043,7 +46046,7 @@ sub build_getPermittedProjects_request( $self, %options ) {
 
 
 sub getPermittedProjects( $self, %options ) {
-    my $tx = $self->_build_getPermittedProjects_request(%options);
+    my $tx = $self->build_getPermittedProjects_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -46504,7 +46507,7 @@ sub build_getAllPermissionSchemes_request( $self, %options ) {
 
 
 sub getAllPermissionSchemes( $self, %options ) {
-    my $tx = $self->_build_getAllPermissionSchemes_request(%options);
+    my $tx = $self->build_getAllPermissionSchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -46695,7 +46698,7 @@ sub build_createPermissionScheme_request( $self, %options ) {
 
 
 sub createPermissionScheme( $self, %options ) {
-    my $tx = $self->_build_createPermissionScheme_request(%options);
+    my $tx = $self->build_createPermissionScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -46800,7 +46803,7 @@ sub build_deletePermissionScheme_request( $self, %options ) {
 
 
 sub deletePermissionScheme( $self, %options ) {
-    my $tx = $self->_build_deletePermissionScheme_request(%options);
+    my $tx = $self->build_deletePermissionScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -46959,7 +46962,7 @@ sub build_getPermissionScheme_request( $self, %options ) {
 
 
 sub getPermissionScheme( $self, %options ) {
-    my $tx = $self->_build_getPermissionScheme_request(%options);
+    my $tx = $self->build_getPermissionScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -47187,7 +47190,7 @@ sub build_updatePermissionScheme_request( $self, %options ) {
 
 
 sub updatePermissionScheme( $self, %options ) {
-    my $tx = $self->_build_updatePermissionScheme_request(%options);
+    my $tx = $self->build_updatePermissionScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -47355,7 +47358,7 @@ sub build_getPermissionSchemeGrants_request( $self, %options ) {
 
 
 sub getPermissionSchemeGrants( $self, %options ) {
-    my $tx = $self->_build_getPermissionSchemeGrants_request(%options);
+    my $tx = $self->build_getPermissionSchemeGrants_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -47540,7 +47543,7 @@ sub build_createPermissionGrant_request( $self, %options ) {
 
 
 sub createPermissionGrant( $self, %options ) {
-    my $tx = $self->_build_createPermissionGrant_request(%options);
+    my $tx = $self->build_createPermissionGrant_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -47653,7 +47656,7 @@ sub build_deletePermissionSchemeEntity_request( $self, %options ) {
 
 
 sub deletePermissionSchemeEntity( $self, %options ) {
-    my $tx = $self->_build_deletePermissionSchemeEntity_request(%options);
+    my $tx = $self->build_deletePermissionSchemeEntity_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -47812,7 +47815,7 @@ sub build_getPermissionSchemeGrant_request( $self, %options ) {
 
 
 sub getPermissionSchemeGrant( $self, %options ) {
-    my $tx = $self->_build_getPermissionSchemeGrant_request(%options);
+    my $tx = $self->build_getPermissionSchemeGrant_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -47924,7 +47927,7 @@ sub build_getPriorities_request( $self, %options ) {
 
 
 sub getPriorities( $self, %options ) {
-    my $tx = $self->_build_getPriorities_request(%options);
+    my $tx = $self->build_getPriorities_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -48063,7 +48066,7 @@ sub build_createPriority_request( $self, %options ) {
 
 
 sub createPriority( $self, %options ) {
-    my $tx = $self->_build_createPriority_request(%options);
+    my $tx = $self->build_createPriority_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -48235,7 +48238,7 @@ sub build_setDefaultPriority_request( $self, %options ) {
 
 
 sub setDefaultPriority( $self, %options ) {
-    my $tx = $self->_build_setDefaultPriority_request(%options);
+    my $tx = $self->build_setDefaultPriority_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -48430,7 +48433,7 @@ sub build_movePriorities_request( $self, %options ) {
 
 
 sub movePriorities( $self, %options ) {
-    my $tx = $self->_build_movePriorities_request(%options);
+    my $tx = $self->build_movePriorities_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -48647,7 +48650,7 @@ sub build_searchPriorities_request( $self, %options ) {
 
 
 sub searchPriorities( $self, %options ) {
-    my $tx = $self->_build_searchPriorities_request(%options);
+    my $tx = $self->build_searchPriorities_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -48802,7 +48805,7 @@ sub build_deletePriority_request( $self, %options ) {
 
 
 sub deletePriority( $self, %options ) {
-    my $tx = $self->_build_deletePriority_request(%options);
+    my $tx = $self->build_deletePriority_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -48985,7 +48988,7 @@ sub build_getPriority_request( $self, %options ) {
 
 
 sub getPriority( $self, %options ) {
-    my $tx = $self->_build_getPriority_request(%options);
+    my $tx = $self->build_getPriority_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -49142,7 +49145,7 @@ sub build_updatePriority_request( $self, %options ) {
 
 
 sub updatePriority( $self, %options ) {
-    my $tx = $self->_build_updatePriority_request(%options);
+    my $tx = $self->build_updatePriority_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -49388,7 +49391,7 @@ sub build_getAllProjects_request( $self, %options ) {
 
 
 sub getAllProjects( $self, %options ) {
-    my $tx = $self->_build_getAllProjects_request(%options);
+    my $tx = $self->build_getAllProjects_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -49599,7 +49602,7 @@ sub build_createProject_request( $self, %options ) {
 
 
 sub createProject( $self, %options ) {
-    my $tx = $self->_build_createProject_request(%options);
+    my $tx = $self->build_createProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -49827,7 +49830,7 @@ sub build_getRecent_request( $self, %options ) {
 
 
 sub getRecent( $self, %options ) {
-    my $tx = $self->_build_getRecent_request(%options);
+    my $tx = $self->build_getRecent_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -50236,7 +50239,7 @@ sub build_searchProjects_request( $self, %options ) {
 
 
 sub searchProjects( $self, %options ) {
-    my $tx = $self->_build_searchProjects_request(%options);
+    my $tx = $self->build_searchProjects_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -50351,7 +50354,7 @@ sub build_getAllProjectTypes_request( $self, %options ) {
 
 
 sub getAllProjectTypes( $self, %options ) {
-    my $tx = $self->_build_getAllProjectTypes_request(%options);
+    my $tx = $self->build_getAllProjectTypes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -50457,7 +50460,7 @@ sub build_getAllAccessibleProjectTypes_request( $self, %options ) {
 
 
 sub getAllAccessibleProjectTypes( $self, %options ) {
-    my $tx = $self->_build_getAllAccessibleProjectTypes_request(%options);
+    my $tx = $self->build_getAllAccessibleProjectTypes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -50567,7 +50570,7 @@ sub build_getProjectTypeByKey_request( $self, %options ) {
 
 
 sub getProjectTypeByKey( $self, %options ) {
-    my $tx = $self->_build_getProjectTypeByKey_request(%options);
+    my $tx = $self->build_getProjectTypeByKey_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -50680,7 +50683,7 @@ sub build_getAccessibleProjectTypeByKey_request( $self, %options ) {
 
 
 sub getAccessibleProjectTypeByKey( $self, %options ) {
-    my $tx = $self->_build_getAccessibleProjectTypeByKey_request(%options);
+    my $tx = $self->build_getAccessibleProjectTypeByKey_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -50793,7 +50796,7 @@ sub build_deleteProject_request( $self, %options ) {
 
 
 sub deleteProject( $self, %options ) {
-    my $tx = $self->_build_deleteProject_request(%options);
+    my $tx = $self->build_deleteProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51063,7 +51066,7 @@ sub build_getProject_request( $self, %options ) {
 
 
 sub getProject( $self, %options ) {
-    my $tx = $self->_build_getProject_request(%options);
+    my $tx = $self->build_getProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51391,7 +51394,7 @@ sub build_updateProject_request( $self, %options ) {
 
 
 sub updateProject( $self, %options ) {
-    my $tx = $self->_build_updateProject_request(%options);
+    my $tx = $self->build_updateProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51501,7 +51504,7 @@ sub build_archiveProject_request( $self, %options ) {
 
 
 sub archiveProject( $self, %options ) {
-    my $tx = $self->_build_archiveProject_request(%options);
+    my $tx = $self->build_archiveProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51650,7 +51653,7 @@ sub build_updateProjectAvatar_request( $self, %options ) {
 
 
 sub updateProjectAvatar( $self, %options ) {
-    my $tx = $self->_build_updateProjectAvatar_request(%options);
+    my $tx = $self->build_updateProjectAvatar_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51763,7 +51766,7 @@ sub build_deleteProjectAvatar_request( $self, %options ) {
 
 
 sub deleteProjectAvatar( $self, %options ) {
-    my $tx = $self->_build_deleteProjectAvatar_request(%options);
+    my $tx = $self->build_deleteProjectAvatar_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -51927,7 +51930,7 @@ sub build_createProjectAvatar_request( $self, %options ) {
 
 
 sub createProjectAvatar( $self, %options ) {
-    my $tx = $self->_build_createProjectAvatar_request(%options);
+    my $tx = $self->build_createProjectAvatar_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -52071,7 +52074,7 @@ sub build_getAllProjectAvatars_request( $self, %options ) {
 
 
 sub getAllProjectAvatars( $self, %options ) {
-    my $tx = $self->_build_getAllProjectAvatars_request(%options);
+    my $tx = $self->build_getAllProjectAvatars_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -52466,7 +52469,7 @@ sub build_getProjectComponentsPaginated_request( $self, %options ) {
 
 
 sub getProjectComponentsPaginated( $self, %options ) {
-    my $tx = $self->_build_getProjectComponentsPaginated_request(%options);
+    my $tx = $self->build_getProjectComponentsPaginated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -52688,7 +52691,7 @@ sub build_getProjectComponents_request( $self, %options ) {
 
 
 sub getProjectComponents( $self, %options ) {
-    my $tx = $self->_build_getProjectComponents_request(%options);
+    my $tx = $self->build_getProjectComponents_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -52809,7 +52812,7 @@ sub build_deleteProjectAsynchronously_request( $self, %options ) {
 
 
 sub deleteProjectAsynchronously( $self, %options ) {
-    my $tx = $self->_build_deleteProjectAsynchronously_request(%options);
+    my $tx = $self->build_deleteProjectAsynchronously_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -52940,7 +52943,7 @@ sub build_getFeaturesForProject_request( $self, %options ) {
 
 
 sub getFeaturesForProject( $self, %options ) {
-    my $tx = $self->_build_getFeaturesForProject_request(%options);
+    my $tx = $self->build_getFeaturesForProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -53095,7 +53098,7 @@ sub build_toggleFeatureForProject_request( $self, %options ) {
 
 
 sub toggleFeatureForProject( $self, %options ) {
-    my $tx = $self->_build_toggleFeatureForProject_request(%options);
+    my $tx = $self->build_toggleFeatureForProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -53217,7 +53220,7 @@ sub build_getProjectPropertyKeys_request( $self, %options ) {
 
 
 sub getProjectPropertyKeys( $self, %options ) {
-    my $tx = $self->_build_getProjectPropertyKeys_request(%options);
+    my $tx = $self->build_getProjectPropertyKeys_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -53335,7 +53338,7 @@ sub build_deleteProjectProperty_request( $self, %options ) {
 
 
 sub deleteProjectProperty( $self, %options ) {
-    my $tx = $self->_build_deleteProjectProperty_request(%options);
+    my $tx = $self->build_deleteProjectProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -53452,7 +53455,7 @@ sub build_getProjectProperty_request( $self, %options ) {
 
 
 sub getProjectProperty( $self, %options ) {
-    my $tx = $self->_build_getProjectProperty_request(%options);
+    my $tx = $self->build_getProjectProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -53578,7 +53581,7 @@ sub build_setProjectProperty_request( $self, %options ) {
 
 
 sub setProjectProperty( $self, %options ) {
-    my $tx = $self->_build_setProjectProperty_request(%options);
+    my $tx = $self->build_setProjectProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -53835,7 +53838,7 @@ sub build_restore_request( $self, %options ) {
 
 
 sub restore( $self, %options ) {
-    my $tx = $self->_build_restore_request(%options);
+    my $tx = $self->build_restore_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -53953,7 +53956,7 @@ sub build_getProjectRoles_request( $self, %options ) {
 
 
 sub getProjectRoles( $self, %options ) {
-    my $tx = $self->_build_getProjectRoles_request(%options);
+    my $tx = $self->build_getProjectRoles_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -54088,7 +54091,7 @@ sub build_deleteActor_request( $self, %options ) {
 
 
 sub deleteActor( $self, %options ) {
-    my $tx = $self->_build_deleteActor_request(%options);
+    my $tx = $self->build_deleteActor_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -54238,7 +54241,7 @@ sub build_getProjectRole_request( $self, %options ) {
 
 
 sub getProjectRole( $self, %options ) {
-    my $tx = $self->_build_getProjectRole_request(%options);
+    my $tx = $self->build_getProjectRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -54415,7 +54418,7 @@ sub build_addActorUsers_request( $self, %options ) {
 
 
 sub addActorUsers( $self, %options ) {
-    my $tx = $self->_build_addActorUsers_request(%options);
+    my $tx = $self->build_addActorUsers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -54606,7 +54609,7 @@ sub build_setActors_request( $self, %options ) {
 
 
 sub setActors( $self, %options ) {
-    my $tx = $self->_build_setActors_request(%options);
+    my $tx = $self->build_setActors_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -54742,7 +54745,7 @@ sub build_getProjectRoleDetails_request( $self, %options ) {
 
 
 sub getProjectRoleDetails( $self, %options ) {
-    my $tx = $self->_build_getProjectRoleDetails_request(%options);
+    my $tx = $self->build_getProjectRoleDetails_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -54875,7 +54878,7 @@ sub build_getAllStatuses_request( $self, %options ) {
 
 
 sub getAllStatuses( $self, %options ) {
-    my $tx = $self->_build_getAllStatuses_request(%options);
+    my $tx = $self->build_getAllStatuses_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -55120,7 +55123,7 @@ sub build_updateProjectType_request( $self, %options ) {
 
 
 sub updateProjectType( $self, %options ) {
-    my $tx = $self->_build_updateProjectType_request(%options);
+    my $tx = $self->build_updateProjectType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -55351,7 +55354,7 @@ sub build_getProjectVersionsPaginated_request( $self, %options ) {
 
 
 sub getProjectVersionsPaginated( $self, %options ) {
-    my $tx = $self->_build_getProjectVersionsPaginated_request(%options);
+    my $tx = $self->build_getProjectVersionsPaginated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -55495,7 +55498,7 @@ sub build_getProjectVersions_request( $self, %options ) {
 
 
 sub getProjectVersions( $self, %options ) {
-    my $tx = $self->_build_getProjectVersions_request(%options);
+    my $tx = $self->build_getProjectVersions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -55605,7 +55608,7 @@ sub build_getProjectEmail_request( $self, %options ) {
 
 
 sub getProjectEmail( $self, %options ) {
-    my $tx = $self->_build_getProjectEmail_request(%options);
+    my $tx = $self->build_getProjectEmail_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -55731,7 +55734,7 @@ sub build_updateProjectEmail_request( $self, %options ) {
 
 
 sub updateProjectEmail( $self, %options ) {
-    my $tx = $self->_build_updateProjectEmail_request(%options);
+    my $tx = $self->build_updateProjectEmail_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -55914,7 +55917,7 @@ sub build_getHierarchy_request( $self, %options ) {
 
 
 sub getHierarchy( $self, %options ) {
-    my $tx = $self->_build_getHierarchy_request(%options);
+    my $tx = $self->build_getHierarchy_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -56038,7 +56041,7 @@ sub build_getProjectIssueSecurityScheme_request( $self, %options ) {
 
 
 sub getProjectIssueSecurityScheme( $self, %options ) {
-    my $tx = $self->_build_getProjectIssueSecurityScheme_request(%options);
+    my $tx = $self->build_getProjectIssueSecurityScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -56437,7 +56440,7 @@ sub build_getNotificationSchemeForProject_request( $self, %options ) {
 
 
 sub getNotificationSchemeForProject( $self, %options ) {
-    my $tx = $self->_build_getNotificationSchemeForProject_request(%options);
+    my $tx = $self->build_getNotificationSchemeForProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -56595,7 +56598,7 @@ sub build_getAssignedPermissionScheme_request( $self, %options ) {
 
 
 sub getAssignedPermissionScheme( $self, %options ) {
-    my $tx = $self->_build_getAssignedPermissionScheme_request(%options);
+    my $tx = $self->build_getAssignedPermissionScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -56766,7 +56769,7 @@ sub build_assignPermissionScheme_request( $self, %options ) {
 
 
 sub assignPermissionScheme( $self, %options ) {
-    my $tx = $self->_build_assignPermissionScheme_request(%options);
+    my $tx = $self->build_assignPermissionScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -56893,7 +56896,7 @@ sub build_getSecurityLevelsForProject_request( $self, %options ) {
 
 
 sub getSecurityLevelsForProject( $self, %options ) {
-    my $tx = $self->_build_getSecurityLevelsForProject_request(%options);
+    my $tx = $self->build_getSecurityLevelsForProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -56998,7 +57001,7 @@ sub build_getAllProjectCategories_request( $self, %options ) {
 
 
 sub getAllProjectCategories( $self, %options ) {
-    my $tx = $self->_build_getAllProjectCategories_request(%options);
+    my $tx = $self->build_getAllProjectCategories_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57121,7 +57124,7 @@ sub build_createProjectCategory_request( $self, %options ) {
 
 
 sub createProjectCategory( $self, %options ) {
-    my $tx = $self->_build_createProjectCategory_request(%options);
+    my $tx = $self->build_createProjectCategory_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57229,7 +57232,7 @@ sub build_removeProjectCategory_request( $self, %options ) {
 
 
 sub removeProjectCategory( $self, %options ) {
-    my $tx = $self->_build_removeProjectCategory_request(%options);
+    my $tx = $self->build_removeProjectCategory_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57332,7 +57335,7 @@ sub build_getProjectCategoryById_request( $self, %options ) {
 
 
 sub getProjectCategoryById( $self, %options ) {
-    my $tx = $self->_build_getProjectCategoryById_request(%options);
+    my $tx = $self->build_getProjectCategoryById_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57467,7 +57470,7 @@ sub build_updateProjectCategory_request( $self, %options ) {
 
 
 sub updateProjectCategory( $self, %options ) {
-    my $tx = $self->_build_updateProjectCategory_request(%options);
+    my $tx = $self->build_updateProjectCategory_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57583,7 +57586,7 @@ sub build_validateProjectKey_request( $self, %options ) {
 
 
 sub validateProjectKey( $self, %options ) {
-    my $tx = $self->_build_validateProjectKey_request(%options);
+    my $tx = $self->build_validateProjectKey_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57685,7 +57688,7 @@ sub build_getValidProjectKey_request( $self, %options ) {
 
 
 sub getValidProjectKey( $self, %options ) {
-    my $tx = $self->_build_getValidProjectKey_request(%options);
+    my $tx = $self->build_getValidProjectKey_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57790,7 +57793,7 @@ sub build_getValidProjectName_request( $self, %options ) {
 
 
 sub getValidProjectName( $self, %options ) {
-    my $tx = $self->_build_getValidProjectName_request(%options);
+    my $tx = $self->build_getValidProjectName_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -57901,7 +57904,7 @@ sub build_getResolutions_request( $self, %options ) {
 
 
 sub getResolutions( $self, %options ) {
-    my $tx = $self->_build_getResolutions_request(%options);
+    my $tx = $self->build_getResolutions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -58032,7 +58035,7 @@ sub build_createResolution_request( $self, %options ) {
 
 
 sub createResolution( $self, %options ) {
-    my $tx = $self->_build_createResolution_request(%options);
+    my $tx = $self->build_createResolution_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -58204,7 +58207,7 @@ sub build_setDefaultResolution_request( $self, %options ) {
 
 
 sub setDefaultResolution( $self, %options ) {
-    my $tx = $self->_build_setDefaultResolution_request(%options);
+    my $tx = $self->build_setDefaultResolution_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -58399,7 +58402,7 @@ sub build_moveResolutions_request( $self, %options ) {
 
 
 sub moveResolutions( $self, %options ) {
-    my $tx = $self->_build_moveResolutions_request(%options);
+    my $tx = $self->build_moveResolutions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -58604,7 +58607,7 @@ sub build_searchResolutions_request( $self, %options ) {
 
 
 sub searchResolutions( $self, %options ) {
-    my $tx = $self->_build_searchResolutions_request(%options);
+    my $tx = $self->build_searchResolutions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -58759,7 +58762,7 @@ sub build_deleteResolution_request( $self, %options ) {
 
 
 sub deleteResolution( $self, %options ) {
-    my $tx = $self->_build_deleteResolution_request(%options);
+    my $tx = $self->build_deleteResolution_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -58940,7 +58943,7 @@ sub build_getResolution_request( $self, %options ) {
 
 
 sub getResolution( $self, %options ) {
-    my $tx = $self->_build_getResolution_request(%options);
+    my $tx = $self->build_getResolution_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -59089,7 +59092,7 @@ sub build_updateResolution_request( $self, %options ) {
 
 
 sub updateResolution( $self, %options ) {
-    my $tx = $self->_build_updateResolution_request(%options);
+    my $tx = $self->build_updateResolution_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -59302,7 +59305,7 @@ sub build_getAllProjectRoles_request( $self, %options ) {
 
 
 sub getAllProjectRoles( $self, %options ) {
-    my $tx = $self->_build_getAllProjectRoles_request(%options);
+    my $tx = $self->build_getAllProjectRoles_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -59422,7 +59425,7 @@ sub build_createProjectRole_request( $self, %options ) {
 
 
 sub createProjectRole( $self, %options ) {
-    my $tx = $self->_build_createProjectRole_request(%options);
+    my $tx = $self->build_createProjectRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -59539,7 +59542,7 @@ sub build_deleteProjectRole_request( $self, %options ) {
 
 
 sub deleteProjectRole( $self, %options ) {
-    my $tx = $self->_build_deleteProjectRole_request(%options);
+    my $tx = $self->build_deleteProjectRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -59677,7 +59680,7 @@ sub build_getProjectRoleById_request( $self, %options ) {
 
 
 sub getProjectRoleById( $self, %options ) {
-    my $tx = $self->_build_getProjectRoleById_request(%options);
+    my $tx = $self->build_getProjectRoleById_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -59840,7 +59843,7 @@ sub build_partialUpdateProjectRole_request( $self, %options ) {
 
 
 sub partialUpdateProjectRole( $self, %options ) {
-    my $tx = $self->_build_partialUpdateProjectRole_request(%options);
+    my $tx = $self->build_partialUpdateProjectRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -60004,7 +60007,7 @@ sub build_fullyUpdateProjectRole_request( $self, %options ) {
 
 
 sub fullyUpdateProjectRole( $self, %options ) {
-    my $tx = $self->_build_fullyUpdateProjectRole_request(%options);
+    my $tx = $self->build_fullyUpdateProjectRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -60154,7 +60157,7 @@ sub build_deleteProjectRoleActorsFromRole_request( $self, %options ) {
 
 
 sub deleteProjectRoleActorsFromRole( $self, %options ) {
-    my $tx = $self->_build_deleteProjectRoleActorsFromRole_request(%options);
+    my $tx = $self->build_deleteProjectRoleActorsFromRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -60281,7 +60284,7 @@ sub build_getProjectRoleActorsForRole_request( $self, %options ) {
 
 
 sub getProjectRoleActorsForRole( $self, %options ) {
-    my $tx = $self->_build_getProjectRoleActorsForRole_request(%options);
+    my $tx = $self->build_getProjectRoleActorsForRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -60431,7 +60434,7 @@ sub build_addProjectRoleActorsToRole_request( $self, %options ) {
 
 
 sub addProjectRoleActorsToRole( $self, %options ) {
-    my $tx = $self->_build_addProjectRoleActorsToRole_request(%options);
+    my $tx = $self->build_addProjectRoleActorsToRole_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -60609,7 +60612,7 @@ sub build_getScreens_request( $self, %options ) {
 
 
 sub getScreens( $self, %options ) {
-    my $tx = $self->_build_getScreens_request(%options);
+    my $tx = $self->build_getScreens_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -60741,7 +60744,7 @@ sub build_createScreen_request( $self, %options ) {
 
 
 sub createScreen( $self, %options ) {
-    my $tx = $self->_build_createScreen_request(%options);
+    my $tx = $self->build_createScreen_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -60872,7 +60875,7 @@ sub build_addFieldToDefaultScreen_request( $self, %options ) {
 
 
 sub addFieldToDefaultScreen( $self, %options ) {
-    my $tx = $self->_build_addFieldToDefaultScreen_request(%options);
+    my $tx = $self->build_addFieldToDefaultScreen_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61002,7 +61005,7 @@ sub build_deleteScreen_request( $self, %options ) {
 
 
 sub deleteScreen( $self, %options ) {
-    my $tx = $self->_build_deleteScreen_request(%options);
+    my $tx = $self->build_deleteScreen_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61184,7 +61187,7 @@ sub build_updateScreen_request( $self, %options ) {
 
 
 sub updateScreen( $self, %options ) {
-    my $tx = $self->_build_updateScreen_request(%options);
+    my $tx = $self->build_updateScreen_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61330,7 +61333,7 @@ sub build_getAvailableScreenFields_request( $self, %options ) {
 
 
 sub getAvailableScreenFields( $self, %options ) {
-    my $tx = $self->_build_getAvailableScreenFields_request(%options);
+    my $tx = $self->build_getAvailableScreenFields_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61461,7 +61464,7 @@ sub build_getAllScreenTabs_request( $self, %options ) {
 
 
 sub getAllScreenTabs( $self, %options ) {
-    my $tx = $self->_build_getAllScreenTabs_request(%options);
+    my $tx = $self->build_getAllScreenTabs_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61595,7 +61598,7 @@ sub build_addScreenTab_request( $self, %options ) {
 
 
 sub addScreenTab( $self, %options ) {
-    my $tx = $self->_build_addScreenTab_request(%options);
+    my $tx = $self->build_addScreenTab_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61711,7 +61714,7 @@ sub build_deleteScreenTab_request( $self, %options ) {
 
 
 sub deleteScreenTab( $self, %options ) {
-    my $tx = $self->_build_deleteScreenTab_request(%options);
+    my $tx = $self->build_deleteScreenTab_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61837,7 +61840,7 @@ sub build_renameScreenTab_request( $self, %options ) {
 
 
 sub renameScreenTab( $self, %options ) {
-    my $tx = $self->_build_renameScreenTab_request(%options);
+    my $tx = $self->build_renameScreenTab_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -61978,7 +61981,7 @@ sub build_getAllScreenTabFields_request( $self, %options ) {
 
 
 sub getAllScreenTabFields( $self, %options ) {
-    my $tx = $self->_build_getAllScreenTabFields_request(%options);
+    my $tx = $self->build_getAllScreenTabFields_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -62113,7 +62116,7 @@ sub build_addScreenTabField_request( $self, %options ) {
 
 
 sub addScreenTabField( $self, %options ) {
-    my $tx = $self->_build_addScreenTabField_request(%options);
+    my $tx = $self->build_addScreenTabField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -62237,7 +62240,7 @@ sub build_removeScreenTabField_request( $self, %options ) {
 
 
 sub removeScreenTabField( $self, %options ) {
-    my $tx = $self->_build_removeScreenTabField_request(%options);
+    my $tx = $self->build_removeScreenTabField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -62370,7 +62373,7 @@ sub build_moveScreenTabField_request( $self, %options ) {
 
 
 sub moveScreenTabField( $self, %options ) {
-    my $tx = $self->_build_moveScreenTabField_request(%options);
+    my $tx = $self->build_moveScreenTabField_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -62496,7 +62499,7 @@ sub build_moveScreenTab_request( $self, %options ) {
 
 
 sub moveScreenTab( $self, %options ) {
-    my $tx = $self->_build_moveScreenTab_request(%options);
+    my $tx = $self->build_moveScreenTab_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -62693,7 +62696,7 @@ sub build_getScreenSchemes_request( $self, %options ) {
 
 
 sub getScreenSchemes( $self, %options ) {
-    my $tx = $self->_build_getScreenSchemes_request(%options);
+    my $tx = $self->build_getScreenSchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -62835,7 +62838,7 @@ sub build_createScreenScheme_request( $self, %options ) {
 
 
 sub createScreenScheme( $self, %options ) {
-    my $tx = $self->_build_createScreenScheme_request(%options);
+    my $tx = $self->build_createScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -63006,7 +63009,7 @@ sub build_deleteScreenScheme_request( $self, %options ) {
 
 
 sub deleteScreenScheme( $self, %options ) {
-    my $tx = $self->_build_deleteScreenScheme_request(%options);
+    my $tx = $self->build_deleteScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -63185,7 +63188,7 @@ sub build_updateScreenScheme_request( $self, %options ) {
 
 
 sub updateScreenScheme( $self, %options ) {
-    my $tx = $self->_build_updateScreenScheme_request(%options);
+    my $tx = $self->build_updateScreenScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -63783,7 +63786,7 @@ sub build_searchForIssuesUsingJql_request( $self, %options ) {
 
 
 sub searchForIssuesUsingJql( $self, %options ) {
-    my $tx = $self->_build_searchForIssuesUsingJql_request(%options);
+    my $tx = $self->build_searchForIssuesUsingJql_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -64313,7 +64316,7 @@ sub build_searchForIssuesUsingJqlPost_request( $self, %options ) {
 
 
 sub searchForIssuesUsingJqlPost( $self, %options ) {
-    my $tx = $self->_build_searchForIssuesUsingJqlPost_request(%options);
+    my $tx = $self->build_searchForIssuesUsingJqlPost_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -64429,7 +64432,7 @@ sub build_getIssueSecurityLevel_request( $self, %options ) {
 
 
 sub getIssueSecurityLevel( $self, %options ) {
-    my $tx = $self->_build_getIssueSecurityLevel_request(%options);
+    my $tx = $self->build_getIssueSecurityLevel_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -64542,7 +64545,7 @@ sub build_getServerInfo_request( $self, %options ) {
 
 
 sub getServerInfo( $self, %options ) {
-    my $tx = $self->_build_getServerInfo_request(%options);
+    my $tx = $self->build_getServerInfo_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -64643,7 +64646,7 @@ sub build_getIssueNavigatorDefaultColumns_request( $self, %options ) {
 
 
 sub getIssueNavigatorDefaultColumns( $self, %options ) {
-    my $tx = $self->_build_getIssueNavigatorDefaultColumns_request(%options);
+    my $tx = $self->build_getIssueNavigatorDefaultColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -64749,7 +64752,7 @@ sub build_setIssueNavigatorDefaultColumns_request( $self, %options ) {
 
 
 sub setIssueNavigatorDefaultColumns( $self, %options ) {
-    my $tx = $self->_build_setIssueNavigatorDefaultColumns_request(%options);
+    my $tx = $self->build_setIssueNavigatorDefaultColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -64880,7 +64883,7 @@ sub build_getStatuses_request( $self, %options ) {
 
 
 sub getStatuses( $self, %options ) {
-    my $tx = $self->_build_getStatuses_request(%options);
+    my $tx = $self->build_getStatuses_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65002,7 +65005,7 @@ sub build_getStatus_request( $self, %options ) {
 
 
 sub getStatus( $self, %options ) {
-    my $tx = $self->_build_getStatus_request(%options);
+    my $tx = $self->build_getStatus_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65111,7 +65114,7 @@ sub build_getStatusCategories_request( $self, %options ) {
 
 
 sub getStatusCategories( $self, %options ) {
-    my $tx = $self->_build_getStatusCategories_request(%options);
+    my $tx = $self->build_getStatusCategories_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65222,7 +65225,7 @@ sub build_getStatusCategory_request( $self, %options ) {
 
 
 sub getStatusCategory( $self, %options ) {
-    my $tx = $self->_build_getStatusCategory_request(%options);
+    my $tx = $self->build_getStatusCategory_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65348,7 +65351,7 @@ sub build_deleteStatusesById_request( $self, %options ) {
 
 
 sub deleteStatusesById( $self, %options ) {
-    my $tx = $self->_build_deleteStatusesById_request(%options);
+    my $tx = $self->build_deleteStatusesById_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65519,7 +65522,7 @@ sub build_getStatusesById_request( $self, %options ) {
 
 
 sub getStatusesById( $self, %options ) {
-    my $tx = $self->_build_getStatusesById_request(%options);
+    my $tx = $self->build_getStatusesById_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65668,7 +65671,7 @@ sub build_createStatuses_request( $self, %options ) {
 
 
 sub createStatuses( $self, %options ) {
-    my $tx = $self->_build_createStatuses_request(%options);
+    my $tx = $self->build_createStatuses_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -65808,7 +65811,7 @@ sub build_updateStatuses_request( $self, %options ) {
 
 
 sub updateStatuses( $self, %options ) {
-    my $tx = $self->_build_updateStatuses_request(%options);
+    my $tx = $self->build_updateStatuses_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -66009,7 +66012,7 @@ sub build_search_request( $self, %options ) {
 
 
 sub search( $self, %options ) {
-    my $tx = $self->_build_search_request(%options);
+    my $tx = $self->build_search_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -66145,7 +66148,7 @@ sub build_getTask_request( $self, %options ) {
 
 
 sub getTask( $self, %options ) {
-    my $tx = $self->_build_getTask_request(%options);
+    my $tx = $self->build_getTask_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -66270,7 +66273,7 @@ sub build_cancelTask_request( $self, %options ) {
 
 
 sub cancelTask( $self, %options ) {
-    my $tx = $self->_build_cancelTask_request(%options);
+    my $tx = $self->build_cancelTask_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -66511,7 +66514,7 @@ sub build_getUiModifications_request( $self, %options ) {
 
 
 sub getUiModifications( $self, %options ) {
-    my $tx = $self->_build_getUiModifications_request(%options);
+    my $tx = $self->build_getUiModifications_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -66653,7 +66656,7 @@ sub build_createUiModification_request( $self, %options ) {
 
 
 sub createUiModification( $self, %options ) {
-    my $tx = $self->_build_createUiModification_request(%options);
+    my $tx = $self->build_createUiModification_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -66763,7 +66766,7 @@ sub build_deleteUiModification_request( $self, %options ) {
 
 
 sub deleteUiModification( $self, %options ) {
-    my $tx = $self->_build_deleteUiModification_request(%options);
+    my $tx = $self->build_deleteUiModification_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -66911,7 +66914,7 @@ sub build_updateUiModification_request( $self, %options ) {
 
 
 sub updateUiModification( $self, %options ) {
-    my $tx = $self->_build_updateUiModification_request(%options);
+    my $tx = $self->build_updateUiModification_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -67082,7 +67085,7 @@ sub build_getAvatars_request( $self, %options ) {
 
 
 sub getAvatars( $self, %options ) {
-    my $tx = $self->_build_getAvatars_request(%options);
+    my $tx = $self->build_getAvatars_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -67285,7 +67288,7 @@ sub build_storeAvatar_request( $self, %options ) {
 
 
 sub storeAvatar( $self, %options ) {
-    my $tx = $self->_build_storeAvatar_request(%options);
+    my $tx = $self->build_storeAvatar_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -67409,7 +67412,7 @@ sub build_deleteAvatar_request( $self, %options ) {
 
 
 sub deleteAvatar( $self, %options ) {
-    my $tx = $self->_build_deleteAvatar_request(%options);
+    my $tx = $self->build_deleteAvatar_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -67524,7 +67527,7 @@ sub build_getAvatarImageByType_request( $self, %options ) {
 
 
 sub getAvatarImageByType( $self, %options ) {
-    my $tx = $self->_build_getAvatarImageByType_request(%options);
+    my $tx = $self->build_getAvatarImageByType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -67847,7 +67850,7 @@ sub build_getAvatarImageByID_request( $self, %options ) {
 
 
 sub getAvatarImageByID( $self, %options ) {
-    my $tx = $self->_build_getAvatarImageByID_request(%options);
+    my $tx = $self->build_getAvatarImageByID_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -68218,7 +68221,7 @@ sub build_getAvatarImageByOwner_request( $self, %options ) {
 
 
 sub getAvatarImageByOwner( $self, %options ) {
-    my $tx = $self->_build_getAvatarImageByOwner_request(%options);
+    my $tx = $self->build_getAvatarImageByOwner_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -68552,7 +68555,7 @@ sub build_removeUser_request( $self, %options ) {
 
 
 sub removeUser( $self, %options ) {
-    my $tx = $self->_build_removeUser_request(%options);
+    my $tx = $self->build_removeUser_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -68709,7 +68712,7 @@ sub build_getUser_request( $self, %options ) {
 
 
 sub getUser( $self, %options ) {
-    my $tx = $self->_build_getUser_request(%options);
+    my $tx = $self->build_getUser_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -68870,7 +68873,7 @@ sub build_createUser_request( $self, %options ) {
 
 
 sub createUser( $self, %options ) {
-    my $tx = $self->_build_createUser_request(%options);
+    my $tx = $self->build_createUser_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -69048,7 +69051,7 @@ sub build_findBulkAssignableUsers_request( $self, %options ) {
 
 
 sub findBulkAssignableUsers( $self, %options ) {
-    my $tx = $self->_build_findBulkAssignableUsers_request(%options);
+    my $tx = $self->build_findBulkAssignableUsers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -69261,7 +69264,7 @@ sub build_findAssignableUsers_request( $self, %options ) {
 
 
 sub findAssignableUsers( $self, %options ) {
-    my $tx = $self->_build_findAssignableUsers_request(%options);
+    my $tx = $self->build_findAssignableUsers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -69422,7 +69425,7 @@ sub build_bulkGetUsers_request( $self, %options ) {
 
 
 sub bulkGetUsers( $self, %options ) {
-    my $tx = $self->_build_bulkGetUsers_request(%options);
+    my $tx = $self->build_bulkGetUsers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -69554,7 +69557,7 @@ sub build_bulkGetUsersMigration_request( $self, %options ) {
 
 
 sub bulkGetUsersMigration( $self, %options ) {
-    my $tx = $self->_build_bulkGetUsersMigration_request(%options);
+    my $tx = $self->build_bulkGetUsersMigration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -69675,7 +69678,7 @@ sub build_resetUserColumns_request( $self, %options ) {
 
 
 sub resetUserColumns( $self, %options ) {
-    my $tx = $self->_build_resetUserColumns_request(%options);
+    my $tx = $self->build_resetUserColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -69785,7 +69788,7 @@ sub build_getUserDefaultColumns_request( $self, %options ) {
 
 
 sub getUserDefaultColumns( $self, %options ) {
-    my $tx = $self->_build_getUserDefaultColumns_request(%options);
+    my $tx = $self->build_getUserDefaultColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -69914,7 +69917,7 @@ sub build_setUserColumns_request( $self, %options ) {
 
 
 sub setUserColumns( $self, %options ) {
-    my $tx = $self->_build_setUserColumns_request(%options);
+    my $tx = $self->build_setUserColumns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -70029,7 +70032,7 @@ sub build_getUserEmail_request( $self, %options ) {
 
 
 sub getUserEmail( $self, %options ) {
-    my $tx = $self->_build_getUserEmail_request(%options);
+    my $tx = $self->build_getUserEmail_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -70138,7 +70141,7 @@ sub build_getUserEmailBulk_request( $self, %options ) {
 
 
 sub getUserEmailBulk( $self, %options ) {
-    my $tx = $self->_build_getUserEmailBulk_request(%options);
+    my $tx = $self->build_getUserEmailBulk_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -70265,7 +70268,7 @@ sub build_getUserGroups_request( $self, %options ) {
 
 
 sub getUserGroups( $self, %options ) {
-    my $tx = $self->_build_getUserGroups_request(%options);
+    my $tx = $self->build_getUserGroups_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -70671,7 +70674,7 @@ sub build_findUsersWithAllPermissions_request( $self, %options ) {
 
 
 sub findUsersWithAllPermissions( $self, %options ) {
-    my $tx = $self->_build_findUsersWithAllPermissions_request(%options);
+    my $tx = $self->build_findUsersWithAllPermissions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -70841,7 +70844,7 @@ sub build_findUsersForPicker_request( $self, %options ) {
 
 
 sub findUsersForPicker( $self, %options ) {
-    my $tx = $self->_build_findUsersForPicker_request(%options);
+    my $tx = $self->build_findUsersForPicker_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -70984,7 +70987,7 @@ sub build_getUserPropertyKeys_request( $self, %options ) {
 
 
 sub getUserPropertyKeys( $self, %options ) {
-    my $tx = $self->_build_getUserPropertyKeys_request(%options);
+    my $tx = $self->build_getUserPropertyKeys_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -71129,7 +71132,7 @@ sub build_deleteUserProperty_request( $self, %options ) {
 
 
 sub deleteUserProperty( $self, %options ) {
-    my $tx = $self->_build_deleteUserProperty_request(%options);
+    my $tx = $self->build_deleteUserProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -71273,7 +71276,7 @@ sub build_getUserProperty_request( $self, %options ) {
 
 
 sub getUserProperty( $self, %options ) {
-    my $tx = $self->_build_getUserProperty_request(%options);
+    my $tx = $self->build_getUserProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -71424,7 +71427,7 @@ sub build_setUserProperty_request( $self, %options ) {
 
 
 sub setUserProperty( $self, %options ) {
-    my $tx = $self->_build_setUserProperty_request(%options);
+    my $tx = $self->build_setUserProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -71618,7 +71621,7 @@ sub build_findUsers_request( $self, %options ) {
 
 
 sub findUsers( $self, %options ) {
-    my $tx = $self->_build_findUsers_request(%options);
+    my $tx = $self->build_findUsers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -71791,7 +71794,7 @@ sub build_findUsersByQuery_request( $self, %options ) {
 
 
 sub findUsersByQuery( $self, %options ) {
-    my $tx = $self->_build_findUsersByQuery_request(%options);
+    my $tx = $self->build_findUsersByQuery_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -71966,7 +71969,7 @@ sub build_findUserKeysByQuery_request( $self, %options ) {
 
 
 sub findUserKeysByQuery( $self, %options ) {
-    my $tx = $self->_build_findUserKeysByQuery_request(%options);
+    my $tx = $self->build_findUserKeysByQuery_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -72180,7 +72183,7 @@ sub build_findUsersWithBrowsePermission_request( $self, %options ) {
 
 
 sub findUsersWithBrowsePermission( $self, %options ) {
-    my $tx = $self->_build_findUsersWithBrowsePermission_request(%options);
+    my $tx = $self->build_findUsersWithBrowsePermission_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -72331,7 +72334,7 @@ sub build_getAllUsersDefault_request( $self, %options ) {
 
 
 sub getAllUsersDefault( $self, %options ) {
-    my $tx = $self->_build_getAllUsersDefault_request(%options);
+    my $tx = $self->build_getAllUsersDefault_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -72479,7 +72482,7 @@ sub build_getAllUsers_request( $self, %options ) {
 
 
 sub getAllUsers( $self, %options ) {
-    my $tx = $self->_build_getAllUsers_request(%options);
+    my $tx = $self->build_getAllUsers_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -72684,7 +72687,7 @@ sub build_createVersion_request( $self, %options ) {
 
 
 sub createVersion( $self, %options ) {
-    my $tx = $self->_build_createVersion_request(%options);
+    my $tx = $self->build_createVersion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -72810,7 +72813,7 @@ sub build_deleteVersion_request( $self, %options ) {
 
 
 sub deleteVersion( $self, %options ) {
-    my $tx = $self->_build_deleteVersion_request(%options);
+    my $tx = $self->build_deleteVersion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -72944,7 +72947,7 @@ sub build_getVersion_request( $self, %options ) {
 
 
 sub getVersion( $self, %options ) {
-    my $tx = $self->_build_getVersion_request(%options);
+    my $tx = $self->build_getVersion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -73157,7 +73160,7 @@ sub build_updateVersion_request( $self, %options ) {
 
 
 sub updateVersion( $self, %options ) {
-    my $tx = $self->_build_updateVersion_request(%options);
+    my $tx = $self->build_updateVersion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -73276,7 +73279,7 @@ sub build_mergeVersions_request( $self, %options ) {
 
 
 sub mergeVersions( $self, %options ) {
-    my $tx = $self->_build_mergeVersions_request(%options);
+    my $tx = $self->build_mergeVersions_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -73416,7 +73419,7 @@ sub build_moveVersion_request( $self, %options ) {
 
 
 sub moveVersion( $self, %options ) {
-    my $tx = $self->_build_moveVersion_request(%options);
+    my $tx = $self->build_moveVersion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -73564,7 +73567,7 @@ sub build_getVersionRelatedIssues_request( $self, %options ) {
 
 
 sub getVersionRelatedIssues( $self, %options ) {
-    my $tx = $self->_build_getVersionRelatedIssues_request(%options);
+    my $tx = $self->build_getVersionRelatedIssues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -73693,7 +73696,7 @@ sub build_deleteAndReplaceVersion_request( $self, %options ) {
 
 
 sub deleteAndReplaceVersion( $self, %options ) {
-    my $tx = $self->_build_deleteAndReplaceVersion_request(%options);
+    my $tx = $self->build_deleteAndReplaceVersion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -73809,7 +73812,7 @@ sub build_getVersionUnresolvedIssues_request( $self, %options ) {
 
 
 sub getVersionUnresolvedIssues( $self, %options ) {
-    my $tx = $self->_build_getVersionUnresolvedIssues_request(%options);
+    my $tx = $self->build_getVersionUnresolvedIssues_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -73915,7 +73918,7 @@ sub build_deleteWebhookById_request( $self, %options ) {
 
 
 sub deleteWebhookById( $self, %options ) {
-    my $tx = $self->_build_deleteWebhookById_request(%options);
+    my $tx = $self->build_deleteWebhookById_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -74079,7 +74082,7 @@ sub build_getDynamicWebhooksForApp_request( $self, %options ) {
 
 
 sub getDynamicWebhooksForApp( $self, %options ) {
-    my $tx = $self->_build_getDynamicWebhooksForApp_request(%options);
+    my $tx = $self->build_getDynamicWebhooksForApp_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -74233,7 +74236,7 @@ sub build_registerDynamicWebhooks_request( $self, %options ) {
 
 
 sub registerDynamicWebhooks( $self, %options ) {
-    my $tx = $self->_build_registerDynamicWebhooks_request(%options);
+    my $tx = $self->build_registerDynamicWebhooks_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -74392,7 +74395,7 @@ sub build_getFailedWebhooks_request( $self, %options ) {
 
 
 sub getFailedWebhooks( $self, %options ) {
-    my $tx = $self->_build_getFailedWebhooks_request(%options);
+    my $tx = $self->build_getFailedWebhooks_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -74530,7 +74533,7 @@ sub build_refreshWebhooks_request( $self, %options ) {
 
 
 sub refreshWebhooks( $self, %options ) {
-    my $tx = $self->_build_refreshWebhooks_request(%options);
+    my $tx = $self->build_refreshWebhooks_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -74671,7 +74674,7 @@ sub build_getAllWorkflows_request( $self, %options ) {
 
 
 sub getAllWorkflows( $self, %options ) {
-    my $tx = $self->_build_getAllWorkflows_request(%options);
+    my $tx = $self->build_getAllWorkflows_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -76294,7 +76297,7 @@ sub build_createWorkflow_request( $self, %options ) {
 
 
 sub createWorkflow( $self, %options ) {
-    my $tx = $self->_build_createWorkflow_request(%options);
+    my $tx = $self->build_createWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -76563,7 +76566,7 @@ sub build_getWorkflowTransitionRuleConfigurations_request( $self, %options ) {
 
 
 sub getWorkflowTransitionRuleConfigurations( $self, %options ) {
-    my $tx = $self->_build_getWorkflowTransitionRuleConfigurations_request(%options);
+    my $tx = $self->build_getWorkflowTransitionRuleConfigurations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -76772,7 +76775,7 @@ sub build_updateWorkflowTransitionRuleConfigurations_request( $self, %options ) 
 
 
 sub updateWorkflowTransitionRuleConfigurations( $self, %options ) {
-    my $tx = $self->_build_updateWorkflowTransitionRuleConfigurations_request(%options);
+    my $tx = $self->build_updateWorkflowTransitionRuleConfigurations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -76972,7 +76975,7 @@ sub build_deleteWorkflowTransitionRuleConfigurations_request( $self, %options ) 
 
 
 sub deleteWorkflowTransitionRuleConfigurations( $self, %options ) {
-    my $tx = $self->_build_deleteWorkflowTransitionRuleConfigurations_request(%options);
+    my $tx = $self->build_deleteWorkflowTransitionRuleConfigurations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -77346,7 +77349,7 @@ sub build_getWorkflowsPaginated_request( $self, %options ) {
 
 
 sub getWorkflowsPaginated( $self, %options ) {
-    my $tx = $self->_build_getWorkflowsPaginated_request(%options);
+    my $tx = $self->build_getWorkflowsPaginated_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -77485,7 +77488,7 @@ sub build_deleteWorkflowTransitionProperty_request( $self, %options ) {
 
 
 sub deleteWorkflowTransitionProperty( $self, %options ) {
-    my $tx = $self->_build_deleteWorkflowTransitionProperty_request(%options);
+    my $tx = $self->build_deleteWorkflowTransitionProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -77629,7 +77632,7 @@ sub build_getWorkflowTransitionProperties_request( $self, %options ) {
 
 
 sub getWorkflowTransitionProperties( $self, %options ) {
-    my $tx = $self->_build_getWorkflowTransitionProperties_request(%options);
+    my $tx = $self->build_getWorkflowTransitionProperties_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -77792,7 +77795,7 @@ sub build_createWorkflowTransitionProperty_request( $self, %options ) {
 
 
 sub createWorkflowTransitionProperty( $self, %options ) {
-    my $tx = $self->_build_createWorkflowTransitionProperty_request(%options);
+    my $tx = $self->build_createWorkflowTransitionProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -77955,7 +77958,7 @@ sub build_updateWorkflowTransitionProperty_request( $self, %options ) {
 
 
 sub updateWorkflowTransitionProperty( $self, %options ) {
-    my $tx = $self->_build_updateWorkflowTransitionProperty_request(%options);
+    my $tx = $self->build_updateWorkflowTransitionProperty_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -78117,7 +78120,7 @@ sub build_deleteInactiveWorkflow_request( $self, %options ) {
 
 
 sub deleteInactiveWorkflow( $self, %options ) {
-    my $tx = $self->_build_deleteInactiveWorkflow_request(%options);
+    my $tx = $self->build_deleteInactiveWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -78287,7 +78290,7 @@ sub build_getAllWorkflowSchemes_request( $self, %options ) {
 
 
 sub getAllWorkflowSchemes( $self, %options ) {
-    my $tx = $self->_build_getAllWorkflowSchemes_request(%options);
+    my $tx = $self->build_getAllWorkflowSchemes_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -78473,7 +78476,7 @@ sub build_createWorkflowScheme_request( $self, %options ) {
 
 
 sub createWorkflowScheme( $self, %options ) {
-    my $tx = $self->_build_createWorkflowScheme_request(%options);
+    my $tx = $self->build_createWorkflowScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -78622,7 +78625,7 @@ sub build_getWorkflowSchemeProjectAssociations_request( $self, %options ) {
 
 
 sub getWorkflowSchemeProjectAssociations( $self, %options ) {
-    my $tx = $self->_build_getWorkflowSchemeProjectAssociations_request(%options);
+    my $tx = $self->build_getWorkflowSchemeProjectAssociations_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -78784,7 +78787,7 @@ sub build_assignSchemeToProject_request( $self, %options ) {
 
 
 sub assignSchemeToProject( $self, %options ) {
-    my $tx = $self->_build_assignSchemeToProject_request(%options);
+    my $tx = $self->build_assignSchemeToProject_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -78930,7 +78933,7 @@ sub build_deleteWorkflowScheme_request( $self, %options ) {
 
 
 sub deleteWorkflowScheme( $self, %options ) {
-    my $tx = $self->_build_deleteWorkflowScheme_request(%options);
+    my $tx = $self->build_deleteWorkflowScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -79063,7 +79066,7 @@ sub build_getWorkflowScheme_request( $self, %options ) {
 
 
 sub getWorkflowScheme( $self, %options ) {
-    my $tx = $self->_build_getWorkflowScheme_request(%options);
+    my $tx = $self->build_getWorkflowScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -79264,7 +79267,7 @@ sub build_updateWorkflowScheme_request( $self, %options ) {
 
 
 sub updateWorkflowScheme( $self, %options ) {
-    my $tx = $self->_build_updateWorkflowScheme_request(%options);
+    my $tx = $self->build_updateWorkflowScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -79418,7 +79421,7 @@ sub build_createWorkflowSchemeDraftFromParent_request( $self, %options ) {
 
 
 sub createWorkflowSchemeDraftFromParent( $self, %options ) {
-    my $tx = $self->_build_createWorkflowSchemeDraftFromParent_request(%options);
+    my $tx = $self->build_createWorkflowSchemeDraftFromParent_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -79550,7 +79553,7 @@ sub build_deleteDefaultWorkflow_request( $self, %options ) {
 
 
 sub deleteDefaultWorkflow( $self, %options ) {
-    my $tx = $self->_build_deleteDefaultWorkflow_request(%options);
+    my $tx = $self->build_deleteDefaultWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -79674,7 +79677,7 @@ sub build_getDefaultWorkflow_request( $self, %options ) {
 
 
 sub getDefaultWorkflow( $self, %options ) {
-    my $tx = $self->_build_getDefaultWorkflow_request(%options);
+    my $tx = $self->build_getDefaultWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -79814,7 +79817,7 @@ sub build_updateDefaultWorkflow_request( $self, %options ) {
 
 
 sub updateDefaultWorkflow( $self, %options ) {
-    my $tx = $self->_build_updateDefaultWorkflow_request(%options);
+    my $tx = $self->build_updateDefaultWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -79922,7 +79925,7 @@ sub build_deleteWorkflowSchemeDraft_request( $self, %options ) {
 
 
 sub deleteWorkflowSchemeDraft( $self, %options ) {
-    my $tx = $self->_build_deleteWorkflowSchemeDraft_request(%options);
+    my $tx = $self->build_deleteWorkflowSchemeDraft_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -80077,7 +80080,7 @@ sub build_getWorkflowSchemeDraft_request( $self, %options ) {
 
 
 sub getWorkflowSchemeDraft( $self, %options ) {
-    my $tx = $self->_build_getWorkflowSchemeDraft_request(%options);
+    my $tx = $self->build_getWorkflowSchemeDraft_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -80308,7 +80311,7 @@ sub build_updateWorkflowSchemeDraft_request( $self, %options ) {
 
 
 sub updateWorkflowSchemeDraft( $self, %options ) {
-    my $tx = $self->_build_updateWorkflowSchemeDraft_request(%options);
+    my $tx = $self->build_updateWorkflowSchemeDraft_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -80462,7 +80465,7 @@ sub build_deleteDraftDefaultWorkflow_request( $self, %options ) {
 
 
 sub deleteDraftDefaultWorkflow( $self, %options ) {
-    my $tx = $self->_build_deleteDraftDefaultWorkflow_request(%options);
+    my $tx = $self->build_deleteDraftDefaultWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -80574,7 +80577,7 @@ sub build_getDraftDefaultWorkflow_request( $self, %options ) {
 
 
 sub getDraftDefaultWorkflow( $self, %options ) {
-    my $tx = $self->_build_getDraftDefaultWorkflow_request(%options);
+    my $tx = $self->build_getDraftDefaultWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -80742,7 +80745,7 @@ sub build_updateDraftDefaultWorkflow_request( $self, %options ) {
 
 
 sub updateDraftDefaultWorkflow( $self, %options ) {
-    my $tx = $self->_build_updateDraftDefaultWorkflow_request(%options);
+    my $tx = $self->build_updateDraftDefaultWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -80904,7 +80907,7 @@ sub build_deleteWorkflowSchemeDraftIssueType_request( $self, %options ) {
 
 
 sub deleteWorkflowSchemeDraftIssueType( $self, %options ) {
-    my $tx = $self->_build_deleteWorkflowSchemeDraftIssueType_request(%options);
+    my $tx = $self->build_deleteWorkflowSchemeDraftIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -81025,7 +81028,7 @@ sub build_getWorkflowSchemeDraftIssueType_request( $self, %options ) {
 
 
 sub getWorkflowSchemeDraftIssueType( $self, %options ) {
-    my $tx = $self->_build_getWorkflowSchemeDraftIssueType_request(%options);
+    my $tx = $self->build_getWorkflowSchemeDraftIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -81205,7 +81208,7 @@ sub build_setWorkflowSchemeDraftIssueType_request( $self, %options ) {
 
 
 sub setWorkflowSchemeDraftIssueType( $self, %options ) {
-    my $tx = $self->_build_setWorkflowSchemeDraftIssueType_request(%options);
+    my $tx = $self->build_setWorkflowSchemeDraftIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -81357,7 +81360,7 @@ sub build_publishDraftWorkflowScheme_request( $self, %options ) {
 
 
 sub publishDraftWorkflowScheme( $self, %options ) {
-    my $tx = $self->_build_publishDraftWorkflowScheme_request(%options);
+    my $tx = $self->build_publishDraftWorkflowScheme_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -81503,7 +81506,7 @@ sub build_deleteDraftWorkflowMapping_request( $self, %options ) {
 
 
 sub deleteDraftWorkflowMapping( $self, %options ) {
-    my $tx = $self->_build_deleteDraftWorkflowMapping_request(%options);
+    my $tx = $self->build_deleteDraftWorkflowMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -81617,7 +81620,7 @@ sub build_getDraftWorkflow_request( $self, %options ) {
 
 
 sub getDraftWorkflow( $self, %options ) {
-    my $tx = $self->_build_getDraftWorkflow_request(%options);
+    my $tx = $self->build_getDraftWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -81774,7 +81777,7 @@ sub build_updateDraftWorkflowMapping_request( $self, %options ) {
 
 
 sub updateDraftWorkflowMapping( $self, %options ) {
-    my $tx = $self->_build_updateDraftWorkflowMapping_request(%options);
+    my $tx = $self->build_updateDraftWorkflowMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -81917,7 +81920,7 @@ sub build_deleteWorkflowSchemeIssueType_request( $self, %options ) {
 
 
 sub deleteWorkflowSchemeIssueType( $self, %options ) {
-    my $tx = $self->_build_deleteWorkflowSchemeIssueType_request(%options);
+    my $tx = $self->build_deleteWorkflowSchemeIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -82050,7 +82053,7 @@ sub build_getWorkflowSchemeIssueType_request( $self, %options ) {
 
 
 sub getWorkflowSchemeIssueType( $self, %options ) {
-    my $tx = $self->_build_getWorkflowSchemeIssueType_request(%options);
+    my $tx = $self->build_getWorkflowSchemeIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -82202,7 +82205,7 @@ sub build_setWorkflowSchemeIssueType_request( $self, %options ) {
 
 
 sub setWorkflowSchemeIssueType( $self, %options ) {
-    my $tx = $self->_build_setWorkflowSchemeIssueType_request(%options);
+    my $tx = $self->build_setWorkflowSchemeIssueType_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -82329,7 +82332,7 @@ sub build_deleteWorkflowMapping_request( $self, %options ) {
 
 
 sub deleteWorkflowMapping( $self, %options ) {
-    my $tx = $self->_build_deleteWorkflowMapping_request(%options);
+    my $tx = $self->build_deleteWorkflowMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -82452,7 +82455,7 @@ sub build_getWorkflow_request( $self, %options ) {
 
 
 sub getWorkflow( $self, %options ) {
-    my $tx = $self->_build_getWorkflow_request(%options);
+    my $tx = $self->build_getWorkflow_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -82611,7 +82614,7 @@ sub build_updateWorkflowMapping_request( $self, %options ) {
 
 
 sub updateWorkflowMapping( $self, %options ) {
-    my $tx = $self->_build_updateWorkflowMapping_request(%options);
+    my $tx = $self->build_updateWorkflowMapping_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -82749,7 +82752,7 @@ sub build_getIdsOfWorklogsDeletedSince_request( $self, %options ) {
 
 
 sub getIdsOfWorklogsDeletedSince( $self, %options ) {
-    my $tx = $self->_build_getIdsOfWorklogsDeletedSince_request(%options);
+    my $tx = $self->build_getIdsOfWorklogsDeletedSince_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -82922,7 +82925,7 @@ sub build_getWorklogsForIds_request( $self, %options ) {
 
 
 sub getWorklogsForIds( $self, %options ) {
-    my $tx = $self->_build_getWorklogsForIds_request(%options);
+    my $tx = $self->build_getWorklogsForIds_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -83075,7 +83078,7 @@ sub build_getIdsOfWorklogsModifiedSince_request( $self, %options ) {
 
 
 sub getIdsOfWorklogsModifiedSince( $self, %options ) {
-    my $tx = $self->_build_getIdsOfWorklogsModifiedSince_request(%options);
+    my $tx = $self->build_getIdsOfWorklogsModifiedSince_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -83194,7 +83197,7 @@ sub build_AddonPropertiesResource_getAddonProperties_get_request( $self, %option
 
 
 sub AddonPropertiesResource_getAddonProperties_get( $self, %options ) {
-    my $tx = $self->_build_AddonPropertiesResource_getAddonProperties_get_request(%options);
+    my $tx = $self->build_AddonPropertiesResource_getAddonProperties_get_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -83265,8 +83268,8 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '400'
   # {
-  #   "message" : "The property key cannot be longer than 127 characters.",
-  #   "statusCode" : 400
+  #   "statusCode" : 400,
+  #   "message" : "The property key cannot be longer than 127 characters."
   # }
 
   # Return code '401'
@@ -83335,7 +83338,7 @@ sub build_AddonPropertiesResource_deleteAddonProperty_delete_request( $self, %op
 
 
 sub AddonPropertiesResource_deleteAddonProperty_delete( $self, %options ) {
-    my $tx = $self->_build_AddonPropertiesResource_deleteAddonProperty_delete_request(%options);
+    my $tx = $self->build_AddonPropertiesResource_deleteAddonProperty_delete_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -83424,21 +83427,21 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '200'
   # {
-  #   "value" : "propertyValue",
   #   "key" : "propertyKey",
+  #   "value" : "propertyValue",
   #   "self" : "https://your-domain.atlassian.net/jira/rest/atlassian-connect/1/addon/example.app.key/properties/propertyKey"
   # }
 
   # Return code '400'
   # {
-  #   "message" : "The property key cannot be longer than 127 characters.",
-  #   "statusCode" : 400
+  #   "statusCode" : 400,
+  #   "message" : "The property key cannot be longer than 127 characters."
   # }
 
   # Return code '401'
   # {
-  #   "message" : "Access to this resource must be authenticated as an app.",
-  #   "statusCode" : 401
+  #   "statusCode" : 401,
+  #   "message" : "Access to this resource must be authenticated as an app."
   # }
 
   # Return code '404'
@@ -83503,7 +83506,7 @@ sub build_AddonPropertiesResource_getAddonProperty_get_request( $self, %options 
 
 
 sub AddonPropertiesResource_getAddonProperty_get( $self, %options ) {
-    my $tx = $self->_build_AddonPropertiesResource_getAddonProperty_get_request(%options);
+    my $tx = $self->build_AddonPropertiesResource_getAddonProperty_get_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -83610,20 +83613,20 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '201'
   # {
-  #   "message" : "Property created.",
-  #   "statusCode" : 201
+  #   "statusCode" : 201,
+  #   "message" : "Property created."
   # }
 
   # Return code '400'
   # {
-  #   "statusCode" : 400,
-  #   "message" : "The property key cannot be longer than 127 characters."
+  #   "message" : "The property key cannot be longer than 127 characters.",
+  #   "statusCode" : 400
   # }
 
   # Return code '401'
   # {
-  #   "message" : "Access to this resource must be authenticated as an app.",
-  #   "statusCode" : 401
+  #   "statusCode" : 401,
+  #   "message" : "Access to this resource must be authenticated as an app."
   # }
 Set app property
 
@@ -83686,7 +83689,7 @@ sub build_AddonPropertiesResource_putAddonProperty_put_request( $self, %options 
 
 
 sub AddonPropertiesResource_putAddonProperty_put( $self, %options ) {
-    my $tx = $self->_build_AddonPropertiesResource_putAddonProperty_put_request(%options);
+    my $tx = $self->build_AddonPropertiesResource_putAddonProperty_put_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -83834,7 +83837,7 @@ sub build_DynamicModulesResource_removeModules_delete_request( $self, %options )
 
 
 sub DynamicModulesResource_removeModules_delete( $self, %options ) {
-    my $tx = $self->_build_DynamicModulesResource_removeModules_delete_request(%options);
+    my $tx = $self->build_DynamicModulesResource_removeModules_delete_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -83929,7 +83932,7 @@ sub build_DynamicModulesResource_getModules_get_request( $self, %options ) {
 
 
 sub DynamicModulesResource_getModules_get( $self, %options ) {
-    my $tx = $self->_build_DynamicModulesResource_getModules_get_request(%options);
+    my $tx = $self->build_DynamicModulesResource_getModules_get_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -84055,7 +84058,7 @@ sub build_DynamicModulesResource_registerModules_post_request( $self, %options )
 
 
 sub DynamicModulesResource_registerModules_post( $self, %options ) {
-    my $tx = $self->_build_DynamicModulesResource_registerModules_post_request(%options);
+    my $tx = $self->build_DynamicModulesResource_registerModules_post_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -84183,7 +84186,7 @@ sub build_AppIssueFieldValueUpdateResource_updateIssueFields_put_request( $self,
 
 
 sub AppIssueFieldValueUpdateResource_updateIssueFields_put( $self, %options ) {
-    my $tx = $self->_build_AppIssueFieldValueUpdateResource_updateIssueFields_put_request(%options);
+    my $tx = $self->build_AppIssueFieldValueUpdateResource_updateIssueFields_put_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -84294,7 +84297,7 @@ sub build_MigrationResource_updateEntityPropertiesValue_put_request( $self, %opt
 
 
 sub MigrationResource_updateEntityPropertiesValue_put( $self, %options ) {
-    my $tx = $self->_build_MigrationResource_updateEntityPropertiesValue_put_request(%options);
+    my $tx = $self->build_MigrationResource_updateEntityPropertiesValue_put_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -84343,30 +84346,36 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
 
   # Return code '200'
   # {
-  #   "invalidRules" : [
-  #     "55d44f1d-c859-42e5-9c27-2c5ec3f340b1"
-  #   ],
   #   "workflowEntityId" : "a498d711-685d-428d-8c3e-bc03bb450ea7",
   #   "validRules" : [
   #     {
-  #       "workflowId" : {
-  #         "name" : "Workflow name",
-  #         "draft" : true
-  #       },
-  #       "conditions" : [
+  #       "postFunctions" : [
   #         {
-  #           "key" : "WorkflowKey",
   #           "id" : "123",
-  #           "configuration" : {
-  #             "value" : "WorkflowValidator"
-  #           },
   #           "transition" : {
   #             "id" : 123,
   #             "name" : "transition"
-  #           }
+  #           },
+  #           "configuration" : {
+  #             "value" : "WorkflowValidator"
+  #           },
+  #           "key" : "WorkflowKey"
   #         }
   #       ],
   #       "validators" : [
+  #         {
+  #           "id" : "123",
+  #           "transition" : {
+  #             "name" : "transition",
+  #             "id" : 123
+  #           },
+  #           "configuration" : {
+  #             "value" : "WorkflowValidator"
+  #           },
+  #           "key" : "WorkflowKey"
+  #         }
+  #       ],
+  #       "conditions" : [
   #         {
   #           "transition" : {
   #             "name" : "transition",
@@ -84379,20 +84388,14 @@ Build an HTTP request as L<Mojo::Request> object. For the parameters see below.
   #           "id" : "123"
   #         }
   #       ],
-  #       "postFunctions" : [
-  #         {
-  #           "key" : "WorkflowKey",
-  #           "id" : "123",
-  #           "configuration" : {
-  #             "value" : "WorkflowValidator"
-  #           },
-  #           "transition" : {
-  #             "name" : "transition",
-  #             "id" : 123
-  #           }
-  #         }
-  #       ]
+  #       "workflowId" : {
+  #         "draft" : true,
+  #         "name" : "Workflow name"
+  #       }
   #     }
+  #   ],
+  #   "invalidRules" : [
+  #     "55d44f1d-c859-42e5-9c27-2c5ec3f340b1"
   #   ]
   # }
 Get workflow transition rule configurations
@@ -84458,7 +84461,7 @@ sub build_MigrationResource_workflowRuleSearch_post_request( $self, %options ) {
 
 
 sub MigrationResource_workflowRuleSearch_post( $self, %options ) {
-    my $tx = $self->_build_MigrationResource_workflowRuleSearch_post_request(%options);
+    my $tx = $self->build_MigrationResource_workflowRuleSearch_post_request(%options);
 
 
     my $res = Future::Mojo->new();

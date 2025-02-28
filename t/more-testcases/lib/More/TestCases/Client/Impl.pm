@@ -15,6 +15,8 @@ use URI::Template;
 use Mojo::JSON 'encode_json', 'decode_json';
 use OpenAPI::Modern;
 
+use File::ShareDir 'module_file';
+
 use Future::Mojo;
 use Future::Queue;
 
@@ -56,14 +58,15 @@ The server to access
 =cut
 
 has 'schema_file' => (
-    is => 'ro',
+    is => 'lazy',
+    default => sub { require More::TestCases::Client::Impl; module_file('More::TestCases::Client::Impl', 'more-testcases.yaml') },
 );
 
 has 'schema' => (
     is => 'lazy',
     default => sub {
         if( my $fn = $_[0]->schema_file ) {
-            YAML::PP->new( boolean => 'JSON::PP' )->load_file( $fn );
+            YAML::PP->new( boolean => 'JSON::PP' )->load_file($fn);
         }
     },
 );
@@ -148,7 +151,7 @@ sub build_withCookie_request( $self, %options ) {
 
 
 sub withCookie( $self, %options ) {
-    my $tx = $self->_build_withCookie_request(%options);
+    my $tx = $self->build_withCookie_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -229,7 +232,7 @@ sub build_withHeader_request( $self, %options ) {
 
 
 sub withHeader( $self, %options ) {
-    my $tx = $self->_build_withHeader_request(%options);
+    my $tx = $self->build_withHeader_request(%options);
 
 
     my $res = Future::Mojo->new();

@@ -15,6 +15,8 @@ use URI::Template;
 use Mojo::JSON 'encode_json', 'decode_json';
 use OpenAPI::Modern;
 
+use File::ShareDir 'module_file';
+
 use Future::Mojo;
 use Future::Queue;
 
@@ -188,14 +190,15 @@ The server to access
 =cut
 
 has 'schema_file' => (
-    is => 'ro',
+    is => 'lazy',
+    default => sub { require AI::OpenAI::Client::Impl; module_file('AI::OpenAI::Client::Impl', 'openapi.yaml') },
 );
 
 has 'schema' => (
     is => 'lazy',
     default => sub {
         if( my $fn = $_[0]->schema_file ) {
-            YAML::PP->new( boolean => 'JSON::PP' )->load_file( $fn );
+            YAML::PP->new( boolean => 'JSON::PP' )->load_file($fn);
         }
     },
 );
@@ -300,7 +303,7 @@ sub build_listAssistants_request( $self, %options ) {
 
 
 sub listAssistants( $self, %options ) {
-    my $tx = $self->_build_listAssistants_request(%options);
+    my $tx = $self->build_listAssistants_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -431,7 +434,7 @@ sub build_createAssistant_request( $self, %options ) {
 
 
 sub createAssistant( $self, %options ) {
-    my $tx = $self->_build_createAssistant_request(%options);
+    my $tx = $self->build_createAssistant_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -525,7 +528,7 @@ sub build_deleteAssistant_request( $self, %options ) {
 
 
 sub deleteAssistant( $self, %options ) {
-    my $tx = $self->_build_deleteAssistant_request(%options);
+    my $tx = $self->build_deleteAssistant_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -619,7 +622,7 @@ sub build_getAssistant_request( $self, %options ) {
 
 
 sub getAssistant( $self, %options ) {
-    my $tx = $self->_build_getAssistant_request(%options);
+    my $tx = $self->build_getAssistant_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -768,7 +771,7 @@ sub build_modifyAssistant_request( $self, %options ) {
 
 
 sub modifyAssistant( $self, %options ) {
-    my $tx = $self->_build_modifyAssistant_request(%options);
+    my $tx = $self->build_modifyAssistant_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -873,7 +876,7 @@ sub build_createSpeech_request( $self, %options ) {
 
 
 sub createSpeech( $self, %options ) {
-    my $tx = $self->_build_createSpeech_request(%options);
+    my $tx = $self->build_createSpeech_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -986,7 +989,7 @@ sub build_createTranscription_request( $self, %options ) {
 
 
 sub createTranscription( $self, %options ) {
-    my $tx = $self->_build_createTranscription_request(%options);
+    my $tx = $self->build_createTranscription_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1091,7 +1094,7 @@ sub build_createTranslation_request( $self, %options ) {
 
 
 sub createTranslation( $self, %options ) {
-    my $tx = $self->_build_createTranslation_request(%options);
+    my $tx = $self->build_createTranslation_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1189,7 +1192,7 @@ sub build_listBatches_request( $self, %options ) {
 
 
 sub listBatches( $self, %options ) {
-    my $tx = $self->_build_listBatches_request(%options);
+    my $tx = $self->build_listBatches_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1294,7 +1297,7 @@ sub build_createBatch_request( $self, %options ) {
 
 
 sub createBatch( $self, %options ) {
-    my $tx = $self->_build_createBatch_request(%options);
+    my $tx = $self->build_createBatch_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1388,7 +1391,7 @@ sub build_retrieveBatch_request( $self, %options ) {
 
 
 sub retrieveBatch( $self, %options ) {
-    my $tx = $self->_build_retrieveBatch_request(%options);
+    my $tx = $self->build_retrieveBatch_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1482,7 +1485,7 @@ sub build_cancelBatch_request( $self, %options ) {
 
 
 sub cancelBatch( $self, %options ) {
-    my $tx = $self->_build_cancelBatch_request(%options);
+    my $tx = $self->build_cancelBatch_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1684,7 +1687,7 @@ sub build_createChatCompletion_request( $self, %options ) {
 
 
 sub createChatCompletion( $self, %options ) {
-    my $tx = $self->_build_createChatCompletion_request(%options);
+    my $tx = $self->build_createChatCompletion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1869,7 +1872,7 @@ sub build_createCompletion_request( $self, %options ) {
 
 
 sub createCompletion( $self, %options ) {
-    my $tx = $self->_build_createCompletion_request(%options);
+    my $tx = $self->build_createCompletion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1974,7 +1977,7 @@ sub build_createEmbedding_request( $self, %options ) {
 
 
 sub createEmbedding( $self, %options ) {
-    my $tx = $self->_build_createEmbedding_request(%options);
+    my $tx = $self->build_createEmbedding_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2066,7 +2069,7 @@ sub build_listFiles_request( $self, %options ) {
 
 
 sub listFiles( $self, %options ) {
-    my $tx = $self->_build_listFiles_request(%options);
+    my $tx = $self->build_listFiles_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2169,7 +2172,7 @@ sub build_createFile_request( $self, %options ) {
 
 
 sub createFile( $self, %options ) {
-    my $tx = $self->_build_createFile_request(%options);
+    my $tx = $self->build_createFile_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2263,7 +2266,7 @@ sub build_deleteFile_request( $self, %options ) {
 
 
 sub deleteFile( $self, %options ) {
-    my $tx = $self->_build_deleteFile_request(%options);
+    my $tx = $self->build_deleteFile_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2357,7 +2360,7 @@ sub build_retrieveFile_request( $self, %options ) {
 
 
 sub retrieveFile( $self, %options ) {
-    my $tx = $self->_build_retrieveFile_request(%options);
+    my $tx = $self->build_retrieveFile_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2451,7 +2454,7 @@ sub build_downloadFile_request( $self, %options ) {
 
 
 sub downloadFile( $self, %options ) {
-    my $tx = $self->_build_downloadFile_request(%options);
+    my $tx = $self->build_downloadFile_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2549,7 +2552,7 @@ sub build_listPaginatedFineTuningJobs_request( $self, %options ) {
 
 
 sub listPaginatedFineTuningJobs( $self, %options ) {
-    my $tx = $self->_build_listPaginatedFineTuningJobs_request(%options);
+    my $tx = $self->build_listPaginatedFineTuningJobs_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2685,7 +2688,7 @@ sub build_createFineTuningJob_request( $self, %options ) {
 
 
 sub createFineTuningJob( $self, %options ) {
-    my $tx = $self->_build_createFineTuningJob_request(%options);
+    my $tx = $self->build_createFineTuningJob_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2781,7 +2784,7 @@ sub build_retrieveFineTuningJob_request( $self, %options ) {
 
 
 sub retrieveFineTuningJob( $self, %options ) {
-    my $tx = $self->_build_retrieveFineTuningJob_request(%options);
+    my $tx = $self->build_retrieveFineTuningJob_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2875,7 +2878,7 @@ sub build_cancelFineTuningJob_request( $self, %options ) {
 
 
 sub cancelFineTuningJob( $self, %options ) {
-    my $tx = $self->_build_cancelFineTuningJob_request(%options);
+    my $tx = $self->build_cancelFineTuningJob_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -2984,7 +2987,7 @@ sub build_listFineTuningJobCheckpoints_request( $self, %options ) {
 
 
 sub listFineTuningJobCheckpoints( $self, %options ) {
-    my $tx = $self->_build_listFineTuningJobCheckpoints_request(%options);
+    my $tx = $self->build_listFineTuningJobCheckpoints_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3093,7 +3096,7 @@ sub build_listFineTuningEvents_request( $self, %options ) {
 
 
 sub listFineTuningEvents( $self, %options ) {
-    my $tx = $self->_build_listFineTuningEvents_request(%options);
+    my $tx = $self->build_listFineTuningEvents_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3210,7 +3213,7 @@ sub build_createImageEdit_request( $self, %options ) {
 
 
 sub createImageEdit( $self, %options ) {
-    my $tx = $self->_build_createImageEdit_request(%options);
+    my $tx = $self->build_createImageEdit_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3327,7 +3330,7 @@ sub build_createImage_request( $self, %options ) {
 
 
 sub createImage( $self, %options ) {
-    my $tx = $self->_build_createImage_request(%options);
+    my $tx = $self->build_createImage_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3436,7 +3439,7 @@ sub build_createImageVariation_request( $self, %options ) {
 
 
 sub createImageVariation( $self, %options ) {
-    my $tx = $self->_build_createImageVariation_request(%options);
+    my $tx = $self->build_createImageVariation_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3512,7 +3515,7 @@ sub build_listModels_request( $self, %options ) {
 
 
 sub listModels( $self, %options ) {
-    my $tx = $self->_build_listModels_request(%options);
+    my $tx = $self->build_listModels_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3606,7 +3609,7 @@ sub build_deleteModel_request( $self, %options ) {
 
 
 sub deleteModel( $self, %options ) {
-    my $tx = $self->_build_deleteModel_request(%options);
+    my $tx = $self->build_deleteModel_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3700,7 +3703,7 @@ sub build_retrieveModel_request( $self, %options ) {
 
 
 sub retrieveModel( $self, %options ) {
-    my $tx = $self->_build_retrieveModel_request(%options);
+    my $tx = $self->build_retrieveModel_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3795,7 +3798,7 @@ sub build_createModeration_request( $self, %options ) {
 
 
 sub createModeration( $self, %options ) {
-    my $tx = $self->_build_createModeration_request(%options);
+    my $tx = $self->build_createModeration_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -3892,7 +3895,7 @@ sub build_createThread_request( $self, %options ) {
 
 
 sub createThread( $self, %options ) {
-    my $tx = $self->_build_createThread_request(%options);
+    my $tx = $self->build_createThread_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4045,7 +4048,7 @@ sub build_createThreadAndRun_request( $self, %options ) {
 
 
 sub createThreadAndRun( $self, %options ) {
-    my $tx = $self->_build_createThreadAndRun_request(%options);
+    my $tx = $self->build_createThreadAndRun_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4139,7 +4142,7 @@ sub build_deleteThread_request( $self, %options ) {
 
 
 sub deleteThread( $self, %options ) {
-    my $tx = $self->_build_deleteThread_request(%options);
+    my $tx = $self->build_deleteThread_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4233,7 +4236,7 @@ sub build_getThread_request( $self, %options ) {
 
 
 sub getThread( $self, %options ) {
-    my $tx = $self->_build_getThread_request(%options);
+    my $tx = $self->build_getThread_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4344,7 +4347,7 @@ sub build_modifyThread_request( $self, %options ) {
 
 
 sub modifyThread( $self, %options ) {
-    my $tx = $self->_build_modifyThread_request(%options);
+    my $tx = $self->build_modifyThread_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4471,7 +4474,7 @@ sub build_listMessages_request( $self, %options ) {
 
 
 sub listMessages( $self, %options ) {
-    my $tx = $self->_build_listMessages_request(%options);
+    my $tx = $self->build_listMessages_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4590,7 +4593,7 @@ sub build_createMessage_request( $self, %options ) {
 
 
 sub createMessage( $self, %options ) {
-    my $tx = $self->_build_createMessage_request(%options);
+    my $tx = $self->build_createMessage_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4692,7 +4695,7 @@ sub build_deleteMessage_request( $self, %options ) {
 
 
 sub deleteMessage( $self, %options ) {
-    my $tx = $self->_build_deleteMessage_request(%options);
+    my $tx = $self->build_deleteMessage_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4794,7 +4797,7 @@ sub build_getMessage_request( $self, %options ) {
 
 
 sub getMessage( $self, %options ) {
-    my $tx = $self->_build_getMessage_request(%options);
+    my $tx = $self->build_getMessage_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -4909,7 +4912,7 @@ sub build_modifyMessage_request( $self, %options ) {
 
 
 sub modifyMessage( $self, %options ) {
-    my $tx = $self->_build_modifyMessage_request(%options);
+    my $tx = $self->build_modifyMessage_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5030,7 +5033,7 @@ sub build_listRuns_request( $self, %options ) {
 
 
 sub listRuns( $self, %options ) {
-    my $tx = $self->_build_listRuns_request(%options);
+    my $tx = $self->build_listRuns_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5203,7 +5206,7 @@ sub build_createRun_request( $self, %options ) {
 
 
 sub createRun( $self, %options ) {
-    my $tx = $self->_build_createRun_request(%options);
+    my $tx = $self->build_createRun_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5305,7 +5308,7 @@ sub build_getRun_request( $self, %options ) {
 
 
 sub getRun( $self, %options ) {
-    my $tx = $self->_build_getRun_request(%options);
+    my $tx = $self->build_getRun_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5420,7 +5423,7 @@ sub build_modifyRun_request( $self, %options ) {
 
 
 sub modifyRun( $self, %options ) {
-    my $tx = $self->_build_modifyRun_request(%options);
+    my $tx = $self->build_modifyRun_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5522,7 +5525,7 @@ sub build_cancelRun_request( $self, %options ) {
 
 
 sub cancelRun( $self, %options ) {
-    my $tx = $self->_build_cancelRun_request(%options);
+    my $tx = $self->build_cancelRun_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5651,7 +5654,7 @@ sub build_listRunSteps_request( $self, %options ) {
 
 
 sub listRunSteps( $self, %options ) {
-    my $tx = $self->_build_listRunSteps_request(%options);
+    my $tx = $self->build_listRunSteps_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5761,7 +5764,7 @@ sub build_getRunStep_request( $self, %options ) {
 
 
 sub getRunStep( $self, %options ) {
-    my $tx = $self->_build_getRunStep_request(%options);
+    my $tx = $self->build_getRunStep_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5880,7 +5883,7 @@ sub build_submitToolOuputsToRun_request( $self, %options ) {
 
 
 sub submitToolOuputsToRun( $self, %options ) {
-    my $tx = $self->_build_submitToolOuputsToRun_request(%options);
+    my $tx = $self->build_submitToolOuputsToRun_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -5990,7 +5993,7 @@ sub build_listVectorStores_request( $self, %options ) {
 
 
 sub listVectorStores( $self, %options ) {
-    my $tx = $self->_build_listVectorStores_request(%options);
+    my $tx = $self->build_listVectorStores_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6091,7 +6094,7 @@ sub build_createVectorStore_request( $self, %options ) {
 
 
 sub createVectorStore( $self, %options ) {
-    my $tx = $self->_build_createVectorStore_request(%options);
+    my $tx = $self->build_createVectorStore_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6185,7 +6188,7 @@ sub build_deleteVectorStore_request( $self, %options ) {
 
 
 sub deleteVectorStore( $self, %options ) {
-    my $tx = $self->_build_deleteVectorStore_request(%options);
+    my $tx = $self->build_deleteVectorStore_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6279,7 +6282,7 @@ sub build_getVectorStore_request( $self, %options ) {
 
 
 sub getVectorStore( $self, %options ) {
-    my $tx = $self->_build_getVectorStore_request(%options);
+    my $tx = $self->build_getVectorStore_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6394,7 +6397,7 @@ sub build_modifyVectorStore_request( $self, %options ) {
 
 
 sub modifyVectorStore( $self, %options ) {
-    my $tx = $self->_build_modifyVectorStore_request(%options);
+    my $tx = $self->build_modifyVectorStore_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6501,7 +6504,7 @@ sub build_createVectorStoreFileBatch_request( $self, %options ) {
 
 
 sub createVectorStoreFileBatch( $self, %options ) {
-    my $tx = $self->_build_createVectorStoreFileBatch_request(%options);
+    my $tx = $self->build_createVectorStoreFileBatch_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6603,7 +6606,7 @@ sub build_getVectorStoreFileBatch_request( $self, %options ) {
 
 
 sub getVectorStoreFileBatch( $self, %options ) {
-    my $tx = $self->_build_getVectorStoreFileBatch_request(%options);
+    my $tx = $self->build_getVectorStoreFileBatch_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6705,7 +6708,7 @@ sub build_cancelVectorStoreFileBatch_request( $self, %options ) {
 
 
 sub cancelVectorStoreFileBatch( $self, %options ) {
-    my $tx = $self->_build_cancelVectorStoreFileBatch_request(%options);
+    my $tx = $self->build_cancelVectorStoreFileBatch_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6840,7 +6843,7 @@ sub build_listFilesInVectorStoreBatch_request( $self, %options ) {
 
 
 sub listFilesInVectorStoreBatch( $self, %options ) {
-    my $tx = $self->_build_listFilesInVectorStoreBatch_request(%options);
+    my $tx = $self->build_listFilesInVectorStoreBatch_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -6967,7 +6970,7 @@ sub build_listVectorStoreFiles_request( $self, %options ) {
 
 
 sub listVectorStoreFiles( $self, %options ) {
-    my $tx = $self->_build_listVectorStoreFiles_request(%options);
+    my $tx = $self->build_listVectorStoreFiles_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7074,7 +7077,7 @@ sub build_createVectorStoreFile_request( $self, %options ) {
 
 
 sub createVectorStoreFile( $self, %options ) {
-    my $tx = $self->_build_createVectorStoreFile_request(%options);
+    my $tx = $self->build_createVectorStoreFile_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7176,7 +7179,7 @@ sub build_deleteVectorStoreFile_request( $self, %options ) {
 
 
 sub deleteVectorStoreFile( $self, %options ) {
-    my $tx = $self->_build_deleteVectorStoreFile_request(%options);
+    my $tx = $self->build_deleteVectorStoreFile_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -7278,7 +7281,7 @@ sub build_getVectorStoreFile_request( $self, %options ) {
 
 
 sub getVectorStoreFile( $self, %options ) {
-    my $tx = $self->_build_getVectorStoreFile_request(%options);
+    my $tx = $self->build_getVectorStoreFile_request(%options);
 
 
     my $res = Future::Mojo->new();

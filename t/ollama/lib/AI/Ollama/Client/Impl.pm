@@ -15,6 +15,8 @@ use URI::Template;
 use Mojo::JSON 'encode_json', 'decode_json';
 use OpenAPI::Modern;
 
+use File::ShareDir 'module_file';
+
 use Future::Mojo;
 use Future::Queue;
 
@@ -76,14 +78,15 @@ The server to access
 =cut
 
 has 'schema_file' => (
-    is => 'ro',
+    is => 'lazy',
+    default => sub { require AI::Ollama::Client::Impl; module_file('AI::Ollama::Client::Impl', 'ollama-curated.yaml') },
 );
 
 has 'schema' => (
     is => 'lazy',
     default => sub {
         if( my $fn = $_[0]->schema_file ) {
-            YAML::PP->new( boolean => 'JSON::PP' )->load_file( $fn );
+            YAML::PP->new( boolean => 'JSON::PP' )->load_file($fn);
         }
     },
 );
@@ -169,7 +172,7 @@ sub build_checkBlob_request( $self, %options ) {
 
 
 sub checkBlob( $self, %options ) {
-    my $tx = $self->_build_checkBlob_request(%options);
+    my $tx = $self->build_checkBlob_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -255,7 +258,7 @@ sub build_createBlob_request( $self, %options ) {
 
 
 sub createBlob( $self, %options ) {
-    my $tx = $self->_build_createBlob_request(%options);
+    my $tx = $self->build_createBlob_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -395,7 +398,7 @@ sub build_generateChatCompletion_request( $self, %options ) {
 
 
 sub generateChatCompletion( $self, %options ) {
-    my $tx = $self->_build_generateChatCompletion_request(%options);
+    my $tx = $self->build_generateChatCompletion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -503,7 +506,7 @@ sub build_copyModel_request( $self, %options ) {
 
 
 sub copyModel( $self, %options ) {
-    my $tx = $self->_build_copyModel_request(%options);
+    my $tx = $self->build_copyModel_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -603,7 +606,7 @@ sub build_createModel_request( $self, %options ) {
 
 
 sub createModel( $self, %options ) {
-    my $tx = $self->_build_createModel_request(%options);
+    my $tx = $self->build_createModel_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -709,7 +712,7 @@ sub build_deleteModel_request( $self, %options ) {
 
 
 sub deleteModel( $self, %options ) {
-    my $tx = $self->_build_deleteModel_request(%options);
+    my $tx = $self->build_deleteModel_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -796,7 +799,7 @@ sub build_generateEmbedding_request( $self, %options ) {
 
 
 sub generateEmbedding( $self, %options ) {
-    my $tx = $self->_build_generateEmbedding_request(%options);
+    my $tx = $self->build_generateEmbedding_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -970,7 +973,7 @@ sub build_generateCompletion_request( $self, %options ) {
 
 
 sub generateCompletion( $self, %options ) {
-    my $tx = $self->_build_generateCompletion_request(%options);
+    my $tx = $self->build_generateCompletion_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1090,7 +1093,7 @@ sub build_pullModel_request( $self, %options ) {
 
 
 sub pullModel( $self, %options ) {
-    my $tx = $self->_build_pullModel_request(%options);
+    my $tx = $self->build_pullModel_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1191,7 +1194,7 @@ sub build_pushModel_request( $self, %options ) {
 
 
 sub pushModel( $self, %options ) {
-    my $tx = $self->_build_pushModel_request(%options);
+    my $tx = $self->build_pushModel_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1282,7 +1285,7 @@ sub build_showModelInfo_request( $self, %options ) {
 
 
 sub showModelInfo( $self, %options ) {
-    my $tx = $self->_build_showModelInfo_request(%options);
+    my $tx = $self->build_showModelInfo_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -1358,7 +1361,7 @@ sub build_listModels_request( $self, %options ) {
 
 
 sub listModels( $self, %options ) {
-    my $tx = $self->_build_listModels_request(%options);
+    my $tx = $self->build_listModels_request(%options);
 
 
     my $res = Future::Mojo->new();

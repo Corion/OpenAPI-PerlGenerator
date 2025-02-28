@@ -15,6 +15,8 @@ use URI::Template;
 use Mojo::JSON 'encode_json', 'decode_json';
 use OpenAPI::Modern;
 
+use File::ShareDir 'module_file';
+
 use Future::Mojo;
 use Future::Queue;
 
@@ -58,14 +60,15 @@ The server to access
 =cut
 
 has 'schema_file' => (
-    is => 'ro',
+    is => 'lazy',
+    default => sub { require OpenAPI::PetStore::Client::Impl; module_file('OpenAPI::PetStore::Client::Impl', 'petstore-expanded.yaml') },
 );
 
 has 'schema' => (
     is => 'lazy',
     default => sub {
         if( my $fn = $_[0]->schema_file ) {
-            YAML::PP->new( boolean => 'JSON::PP' )->load_file( $fn );
+            YAML::PP->new( boolean => 'JSON::PP' )->load_file($fn);
         }
     },
 );
@@ -162,7 +165,7 @@ sub build_findPets_request( $self, %options ) {
 
 
 sub findPets( $self, %options ) {
-    my $tx = $self->_build_findPets_request(%options);
+    my $tx = $self->build_findPets_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -268,7 +271,7 @@ sub build_addPet_request( $self, %options ) {
 
 
 sub addPet( $self, %options ) {
-    my $tx = $self->_build_addPet_request(%options);
+    my $tx = $self->build_addPet_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -377,7 +380,7 @@ sub build_deletePet_request( $self, %options ) {
 
 
 sub deletePet( $self, %options ) {
-    my $tx = $self->_build_deletePet_request(%options);
+    my $tx = $self->build_deletePet_request(%options);
 
 
     my $res = Future::Mojo->new();
@@ -475,7 +478,7 @@ sub build_find_pet_by_id_request( $self, %options ) {
 
 
 sub find_pet_by_id( $self, %options ) {
-    my $tx = $self->_build_find_pet_by_id_request(%options);
+    my $tx = $self->build_find_pet_by_id_request(%options);
 
 
     my $res = Future::Mojo->new();
