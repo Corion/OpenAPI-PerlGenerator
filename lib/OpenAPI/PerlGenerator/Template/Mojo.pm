@@ -92,6 +92,7 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
     our @store; # we should use ->retain() instead
     push @store, $r1->then( sub( $tx ) {
         my $resp = $tx->res;
+        $self->emit(response => $resp);
         # Should we validate using OpenAPI::Modern here?!
 %# Should this be its own subroutine instead?!
 % for my $code (sort keys $elt->{responses}->%*) {                             # response code s
@@ -153,12 +154,14 @@ $template{streaming_response} = <<'__STREAMING_RESPONSE__';
         undef $_tx;
         undef $r1;
     });
+    $self->emit(request => $tx);
     $_tx = $self->ua->start_p($tx);
 __STREAMING_RESPONSE__
 
 $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
     $r1->then( sub( $tx ) {
         my $resp = $tx->res;
+        $self->emit(response => $resp);
         # Should we validate using OpenAPI::Modern here?!
 %# Should this be its own subroutine instead?!
 % my $first_code = 1;
@@ -206,10 +209,12 @@ $template{synchronous_response} = <<'__SYNCHRONOUS_RESPONSE__';
     })->retain;
 
     # Start our transaction
+    $self->emit(request => $tx);
     $tx = $self->ua->start_p($tx)->then(sub($tx) {
         $r1->resolve( $tx );
         undef $r1;
     })->catch(sub($err) {
+        $self->emit(response => $tx, $err);
         $r1->fail( $err => $tx );
         undef $r1;
     });
@@ -544,6 +549,7 @@ package <%= $prefix %>::<%= $name %> <%= $version %>;
 
 use 5.020;
 use Moo 2;
+with 'Role::EventEmitter';
 use experimental 'signatures';
 use PerlX::Maybe;
 use Carp 'croak';
