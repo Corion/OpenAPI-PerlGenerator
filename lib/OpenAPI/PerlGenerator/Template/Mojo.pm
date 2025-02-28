@@ -799,7 +799,7 @@ Defaults to C<< <%= $p->{default} =%> >>
 <%= include( 'build_request', { method => $method, parameters => \%parameters, elt => $elt, ct => $ct, prefix => $prefix, } ); %>
 
 sub <%= $method->{name} %>( $self, %options ) {
-    my $tx = $self->_build_<%= $method->{name} %>_request(%options);
+    my $tx = $self->build_<%= $method->{name} %>_request(%options);
 
 %# We want to handle both here, streaming (ndjson) and plain responses
 %# Plain responses are easy, but for streamed, we want to register an ->on('progress')
